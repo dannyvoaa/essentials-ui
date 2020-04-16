@@ -39,7 +39,7 @@ class _$WelcomeViewModel extends WelcomeViewModel {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    final _$dynamicOther = other as dynamic;
+    final dynamic _$dynamicOther = other;
     return other is WelcomeViewModel &&
         primaryButtonText == other.primaryButtonText &&
         onPrimaryButtonPressed == _$dynamicOther.onPrimaryButtonPressed;

@@ -14,11 +14,10 @@ const email = 'email';
 // Page-level widget route keys. These should uniquely identify a widget that
 // is a page that can be navigated to. Name the widget in a comment.
 
-/// Route key for the [SignInPage] widget.
 const signIn = 'sign-in';
 
 /// Route key for the [SettingsPage] widget.
-const settings = 'settings';
+const settingsPage = 'settings';
 
 /// Route key for the [PaycheckPage] widget.
 const paycheck = 'paycheck';
@@ -35,8 +34,8 @@ const travel = 'travel';
 /// Route key for the [ArticlePage].
 const article = 'article';
 
-/// Route key for the [ArticlePage].
-const calendar = 'calendar';
+/// Route key for the [EventsPage].
+const events = 'events';
 
 String buildRouteName(
         {@required String tab,
@@ -49,9 +48,16 @@ String buildRouteName(
 String buildSignInRoute() =>
     buildRouteName(tab: global, pageWidgetRoute: signIn);
 
-String buildArticlePageRoute({@required String article}) =>
-    buildRouteName(tab: home, pageWidgetRoute: article);
+String buildArticlePageRoute({
+  @required String article,
+  Map<String, dynamic> parameters,
+}) =>
+    buildRouteName(
+      tab: home,
+      pageWidgetRoute: article,
+      queryParameters: parameters,
+    );
 
 /// Builds a route to the settings page.
 String buildSettingsPageRoute() =>
-    buildRouteName(tab: global, pageWidgetRoute: settings);
+    Uri(pathSegments: [home, settingsPage]).toString();

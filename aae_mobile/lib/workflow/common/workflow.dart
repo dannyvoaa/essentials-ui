@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:aae/navigation/routes.dart' as routes;
 import 'package:aae/navigation/transitionless_page_route.dart';
 import 'package:aae/rxdart/rx.dart';
 import 'package:aae/service_provider.dart';
@@ -116,7 +117,7 @@ class _WorkflowState<E extends WorkflowEvent> extends State<Workflow<E>> {
 
           // Use a transitionless route for the first page to improve
           // performance of starting a workflow.
-          return settings.isInitialRoute
+          return (settings.name == routes.root)
               ? TransitionlessPageRoute(
                   settings: settings,
                   builder: routeBuilder,

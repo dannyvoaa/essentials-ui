@@ -1,15 +1,15 @@
+import 'package:aae/article/page/news_article_page.dart';
 import 'package:aae/events/page/events_page.dart';
 import 'package:aae/home/page/home_page.dart';
 import 'package:aae/home/page/news_page.dart';
+import 'package:aae/notification/page/notification_page.dart';
 import 'package:aae/recognition/page/recognition_page.dart';
 import 'package:aae/settings/page/settings_page.dart';
-import 'package:aae/article/page/article_page.dart';
-import 'package:aae/programmatic_main.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
 import 'bottom_navigation.dart';
-import 'page_provider.dart';
+import 'paage_provider.dart';
 import 'routes.dart' as routes;
 import 'transitionless_page_route.dart';
 
@@ -18,15 +18,12 @@ class MainPageNavigator extends StatelessWidget {
 
   final GlobalKey<NavigatorState> _navigatorKey;
   final MainPage _page;
-  final GlobalRouteHandler _globalRouteHandler;
 
   MainPageNavigator({
     @required GlobalKey<NavigatorState> navigatorKey,
     @required MainPage page,
-    GlobalRouteHandler globalRouteHandler,
   })  : _navigatorKey = navigatorKey,
-        _page = page,
-        _globalRouteHandler = globalRouteHandler;
+        _page = page;
 
   // Determines how to build the route specified by [routeName].
   WidgetBuilder _getRouteBuilder(BuildContext context, String routeName) {
@@ -70,11 +67,17 @@ class MainPageNavigator extends StatelessWidget {
   WidgetBuilder _routeBuilder(BuildContext context, String routeName) {
     Uri routeUri;
 
+    Map<String, dynamic> arguments;
+
     try {
       routeUri = Uri.parse(routeName);
     } on FormatException catch (e, s) {
       _log.severe('Failed to parse navigation route:', e, s);
       return null;
+    }
+
+    if (routeUri.queryParameters?.keys != null) {
+      arguments = routeUri.queryParameters;
     }
 
     // Route needs at least a tab segment and a widget segment.
@@ -89,14 +92,18 @@ class MainPageNavigator extends StatelessWidget {
 
     // Add widget builders to this switch when you add routes.
     switch (widgetKey) {
-      case routes.settings:
+      case routes.settingsPage:
         provider = SettingsPageProvider();
         break;
-      case routes.calendar:
+      case routes.events:
         provider = EventsPageProvider();
         break;
-      default:
-        provider = ArticlePageProvider();
+      case routes.notifications:
+        provider = NotificationPageProvider();
+        break;
+      case routes.article:
+        provider = NewsArticlePageProvider(arguments: arguments);
+        break;
     }
 
     if (provider == null) {
@@ -113,16 +120,18 @@ class MainPageNavigator extends StatelessWidget {
     return Navigator(
       key: _navigatorKey,
       initialRoute: routes.root,
-      onGenerateRoute: (RouteSettings routeSettings) =>
-          routeSettings.isInitialRoute
-              ? TransitionlessPageRoute(
-                  builder: _getRouteBuilder(context, routeSettings.name),
-                  settings: routeSettings,
-                )
-              : MaterialPageRoute(
-                  builder: _getRouteBuilder(context, routeSettings.name),
-                  settings: routeSettings,
-                ),
+      onGenerateRoute: (RouteSettings routeSettings) {
+        if (routeSettings.name == routes.root)
+          return TransitionlessPageRoute(
+            builder: _getRouteBuilder(context, routeSettings.name),
+            settings: routeSettings,
+          );
+        else
+          return MaterialPageRoute(
+            builder: _getRouteBuilder(context, routeSettings.name),
+            settings: routeSettings,
+          );
+      },
     );
   }
 }

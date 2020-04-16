@@ -11,13 +11,15 @@ class _$NewsListRowCollectionViewModel extends NewsListRowCollectionViewModel {
   final BuiltList<String> newsFeedItemIds;
   @override
   final BuiltList<String> newsFeedItemCategories;
+  @override
+  final BuiltList<String> contentIds;
 
   factory _$NewsListRowCollectionViewModel(
           [void Function(NewsListRowCollectionViewModelBuilder) updates]) =>
       (new NewsListRowCollectionViewModelBuilder()..update(updates)).build();
 
   _$NewsListRowCollectionViewModel._(
-      {this.newsFeedItemIds, this.newsFeedItemCategories})
+      {this.newsFeedItemIds, this.newsFeedItemCategories, this.contentIds})
       : super._() {
     if (newsFeedItemIds == null) {
       throw new BuiltValueNullFieldError(
@@ -26,6 +28,10 @@ class _$NewsListRowCollectionViewModel extends NewsListRowCollectionViewModel {
     if (newsFeedItemCategories == null) {
       throw new BuiltValueNullFieldError(
           'NewsListRowCollectionViewModel', 'newsFeedItemCategories');
+    }
+    if (contentIds == null) {
+      throw new BuiltValueNullFieldError(
+          'NewsListRowCollectionViewModel', 'contentIds');
     }
   }
 
@@ -43,20 +49,23 @@ class _$NewsListRowCollectionViewModel extends NewsListRowCollectionViewModel {
     if (identical(other, this)) return true;
     return other is NewsListRowCollectionViewModel &&
         newsFeedItemIds == other.newsFeedItemIds &&
-        newsFeedItemCategories == other.newsFeedItemCategories;
+        newsFeedItemCategories == other.newsFeedItemCategories &&
+        contentIds == other.contentIds;
   }
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc(0, newsFeedItemIds.hashCode), newsFeedItemCategories.hashCode));
+    return $jf($jc(
+        $jc($jc(0, newsFeedItemIds.hashCode), newsFeedItemCategories.hashCode),
+        contentIds.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('NewsListRowCollectionViewModel')
           ..add('newsFeedItemIds', newsFeedItemIds)
-          ..add('newsFeedItemCategories', newsFeedItemCategories))
+          ..add('newsFeedItemCategories', newsFeedItemCategories)
+          ..add('contentIds', contentIds))
         .toString();
   }
 }
@@ -79,12 +88,19 @@ class NewsListRowCollectionViewModelBuilder
   set newsFeedItemCategories(ListBuilder<String> newsFeedItemCategories) =>
       _$this._newsFeedItemCategories = newsFeedItemCategories;
 
+  ListBuilder<String> _contentIds;
+  ListBuilder<String> get contentIds =>
+      _$this._contentIds ??= new ListBuilder<String>();
+  set contentIds(ListBuilder<String> contentIds) =>
+      _$this._contentIds = contentIds;
+
   NewsListRowCollectionViewModelBuilder();
 
   NewsListRowCollectionViewModelBuilder get _$this {
     if (_$v != null) {
       _newsFeedItemIds = _$v.newsFeedItemIds?.toBuilder();
       _newsFeedItemCategories = _$v.newsFeedItemCategories?.toBuilder();
+      _contentIds = _$v.contentIds?.toBuilder();
       _$v = null;
     }
     return this;
@@ -110,7 +126,8 @@ class NewsListRowCollectionViewModelBuilder
       _$result = _$v ??
           new _$NewsListRowCollectionViewModel._(
               newsFeedItemIds: newsFeedItemIds.build(),
-              newsFeedItemCategories: newsFeedItemCategories.build());
+              newsFeedItemCategories: newsFeedItemCategories.build(),
+              contentIds: contentIds.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -118,6 +135,8 @@ class NewsListRowCollectionViewModelBuilder
         newsFeedItemIds.build();
         _$failedField = 'newsFeedItemCategories';
         newsFeedItemCategories.build();
+        _$failedField = 'contentIds';
+        contentIds.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'NewsListRowCollectionViewModel', _$failedField, e.toString());

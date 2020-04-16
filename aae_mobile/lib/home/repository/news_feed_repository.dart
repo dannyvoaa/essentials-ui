@@ -6,7 +6,9 @@ import 'package:aae/cache/cache_service.dart';
 import 'package:aae/common/repository/repository.dart';
 import 'package:aae/model/news_feed.dart';
 import 'package:aae/model/news_feed_item.dart';
+import 'package:aae/model/profile.dart';
 import 'package:aae/model/serializers.dart';
+import 'package:aae/profile/repository/profile_repository.dart';
 import 'package:aae/rx/rx_util.dart';
 import 'package:aae/rxdart/rx.dart';
 import 'package:inject/inject.dart';
@@ -23,33 +25,28 @@ class NewsFeedRepository implements Repository {
 
   static const cacheKey = 'NewsFeedRepository.News';
 
-  final _newsFeed = createBehaviorSubject<UnmodifiableListView<NewsFeedItem>>();
+  final ProfileRepository _profileRepository;
+
+  final _newsFeed = createBehaviorSubject<UnmodifiableListView<NewsFeed>>();
 
   /// All content by their by their news feed item id.
   final _newsFeedItemsByNewsFeedItemId =
       BehaviorSubjectMap<String, NewsFeedItem>();
-
-  /// News feed item by their category
-  final _newsFeedItemsByCategory = BehaviorSubjectMap<String, NewsFeedItem>();
 
   /// Updates the published streams for the [NewsFeedItems]s specified by [updatedNewsFeedItems].
   void publishNewsFeedItems(Iterable<NewsFeedItem> updatedNewsFeedItems) {
     for (var newsFeedItem in updatedNewsFeedItems) {
       _newsFeedItemsByNewsFeedItemId.update(
           newsFeedItem.id.toString(), newsFeedItem);
-
-      /// Ensure that only news feed items are added by their category
-      if (newsFeedItem.category == 'Announcements') {
-        _newsFeedItemsByCategory.update(newsFeedItem.category, newsFeedItem);
-      }
     }
   }
 
+  // TODO(rpaglianwan): ask about this will it share same function as [NewsArticleServiceApi]
   final NewsServiceApi _apiClient;
   final CacheService _cache;
 
   /// Publishes the [NewsFeedItem]s
-  Observable<UnmodifiableListView<NewsFeedItem>> get newsFeed => _newsFeed;
+  Observable<UnmodifiableListView<NewsFeed>> get newsFeed => _newsFeed;
 
   /// Publishes a [NewsFeedItem]s by ID.
   Observable<NewsFeedItem> newsFeedItemById(String newsFeedItemId) =>
@@ -57,28 +54,27 @@ class NewsFeedRepository implements Repository {
           .data(newsFeedItemId)
           .distinctUntilChanged();
 
-  /// Publishes a [NewsFeedItem]s by category.
-  Observable<NewsFeedItem> newsFeedItemByCategory(String category) =>
-      _newsFeedItemsByCategory.data(category).distinctUntilChanged();
-
   @provide
   @singleton
-  NewsFeedRepository(this._apiClient, this._cache) {
-    //_loadFromCache();
-    _fetchNewsList();
+  NewsFeedRepository(this._apiClient, this._cache, this._profileRepository) {
+    _profileRepository
+        .fetchActiveProfile()
+        .then((value) => _fetchNewsFeedList(value));
   }
 
-  void _loadFromCache() {
-    // Look up the news from cache, publish it if we have it:
-    _cache
-        .readString(cacheKey)
-        .transform(_newsFeedToModel)
-        .ifPresent(_publishNewsFeed);
-  }
+//  void _loadFromCache() {
+//    // Look up the news from cache, publish it if we have it:
+//    _cache
+//        .readString(cacheKey)
+//        .transform(_newsFeedToModel)
+//        .ifPresent(_publishNewsFeed);
+//  }
 
-  void _publishNewsFeed(Iterable<NewsFeedItem> newsFeedItems) {
-    _newsFeed.sendNext(UnmodifiableListView(newsFeedItems));
-    this.publishNewsFeedItems(newsFeedItems);
+  void _publishNewsFeed(List<NewsFeed> newsFeed) {
+    _newsFeed.sendNext(UnmodifiableListView(newsFeed));
+    newsFeed.asMap().forEach((index, value) {
+      this.publishNewsFeedItems(value.newsFeedItemList);
+    });
   }
 
   static List<NewsFeedItem> _newsFeedToModel(String news) {
@@ -92,18 +88,19 @@ class NewsFeedRepository implements Repository {
 
   Future<void> _saveToCache(news) => _cache.writeString(cacheKey, news);
 
-  // TODO: (kiheke) - Switch to api call when service is ready.
-  _fetchNewsList() async {
-    var feed;
+  _fetchNewsFeedList(Profile profile) async {
     try {
-      NewsFeed feed = (await _apiClient.getNewsFeed());
-      _saveToCache(feed.toJson());
-      _loadFromCache();
+      List<String> tags = ['news', 'Cargo', 'dfw', 'Reservations'];
+      tags.addAll(profile.topics);
+      tags.addAll(profile.workgroup);
+      _log.shout(tags);
+      List<NewsFeed> feed = (await _apiClient.getNewsFeed(tags));
+      _publishNewsFeed(feed);
+      return feed;
     } catch (e, s) {
       _log.severe('Failed to fetch news feed: ', e, s);
       return null;
     }
-    return feed;
   }
 
   @override

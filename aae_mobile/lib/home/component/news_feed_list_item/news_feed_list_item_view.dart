@@ -12,19 +12,16 @@ class NewsFeedListItem extends StatelessWidget {
   Widget build(BuildContext context) =>
       _buildNewsFeedListItemImageProvider(context);
 
-  Widget _buildNewsFeedListItemImageProvider(BuildContext context) {
-    debugPrint('viewModel for onTapped: ${viewModel.onTapped}');
-    //investigate
-    return ListViewItem.titleAndBody(
-      image: _buildImageProvider(viewModel.image.toString()),
-      title: viewModel.displayName,
-      body: viewModel.shortBody,
-      author: viewModel.author,
-      onTapped: viewModel.onTapped,
-    );
-  }
+  Widget _buildNewsFeedListItemImageProvider(BuildContext context) =>
+      ListViewItem.titleAndBody(
+        image: _buildImageProvider(viewModel.image.toString()),
+        title: viewModel.displayName,
+        body: viewModel.shortBody,
+        author: viewModel.author,
+        onTapped: () => viewModel.onTapped(context),
+      );
 
   ImageProvider _buildImageProvider(String url) {
-    return NetworkImage(url.toString());
+    return (url == null)? Image.network(url) : NetworkImage(url.toString());
   }
 }

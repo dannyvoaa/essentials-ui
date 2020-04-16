@@ -1,4 +1,5 @@
 import 'package:aae/assets/aae_icons.dart';
+import 'package:aae/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 /// Main navigation bar.
@@ -15,8 +16,8 @@ class BottomNavigation extends StatelessWidget {
   final MainPage _currentPage;
   final ValueChanged<MainPage> _onSelectTab;
 
-  static final selectedColor = Colors.blue;
-  static final deselectedColor = Colors.grey;
+  static final selectedColor = AaeColors.blue;
+  static final deselectedColor = AaeColors.darkGray;
 
   static final Map<MainPage, String> tabText = {
     MainPage.home: 'Home',
@@ -56,7 +57,6 @@ class BottomNavigation extends StatelessWidget {
     final tabColor = _tabColor(page);
     return BottomNavigationBarItem(
         icon: Icon(
-          // TODO (rpaglinawan): request a redo of the icons
           tabIconData[page],
           size: 20,
           color: tabColor,

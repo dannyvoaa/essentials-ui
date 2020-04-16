@@ -10,6 +10,7 @@ abstract class NewsListRowCollectionViewModel
             NewsListRowCollectionViewModelBuilder> {
   BuiltList<String> get newsFeedItemIds;
   BuiltList<String> get newsFeedItemCategories;
+  BuiltList<String> get contentIds;
 
   NewsListRowCollectionViewModel._();
 

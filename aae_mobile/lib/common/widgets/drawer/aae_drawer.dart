@@ -1,9 +1,12 @@
 import 'package:aae/common/commands/navigate_command.dart';
+import 'package:aae/navigation/navigation_helper.dart';
 import 'package:aae/navigation/routes.dart' as routes;
+import 'package:aae/service_provider.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
 import 'package:aae/theme/typography.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'drawer_button.dart';
 
@@ -45,7 +48,6 @@ class AaeDrawer extends StatelessWidget {
                             child: Image(
                                 image: AssetImage(
                                     'assets/common/american-airlines-eaagle-logo.png')),
-                            clipBehavior: Clip.antiAlias,
                             decoration: BoxDecoration(
                               color: AaeColors.lightGray,
                               shape: BoxShape.circle,
@@ -128,7 +130,14 @@ class AaeDrawer extends StatelessWidget {
                     ),
                     DrawerButton(
                       stringTitle: 'Log Out',
-                      onTapAction: () async {},
+                      onTapAction: () async {
+                        SharedPreferences _sharedPref =
+                            await SharedPreferences.getInstance();
+                        _sharedPref.clear();
+                        ServiceProvider.serviceOf<AaeNavigator>(context)
+                            .pushNamed(context, routes.buildSignInRoute(),
+                                fromRoot: true);
+                      },
                     ),
                   ],
                 ),

@@ -1,11 +1,10 @@
-import 'package:logging/logging.dart';
-import 'package:aae/sign_in/repository/sign_in_repository.dart';
-import 'package:aae/rxdart/rx.dart';
-import 'package:aae/workflow/common/workflow_event.dart';
-import 'package:aae/rx/bloc_with_rx.dart';
-import 'package:inject/inject.dart';
-import 'package:aae/sign_in/workflow/constants/sign_in_events.dart';
 import 'package:aae/provided_service.dart';
+import 'package:aae/rx/bloc_with_rx.dart';
+import 'package:aae/rxdart/rx.dart';
+import 'package:aae/sign_in/repository/sign_in_repository.dart';
+import 'package:aae/workflow/common/workflow_event.dart';
+import 'package:inject/inject.dart';
+import 'package:logging/logging.dart';
 
 import 'sign_in_failed_view_model.dart';
 
@@ -33,18 +32,9 @@ class SignInFailedBloc {
   @provide
   SignInFailedBloc(this._signInRepository);
 
-  void _switchAccounts() async {
-    try {
-      await _signInRepository.signInSilently();
-    } on Exception catch (e, s) {
-      _log.severe('SSO plugin failed to switch accounts: ', e, s);
-      _events.sendNext(SignInEvents.authFlowFailed);
-    }
-  }
-
   SignInFailedViewModel _createViewModel() => SignInFailedViewModel((b) => b
     ..primaryButtonText = 'Sign In as different user'
-    ..onPrimaryButtonPressed = _switchAccounts);
+    ..onPrimaryButtonPressed = null);
 }
 
 /// Constructs new instances of [SignInFailedBloc]s via the DI framework.

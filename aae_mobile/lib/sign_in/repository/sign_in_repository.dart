@@ -1,22 +1,23 @@
 import 'dart:async';
 
-import 'package:aae/auth/sso_auth.dart';
+import 'package:aae/auth/auth.dart';
+import 'package:aae/auth/sso_auth.dart' hide TokenException;
 import 'package:aae/auth/sso_identity.dart';
 import 'package:aae/rx_ext/lib/rx_ext.dart';
 import 'package:aae/rxdart/rx.dart';
+import 'package:flutter/services.dart';
 import 'package:inject/inject.dart';
 import 'package:logging/logging.dart';
 
 /// Stores state around the current user status and interfaces with the Auth
-/// Flutter plugin.
-class SignInRepository {
+class SignInRepository implements SSOIdentityProvider {
   static final _log = Logger('SignInRepository');
   final SSOAuth _ssoAuthPlugin;
 
-  Future<void> _inProgressSignIn;
-
+  @override
   Future<SSOIdentity> get identity => blockingLatest(currentUser);
 
+  @override
   final Observable<SSOIdentity> currentUser;
 
   @provide
@@ -27,23 +28,21 @@ class SignInRepository {
             .shareReplay();
 
   /// Prompts the user to sign in.
-  Future<void> signIn() async {
+  Future<void> signIn(String un, String pw) async {
     try {
-      // If there is no user:
-      if (_ssoAuthPlugin.currentUser == null) {
-        // Start a sign in flow if one is not already in progress.
-
-        // Wait for sign in flow to complete.
-        await _inProgressSignIn;
-      }
-    } finally {
-      // Signal that there are no sign-in flows in progress.
-      _inProgressSignIn = null;
+      _promptSignIn(un, pw);
+    } on PlatformException catch (e) {
+      throw TokenException('Error signing in with SSO:', e);
     }
   }
 
+  Future<void> _promptSignIn(String un, String pw) {
+    _log.info('Showing login screen');
+    return _ssoAuthPlugin.signIn(un, pw);
+  }
+
   Future<bool> signInSilently() async {
-    final user = await _ssoAuthPlugin.signInSilently();
+    final user = _ssoAuthPlugin.signInSilently();
     return user != null;
   }
 }

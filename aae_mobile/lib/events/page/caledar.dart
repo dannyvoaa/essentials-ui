@@ -3,7 +3,7 @@ import 'package:aae/theme/dimensions.dart';
 import 'package:aae/theme/typography.dart';
 import 'package:flutter/material.dart';
 
-class Calendar extends StatelessWidget {
+class Calendar extends StatefulWidget {
   // Setup any required variables
   final DateTime datePage;
   final DateTime dateSelected;
@@ -19,6 +19,11 @@ class Calendar extends StatelessWidget {
   });
 
   @override
+  _CalendarState createState() => _CalendarState();
+}
+
+class _CalendarState extends State<Calendar> {
+  @override
   Widget build(BuildContext context) {
     // Setup any needed variables
     List<DateTime> listDays = List<DateTime>();
@@ -26,11 +31,11 @@ class Calendar extends StatelessWidget {
 
     // Get the currently paged month
     DateTime dateBuilder = DateTime.parse(
-        '${this.datePage.year}-${this.datePage.month.toString().padLeft(2, '0')}-01T00:00:00Z');
+        '${this.widget.datePage.year}-${this.widget.datePage.month.toString().padLeft(2, '0')}-01T00:00:00Z');
 
     // Loop through every day in the month
-    while (dateBuilder.year == this.datePage.year &&
-        dateBuilder.month == this.datePage.month) {
+    while (dateBuilder.year == this.widget.datePage.year &&
+        dateBuilder.month == this.widget.datePage.month) {
       // Check to see if listDays is empty and if the current day of the week is  t Sunday
       if (listDays.length == 0 && dateBuilder.weekday < 7) {
         // Loop through each day prior to the dateBuilder.weekday
@@ -52,8 +57,8 @@ class Calendar extends StatelessWidget {
 
       // Check to see if we should add a new row
       if (dateBuilder.weekday == 7 ||
-          dateBuilder.year != this.datePage.year ||
-          dateBuilder.month != this.datePage.month) {
+          dateBuilder.year != this.widget.datePage.year ||
+          dateBuilder.month != this.widget.datePage.month) {
         // Look through each remaining day entry
         while (listDays.length < 7) {
           // Add an empty day entry
@@ -109,7 +114,7 @@ class Calendar extends StatelessWidget {
                         : AaeTextStyles.body(boolDefaultHeight: true),
                   ),
                   Expanded(
-                    child: this.listDateEvents.contains(date)
+                    child: this.widget.listDateEvents.contains(date)
                         ? Align(
                             alignment: Alignment.topCenter,
                             child: Container(
@@ -138,9 +143,9 @@ class Calendar extends StatelessWidget {
         ),
         onTap: () {
           // Check to see if an on-tap action was provided
-          if (date != null && this.onTapAction != null) {
+          if (date != null && this.widget.onTapAction != null) {
             // Execute the on-tap action
-            this.onTapAction(date);
+            this.widget.onTapAction(date);
           }
         },
       ),
@@ -232,38 +237,38 @@ class Calendar extends StatelessWidget {
               children: <Widget>[
                 this._day(
                   date: dateDay1,
-                  boolSelected:
-                      dateSelected != null && dateSelected == dateDay1,
+                  boolSelected: widget.dateSelected != null &&
+                      widget.dateSelected == dateDay1,
                 ),
                 this._day(
                   date: dateDay2,
-                  boolSelected:
-                      dateSelected != null && dateSelected == dateDay2,
+                  boolSelected: widget.dateSelected != null &&
+                      widget.dateSelected == dateDay2,
                 ),
                 this._day(
                   date: dateDay3,
-                  boolSelected:
-                      dateSelected != null && dateSelected == dateDay3,
+                  boolSelected: widget.dateSelected != null &&
+                      widget.dateSelected == dateDay3,
                 ),
                 this._day(
                   date: dateDay4,
-                  boolSelected:
-                      dateSelected != null && dateSelected == dateDay4,
+                  boolSelected: widget.dateSelected != null &&
+                      widget.dateSelected == dateDay4,
                 ),
                 this._day(
                   date: dateDay5,
-                  boolSelected:
-                      dateSelected != null && dateSelected == dateDay5,
+                  boolSelected: widget.dateSelected != null &&
+                      widget.dateSelected == dateDay5,
                 ),
                 this._day(
                   date: dateDay6,
-                  boolSelected:
-                      dateSelected != null && dateSelected == dateDay6,
+                  boolSelected: widget.dateSelected != null &&
+                      widget.dateSelected == dateDay6,
                 ),
                 this._day(
                   date: dateDay7,
-                  boolSelected:
-                      dateSelected != null && dateSelected == dateDay7,
+                  boolSelected: widget.dateSelected != null &&
+                      widget.dateSelected == dateDay7,
                 ),
               ],
               mainAxisAlignment: MainAxisAlignment.spaceAround,

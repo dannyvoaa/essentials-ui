@@ -16,7 +16,7 @@ abstract class NewsFeed implements Built<NewsFeed, NewsFeedBuilder> {
 
   factory NewsFeed([updates(NewsFeedBuilder b)]) = _$NewsFeed;
 
-  @BuiltValueField(wireName: 'NewsFeed')
+  @BuiltValueField(wireName: 'list')
   @BuiltValueSerializer(serializeNulls: true)
   @nullable
   BuiltList<NewsFeedItem> get newsFeedItemList;

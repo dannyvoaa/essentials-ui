@@ -2,13 +2,11 @@ import 'package:aae/common/commands/aae_command.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:flutter/material.dart' hide Builder;
-import 'package:quiver/core.dart';
 
 part 'topics_selection_view_model.g.dart';
 
 /// View model representing a [TopicsSelectionView].
 ///
-
 abstract class TopicsSelectionViewModel
     implements
         Built<TopicsSelectionViewModel, TopicsSelectionViewModelBuilder> {
@@ -28,17 +26,15 @@ abstract class TopicsViewModel
     implements Built<TopicsViewModel, TopicsViewModelBuilder> {
   String get topic;
 
-  /// Color of the border of the topic, or absent for no border.
-  Optional<Color> get borderColor;
-
-  /// Action to take when the user taps this topic.
-  @BuiltValueField(compare: false)
+  /// Action to take when the user selects this topic.
   AaeCommand get onTopicPressed;
+
+  bool get isSelected;
 
   TopicsViewModel._();
   factory TopicsViewModel({
     @required String topic,
-    @required Optional<Color> borderColor,
     @required AaeCommand onTopicPressed,
+    @required bool isSelected,
   }) = _$TopicsViewModel._;
 }

@@ -1,9 +1,6 @@
-import 'package:aae/model/topics.dart';
-import 'package:aae/model/workgroup.dart';
 import 'package:aae/rx/rx_util.dart';
 import 'package:aae/rxdart/rx.dart';
 import 'package:inject/inject.dart';
-import 'package:quiver/core.dart';
 
 /// Shared value store for the Sign In workflow.
 ///
@@ -16,14 +13,12 @@ class SignInSharedDataRepository {
   /// The selected workgroups.
   ///
   /// Set by: [WorkgroupsSelectionBloc].
-  /// Consumed by: [ProfileCreationBloc] and [ModifyPreferenceBloc].
-  final Subject<Optional<Workgroup>> workgroups =
-      createBehaviorSubject(initial: Optional.absent());
+  /// Consumed by: [ProfileCreationBloc].
+  final Subject<List<String>> workgroups = createBehaviorSubject(initial: []);
 
   /// The selected Topics.
   ///
   /// Set by: [TopicsSelectionBloc].
-  /// Consumed by: [ProfileCreationBloc] and [ModifyPreferenceBloc].
-  final Subject<Optional<Topics>> topics =
-      createBehaviorSubject(initial: Optional.absent());
+  /// Consumed by: [ProfileCreationBloc].
+  final Subject<List<String>> topics = createBehaviorSubject(initial: []);
 }

@@ -1,7 +1,6 @@
 import 'package:aae/lifecycle_managed_service.dart';
-import 'package:logging/logging.dart';
-
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
 
 final _log = Logger('LifecycleListener');
 
@@ -83,7 +82,7 @@ class _LifecycleListenerState extends State<LifecycleListener>
         service.onInactive();
         break;
       case AppLifecycleState.paused:
-      case AppLifecycleState.detached:
+        //case AppLifecycleState.detached:
         service.onPause();
         break;
       default:

@@ -20,7 +20,7 @@ class _$NewsFeedSerializer implements StructuredSerializer<NewsFeed> {
     final result = <Object>[];
     if (object.newsFeedItemList != null) {
       result
-        ..add('NewsFeed')
+        ..add('list')
         ..add(serializers.serialize(object.newsFeedItemList,
             specifiedType: const FullType(
                 BuiltList, const [const FullType(NewsFeedItem)])));
@@ -39,11 +39,11 @@ class _$NewsFeedSerializer implements StructuredSerializer<NewsFeed> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'NewsFeed':
+        case 'list':
           result.newsFeedItemList.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(NewsFeedItem)]))
-              as BuiltList<dynamic>);
+              as BuiltList<Object>);
           break;
       }
     }

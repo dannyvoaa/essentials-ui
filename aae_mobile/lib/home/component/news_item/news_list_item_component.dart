@@ -12,7 +12,9 @@ import 'package:flutter/material.dart';
 class NewsListItemComponent extends StatelessWidget {
   final String newsFeedItemId;
 
-  NewsListItemComponent({@required this.newsFeedItemId});
+  NewsListItemComponent({
+    @required this.newsFeedItemId,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -15,6 +15,7 @@ class AaeColors {
   static const disabledText = Color.fromRGBO(255, 255, 255, 0.4);
   static const linkText = Color.fromRGBO(0, 229, 255, 1.0);
   static const premiumText = Color.fromRGBO(141, 91, 255, 1.0);
+  static const modernHint = Color.fromRGBO(255, 255, 255, 0.4);
 
   // Button Text
   static const buttonPrimaryText = Color.fromRGBO(32, 33, 36, 1.0);
@@ -70,6 +71,7 @@ class AaeColors {
   static const lightOrange = Color.fromRGBO(250, 175, 0, 1.0);
   static const yellowGreen = Color.fromRGBO(209, 213, 50, 1.0);
   static const green = Color.fromRGBO(0, 185, 137, 1.0);
+  static const backgroundBlue = Color.fromRGBO(50, 120, 203, 1.0);
 
   // Misc Colors
   static const cardGradient = Color(0xFF1D3644);

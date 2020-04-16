@@ -7,12 +7,8 @@
 //                See also: http://cl/219513934
 
 import 'dart:async';
+
 import 'package:analyzer/dart/analysis/results.dart';
-
-// <TRANSITIONAL_API>
-import 'package:analyzer/src/dart/analysis/results.dart';
-// </TRANSITIONAL_API>
-
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
 import 'package:build/build.dart' as build show log;
@@ -46,7 +42,7 @@ BuilderContext get builderContext {
   if (context == null) {
     throw new StateError(
       'No current $BuilderContext is active. Start your build function using '
-          '"runInContext" to be able to use "builderContext"',
+      '"runInContext" to be able to use "builderContext"',
     );
   }
   return context;
@@ -103,7 +99,8 @@ class BuilderLogger {
     // <TRANSITIONAL_API>
     ElementDeclarationResult elementDeclaration;
     if (element.kind != ElementKind.DYNAMIC) {
-      var parsedLibrary = ParsedLibraryResultImpl.tmp(element.library);
+      var parsedLibrary =
+          element.library.session.getParsedLibraryByElement(element.library);
       if (parsedLibrary.state == ResultState.VALID) {
         elementDeclaration = parsedLibrary.getElementDeclaration(element);
       }

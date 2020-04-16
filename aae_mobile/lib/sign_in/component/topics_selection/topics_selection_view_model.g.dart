@@ -124,23 +124,23 @@ class _$TopicsViewModel extends TopicsViewModel {
   @override
   final String topic;
   @override
-  final Optional<Color> borderColor;
-  @override
   final AaeCommand onTopicPressed;
+  @override
+  final bool isSelected;
 
   factory _$TopicsViewModel([void Function(TopicsViewModelBuilder) updates]) =>
       (new TopicsViewModelBuilder()..update(updates)).build();
 
-  _$TopicsViewModel._({this.topic, this.borderColor, this.onTopicPressed})
+  _$TopicsViewModel._({this.topic, this.onTopicPressed, this.isSelected})
       : super._() {
     if (topic == null) {
       throw new BuiltValueNullFieldError('TopicsViewModel', 'topic');
     }
-    if (borderColor == null) {
-      throw new BuiltValueNullFieldError('TopicsViewModel', 'borderColor');
-    }
     if (onTopicPressed == null) {
       throw new BuiltValueNullFieldError('TopicsViewModel', 'onTopicPressed');
+    }
+    if (isSelected == null) {
+      throw new BuiltValueNullFieldError('TopicsViewModel', 'isSelected');
     }
   }
 
@@ -155,22 +155,25 @@ class _$TopicsViewModel extends TopicsViewModel {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
+    final dynamic _$dynamicOther = other;
     return other is TopicsViewModel &&
         topic == other.topic &&
-        borderColor == other.borderColor;
+        onTopicPressed == _$dynamicOther.onTopicPressed &&
+        isSelected == other.isSelected;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, topic.hashCode), borderColor.hashCode));
+    return $jf($jc($jc($jc(0, topic.hashCode), onTopicPressed.hashCode),
+        isSelected.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('TopicsViewModel')
           ..add('topic', topic)
-          ..add('borderColor', borderColor)
-          ..add('onTopicPressed', onTopicPressed))
+          ..add('onTopicPressed', onTopicPressed)
+          ..add('isSelected', isSelected))
         .toString();
   }
 }
@@ -183,23 +186,22 @@ class TopicsViewModelBuilder
   String get topic => _$this._topic;
   set topic(String topic) => _$this._topic = topic;
 
-  Optional<Color> _borderColor;
-  Optional<Color> get borderColor => _$this._borderColor;
-  set borderColor(Optional<Color> borderColor) =>
-      _$this._borderColor = borderColor;
-
   AaeCommand _onTopicPressed;
   AaeCommand get onTopicPressed => _$this._onTopicPressed;
   set onTopicPressed(AaeCommand onTopicPressed) =>
       _$this._onTopicPressed = onTopicPressed;
+
+  bool _isSelected;
+  bool get isSelected => _$this._isSelected;
+  set isSelected(bool isSelected) => _$this._isSelected = isSelected;
 
   TopicsViewModelBuilder();
 
   TopicsViewModelBuilder get _$this {
     if (_$v != null) {
       _topic = _$v.topic;
-      _borderColor = _$v.borderColor;
       _onTopicPressed = _$v.onTopicPressed;
+      _isSelected = _$v.isSelected;
       _$v = null;
     }
     return this;
@@ -223,8 +225,8 @@ class TopicsViewModelBuilder
     final _$result = _$v ??
         new _$TopicsViewModel._(
             topic: topic,
-            borderColor: borderColor,
-            onTopicPressed: onTopicPressed);
+            onTopicPressed: onTopicPressed,
+            isSelected: isSelected);
     replace(_$result);
     return _$result;
   }

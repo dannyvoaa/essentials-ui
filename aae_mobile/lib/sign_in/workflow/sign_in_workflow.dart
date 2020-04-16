@@ -1,5 +1,6 @@
 import 'package:aae/common/widgets/loading/aae_loading_spinner.dart';
 import 'package:aae/common/widgets/workflow_page/workflow_page_template.dart';
+import 'package:aae/navigation/routes.dart' as routes;
 import 'package:aae/service_provider.dart';
 import 'package:aae/sign_in/component/failed/sign_in_failed_component.dart';
 import 'package:aae/sign_in/component/login/login_component.dart';
@@ -53,7 +54,7 @@ class SignInWorkflow extends StatelessWidget {
   }
 
   WidgetBuilder _generatePage(RouteSettings settings) {
-    if (settings.isInitialRoute) {
+    if (settings.name == routes.root) {
       return (context) => Center(child: AaeLoadingSpinner());
     }
     final uri = Uri.parse(settings.name);

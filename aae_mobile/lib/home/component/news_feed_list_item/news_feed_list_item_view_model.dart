@@ -20,10 +20,8 @@ abstract class NewsFeedListItemViewModel
 
   String get author;
 
-  int get itemId;
-
   /// The command to execute when the list item is tapped.
-  //TODO (rpaglinawan): push to news information page
+  @nullable
   AaeContextCommand get onTapped;
 
   NewsFeedListItemViewModel._();

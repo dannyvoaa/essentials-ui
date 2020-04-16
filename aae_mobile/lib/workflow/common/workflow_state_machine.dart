@@ -84,7 +84,7 @@ abstract class WorkflowStateMachineBase
   final _popEventSubject = Subject<WorkflowEvent>();
 
   final Machine<WorkflowState, WorkflowEvent> _hsm;
-  final NavigationHelper _navigation;
+  final AaeNavigator _navigation;
 
   WorkflowStateMachineBase(this._hsm, this._navigation);
 

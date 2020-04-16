@@ -68,30 +68,38 @@ class _TopicsSelectionView extends StatelessWidget {
   }
 
   Widget _topicsItem(BuildContext context, TopicsViewModel viewModel) {
-    return Container(
-      width: AaeDimens.topicsIconSize,
-      height: AaeDimens.topicsIconSize,
-      decoration: BoxDecoration(
-        color: AaeColors.lightBlue,
-        borderRadius: BorderRadius.circular(AaeDimens.topicsIconRadius),
-        shape: BoxShape.rectangle,
-        border: viewModel.borderColor.isPresent
-            ? Border.all(
-                color: viewModel.borderColor.value,
-                width: AaeDimens.topicsIconSelectionBorderSize)
-            : null,
-      ),
-      child: GestureDetector(
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Text(viewModel.topic,
-              style: TextStyle(
-                color: AaeColors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-              )),
+    return GestureDetector(
+      onTap: viewModel.onTopicPressed,
+      child: Container(
+        width: AaeDimens.topicsIconSize,
+        height: AaeDimens.topicsIconSize,
+        decoration: BoxDecoration(
+          color: viewModel.isSelected ? AaeColors.blue : AaeColors.lightBlue,
+          borderRadius: BorderRadius.circular(AaeDimens.topicsIconRadius),
+          shape: BoxShape.rectangle,
         ),
-        onTap: viewModel.onTopicPressed,
+        child: Container(
+          child: Stack(
+            children: <Widget>[
+              Container(
+                alignment: Alignment.center,
+                child: Icon(
+                  viewModel.isSelected ? Icons.check : null,
+                  color: AaeColors.white,
+                  size: 120,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Text(viewModel.topic,
+                    style: TextStyle(
+                      color: AaeColors.white,
+                      fontSize: 16,
+                    )),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

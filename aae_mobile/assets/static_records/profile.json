@@ -1,9 +1,9 @@
 {
-    "aaid": "test",
-    "jiveid": "test",
-    "profileimage": "https://en.wikipedia.org/wiki/Doug_Parker#/media/File:DougParker.jpg",
-    "preference_category": {
-        "topics": [],
-        "workgroup": []
-    }
+    "location": "Dallas/Fort Worth",
+    "username": "70000152",
+    "email": "ray.hudaihed@aa.com",
+    "displayName": "John Dick",
+    "topics": [
+    ],
+    "workgroup": ""
 }

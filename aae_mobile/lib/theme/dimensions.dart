@@ -39,6 +39,21 @@ class AaeDimens {
     }
   }
 
+  /// Returns a value of 96px by default
+  static sizeDynamic_96px(
+      {bool boolCompact = false, bool boolKeyboardVisible = false}) {
+    // Check to see if an alternate dimension should be returned
+    if (boolCompact && boolKeyboardVisible) {
+      return sizeDynamic_16px();
+    } else if (boolCompact) {
+      return 48.0;
+    } else if (boolKeyboardVisible) {
+      return 16.0;
+    } else {
+      return 96.0;
+    }
+  }
+
   /// Returns a value of 48px by default
   static sizeDynamic_48px(
       {bool boolCompact = false, bool boolKeyboardVisible = false}) {
