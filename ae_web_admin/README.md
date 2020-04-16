@@ -3,11 +3,9 @@
 ## Introduction 
 The American Essentials (Web Admin) portal, also known as AEWA, is the Flutter-based administrative console for the American Essentials mobile app.
 
-## Product Owner
-Jason Cox (JCox@CodeAuthority.com)
+This is baslined on CA submitted code
 
-## Site
-* [AE Web Admin (Development Site)](https://aewebadmin.z19.web.core.windows.net/#/)
+
 
 ## Preparing to buld on a new computer
 
