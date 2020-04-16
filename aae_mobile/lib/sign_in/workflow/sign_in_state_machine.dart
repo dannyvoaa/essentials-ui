@@ -23,7 +23,7 @@ class SignInStateMachine extends WorkflowStateMachineBase {
 
   final Machine<WorkflowState, WorkflowEvent> _hsm;
   final SignInWorkflowBlocProvider _blocProvider;
-  final NavigationHelper _navigation;
+  final AaeNavigator _navigation;
 
   final _eventSubject = createBehaviorSubject<WorkflowEvent>();
 
@@ -32,8 +32,8 @@ class SignInStateMachine extends WorkflowStateMachineBase {
   UnmodifiableListView<Observable<WorkflowEvent>> get eventObservables =>
       UnmodifiableListView([
         _eventSubject,
-        _blocProvider.welcomeBloc().events,
         _blocProvider.signInBloc().events,
+        _blocProvider.welcomeBloc().events,
         _blocProvider.loginBloc().events,
         _blocProvider.signInFailedBloc().events,
         _blocProvider.createProfileBloc().events,
@@ -52,8 +52,9 @@ class SignInStateMachine extends WorkflowStateMachineBase {
     // HSM's initial state depends on whether this is the initial sign in on
     // app startup or an attempt to switch users. It is the initial sign in if
     // the last value on the profile validity subject either is null or false.
-    _setUpHsm(isInitialSignIn: true);
-    //lastEvent(_blocProvider.signInBloc().profileValidity) != true);
+    _setUpHsm(
+        isInitialSignIn:
+            lastEvent(_blocProvider.signInBloc().profileValidity) != true);
     _hsm.start();
   }
 
@@ -92,18 +93,18 @@ class SignInStateMachine extends WorkflowStateMachineBase {
     // Logic for automatic validity check when there is a new user.
     _hsm[SignInStates.signIn].addHandlers(SignInEvents.currentUserChanged, [
       forwardTransition(
-        SignInStates.loginPage,
+        SignInStates.validityCheck,
         extraActions: (_, context) {
           _navigation.removeAllBelowCurrent(context, fromRoot: true);
-          _blocProvider.signInBloc()..onProfileInvalid();
+          _blocProvider.signInBloc()..validate();
         },
       )
     ]);
 
     _setUpSilentSignIn();
     _setUpWelcomePage();
+    _setUpValidityCheck();
     _setUpLoginPage();
-    //_setUpValidityCheck();
   }
 
   void _setUpAccountCreation() {
@@ -122,8 +123,8 @@ class SignInStateMachine extends WorkflowStateMachineBase {
     _hsm[SignInStates.silentSignIn]
         .addHandlers(SignInEvents.currentUserChanged, [
       forwardTransition(
-        SignInStates.loginPage,
-        // extraActions: (_, __) => _blocProvider.signInBloc().validate(),
+        SignInStates.validityCheck,
+        extraActions: (_, __) => _blocProvider.signInBloc().validate(),
       ),
     ]);
 
@@ -139,6 +140,13 @@ class SignInStateMachine extends WorkflowStateMachineBase {
       [forwardTransition(SignInStates.failure)],
     );
 
+    _hsm[SignInStates.welcomePage].addHandler(
+      SignInEvents.validationSucceeded,
+      action: (event, context) {
+        _eventSubject.sendNext(SignInEvents.exit);
+      },
+    );
+
     _hsm[SignInStates.welcomePage]
         .addHandlers(SignInEvents.userPressedPrimaryButton, [
       forwardTransition(
@@ -148,11 +156,41 @@ class SignInStateMachine extends WorkflowStateMachineBase {
     ]);
   }
 
+  void _setUpValidityCheck() {
+    // If profile validation fails, transition to failure page.
+
+    _hsm[SignInStates.validityCheck].addHandlers(
+      SignInEvents.authFlowFailed,
+      [forwardTransition(SignInStates.failure)],
+    );
+
+    _hsm[SignInStates.validityCheck].addHandlers(
+      SignInEvents.profileNotFound,
+      [
+        // Take user to account creation flow if they don't have a profile.
+        forwardTransition(
+          SignInStates.accountCreation,
+        ),
+      ],
+    );
+
+    // If profile validation succeeds, exit the state machine.
+    _hsm[SignInStates.validityCheck].addHandler(
+      SignInEvents.validationSucceeded,
+      action: (event, context) {
+        _eventSubject.sendNext(SignInEvents.exit);
+      },
+    );
+  }
+
   void _setUpLoginPage() {
     // Handle a plugin failure by navigating to the failure page.
     _hsm[SignInStates.loginPage].addHandlers(
       SignInEvents.profileNotFound,
-      [forwardTransition(SignInStates.topicsSelection)],
+      [
+        forwardTransition(SignInStates.topicsSelection,
+            transition: WorkflowTransition.push)
+      ],
     );
   }
 
@@ -204,6 +242,9 @@ class SignInStateMachine extends WorkflowStateMachineBase {
     _hsm[SignInStates.workgroupsSelection].addHandler(
       SignInEvents.userPressedPrimaryButton,
       action: (event, context) {
+        _blocProvider.createProfileBloc().createProfile();
+        _blocProvider.signInBloc().onAccountCreated();
+
         _navigation.pushReplacementNamed(context, root, fromRoot: true);
       },
     );

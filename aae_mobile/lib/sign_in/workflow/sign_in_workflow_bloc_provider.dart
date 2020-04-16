@@ -1,4 +1,3 @@
-import 'package:aae/cache/cache_service.dart';
 import 'package:aae/common/widgets/workflow_page/workflow_footer_button/workflow_footer_button_bloc.dart';
 import 'package:aae/profile/repository/profile_repository.dart';
 import 'package:aae/profile/repository/topics_repository.dart';
@@ -43,7 +42,6 @@ class SignInWorkflowBlocProvider
     ProfileRepository profileRepository,
     TopicsRepository topicsRepository,
     WorkgroupsRepository workgroupsRepository,
-    CacheService cacheService,
     this._signInBloc,
     this._welcomeBloc,
     this._loginBloc,
@@ -51,16 +49,10 @@ class SignInWorkflowBlocProvider
     this._workflowFooterButtonBloc,
   )   : _createProfileBloc =
             CreateProfileBloc(profileRepository, sharedDataRepository),
-        _workgroupsSelectionBloc = WorkgroupsSelectionBloc(
-          sharedDataRepository,
-          workgroupsRepository,
-          cacheService,
-        ),
-        _topicsSelectionBloc = TopicsSelectionBloc(
-          sharedDataRepository,
-          topicsRepository,
-          cacheService,
-        );
+        _workgroupsSelectionBloc =
+            WorkgroupsSelectionBloc(sharedDataRepository, workgroupsRepository),
+        _topicsSelectionBloc =
+            TopicsSelectionBloc(sharedDataRepository, topicsRepository);
 
   @override
   SignInBloc signInBloc() => _signInBloc;

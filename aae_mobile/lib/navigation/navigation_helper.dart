@@ -1,18 +1,19 @@
+import 'package:aae/provided_service.dart';
 import 'package:flutter/material.dart';
 import 'package:inject/inject.dart';
 
 /// Utility class to provide an injectable and therefore testable way to handle
 /// navigation.
-///
+/// Takes care of providing necessary route arguments on pushes.
 /// Add new methods as needed. Methods that delegate to [Navigator] should match
 /// the type signature of corresponding [Navigator] method exactly except that
 /// context is added as the first parameter.
 @provide
-class NavigationHelper {
+class AaeNavigator implements ProvidedService {
   /// Pops the top-most route off the navigator.
   void pop<T extends Object>(BuildContext context,
       {T result, bool fromRoot = false}) {
-    return Navigator.of(context, rootNavigator: fromRoot).pop(result);
+    Navigator.of(context, rootNavigator: fromRoot).pop(result);
   }
 
   /// Pushes a named route onto the navigator.

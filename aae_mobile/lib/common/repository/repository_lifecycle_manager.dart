@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:aae/cache/cache_service.dart';
 import 'package:aae/common/repository/repository.dart';
 import 'package:aae/inject/annotations.dart';
+import 'package:aae/sign_in/bloc/sign_in_bloc.dart';
 import 'package:inject/inject.dart';
 import 'package:logging/logging.dart';
 
@@ -11,6 +12,7 @@ class RepositoryLifecycleManager {
   static final _log = Logger('RepositoryLifecycleManager');
 
   final UnmodifiableListView<Repository> _repositories;
+  final SignInBloc _signInBloc;
   final CacheService _cacheService;
 
   bool _isStopped = true;
@@ -18,10 +20,11 @@ class RepositoryLifecycleManager {
   @provide
   @singleton
   RepositoryLifecycleManager(
+    this._signInBloc,
     @repositoryList this._repositories,
     this._cacheService,
   ) {
-    _handleProfileValidityUpdate(true);
+    _signInBloc.profileValidity.subscribe(onNext: _handleProfileValidityUpdate);
   }
 
   void _handleProfileValidityUpdate(bool profileIsValid) {

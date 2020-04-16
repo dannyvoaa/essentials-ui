@@ -49,7 +49,7 @@ class WorkgroupsSelectionView extends StatelessWidget {
             color: AaeColors.white,
             borderRadius: BorderRadius.circular(AaeDimens.topicsIconRadius),
             shape: BoxShape.rectangle,
-            border: viewModel.borderColor.isPresent
+            border: viewModel.isSelected
                 ? Border.all(
                     color: AaeColors.black,
                     width: AaeDimens.topicsIconSelectionBorderSize)

@@ -20,7 +20,7 @@ class SignInStates {
   /// state while there is not a valid signed in user.
   static final signIn = WorkflowState(
     name: 'SignIn',
-    children: {silentSignIn, welcomePage, loginPage, failure},
+    children: {silentSignIn, welcomePage, validityCheck, loginPage, failure},
     // Initial state is context-dependent; will need to be set manually.
     navigateOnTransition: false,
   );
@@ -49,6 +49,13 @@ class SignInStates {
   static final welcomePage = WorkflowState(
     name: 'WelcomePage',
     routeSegment: SignInRoutes.welcomeSegment,
+    navigateOnTransition: true,
+  );
+
+  /// State while the app is checking whether the new signed in user is valid.
+  static final validityCheck = WorkflowState(
+    name: 'ValidityCheck',
+    routeSegment: SignInRoutes.loadingSegment,
     navigateOnTransition: true,
   );
 

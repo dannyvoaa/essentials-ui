@@ -1,6 +1,6 @@
-import 'package:logging/logging.dart';
 import 'package:aae/provided_service.dart';
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
 
 class ServiceProvider extends InheritedWidget {
   static final Logger log = Logger('ServiceProvider');
@@ -43,7 +43,7 @@ class ServiceProvider extends InheritedWidget {
 
   /// Returns the nearest [ServiceProvider] in this [context].
   static ServiceProvider of(BuildContext context) =>
-      context.inheritFromWidgetOfExactType(ServiceProvider);
+      context.dependOnInheritedWidgetOfExactType<ServiceProvider>();
 
   /// Returns the service of type [T] in this [BuildContext].
   static T serviceOf<T extends ProvidedService>(BuildContext context) =>
@@ -58,7 +58,8 @@ class ServiceProvider extends InheritedWidget {
   /// provided [BuildContext] and returns a service of type [T] by invoking
   /// [provider].
   static T _extract<T extends ProvidedService>(BuildContext context) {
-    var services = context.inheritFromWidgetOfExactType(ServiceProvider);
+    var services =
+        context.dependOnInheritedWidgetOfExactType<ServiceProvider>();
 
     // Sanity check that there is indeed a ServiceProvider in the build context
     // tree.
@@ -67,7 +68,7 @@ class ServiceProvider extends InheritedWidget {
 
     // Sanity check that the service actually exists or is implemented by a
     // service on the ServiceProvider.
-    var serviceProvider = services as ServiceProvider;
+    var serviceProvider = services;
     final service = serviceProvider._extractService<T>();
 
     assert(service != null,

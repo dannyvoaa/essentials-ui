@@ -8,15 +8,21 @@ part of 'events_list_view_model.dart';
 
 class _$EventsListViewModel extends EventsListViewModel {
   @override
-  final BuiltList<Event> events;
+  final List<Event> events;
+  @override
+  final DateTime observingDate;
 
   factory _$EventsListViewModel(
           [void Function(EventsListViewModelBuilder) updates]) =>
       (new EventsListViewModelBuilder()..update(updates)).build();
 
-  _$EventsListViewModel._({this.events}) : super._() {
+  _$EventsListViewModel._({this.events, this.observingDate}) : super._() {
     if (events == null) {
       throw new BuiltValueNullFieldError('EventsListViewModel', 'events');
+    }
+    if (observingDate == null) {
+      throw new BuiltValueNullFieldError(
+          'EventsListViewModel', 'observingDate');
     }
   }
 
@@ -32,18 +38,21 @@ class _$EventsListViewModel extends EventsListViewModel {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is EventsListViewModel && events == other.events;
+    return other is EventsListViewModel &&
+        events == other.events &&
+        observingDate == other.observingDate;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, events.hashCode));
+    return $jf($jc($jc(0, events.hashCode), observingDate.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('EventsListViewModel')
-          ..add('events', events))
+          ..add('events', events)
+          ..add('observingDate', observingDate))
         .toString();
   }
 }
@@ -52,15 +61,21 @@ class EventsListViewModelBuilder
     implements Builder<EventsListViewModel, EventsListViewModelBuilder> {
   _$EventsListViewModel _$v;
 
-  ListBuilder<Event> _events;
-  ListBuilder<Event> get events => _$this._events ??= new ListBuilder<Event>();
-  set events(ListBuilder<Event> events) => _$this._events = events;
+  List<Event> _events;
+  List<Event> get events => _$this._events;
+  set events(List<Event> events) => _$this._events = events;
+
+  DateTime _observingDate;
+  DateTime get observingDate => _$this._observingDate;
+  set observingDate(DateTime observingDate) =>
+      _$this._observingDate = observingDate;
 
   EventsListViewModelBuilder();
 
   EventsListViewModelBuilder get _$this {
     if (_$v != null) {
-      _events = _$v.events?.toBuilder();
+      _events = _$v.events;
+      _observingDate = _$v.observingDate;
       _$v = null;
     }
     return this;
@@ -81,20 +96,9 @@ class EventsListViewModelBuilder
 
   @override
   _$EventsListViewModel build() {
-    _$EventsListViewModel _$result;
-    try {
-      _$result = _$v ?? new _$EventsListViewModel._(events: events.build());
-    } catch (_) {
-      String _$failedField;
-      try {
-        _$failedField = 'events';
-        events.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'EventsListViewModel', _$failedField, e.toString());
-      }
-      rethrow;
-    }
+    final _$result = _$v ??
+        new _$EventsListViewModel._(
+            events: events, observingDate: observingDate);
     replace(_$result);
     return _$result;
   }

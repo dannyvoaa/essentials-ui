@@ -1,4 +1,4 @@
-import 'package:aae/navigation/page_provider.dart';
+import 'package:aae/navigation/paage_provider.dart';
 import 'package:aae/recognition/component/points_balance/points_balance_component.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';

@@ -18,49 +18,24 @@ class _$NewsFeedItemSerializer implements StructuredSerializer<NewsFeedItem> {
   @override
   Iterable<Object> serialize(Serializers serializers, NewsFeedItem object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    if (object.author != null) {
-      result
-        ..add('author')
-        ..add(serializers.serialize(object.author,
-            specifiedType: const FullType(Author)));
-    }
-    if (object.category != null) {
-      result
-        ..add('category')
-        ..add(serializers.serialize(object.category,
-            specifiedType: const FullType(String)));
-    }
-    if (object.date != null) {
-      result
-        ..add('date')
-        ..add(serializers.serialize(object.date,
-            specifiedType: const FullType(DateTime)));
-    }
-    if (object.description != null) {
-      result
-        ..add('description')
-        ..add(serializers.serialize(object.description,
-            specifiedType: const FullType(String)));
-    }
-    if (object.id != null) {
-      result
-        ..add('id')
-        ..add(serializers.serialize(object.id,
-            specifiedType: const FullType(int)));
-    }
-    if (object.image != null) {
-      result
-        ..add('image')
-        ..add(serializers.serialize(object.image,
-            specifiedType: const FullType(Uri)));
-    }
-    if (object.title != null) {
-      result
-        ..add('title')
-        ..add(serializers.serialize(object.title,
-            specifiedType: const FullType(String)));
-    }
+    final result = <Object>[
+      'authorname',
+      serializers.serialize(object.author,
+          specifiedType: const FullType(String)),
+      'bodytext',
+      serializers.serialize(object.body, specifiedType: const FullType(String)),
+      'contentID',
+      serializers.serialize(object.contentID,
+          specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'image',
+      serializers.serialize(object.image, specifiedType: const FullType(Uri)),
+      'subject',
+      serializers.serialize(object.subject,
+          specifiedType: const FullType(String)),
+    ];
+
     return result;
   }
 
@@ -75,32 +50,28 @@ class _$NewsFeedItemSerializer implements StructuredSerializer<NewsFeedItem> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'author':
-          result.author.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Author)) as Author);
-          break;
-        case 'category':
-          result.category = serializers.deserialize(value,
+        case 'authorname':
+          result.author = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'date':
-          result.date = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+        case 'bodytext':
+          result.body = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
-        case 'description':
-          result.description = serializers.deserialize(value,
+        case 'contentID':
+          result.contentID = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'image':
           result.image = serializers.deserialize(value,
               specifiedType: const FullType(Uri)) as Uri;
           break;
-        case 'title':
-          result.title = serializers.deserialize(value,
+        case 'subject':
+          result.subject = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
       }
@@ -112,32 +83,48 @@ class _$NewsFeedItemSerializer implements StructuredSerializer<NewsFeedItem> {
 
 class _$NewsFeedItem extends NewsFeedItem {
   @override
-  final Author author;
+  final String author;
   @override
-  final String category;
+  final String body;
   @override
-  final DateTime date;
+  final String contentID;
   @override
-  final String description;
-  @override
-  final int id;
+  final String id;
   @override
   final Uri image;
   @override
-  final String title;
+  final String subject;
 
   factory _$NewsFeedItem([void Function(NewsFeedItemBuilder) updates]) =>
       (new NewsFeedItemBuilder()..update(updates)).build();
 
   _$NewsFeedItem._(
       {this.author,
-      this.category,
-      this.date,
-      this.description,
+      this.body,
+      this.contentID,
       this.id,
       this.image,
-      this.title})
-      : super._();
+      this.subject})
+      : super._() {
+    if (author == null) {
+      throw new BuiltValueNullFieldError('NewsFeedItem', 'author');
+    }
+    if (body == null) {
+      throw new BuiltValueNullFieldError('NewsFeedItem', 'body');
+    }
+    if (contentID == null) {
+      throw new BuiltValueNullFieldError('NewsFeedItem', 'contentID');
+    }
+    if (id == null) {
+      throw new BuiltValueNullFieldError('NewsFeedItem', 'id');
+    }
+    if (image == null) {
+      throw new BuiltValueNullFieldError('NewsFeedItem', 'image');
+    }
+    if (subject == null) {
+      throw new BuiltValueNullFieldError('NewsFeedItem', 'subject');
+    }
+  }
 
   @override
   NewsFeedItem rebuild(void Function(NewsFeedItemBuilder) updates) =>
@@ -151,12 +138,11 @@ class _$NewsFeedItem extends NewsFeedItem {
     if (identical(other, this)) return true;
     return other is NewsFeedItem &&
         author == other.author &&
-        category == other.category &&
-        date == other.date &&
-        description == other.description &&
+        body == other.body &&
+        contentID == other.contentID &&
         id == other.id &&
         image == other.image &&
-        title == other.title;
+        subject == other.subject;
   }
 
   @override
@@ -164,25 +150,22 @@ class _$NewsFeedItem extends NewsFeedItem {
     return $jf($jc(
         $jc(
             $jc(
-                $jc(
-                    $jc($jc($jc(0, author.hashCode), category.hashCode),
-                        date.hashCode),
-                    description.hashCode),
+                $jc($jc($jc(0, author.hashCode), body.hashCode),
+                    contentID.hashCode),
                 id.hashCode),
             image.hashCode),
-        title.hashCode));
+        subject.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('NewsFeedItem')
           ..add('author', author)
-          ..add('category', category)
-          ..add('date', date)
-          ..add('description', description)
+          ..add('body', body)
+          ..add('contentID', contentID)
           ..add('id', id)
           ..add('image', image)
-          ..add('title', title))
+          ..add('subject', subject))
         .toString();
   }
 }
@@ -191,45 +174,40 @@ class NewsFeedItemBuilder
     implements Builder<NewsFeedItem, NewsFeedItemBuilder> {
   _$NewsFeedItem _$v;
 
-  AuthorBuilder _author;
-  AuthorBuilder get author => _$this._author ??= new AuthorBuilder();
-  set author(AuthorBuilder author) => _$this._author = author;
+  String _author;
+  String get author => _$this._author;
+  set author(String author) => _$this._author = author;
 
-  String _category;
-  String get category => _$this._category;
-  set category(String category) => _$this._category = category;
+  String _body;
+  String get body => _$this._body;
+  set body(String body) => _$this._body = body;
 
-  DateTime _date;
-  DateTime get date => _$this._date;
-  set date(DateTime date) => _$this._date = date;
+  String _contentID;
+  String get contentID => _$this._contentID;
+  set contentID(String contentID) => _$this._contentID = contentID;
 
-  String _description;
-  String get description => _$this._description;
-  set description(String description) => _$this._description = description;
-
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  String _id;
+  String get id => _$this._id;
+  set id(String id) => _$this._id = id;
 
   Uri _image;
   Uri get image => _$this._image;
   set image(Uri image) => _$this._image = image;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
+  String _subject;
+  String get subject => _$this._subject;
+  set subject(String subject) => _$this._subject = subject;
 
   NewsFeedItemBuilder();
 
   NewsFeedItemBuilder get _$this {
     if (_$v != null) {
-      _author = _$v.author?.toBuilder();
-      _category = _$v.category;
-      _date = _$v.date;
-      _description = _$v.description;
+      _author = _$v.author;
+      _body = _$v.body;
+      _contentID = _$v.contentID;
       _id = _$v.id;
       _image = _$v.image;
-      _title = _$v.title;
+      _subject = _$v.subject;
       _$v = null;
     }
     return this;
@@ -250,28 +228,14 @@ class NewsFeedItemBuilder
 
   @override
   _$NewsFeedItem build() {
-    _$NewsFeedItem _$result;
-    try {
-      _$result = _$v ??
-          new _$NewsFeedItem._(
-              author: _author?.build(),
-              category: category,
-              date: date,
-              description: description,
-              id: id,
-              image: image,
-              title: title);
-    } catch (_) {
-      String _$failedField;
-      try {
-        _$failedField = 'author';
-        _author?.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'NewsFeedItem', _$failedField, e.toString());
-      }
-      rethrow;
-    }
+    final _$result = _$v ??
+        new _$NewsFeedItem._(
+            author: author,
+            body: body,
+            contentID: contentID,
+            id: id,
+            image: image,
+            subject: subject);
     replace(_$result);
     return _$result;
   }

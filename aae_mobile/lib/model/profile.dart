@@ -3,8 +3,6 @@ library profile;
 import 'dart:convert';
 
 import 'package:aae/model/serializers.dart';
-import 'package:aae/model/topics.dart';
-import 'package:aae/model/workgroup.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -16,30 +14,34 @@ abstract class Profile implements Built<Profile, ProfileBuilder> {
 
   factory Profile([updates(ProfileBuilder b)]) = _$Profile;
 
-  @BuiltValueField(wireName: 'aaid')
-  @BuiltValueSerializer(serializeNulls: true)
   @nullable
-  String get aaId;
+  @BuiltValueField(wireName: 'location')
+  String get location;
 
-  @BuiltValueField(wireName: 'jiveid')
+  @BuiltValueField(wireName: 'username')
   @BuiltValueSerializer(serializeNulls: true)
   @nullable
-  String get jiveId;
+  String get username;
 
-  @BuiltValueField(wireName: 'profileimage')
+  @BuiltValueField(wireName: 'email')
   @BuiltValueSerializer(serializeNulls: true)
   @nullable
-  String get profileImage;
+  String get email;
+
+  @BuiltValueField(wireName: 'displayName')
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
+  String get displayName;
 
   @BuiltValueField(wireName: 'topics')
   @BuiltValueSerializer(serializeNulls: true)
   @nullable
-  BuiltList<Topics> get topics;
+  BuiltList<String> get topics;
 
   @BuiltValueField(wireName: 'workgroup')
   @BuiltValueSerializer(serializeNulls: true)
   @nullable
-  BuiltList<Workgroup> get workgroup;
+  BuiltList<String> get workgroup;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Profile.serializer, this));

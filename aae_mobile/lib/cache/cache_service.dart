@@ -155,43 +155,6 @@ class CacheService {
     }
   }
 
-  Future<void> writeStringList(String key, List<String> value) async {
-    bool result;
-    try {
-      result = await _sharedPreferences.setStringList(key, value);
-    } catch (e, s) {
-      final message = _formatWriteStringErrorMessage(
-        key: key,
-        reason: 'platform threw an instance of ${e.runtimeType}',
-      );
-      _log.shout(message, e, s);
-      throw CacheError(message);
-    }
-
-    if (!result) {
-      throw CacheError(
-        _formatWriteStringErrorMessage(
-          key: key,
-          reason: 'platform returned false',
-        ),
-      );
-    }
-  }
-
-  Optional<List<String>> readStringList(String key) {
-    try {
-      final value = _sharedPreferences.getStringList(key);
-      return Optional.fromNullable(value);
-    } catch (e, s) {
-      final message = _formatReadErrorMessage(
-        key: key,
-        reason: 'platform threw an instance of ${e.runtimeType}',
-      );
-      _log.shout(message, e, s);
-      throw CacheError(message);
-    }
-  }
-
   /// Writes [bytes] with the specified [key].
   ///
   /// Throws a [CacheError] if the write fails for any reason.

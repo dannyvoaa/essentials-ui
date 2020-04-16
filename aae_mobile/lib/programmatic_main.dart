@@ -12,7 +12,6 @@ import 'package:aae/navigation/routes.dart' as routes;
 import 'package:aae/provided_service.dart';
 import 'package:aae/service_provider.dart';
 import 'package:aae/sign_in/workflow/sign_in_workflow.dart';
-import 'package:aae/settings/workflow/modifying/modify_workflow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
@@ -83,7 +82,7 @@ class Aae extends StatelessWidget {
       },
       onGenerateRoute: _globalRouteHandler.onGenerateRoute,
       initialRoute: routes.buildSignInRoute(),
-      home: AppScaffold(), //MARK: why this?
+      home: AppScaffold(),
     );
   }
 }
@@ -128,11 +127,6 @@ class GlobalRouteHandler {
       case routes.signIn:
         return MaterialPageRoute<void>(
           builder: (context) => SignInWorkflow(),
-          settings: settings,
-        );
-      case routes.settings:
-        return MaterialPageRoute<void>(
-          builder: (context) => ModifyWorkflow(),
           settings: settings,
         );
       case routes.travel:

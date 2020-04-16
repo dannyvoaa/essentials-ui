@@ -18,22 +18,28 @@ class _$ProfileSerializer implements StructuredSerializer<Profile> {
   Iterable<Object> serialize(Serializers serializers, Profile object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
-    if (object.aaId != null) {
+    if (object.location != null) {
       result
-        ..add('aaid')
-        ..add(serializers.serialize(object.aaId,
+        ..add('location')
+        ..add(serializers.serialize(object.location,
             specifiedType: const FullType(String)));
     }
-    if (object.jiveId != null) {
+    if (object.username != null) {
       result
-        ..add('jiveid')
-        ..add(serializers.serialize(object.jiveId,
+        ..add('username')
+        ..add(serializers.serialize(object.username,
             specifiedType: const FullType(String)));
     }
-    if (object.profileImage != null) {
+    if (object.email != null) {
       result
-        ..add('profileimage')
-        ..add(serializers.serialize(object.profileImage,
+        ..add('email')
+        ..add(serializers.serialize(object.email,
+            specifiedType: const FullType(String)));
+    }
+    if (object.displayName != null) {
+      result
+        ..add('displayName')
+        ..add(serializers.serialize(object.displayName,
             specifiedType: const FullType(String)));
     }
     if (object.topics != null) {
@@ -41,14 +47,14 @@ class _$ProfileSerializer implements StructuredSerializer<Profile> {
         ..add('topics')
         ..add(serializers.serialize(object.topics,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(Topics)])));
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     if (object.workgroup != null) {
       result
         ..add('workgroup')
         ..add(serializers.serialize(object.workgroup,
             specifiedType:
-                const FullType(BuiltList, const [const FullType(Workgroup)])));
+                const FullType(BuiltList, const [const FullType(String)])));
     }
     return result;
   }
@@ -64,29 +70,33 @@ class _$ProfileSerializer implements StructuredSerializer<Profile> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'aaid':
-          result.aaId = serializers.deserialize(value,
+        case 'location':
+          result.location = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'jiveid':
-          result.jiveId = serializers.deserialize(value,
+        case 'username':
+          result.username = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'profileimage':
-          result.profileImage = serializers.deserialize(value,
+        case 'email':
+          result.email = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'displayName':
+          result.displayName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'topics':
           result.topics.replace(serializers.deserialize(value,
                   specifiedType:
-                      const FullType(BuiltList, const [const FullType(Topics)]))
-              as BuiltList<dynamic>);
+                      const FullType(BuiltList, const [const FullType(String)]))
+              as BuiltList<Object>);
           break;
         case 'workgroup':
           result.workgroup.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(Workgroup)]))
-              as BuiltList<dynamic>);
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(String)]))
+              as BuiltList<Object>);
           break;
       }
     }
@@ -97,21 +107,28 @@ class _$ProfileSerializer implements StructuredSerializer<Profile> {
 
 class _$Profile extends Profile {
   @override
-  final String aaId;
+  final String location;
   @override
-  final String jiveId;
+  final String username;
   @override
-  final String profileImage;
+  final String email;
   @override
-  final BuiltList<Topics> topics;
+  final String displayName;
   @override
-  final BuiltList<Workgroup> workgroup;
+  final BuiltList<String> topics;
+  @override
+  final BuiltList<String> workgroup;
 
   factory _$Profile([void Function(ProfileBuilder) updates]) =>
       (new ProfileBuilder()..update(updates)).build();
 
   _$Profile._(
-      {this.aaId, this.jiveId, this.profileImage, this.topics, this.workgroup})
+      {this.location,
+      this.username,
+      this.email,
+      this.displayName,
+      this.topics,
+      this.workgroup})
       : super._();
 
   @override
@@ -125,9 +142,10 @@ class _$Profile extends Profile {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Profile &&
-        aaId == other.aaId &&
-        jiveId == other.jiveId &&
-        profileImage == other.profileImage &&
+        location == other.location &&
+        username == other.username &&
+        email == other.email &&
+        displayName == other.displayName &&
         topics == other.topics &&
         workgroup == other.workgroup;
   }
@@ -136,8 +154,10 @@ class _$Profile extends Profile {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc(0, aaId.hashCode), jiveId.hashCode),
-                profileImage.hashCode),
+            $jc(
+                $jc($jc($jc(0, location.hashCode), username.hashCode),
+                    email.hashCode),
+                displayName.hashCode),
             topics.hashCode),
         workgroup.hashCode));
   }
@@ -145,9 +165,10 @@ class _$Profile extends Profile {
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Profile')
-          ..add('aaId', aaId)
-          ..add('jiveId', jiveId)
-          ..add('profileImage', profileImage)
+          ..add('location', location)
+          ..add('username', username)
+          ..add('email', email)
+          ..add('displayName', displayName)
           ..add('topics', topics)
           ..add('workgroup', workgroup))
         .toString();
@@ -157,36 +178,40 @@ class _$Profile extends Profile {
 class ProfileBuilder implements Builder<Profile, ProfileBuilder> {
   _$Profile _$v;
 
-  String _aaId;
-  String get aaId => _$this._aaId;
-  set aaId(String aaId) => _$this._aaId = aaId;
+  String _location;
+  String get location => _$this._location;
+  set location(String location) => _$this._location = location;
 
-  String _jiveId;
-  String get jiveId => _$this._jiveId;
-  set jiveId(String jiveId) => _$this._jiveId = jiveId;
+  String _username;
+  String get username => _$this._username;
+  set username(String username) => _$this._username = username;
 
-  String _profileImage;
-  String get profileImage => _$this._profileImage;
-  set profileImage(String profileImage) => _$this._profileImage = profileImage;
+  String _email;
+  String get email => _$this._email;
+  set email(String email) => _$this._email = email;
 
-  ListBuilder<Topics> _topics;
-  ListBuilder<Topics> get topics =>
-      _$this._topics ??= new ListBuilder<Topics>();
-  set topics(ListBuilder<Topics> topics) => _$this._topics = topics;
+  String _displayName;
+  String get displayName => _$this._displayName;
+  set displayName(String displayName) => _$this._displayName = displayName;
 
-  ListBuilder<Workgroup> _workgroup;
-  ListBuilder<Workgroup> get workgroup =>
-      _$this._workgroup ??= new ListBuilder<Workgroup>();
-  set workgroup(ListBuilder<Workgroup> workgroup) =>
-      _$this._workgroup = workgroup;
+  ListBuilder<String> _topics;
+  ListBuilder<String> get topics =>
+      _$this._topics ??= new ListBuilder<String>();
+  set topics(ListBuilder<String> topics) => _$this._topics = topics;
+
+  ListBuilder<String> _workgroup;
+  ListBuilder<String> get workgroup =>
+      _$this._workgroup ??= new ListBuilder<String>();
+  set workgroup(ListBuilder<String> workgroup) => _$this._workgroup = workgroup;
 
   ProfileBuilder();
 
   ProfileBuilder get _$this {
     if (_$v != null) {
-      _aaId = _$v.aaId;
-      _jiveId = _$v.jiveId;
-      _profileImage = _$v.profileImage;
+      _location = _$v.location;
+      _username = _$v.username;
+      _email = _$v.email;
+      _displayName = _$v.displayName;
       _topics = _$v.topics?.toBuilder();
       _workgroup = _$v.workgroup?.toBuilder();
       _$v = null;
@@ -213,9 +238,10 @@ class ProfileBuilder implements Builder<Profile, ProfileBuilder> {
     try {
       _$result = _$v ??
           new _$Profile._(
-              aaId: aaId,
-              jiveId: jiveId,
-              profileImage: profileImage,
+              location: location,
+              username: username,
+              email: email,
+              displayName: displayName,
               topics: _topics?.build(),
               workgroup: _workgroup?.build());
     } catch (_) {

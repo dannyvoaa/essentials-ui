@@ -2,9 +2,10 @@ library event;
 
 import 'dart:convert';
 
-import 'package:aae/model/serializers.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+
+import 'serializers.dart';
 
 part 'event.g.dart';
 
@@ -16,73 +17,75 @@ abstract class Event implements Built<Event, EventBuilder> {
   @BuiltValueField(wireName: '_id')
   String get id;
 
-  @BuiltValueField(wireName: 'category')
-  String get category;
-
-  @BuiltValueField(wireName: 'author')
-  String get author;
-
-  @BuiltValueField(wireName: 'created')
   @nullable
-  int get createDate;
+  String get rev;
 
-  @BuiltValueField(wireName: 'updated')
-  @nullable
-  int get updateDate;
+  bool get allDay;
 
-  @BuiltValueField(wireName: 'eventName')
-  String get title;
-
-  @BuiltValueField(wireName: 'eventDescription')
-  @nullable
-  String get description;
-
-  @BuiltValueField(wireName: 'locationVenue')
-  @nullable
-  String get venue;
-
-  @BuiltValueField(wireName: 'locationRoomNumber')
-  @nullable
-  String get roomNumber;
-
-  @BuiltValueField(wireName: 'locationAddress1')
-  String get address1;
-
-  @BuiltValueField(wireName: 'locationAddress2')
-  @nullable
-  String get address2;
-
-  @BuiltValueField(wireName: 'locationCity')
-  String get city;
-
-  @BuiltValueField(wireName: 'locationState')
-  String get state;
-
-  @BuiltValueField(wireName: 'allDay')
-  bool get isAllDay;
-
-  @BuiltValueField(wireName: 'ebrg')
-  bool get isEBRG;
-
-  @BuiltValueField(wireName: 'contactName')
-  String get contactName;
-
-  @BuiltValueField(wireName: 'contactEmail')
-  @nullable
   String get contactEmail;
 
-  @BuiltValueField(wireName: 'contactPhone')
-  @nullable
+  String get contactName;
+
   String get contactPhone;
 
-  @BuiltValueField(wireName: 'start')
-  int get startDate;
+  bool get ebrg;
 
-  @BuiltValueField(wireName: 'end')
-  int get endDate;
+  int get end;
 
-  @BuiltValueField(wireName: 'timeZoneOffset')
-  int get timeZone;
+  @nullable
+  int get endLocal;
+
+  int get endYear;
+
+  int get endMonth;
+
+  int get endDay;
+
+  int get endHour;
+
+  int get endMinute;
+
+  String get eventDescription;
+
+  String get eventName;
+
+  String get locationAddress1;
+
+  String get locationAddress2;
+
+  String get locationCity;
+
+  String get locationState;
+
+  String get locationRoomNumber;
+
+  String get locationVenue;
+
+  int get start;
+
+  @nullable
+  int get startLocal;
+
+  int get startYear;
+
+  int get startMonth;
+
+  int get startDay;
+
+  int get startHour;
+
+  int get startMinute;
+
+  int get timeZoneOffset;
+
+  int get created;
+
+  String get createdBy;
+
+  int get updated;
+
+  @nullable
+  String get updatedBy;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Event.serializer, this));

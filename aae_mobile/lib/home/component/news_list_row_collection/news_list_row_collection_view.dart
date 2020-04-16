@@ -1,5 +1,6 @@
 import 'package:aae/home/component/news_item/news_list_item_component.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'news_list_row_collection_view_model.dart';
 
@@ -24,13 +25,7 @@ _buildRow(NewsListRowCollectionViewModel viewModel, index) {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(left: 10, top: 16),
-          child: Text(
-            viewModel.newsFeedItemCategories[index],
-            style: TextStyle(
-                fontSize: 14,
-                color: Color(0xFF0078D2),
-                fontWeight: FontWeight.bold),
-          ),
+          child: _buildRowHeader(viewModel, index),
         ),
         Container(
           height: 248,
@@ -103,4 +98,56 @@ _buildVideoRow(NewsListRowCollectionViewModel viewModel) {
       ],
     ),
   );
+}
+
+_buildRowHeader(NewsListRowCollectionViewModel viewModel, index) {
+  switch (index) {
+    case 0:
+      {
+        return Text(
+          'News',
+          style: TextStyle(
+              fontSize: 14,
+              color: Color(0xFF0078D2),
+              fontWeight: FontWeight.bold),
+        );
+      }
+      break;
+
+    case 2:
+      {
+        return Text(
+          'Workgroup',
+          style: TextStyle(
+              fontSize: 14,
+              color: Color(0xFF0078D2),
+              fontWeight: FontWeight.bold),
+        );
+      }
+      break;
+
+    case 3:
+      {
+        return Text(
+          'Location',
+          style: TextStyle(
+              fontSize: 14,
+              color: Color(0xFF0078D2),
+              fontWeight: FontWeight.bold),
+        );
+      }
+      break;
+
+    default:
+      {
+        return Text(
+          toBeginningOfSentenceCase(viewModel.newsFeedItemCategories[index]),
+          style: TextStyle(
+              fontSize: 14,
+              color: Color(0xFF0078D2),
+              fontWeight: FontWeight.bold),
+        );
+      }
+      break;
+  }
 }

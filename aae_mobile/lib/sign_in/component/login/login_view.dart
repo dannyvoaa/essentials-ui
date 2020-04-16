@@ -1,5 +1,7 @@
-import 'package:aae/common/widgets/workflow_page/workflow_footer_button/workflow_footer_button.dart';
-import 'package:aae/common/widgets/workflow_page/workflow_page_template.dart';
+import 'package:aae/common/widgets/button/large_button.dart';
+import 'package:aae/rx/rx_util.dart';
+import 'package:aae/rxdart/rx.dart';
+import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
 import 'package:aae/theme/typography.dart';
 import 'package:flutter/material.dart';
@@ -11,58 +13,143 @@ import 'login_view_model.dart';
 class LoginView extends StatelessWidget {
   final LoginViewModel viewModel;
 
-  LoginView({@required this.viewModel});
+  final FocusNode _textFieldFocusNode = FocusNode();
+
+  final bool textFocus;
+  final _focusSubject = createBehaviorSubject<bool>();
+  final ScrollController _scrollController = ScrollController();
+
+  final _textEditingController = TextEditingController();
+
+  final authType = "FaceID";
+
+  LoginView({@required this.viewModel, this.textFocus}) {
+    combineLatest(
+      Observable.just(_textFieldFocusNode),
+      _textFieldHasFocus,
+    );
+    _focusSubject.distinctUntilChanged();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return WorkflowPageTemplate(
-      child: _buildNextStepsColumn(context),
-      primaryButtonText: viewModel.primaryButtonText,
-      onPrimaryButtonTapped: viewModel.onPrimaryButtonPressed,
-      footerButtonLayout: ButtonLayout.vertical,
-    );
-  }
-
-  Widget _buildNextStepsColumn(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+    return Stack(
       children: [
-        _buildIconTitleAndBody(
-          Icons.looks_one,
+        Container(
+          decoration: BoxDecoration(
+            color: AaeColors.backgroundBlue,
+            image: DecorationImage(
+              alignment: Alignment.topCenter,
+              fit: BoxFit.fitHeight,
+              image: AssetImage('assets/common/sign_in_background.png'),
+            ),
+          ),
         ),
-        _buildUserNameEntryField(context),
-        _buildPasswordEntryField(context)
-      ],
-    );
-  }
-
-  Widget _buildIconTitleAndBody(IconData icon) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: AaeDimens.baseUnit),
-          child: Image.asset('assets/common/american-airlines-eaagle-logo.png'),
+        SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CustomScrollView(
+              controller: _scrollController,
+              slivers: <Widget>[
+                _sectionLogo(context),
+                _buildLoginTextFields(context),
+              ],
+            ),
+          ),
         ),
       ],
     );
   }
 
-  Widget _buildUserNameEntryField(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: AaeDimens.baseUnit / 2),
-      child: TextField(
-        style: AaeTextStyles.b1SingleLine,
-        autocorrect: false,
-        decoration: InputDecoration(hintText: 'AA ID', filled: true),
+  Widget _buildSignInOptions(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildListDelegate(
+        [
+          _buildAuthentificationSignIn(context),
+          _buildSigninButton(context),
+        ],
       ),
     );
   }
 
-  Widget _buildPasswordEntryField(BuildContext context) {
-    return TextField(
-      obscureText: true,
-      style: AaeTextStyles.b1SingleLine,
-      decoration: InputDecoration(filled: true, hintText: 'Password'),
+  void _textFieldHasFocus(FocusNode textFocus) {}
+
+  Widget _buildLoginTextFields(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildListDelegate([
+        SizedBox(
+          height: AaeDimens.sizeDynamic_32px(),
+        ),
+        TextField(
+          decoration: InputDecoration.collapsed(
+              hintText: 'AA ID',
+              hintStyle: AaeTextStyles.textFieldModernHint()),
+          style: AaeTextStyles.textFieldModern(),
+          onChanged: viewModel.onUsernameChanged,
+        ),
+        Container(
+          color: AaeColors.white,
+          height: 2,
+        ),
+        SizedBox(
+          height: AaeDimens.sizeDynamic_32px(),
+        ),
+        TextField(
+          // focusNode: _textFieldFocusNode,
+          decoration: InputDecoration.collapsed(
+              hintText: 'Password',
+              hintStyle: AaeTextStyles.textFieldModernHint()),
+          obscureText: true,
+          style: AaeTextStyles.textFieldModern(),
+          onChanged: viewModel.onPasswordChanged,
+        ),
+        Container(
+          color: AaeColors.white,
+          height: 2,
+        ),
+        Spacer(flex: 2,),
+        _buildAuthentificationSignIn(context),
+        Spacer(flex: 2,),
+        _buildSigninButton(context),
+      ]),
+    );
+  }
+
+  /// American Airlines logo in a resizable widget
+  Widget _sectionLogo(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: Container(
+        height: AaeDimens.workflowLargeIconSize,
+        child: Image(
+          image: AssetImage('assets/common/logo_inverted_horizontal.png'),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSigninButton(BuildContext context) {
+    return Container(
+      child: LargeButton(
+        boolEnabled: viewModel.signInButtonEnabled,
+        onTapAction: () {
+          viewModel.onSignInButtonPressed();
+        },
+        stringTitle: 'Sign in',
+      ),
+      width: double.infinity,
+    );
+  }
+
+  Widget _buildAuthentificationSignIn(BuildContext context) {
+    return Container(
+      child: LargeButton(
+        boolEnabled: viewModel.biometricAuthEnabled,
+        onTapAction: () {
+          viewModel.onBiometricAuthPressed();
+        },
+        stringTitle: 'Sign in with ${viewModel.authType.toString()}',
+      ),
+      width: double.infinity,
     );
   }
 }

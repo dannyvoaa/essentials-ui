@@ -1,10 +1,11 @@
 import 'package:aae/assets/aae_icons.dart';
 import 'package:aae/common/commands/navigate_command.dart';
+import 'package:aae/d0_stats_bar/component/d0_stats_bar_component.dart';
+import 'package:aae/home/component/news_feed_top_bar/top_bar_title_component.dart';
 import 'package:aae/navigation/routes.dart' as routes;
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/typography.dart';
 import 'package:flutter/material.dart';
-import 'package:aae/common/widgets/stats_bar/stats_bar.dart';
 
 /// A app bar for the news feed page.
 class NewsFeedTopBar extends StatelessWidget implements PreferredSizeWidget {
@@ -16,10 +17,9 @@ class NewsFeedTopBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO(rpaglinawan): make drop shadow on app bar
     return AppBar(
       centerTitle: false,
-      title: TopBarTitle('Good Morning, Juan Carlos'),
+      title: TopBarTitleComponent(),
       flexibleSpace: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -38,52 +38,67 @@ class NewsFeedTopBar extends StatelessWidget implements PreferredSizeWidget {
           children: <Widget>[
             Row(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, bottom: 9.0),
-                  child: Icon(
-                    AaeIcons.notifications,
-                    color: AaeColors.white,
-                    size: 11,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10.0, bottom: 7.0),
-                  child: Text(
-                    'Notifications',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: AaeColors.white,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, bottom: 9.0),
-                  child: Icon(
-                    AaeIcons.calendar,
-                    color: AaeColors.white,
-                    size: 14,
+                GestureDetector(
+                  onTap: () {
+                    navigateCommand(routes.buildRouteName(
+                        tab: routes.notifications,
+                        pageWidgetRoute: routes.notifications))(context);
+                  },
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20, bottom: 9.0),
+                        child: Icon(
+                          AaeIcons.notifications,
+                          color: AaeColors.white,
+                          size: 11,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0, bottom: 7.0),
+                        child: Text(
+                          'Notifications',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: AaeColors.white,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 GestureDetector(
                   onTap: () {
                     navigateCommand(routes.buildRouteName(
-                        tab: routes.calendar,
-                        pageWidgetRoute: routes.calendar))(context);
+                        tab: routes.events,
+                        pageWidgetRoute: routes.events))(context);
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10.0, bottom: 7.0),
-                    child: Text(
-                      'Events',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: AaeColors.white,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20, bottom: 9.0),
+                        child: Icon(
+                          AaeIcons.calendar,
+                          color: AaeColors.white,
+                          size: 14,
+                        ),
                       ),
-                    ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0, bottom: 7.0),
+                        child: Text(
+                          'Events',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: AaeColors.white,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
-            StatsBar(),
+            D0StatsComponent(),
           ],
         ),
       ),

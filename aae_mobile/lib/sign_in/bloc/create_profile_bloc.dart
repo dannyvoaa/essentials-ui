@@ -1,12 +1,12 @@
+import 'package:aae/profile/repository/profile_repository.dart';
+import 'package:aae/provided_service.dart';
 import 'package:aae/rx/rx_util.dart';
 import 'package:aae/rxdart/rx.dart';
 import 'package:aae/sign_in/repository/sign_in_shared_data_repository.dart';
 import 'package:aae/sign_in/workflow/constants/sign_in_events.dart';
 import 'package:aae/workflow/common/workflow_event.dart';
-import 'package:logging/logging.dart';
 import 'package:inject/inject.dart';
-import 'package:aae/provided_service.dart';
-import 'package:aae/profile/repository/profile_repository.dart';
+import 'package:logging/logging.dart';
 
 class CreateProfileBloc {
   static final _log = Logger('CreateProfileBloc');
@@ -28,15 +28,16 @@ class CreateProfileBloc {
     final topics = lastEvent(_sharedDataRepository.topics);
     final workgroups = lastEvent(_sharedDataRepository.workgroups);
 
-    if (topics.isNotPresent || workgroups.isNotPresent) {
+    if (topics.length == 0 || workgroups.length == 0) {
       _log.severe('Workgroups or Topics not set before creating a profile.');
       _events.sendNext(SignInEvents.profileCreationFailed);
       return;
     }
 
-    if (await _profileRepository.createProfile(
-        topics.value, workgroups.value)) {
+    if (await _profileRepository.createProfile(topics, workgroups)) {
       _events.sendNext(SignInEvents.profileCreationSucceeded);
+      _log.shout(
+          '-------------------PROFILE CREATION SUCCEEDED------------------------');
     } else {
       _events.sendNext(SignInEvents.profileCreationFailed);
     }

@@ -19,42 +19,29 @@ class TableCellTitleValue extends StatelessWidget {
     this.boolBorderBottom = true,
     this.boolBorderTop = false,
     this.stringTitle = '',
+    this.stringValue = '',
     this.onTapAction,
     this.boolEnabled = true,
     this.boolShowCheckmark = false,
     this.boolShowDisclosureIndicator = false,
-    this.stringValue = '',
   });
 
   @override
   Widget build(BuildContext context) {
-    const tableRowLeftPadding = AaeDimens.tallListViewPadding;
-    const tableRowRightPadding = AaeDimens.tallListViewPadding;
-    const tableRowTopPadding = AaeDimens.tallListViewPadding;
-    const tableRowBottomPadding = AaeDimens.tallListViewPadding;
-
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Visibility(
-          visible: boolBorderTop,
-          child: Divider(
-            color: AaeColors.lightGray,
-            height: AaeDimens.sizeDivider,
-          ),
-        ),
-        InkWell(
-          child: Padding(
-            padding: const EdgeInsets.only(
-              top: tableRowTopPadding,
-              bottom: tableRowBottomPadding,
-            ),
-            child: TableCell(
-              verticalAlignment: TableCellVerticalAlignment.fill,
+        this.boolBorderTop
+            ? Container(
+                height: AaeDimens.sizeDivider,
+                color: AaeColors.lightGray,
+              )
+            : Container(),
+        Material(
+          child: InkWell(
+            child: Container(
               child: Row(
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(left: tableRowLeftPadding),
+                  Expanded(
                     child: Text(
                       stringTitle,
                       maxLines: 1,
@@ -64,42 +51,46 @@ class TableCellTitleValue extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.only(right: tableRowRightPadding),
-                    child: Text(
-                      stringValue,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: AaeTextStyles.tableCellValue(
-                        boolEnabled: this.boolEnabled,
-                      ),
-                      textAlign: TextAlign.right,
-                    ),
+                  SizedBox(
+                    width: 16,
                   ),
-                  _cellAccessory(),
+                  Text(
+                    stringValue,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: AaeTextStyles.tableCellValue(
+                      boolEnabled: this.boolEnabled,
+                    ),
+                    textAlign: TextAlign.right,
+                  ),
+                  this._cellAccessory(),
                 ],
               ),
+              height: AaeDimens.sizeTableViewCell,
+              margin: EdgeInsets.only(
+                left: 16,
+                right: 16,
+              ),
             ),
+            onTap: () {
+              // Check to see if an on-tap action was provided
+              if (this.boolEnabled && this.onTapAction != null) {
+                // Execute the on-tap action
+                this.onTapAction();
+              }
+            },
+            highlightColor: this.boolEnabled && onTapAction != null
+                ? AaeColors.tableViewCellBackgroundSelected
+                : Colors.transparent,
           ),
-          onTap: () {
-            // Check to see if an on-tap action was provided
-            if (this.boolEnabled && this.onTapAction != null) {
-              // Execute the on-tap action
-              this.onTapAction();
-            }
-          },
-          highlightColor: this.boolEnabled && onTapAction != null
-              ? AaeColors.tableViewCellBackgroundSelected
-              : Colors.transparent,
+          color: AaeColors.tableViewCellBackground,
         ),
-        Visibility(
-          visible: boolBorderBottom,
-          child: Divider(
-            color: AaeColors.lightGray,
-            height: AaeDimens.sizeDivider,
-          ),
-        ),
+        this.boolBorderBottom
+            ? Container(
+                height: AaeDimens.sizeDivider,
+                color: AaeColors.lightGray,
+              )
+            : Container(),
       ],
     );
   }

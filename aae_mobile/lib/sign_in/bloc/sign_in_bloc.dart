@@ -1,4 +1,7 @@
+import 'package:aae/auth/auth.dart';
+import 'package:aae/auth/secure_cache_auth.dart';
 import 'package:aae/cache/cache_service.dart';
+import 'package:aae/model/auth_credentials.dart';
 import 'package:aae/profile/repository/profile_repository.dart';
 import 'package:aae/provided_service.dart';
 import 'package:aae/rx/rx_util.dart';
@@ -18,6 +21,7 @@ class SignInBloc {
   final SignInRepository _signInRepository;
   final ProfileRepository _profileRepository;
   final CacheService _cacheService;
+  final SecureCacheAuth _cacheAuth;
 
   final _validitySubject = createBehaviorSubject<bool>();
   final _eventSubject = Subject<WorkflowEvent>();
@@ -32,8 +36,8 @@ class SignInBloc {
 
   @provide
   @singleton
-  SignInBloc(
-      this._signInRepository, this._profileRepository, this._cacheService) {
+  SignInBloc(this._signInRepository, this._profileRepository,
+      this._cacheService, this._cacheAuth) {
     _signInRepository.currentUser.subscribe(
         onNext: (_) => _eventSubject.sendNext(SignInEvents.currentUserChanged));
   }
@@ -41,6 +45,7 @@ class SignInBloc {
   /// Signals that an account was successfully created so that repositories can
   /// be started.
   void onAccountCreated() {
+    //TODO: (kiheke) - Sync profile with cache on successful creation.
     _validitySubject.sendNext(true);
   }
 
@@ -73,17 +78,30 @@ class SignInBloc {
   ///
   /// Sends events indicating success or failure of this operation.
   void validate() async {
+    AuthCredentials validAuth;
     unawaited(_cacheService.writeBool(lastUserStatusKey, false));
     var profileIsValid = false;
-//    try {
-//      await _profileRepository.validateIdentity();
-//      _eventSubject.sendNext(SignInEvents.validationSucceeded);
-//      profileIsValid = true;
-//    } finally {
-    //_validitySubject.sendNext(profileIsValid);
-    _eventSubject.sendNext(SignInEvents.silentSignInFailed);
-    unawaited(_cacheService.writeBool(lastUserStatusKey, profileIsValid));
-    //}
+    try {
+      await _profileRepository.validateIdentity();
+      _eventSubject.sendNext(SignInEvents.validationSucceeded);
+      profileIsValid = true;
+    } on ProfileNotFoundException {
+      _eventSubject.sendNext(SignInEvents.profileNotFound);
+    } on TokenException {
+      _eventSubject.sendNext(SignInEvents.authFlowFailed);
+    } finally {
+      _validitySubject.sendNext(profileIsValid);
+
+      unawaited(_cacheService.writeBool(lastUserStatusKey, profileIsValid));
+      _signInRepository.currentUser.subscribe(onNext: (identity) {
+        validAuth = AuthCredentials((b) => b
+          ..ssoID = identity
+          ..user = identity.id
+          ..password = identity.token);
+      });
+      unawaited(_cacheAuth.writeCredentials(authorizedUser: validAuth));
+      await _profileRepository.validateIdentity();
+    }
   }
 }
 

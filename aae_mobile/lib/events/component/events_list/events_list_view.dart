@@ -26,7 +26,7 @@ class EventsListView extends StatelessWidget {
     return Container(
       alignment: Alignment.centerLeft,
       child: Text(
-        DateFormat.MMMMEEEEd('en_US').format(DateTime.now()),
+        DateFormat.MMMMEEEEd('en_US').format(viewModel.observingDate),
         style: AaeTextStyles.description(),
       ),
       color: AaeColors.white,
@@ -52,78 +52,124 @@ class EventsListView extends StatelessWidget {
           );
         },
         itemBuilder: (context, index) {
-          return Container(
-            child: Row(
-              children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                    color: AaeColors.blue,
-                    shape: BoxShape.circle,
-                  ),
-                  height: AaeDimens.baseUnit,
-                  margin: EdgeInsets.only(
-                    right: AaeDimens.baseUnit / 2,
-                  ),
-                  width: AaeDimens.baseUnit * 3,
-                ),
-                Container(
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        '${DateTime.fromMicrosecondsSinceEpoch(viewModel.events[index].startDate)}',
-                        style: AaeTextStyles.body(boolDefaultHeight: true),
+          return InkWell(
+            onTap: () {
+              showModalBottomSheet(
+                  enableDrag: true,
+                  context: context,
+                  builder: (context) {
+                    return Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      height: 300.0,
+                      width: MediaQuery.of(context).size.width,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Text(
+                            viewModel.events[index].eventName,
+                            overflow: TextOverflow.ellipsis,
+                            style:
+                                AaeTextStyles.headline(boolDefaultHeight: true),
+                          ),
+                          Text(
+                            viewModel.events[index].locationVenue,
+                            overflow: TextOverflow.ellipsis,
+                            style: AaeTextStyles.body(boolDefaultHeight: true),
+                          ),
+                          Text(
+                            '${DateFormat.jm().format(DateTime.fromMillisecondsSinceEpoch(viewModel.events[index].start * 1000))}'
+                            ' to '
+                            '${DateFormat.jm().format(DateTime.fromMillisecondsSinceEpoch(viewModel.events[index].end * 1000))}',
+                            style: AaeTextStyles.body(boolDefaultHeight: true),
+                          ),
+                        ],
                       ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        '${DateTime.fromMicrosecondsSinceEpoch(viewModel.events[index].endDate)}',
-                        style: AaeTextStyles.body(boolDefaultHeight: true),
-                      ),
-                    ],
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
+                    );
+                  });
+            },
+            child: Container(
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AaeColors.blue,
+                      shape: BoxShape.circle,
+                    ),
+                    height: AaeDimens.baseUnit,
+                    margin: EdgeInsets.only(
+                      right: AaeDimens.baseUnit / 2,
+                    ),
+                    width: AaeDimens.baseUnit * 3,
                   ),
-                  margin: EdgeInsets.only(
-                    right: AaeDimens.baseUnit,
-                  ),
-                ),
-                Flexible(
-                  child: Container(
-                    child: Column(
-                      children: <Widget>[
-                        Text(
-                          viewModel.events[index].title,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style:
-                              AaeTextStyles.headline(boolDefaultHeight: true),
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          viewModel.events[index].venue,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: AaeTextStyles.body(boolDefaultHeight: true),
-                        ),
-                      ],
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  Flexible(
+                    child: Container(
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            DateFormat.jm().format(
+                                DateTime.fromMillisecondsSinceEpoch(
+                                    viewModel.events[index].start * 1000)),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: AaeTextStyles.body(boolDefaultHeight: true),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            DateFormat.jm().format(
+                                DateTime.fromMillisecondsSinceEpoch(
+                                    viewModel.events[index].end * 1000)),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: AaeTextStyles.body(boolDefaultHeight: true),
+                          ),
+                        ],
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                      ),
                     ),
                   ),
-                ),
-              ],
-              crossAxisAlignment: CrossAxisAlignment.start,
+                  Container(
+                    width: 25,
+                    height: 25,
+                  ),
+                  Flexible(
+                    child: Container(
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            viewModel.events[index].eventName,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style:
+                                AaeTextStyles.headline(boolDefaultHeight: true),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            viewModel.events[index].locationVenue,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: AaeTextStyles.body(boolDefaultHeight: true),
+                          ),
+                        ],
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                      ),
+                    ),
+                  ),
+                ],
+                crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+              color: AaeColors.white,
+              margin: EdgeInsets.only(
+                bottom: AaeDimens.baseUnit,
+              ),
+              padding: EdgeInsets.all(
+                AaeDimens.baseUnit,
+              ),
+              width: double.infinity,
             ),
-            color: AaeColors.white,
-            margin: EdgeInsets.only(
-              bottom: AaeDimens.baseUnit,
-            ),
-            padding: EdgeInsets.all(
-              AaeDimens.baseUnit,
-            ),
-            width: double.infinity,
           );
         },
       ),

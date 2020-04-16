@@ -16,8 +16,6 @@ class _$NewsFeedListItemViewModel extends NewsFeedListItemViewModel {
   @override
   final String author;
   @override
-  final int itemId;
-  @override
   final AaeContextCommand onTapped;
 
   factory _$NewsFeedListItemViewModel(
@@ -29,7 +27,6 @@ class _$NewsFeedListItemViewModel extends NewsFeedListItemViewModel {
       this.shortBody,
       this.image,
       this.author,
-      this.itemId,
       this.onTapped})
       : super._() {
     if (displayName == null) {
@@ -46,13 +43,6 @@ class _$NewsFeedListItemViewModel extends NewsFeedListItemViewModel {
     if (author == null) {
       throw new BuiltValueNullFieldError('NewsFeedListItemViewModel', 'author');
     }
-    if (itemId == null) {
-      throw new BuiltValueNullFieldError('NewsFeedListItemViewModel', 'itemId');
-    }
-    if (onTapped == null) {
-      throw new BuiltValueNullFieldError(
-          'NewsFeedListItemViewModel', 'onTapped');
-    }
   }
 
   @override
@@ -67,13 +57,12 @@ class _$NewsFeedListItemViewModel extends NewsFeedListItemViewModel {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    final _$dynamicOther = other as dynamic;
+    final dynamic _$dynamicOther = other;
     return other is NewsFeedListItemViewModel &&
         displayName == other.displayName &&
         shortBody == other.shortBody &&
         image == other.image &&
         author == other.author &&
-        itemId == other.itemId &&
         onTapped == _$dynamicOther.onTapped;
   }
 
@@ -81,11 +70,9 @@ class _$NewsFeedListItemViewModel extends NewsFeedListItemViewModel {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc(
-                $jc($jc($jc(0, displayName.hashCode), shortBody.hashCode),
-                    image.hashCode),
-                author.hashCode),
-            itemId.hashCode),
+            $jc($jc($jc(0, displayName.hashCode), shortBody.hashCode),
+                image.hashCode),
+            author.hashCode),
         onTapped.hashCode));
   }
 
@@ -96,7 +83,6 @@ class _$NewsFeedListItemViewModel extends NewsFeedListItemViewModel {
           ..add('shortBody', shortBody)
           ..add('image', image)
           ..add('author', author)
-          ..add('itemId', itemId)
           ..add('onTapped', onTapped))
         .toString();
   }
@@ -123,10 +109,6 @@ class NewsFeedListItemViewModelBuilder
   String get author => _$this._author;
   set author(String author) => _$this._author = author;
 
-  int _itemId;
-  int get itemId => _$this._itemId;
-  set itemId(int itemId) => _$this._itemId = itemId;
-
   AaeContextCommand _onTapped;
   AaeContextCommand get onTapped => _$this._onTapped;
   set onTapped(AaeContextCommand onTapped) => _$this._onTapped = onTapped;
@@ -139,7 +121,6 @@ class NewsFeedListItemViewModelBuilder
       _shortBody = _$v.shortBody;
       _image = _$v.image;
       _author = _$v.author;
-      _itemId = _$v.itemId;
       _onTapped = _$v.onTapped;
       _$v = null;
     }
@@ -167,7 +148,6 @@ class NewsFeedListItemViewModelBuilder
             shortBody: shortBody,
             image: image,
             author: author,
-            itemId: itemId,
             onTapped: onTapped);
     replace(_$result);
     return _$result;

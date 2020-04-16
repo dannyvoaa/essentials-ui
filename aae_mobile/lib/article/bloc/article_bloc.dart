@@ -1,20 +1,40 @@
-import 'package:inject/inject.dart';
-import 'package:aae/rx/rx_util.dart';
+import 'package:aae/article/components/article_component_view_model.dart';
+import 'package:aae/article/repository/article_repository.dart';
+import 'package:aae/model/news_article.dart';
 import 'package:aae/provided_service.dart';
 import 'package:aae/rx/bloc_with_rx.dart';
-import 'dart:convert';
+import 'package:aae/rx/combine_latest.dart';
+import 'package:aae/rx/rx_util.dart';
+import 'package:inject/inject.dart';
+import 'package:logging/logging.dart';
 
-class ArticleBloc {
-  final String _referenceURL;
+class NewsArticleBloc {
+  // final String _referenceURL = '';
+
+  static final _log = Logger('NewsArticleBloc');
+
+  final NewsArticleRepository _newsArticleRepository;
 
   @provide
-  ArticleBloc(this._referenceURL);
+  NewsArticleBloc(this._newsArticleRepository);
 
-  //TODO (rpaglinawan): Fill out these details as more information is locked
-  void loadFullArticle() {}
+  // TODO (rpaglinawan): pass in an observable of the full page article data
+  //into viewmodel generator
+  Source<ArticleComponentViewModel> get viewModel => toSource(combineLatest(
+      _newsArticleRepository.newsArticle.first(), _createViewModel));
+
+  ArticleComponentViewModel _createViewModel(NewsArticle article) =>
+      ArticleComponentViewModel((b) => b
+        ..articleID = article.contentID
+        ..author = article.authorName
+        ..articleBody = article.contentString.content);
+
+  void loadArticle(String articleId) {
+    _newsArticleRepository.loadFullArticle(articleId);
+  }
 }
 
-abstract class ArticleBlocFactory implements ProvidedService {
+abstract class NewsArticleBlocFactory implements ProvidedService {
   @provide
-  ArticleBloc _articleBloc();
+  NewsArticleBloc articleBloc();
 }

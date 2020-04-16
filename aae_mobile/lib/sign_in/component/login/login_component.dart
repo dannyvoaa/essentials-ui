@@ -1,5 +1,6 @@
 import 'package:aae/bloc/source_builder.dart';
 import 'package:aae/common/widgets/component/component.dart';
+// import 'package:aae/common/widgets/error/error_dialog/dialog_error.dart';
 import 'package:aae/common/widgets/loading/aae_loading_spinner.dart';
 import 'package:aae/sign_in/component/login/login_bloc.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,11 @@ class LoginComponent extends StatelessWidget {
             source: bloc.viewModel,
             builder: (snapshot) {
               if (snapshot.present) {
-                return LoginView(viewModel: snapshot.value);
+                bool widgetFocus = true;
+                return LoginView(
+                  viewModel: snapshot.value,
+                  textFocus: widgetFocus,
+                );
               } else {
                 return _buildLoadingState(context);
               }

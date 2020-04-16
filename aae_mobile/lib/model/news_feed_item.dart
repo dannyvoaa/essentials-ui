@@ -2,7 +2,6 @@ library news_feed_item;
 
 import 'dart:convert';
 
-import 'package:aae/model/author.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -15,40 +14,23 @@ abstract class NewsFeedItem
 
   factory NewsFeedItem([updates(NewsFeedItemBuilder b)]) = _$NewsFeedItem;
 
-  @BuiltValueField(wireName: 'author')
-  @BuiltValueSerializer(serializeNulls: true)
-  @nullable
-  Author get author;
+  @BuiltValueField(wireName: 'authorname')
+  String get author;
 
-  @BuiltValueField(wireName: 'category')
-  @BuiltValueSerializer(serializeNulls: true)
-  @nullable
-  String get category;
+  @BuiltValueField(wireName: 'bodytext')
+  String get body;
 
-  @BuiltValueField(wireName: 'date')
-  @BuiltValueSerializer(serializeNulls: true)
-  @nullable
-  DateTime get date;
-
-  @BuiltValueField(wireName: 'description')
-  @BuiltValueSerializer(serializeNulls: true)
-  @nullable
-  String get description;
+  @BuiltValueField(wireName: 'contentID')
+  String get contentID;
 
   @BuiltValueField(wireName: 'id')
-  @BuiltValueSerializer(serializeNulls: true)
-  @nullable
-  int get id;
+  String get id;
 
   @BuiltValueField(wireName: 'image')
-  @BuiltValueSerializer(serializeNulls: true)
-  @nullable
   Uri get image;
 
-  @BuiltValueField(wireName: 'title')
-  @BuiltValueSerializer(serializeNulls: true)
-  @nullable
-  String get title;
+  @BuiltValueField(wireName: 'subject')
+  String get subject;
 
   String toJson() {
     return json

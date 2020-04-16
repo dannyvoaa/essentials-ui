@@ -1,6 +1,5 @@
 import 'package:aae/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:aae/common/commands/aae_command.dart';
 
 const _maxTitleLines = 2;
 
@@ -17,7 +16,7 @@ class ListViewItem extends StatelessWidget {
   final List<Widget> infoPanelChildren;
 
   /// The callback to invoke when the widget is tapped.
-  final AaeContextCommand onTapped;
+  final GestureTapCallback onTapped;
 
   ListViewItem({
     @required this.image,
@@ -32,7 +31,7 @@ class ListViewItem extends StatelessWidget {
     @required String title,
     @required String body,
     @required String author,
-    AaeContextCommand onTapped,
+    GestureTapCallback onTapped,
   }) : this(
             image: image,
             infoPanelChildren: <Widget>[
@@ -59,7 +58,7 @@ class ListViewItem extends StatelessWidget {
         width: 272,
         child: GestureDetector(
           child: _buildListItemRow(),
-          onTap: () => onTapped(context),
+          onTap: onTapped,
         ),
       ),
     );

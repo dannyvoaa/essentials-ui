@@ -1,0 +1,27 @@
+/// This is generated boilerplate code for [##component_name##] you can modify the following file
+/// This class will be the entry point of your new component if you want to create a workflow follow with [SignInWorkflow]
+/// If this is only just a page make sure that this new component is registered in [main_page_navigator.dart] within the switch-case starting on line 87 and the route to the page is registered in [routes.dart]
+
+import 'package:aae/bloc/source_builder.dart';
+import 'package:aae/common/widgets/component/component.dart';
+import 'package:flutter/material.dart';
+
+import '../component/##file_name##_bloc.dart';
+import '../##file_name##_view_model.dart';
+
+class ##class_name##Component extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+        return Component<##class_name##Bloc, ##class_name##BlocFactory>(
+            bloc: (factory) => factory.##function_name##Bloc(),
+      builder: (context, bloc) {
+        return SourceBuilder.of<##class_name##ViewModel>(
+          source: bloc.viewModel,
+          builder: (snapshot) {
+            return Container(child: Center(child: Text('Implement ##class_name##View')),);
+          },
+        );
+      },
+        );
+    }
+}

@@ -1,3 +1,4 @@
+import 'package:aae/auth/auth.dart';
 import 'package:aae/provided_service.dart';
 import 'package:aae/rx/bloc_with_rx.dart';
 import 'package:aae/rxdart/rx.dart';
@@ -30,11 +31,10 @@ class WelcomeBloc {
   @provide
   WelcomeBloc(this._signInRepository);
 
-  void _signIn() async {
+  void _login() async {
     try {
       _events.sendNext(SignInEvents.userPressedPrimaryButton);
-      _log.shout('BUTTON PRESSED--------------------');
-    } on Exception catch (e, s) {
+    } on TokenException catch (e, s) {
       _log.severe('Sign in plugin failed: ', e, s);
       _events.sendNext(SignInEvents.authFlowFailed);
     }
@@ -42,7 +42,7 @@ class WelcomeBloc {
 
   WelcomeViewModel _createViewModel() => WelcomeViewModel((b) => b
     ..primaryButtonText = 'Sign in'
-    ..onPrimaryButtonPressed = _signIn);
+    ..onPrimaryButtonPressed = _login);
 }
 
 /// Constructs new instances of [WelcomeBloc]s via the DI framework.

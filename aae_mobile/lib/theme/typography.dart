@@ -241,9 +241,31 @@ class AaeTextStyles {
   /// Used for the title in [LargeButton]
   static TextStyle largeButtonTitle({bool boolDefaultHeight = false}) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
+      color: AaeColors.white,
       fontSize: 24,
       fontWeight: FontWeight.bold,
       height: 1.0,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  // Used for placeholders / hints in a [TextField]
+  static TextStyle textFieldModernHint({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
+      color: AaeColors.modernHint,
+      fontSize: 24,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  // Used for user-entered content in a [TextField]
+  static TextStyle textFieldModern({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
+      fontSize: 24,
     );
 
     // Default style

@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:aae/navigation/page_provider.dart';
+import 'package:aae/navigation/paage_provider.dart';
 import 'package:aae/theme/colors.dart';
 
 import 'package:flutter/material.dart';
