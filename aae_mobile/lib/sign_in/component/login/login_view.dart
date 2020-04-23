@@ -107,6 +107,7 @@ class LoginView extends StatelessWidget {
         Container(
           color: AaeColors.white,
           height: 2,
+          // test comment...
         ),
 //        Spacer(flex: 2,),
 //        _buildAuthentificationSignIn(context),
