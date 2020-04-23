@@ -65,7 +65,7 @@ class LoginView extends StatelessWidget {
     return SliverList(
       delegate: SliverChildListDelegate(
         [
-          _buildAuthentificationSignIn(context),
+//          _buildAuthentificationSignIn(context),
           _buildSigninButton(context),
         ],
       ),
@@ -80,9 +80,10 @@ class LoginView extends StatelessWidget {
         SizedBox(
           height: AaeDimens.sizeDynamic_32px(),
         ),
+        _buildSigninButton(context),
         TextField(
           decoration: InputDecoration.collapsed(
-              hintText: 'AA ID',
+              hintText: 'AA ID?',
               hintStyle: AaeTextStyles.textFieldModernHint()),
           style: AaeTextStyles.textFieldModern(),
           onChanged: viewModel.onUsernameChanged,
@@ -97,7 +98,7 @@ class LoginView extends StatelessWidget {
         TextField(
           // focusNode: _textFieldFocusNode,
           decoration: InputDecoration.collapsed(
-              hintText: 'Password',
+              hintText: 'Password?',
               hintStyle: AaeTextStyles.textFieldModernHint()),
           obscureText: true,
           style: AaeTextStyles.textFieldModern(),
@@ -107,10 +108,14 @@ class LoginView extends StatelessWidget {
           color: AaeColors.white,
           height: 2,
         ),
+//        Spacer(flex: 2,),
+//        _buildAuthentificationSignIn(context),
+        SizedBox(
+          height: AaeDimens.sizeDynamic_32px(),
+        ),
         Spacer(flex: 2,),
-        _buildAuthentificationSignIn(context),
+
         Spacer(flex: 2,),
-        _buildSigninButton(context),
       ]),
     );
   }
@@ -137,6 +142,7 @@ class LoginView extends StatelessWidget {
         stringTitle: 'Sign in',
       ),
       width: double.infinity,
+      height: 80,
     );
   }
 
@@ -147,7 +153,7 @@ class LoginView extends StatelessWidget {
         onTapAction: () {
           viewModel.onBiometricAuthPressed();
         },
-        stringTitle: 'Sign in with ${viewModel.authType.toString()}',
+        stringTitle: 'Sign in with biometrics!',
       ),
       width: double.infinity,
     );

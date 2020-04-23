@@ -73,7 +73,7 @@ class Aae extends StatelessWidget {
       theme: ThemeData(fontFamily: 'AmericanSans'),
       title: 'American Essentials',
       navigatorKey: navigatorKey,
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       builder: (context, child) {
         return ScrollConfiguration(
           behavior: CustomScrollBehavior(),

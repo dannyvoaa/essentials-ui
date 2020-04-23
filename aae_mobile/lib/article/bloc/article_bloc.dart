@@ -38,3 +38,5 @@ abstract class NewsArticleBlocFactory implements ProvidedService {
   @provide
   NewsArticleBloc articleBloc();
 }
+
+

@@ -2,6 +2,8 @@ import 'package:aae/article/components/article_component_view_model.dart';
 import 'package:aae/common/widgets/drawer/aae_drawer.dart';
 import 'package:aae/theme/typography.dart';
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class NewsArticleComponent extends StatelessWidget {
   final ArticleComponentViewModel componentViewModel;
@@ -71,7 +73,14 @@ class NewsArticleComponent extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
               //TODO (rpaglinawan): fix overflow
-              child: Text(componentViewModel.articleBody),
+              child: Html(
+                data: componentViewModel.articleBody,
+                padding: EdgeInsets.all(8.0),
+              ),
+//              child: WebView(
+//                initialUrl: 'https://flutter.dev',
+//              ),
+//              child: Text(componentViewModel.articleBody),
             ),
             Container(
               width: 100.0,
