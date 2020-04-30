@@ -80,9 +80,10 @@ class LoginView extends StatelessWidget {
         SizedBox(
           height: AaeDimens.sizeDynamic_32px(),
         ),
+        _buildSigninButton(context),
         TextField(
           decoration: InputDecoration.collapsed(
-              hintText: 'AA ID',
+              hintText: 'AA ID?',
               hintStyle: AaeTextStyles.textFieldModernHint()),
           style: AaeTextStyles.textFieldModern(),
           onChanged: viewModel.onUsernameChanged,
@@ -101,7 +102,7 @@ class LoginView extends StatelessWidget {
         TextField(
           // focusNode: _textFieldFocusNode,
           decoration: InputDecoration.collapsed(
-              hintText: 'Password',
+              hintText: 'Password?',
               hintStyle: AaeTextStyles.textFieldModernHint()),
           obscureText: true,
           style: AaeTextStyles.textFieldModern(),
