@@ -13,6 +13,7 @@ class NewsListRowCollectionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+//    return index == 1 ? _buildVideoRow(viewModel) : _buildRow(viewModel, index);
     return index == 1 ? _buildVideoRow(viewModel) : _buildRow(viewModel, index);
   }
 }
