@@ -39,6 +39,8 @@ class LoginComponent extends StatelessWidget {
     );
   }
 
+  // This is a test comment...
+
   Widget _buildLoadingState(BuildContext context) {
     return Center(child: AaeLoadingSpinner());
   }

@@ -80,42 +80,37 @@ class LoginView extends StatelessWidget {
         SizedBox(
           height: AaeDimens.sizeDynamic_32px(),
         ),
-        _buildSigninButton(context),
         TextField(
           decoration: InputDecoration.collapsed(
-              hintText: 'AA ID?',
+              hintText: 'AA ID',
               hintStyle: AaeTextStyles.textFieldModernHint()),
           style: AaeTextStyles.textFieldModern(),
           onChanged: viewModel.onUsernameChanged,
         ),
-        Container(
-          color: AaeColors.white,
-          height: 2,
+        Divider(
+          color: Colors.white,
+          height: 0,
         ),
         SizedBox(
           height: AaeDimens.sizeDynamic_32px(),
         ),
         TextField(
-          // focusNode: _textFieldFocusNode,
+//          focusNode: _textFieldFocusNode,
           decoration: InputDecoration.collapsed(
-              hintText: 'Password?',
+              hintText: 'Password',
               hintStyle: AaeTextStyles.textFieldModernHint()),
           obscureText: true,
           style: AaeTextStyles.textFieldModern(),
           onChanged: viewModel.onPasswordChanged,
         ),
-        Container(
-          color: AaeColors.white,
-          height: 2,
+        Divider(
+          color: Colors.white,
+          height: 0,
         ),
-//        Spacer(flex: 2,),
-//        _buildAuthentificationSignIn(context),
         SizedBox(
           height: AaeDimens.sizeDynamic_32px(),
         ),
-        Spacer(flex: 2,),
-
-        Spacer(flex: 2,),
+        _buildSigninButton(context),
       ]),
     );
   }
@@ -142,7 +137,7 @@ class LoginView extends StatelessWidget {
         stringTitle: 'Sign in',
       ),
       width: double.infinity,
-      height: 80,
+      height: 60,
     );
   }
 
