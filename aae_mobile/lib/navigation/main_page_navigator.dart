@@ -48,7 +48,7 @@ class MainPageNavigator extends StatelessWidget {
         provider = EventsPageProvider();
         break;
       case MainPage.pay:
-        provider = HomePageProvider();
+        provider = EventsPageProvider();
         break;
       default:
         break;

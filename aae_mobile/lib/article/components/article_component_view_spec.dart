@@ -61,6 +61,10 @@ class NewsArticleComponent extends StatelessWidget {
                   style: AaeTextStyles.h3,
                   textAlign: TextAlign.center,
                 ),
+//                child: Html(
+//                  data: args['articleSubject'],
+//                  padding: EdgeInsets.all(8.0),
+//                ),
               ),
             ),
             Container(

@@ -52,6 +52,21 @@ class AaeTextStyles {
     fontFamily: _americanSans,
   );
 
+  static const smallHeadline = TextStyle(
+    fontSize: 18.0,
+    height: 1.0,
+    fontWeight: _medium,
+    fontFamily: _americanSans,
+  );
+
+  static const smallSummary = TextStyle(
+    fontSize: 12.0,
+    height: 1.0,
+    fontWeight: _medium,
+    fontFamily: _americanSans,
+    color: AaeColors.darkGray,
+  );
+
   static const btn1 = TextStyle(
     fontSize: 16.0,
     height: 1.50,

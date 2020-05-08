@@ -1,5 +1,7 @@
 import 'package:aae/theme/colors.dart';
+import 'package:aae/theme/typography.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 const _maxTitleLines = 2;
 
@@ -43,7 +45,7 @@ class ListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(6.0),
       child: Container(
         decoration: BoxDecoration(
           boxShadow: [
@@ -55,7 +57,8 @@ class ListViewItem extends StatelessWidget {
             ),
           ],
         ),
-        width: 272,
+        width: 290,
+//        height: 300,
         child: GestureDetector(
           child: _buildListItemRow(),
           onTap: onTapped,
@@ -76,7 +79,10 @@ class ListViewItem extends StatelessWidget {
 
   Widget _buildImage(ImageProvider image) {
     return Container(
-      constraints: BoxConstraints(maxHeight: 144, maxWidth: 272),
+      constraints: BoxConstraints(
+        maxHeight: 156,
+//        maxWidth: 272,
+      ),
       decoration: BoxDecoration(
         image: DecorationImage(
           alignment: Alignment.topCenter,
@@ -90,7 +96,7 @@ class ListViewItem extends StatelessWidget {
   Widget _buildInfoPanel(List<Widget> children) {
     return Container(
       color: AaeColors.white,
-      padding: EdgeInsets.symmetric(horizontal: 8),
+      padding: EdgeInsets.symmetric(horizontal: 14.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: children,
@@ -100,14 +106,19 @@ class ListViewItem extends StatelessWidget {
 
   static Widget _buildTitle(String text) {
     return Padding(
-      padding: const EdgeInsets.only(top: 14.0),
-      child: Text(
-        text,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: TextStyle(
-            color: AaeColors.black, fontSize: 17, fontWeight: FontWeight.w500),
+      padding: const EdgeInsets.only(top: 8.0),
+      child: Html(
+        data: text,
+        useRichText: false,
+        defaultTextStyle: AaeTextStyles.smallHeadline,
       ),
+//      child: Text(
+//        text,
+//        maxLines: 1,
+//        overflow: TextOverflow.ellipsis,
+//        style: TextStyle(
+//            color: AaeColors.black, fontSize: 17, fontWeight: FontWeight.w500),
+//      ),
     );
   }
 
@@ -116,21 +127,28 @@ class ListViewItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 5.0),
-          child: Text(body,
-              maxLines: _maxTitleLines,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 12)),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 8.0, bottom: 3),
-          child: Text(
-            'By $author',
-            style: TextStyle(
-              fontSize: 12,
+            padding: const EdgeInsets.only(top: 5.0),
+            child: Html(
+              data: body,
+//              padding: EdgeInsets.all(8.0),
+//              defaultTextStyle: AaeTextStyles.smallSummary,
+            )
+//          child: Text(
+//            body,
+//            maxLines: _maxTitleLines,
+//            overflow: TextOverflow.ellipsis,
+//            style: TextStyle(fontSize: 12),
+//          ),
             ),
-          ),
-        )
+//        Padding(
+//          padding: const EdgeInsets.only(top: 8.0, bottom: 3),
+//          child: Text(
+//            'By $author',
+//            style: TextStyle(
+//              fontSize: 10,
+//            ),
+//          ),
+//        )
       ],
     );
   }

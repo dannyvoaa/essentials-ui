@@ -13,14 +13,15 @@ class NewsListRowCollectionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return _buildRow(viewModel, index);
 //    return index == 1 ? _buildVideoRow(viewModel) : _buildRow(viewModel, index);
-    return index == 1 ? _buildVideoRow(viewModel) : _buildRow(viewModel, index);
+
   }
 }
 
 _buildRow(NewsListRowCollectionViewModel viewModel, index) {
   return Container(
-    height: 280,
+    height: 370,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -29,7 +30,7 @@ _buildRow(NewsListRowCollectionViewModel viewModel, index) {
           child: _buildRowHeader(viewModel, index),
         ),
         Container(
-          height: 248,
+          height: 340,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: viewModel.newsFeedItemIds.length,
