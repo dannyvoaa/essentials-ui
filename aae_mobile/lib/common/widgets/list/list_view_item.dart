@@ -131,7 +131,7 @@ class ListViewItem extends StatelessWidget {
             child: Html(
               data: body,
 //              padding: EdgeInsets.all(8.0),
-//              defaultTextStyle: AaeTextStyles.smallSummary,
+              defaultTextStyle: AaeTextStyles.smallSummary,
             )
 //          child: Text(
 //            body,

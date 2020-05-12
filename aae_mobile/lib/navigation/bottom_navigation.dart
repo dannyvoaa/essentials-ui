@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 
 /// Main navigation bar.
 
-enum MainPage { home, learning, travel, pay, events }
+enum MainPage { home, learning, travel, pay, events, notifications }
 
 const _labelTextStyle = TextStyle(
   fontFamily: 'AmericanSans',
   letterSpacing: .25,
   fontWeight: FontWeight.w500,
+  fontSize: 12,
 );
 
 class BottomNavigation extends StatelessWidget {
@@ -24,14 +25,17 @@ class BottomNavigation extends StatelessWidget {
     MainPage.learning: 'Learning',
     MainPage.travel: 'Travel',
     MainPage.pay: 'Pay',
-    MainPage.events: 'Events',
+    MainPage.events: 'Calendar',
+    MainPage.notifications: 'Notifications',
   };
 
   static final Map<MainPage, IconData> tabIconData = {
     MainPage.home: AaeIcons.home,
     MainPage.learning: AaeIcons.learning,
     MainPage.travel: AaeIcons.travel,
-    MainPage.pay: AaeIcons.calendar,
+//    MainPage.pay: AaeIcons.calendar,
+    MainPage.notifications: AaeIcons.notifications,
+    MainPage.events: AaeIcons.calendar,
 //    MainPage.events: AaeIcons.calendar,
   };
 
@@ -46,27 +50,46 @@ class BottomNavigation extends StatelessWidget {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       items: [
-        _buildItem(MainPage.home, context),
-        _buildItem(MainPage.learning, context),
-        _buildItem(MainPage.travel, context),
-        _buildItem(MainPage.pay, context)
+        _buildItem(MainPage.home, context, 24, 0.0),
+        _buildItem(MainPage.notifications, context, 18, 0.0),
+        _buildItem(MainPage.travel, context, 18, 0.0),
+        _buildItem(MainPage.events, context, 24, 0.0),
+//        _buildItem(MainPage.pay, context),
+
       ],
       onTap: (index) => _onSelectTab(MainPage.values[index]),
     );
   }
 
-  BottomNavigationBarItem _buildItem(MainPage page, BuildContext context) {
+  BottomNavigationBarItem _buildItem(MainPage page, BuildContext context, double size, double offset) {
     final tabColor = _tabColor(page);
     return BottomNavigationBarItem(
-        icon: Icon(
-          tabIconData[page],
-          size: 18,
-          color: tabColor,
-          key: Key("TabIcon.$page"),
+        icon: Align(
+          alignment: Alignment.center,
+          child: Padding(
+            padding: const EdgeInsets.only(right: 0.0),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Icon(
+                tabIconData[page],
+                size: size,
+                color: tabColor,
+                key: Key("TabIcon.$page"),
+
+              ),
+            ),
+          ),
         ),
-        title: Text(
-          tabText[page],
-          style: _labelTextStyle.copyWith(color: tabColor),
+        title: Container(
+          height: 24,
+          child: Padding(
+            padding: const EdgeInsets.only(top:10),
+            child: Text(
+              tabText[page],
+              style: _labelTextStyle.copyWith(color: tabColor),
+              textAlign: TextAlign.center,
+            ),
+          ),
         ));
   }
 

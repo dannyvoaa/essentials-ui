@@ -25,23 +25,29 @@ class D0StatsComponent extends StatelessWidget {
                 color: Color(0xFFD0DAE0),
                 height: 32,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(left: 15.0),
                       child: D0StatsTick('AAL: ', snapshot.value.stockStats.price, snapshot.value.stockStats.aalChange),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 60),
-                      child: D0StatsTick('D0: ', snapshot.value.performanceStats.d0, snapshot.value.performanceStats.d0Change),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(left: 60),
+                          child: D0StatsTickPercent('D0: ', snapshot.value.performanceStats.d0, snapshot.value.performanceStats.d0Change),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: D0StatsTickPercent('A14: ', snapshot.value.performanceStats.a14, snapshot.value.performanceStats.a14Change),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0, right:20.0),
+                          child: D0StatsTickPercent('CF: ', snapshot.value.performanceStats.cf, snapshot.value.performanceStats.cfChange),
+                        ),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: D0StatsTick('A14: ', snapshot.value.performanceStats.a14, snapshot.value.performanceStats.a14Change),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: D0StatsTick('CF: ', snapshot.value.performanceStats.cf, snapshot.value.performanceStats.cfChange),
-                    )
                   ],
                 ),
               );
