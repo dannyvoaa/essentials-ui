@@ -26,14 +26,15 @@ _buildRow(NewsListRowCollectionViewModel viewModel, index) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(left: 10, top: 16),
+          padding: const EdgeInsets.only(left: 14, top: 10),
           child: _buildRowHeader(viewModel, index),
         ),
         Container(
-          height: 260,
+          height: 280,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: viewModel.newsFeedItemIds.length,
+            padding: EdgeInsets.only(left:3.0,),
             itemBuilder: (_, index) {
               return Padding(
 //                padding: EdgeInsets.symmetric(horizontal: 6),
@@ -110,7 +111,7 @@ _buildRowHeader(NewsListRowCollectionViewModel viewModel, index) {
         return Text(
           'News',
           style: TextStyle(
-              fontSize: 14,
+              fontSize: 16,
               color: Color(0xFF0078D2),
               fontWeight: FontWeight.bold),
         );
@@ -122,7 +123,7 @@ _buildRowHeader(NewsListRowCollectionViewModel viewModel, index) {
         return Text(
           'Workgroup',
           style: TextStyle(
-              fontSize: 14,
+              fontSize: 16,
               color: Color(0xFF0078D2),
               fontWeight: FontWeight.bold),
         );
@@ -134,7 +135,7 @@ _buildRowHeader(NewsListRowCollectionViewModel viewModel, index) {
         return Text(
           'Location',
           style: TextStyle(
-              fontSize: 14,
+              fontSize: 16,
               color: Color(0xFF0078D2),
               fontWeight: FontWeight.bold),
         );
@@ -146,7 +147,7 @@ _buildRowHeader(NewsListRowCollectionViewModel viewModel, index) {
         return Text(
           toBeginningOfSentenceCase(viewModel.newsFeedItemCategories[index]),
           style: TextStyle(
-              fontSize: 14,
+              fontSize: 16,
               color: Color(0xFF0078D2),
               fontWeight: FontWeight.bold),
         );

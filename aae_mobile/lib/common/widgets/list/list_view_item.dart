@@ -54,8 +54,8 @@ class ListViewItem extends StatelessWidget {
               color: Colors.black12,
 //              color: AaeColors.lightGray,
               offset: Offset(0.0, 0.0),
-              blurRadius: 3,
-              spreadRadius: 0,
+              blurRadius: 2,
+              spreadRadius: 1,
             ),
           ],
         ),
@@ -96,12 +96,14 @@ class ListViewItem extends StatelessWidget {
   }
 
   Widget _buildInfoPanel(List<Widget> children) {
-    return Container(
-      color: AaeColors.white,
-      padding: EdgeInsets.symmetric(horizontal: 14.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: children,
+    return Expanded(
+      child: Container(
+        color: AaeColors.white,
+        padding: EdgeInsets.symmetric(horizontal: 14.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: children,
+        ),
       ),
     );
   }

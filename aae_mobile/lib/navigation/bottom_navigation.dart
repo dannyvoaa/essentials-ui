@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 /// Main navigation bar.
 
-enum MainPage { home, learning, travel, pay, events, notifications }
+enum MainPage { home, travel, pay, events, notifications }
 
 const _labelTextStyle = TextStyle(
   fontFamily: 'AmericanSans',
@@ -22,21 +22,16 @@ class BottomNavigation extends StatelessWidget {
 
   static final Map<MainPage, String> tabText = {
     MainPage.home: 'Home',
-    MainPage.learning: 'Learning',
     MainPage.travel: 'Travel',
-    MainPage.pay: 'Pay',
     MainPage.events: 'Calendar',
     MainPage.notifications: 'Notifications',
   };
 
   static final Map<MainPage, IconData> tabIconData = {
     MainPage.home: AaeIcons.home,
-    MainPage.learning: AaeIcons.learning,
     MainPage.travel: AaeIcons.travel,
-//    MainPage.pay: AaeIcons.calendar,
     MainPage.notifications: AaeIcons.notifications,
     MainPage.events: AaeIcons.calendar,
-//    MainPage.events: AaeIcons.calendar,
   };
 
   BottomNavigation(
@@ -75,8 +70,6 @@ class BottomNavigation extends StatelessWidget {
           _buildItem(MainPage.notifications, context, 18, 6.0),
           _buildItem(MainPage.travel, context, 18, 5.0),
           _buildItem(MainPage.events, context, 24, 2.0),
-//        _buildItem(MainPage.pay, context),
-
         ],
         onTap: (index) => _onSelectTab(MainPage.values[index]),
       ),

@@ -47,9 +47,9 @@ class AppScaffoldState extends State<AppScaffold> {
       child: Scaffold(
           body: Stack(children: <Widget>[
             _buildOffstageNavigator(MainPage.home),
-            _buildOffstageNavigator(MainPage.learning),
+            _buildOffstageNavigator(MainPage.notifications),
             _buildOffstageNavigator(MainPage.travel),
-            _buildOffstageNavigator(MainPage.pay),
+            _buildOffstageNavigator(MainPage.events),
           ]),
           bottomNavigationBar: BottomNavigation(
             currentPage: _currentPage,
