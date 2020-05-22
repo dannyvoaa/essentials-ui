@@ -22,9 +22,9 @@ class AppScaffoldState extends State<AppScaffold> {
 
   final Map<MainPage, GlobalKey<NavigatorState>> _navigatorKeys = {
     MainPage.home: GlobalKey<NavigatorState>(),
-    MainPage.learning: GlobalKey<NavigatorState>(),
+    MainPage.notifications: GlobalKey<NavigatorState>(),
     MainPage.travel: GlobalKey<NavigatorState>(),
-    MainPage.pay: GlobalKey<NavigatorState>(),
+    MainPage.events: GlobalKey<NavigatorState>(),
   };
 
   void _selectTab(MainPage newPage) {

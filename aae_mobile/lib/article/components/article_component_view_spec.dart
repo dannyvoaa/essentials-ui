@@ -2,8 +2,10 @@ import 'package:aae/article/components/article_component_view_model.dart';
 import 'package:aae/common/widgets/drawer/aae_drawer.dart';
 import 'package:aae/theme/typography.dart';
 import 'package:flutter/material.dart';
+import 'package:aae/theme/colors.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 class NewsArticleComponent extends StatelessWidget {
   final ArticleComponentViewModel componentViewModel;
@@ -15,7 +17,9 @@ class NewsArticleComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         endDrawer: AaeDrawer(),
-        appBar: AppBar(),
+        appBar: GradientAppBar(
+          gradient: AaeColors.appBarGradient,
+        ),
         body: SafeArea(
           child: CustomScrollView(
             controller: _scrollController,
@@ -56,15 +60,16 @@ class NewsArticleComponent extends StatelessWidget {
             ),
             Container(
               child: Center(
-                child: Text(
-                  args['articleSubject'],
-                  style: AaeTextStyles.h3,
-                  textAlign: TextAlign.center,
-                ),
-//                child: Html(
-//                  data: args['articleSubject'],
-//                  padding: EdgeInsets.all(8.0),
+//                child: Text(
+//                  args['articleSubject'],
+//                  style: AaeTextStyles.h3,
+//                  textAlign: TextAlign.center,
 //                ),
+                child: Html(
+                  data: args['articleSubject'],
+                  padding: EdgeInsets.all(8.0),
+                  defaultTextStyle: AaeTextStyles.smallHeadline,
+                ),
               ),
             ),
             Container(

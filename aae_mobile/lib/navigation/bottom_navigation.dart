@@ -10,7 +10,7 @@ const _labelTextStyle = TextStyle(
   fontFamily: 'AmericanSans',
   letterSpacing: .25,
   fontWeight: FontWeight.w500,
-  fontSize: 12,
+  fontSize: 10,
 );
 
 class BottomNavigation extends StatelessWidget {
@@ -47,37 +47,55 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      items: [
-        _buildItem(MainPage.home, context, 24, 0.0),
-        _buildItem(MainPage.notifications, context, 18, 0.0),
-        _buildItem(MainPage.travel, context, 18, 0.0),
-        _buildItem(MainPage.events, context, 24, 0.0),
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(
+            width: 1.0,
+            color: AaeColors.ultraLightGray,
+          ),
+        ),
+//        boxShadow: [
+//          BoxShadow(
+//            color: AaeColors.darkGray,
+//            blurRadius: 15.0,
+//            spreadRadius: 5.0,
+//            offset: Offset(
+//              15.0,
+//              15.0,
+//            ),
+//          ),
+//        ],
+      ),
+      child: BottomNavigationBar(
+        elevation: 8.0,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          _buildItem(MainPage.home, context, 24, 2.0),
+          _buildItem(MainPage.notifications, context, 18, 6.0),
+          _buildItem(MainPage.travel, context, 18, 5.0),
+          _buildItem(MainPage.events, context, 24, 2.0),
 //        _buildItem(MainPage.pay, context),
 
-      ],
-      onTap: (index) => _onSelectTab(MainPage.values[index]),
+        ],
+        onTap: (index) => _onSelectTab(MainPage.values[index]),
+      ),
     );
   }
 
   BottomNavigationBarItem _buildItem(MainPage page, BuildContext context, double size, double offset) {
     final tabColor = _tabColor(page);
     return BottomNavigationBarItem(
-        icon: Align(
-          alignment: Alignment.center,
-          child: Padding(
-            padding: const EdgeInsets.only(right: 0.0),
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: Icon(
-                tabIconData[page],
-                size: size,
-                color: tabColor,
-                key: Key("TabIcon.$page"),
-
-              ),
-            ),
+        icon: Container(
+          height: 20,
+          width: 1000,
+          padding: EdgeInsets.only(top: offset,),
+//          alignment: Alignment.bottomCenter,
+          child: Icon(
+            tabIconData[page],
+            size: size,
+            color: tabColor,
+            key: Key("TabIcon.$page"),
           ),
         ),
         title: Container(

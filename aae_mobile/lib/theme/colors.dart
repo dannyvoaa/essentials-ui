@@ -78,6 +78,7 @@ class AaeColors {
   static const headerBackgroupd = Color(0xFF0293FF);
 
   static const recognitionGreen = Color(0xFF00B989);
+  static const gradientTop = Color.fromRGBO(77, 180, 250, 1.0);
 
   // Text
   static const screenSelectorText = Color.fromRGBO(255, 255, 255, 0.9);
@@ -92,4 +93,11 @@ class AaeColors {
   // Text field
   static const textFieldFillColor = Color.fromRGBO(0, 0, 0, 0.3);
   static const primaryBackground = Color.fromRGBO(32, 33, 36, 1.0);
+
+  //Gradient Colors
+  static const appBarGradient = LinearGradient(
+      begin: Alignment.bottomCenter,
+      end: Alignment.topCenter,
+//      stops: [0.1, 0.4, 0.6, 0.9],
+      colors: [AaeColors.blue, AaeColors.gradientTop]);
 }

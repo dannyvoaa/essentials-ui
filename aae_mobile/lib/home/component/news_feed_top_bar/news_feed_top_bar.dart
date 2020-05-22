@@ -6,6 +6,7 @@ import 'package:aae/navigation/routes.dart' as routes;
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/typography.dart';
 import 'package:flutter/material.dart';
+import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 /// A app bar for the news feed page.
 class NewsFeedTopBar extends StatelessWidget implements PreferredSizeWidget {
@@ -17,9 +18,26 @@ class NewsFeedTopBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      centerTitle: false,
-      title: TopBarTitleComponent(),
+    return Container(
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: AaeColors.lightGray,
+              blurRadius: 5.0,
+              spreadRadius: 1.0,
+              offset: Offset(
+                0.0,
+                0.0,
+              ),
+            ),
+          ],
+        ),
+        child: GradientAppBar(
+          centerTitle: false,
+//      backgroundColor: AaeColors.lightOrange,
+          title: TopBarTitleComponent(),
+          gradient: AaeColors.appBarGradient,
 //      flexibleSpace: Container(
 //        decoration: BoxDecoration(
 //          gradient: LinearGradient(
@@ -32,10 +50,10 @@ class NewsFeedTopBar extends StatelessWidget implements PreferredSizeWidget {
 //          ),
 //        ),
 //      ),
-      bottom: PreferredSize(
-        preferredSize: preferredSize,
-        child: Column(
-          children: <Widget>[
+          bottom: PreferredSize(
+            preferredSize: preferredSize,
+            child: Column(
+              children: <Widget>[
 //            Row(
 //              children: <Widget>[
 //                GestureDetector(
@@ -98,11 +116,13 @@ class NewsFeedTopBar extends StatelessWidget implements PreferredSizeWidget {
 //                ),
 //              ],
 //            ),
-            D0StatsComponent(),
-          ],
+                D0StatsComponent(),
+              ],
+            ),
+          ),
+          elevation: _elevation,
         ),
       ),
-      elevation: _elevation,
     );
   }
 }

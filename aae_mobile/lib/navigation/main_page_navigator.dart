@@ -41,13 +41,13 @@ class MainPageNavigator extends StatelessWidget {
       case MainPage.home:
         provider = NewsPageProvider();
         break;
-      case MainPage.learning:
-        provider = RecognitionPageProvider();
+      case MainPage.notifications:
+        provider = NotificationPageProvider();
         break;
       case MainPage.travel:
         provider = EventsPageProvider();
         break;
-      case MainPage.pay:
+      case MainPage.events:
         provider = EventsPageProvider();
         break;
       default:

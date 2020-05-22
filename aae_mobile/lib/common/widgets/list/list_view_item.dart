@@ -45,14 +45,16 @@ class ListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(6.0),
+//      padding: const EdgeInsets.all(6.0),
+      padding: const EdgeInsets.only(left: 6.0, top: 6.0, bottom: 6.0),
       child: Container(
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
               color: Colors.black12,
-              offset: Offset(0, -2),
-              blurRadius: 5,
+//              color: AaeColors.lightGray,
+              offset: Offset(0.0, 0.0),
+              blurRadius: 3,
               spreadRadius: 0,
             ),
           ],
@@ -127,7 +129,7 @@ class ListViewItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-            padding: const EdgeInsets.only(top: 5.0),
+            padding: const EdgeInsets.only(bottom: 8.0, top: 5.0),
             child: Html(
               data: body,
 //              padding: EdgeInsets.all(8.0),

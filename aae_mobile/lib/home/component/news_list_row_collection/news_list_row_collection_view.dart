@@ -21,7 +21,7 @@ class NewsListRowCollectionView extends StatelessWidget {
 
 _buildRow(NewsListRowCollectionViewModel viewModel, index) {
   return Container(
-    height: 370,
+//    height: 370,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -30,13 +30,14 @@ _buildRow(NewsListRowCollectionViewModel viewModel, index) {
           child: _buildRowHeader(viewModel, index),
         ),
         Container(
-          height: 340,
+          height: 260,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: viewModel.newsFeedItemIds.length,
             itemBuilder: (_, index) {
               return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 6),
+//                padding: EdgeInsets.symmetric(horizontal: 6),
+                padding: EdgeInsets.only(left:6.0),
                 child: NewsListItemComponent(
                   newsFeedItemId: viewModel.newsFeedItemIds[index],
                 ),

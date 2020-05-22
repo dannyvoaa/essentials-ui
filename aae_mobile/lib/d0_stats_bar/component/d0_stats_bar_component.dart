@@ -61,18 +61,23 @@ class D0StatsComponent extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 15.0),
                       child: D0StatsTick('AAL: ', '-.-', "Black"),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 60),
-                      child: D0StatsTick('D0: ', '-.-', "Black"),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(left: 60),
+                          child: D0StatsTick('D0: ', '-.-', "Black"),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: D0StatsTick('A14: ', '-.-',  "Black"),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: D0StatsTick('CF: ', '-.-',  "Black"),
+                        ),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: D0StatsTick('A14: ', '-.-',  "Black"),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: D0StatsTick('CF: ', '-.-',  "Black"),
-                    )
                   ],
                 ),
               );

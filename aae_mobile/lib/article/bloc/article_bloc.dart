@@ -30,6 +30,8 @@ class NewsArticleBloc {
         ..articleBody = article.contentString.content);
 
   void loadArticle(String articleId) {
+    print("Article ID");
+    print(articleId);
     _newsArticleRepository.loadFullArticle(articleId);
   }
 }
