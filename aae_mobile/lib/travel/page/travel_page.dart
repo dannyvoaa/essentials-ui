@@ -15,7 +15,15 @@ class TravelPage extends StatelessWidget {
         elevation: 1,
       ),
       body: SingleChildScrollView(
-        child: SafeArea(),
+        child: SafeArea(
+          child: Expanded(
+            child: Container(
+              child: Text(
+                'Testing...',
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

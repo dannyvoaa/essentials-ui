@@ -7,7 +7,7 @@ import 'package:aae/rxdart/rx.dart';
 import 'package:inject/inject.dart';
 import 'package:logging/logging.dart';
 
-import 'travel_view_model.dart';
+import 'package:aae/travel/travel_view_model.dart';
 
 /// Add leading documentation here
 class TravelTravelBloc {

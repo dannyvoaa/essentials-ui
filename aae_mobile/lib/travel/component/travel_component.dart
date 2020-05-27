@@ -6,7 +6,7 @@ import 'package:aae/bloc/source_builder.dart';
 import 'package:aae/common/widgets/component/component.dart';
 import 'package:flutter/material.dart';
 
-import '../component/travel_bloc.dart';
+import 'package:aae/travel/bloc/travel_bloc.dart';
 import '../travel_view_model.dart';
 
 class TravelTravelComponent extends StatelessWidget {
