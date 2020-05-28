@@ -100,4 +100,10 @@ class AaeColors {
       end: Alignment.topCenter,
 //      stops: [0.1, 0.4, 0.6, 0.9],
       colors: [AaeColors.blue, AaeColors.gradientTop]);
+
+  static const tickerGradient = LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      stops: [0.02, 0.4,],
+      colors: [AaeColors.gray, Color(0xFFD0DAE0)]);
 }

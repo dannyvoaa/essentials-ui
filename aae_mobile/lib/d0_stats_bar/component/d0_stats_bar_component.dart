@@ -8,6 +8,7 @@ import 'package:aae/common/widgets/loading/aae_loading_spinner.dart';
 import 'package:aae/d0_stats_bar/bloc/d0_stats_bar_bloc.dart';
 import 'package:aae/d0_stats_bar/page/d0_stats_tick.dart';
 import 'package:flutter/material.dart';
+import 'package:aae/theme/colors.dart';
 
 import '../d0_stats_bar_view_model.dart';
 
@@ -22,29 +23,45 @@ class D0StatsComponent extends StatelessWidget {
           builder: (snapshot) {
             if (snapshot.present) {
               return Container(
-                color: Color(0xFFD0DAE0),
+//                color: Color(0xFFD0DAE0),
                 height: 32,
+                decoration: BoxDecoration(
+                  gradient: AaeColors.tickerGradient,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(left: 15.0),
-                      child: D0StatsTick('AAL: ', snapshot.value.stockStats.price, snapshot.value.stockStats.aalChange),
+                      child: D0StatsTick(
+                          'AAL: ',
+                          snapshot.value.stockStats.price,
+                          snapshot.value.stockStats.aalChange),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(left: 60),
-                          child: D0StatsTickPercent('D0: ', snapshot.value.performanceStats.d0, snapshot.value.performanceStats.d0Change),
+                          child: D0StatsTickPercent(
+                              'D0: ',
+                              snapshot.value.performanceStats.d0,
+                              snapshot.value.performanceStats.d0Change),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
-                          child: D0StatsTickPercent('A14: ', snapshot.value.performanceStats.a14, snapshot.value.performanceStats.a14Change),
+                          child: D0StatsTickPercent(
+                              'A14: ',
+                              snapshot.value.performanceStats.a14,
+                              snapshot.value.performanceStats.a14Change),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 20.0, right:20.0),
-                          child: D0StatsTickPercent('CF: ', snapshot.value.performanceStats.cf, snapshot.value.performanceStats.cfChange),
+                          padding:
+                              const EdgeInsets.only(left: 20.0, right: 20.0),
+                          child: D0StatsTickPercent(
+                              'CF: ',
+                              snapshot.value.performanceStats.cf,
+                              snapshot.value.performanceStats.cfChange),
                         ),
                       ],
                     ),
@@ -70,11 +87,12 @@ class D0StatsComponent extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
-                          child: D0StatsTick('A14: ', '-.-',  "Black"),
+                          child: D0StatsTick('A14: ', '-.-', "Black"),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 20.0, right:20.0),
-                          child: D0StatsTick('CF: ', '-.-',  "Black"),
+                          padding:
+                              const EdgeInsets.only(left: 20.0, right: 20.0),
+                          child: D0StatsTick('CF: ', '-.-', "Black"),
                         ),
                       ],
                     ),

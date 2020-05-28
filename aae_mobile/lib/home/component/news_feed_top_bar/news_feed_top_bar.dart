@@ -20,19 +20,19 @@ class NewsFeedTopBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: AaeColors.lightGray,
-              blurRadius: 5.0,
-              spreadRadius: 1.0,
-              offset: Offset(
-                0.0,
-                0.0,
-              ),
-            ),
-          ],
-        ),
+//        decoration: BoxDecoration(
+//          boxShadow: [
+//            BoxShadow(
+//              color: AaeColors.lightGray,
+//              blurRadius: 5.0,
+//              spreadRadius: 1.0,
+//              offset: Offset(
+//                0.0,
+//                0.0,
+//              ),
+//            ),
+//          ],
+//        ),
         child: GradientAppBar(
           centerTitle: false,
 //      backgroundColor: AaeColors.lightOrange,

@@ -84,11 +84,15 @@ class BottomNavigation extends StatelessWidget {
           width: 1000,
           padding: EdgeInsets.only(top: offset,),
 //          alignment: Alignment.bottomCenter,
-          child: Icon(
-            tabIconData[page],
-            size: size,
-            color: tabColor,
-            key: Key("TabIcon.$page"),
+          child: Container(
+            height:80,
+            width:1000,
+            child: Icon(
+              tabIconData[page],
+              size: size,
+              color: tabColor,
+              key: Key("TabIcon.$page"),
+            ),
           ),
         ),
         title: Container(
