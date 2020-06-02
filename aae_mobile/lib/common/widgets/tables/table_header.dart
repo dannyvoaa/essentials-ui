@@ -13,7 +13,7 @@ class TableHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Text(
-        stringTitle.toUpperCase(),
+        stringTitle.toString(),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: AaeTextStyles.tableHeaderFooter(),

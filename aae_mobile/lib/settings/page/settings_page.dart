@@ -8,14 +8,15 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AaeColors.white,
+        backgroundColor: AaeColors.blue,
         elevation: 1,
-        title: Text(
-          'Settings',
-          style: TextStyle(fontSize: 16, color: AaeColors.darkGray),
-        ),
+//        title: Text(
+//          'Settings',
+//          style: TextStyle(fontSize: 16, color: AaeColors.white),
+//        ),
         centerTitle: true,
-        leading: CloseButton(color: AaeColors.darkGray),
+        leading:  CloseButton(color: AaeColors.white),//new IconButton(icon: new Icon(Icons.arrow_back), color: AaeColors.white),
+    //CloseButton(color: AaeColors.white),
       ),
       body: SettingsListComponent(),
     );

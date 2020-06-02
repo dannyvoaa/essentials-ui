@@ -152,7 +152,7 @@ class AaeTextStyles {
   }) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       color: AaeColors.darkGray,
-      fontSize: 14,
+      fontSize: 16,
       height: 1.165,
     );
     // Default style
@@ -163,9 +163,13 @@ class AaeTextStyles {
     bool boolDefaultHeight = false,
     bool boolEnabled = true,
   }) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith();
+    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
+      color: AaeColors.lightGray,
+    );
     // Default style
+
     return textStyle;
+
   }
 
   /// Used for regular-sized headline content
@@ -232,7 +236,9 @@ class AaeTextStyles {
 
   static TextStyle tableCellValue(
       {bool boolDefaultHeight = false, bool boolEnabled = true}) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith();
+    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
+      color: AaeColors.lightGray,
+    );
 
     // Default style
     return textStyle;
