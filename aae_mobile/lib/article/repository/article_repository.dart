@@ -11,7 +11,9 @@ class NewsArticleRepository implements Repository {
 
   static const cacheKey = 'NewsArticleRepository.News';
 
-  final _article = createBehaviorSubject<NewsArticle>();
+  final _article = createBehaviorSubject<NewsArticle>()
+    ..distinctUntilChanged();
+
   Observable<NewsArticle> get onSelectedArticle => _article;
 
   final NewsServiceApi _apiClient;
@@ -25,6 +27,9 @@ class NewsArticleRepository implements Repository {
   void loadFullArticle(String id) async {
     try {
       NewsArticle data = await _apiClient.getArticleData(articleId: id);
+      print('This is the unique article ID...');
+      print(id);
+      print(data);
       _log.shout('${data.runtimeType}');
       publishNewsArticle(data);
     } catch (e, s) {
@@ -34,10 +39,15 @@ class NewsArticleRepository implements Repository {
   }
 
   void publishNewsArticle(NewsArticle newsArticle) {
-    _newsArticleSubject
+    _article
       ..sendNext(newsArticle)
       ..sendCompleted();
   }
+
+  void viewNewsArticle(NewsArticle newsArticle) {
+    print('News article display...');
+  }
+
 
   @provide
   @singleton
@@ -46,6 +56,8 @@ class NewsArticleRepository implements Repository {
   @override
   void clear() {
     // TODO: implement clear
+//    const cacheKey = cacheKey.empty;
+    print('cleared');
   }
 
   @override
