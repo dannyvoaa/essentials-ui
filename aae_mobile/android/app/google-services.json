@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "492576401971",
+    "firebase_url": "https://aa-essentials.firebaseio.com",
+    "project_id": "aa-essentials",
+    "storage_bucket": "aa-essentials.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492576401971:android:3498fc81e8f384bd76d146",
+        "android_client_info": {
+          "package_name": "cai.aae"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "492576401971-fj577uh0fgp146pbapehk5ivqckr7h5u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDckigET7IbAjFd_v35PxXivBTerN4f8hk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "492576401971-fj577uh0fgp146pbapehk5ivqckr7h5u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "492576401971-l3eivon9av31sd7rqcqt16vh9acf8nte.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "american-essentials.aae"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
