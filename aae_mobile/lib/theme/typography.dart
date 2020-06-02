@@ -33,7 +33,7 @@ class AaeTextStyles {
 
   static const h4 = TextStyle(
     fontSize: 24.0,
-    height: 1.33,
+    height: 1.1,
     fontWeight: _medium,
     fontFamily: _americanSans,
   );

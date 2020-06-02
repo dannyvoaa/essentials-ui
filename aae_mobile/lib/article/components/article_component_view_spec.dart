@@ -60,15 +60,10 @@ class NewsArticleComponent extends StatelessWidget {
             ),
             Container(
               child: Center(
-//                child: Text(
-//                  args['articleSubject'],
-//                  style: AaeTextStyles.h3,
-//                  textAlign: TextAlign.center,
-//                ),
                 child: Html(
                   data: args['articleSubject'],
-                  padding: EdgeInsets.all(8.0),
-                  defaultTextStyle: AaeTextStyles.smallHeadline,
+                  padding: EdgeInsets.all(18.0),
+                  defaultTextStyle: AaeTextStyles.h4,
                 ),
               ),
             ),
@@ -86,10 +81,6 @@ class NewsArticleComponent extends StatelessWidget {
                 data: componentViewModel.articleBody,
                 padding: EdgeInsets.all(8.0),
               ),
-//              child: WebView(
-//                initialUrl: 'https://flutter.dev',
-//              ),
-//              child: Text(componentViewModel.articleBody),
             ),
             Container(
               width: 100.0,

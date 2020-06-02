@@ -61,9 +61,12 @@ class ListViewItem extends StatelessWidget {
         ),
         width: 290,
 //        height: 300,
-        child: GestureDetector(
-          child: _buildListItemRow(),
-          onTap: onTapped,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(3.0),
+          child: GestureDetector(
+            child: _buildListItemRow(),
+            onTap: onTapped,
+          ),
         ),
       ),
     );
@@ -81,17 +84,17 @@ class ListViewItem extends StatelessWidget {
 
   Widget _buildImage(ImageProvider image) {
     return Container(
-      constraints: BoxConstraints(
-        maxHeight: 156,
-//        maxWidth: 272,
+      height: 156,
+      child: Image(
+        image: image,
       ),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          alignment: Alignment.topCenter,
-          fit: BoxFit.fill,
-          image: image,
-        ),
-      ),
+//      decoration: BoxDecoration(
+//        image: DecorationImage(
+//          alignment: Alignment.topCenter,
+//          fit: BoxFit.fill,
+//          image: image,
+//        ),
+//      ),
     );
   }
 
@@ -116,13 +119,6 @@ class ListViewItem extends StatelessWidget {
         useRichText: false,
         defaultTextStyle: AaeTextStyles.smallHeadline,
       ),
-//      child: Text(
-//        text,
-//        maxLines: 1,
-//        overflow: TextOverflow.ellipsis,
-//        style: TextStyle(
-//            color: AaeColors.black, fontSize: 17, fontWeight: FontWeight.w500),
-//      ),
     );
   }
 
@@ -131,28 +127,12 @@ class ListViewItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-            padding: const EdgeInsets.only(bottom: 8.0, top: 5.0),
-            child: Html(
-              data: body,
-//              padding: EdgeInsets.all(8.0),
-              defaultTextStyle: AaeTextStyles.smallSummary,
-            )
-//          child: Text(
-//            body,
-//            maxLines: _maxTitleLines,
-//            overflow: TextOverflow.ellipsis,
-//            style: TextStyle(fontSize: 12),
-//          ),
-            ),
-//        Padding(
-//          padding: const EdgeInsets.only(top: 8.0, bottom: 3),
-//          child: Text(
-//            'By $author',
-//            style: TextStyle(
-//              fontSize: 10,
-//            ),
-//          ),
-//        )
+          padding: const EdgeInsets.only(bottom: 8.0, top: 5.0),
+          child: Html(
+            data: body,
+            defaultTextStyle: AaeTextStyles.smallSummary,
+          ),
+        ),
       ],
     );
   }

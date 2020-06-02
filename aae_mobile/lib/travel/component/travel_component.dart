@@ -9,19 +9,19 @@ import 'package:flutter/material.dart';
 import 'package:aae/travel/bloc/travel_bloc.dart';
 import '../travel_view_model.dart';
 
-class TravelTravelComponent extends StatelessWidget {
-    @override
-    Widget build(BuildContext context) {
-        return Component<TravelTravelBloc, TravelTravelBlocFactory>(
-            bloc: (factory) => factory.travelTravelBloc(),
-      builder: (context, bloc) {
-        return SourceBuilder.of<TravelTravelViewModel>(
-          source: bloc.viewModel,
-          builder: (snapshot) {
-            return Container(child: Center(child: Text('Implement TravelTravelView')),);
-          },
-        );
-      },
-        );
-    }
-}
+//class TravelTravelComponent extends StatelessWidget {
+//    @override
+//    Widget build(BuildContext context) {
+//        return Component<TravelTravelBloc, TravelTravelBlocFactory>(
+//            bloc: (factory) => factory.travelTravelBloc(),
+//      builder: (context, bloc) {
+//        return SourceBuilder.of<TravelTravelViewModel>(
+//          source: bloc.viewModel,
+//          builder: (snapshot) {
+//            return Container(child: Center(child: Text('Implement TravelTravelView')),);
+//          },
+//        );
+//      },
+//        );
+//    }
+//}

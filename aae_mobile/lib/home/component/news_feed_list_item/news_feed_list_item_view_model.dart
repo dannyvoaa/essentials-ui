@@ -31,5 +31,5 @@ abstract class NewsFeedListItemViewModel
       _$NewsFeedListItemViewModel;
 
   static AaeContextCommand createNavigateToFullArticleCommand(String article) =>
-      navigateCommand(routes.buildArticlePageRoute(article: article));
+      navigateFromRootCommand(routes.buildArticlePageRoute(article: article));
 }

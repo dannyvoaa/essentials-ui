@@ -26,7 +26,7 @@ _buildRow(NewsListRowCollectionViewModel viewModel, index) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(left: 14, top: 10),
+          padding: const EdgeInsets.only(left: 14, top: 14),
           child: _buildRowHeader(viewModel, index),
         ),
         Container(
