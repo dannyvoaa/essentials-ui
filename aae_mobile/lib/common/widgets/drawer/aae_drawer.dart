@@ -28,7 +28,7 @@ class AaeDrawer extends StatelessWidget {
     );
 
     return Container(
-      width: 300,
+      width: 320,
       color: AaeColors.white,
       child: ConstrainedBox(
         child: IntrinsicHeight(
@@ -40,9 +40,13 @@ class AaeDrawer extends StatelessWidget {
                     SizedBox(
                       height: AaeDimens.drawerHeight,
                     ),
+                    SizedBox(
+                      height: AaeDimens.drawerHeight,
+                    ),
                     Container(
                       alignment: Alignment.centerLeft,
                       child: Row(
+
                         children: <Widget>[
                           Container(
                             child: Image(
@@ -77,6 +81,7 @@ class AaeDrawer extends StatelessWidget {
                               margin: EdgeInsets.only(
                                 left: AaeDimens.baseUnit,
                               ),
+
                             ),
                           ),
                         ],
@@ -85,49 +90,49 @@ class AaeDrawer extends StatelessWidget {
                     SizedBox(
                       height: AaeDimens.drawerHeight,
                     ),
-                    Container(
-                      color: AaeColors.darkGray,
-                      height: AaeDimens.sizeDivider,
-                    ),
-                    SizedBox(
-                      height: AaeDimens.drawerHeight,
-                    ),
-                    DrawerButton(
-                      stringTitle: 'Home',
-                      onTapAction: () {},
-                    ),
-                    DrawerButton(
-                      stringTitle: 'Neighborhood',
-                      onTapAction: () {},
-                    ),
-                    DrawerButton(
-                      stringTitle: 'Recognition',
-                      onTapAction: () {},
-                    ),
-                    DrawerButton(
-                      stringTitle: 'To Do',
-                      onTapAction: () {},
-                    ),
+//                    Container(
+//                      color: AaeColors.darkGray,
+//                      height: AaeDimens.sizeDivider,
+//                    ),
+//                    SizedBox(
+//                      height: AaeDimens.drawerHeight,
+//                    ),
+//                    DrawerButton(
+//                      stringTitle: 'Home',
+//                      onTapAction: () {},
+//                    ),
+//                    DrawerButton(
+//                      stringTitle: 'Neighborhood',
+//                      onTapAction: () {},
+//                    ),
+//                    DrawerButton(
+//                      stringTitle: 'Recognition',
+//                      onTapAction: () {},
+//                    ),
+//                    DrawerButton(
+//                      stringTitle: 'To Do',
+//                      onTapAction: () {},
+//                    ),
                   ],
                 ),
-                Spacer(),
+               // Spacer(),
                 Column(
                   children: <Widget>[
-                    Container(
-                      color: AaeColors.darkGray,
-                      height: AaeDimens.sizeDivider,
-                    ),
+//                    Container(
+//                      color: AaeColors.darkGray,
+//                      height: AaeDimens.sizeDivider,
+//                    ),
                     DrawerButton(
-                      stringTitle: 'Settings',
+                      stringTitle: 'Preferences',
                       onTapAction: () {
                         navigateCommand(routes.buildSettingsPageRoute())(
                             context);
                       },
                     ),
-                    DrawerButton(
-                      stringTitle: 'Help',
-                      onTapAction: () {},
-                    ),
+//                    DrawerButton(
+//                      stringTitle: 'Help',
+//                      onTapAction: () {},
+//                    ),
                     DrawerButton(
                       stringTitle: 'Log Out',
                       onTapAction: () async {
