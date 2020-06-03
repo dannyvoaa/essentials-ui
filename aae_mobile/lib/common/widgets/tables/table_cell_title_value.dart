@@ -83,12 +83,12 @@ class TableCellTitleValue extends StatelessWidget {
                 ? AaeColors.tableViewCellBackgroundSelected
                 : Colors.transparent,
           ),
-          color: AaeColors.tableViewCellBackground,
+        //  color: AaeColors.tableViewCellBackground,
         ),
         this.boolBorderBottom
             ? Container(
                 height: AaeDimens.sizeDivider,
-                color: AaeColors.lightGray,
+                color: AaeColors.ultraLightGray,
               )
             : Container(),
       ],
