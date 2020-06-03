@@ -5,6 +5,7 @@ import 'package:aae/navigation/paage_provider.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
 import 'package:flutter/material.dart';
+import 'package:aae/common/widgets/nav/aae_top_nav.dart';
 
 class EventsPage extends StatefulWidget {
   @override
@@ -16,11 +17,7 @@ class _EventsPageState extends State<EventsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       endDrawer: AaeDrawer(),
-      appBar: AppBar(
-        backgroundColor: AaeColors.blue,
-        automaticallyImplyLeading: true,
-        elevation: 1,
-      ),
+      appBar: AaeTopNavBar(),
       body: Padding(
         padding: const EdgeInsets.all(AaeDimens.baseUnit),
         child: Column(

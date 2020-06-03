@@ -43,25 +43,26 @@ class NonArticleComponent extends StatelessWidget {
     );
   }
 
-  Widget _buildRelatedArticles() {
-    return SliverToBoxAdapter(
-      child: Container(
-        height: 100.0,
-        child: ListView.builder(
-          itemCount: 2,
-          itemBuilder: (context, index) {
-            Container(
-              width: 100.0,
-              child: Center(
-                child: Text('placeholder for\n related articles'),
-              ),
-            );
-          },
-          scrollDirection: Axis.horizontal,
-        ),
-      ),
-    );
-  }
+  //TODO: (bkennedy) Implement the Related Articles backend service and UI code...
+//  Widget _buildRelatedArticles() {
+//    return SliverToBoxAdapter(
+//      child: Container(
+//        height: 100.0,
+//        child: ListView.builder(
+//          itemCount: 2,
+//          itemBuilder: (context, index) {
+//            Container(
+//              width: 100.0,
+//              child: Center(
+//                child: Text('placeholder for\n related articles'),
+//              ),
+//            );
+//          },
+//          scrollDirection: Axis.horizontal,
+//        ),
+//      ),
+//    );
+//  }
 
   SliverList _buildArticleBody() {
     return SliverList(
