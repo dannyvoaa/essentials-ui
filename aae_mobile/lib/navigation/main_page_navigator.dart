@@ -4,7 +4,6 @@ import 'package:aae/home/page/home_page.dart';
 import 'package:aae/home/page/news_page.dart';
 import 'package:aae/notification/page/notification_page.dart';
 import 'package:aae/recognition/page/recognition_page.dart';
-import 'package:aae/travel/page/travel_page.dart';
 import 'package:aae/settings/page/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
@@ -42,14 +41,14 @@ class MainPageNavigator extends StatelessWidget {
       case MainPage.home:
         provider = NewsPageProvider();
         break;
-      case MainPage.notifications:
-        provider = NotificationPageProvider();
+      case MainPage.learning:
+        provider = RecognitionPageProvider();
         break;
       case MainPage.travel:
-        provider = TravelPageProvider();
-        break;
-      case MainPage.events:
         provider = EventsPageProvider();
+        break;
+      case MainPage.pay:
+        provider = HomePageProvider();
         break;
       default:
         break;
