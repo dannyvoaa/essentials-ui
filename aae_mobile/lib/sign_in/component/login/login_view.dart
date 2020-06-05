@@ -36,6 +36,7 @@ class LoginView extends StatelessWidget {
     return Stack(
       children: [
         Container(
+        //margin: EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: AaeColors.backgroundBlue,
             image: DecorationImage(

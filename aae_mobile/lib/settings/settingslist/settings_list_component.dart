@@ -42,7 +42,7 @@ class _SettingsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(16),
+      margin: EdgeInsets.all(20),
       child: ListView(
         children: [
           Column(
@@ -170,3 +170,6 @@ class _SettingsListView extends StatelessWidget {
     );
   }
 }
+
+
+
