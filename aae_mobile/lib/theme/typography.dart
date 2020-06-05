@@ -237,7 +237,7 @@ class AaeTextStyles {
   static TextStyle tableCellValue(
       {bool boolDefaultHeight = false, bool boolEnabled = true}) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      color: AaeColors.lightGray,
+      color: AaeColors.ultraLightGray,
     );
 
     // Default style
@@ -272,6 +272,7 @@ class AaeTextStyles {
   static TextStyle textFieldModern({bool boolDefaultHeight = false}) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       fontSize: 24,
+      color: AaeColors.white,
     );
 
     // Default style
