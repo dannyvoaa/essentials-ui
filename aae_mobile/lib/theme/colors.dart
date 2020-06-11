@@ -60,7 +60,7 @@ class AaeColors {
   static const teal = Color.fromRGBO(177, 225, 235, 1.0);
   static const highlightBlue = Color.fromRGBO(225, 240, 250, 1.0);
   static const black = Color.fromRGBO(19, 19, 19, 1.0);
-  static const darkGray = Color.fromRGBO(54, 73, 90, 1.0);
+  static const darkGray = Color.fromRGBO(98, 122, 136, 1.0);
   static const mediumGray = Color.fromRGBO(110, 137, 153, 1.0);
   static const gray = Color.fromRGBO(157, 166, 171, 1.0);
   static const lightGray = Color.fromRGBO(112, 112, 112, 1.0);
@@ -78,6 +78,7 @@ class AaeColors {
   static const headerBackgroupd = Color(0xFF0293FF);
 
   static const recognitionGreen = Color(0xFF00B989);
+  static const gradientTop = Color.fromRGBO(77, 180, 250, 1.0);
 
   // Text
   static const screenSelectorText = Color.fromRGBO(255, 255, 255, 0.9);
@@ -92,4 +93,17 @@ class AaeColors {
   // Text field
   static const textFieldFillColor = Color.fromRGBO(0, 0, 0, 0.3);
   static const primaryBackground = Color.fromRGBO(32, 33, 36, 1.0);
+
+  //Gradient Colors
+  static const appBarGradient = LinearGradient(
+      begin: Alignment.bottomCenter,
+      end: Alignment.topCenter,
+//      stops: [0.1, 0.4, 0.6, 0.9],
+      colors: [AaeColors.blue, AaeColors.gradientTop]);
+
+  static const tickerGradient = LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      stops: [0.02, 0.4,],
+      colors: [AaeColors.gray, Color(0xFFD0DAE0)]);
 }
