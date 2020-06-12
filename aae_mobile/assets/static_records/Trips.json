@@ -1,0 +1,24 @@
+{
+  "pnrInfo": [
+    {
+      "employeeNumber": "72000052",
+      "pnr": "QXQRZO",
+      "pnrDescription": "DFW - LAX  06/12/2020",
+      "lastSegmentArrivalDateAndTime": "2020-06-12T10:28:00.000-0500",
+      "flightSegmentDepartureDateAndTime": "2020-06-12T09:00:00.000-0500",
+      "pnrType": "D2P",
+      "pnrStatus": "CREATED",
+      "tokenIndex": 2656865
+    },
+    {
+      "employeeNumber": "72000052",
+      "pnr": "AAPLVU",
+      "pnrDescription": "DFW - LAX  06/12/2020",
+      "lastSegmentArrivalDateAndTime": "2020-06-13T22:25:00.000-0500",
+      "flightSegmentDepartureDateAndTime": "2020-06-13T17:30:00.000-0500",
+      "pnrType": "D2P",
+      "pnrStatus": "CREATED",
+      "tokenIndex": 2656865
+    }
+  ]
+}

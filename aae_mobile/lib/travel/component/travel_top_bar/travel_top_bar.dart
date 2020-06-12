@@ -64,17 +64,17 @@ class TravelTopBar extends StatelessWidget implements PreferredSizeWidget {
   }
 }
 
-class TopBarTitle extends StatelessWidget {
-  final String text;
-
-  TopBarTitle(this.text);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      textAlign: TextAlign.left,
-      style: AaeTextStyles.h5,
-    );
-  }
-}
+//class TopBarTitle extends StatelessWidget {
+//  final String text;
+//
+//  TopBarTitle(this.text);
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    return Text(
+//      text,
+//      textAlign: TextAlign.left,
+//      style: AaeTextStyles.h5,
+//    );
+//  }
+// }

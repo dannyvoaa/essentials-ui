@@ -3,25 +3,25 @@ import 'package:aae/common/widgets/component/component.dart';
 import 'package:aae/common/widgets/loading/aae_loading_spinner.dart';
 import 'package:flutter/material.dart';
 
-import 'current_trips_bloc.dart';
-import 'current_trips_view.dart';
-import 'current_trips_view_model.dart';
+import 'trips_bloc.dart';
+import 'trips_view.dart';
+import 'trips_view_model.dart';
 
-/// Ties together [CurrentTripsBloc] and [CurrentTripsView].
-class CurrentTripsComponent extends StatelessWidget {
+/// Ties together [TripsBloc] and [TripsView].
+class TripsComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Component<CurrentTripsBloc, CurrentTripsBlocFactory>(
-      bloc: (factory) => factory.currentTripsBloc(),
+    return Component<TripsBloc, TripsBlocFactory>(
+      bloc: (factory) => factory.tripsBloc(),
       builder: (context, bloc) {
-        return SourceBuilder.of<CurrentTripsViewModel>(
+        return SourceBuilder.of<TripsViewModel>(
           source: bloc.viewModel,
           builder: (snapshot) {
             if (snapshot.present) {
               if (snapshot.value == null) {
                 return _buildEmptyState(context);
               } else {
-                return CurrentTripsView(viewModel: snapshot.value);
+                return TripsView(viewModel: snapshot.value);
               }
             } else {
               return _buildLoadingState(context);

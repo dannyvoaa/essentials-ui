@@ -18,6 +18,9 @@ import 'news_feed.dart';
 import 'news_feed_item.dart';
 import 'recognition_history.dart';
 import 'recognition_register.dart';
+import 'pnr_info.dart';
+import 'trips.dart';
+
 
 part 'serializers.g.dart';
 
@@ -25,6 +28,8 @@ part 'serializers.g.dart';
   NewsFeed,
   NewsFeedItem,
   RecognitionHistory,
+  Trips,
+  PnrInfo,
   Profile,
   Workgroup,
   Topics,

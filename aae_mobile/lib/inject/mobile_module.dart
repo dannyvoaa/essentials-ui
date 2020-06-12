@@ -17,6 +17,7 @@ import 'package:aae/provided_service.dart';
 import 'package:aae/recognition/repository/recognition_repository.dart';
 import 'package:aae/sign_in/workflow/constants/sign_in_states.dart';
 import 'package:aae/sign_in/workflow/sign_in_state_machine.dart';
+import 'package:aae/travel/repository/travel_repository.dart';
 import 'package:aae/workflow/common/workflow_event.dart';
 import 'package:aae/workflow/common/workflow_state.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -74,12 +75,14 @@ class MobileModule {
   UnmodifiableListView<ProvidedService> services(
     NewsFeedRepository newsFeedRepository,
     RecognitionRepository recognitionRepository,
+    TravelRepository travelRepository,
     EventsRepository eventsRepository,
     AaeNavigator aaeNavigator,
   ) =>
       UnmodifiableListView<ProvidedService>([
         newsFeedRepository,
         recognitionRepository,
+        travelRepository,
         eventsRepository,
         aaeNavigator,
       ]);

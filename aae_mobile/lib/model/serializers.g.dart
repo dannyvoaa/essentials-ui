@@ -14,11 +14,13 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(NewsFeed.serializer)
       ..add(NewsFeedItem.serializer)
       ..add(PerformanceStats.serializer)
+      ..add(PnrInfo.serializer)
       ..add(Profile.serializer)
       ..add(RecognitionHistory.serializer)
       ..add(RecognitionRegister.serializer)
       ..add(StockStats.serializer)
       ..add(Topics.serializer)
+      ..add(Trips.serializer)
       ..add(Workgroup.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Event)]),
@@ -26,6 +28,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(NewsFeedItem)]),
           () => new ListBuilder<NewsFeedItem>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(PnrInfo)]),
+          () => new ListBuilder<PnrInfo>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(RecognitionRegister)]),
