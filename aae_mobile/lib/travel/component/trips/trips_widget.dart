@@ -6,6 +6,7 @@ import 'package:aae/navigation/routes.dart' as routes;
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
 import 'package:aae/theme/typography.dart';
+import 'package:aae/travel/component/trips/tools_widget.dart';
 import 'package:aae/travel/component/trips/trips_view_model.dart';
 import 'package:flutter/material.dart';
 
@@ -20,26 +21,120 @@ class TripsWidget extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: ListView.separated(
-            itemCount: viewModel.trips.length,
-            separatorBuilder: (_, __) {
-              return Container(
-                height: AaeDimens.smallCardVerticalContentPadding,
-              );
-            },
-            itemBuilder: (context, index) {
-              return Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: AaeDimens.baseUnit),
-                child: Container(
-                    width: AaeDimens.contentWidth,
-                    color: AaeColors.white,
-                    child: ListTile(
-                      title: Text('${viewModel.trips[index].pnrDescription}'),
-                      subtitle: Text('${viewModel.trips[index].pnr}'),
-                    )),
-              );
-            }));
+    return SizedBox(height: 200, child: _buildTripsWidget(context));
+  }
+
+  _buildTripsWidget(BuildContext context) {
+    return Container(
+        width: 380,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+
+          children: <Widget>[
+            Container(
+              alignment: Alignment.topLeft,
+              width: 380,
+              child: Text(
+                'Upcoming trips',
+                style: TextStyle(
+                  fontFamily: 'AmericanSans',
+                  fontSize: 15,
+                  color: const Color(0xff0078d2),
+                  fontWeight: FontWeight.w700,
+                  height: 2.6666666666666665,
+                ),
+                textAlign: TextAlign.left,
+              ),
+            ),
+            Expanded(
+                child: ListView.separated(
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: viewModel.trips.length,
+                    separatorBuilder: (_, __) {
+                      return Container(
+                        height: AaeDimens.smallCardVerticalContentPadding,
+                      );
+                    },
+                    itemBuilder: (context, index) {
+                      return Container(
+                        child: ListTile(
+                            title: Row(children: <Widget>[
+                          Expanded(
+                              flex: 5,
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  '${viewModel.trips[index].pnrDescription}',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontFamily: 'AmericanSans',
+                                    fontSize: 18,
+                                    color: const Color(0xff36495a),
+                                  ),
+                                  textAlign: TextAlign.left,
+                                ),
+                              )),
+                          Expanded(
+                            flex: 2,
+                            child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  '${viewModel.trips[index].pnr}',
+                                  style: TextStyle(
+                                    fontFamily: 'AmericanSans',
+                                    fontSize: 15,
+                                    color: const Color(0xff627a88),
+                                  ),
+                                  textAlign: TextAlign.right,
+                                )),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Icon(Icons.arrow_forward_ios)),
+                          )
+                        ])
+//                          title: Text(
+//                            '${viewModel.trips[index].pnrDescription}',
+//                            style: TextStyle(
+//                              fontFamily: 'AmericanSans',
+//                              fontSize: 18,
+//                              color: const Color(0xff36495a),
+//                            ),
+//                            textAlign: TextAlign.left,
+//                          ),
+//                          trailing: Wrap( spacing: 12,
+//                          children: <Widget>[
+//                          Text(
+//                            '${viewModel.trips[index].pnr}',
+//                            style: TextStyle(
+//                              fontFamily: 'AmericanSans',
+//                              fontSize: 15,
+//                              color: const Color(0xff627a88),
+//                            ),
+//                            textAlign: TextAlign.right,
+//                          ),
+//                              Icon(Icons.arrow_forward_ios)
+//                            ]
+//                          )
+//                          //Text('${viewModel.trips[index].pnr}'),
+                            ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(3.0),
+                          color: const Color(0xffffffff),
+                          boxShadow: [
+                            BoxShadow(
+                              color: const Color(0x29131313),
+                              offset: Offset(0, 2),
+                              blurRadius: 3,
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
+            )
+          ],
+        ));
   }
 }
