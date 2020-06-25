@@ -18,8 +18,8 @@ class NewsArticleBloc {
   @provide
   NewsArticleBloc(this._newsArticleRepository);
 
-  // TODO (rpaglinawan): pass in an observable of the full page article data
-  //into viewmodel generator
+  // TODO (rpaglinawan): pass in an observable of the full page article data into viewmodel generator
+
   Source<ArticleComponentViewModel> get viewModel => toSource(combineLatest(
       _newsArticleRepository.newsArticle.first(), _createViewModel));
 
@@ -30,6 +30,8 @@ class NewsArticleBloc {
         ..articleBody = article.contentString.content);
 
   void loadArticle(String articleId) {
+    print("Article ID");
+    print(articleId);
     _newsArticleRepository.loadFullArticle(articleId);
   }
 }

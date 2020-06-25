@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 
 /// Main navigation bar.
 
-enum MainPage { home, learning, travel, pay }
+enum MainPage { home, notifications, travel, events }
 
 const _labelTextStyle = TextStyle(
   fontFamily: 'AmericanSans',
   letterSpacing: .25,
   fontWeight: FontWeight.w500,
+  fontSize: 10,
 );
 
 class BottomNavigation extends StatelessWidget {
@@ -21,16 +22,16 @@ class BottomNavigation extends StatelessWidget {
 
   static final Map<MainPage, String> tabText = {
     MainPage.home: 'Home',
-    MainPage.learning: 'Learning',
+    MainPage.notifications: 'Notifications',
     MainPage.travel: 'Travel',
-    MainPage.pay: 'Pay'
+    MainPage.events: 'Calendar',
   };
 
   static final Map<MainPage, IconData> tabIconData = {
     MainPage.home: AaeIcons.home,
-    MainPage.learning: AaeIcons.learning,
+    MainPage.notifications: AaeIcons.notifications,
     MainPage.travel: AaeIcons.travel,
-    MainPage.pay: AaeIcons.pay
+    MainPage.events: AaeIcons.calendar,
   };
 
   BottomNavigation(
@@ -41,30 +42,69 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      items: [
-        _buildItem(MainPage.home, context),
-        _buildItem(MainPage.learning, context),
-        _buildItem(MainPage.travel, context),
-        _buildItem(MainPage.pay, context)
-      ],
-      onTap: (index) => _onSelectTab(MainPage.values[index]),
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(
+            width: 1.0,
+            color: AaeColors.ultraLightGray,
+          ),
+        ),
+//        boxShadow: [
+//          BoxShadow(
+//            color: AaeColors.darkGray,
+//            blurRadius: 15.0,
+//            spreadRadius: 5.0,
+//            offset: Offset(
+//              15.0,
+//              15.0,
+//            ),
+//          ),
+//        ],
+      ),
+      child: BottomNavigationBar(
+        elevation: 8.0,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          _buildItem(MainPage.home, context, 24, 2.0),
+          _buildItem(MainPage.notifications, context, 18, 6.0),
+          _buildItem(MainPage.travel, context, 18, 5.0),
+          _buildItem(MainPage.events, context, 24, 2.0),
+        ],
+        onTap: (index) => _onSelectTab(MainPage.values[index]),
+      ),
     );
   }
 
-  BottomNavigationBarItem _buildItem(MainPage page, BuildContext context) {
+  BottomNavigationBarItem _buildItem(MainPage page, BuildContext context, double size, double offset) {
     final tabColor = _tabColor(page);
     return BottomNavigationBarItem(
-        icon: Icon(
-          tabIconData[page],
-          size: 20,
-          color: tabColor,
-          key: Key("TabIcon.$page"),
+        icon: Container(
+          height: 20,
+          width: 1000,
+          padding: EdgeInsets.only(top: offset,),
+//          alignment: Alignment.bottomCenter,
+          child: Container(
+            height:80,
+            width:1000,
+            child: Icon(
+              tabIconData[page],
+              size: size,
+              color: tabColor,
+              key: Key("TabIcon.$page"),
+            ),
+          ),
         ),
-        title: Text(
-          tabText[page],
-          style: _labelTextStyle.copyWith(color: tabColor),
+        title: Container(
+          height: 24,
+          child: Padding(
+            padding: const EdgeInsets.only(top:10),
+            child: Text(
+              tabText[page],
+              style: _labelTextStyle.copyWith(color: tabColor),
+              textAlign: TextAlign.center,
+            ),
+          ),
         ));
   }
 
