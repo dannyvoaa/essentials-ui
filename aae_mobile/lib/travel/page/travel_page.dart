@@ -11,25 +11,6 @@ import 'package:aae/travel/component/travel_top_bar/travel_top_bar.dart';
 import 'package:flutter/material.dart';
 
 class TravelPage extends StatelessWidget {
-  final List<Tab> tabs = <Tab>[
-    Tab(
-      child: Text(
-        'Trips',
-        style: TextStyle(color: AaeColors.white),
-      ),
-    ),
-    Tab(
-        child: Text(
-      'Priority list',
-      style: TextStyle(color: AaeColors.white),
-    )),
-    Tab(
-      child: Text(
-        'Flight status',
-        style: TextStyle(color: AaeColors.white),
-      ),
-    )
-  ];
 
   @override
   Widget build(BuildContext context) {

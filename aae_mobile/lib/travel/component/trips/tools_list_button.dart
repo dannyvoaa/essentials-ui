@@ -24,67 +24,49 @@ class ToolsListButton<T> extends StatelessWidget {
   }
 
   _buildToolsListButton(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.only(
-            bottom: AaeDimens.smallCardVerticalContentPadding),
-        child: Container(
-          child: ListTile(
-              title: Row(children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Icon(iconData, size: 30, color: const Color(0xff0078d2))),
+    return Row(children: <Widget>[
+      Expanded(
+        flex: 1,
+        child: Align(
+            alignment: Alignment.centerLeft,
+            child: Icon(iconData, size: 30, color: const Color(0xff0078d2))),
+      ),
+      Expanded(
+          flex: 6,
+          child: Container(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0, bottom: 5.0),
+                  child: Text(
+                    '$title',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontFamily: 'AmericanSans',
+                      fontSize: 16,
+                      color: const Color(0xff36495a),
+                    ),
+                  ),
                 ),
-                Expanded(
-                    flex: 6,
-                    child: Container(
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 10.0, bottom: 5.0),
-                                child: Text(
-                                  '$title',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontFamily: 'AmericanSans Medium',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                    color: const Color(0xff36495a),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 10.0),
-                                child: Text(
-                                  '$subtitle',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontSize: 13,
-                                    color: const Color(0xff627a88),
-                                  ),
-                                ),
-                              )
-                            ]))),
-                Expanded(
-                  child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Icon(Icons.arrow_forward_ios, color: AaeColors.ultraLightGray)),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10.0),
+                  child: Text(
+                    '$subtitle',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: const Color(0xff627a88),
+                    ),
+                  ),
                 )
-              ])),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(3.0),
-            color: const Color(0xffffffff),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0x29131313),
-                offset: Offset(0, 2),
-                blurRadius: 3,
-              ),
-            ],
-          ),
-        ));
+              ]))),
+      Expanded(
+        child: Align(
+            alignment: Alignment.centerRight,
+            child:
+                Icon(Icons.arrow_forward_ios, color: AaeColors.ultraLightGray)),
+      )
+    ]);
   }
 }

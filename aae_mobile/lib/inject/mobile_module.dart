@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:aae/api/api_client.dart';
 import 'package:aae/api/hsm_state_machine.dart';
+import 'package:aae/api/travel_api_client.dart';
 import 'package:aae/auth/auth.dart';
 import 'package:aae/bloc/bloc_factory.dart';
 import 'package:aae/cache/cache_service.dart';
@@ -42,6 +43,10 @@ class MobileModule {
   @provide
   @singleton
   NewsServiceApi apiClient() => NewsServiceApi();
+
+  @provide
+  @singleton
+  TravelServiceApi travelApiClient() => TravelServiceApi();
 
   @provide
   @singleton
@@ -128,6 +133,9 @@ abstract class AppInjector implements BlocFactory {
 
   @provide
   NewsServiceApi apiClient();
+
+  @provide
+  TravelServiceApi travelApiClient();
 
   @provide
   FlutterSecureStorage secureStorage();

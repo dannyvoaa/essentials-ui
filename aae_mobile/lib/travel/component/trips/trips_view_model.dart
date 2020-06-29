@@ -11,6 +11,5 @@ abstract class TripsViewModel
 
   TripsViewModel._();
 
-  factory TripsViewModel([updates(TripsViewModelBuilder b)]) =
-  _$TripsViewModel;
+  factory TripsViewModel([updates(TripsViewModelBuilder b)]) = _$TripsViewModel;
 }

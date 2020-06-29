@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:aae/api/api_client.dart';
+import 'package:aae/api/travel_api_client.dart';
 import 'package:aae/cache/cache_service.dart';
 import 'package:aae/common/repository/repository.dart';
 import 'package:aae/model/pnrs.dart';
@@ -23,7 +24,7 @@ import 'package:logging/logging.dart';
 /// Handles caching and fetching the latest data when appropriate.
 class TravelRepository implements Repository {
   static final _log = Logger(Repository.buildLogName('TravelRepository'));
-  final NewsServiceApi _apiClient;
+  final TravelServiceApi _travelApiClient;
 
   static const cacheKey = 'TravelRepository.Travel';
 
@@ -37,7 +38,7 @@ class TravelRepository implements Repository {
 
   @provide
   @singleton
-  TravelRepository(this._cache, this._apiClient) {
+  TravelRepository(this._cache, this._travelApiClient) {
     _loadFromCache();
     _fetchTrips();
   }
@@ -61,9 +62,9 @@ class TravelRepository implements Repository {
   }
 
   _fetchTrips() async {
-//    Future<String> trips =
-//        rootBundle.loadString('assets/static_records/Trips.json');
-        String trips = await _apiClient.getReservations();
+    Future<String> trips =
+        rootBundle.loadString('assets/static_records/Trips.json');
+//        String trips = await _travelApiClient.getReservations();
     try {
       _saveToCache(await trips);
       print(await trips);

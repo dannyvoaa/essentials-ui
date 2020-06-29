@@ -178,7 +178,6 @@ class NewsServiceApi {
     final response = await httpClient.get(stocksEndpoint);
     if (response.statusCode == 200) {
       _log.info("StockStats API request successful");
-      print(this.getReservations());
       StockStats feed = serializers.deserializeWith(
           StockStats.serializer, json.decode(response.body));
       return feed;
