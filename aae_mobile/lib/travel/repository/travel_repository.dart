@@ -1,8 +1,9 @@
 import 'dart:convert';
 
+import 'package:aae/api/api_client.dart';
 import 'package:aae/cache/cache_service.dart';
 import 'package:aae/common/repository/repository.dart';
-import 'package:aae/model/pnr_info.dart';
+import 'package:aae/model/pnrs.dart';
 import 'package:aae/model/recognition_history.dart';
 import 'package:aae/model/recognition_register.dart';
 import 'package:aae/model/serializers.dart';
@@ -22,32 +23,26 @@ import 'package:logging/logging.dart';
 /// Handles caching and fetching the latest data when appropriate.
 class TravelRepository implements Repository {
   static final _log = Logger(Repository.buildLogName('TravelRepository'));
+  final NewsServiceApi _apiClient;
 
-  static const cacheKey = 'TravelRepository.Recognition';
+  static const cacheKey = 'TravelRepository.Travel';
 
-//  final _currentBalance = createBehaviorSubject<String>();
-
-  final _pnrInfo =
-      createBehaviorSubject<BuiltList<PnrInfo>>();
+  final _pnrs =
+      createBehaviorSubject<BuiltList<Pnrs>>();
 
   final CacheService _cache;
 
-//  /// Publishes the current balance
-//  Observable<String> get currentBalance => _currentBalance;
-
-  /// Publishes the current recognition history
-  Observable<BuiltList<PnrInfo>> get pnrInfo =>
-      _pnrInfo;
+  Observable<BuiltList<Pnrs>> get pnrs =>
+      _pnrs;
 
   @provide
   @singleton
-  TravelRepository(this._cache) {
+  TravelRepository(this._cache, this._apiClient) {
     _loadFromCache();
     _fetchTrips();
   }
 
   void _loadFromCache() {
-    // Look up the current balance from cache, publish it if we have it:
     _cache
         .readString(cacheKey)
         .transform(_tripsToModel)
@@ -55,8 +50,7 @@ class TravelRepository implements Repository {
   }
 
   void _publishTrips(Trips trips) {
-//    _currentBalance.sendNext(trips.currentBalance);
-    _pnrInfo.sendNext(trips.pnrInfo);
+    _pnrs.sendNext(trips.pnrs);
   }
 
   static Trips _tripsToModel(
@@ -66,15 +60,17 @@ class TravelRepository implements Repository {
     return history;
   }
 
-  //TODO: (kiheke) - Update to use api.
   _fetchTrips() async {
-    Future<String> history =
-        rootBundle.loadString('assets/static_records/Trips.json');
+//    Future<String> trips =
+//        rootBundle.loadString('assets/static_records/Trips.json');
+        String trips = await _apiClient.getReservations();
     try {
-      _saveToCache(await history);
+      _saveToCache(await trips);
+      print(await trips);
+
       _loadFromCache();
     } catch (e, s) {
-      _log.severe('Failed to fetch recognition history: ', e, s);
+      _log.severe('Failed to fetch trips history: ', e, s);
       return null;
     }
   }

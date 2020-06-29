@@ -5,12 +5,10 @@ import 'package:aae/recognition/component/points_balance/points_balance_componen
 import 'package:aae/recognition/component/points_history/points_history_component.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
-import 'package:aae/travel/component/trips/trips_widget.dart';
+import 'package:aae/travel/component/trips/trips_list_widget.dart';
 import 'package:aae/travel/component/trips/trips_component.dart';
 import 'package:aae/travel/component/travel_top_bar/travel_top_bar.dart';
 import 'package:flutter/material.dart';
-
-import '../travel_component.dart';
 
 class TravelPage extends StatelessWidget {
   final List<Tab> tabs = <Tab>[
@@ -40,19 +38,15 @@ class TravelPage extends StatelessWidget {
       child: Scaffold(
         endDrawer: AaeDrawer(),
         appBar: TravelTopBar(),
-//        appBar: AppBar(
-//          iconTheme: new IconThemeData(color: Colors.grey),
-//          backgroundColor: AaeColors.blue,
-//          elevation: AaeDimens.noElevation,
-//          actions: <Widget>[],
-//          bottom: TabBar(tabs: tabs),
-//        ),
-        body: TabBarView(
-          children: <Widget>[
-            TripsComponent(),
-            TripsComponent(),
-            TripsComponent(),
-          ],
+        body: Container(
+          child: TabBarView(
+            children: <Widget>[
+              TripsComponent(),
+              TripsComponent(),
+              TripsComponent(),
+            ],
+          ),
+          color: const Color(0xfff5f7f7),
         ),
       ),
     );

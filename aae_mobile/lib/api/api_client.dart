@@ -9,6 +9,7 @@ import 'package:aae/model/profile.dart';
 import 'package:aae/model/profile_query.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:aae/model/stock_stats.dart';
+import 'package:aae/model/trips.dart';
 import 'package:http/http.dart' as http;
 import 'package:logging/logging.dart';
 
@@ -37,6 +38,9 @@ class NewsServiceApi {
 
   final articleEndpoint =
       'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/default/ae-newsarticle.json?contentID=';
+
+  final travelReservationsEndpoint =
+      'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/travel/reservations';
 
   Future<List<NewsFeed>> getNewsFeed(List<String> tags) async {
     List<NewsFeed> feedList = <NewsFeed>[];
@@ -174,6 +178,7 @@ class NewsServiceApi {
     final response = await httpClient.get(stocksEndpoint);
     if (response.statusCode == 200) {
       _log.info("StockStats API request successful");
+      print(this.getReservations());
       StockStats feed = serializers.deserializeWith(
           StockStats.serializer, json.decode(response.body));
       return feed;
@@ -193,6 +198,36 @@ class NewsServiceApi {
     } else {
       throw Exception(
           'Failed to load the stocks\n ${response.body} - ${response.statusCode}');
+    }
+  }
+
+  Future<String> getReservations() async {
+    String username = '72000027';
+    String password = '4Password';
+    String basicAuth = 'Basic ' + base64Encode(utf8.encode('$username:$password'));
+    print(basicAuth);
+
+    Map<String, String> headers = {
+      'content-type': 'application/json',
+      'accept': 'application/json',
+      'authorization': basicAuth
+    };
+
+    final response = await httpClient.get(travelReservationsEndpoint, headers: headers);
+    if (response.statusCode == 200) {
+      _log.info("Reservation API request successful");
+      _log.info(response);
+
+      _log.info(response.body);
+
+      _log.info(response.statusCode);
+      Trips trips = serializers.deserializeWith(
+          Trips.serializer, json.decode(response.body));
+      print(trips);
+      return response.body;
+    } else {
+      throw Exception(
+          'Failed to load the trips\n ${response.body} - ${response.statusCode}');
     }
   }
 }
