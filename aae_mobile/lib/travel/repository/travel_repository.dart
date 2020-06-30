@@ -1,12 +1,9 @@
 import 'dart:convert';
 
-import 'package:aae/api/api_client.dart';
 import 'package:aae/api/travel_api_client.dart';
 import 'package:aae/cache/cache_service.dart';
 import 'package:aae/common/repository/repository.dart';
-import 'package:aae/model/pnrs.dart';
-import 'package:aae/model/recognition_history.dart';
-import 'package:aae/model/recognition_register.dart';
+import 'package:aae/model/pnr.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:aae/model/trips.dart';
 import 'package:aae/rx/rx_util.dart';
@@ -18,7 +15,7 @@ import 'package:logging/logging.dart';
 
 /// A repository that stores a [Trips] response.
 ///
-/// Single source of truth for all Recognition data - do not stream in another
+/// Single source of truth for all Trips data - do not stream in another
 /// service, take a dependency on this repository instead.
 ///
 /// Handles caching and fetching the latest data when appropriate.
@@ -28,13 +25,11 @@ class TravelRepository implements Repository {
 
   static const cacheKey = 'TravelRepository.Travel';
 
-  final _pnrs =
-      createBehaviorSubject<BuiltList<Pnrs>>();
+  final _pnr = createBehaviorSubject<BuiltList<Pnr>>();
 
   final CacheService _cache;
 
-  Observable<BuiltList<Pnrs>> get pnrs =>
-      _pnrs;
+  Observable<BuiltList<Pnr>> get pnr => _pnr;
 
   @provide
   @singleton
@@ -51,32 +46,32 @@ class TravelRepository implements Repository {
   }
 
   void _publishTrips(Trips trips) {
-    _pnrs.sendNext(trips.pnrs);
+    _pnr.sendNext(trips.pnrs);
   }
 
-  static Trips _tripsToModel(
-      String trips) {
-    Trips history = serializers.deserializeWith(
-        Trips.serializer, jsonDecode(trips));
-    return history;
+  static Trips _tripsToModel(String tripsJson) {
+    print(tripsJson);
+    Trips trips =
+        serializers.deserializeWith(Trips.serializer, jsonDecode(tripsJson));
+    print('trips to model');
+    print(trips);
+    return trips;
   }
 
   _fetchTrips() async {
-    Future<String> trips =
-        rootBundle.loadString('assets/static_records/Trips.json');
-//        String trips = await _travelApiClient.getReservations();
+//    Future<String> trips =
+//        rootBundle.loadString('assets/static_records/Trips.json');
+    String trips = await _travelApiClient.getReservations();
     try {
       _saveToCache(await trips);
-      print(await trips);
-
       _loadFromCache();
     } catch (e, s) {
-      _log.severe('Failed to fetch trips history: ', e, s);
+      _log.severe('Failed to fetch trips: ', e, s);
       return null;
     }
   }
 
-  Future<void> _saveToCache(balance) => _cache.writeString(cacheKey, balance);
+  Future<void> _saveToCache(trips) => _cache.writeString(cacheKey, trips);
 
   @override
   void start() {} // NO-OP

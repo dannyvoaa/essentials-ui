@@ -1,5 +1,4 @@
-import 'package:aae/model/pnrs.dart';
-import 'package:aae/model/recognition_register.dart';
+import 'package:aae/model/pnr.dart';
 import 'package:aae/provided_service.dart';
 import 'package:aae/travel/component/trips/trips_view_model.dart';
 import 'package:aae/travel/repository/travel_repository.dart';
@@ -18,13 +17,13 @@ class TripsBloc {
   final TravelRepository _travelRepository;
 
   Source<TripsViewModel> get viewModel =>
-      toSource(combineLatest(_travelRepository.pnrs, _createViewModel));
+      toSource(combineLatest(_travelRepository.pnr, _createViewModel));
 
   @provide
   TripsBloc(this._travelRepository);
 
-  TripsViewModel _createViewModel(BuiltList<Pnrs> pnrs) {
-    return TripsViewModel((b) => b..trips.addAll(pnrs));
+  TripsViewModel _createViewModel(BuiltList<Pnr> pnrs) {
+    return TripsViewModel((b) => b..pnrs.addAll(pnrs));
   }
 }
 

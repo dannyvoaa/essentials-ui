@@ -1,21 +1,19 @@
-library pnrs;
+library pnr;
 
 import 'dart:convert';
 
-import 'package:aae/model/pnrs.dart';
 import 'package:aae/model/serializers.dart';
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'pnrs.g.dart';
+part 'pnr.g.dart';
 
-abstract class Pnrs
-    implements Built<Pnrs, PnrsBuilder> {
-  Pnrs._();
+abstract class Pnr
+    implements Built<Pnr, PnrBuilder> {
+  Pnr._();
 
-  factory Pnrs([updates(PnrsBuilder b)]) =
-  _$Pnrs;
+  factory Pnr([updates(PnrBuilder b)]) =
+  _$Pnr;
   
   @BuiltValueField(wireName: 'employeeId')
   String get employeeId;
@@ -42,14 +40,14 @@ abstract class Pnrs
 
   String toJson() {
     return json
-        .encode(serializers.serializeWith(Pnrs.serializer, this));
+        .encode(serializers.serializeWith(Pnr.serializer, this));
   }
 
-  static Pnrs fromJson(String jsonString) {
+  static Pnr fromJson(String jsonString) {
     return serializers.deserializeWith(
-        Pnrs.serializer, json.decode(jsonString));
+        Pnr.serializer, json.decode(jsonString));
   }
 
-  static Serializer<Pnrs> get serializer =>
-      _$pnrsSerializer;
+  static Serializer<Pnr> get serializer =>
+      _$pnrSerializer;
 }

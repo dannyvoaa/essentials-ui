@@ -1,7 +1,4 @@
-import 'package:aae/theme/colors.dart';
-import 'package:aae/theme/dimensions.dart';
-import 'package:aae/travel/component/trips/tools_list_widget.dart';
-import 'package:aae/travel/component/trips/trips_list_widget.dart';
+import 'package:aae/travel/component/trips/trips_collection.dart';
 import 'package:flutter/material.dart';
 import 'trips_view_model.dart';
 
@@ -25,8 +22,8 @@ class TripsView extends StatelessWidget {
               //?
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                TripsListWidget(viewModel: this.viewModel),
-                ToolsListWidget()
+                TripsCollection(viewModel: this.viewModel, header: 'Current trips'),
+                TripsCollection(viewModel: null, header: 'Tools')
               ],
             )),
         padding: const EdgeInsets.all(16.0));

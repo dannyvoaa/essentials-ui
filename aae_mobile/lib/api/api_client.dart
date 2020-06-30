@@ -199,34 +199,4 @@ class NewsServiceApi {
           'Failed to load the stocks\n ${response.body} - ${response.statusCode}');
     }
   }
-
-  Future<String> getReservations() async {
-    String username = '72000027';
-    String password = '4Password';
-    String basicAuth = 'Basic ' + base64Encode(utf8.encode('$username:$password'));
-    print(basicAuth);
-
-    Map<String, String> headers = {
-      'content-type': 'application/json',
-      'accept': 'application/json',
-      'authorization': basicAuth
-    };
-
-    final response = await httpClient.get(travelReservationsEndpoint, headers: headers);
-    if (response.statusCode == 200) {
-      _log.info("Reservation API request successful");
-      _log.info(response);
-
-      _log.info(response.body);
-
-      _log.info(response.statusCode);
-      Trips trips = serializers.deserializeWith(
-          Trips.serializer, json.decode(response.body));
-      print(trips);
-      return response.body;
-    } else {
-      throw Exception(
-          'Failed to load the trips\n ${response.body} - ${response.statusCode}');
-    }
-  }
 }

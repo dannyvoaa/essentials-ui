@@ -2,7 +2,7 @@ import 'package:aae/assets/aae_icons.dart';
 import 'package:aae/common/commands/navigate_command.dart';
 import 'package:aae/d0_stats_bar/component/d0_stats_bar_component.dart';
 import 'package:aae/home/component/news_feed_top_bar/top_bar_title_component.dart';
-import 'package:aae/model/pnrs.dart';
+import 'package:aae/model/pnr.dart';
 import 'package:aae/navigation/routes.dart' as routes;
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';

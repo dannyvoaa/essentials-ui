@@ -2,7 +2,7 @@ library trips;
 
 import 'dart:convert';
 
-import 'package:aae/model/pnrs.dart';
+import 'package:aae/model/pnr.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
@@ -18,7 +18,7 @@ abstract class Trips
   _$Trips;
 
   @BuiltValueField(wireName: 'pnrs')
-  BuiltList<Pnrs> get pnrs;
+  BuiltList<Pnr> get pnrs;
 
   String toJson() {
     return json
