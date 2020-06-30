@@ -23,8 +23,8 @@ pipeline {
         NOTIFYUSERS = "nagaraj.hiremath@aa.com"
         APPCENTER_TOKEN = credentials('appcenter_access_token')
         SLACK_CHANNEL = 'jetnet-developers'
-        // SLACK_TOKEN = credentials('CCISlackToken')
-        //GIT_TOKEN = credentials('cci-github-zid')
+        // SLACK_TOKEN = credentials('AAESlackToken')
+        //GIT_TOKEN = credentials('aae-github-zid')
         BUILD_DETAILS = "BUILD DETAILS: ${env.JOB_NAME} #${env.BUILD_NUMBER} - ${BUILD_URL} "
         JOB_CAUSES = edtUtil.getCauses()
         APPCENTER_PROJECTS = ''
