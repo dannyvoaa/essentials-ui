@@ -1,10 +1,10 @@
 import 'dart:convert';
 
+import 'package:aae/api/travel_api_client.dart';
+import 'package:aae/auth/sso_auth.dart';
 import 'package:aae/cache/cache_service.dart';
 import 'package:aae/common/repository/repository.dart';
-import 'package:aae/model/pnr_info.dart';
-import 'package:aae/model/recognition_history.dart';
-import 'package:aae/model/recognition_register.dart';
+import 'package:aae/model/pnr.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:aae/model/trips.dart';
 import 'package:aae/rx/rx_util.dart';
@@ -16,70 +16,61 @@ import 'package:logging/logging.dart';
 
 /// A repository that stores a [Trips] response.
 ///
-/// Single source of truth for all Recognition data - do not stream in another
+/// Single source of truth for all Trips data - do not stream in another
 /// service, take a dependency on this repository instead.
 ///
 /// Handles caching and fetching the latest data when appropriate.
 class TravelRepository implements Repository {
   static final _log = Logger(Repository.buildLogName('TravelRepository'));
+  final TravelServiceApi _travelApiClient;
+  final SSOAuth _ssoAuth;
 
-  static const cacheKey = 'TravelRepository.Recognition';
+  static const cacheKey = 'TravelRepository.Travel';
 
-//  final _currentBalance = createBehaviorSubject<String>();
-
-  final _pnrInfo =
-      createBehaviorSubject<BuiltList<PnrInfo>>();
+  final _pnrs = createBehaviorSubject<BuiltList<Pnr>>();
 
   final CacheService _cache;
+  static String tripsKey = 'trips';
 
-//  /// Publishes the current balance
-//  Observable<String> get currentBalance => _currentBalance;
-
-  /// Publishes the current recognition history
-  Observable<BuiltList<PnrInfo>> get pnrInfo =>
-      _pnrInfo;
+  Observable<BuiltList<Pnr>> get pnrs => _pnrs;
 
   @provide
   @singleton
-  TravelRepository(this._cache) {
-    _loadFromCache();
+  TravelRepository(this._cache, this._travelApiClient, this._ssoAuth) {
+    _loadFromTripsCache();
     _fetchTrips();
   }
 
-  void _loadFromCache() {
-    // Look up the current balance from cache, publish it if we have it:
+  void _loadFromTripsCache() {
     _cache
-        .readString(cacheKey)
+        .readString(tripsKey)
         .transform(_tripsToModel)
         .ifPresent(_publishTrips);
   }
 
   void _publishTrips(Trips trips) {
-//    _currentBalance.sendNext(trips.currentBalance);
-    _pnrInfo.sendNext(trips.pnrInfo);
+    _pnrs.sendNext(trips.pnrs);
   }
 
-  static Trips _tripsToModel(
-      String trips) {
-    Trips history = serializers.deserializeWith(
-        Trips.serializer, jsonDecode(trips));
-    return history;
+  static Trips _tripsToModel(String tripsJson) {
+    Trips trips =
+        serializers.deserializeWith(Trips.serializer, jsonDecode(tripsJson));
+    return trips;
   }
 
-  //TODO: (kiheke) - Update to use api.
   _fetchTrips() async {
-    Future<String> history =
-        rootBundle.loadString('assets/static_records/Trips.json');
+    Trips trips = await _travelApiClient.getReservations('72000027');
     try {
-      _saveToCache(await history);
-      _loadFromCache();
+      _saveToCache(tripsKey, trips.toJson());
+      _loadFromTripsCache();
     } catch (e, s) {
-      _log.severe('Failed to fetch recognition history: ', e, s);
+      _log.severe('Failed to fetch trips: ', e, s);
       return null;
     }
   }
 
-  Future<void> _saveToCache(balance) => _cache.writeString(cacheKey, balance);
+  Future<void> _saveToCache(String key, String data) =>
+      _cache.writeString(key, data);
 
   @override
   void start() {} // NO-OP

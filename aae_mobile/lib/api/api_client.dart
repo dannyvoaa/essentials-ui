@@ -9,6 +9,7 @@ import 'package:aae/model/profile.dart';
 import 'package:aae/model/profile_query.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:aae/model/stock_stats.dart';
+import 'package:aae/model/trips.dart';
 import 'package:http/http.dart' as http;
 import 'package:logging/logging.dart';
 
@@ -37,6 +38,9 @@ class NewsServiceApi {
 
   final articleEndpoint =
       'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/default/ae-newsarticle.json?contentID=';
+
+  final travelReservationsEndpoint =
+      'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/travel/reservations';
 
   Future<List<NewsFeed>> getNewsFeed(List<String> tags) async {
     List<NewsFeed> feedList = <NewsFeed>[];

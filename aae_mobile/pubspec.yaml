@@ -70,6 +70,7 @@ flutter:
     - assets/static_records/RecognitionHistory.json
     - assets/static_records/image.jpeg
     - assets/common/sign_in_background.png
+    - assets/static_records/Trips.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -105,6 +106,12 @@ flutter:
           style: italic
         - asset: assets/fonts/AmericanSans-Bold.ttf
           weight: 700
+    - family: AmericanSansMedium
+      fonts:
+        - asset: assets/fonts/AmericanSans-Medium.otf
     - family: AaeIcons
       fonts:
         - asset: assets/fonts/AaeIcons.ttf
+    - family: AaeIconsv4
+      fonts:
+        - asset: assets/fonts/american-icons-v4.ttf

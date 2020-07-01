@@ -19,3 +19,12 @@ class AaeIcons {
   static const IconData notifications =
       const IconData(0xe80c, fontFamily: _kFontFam);
 }
+
+class AaeIconsv4 {
+  AaeIconsv4._();
+
+  static const _kFontFam = 'AaeIconsv4';
+
+  static const IconData list = const IconData(0xe06c, fontFamily: _kFontFam);
+  static const IconData clock = const IconData(0xe02e, fontFamily: _kFontFam);
+}
