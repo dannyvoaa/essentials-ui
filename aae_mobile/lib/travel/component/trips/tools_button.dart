@@ -16,11 +16,14 @@ class ToolsButton extends StatelessWidget {
   _buildToolsButton(BuildContext context) {
     return Row(children: <Widget>[
       Expanded(
-        flex: 1,
-        child: Align(
+          flex: 1,
+          child: Align(
             alignment: Alignment.centerLeft,
-            child: Icon(iconData, size: 30, color: AaeColors.blue)),
-      ),
+            child: Container(
+                height: 30,
+                width: 30,
+                child: Icon(iconData, size: 30, color: AaeColors.blue))
+          )),
       Expanded(
           flex: 6,
           child: Container(
@@ -33,7 +36,7 @@ class ToolsButton extends StatelessWidget {
                     '$title',
                     textAlign: TextAlign.left,
                     style: TextStyle(
-                      fontFamily: 'AmericanSans',
+                      fontFamily: 'AmericanSansMedium',
                       fontSize: 16,
                       color: AaeColors.black,
                     ),

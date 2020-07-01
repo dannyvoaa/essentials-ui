@@ -1,3 +1,4 @@
+import 'package:aae/assets/aae_icons.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/travel/component/travel_list_tile/travel_full_button.dart';
 import 'package:aae/travel/component/trips/tools_button.dart';
@@ -62,13 +63,13 @@ class TripsListWidget extends StatelessWidget {
       children: <Widget>[
         TravelListTile(
           buttonContent: ToolsButton(
-              iconData: Icons.list,
+              iconData: AaeIconsv4.list,
               title: 'Priority list',
               subtitle: 'Look up available and assigned seats.'),
         ),
         TravelListTile(
           buttonContent: ToolsButton(
-              iconData: Icons.access_time,
+              iconData: AaeIconsv4.clock,
               title: 'Flight status',
               subtitle: 'Get arrival and departure information.'),
         ),

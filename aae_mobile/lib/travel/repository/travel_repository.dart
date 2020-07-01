@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:aae/api/travel_api_client.dart';
+import 'package:aae/auth/sso_auth.dart';
 import 'package:aae/cache/cache_service.dart';
 import 'package:aae/common/repository/repository.dart';
 import 'package:aae/model/pnr.dart';
@@ -22,56 +23,54 @@ import 'package:logging/logging.dart';
 class TravelRepository implements Repository {
   static final _log = Logger(Repository.buildLogName('TravelRepository'));
   final TravelServiceApi _travelApiClient;
+  final SSOAuth _ssoAuth;
 
   static const cacheKey = 'TravelRepository.Travel';
 
-  final _pnr = createBehaviorSubject<BuiltList<Pnr>>();
+  final _pnrs = createBehaviorSubject<BuiltList<Pnr>>();
 
   final CacheService _cache;
+  static String tripsKey = 'trips';
 
-  Observable<BuiltList<Pnr>> get pnr => _pnr;
+  Observable<BuiltList<Pnr>> get pnrs => _pnrs;
 
   @provide
   @singleton
-  TravelRepository(this._cache, this._travelApiClient) {
-    _loadFromCache();
+  TravelRepository(this._cache, this._travelApiClient, this._ssoAuth) {
+    _loadFromTripsCache();
     _fetchTrips();
   }
 
-  void _loadFromCache() {
+  void _loadFromTripsCache() {
     _cache
-        .readString(cacheKey)
+        .readString(tripsKey)
         .transform(_tripsToModel)
         .ifPresent(_publishTrips);
   }
 
   void _publishTrips(Trips trips) {
-    _pnr.sendNext(trips.pnrs);
+    _pnrs.sendNext(trips.pnrs);
   }
 
   static Trips _tripsToModel(String tripsJson) {
-    print(tripsJson);
     Trips trips =
         serializers.deserializeWith(Trips.serializer, jsonDecode(tripsJson));
-    print('trips to model');
-    print(trips);
     return trips;
   }
 
   _fetchTrips() async {
-//    Future<String> trips =
-//        rootBundle.loadString('assets/static_records/Trips.json');
-    String trips = await _travelApiClient.getReservations();
+    Trips trips = await _travelApiClient.getReservations('72000027');
     try {
-      _saveToCache(await trips);
-      _loadFromCache();
+      _saveToCache(tripsKey, trips.toJson());
+      _loadFromTripsCache();
     } catch (e, s) {
       _log.severe('Failed to fetch trips: ', e, s);
       return null;
     }
   }
 
-  Future<void> _saveToCache(trips) => _cache.writeString(cacheKey, trips);
+  Future<void> _saveToCache(String key, String data) =>
+      _cache.writeString(key, data);
 
   @override
   void start() {} // NO-OP

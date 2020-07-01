@@ -17,7 +17,7 @@ class TripsBloc {
   final TravelRepository _travelRepository;
 
   Source<TripsViewModel> get viewModel =>
-      toSource(combineLatest(_travelRepository.pnr, _createViewModel));
+      toSource(combineLatest(_travelRepository.pnrs, _createViewModel));
 
   @provide
   TripsBloc(this._travelRepository);
