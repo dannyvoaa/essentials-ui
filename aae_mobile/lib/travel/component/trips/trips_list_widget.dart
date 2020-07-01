@@ -46,7 +46,7 @@ class TripsListWidget extends StatelessWidget {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              'There are no upcoming trips.',
+              'There are no current trips.',
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: 14,
