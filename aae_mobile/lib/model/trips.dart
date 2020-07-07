@@ -19,6 +19,9 @@ abstract class Trips
 
   @BuiltValueField(wireName: 'pnrs')
   BuiltList<Pnr> get pnrs;
+  set pnrs(BuiltList<Pnr> pnrs){
+    this.pnrs = pnrs;
+  }
 
   String toJson() {
     return json

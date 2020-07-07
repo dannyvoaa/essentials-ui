@@ -23,7 +23,15 @@ class TripsBloc {
   TripsBloc(this._travelRepository);
 
   TripsViewModel _createViewModel(BuiltList<Pnr> pnrs) {
+    pnrs = _sortByFirstDepartureDate(pnrs);
     return TripsViewModel((b) => b..pnrs.addAll(pnrs));
+  }
+
+  BuiltList<Pnr> _sortByFirstDepartureDate(BuiltList<Pnr> pnrs) {
+    List<Pnr> pnrsList = pnrs.toList();
+    pnrsList.sort((a, b) => a.firstDepartureDateTime.compareTo(b.firstDepartureDateTime));
+    pnrs = pnrsList.toBuiltList();
+    return pnrs;
   }
 }
 
