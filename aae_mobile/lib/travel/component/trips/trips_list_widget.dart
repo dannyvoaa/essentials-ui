@@ -15,7 +15,7 @@ class TripsListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (this.viewModel == null) {
       return _buildToolsListWidget(context);
-    } else if(this.viewModel.pnrs.length > 0) {
+    } else if (this.viewModel.pnrs.length > 0) {
       return _buildTripsListWidget(context);
     } else {
       return _buildNoTripsCollection(context);
@@ -24,18 +24,17 @@ class TripsListWidget extends StatelessWidget {
 
   _buildTripsListWidget(BuildContext context) {
     return SizedBox(
-        height: 68.00 * viewModel.pnrs.length,
-        child: Expanded(
-          child: ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: viewModel.pnrs.length,
-              itemBuilder: (context, index) {
-                return TravelListTile(
-                  buttonContent: TripsButton(
-                      pnr: this.viewModel.pnrs[index], context: context),
-                );
-              }),
-        ));
+      height: 68.00 * viewModel.pnrs.length,
+      child: ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: viewModel.pnrs.length,
+          itemBuilder: (context, index) {
+            return TravelListTile(
+              buttonContent: TripsButton(
+                  pnr: this.viewModel.pnrs[index], context: context),
+            );
+          }),
+    );
   }
 
   _buildNoTripsCollection(BuildContext context) {
