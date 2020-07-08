@@ -19,7 +19,7 @@ class _EventsPageState extends State<EventsPage> {
       endDrawer: AaeDrawer(),
       appBar: AaeTopNavBar(),
       body: Padding(
-        padding: const EdgeInsets.all(AaeDimens.baseUnit),
+        padding: const EdgeInsets.only(top: AaeDimens.baseUnit, left: AaeDimens.baseUnit, right: AaeDimens.baseUnit,),
         child: Column(
           children: <Widget>[
             CalendarComponent(),

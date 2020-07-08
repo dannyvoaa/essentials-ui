@@ -161,6 +161,68 @@ class AaeTextStyles {
     return textStyle;
   }
 
+  static TextStyle calendarMain({
+    bool boolDefaultHeight = false,
+  }) {
+    TextStyle textStyle = TextStyle(
+      color: AaeColors.darkGray,
+      fontFamily: _americanSans,
+      fontSize: 16,
+      height: boolDefaultHeight ? 1.00 : 1.33,
+      // backgroundColor: AaColors.lightGray,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  static TextStyle calendarOld({
+    bool boolDefaultHeight = false,
+  }) {
+    TextStyle textStyle = TextStyle(
+      color: AaeColors.ultraLightGray,
+      fontFamily: _americanSans,
+      fontSize: 16,
+      height: boolDefaultHeight ? 1.00 : 1.33,
+      // backgroundColor: AaColors.lightGray,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  /// Calendar page summary blocks
+  static TextStyle calendarSummary({
+    bool boolDefaultHeight = false,
+  }) {
+    TextStyle textStyle = TextStyle(
+      color: AaeColors.darkGray,
+      fontFamily: _americanSans,
+      fontSize: 13,
+      height: boolDefaultHeight ? 1.00 : 1.33,
+      // backgroundColor: AaColors.lightGray,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  static TextStyle calendarSummaryBold({
+    bool boolDefaultHeight = false,
+  }) {
+    TextStyle textStyle = TextStyle(
+      color: AaeColors.darkGray,
+      fontFamily: _americanSans,
+      fontSize: 13,
+      fontWeight: FontWeight.bold,
+      height: boolDefaultHeight ? 1.00 : 1.33,
+      // backgroundColor: AaColors.lightGray,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
   static TextStyle tableHeaderFooter({
     bool boolDefaultHeight = false,
     bool boolEnabled = true,
@@ -184,7 +246,6 @@ class AaeTextStyles {
     // Default style
 
     return textStyle;
-
   }
 
   /// Used for regular-sized headline content
@@ -242,7 +303,7 @@ class AaeTextStyles {
   }) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       fontSize: 14,
-      height: 1.165,
+      height: .6,
     );
 
     // Default style
@@ -253,6 +314,38 @@ class AaeTextStyles {
       {bool boolDefaultHeight = false, bool boolEnabled = true}) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       color: AaeColors.ultraLightGray,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  /// Used for Event detail layout
+  static TextStyle eventTitle({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = h4.copyWith(
+      color: AaeColors.darkGray,
+      height: 1.0,
+      fontSize: 22,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  static TextStyle eventText({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
+      color: AaeColors.darkGray,
+      height: 1.0,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  static TextStyle eventDate({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = t2.copyWith(
+      color: AaeColors.darkGray,
+      fontSize: 12,
     );
 
     // Default style

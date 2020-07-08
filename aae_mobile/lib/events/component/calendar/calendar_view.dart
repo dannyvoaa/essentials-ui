@@ -33,49 +33,49 @@ class CalendarView extends StatelessWidget {
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('S'),
+                    child: Text('Sun'),
                     height: double.infinity,
                   ),
                 ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('M'),
+                    child: Text('Mon'),
                     height: double.infinity,
                   ),
                 ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('T'),
+                    child: Text('Tue'),
                     height: double.infinity,
                   ),
                 ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('W'),
+                    child: Text('Wed'),
                     height: double.infinity,
                   ),
                 ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('T'),
+                    child: Text('Thu'),
                     height: double.infinity,
                   ),
                 ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('F'),
+                    child: Text('Fri'),
                     height: double.infinity,
                   ),
                 ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('S'),
+                    child: Text('Sat'),
                     height: double.infinity,
                   ),
                 ),
@@ -91,6 +91,50 @@ class CalendarView extends StatelessWidget {
 
   /// A single date cell
   Widget _buildCalendarGrid(BuildContext context) {
+    TextStyle formatDay(x) {
+      int day = int.tryParse(x) ?? 0;
+      var now = DateTime.now();
+      var today = now.day;
+      var thisMonth = now.month;
+      var thisYear = now.year;
+
+      var result = day < today && thisMonth == viewModel.datePage.month
+          ? AaeTextStyles.calendarOld(boolDefaultHeight: true)
+          : thisMonth > viewModel.datePage.month ||
+                  thisYear > viewModel.datePage.year
+              ? AaeTextStyles.calendarOld(boolDefaultHeight: true)
+              : thisYear < viewModel.datePage.year
+                  ? AaeTextStyles.calendarMain(boolDefaultHeight: true)
+                  : day == viewModel.selectedDate
+                      ? TextStyle(color: AaeColors.white)
+                      : AaeTextStyles.calendarMain(boolDefaultHeight: true);
+      return result;
+    }
+
+    Color formatColor(x) {
+      int day = int.tryParse(x) ?? 0;
+      var now = DateTime.now();
+      var today = now.day;
+      var thisMonth = now.month;
+      var thisYear = now.year;
+
+      var result = viewModel.daysWithEvents.contains(int?.parse(x)) &&
+              day >= today &&
+              thisMonth <= viewModel.datePage.month
+          ? AaeColors.blue
+          : viewModel.daysWithEvents.contains(int?.parse(x)) &&
+                  thisMonth < viewModel.datePage.month
+              ? AaeColors.blue
+              : thisMonth >= viewModel.datePage.month
+                  ? null
+                  : viewModel.daysWithEvents.contains(int?.parse(x)) &&
+                          day == viewModel.selectedDate
+                      ? null
+                      : null;
+
+      return result;
+    }
+
     return GridView.count(
       shrinkWrap: true,
       crossAxisCount: 7,
@@ -112,10 +156,7 @@ class CalendarView extends StatelessWidget {
                     Expanded(
                       child: Container(),
                     ),
-                    Text(stringDay,
-                        style: int.tryParse(stringDay) != viewModel.selectedDate
-                            ? AaeTextStyles.body(boolDefaultHeight: true)
-                            : TextStyle(color: AaeColors.white)),
+                    Text(stringDay, style: formatDay(stringDay)),
                     Expanded(
                       child: viewModel.daysWithEvents
                               .contains(int?.tryParse(stringDay))
@@ -123,10 +164,7 @@ class CalendarView extends StatelessWidget {
                               alignment: Alignment.topCenter,
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: viewModel.daysWithEvents
-                                          .contains(int?.parse(stringDay))
-                                      ? AaeColors.blue
-                                      : AaeColors.white,
+                                  color: formatColor(stringDay),
                                   shape: BoxShape.circle,
                                 ),
                                 height: 5,
@@ -171,45 +209,65 @@ class CalendarView extends StatelessWidget {
         ? DateFormat.MMMM().format(dateBuilder)
         : DateFormat.yMMMM().format(dateBuilder);
 
-    return Container(
-      child: Row(
-        children: <Widget>[
-          InkWell(
-            child: Container(
-              child: Icon(
-                Icons.chevron_left,
-                color: AaeColors.blue,
-              ),
-              height: AaeDimens.sizeDynamic_48px(),
-              width: AaeDimens.sizeDynamic_48px(),
+    return Padding(
+      padding: EdgeInsets.only(left:6.0, right:6.0),
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+//              color: AaeColors.lightGray,
+              offset: Offset(0.2, 2),
+              blurRadius: 4,
+              spreadRadius: 2,
             ),
-            onTap: viewModel.onPreviousMonthPressed,
-          ),
-          Text(
-            stringMonthYear,
-            style: AaeTextStyles.title(),
-          ),
-          InkWell(
-            child: Container(
-              child: Icon(
-                Icons.chevron_right,
-                color: AaeColors.blue,
-              ),
-              height: AaeDimens.sizeDynamic_48px(),
-              width: AaeDimens.sizeDynamic_48px(),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(6.0),
+          child: Container(
+            color: AaeColors.white,
+            child: Row(
+              children: <Widget>[
+                InkWell(
+                  child: Container(
+                    child: Icon(
+                      Icons.chevron_left,
+                      color: AaeColors.blue,
+                    ),
+                    height: AaeDimens.sizeDynamic_48px(),
+                    width: AaeDimens.sizeDynamic_48px(),
+                  ),
+                  onTap: viewModel.onPreviousMonthPressed,
+                ),
+                Text(
+                  stringMonthYear,
+                  style: AaeTextStyles.title(),
+                ),
+                InkWell(
+                  child: Container(
+                    child: Icon(
+                      Icons.chevron_right,
+                      color: AaeColors.blue,
+                    ),
+                    height: AaeDimens.sizeDynamic_48px(),
+                    width: AaeDimens.sizeDynamic_48px(),
+                  ),
+                  onTap: viewModel.onNextMonthPressed,
+                ),
+              ],
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
             ),
-            onTap: viewModel.onNextMonthPressed,
           ),
-        ],
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      ),
-      color: AaeColors.white,
-      margin: EdgeInsets.only(
-        left: 0,
-        top: AaeDimens.sizeDynamic_16px(),
-        right: 0,
-        bottom: AaeDimens.sizeDynamic_16px(),
+        ),
+//      color: AaeColors.red,
+        margin: EdgeInsets.only(
+          left: 0,
+          top: AaeDimens.sizeDynamic_16px(),
+          right: 0,
+          bottom: AaeDimens.sizeDynamic_16px(),
+        ),
       ),
     );
   }

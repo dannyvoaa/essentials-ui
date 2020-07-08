@@ -7,7 +7,10 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
+=======
     version: "5.0.0"
+>>>>>>> development
     version: "4.0.0"
   analyzer:
     dependency: transitive
@@ -15,7 +18,10 @@ packages:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
+=======
     version: "0.39.12"
+>>>>>>> development
     version: "0.39.10"
   archive:
     dependency: transitive
@@ -178,6 +184,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.6"
+<<<<<<< HEAD
+=======
   fake_async:
     dependency: transitive
     description:
@@ -185,6 +193,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
+>>>>>>> development
   fixnum:
     dependency: transitive
     description:
@@ -603,7 +612,16 @@ packages:
       name: url_launcher
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
+<<<<<<< HEAD
+    version: "5.4.10"
+=======
     version: "5.4.11"
+>>>>>>> development
+=======
+    version: "5.4.10"
+    version: "5.4.11"
+>>>>>>> calendar
   url_launcher_macos:
     dependency: transitive
     description:
@@ -624,7 +642,10 @@ packages:
       name: url_launcher_web
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
+=======
     version: "0.1.2"
+>>>>>>> development
     version: "0.1.1+6"
   vector_math:
     dependency: transitive

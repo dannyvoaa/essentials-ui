@@ -110,3 +110,6 @@ flutter:
     - family: AaeIcons
       fonts:
         - asset: assets/fonts/AaeIcons.ttf
+    - family: AaeIconsv4
+      fonts:
+        - asset: assets/fonts/american-icons-v4.ttf
