@@ -16,7 +16,7 @@ class TripsButton extends StatelessWidget {
   _buildTripsButton(BuildContext context) {
     return Row(children: <Widget>[
       Expanded(
-          flex: 5,
+          flex: 6,
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(

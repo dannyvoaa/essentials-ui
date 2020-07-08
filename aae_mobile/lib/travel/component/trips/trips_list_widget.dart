@@ -24,17 +24,17 @@ class TripsListWidget extends StatelessWidget {
 
   _buildTripsListWidget(BuildContext context) {
     return SizedBox(
-      height: 68.00 * viewModel.pnrs.length,
-      child: ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          itemCount: viewModel.pnrs.length,
-          itemBuilder: (context, index) {
-            return TravelListTile(
-              buttonContent: TripsButton(
-                  pnr: this.viewModel.pnrs[index], context: context),
-            );
-          }),
-    );
+        height: 68.00 * viewModel.pnrs.length,
+          child: ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: viewModel.pnrs.length,
+              itemBuilder: (context, index) {
+                return TravelListTile(
+                  buttonContent: TripsButton(
+                      pnr: this.viewModel.pnrs[index], context: context),
+                );
+              }),
+        );
   }
 
   _buildNoTripsCollection(BuildContext context) {
