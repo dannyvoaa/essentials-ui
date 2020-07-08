@@ -91,7 +91,7 @@ class AaeDimens {
   }
 
   static const sizeTableViewCell = 44.0;
-  static const roundedCorner = 20.0;
+  static const roundedCorner = 10.0;
   static const buttonContentPadding = 15.0;
 
   static const pageMarginLarge = EdgeInsets.fromLTRB(44.0, 0.0, 44.0, 0.0);

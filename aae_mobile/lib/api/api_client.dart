@@ -42,7 +42,7 @@ class NewsServiceApi {
     List<NewsFeed> feedList = <NewsFeed>[];
     for (var tag in tags) {
       final response = await httpClient
-          .get('$baseUrl$tag&count=15&page=0')
+          .get('$baseUrl$tag&count=5&page=0')
           .then((http.Response r) => r);
       if (response.statusCode == 200) {
         _log.info("Newsfeed API request successful");

@@ -21,7 +21,7 @@ class LargeButton extends StatelessWidget {
     TextStyle styleText;
 
     // Use the Light Blue color theme
-    colorBackground = AaeColors.lightBlue;
+    colorBackground = AaeColors.blue;
     colorHighlight = AaeColors.blue;
     styleText = AaeTextStyles.largeButtonTitle();
 

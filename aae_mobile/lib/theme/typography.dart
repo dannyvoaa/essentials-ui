@@ -263,8 +263,8 @@ class AaeTextStyles {
   static TextStyle largeButtonTitle({bool boolDefaultHeight = false}) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       color: AaeColors.white,
-      fontSize: 24,
-      fontWeight: FontWeight.bold,
+      fontSize: 18,
+      fontWeight: FontWeight.normal,
       height: 1.0,
     );
 
@@ -286,13 +286,25 @@ class AaeTextStyles {
   // Used for user-entered content in a [TextField]
   static TextStyle textFieldModern({bool boolDefaultHeight = false}) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      fontSize: 24,
-      color: AaeColors.white,
+      fontSize: 18,
+      color: AaeColors.darkBlue,
     );
 
     // Default style
     return textStyle;
   }
+
+  // Used for user-entered content in a [TextField]
+  static TextStyle textFieldTitle({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
+      fontSize: 18,
+      color: AaeColors.gray,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
 
   static const pageHeadline = TextStyle(fontSize: 24, fontWeight: _bold);
 }
