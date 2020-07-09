@@ -31,6 +31,7 @@ class SignInStates {
     name: 'AccountCreation',
     children: {
       topicsSelection,
+      hubLocationsSelection,
       workgroupsSelection,
     },
     initial: topicsSelection,
@@ -79,6 +80,13 @@ class SignInStates {
   static final topicsSelection = WorkflowState(
     name: 'TopicsSelection',
     routeSegment: SignInRoutes.topicsSelectionSegment,
+    navigateOnTransition: true,
+  );
+
+  /// State while the user is selecting topics
+  static final hubLocationsSelection = WorkflowState(
+    name: 'HubLocationsSelection',
+    routeSegment: SignInRoutes.hubLocationsSelectionSegment,
     navigateOnTransition: true,
   );
 

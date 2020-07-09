@@ -16,37 +16,63 @@ class SettingsListBloc {
   @provide
   SettingsListBloc(this._profileRepository);
 
-  Source<SettingsListViewModel> get viewModel => toSource(
-        combineLatest(_profileRepository.profile, _createViewModel),
-      );
+  Source<SettingsListViewModel> get viewModel => toSource(combineLatest(_profileRepository.profile, _createViewModel));
 
   SettingsListViewModel _createViewModel(Profile profile) =>
       SettingsListViewModel(
           displayName: profile.displayName,
-          location: profile.location,
+          userlocation: profile.userlocation,
+          userworkgroup: profile.userworkgroup,
           topics: [
             'Headlines',
-            'Business-Education',
+            'Business Education',
             'Fleet',
             'Network',
             'Operations',
-            'People-Culture',
-            'Products-Services'
+            'People Culture',
+            'Products Services'
           ],
           selectedTopics: profile.topics,
+          hubLocation: [
+            'BOS',
+            'CLT',
+            'DCA',
+            'DFW',
+            'LAX',
+            'MIA',
+            'NYC',
+            'JFK',
+            'LGA',
+            'ORD',
+            'PHL',
+            'PHX',
+            'TUL',
+            'INTL',
+            'GSC',
+            'Central Region',
+            'Northeast Region',
+            'Southeast Region',
+            'West-Region',
+            'Asia Pacific',
+            'Canada',
+            'Europe',
+            'MCLA'
+          ],
+          selectedHubLocations: profile.hubLocation,
           workgroup: [
-            'ACS (Airport Customer Service)',
+            'Airport Customer Service',
             'Cargo',
             'Fleet Service',
-            'Flight (Pilots)',
-            'Flight Service  (Flight Attendants)',
-            'LSS (Leadership & Support Staff)',
-            'PGS  (Premium Guest Services)',
+            'Flight',
+            'Flight Service',
+            'Leadership and Support Staff',
+            'Premium Guest Services',
             'Reservations',
             'Tech Ops'
           ],
           selectedWorkgroups: profile.workgroup,
           onTopicTapped: _onTopicTapped,
+          onHubLocationTapped: _onHubLocationTapped,
           onWorkgroupTapped: _onWorkgroupTapped);
 
   void _onTopicTapped(String tappedTopic) async {
@@ -64,6 +90,20 @@ class SettingsListBloc {
     }
   }
 
+  void _onHubLocationTapped(String tappedHubLocation) async {
+    Profile currentProfile = await _profileRepository.fetchActiveProfile();
+    if (currentProfile.hubLocation.contains(tappedHubLocation)) {
+      Profile updatedProfile = currentProfile.rebuild((b) =>
+          b.hubLocation.removeWhere((hubLocation) => hubLocation == tappedHubLocation));
+      _profileRepository.updateProfile(updatedProfile);
+      print(updatedProfile);
+    } else {
+      Profile updatedProfile =
+      currentProfile.rebuild((b) => b.hubLocation.add(tappedHubLocation));
+      print(updatedProfile);
+      _profileRepository.updateProfile(updatedProfile);
+    }
+  }
   void _onWorkgroupTapped(String tappedWorkgroup) async {
     Profile currentProfile = await _profileRepository.fetchActiveProfile();
     if (currentProfile.workgroup.contains(tappedWorkgroup)) {

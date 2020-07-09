@@ -64,16 +64,15 @@ class ProfileRepository implements Repository {
   Future<void> validateIdentity() async {
     Profile profile;
     try {
-      profile = await _fetchProfile();
-      _profile.sendNext(profile.rebuild(
-          (builder) => builder.displayName = _ssoAuth.currentUser.displayName));
+      profile = await _apiClient.getProfile(_ssoAuth.currentUser.id);
     } catch (e, s) {
-      _log.severe('Failed to verify profile:', e, s);
-      rethrow;
+        _log.severe('Failed to verify profile:', e, s);
+        throw ProfileNotFoundException('User does not have a profile');
     }
-    if (profile.topics.isEmpty && profile.workgroup.isEmpty) {
-      throw ProfileNotFoundException('User does not have a profile');
-    }
+    _profile.sendNext(profile.rebuild((builder) => builder.displayName = _ssoAuth.currentUser.displayName));
+    //if (profile.topics.isEmpty && profile.workgroup.isEmpty) {
+    //  throw ProfileNotFoundException('User does not have a profile');
+    //}
   }
 
   //TODO: (kiheke) - Update to use api.
@@ -85,13 +84,17 @@ class ProfileRepository implements Repository {
   Future<bool> createProfile(
     List<String> topics,
     List<String> workgroups,
+    List<String> hubLocations
   ) async {
+    print('**inside-ProfileRepository:createProfile**');
     final responseProfile = Profile((b) => b
       ..topics.addAll(topics)
       ..displayName = _ssoAuth.currentUser.displayName
       ..email = _ssoAuth.currentUser.email
-      ..location = 'Dallas/Fort Worth'
-      ..workgroup.addAll(workgroups));
+      ..userlocation = _ssoAuth.currentUser.userlocation
+      ..userworkgroup = _ssoAuth.currentUser.userworkgroup
+      ..workgroup.addAll(workgroups)
+      ..hubLocation.addAll(hubLocations));
     try {
       final headers = {
         'Content-Type': 'application/json',
@@ -100,11 +103,13 @@ class ProfileRepository implements Repository {
       };
 
       final body = jsonEncode({
-        "aaId": "70000152",
+        "aaId": _ssoAuth.currentUser.id,
         "preferences": {
-          "location": "DFW",
+          "userlocation": _ssoAuth.currentUser.userlocation,
+          "userworkgroup": _ssoAuth.currentUser.userworkgroup,
           "topics": topics,
-          "workgroup": workgroups
+          "workgroup": workgroups,
+          "hubLocation": hubLocations
         },
         "created": 1582726346,
         "updated": 1582726346
@@ -112,14 +117,14 @@ class ProfileRepository implements Repository {
 
       final rev_headers = {'Accept': 'application/json'};
 
-      final rev_res = await http.head(apiEndpoint, headers: rev_headers);
+      //final rev_res = await http.head(apiEndpoint, headers: rev_headers);
 
-      String _rev = rev_res.headers['etag'].replaceAll('"', '');
+      //String _rev = rev_res.headers['etag'].replaceAll('"', '');
 
-      print(_rev);
+      //print(_rev);
 
-      final res = await http.put('$apiEndpoint?rev=$_rev',
-          headers: headers, body: body);
+      //final res = await http.put('$apiEndpoint?rev=$_rev', headers: headers, body: body);
+      final res = await http.put('$apiEndpoint', headers: headers, body: body);
       if (res.statusCode != 201)
         throw Exception('get error: statusCode= ${res.statusCode}');
       print(res.body);
@@ -134,6 +139,7 @@ class ProfileRepository implements Repository {
 
   /// Updates the [Profile] for the current user.
   Future<bool> updateProfile(Profile updatedProfile) async {
+    print('**inside-ProfileRepository:updateProfile**');
     try {
       var headers = {
         'Content-Type': 'application/json',
@@ -143,13 +149,16 @@ class ProfileRepository implements Repository {
 
       List<String> topics = updatedProfile.topics.asList();
       List<String> workgroups = updatedProfile.workgroup.asList();
+      List<String> hubLocations = updatedProfile.hubLocation.asList();
 
       var body = jsonEncode({
-        "aaId": "70000152",
+        "aaId": _ssoAuth.currentUser.id.toString(),
         "preferences": {
-          "location": 'Dallas/Fort Worth',
+          "userlocation": _ssoAuth.currentUser.userlocation,
+          "userworkgroup": _ssoAuth.currentUser.userworkgroup,
           "topics": topics,
-          "workgroup": workgroups
+          "workgroup": workgroups,
+          "hubLocation": hubLocations,
         },
         "created": 1582726346,
         "updated": 1582726346
@@ -158,6 +167,13 @@ class ProfileRepository implements Repository {
       var rev_headers = {'Accept': 'application/json'};
 
       var rev_res = await http.head(apiEndpoint, headers: rev_headers);
+
+      print('****rev_res:');
+      print(rev_res.toString());
+      print('****rev_res.headers[etag]:');
+      print(rev_res.headers['etag']);
+      print('***************');
+
 
       String _rev = rev_res.headers['etag'].replaceAll('"', '');
 
@@ -187,6 +203,7 @@ class ProfileRepository implements Repository {
 //  }
 
   Future<Profile> fetchActiveProfile() async {
+    //blockingLatest: subscribes the observable at the time of this method is called and returns a Future of the latest emission of the Observable.
     return (await blockingLatest(profile));
   }
 

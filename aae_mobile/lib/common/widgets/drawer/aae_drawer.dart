@@ -1,4 +1,5 @@
 import 'package:aae/common/commands/navigate_command.dart';
+import 'package:aae/auth/sso_identity.dart';
 import 'package:aae/navigation/navigation_helper.dart';
 import 'package:aae/navigation/routes.dart' as routes;
 import 'package:aae/service_provider.dart';
@@ -64,13 +65,13 @@ class AaeDrawer extends StatelessWidget {
                               child: Column(
                                 children: <Widget>[
                                   Text(
-                                    'Employee Name',
+                                    'Employee Name: {John Wick}',
                                     maxLines: 1,
                                     overflow: TextOverflow.clip,
                                     style: AaeTextStyles.description(),
                                   ),
                                   Text(
-                                    'Location',
+                                    'Location: {DFW}',
                                     maxLines: 1,
                                     overflow: TextOverflow.clip,
                                     style: AaeTextStyles.description(),

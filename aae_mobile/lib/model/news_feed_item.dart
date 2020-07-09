@@ -8,8 +8,7 @@ import 'package:built_value/serializer.dart';
 
 part 'news_feed_item.g.dart';
 
-abstract class NewsFeedItem
-    implements Built<NewsFeedItem, NewsFeedItemBuilder> {
+abstract class NewsFeedItem implements Built<NewsFeedItem, NewsFeedItemBuilder> {
   NewsFeedItem._();
 
   factory NewsFeedItem([updates(NewsFeedItemBuilder b)]) = _$NewsFeedItem;
@@ -33,13 +32,11 @@ abstract class NewsFeedItem
   String get subject;
 
   String toJson() {
-    return json
-        .encode(serializers.serializeWith(NewsFeedItem.serializer, this));
+    return json.encode(serializers.serializeWith(NewsFeedItem.serializer, this));
   }
 
   static NewsFeedItem fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        NewsFeedItem.serializer, json.decode(jsonString));
+    return serializers.deserializeWith(NewsFeedItem.serializer, json.decode(jsonString));
   }
 
   static Serializer<NewsFeedItem> get serializer => _$newsFeedItemSerializer;

@@ -14,9 +14,16 @@ abstract class Profile implements Built<Profile, ProfileBuilder> {
 
   factory Profile([updates(ProfileBuilder b)]) = _$Profile;
 
+  @BuiltValueField(wireName: 'userlocation')
+  @BuiltValueSerializer(serializeNulls: true)
   @nullable
-  @BuiltValueField(wireName: 'location')
-  String get location;
+  String get userlocation;
+
+
+  @BuiltValueField(wireName: 'userworkgroup')
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
+  String get userworkgroup;
 
   @BuiltValueField(wireName: 'username')
   @BuiltValueSerializer(serializeNulls: true)
@@ -42,6 +49,11 @@ abstract class Profile implements Built<Profile, ProfileBuilder> {
   @BuiltValueSerializer(serializeNulls: true)
   @nullable
   BuiltList<String> get workgroup;
+
+  @BuiltValueField(wireName: 'hubLocation')
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
+  BuiltList<String> get hubLocation;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Profile.serializer, this));

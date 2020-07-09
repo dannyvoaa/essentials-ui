@@ -114,8 +114,7 @@ class OAuth2Token extends HttpAuthentication {
           .post(sso_auth_constants.ACCESS_TOKEN_URL, body: payload, headers: {
         'Content-Type': "application/x-www-form-urlencoded",
         'accept': "application/json",
-        'authorization':
-            "Basic ${base64Encode(utf8.encode('${sso_auth_constants.CLIENT_ID}:${sso_auth_constants.CLIENT_SECRET}'))}"
+        'authorization': "Basic ${base64Encode(utf8.encode('${sso_auth_constants.CLIENT_ID}:${sso_auth_constants.CLIENT_SECRET}'))}"
       });
 
       log.fine(response.body);

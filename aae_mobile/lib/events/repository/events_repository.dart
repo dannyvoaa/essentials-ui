@@ -66,6 +66,7 @@ class EventsRepository implements Repository {
   }
 
   void _publishListOfDaysWithEvents(listOfDaysWithEvents) {
+    print('^^^^^^^^^calling sendNext^^^^^^^^^^');
     _listOfDaysWithEvents.sendNext(listOfDaysWithEvents);
   }
 
@@ -96,6 +97,7 @@ class EventsRepository implements Repository {
   }
 
   fetchDaysWithEvents(DateTime date) async {
+    print('^^^^^^^^^calling api to get days with events^^^^^^^^^^');
     List<Event> listOfDaysWithEvents =
         (await _apiClient.getDaysWithEvents(date));
     try {

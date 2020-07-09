@@ -17,16 +17,13 @@ class WelcomeBloc {
   static final _log = Logger('WelcomeBloc');
 
   final SignInRepository _signInRepository;
-
   final _events = Subject<WorkflowEvent>();
 
   /// Events to be consumed by any workflows this BLoC is part of.
   Observable<WorkflowEvent> get events => _events;
 
   /// Publishes the [WelcomeViewModel].
-  Source<WelcomeViewModel> get viewModel => toSource(
-        Observable.just(_createViewModel()),
-      );
+  Source<WelcomeViewModel> get viewModel => toSource(Observable.just(_createViewModel()));
 
   @provide
   WelcomeBloc(this._signInRepository);

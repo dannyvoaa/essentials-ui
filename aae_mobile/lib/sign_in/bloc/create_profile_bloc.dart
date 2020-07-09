@@ -27,14 +27,15 @@ class CreateProfileBloc {
   Future<void> createProfile() async {
     final topics = lastEvent(_sharedDataRepository.topics);
     final workgroups = lastEvent(_sharedDataRepository.workgroups);
+    final hubLocations = lastEvent(_sharedDataRepository.hubLocations);
 
-    if (topics.length == 0 || workgroups.length == 0) {
-      _log.severe('Workgroups or Topics not set before creating a profile.');
-      _events.sendNext(SignInEvents.profileCreationFailed);
-      return;
-    }
+    //if (topics.length == 0 || workgroups.length == 0) {
+    //  _log.severe('Workgroups or Topics not set before creating a profile.');
+    //  _events.sendNext(SignInEvents.profileCreationFailed);
+    //  return;
+    //}
 
-    if (await _profileRepository.createProfile(topics, workgroups)) {
+    if (await _profileRepository.createProfile(topics, workgroups, hubLocations)) {
       _events.sendNext(SignInEvents.profileCreationSucceeded);
       _log.shout(
           '-------------------PROFILE CREATION SUCCEEDED------------------------');

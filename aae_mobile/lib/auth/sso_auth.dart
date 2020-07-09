@@ -45,14 +45,16 @@ class SSOAuth {
     var cachedUser = tryParseJwt(vars);
 
     print(cachedUser);
-    print(
-        "-------------------------------${cachedUser['preferred_username']}-----------------");
+    print("-------------------------------${cachedUser['preferred_username']}-----------------");
+    //cachedUser['userlocation'],cachedUser['userworkgroup'],
     SSOIdentity _user = new SSOIdentity(
       cachedUser['access_token'],
       cachedUser['email'],
       cachedUser['preferred_username'],
       cachedUser['refresh_token'],
       cachedUser['name'],
+      'DFW',
+      'Leadership and Support Staff',
     );
     _setCurrentUser(_user);
     return _user;
@@ -83,6 +85,7 @@ class SSOAuth {
 
   /// Retrieves tokens and user profile, signs in user
   Future<void> signIn(String username, String password) async {
+    print('********Inside sso_auth:signIn*************');
     try {
       var client = await oauth2.resourceOwnerPasswordGrant(
           Uri.parse(sso_auth_constants.ACCESS_TOKEN_URL), username, password,
@@ -93,12 +96,15 @@ class SSOAuth {
       var jwt = tryParseJwt(client.credentials.idToken);
       print(jwt);
 
+      //jwt['userlocation'],jwt['userworkgroup'],jwt['given_name'], jwt['family_name']
       SSOIdentity _user = new SSOIdentity(
         client.credentials.accessToken,
         jwt['email'],
         jwt['preferred_username'],
         client.credentials.refreshToken,
         jwt['name'],
+        'DFW',
+        'Leadership and Support Staff',
       );
 
       _cache.writeString(currentUserAuthKey, client.credentials.idToken);

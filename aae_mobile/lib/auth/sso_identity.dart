@@ -8,6 +8,10 @@ class SSOIdentity implements AmericanAirlinesIdentity {
 
   final String id;
 
+  final String userlocation;
+
+  final String userworkgroup;
+
   final String refreshToken;
 
   final String token;
@@ -16,7 +20,7 @@ class SSOIdentity implements AmericanAirlinesIdentity {
   ///
   /// Throws [InvalidSSOIdentityException] on failure.
   SSOIdentity(
-      this.token, this.email, this.id, this.refreshToken, this.displayName) {
+      this.token, this.email, this.id, this.refreshToken, this.displayName, this.userlocation, this.userworkgroup) {
     if (email == null || id == null) {
       throw InvalidSSOIdentityException();
     }
@@ -104,6 +108,10 @@ abstract class AmericanAirlinesIdentity {
   ///
   /// Not guaranteed to be present for all users, even when configured.
   String get displayName;
+
+  String get userlocation;
+
+  String get userworkgroup;
 }
 
 /// Thrown when an [SSOIdentity] fails to be constructed.

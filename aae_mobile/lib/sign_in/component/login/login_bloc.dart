@@ -29,28 +29,19 @@ class LoginBloc {
   final _validitySubject = createBehaviorSubject<bool>();
   final _events = Subject<WorkflowEvent>();
 
-  final _altAuthOptions =
-      createBehaviorSubject<BiometricType>(initial: BiometricType.fingerprint);
+  final _altAuthOptions = createBehaviorSubject<BiometricType>(initial: BiometricType.fingerprint);
 
   final _biometricAvailable = createBehaviorSubject<bool>(initial: false);
 
   /// On sign in status changes, publishes whether we have a signed in user with
   /// a valid profile.
-  Observable<bool> get profileValidity =>
-      _validitySubject.distinctUntilChanged();
+  Observable<bool> get profileValidity => _validitySubject.distinctUntilChanged();
 
   /// Events to be consumed by any workflows this BLoC is part of.
   Observable<WorkflowEvent> get events => _events;
 
   /// Publishes the [LoginViewModel].
-  Source<LoginViewModel> get viewModel => toSource(combineLatest5(
-        _currentUsername,
-        _currentPassword,
-        _loginInProgress,
-        _altAuthOptions,
-        _biometricAvailable,
-        _createViewModel,
-      ));
+  Source<LoginViewModel> get viewModel => toSource(combineLatest5(_currentUsername, _currentPassword, _loginInProgress, _altAuthOptions, _biometricAvailable, _createViewModel,));
 
   @provide
   LoginBloc(this._signInRepository);

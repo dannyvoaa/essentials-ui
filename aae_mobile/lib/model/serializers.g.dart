@@ -10,9 +10,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ArticleBody.serializer)
       ..add(Docs.serializer)
       ..add(Event.serializer)
+      ..add(HubLocation.serializer)
       ..add(NewsArticle.serializer)
-      ..add(NewsFeed.serializer)
       ..add(NewsFeedItem.serializer)
+      ..add(NewsFeedJsonList.serializer)
       ..add(PerformanceStats.serializer)
       ..add(Profile.serializer)
       ..add(RecognitionHistory.serializer)
@@ -30,6 +31,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(
               BuiltList, const [const FullType(RecognitionRegister)]),
           () => new ListBuilder<RecognitionRegister>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

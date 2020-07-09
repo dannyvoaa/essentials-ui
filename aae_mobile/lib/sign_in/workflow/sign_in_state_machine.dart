@@ -109,6 +109,7 @@ class SignInStateMachine extends WorkflowStateMachineBase {
 
   void _setUpAccountCreation() {
     _setUpTopicsSelection();
+    _setUpHubLocationsSelection();
     _setUpWorkgroupsSelection();
   }
 
@@ -215,6 +216,33 @@ class SignInStateMachine extends WorkflowStateMachineBase {
     _hsm[SignInStates.topicsSelection]
         .addHandlers(SignInEvents.userPressedPrimaryButton, [
       forwardTransition(
+        SignInStates.hubLocationsSelection,
+        transition: WorkflowTransition.push,
+      ),
+    ]);
+  }
+
+  void _setUpHubLocationsSelection() {
+    // Pop when user presses back -- only in-app back button, this will happen
+    // automatically from system back button.
+    _hsm[SignInStates.hubLocationsSelection].addHandler(
+      SignInEvents.userPressedSecondaryButton,
+      action: (event, context) {
+        _navigation.pop(context);
+      },
+    );
+
+    // When the navigator pops, transition state to workgroups selection.
+    // This is done here rather than in the handler for userPressedBack to cover
+    // both the in-app back button and the system back button.
+    _hsm[SignInStates.hubLocationsSelection].addHandlers(
+      SignInEvents.routePopped,
+      [backwardTransition(SignInStates.topicsSelection)],
+    );
+
+    _hsm[SignInStates.hubLocationsSelection]
+        .addHandlers(SignInEvents.userPressedPrimaryButton, [
+      forwardTransition(
         SignInStates.workgroupsSelection,
         transition: WorkflowTransition.push,
       ),
@@ -236,7 +264,7 @@ class SignInStateMachine extends WorkflowStateMachineBase {
     // both the in-app back button and the system back button.
     _hsm[SignInStates.workgroupsSelection].addHandlers(
       SignInEvents.routePopped,
-      [backwardTransition(SignInStates.topicsSelection)],
+      [backwardTransition(SignInStates.hubLocationsSelection)],
     );
 
     _hsm[SignInStates.workgroupsSelection].addHandler(
