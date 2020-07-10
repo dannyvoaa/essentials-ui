@@ -38,11 +38,9 @@ class NewsArticleComponent extends StatelessWidget {
                     return newsArticleScaffoldWidget(
                         context, strAuthor, strArticleId, strArticleBody);
                   } else {
-                    print('**NewsArticleComponent**snapshotValue IS NULL**');
                     return _buildLoadingPageState();
                   }
                 } else {
-                  print('**NewsArticleComponent**snapshot NOT present**');
                   return _buildLoadingPageState();
                 }
               });

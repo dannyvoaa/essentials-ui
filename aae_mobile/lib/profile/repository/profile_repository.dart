@@ -70,9 +70,6 @@ class ProfileRepository implements Repository {
         throw ProfileNotFoundException('User does not have a profile');
     }
     _profile.sendNext(profile.rebuild((builder) => builder.displayName = _ssoAuth.currentUser.displayName));
-    //if (profile.topics.isEmpty && profile.workgroup.isEmpty) {
-    //  throw ProfileNotFoundException('User does not have a profile');
-    //}
   }
 
   //TODO: (kiheke) - Update to use api.
@@ -86,7 +83,6 @@ class ProfileRepository implements Repository {
     List<String> workgroups,
     List<String> hubLocations
   ) async {
-    print('**inside-ProfileRepository:createProfile**');
     final responseProfile = Profile((b) => b
       ..topics.addAll(topics)
       ..displayName = _ssoAuth.currentUser.displayName
@@ -116,14 +112,6 @@ class ProfileRepository implements Repository {
       });
 
       final rev_headers = {'Accept': 'application/json'};
-
-      //final rev_res = await http.head(apiEndpoint, headers: rev_headers);
-
-      //String _rev = rev_res.headers['etag'].replaceAll('"', '');
-
-      //print(_rev);
-
-      //final res = await http.put('$apiEndpoint?rev=$_rev', headers: headers, body: body);
       final res = await http.put('$apiEndpoint', headers: headers, body: body);
       if (res.statusCode != 201)
         throw Exception('get error: statusCode= ${res.statusCode}');
@@ -139,7 +127,6 @@ class ProfileRepository implements Repository {
 
   /// Updates the [Profile] for the current user.
   Future<bool> updateProfile(Profile updatedProfile) async {
-    print('**inside-ProfileRepository:updateProfile**');
     try {
       var headers = {
         'Content-Type': 'application/json',
@@ -167,13 +154,6 @@ class ProfileRepository implements Repository {
       var rev_headers = {'Accept': 'application/json'};
 
       var rev_res = await http.head(apiEndpoint, headers: rev_headers);
-
-      print('****rev_res:');
-      print(rev_res.toString());
-      print('****rev_res.headers[etag]:');
-      print(rev_res.headers['etag']);
-      print('***************');
-
 
       String _rev = rev_res.headers['etag'].replaceAll('"', '');
 

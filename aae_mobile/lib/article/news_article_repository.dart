@@ -37,6 +37,7 @@ class NewsArticleRepository implements Repository {
     try {
       //_cache.writeString('newsArticleId', id);
       NewsArticle data = await _apiClient.getArticleData(articleId: id);
+      _log.info("NewsArticle API request successful");
       //_cache.writeString('newsArticleId', id);
       _newsArticleBehaviorSubject.sendNext(data); /// Emits the [data] event to this observer.
     } catch (e, s) {

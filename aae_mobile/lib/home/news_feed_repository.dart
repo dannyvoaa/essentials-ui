@@ -41,7 +41,6 @@ class NewsFeedRepository implements Repository {
   Observable<NewsFeedItem> newsFeedItemById(String newsFeedItemId) => _newsFeedItemsByNewsFeedItemId.data(newsFeedItemId).distinctUntilChanged(); //Publishes [NewsFeedItem]s by ID.
 
   fetchNewsFeedJsonList(Profile profile) async {
-    print('******when am I being called*******');
     try {
       List<String> tags = ['news'];
       if (profile.userlocation != "" || profile.userlocation != null)
@@ -61,10 +60,11 @@ class NewsFeedRepository implements Repository {
   }
 
   void _publishNewsFeed(List<NewsFeedJsonList> jnewsFeed) {
+    _newsFeedJsonList.sendNext(UnmodifiableListView(jnewsFeed));
     jnewsFeed.asMap().forEach((index, value) {
       this.publishNewsFeedItems(value.newsFeedJsonList);
     });
-    _newsFeedJsonList.sendNext(UnmodifiableListView(jnewsFeed));
+
   }
 
   void publishNewsFeedItems(Iterable<NewsFeedItem> updatedNewsFeedItems) { //Updates the published streams for the [NewsFeedItems]s specified by [updatedNewsFeedItems].

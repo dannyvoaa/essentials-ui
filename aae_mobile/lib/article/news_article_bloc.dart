@@ -16,18 +16,16 @@ class NewsArticleBloc {
 
   @provide
   NewsArticleBloc(this._newsArticleRepository) {
-    print('**NewsArticleBloc-Constructor**');
+    //print('**NewsArticleBloc-Constructor**');
   }
 
   // TODO (rpaglinawan): pass in an observable of the full page article data
   //into viewmodel generator
   Source<NewsArticleViewModel> get viewModel {
-    print('**NewsArticleBloc-Source**');
     return toSource(combineLatest(_newsArticleRepository.newsArticleObservable, _createViewModel));
   }
 
   NewsArticleViewModel _createViewModel(NewsArticle article) {
-    print('**NewsArticleBloc-createViewModel**');
     return NewsArticleViewModel(
             (b) {
                   b..articleID = article.contentID;

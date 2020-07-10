@@ -28,8 +28,6 @@ class NewsFeedListCollectionBloc {
   NewsFeedListCollectionBloc(this._newsFeedRepository, this._profileRepository);
 
   NewsFeedListCollectionViewModel _createViewModel(UnmodifiableListView<NewsFeedJsonList> feed, Profile profile) {
-    print('******NewsFeedListCollectionBloc._createViewModel:feed' + feed.toString() + '*****');
-    print('******NewsFeedListCollectionBloc._createViewModel:profile' + profile.toString() + '*****');
     _newsFeedRepository.fetchNewsFeedJsonList(profile);
     return NewsFeedListCollectionViewModel((b) => b
       ..newsFeedCategories.addAll(listOfNewsFeedCategories(profile))
@@ -45,17 +43,12 @@ class NewsFeedListCollectionBloc {
     categories.addAll(profile.topics);
     categories.addAll(profile.workgroup);
     categories.addAll(profile.hubLocation);
-    print('***********Categories*************');
-    print(categories);
     return categories;
   }
 
   List<NewsFeedListRowCollectionViewModel> _createRowViewModels(UnmodifiableListView<NewsFeedJsonList> myfeed, Profile profile) {
-    print('******myfeed:' + myfeed.toString() + '*****');
-    print('******profile:' + profile.toString() + '*****');
     List<NewsFeedListRowCollectionViewModel> viewModels = <NewsFeedListRowCollectionViewModel>[];
     for (var feed in myfeed) {
-      print('******each feed:' + feed.toString() + '*****');
       viewModels.add(NewsFeedListRowCollectionViewModel((b) => b
         ..newsFeedItemIds.addAll(feed.newsFeedJsonList.map((e) => e.id).toList())
         ..newsFeedItemContentIds.addAll(feed.newsFeedJsonList.map((e) => e.contentID).toList())

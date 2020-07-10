@@ -18,8 +18,6 @@ class NewsFeedListRowCollectionView extends StatelessWidget {
 }
 
 _buildRow(NewsFeedListRowCollectionViewModel viewModel, index) {
-  print('**BuildRow:Index:'+index.toString()+'**');
-  print('**BuildRow:newsFeedItemIds.length:'+ viewModel.newsFeedItemIds.length.toString() +'**');
   return Container(
 //    height: 370,
     child: Column(
@@ -36,8 +34,6 @@ _buildRow(NewsFeedListRowCollectionViewModel viewModel, index) {
             itemCount: viewModel.newsFeedItemIds.length,
             padding: EdgeInsets.only(left:3.0,),
             itemBuilder: (_, index) {
-              print('**BuildRow:ItemBuilder:Index:'+index.toString()+'**');
-              print('**BuildRow:ItemBuilder.newsFeedItemIds[index]:'+ viewModel.newsFeedItemIds[index].toString() +'**');
               return Padding(
 //                padding: EdgeInsets.symmetric(horizontal: 6),
                 padding: EdgeInsets.only(left:6.0),
@@ -107,8 +103,6 @@ _buildVideoRow(NewsFeedListRowCollectionViewModel viewModel) {
 }
 
 _buildRowHeader(NewsFeedListRowCollectionViewModel viewModel, index) {
-    print('**BuildRowHeader:Index:'+index.toString()+'**');
-    print('**BuildRowHeader:newsFeedItemCategories:'+toBeginningOfSentenceCase(viewModel.newsFeedItemCategories[index]).toString()+'**');
     switch (index) {
       case 0:
         {

@@ -9,14 +9,13 @@ class NewsFeedListCollectionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('******NewsFeedCategories.Length:' + viewModel.newsFeedCategories.length.toString() + '*****');
     return Column(
       children: <Widget>[
         Expanded(
           child: ListView.builder(
             itemCount: viewModel.newsFeedCategories.length,
             itemBuilder: (BuildContext context, int myindex) {
-              print('******NewsFeedCategories.index:' + myindex.toString() + '*****');
+
               return NewsFeedListRowCollectionView(viewModel: viewModel.newsFeedListRowCollectionViewModels[myindex], index: myindex);
             },
           ))

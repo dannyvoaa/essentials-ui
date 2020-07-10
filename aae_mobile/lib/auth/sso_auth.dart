@@ -85,7 +85,6 @@ class SSOAuth {
 
   /// Retrieves tokens and user profile, signs in user
   Future<void> signIn(String username, String password) async {
-    print('********Inside sso_auth:signIn*************');
     try {
       var client = await oauth2.resourceOwnerPasswordGrant(
           Uri.parse(sso_auth_constants.ACCESS_TOKEN_URL), username, password,

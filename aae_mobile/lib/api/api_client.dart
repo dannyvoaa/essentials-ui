@@ -32,9 +32,9 @@ class NewsServiceApi {
   Future<List<NewsFeedJsonList>> getNewsFeed(List<String> tags) async {
     List<NewsFeedJsonList> myFeedJsonList = <NewsFeedJsonList>[];
     for (var tag in tags) {
-      final response = await httpClient.get('$baseUrl$tag&count=2&page=0').then((http.Response r) => r);
+      final response = await httpClient.get('$baseUrl$tag&count=5&page=0').then((http.Response r) => r);
       if (response.statusCode == 200) {
-        _log.info("Newsfeed API request successful");
+        //_log.info("Newsfeed API request successful");
         NewsFeedJsonList myFeedJsonListResponse = serializers.deserializeWith(NewsFeedJsonList.serializer, json.decode(response.body));
         myFeedJsonList.add(myFeedJsonListResponse);
       } else {
@@ -56,13 +56,10 @@ class NewsServiceApi {
         {"aaId": "asc"}
       ]
     });
-    print('******Inside apiclient:getProfile********');
-    final response = await httpClient.post(preferencesEndpoint, headers: headers, body: body).then((http.Response r) => r);
-    print('******response.statusCode:' + response.statusCode.toString() + '********');
-    if (response.statusCode == 200) {
-      print('**********Response Body********');
-      print(jsonDecode(response.body).toString().toString());
 
+    final response = await httpClient.post(preferencesEndpoint, headers: headers, body: body).then((http.Response r) => r);
+
+    if (response.statusCode == 200) {
       ProfileQuery profileQuery = ProfileQuery.fromJson(jsonDecode(response.body));
 
       Profile profile = Profile(
@@ -175,7 +172,6 @@ class NewsServiceApi {
   Future<NewsArticle> getArticleData({String articleId}) async {
     final response = await httpClient.get('$articleEndpoint$articleId');
     if (response.statusCode == 200) {
-      print('*******Article API request successful********');
       NewsArticle article = serializers.deserializeWith(NewsArticle.serializer, json.decode(response.body));
       return article;
     } else {
