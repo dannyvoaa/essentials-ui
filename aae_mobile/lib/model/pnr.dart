@@ -34,9 +34,6 @@ abstract class Pnr
   @BuiltValueField(wireName: 'passType')
   String get passType;
 
-  @BuiltValueField(wireName: 'status')
-  String get status;
-
 
   String toJson() {
     return json

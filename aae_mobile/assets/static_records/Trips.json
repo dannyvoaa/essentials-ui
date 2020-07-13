@@ -6,8 +6,7 @@
       "description": "DFW - LAX  06/12/2020",
       "lastArrivalDateTime": "2020-06-12T10:28:00.000-0500",
       "firstDepartureDateTime": "2020-06-12T09:00:00.000-0500",
-      "passType": "AAC",
-      "status": "CREATED"
+      "passType": "AAC"
     },
     {
       "employeeId": "72000052",
@@ -15,8 +14,7 @@
       "description": "John's birthday bash in somewhere unknown",
       "lastArrivalDateTime": "2020-06-13T22:25:00.000-0500",
       "firstDepartureDateTime": "2020-06-13T17:30:00.000-0500",
-      "passType": "AAC",
-      "status": "CREATED"
+      "passType": "AAC"
     }
   ]
 }
