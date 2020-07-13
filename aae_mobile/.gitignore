@@ -37,10 +37,6 @@
 *.g.dart
 *.inject.dart
 .flutter-plugins-dependencies
-.properties
-.sh
-.xcconfig
-
 
 # Android related
 **/android/**/gradle-wrapper.jar
