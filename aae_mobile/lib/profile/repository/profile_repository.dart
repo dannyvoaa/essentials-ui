@@ -97,7 +97,6 @@ class ProfileRepository implements Repository {
       ..workgroup.addAll(workgroups)
       ..hubLocation.addAll(hubLocations));
     try {
-      print('*****Inside Create Profile*****');
       final headers = {
         'Content-Type': 'application/json',
       };
@@ -133,7 +132,6 @@ class ProfileRepository implements Repository {
   Future<bool> updateProfile(Profile updatedProfile) async {
 
     try {
-      print('*****Inside Update Profile*****');
       var headers = {
         'Content-Type': 'application/json',
       };

@@ -29,8 +29,6 @@ class NewsFeedListCollectionBloc {
   NewsFeedListCollectionBloc(this._newsFeedRepository, this._profileRepository);
 
   NewsFeedListCollectionViewModel _createViewModel(UnmodifiableListView<NewsFeedJsonList> feed, Profile profile) {
-    print('********NewsFeedListCollectionBloc:_createViewModel***********');
-
     return NewsFeedListCollectionViewModel((b) => b
       ..newsFeedCategories.addAll(listOfNewsFeedCategories(profile))
       ..newsFeedListRowCollectionViewModels.addAll(_createRowViewModels(feed, profile)));

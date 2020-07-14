@@ -32,11 +32,8 @@ class NewsServiceApi {
 
   Future<List<NewsFeedJsonList>> getNewsFeed(List<String> tags) async {
     List<NewsFeedJsonList> myFeedJsonList = <NewsFeedJsonList>[];
-    print('********Tags:' + tags.toString() + '***********');
     for (var tag in tags) {
-      print('********Each Tag: ' + tag.toString() + '***********');
-      print('');
-      final response = await httpClient.get('$baseUrl$tag&count=1&page=0').then((http.Response r) => r);
+      final response = await httpClient.get('$baseUrl$tag&count=5&page=0').then((http.Response r) => r);
       if (response.statusCode == 200) {
         _log.info("Newsfeed API request successful");
         NewsFeedJsonList myFeedJsonListResponse = serializers.deserializeWith(NewsFeedJsonList.serializer, json.decode(response.body));
@@ -49,7 +46,6 @@ class NewsServiceApi {
   }
 
   Future<Profile> getProfile(String aaId) async {
-    print('*****Inside Get Profile*****');
     final headers = {'content-type': 'application/json'};
     final response = await httpClient.get(preferencesEndpoint + "?aaId=" + aaId, headers: headers).then((http.Response r) => r);
 

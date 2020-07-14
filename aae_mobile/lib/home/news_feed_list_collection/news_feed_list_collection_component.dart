@@ -12,24 +12,18 @@ class NewsFeedListCollectionComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('********NewsFeedListCollectionComponent:build***********');
     return Component<NewsFeedListCollectionBloc, NewsFeedListCollectionBlocFactory>(
       bloc: (factory) => factory.newsFeedListCollectionBloc(),
       builder: (context, bloc) {
-        print('********NewsFeedListCollectionComponent:builder(context,bloc)***********');
 
         //SourceBuilder.of(sourceA, (sourceAValue) => Text(sourceAValue.value))
         return SourceBuilder.of<NewsFeedListCollectionViewModel>(
           source: bloc.viewModel,
           builder: (snapshot) {
-            print('********NewsFeedListCollectionComponent:builder(snapshot)***********');
             if (snapshot.present) {
-              print('********NewsFeedListCollectionComponent:snapshot.present***********');
               if (snapshot.value == null) {
-                print('********NewsFeedListCollectionComponent:snapshot-is-null***********');
                 return _buildEmptyState(context);
               } else {
-                print('********NewsFeedListCollectionComponent:return NFLC-VM***********');
                 return NewsFeedListCollectionView(viewModel: snapshot.value);
               }
             } else {

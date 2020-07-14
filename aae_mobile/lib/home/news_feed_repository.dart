@@ -71,7 +71,6 @@ class NewsFeedRepository implements Repository {
     for (var newsFeedItem in updatedNewsFeedItems) {
       _newsFeedItemsByNewsFeedItemId.update(newsFeedItem.id.toString(), newsFeedItem);
     }
-    print('********calling sendNext in NewsFeedRepository***********');
     _newsFeedJsonList.sendNext(UnmodifiableListView(jnewsFeed));
   }
 
