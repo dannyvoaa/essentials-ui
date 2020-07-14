@@ -1,3 +1,7 @@
+import 'dart:collection';
+
+import 'package:aae/home/news_feed_repository.dart';
+import 'package:aae/model/news_feed_json_list.dart';
 import 'package:aae/model/profile.dart';
 import 'package:aae/profile/repository/profile_repository.dart';
 import 'package:aae/provided_service.dart';
@@ -12,9 +16,10 @@ import 'settings_list_view_model.dart';
 /// Exposes a [SettingsListViewModel] for that component to use.
 class SettingsListBloc {
   ProfileRepository _profileRepository;
+  NewsFeedRepository _newsFeedRepository;
 
   @provide
-  SettingsListBloc(this._profileRepository);
+  SettingsListBloc(this._profileRepository, this._newsFeedRepository);
 
   Source<SettingsListViewModel> get viewModel => toSource(combineLatest(_profileRepository.profile, _createViewModel));
 
@@ -23,53 +28,11 @@ class SettingsListBloc {
           displayName: profile.displayName,
           userlocation: profile.userlocation,
           userworkgroup: profile.userworkgroup,
-          topics: [
-            'Headlines',
-            'Business Education',
-            'Fleet',
-            'Network',
-            'Operations',
-            'People Culture',
-            'Products Services'
-          ],
+          topics: ['Headlines', 'Business Education', 'Fleet', 'Network', 'Operations', 'People Culture', 'Products Services'],
           selectedTopics: profile.topics,
-          hubLocation: [
-            'BOS',
-            'CLT',
-            'DCA',
-            'DFW',
-            'LAX',
-            'MIA',
-            'NYC',
-            'JFK',
-            'LGA',
-            'ORD',
-            'PHL',
-            'PHX',
-            'TUL',
-            'INTL',
-            'GSC',
-            'Central Region',
-            'Northeast Region',
-            'Southeast Region',
-            'West-Region',
-            'Asia Pacific',
-            'Canada',
-            'Europe',
-            'MCLA'
-          ],
+          hubLocation: ['BOS', 'CLT', 'DCA', 'DFW', 'LAX', 'MIA', 'NYC', 'JFK', 'LGA', 'ORD', 'PHL', 'PHX', 'TUL', 'INTL', 'GSC', 'Central Region', 'Northeast Region', 'Southeast Region', 'West Region', 'Asia Pacific', 'Canada', 'Europe', 'MCLA'],
           selectedHubLocations: profile.hubLocation,
-          workgroup: [
-            'Airport Customer Service',
-            'Cargo',
-            'Fleet Service',
-            'Flight',
-            'Flight Service',
-            'Leadership and Support Staff',
-            'Premium Guest Services',
-            'Reservations',
-            'Tech Ops'
-          ],
+          workgroup: ['Airport Customer Service', 'Cargo', 'Fleet Service', 'Flight', 'Flight Service', 'Leadership and Support Staff', 'Premium Guest Services', 'Reservations', 'Tech Ops'],
           selectedWorkgroups: profile.workgroup,
           onTopicTapped: _onTopicTapped,
           onHubLocationTapped: _onHubLocationTapped,
@@ -78,44 +41,45 @@ class SettingsListBloc {
   void _onTopicTapped(String tappedTopic) async {
     Profile currentProfile = await _profileRepository.fetchActiveProfile();
     if (currentProfile.topics.contains(tappedTopic)) {
-      Profile updatedProfile = currentProfile.rebuild(
-          (b) => b.topics.removeWhere((topic) => topic == tappedTopic));
+      Profile updatedProfile = currentProfile.rebuild((b) => b.topics.removeWhere((topic) => topic == tappedTopic));
       _profileRepository.updateProfile(updatedProfile);
+      _newsFeedRepository.fetchNewsFeedJsonList(updatedProfile);
       print(updatedProfile);
     } else {
-      Profile updatedProfile =
-          currentProfile.rebuild((b) => b.topics.add(tappedTopic));
+      Profile updatedProfile = currentProfile.rebuild((b) => b.topics.add(tappedTopic));
       print(updatedProfile);
       _profileRepository.updateProfile(updatedProfile);
+      _newsFeedRepository.fetchNewsFeedJsonList(updatedProfile);
     }
   }
 
   void _onHubLocationTapped(String tappedHubLocation) async {
     Profile currentProfile = await _profileRepository.fetchActiveProfile();
     if (currentProfile.hubLocation.contains(tappedHubLocation)) {
-      Profile updatedProfile = currentProfile.rebuild((b) =>
-          b.hubLocation.removeWhere((hubLocation) => hubLocation == tappedHubLocation));
+      Profile updatedProfile = currentProfile.rebuild((b) => b.hubLocation.removeWhere((hubLocation) => hubLocation == tappedHubLocation));
       _profileRepository.updateProfile(updatedProfile);
+      _newsFeedRepository.fetchNewsFeedJsonList(updatedProfile);
       print(updatedProfile);
     } else {
       Profile updatedProfile =
       currentProfile.rebuild((b) => b.hubLocation.add(tappedHubLocation));
       print(updatedProfile);
       _profileRepository.updateProfile(updatedProfile);
+      _newsFeedRepository.fetchNewsFeedJsonList(updatedProfile);
     }
   }
   void _onWorkgroupTapped(String tappedWorkgroup) async {
     Profile currentProfile = await _profileRepository.fetchActiveProfile();
     if (currentProfile.workgroup.contains(tappedWorkgroup)) {
-      Profile updatedProfile = currentProfile.rebuild((b) =>
-          b.workgroup.removeWhere((workgroup) => workgroup == tappedWorkgroup));
+      Profile updatedProfile = currentProfile.rebuild((b) => b.workgroup.removeWhere((workgroup) => workgroup == tappedWorkgroup));
       _profileRepository.updateProfile(updatedProfile);
+      _newsFeedRepository.fetchNewsFeedJsonList(updatedProfile);
       print(updatedProfile);
     } else {
-      Profile updatedProfile =
-          currentProfile.rebuild((b) => b.workgroup.add(tappedWorkgroup));
+      Profile updatedProfile = currentProfile.rebuild((b) => b.workgroup.add(tappedWorkgroup));
       print(updatedProfile);
       _profileRepository.updateProfile(updatedProfile);
+      _newsFeedRepository.fetchNewsFeedJsonList(updatedProfile);
     }
   }
 }

@@ -4,6 +4,7 @@ import 'package:aae/home/news_feed_list_row_collection/news_feed_list_row_collec
 import 'package:aae/home/news_feed_repository.dart';
 import 'package:aae/model/news_feed_json_list.dart';
 import 'package:aae/model/profile.dart';
+import 'package:aae/profile/repository/locations_repository.dart';
 import 'package:aae/profile/repository/profile_repository.dart';
 import 'package:aae/provided_service.dart';
 import 'package:aae/rx/bloc_with_rx.dart';
@@ -28,18 +29,27 @@ class NewsFeedListCollectionBloc {
   NewsFeedListCollectionBloc(this._newsFeedRepository, this._profileRepository);
 
   NewsFeedListCollectionViewModel _createViewModel(UnmodifiableListView<NewsFeedJsonList> feed, Profile profile) {
-    _newsFeedRepository.fetchNewsFeedJsonList(profile);
+    print('********NewsFeedListCollectionBloc:_createViewModel***********');
+
     return NewsFeedListCollectionViewModel((b) => b
       ..newsFeedCategories.addAll(listOfNewsFeedCategories(profile))
       ..newsFeedListRowCollectionViewModels.addAll(_createRowViewModels(feed, profile)));
   }
 
   List<String> listOfNewsFeedCategories(Profile profile) {
+    List<String> hubLocationsList = <String>['BOS','CLT','DCA','DFW','LAX','MIA','NYC','JFK','LGA','ORD','PHL','PHX','TUL','INTL','GSC','Central Region','Northeast Region','Southeast Region','West Region','Asia Pacific','Canada','Europe','MCLA'];
     List<String> categories = <String>['news'];
-    if (profile.userlocation != "" || profile.userlocation != null)
-      categories.add(profile.userlocation);
-    if (profile.userworkgroup != ""|| profile.userworkgroup != null)
+    if (profile.userlocation != "" || profile.userlocation != null) {
+      //temporary workaround
+      //if (hubLocationsList.any((e) => e.contains(profile.userlocation.toUpperCase()))) {
+        categories.add(profile.userlocation);
+      //} else {
+        //don't add
+      //}
+    }
+    if (profile.userworkgroup != ""|| profile.userworkgroup != null) {
       categories.add(profile.userworkgroup);
+    }
     categories.addAll(profile.topics);
     categories.addAll(profile.workgroup);
     categories.addAll(profile.hubLocation);

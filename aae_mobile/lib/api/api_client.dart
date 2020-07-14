@@ -23,18 +23,22 @@ class NewsServiceApi {
   static String strSFDomain = 'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev';
 
   final baseUrl = strSFDomain + '/default/ae-newsfeed.json?tag=';
-  final preferencesEndpoint = strCloudantDomain + '/user_preferences/_find';
-  final eventsEndpoint = strCloudantDomain + '/events/_find';
+  //final preferencesEndpoint = strCloudantDomain + '/user_preferences/_find';
+  final preferencesEndpoint = 'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/user-profile/aeuserpreffromdb.json';
+  final eventsEndpoint = 'https://beredididleatecturingele:457299efd6f5f57dbd679a0362d377a1ccf5018a@b23661f9-9acc-4aab-9a2b-f8aa0f41b993-bluemix.cloudantnosqldb.appdomain.cloud/events/_find';
   final stocksEndpoint = strSFDomain + '/default/AALStock.json';
   final performanceEndpoint = strSFDomain + '/default/PerformanceStats.json';
   final articleEndpoint = strSFDomain + '/default/ae-newsarticle.json?contentID=';
 
   Future<List<NewsFeedJsonList>> getNewsFeed(List<String> tags) async {
     List<NewsFeedJsonList> myFeedJsonList = <NewsFeedJsonList>[];
+    print('********Tags:' + tags.toString() + '***********');
     for (var tag in tags) {
-      final response = await httpClient.get('$baseUrl$tag&count=5&page=0').then((http.Response r) => r);
+      print('********Each Tag: ' + tag.toString() + '***********');
+      print('');
+      final response = await httpClient.get('$baseUrl$tag&count=1&page=0').then((http.Response r) => r);
       if (response.statusCode == 200) {
-        //_log.info("Newsfeed API request successful");
+        _log.info("Newsfeed API request successful");
         NewsFeedJsonList myFeedJsonListResponse = serializers.deserializeWith(NewsFeedJsonList.serializer, json.decode(response.body));
         myFeedJsonList.add(myFeedJsonListResponse);
       } else {
@@ -45,19 +49,9 @@ class NewsServiceApi {
   }
 
   Future<Profile> getProfile(String aaId) async {
+    print('*****Inside Get Profile*****');
     final headers = {'content-type': 'application/json'};
-
-    final body = jsonEncode({
-      "selector": {
-        "aaId": {"\$eq": aaId}
-      },
-      "fields": ["preferences"],
-      "sort": [
-        {"aaId": "asc"}
-      ]
-    });
-
-    final response = await httpClient.post(preferencesEndpoint, headers: headers, body: body).then((http.Response r) => r);
+    final response = await httpClient.get(preferencesEndpoint + "?aaId=" + aaId, headers: headers).then((http.Response r) => r);
 
     if (response.statusCode == 200) {
       ProfileQuery profileQuery = ProfileQuery.fromJson(jsonDecode(response.body));
@@ -74,7 +68,6 @@ class NewsServiceApi {
       );
 
       print(profile);
-
       _log.info("Profile request successful");
       return profile;
     } else {
@@ -172,6 +165,7 @@ class NewsServiceApi {
   Future<NewsArticle> getArticleData({String articleId}) async {
     final response = await httpClient.get('$articleEndpoint$articleId');
     if (response.statusCode == 200) {
+      _log.info("Articles API request successful");
       NewsArticle article = serializers.deserializeWith(NewsArticle.serializer, json.decode(response.body));
       return article;
     } else {

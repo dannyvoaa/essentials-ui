@@ -2,6 +2,7 @@ import 'package:aae/common/commands/navigate_command.dart';
 import 'package:aae/auth/sso_identity.dart';
 import 'package:aae/navigation/navigation_helper.dart';
 import 'package:aae/navigation/routes.dart' as routes;
+import 'package:aae/profile/repository/profile_repository.dart';
 import 'package:aae/service_provider.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
@@ -12,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'drawer_button.dart';
 
 class AaeDrawer extends StatelessWidget {
+
   Widget build(BuildContext context) {
     EdgeInsets edgeInsets = EdgeInsets.only(
       left: AaeDimens.safeArea(buildContext: context).left > 0

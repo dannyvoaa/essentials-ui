@@ -1,4 +1,5 @@
 import 'package:aae/common/widgets/workflow_page/workflow_footer_button/workflow_footer_button_bloc.dart';
+import 'package:aae/home/news_feed_repository.dart';
 import 'package:aae/profile/repository/locations_repository.dart';
 import 'package:aae/profile/repository/profile_repository.dart';
 import 'package:aae/profile/repository/topics_repository.dart';
@@ -47,12 +48,13 @@ class SignInWorkflowBlocProvider
     TopicsRepository topicsRepository,
     HubLocationsRepository hubLocationsRepository,
     WorkgroupsRepository workgroupsRepository,
+    NewsFeedRepository newsFeedRepository,
     this._signInBloc,
     this._welcomeBloc,
     this._loginBloc,
     this._signInFailedBloc,
     this._workflowFooterButtonBloc,
-  )   : _createProfileBloc = CreateProfileBloc(profileRepository, sharedDataRepository),
+  )   : _createProfileBloc = CreateProfileBloc(profileRepository, sharedDataRepository, newsFeedRepository ),
         _workgroupsSelectionBloc = WorkgroupsSelectionBloc(sharedDataRepository, workgroupsRepository),
         _hubLocationsSelectionBloc = HubLocationsSelectionBloc(sharedDataRepository, hubLocationsRepository),
         _topicsSelectionBloc = TopicsSelectionBloc(sharedDataRepository, topicsRepository);

@@ -5,7 +5,7 @@ import 'package:aae/model/workgroup.dart';
 import 'package:inject/inject.dart';
 import 'package:logging/logging.dart';
 
-/// A repository that stores a list of workgroups.
+/// A repository that stores a list of locations.
 class HubLocationsRepository {
   static final _log = Logger('HubLocationsRepository');
 
@@ -15,7 +15,7 @@ class HubLocationsRepository {
   @singleton
   HubLocationsRepository();
 
-  /// Gets the list of possible user workgroups.
+  /// Gets the list of possible user locations.
   Future<UnmodifiableListView<HubLocation>> get hubLocationsList async => _cachedHubLocationsList ??= await _fetchHubLocationsList();
 
   Future<UnmodifiableListView<HubLocation>> _fetchHubLocationsList() async {
