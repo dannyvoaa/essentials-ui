@@ -26,6 +26,11 @@ class ProfileRepository implements Repository {
   static const apiEndpoint =
       'https://toreetherywhimandifersee:55608bd3e3255fe1851de225ce562d4cab7d8fa2@b23661f9-9acc-4aab-9a2b-f8aa0f41b993-bluemix.cloudantnosqldb.appdomain.cloud/user_preferences/b4eabdbfde6a14ad41a342a5a9a4b99c';
 
+  static const apiEndpointInsert = "https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/user-profile/aeuserinsertintodb.json";
+  static const apiEndpointGetRev = "https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/user-profile/aeuserexistsindb.json";
+  static const apiEndpointUpdate = "https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/user-profile/aeuserupdateindb.json";
+
+
   final _profile = createBehaviorSubject<Profile>();
 
   final CacheService _cache;
@@ -64,16 +69,12 @@ class ProfileRepository implements Repository {
   Future<void> validateIdentity() async {
     Profile profile;
     try {
-      profile = await _fetchProfile();
-      _profile.sendNext(profile.rebuild(
-          (builder) => builder.displayName = _ssoAuth.currentUser.displayName));
+      profile = await _apiClient.getProfile(_ssoAuth.currentUser.id);
     } catch (e, s) {
-      _log.severe('Failed to verify profile:', e, s);
-      rethrow;
+        _log.severe('Failed to verify profile:', e, s);
+        throw ProfileNotFoundException('User does not have a profile');
     }
-    if (profile.topics.isEmpty && profile.workgroup.isEmpty) {
-      throw ProfileNotFoundException('User does not have a profile');
-    }
+    _profile.sendNext(profile.rebuild((builder) => builder.displayName = _ssoAuth.currentUser.displayName));
   }
 
   //TODO: (kiheke) - Update to use api.
@@ -85,42 +86,37 @@ class ProfileRepository implements Repository {
   Future<bool> createProfile(
     List<String> topics,
     List<String> workgroups,
+    List<String> hubLocations
   ) async {
     final responseProfile = Profile((b) => b
       ..topics.addAll(topics)
       ..displayName = _ssoAuth.currentUser.displayName
       ..email = _ssoAuth.currentUser.email
-      ..location = 'Dallas/Fort Worth'
-      ..workgroup.addAll(workgroups));
+      ..userlocation = _ssoAuth.currentUser.userlocation
+      ..userworkgroup = _ssoAuth.currentUser.userworkgroup
+      ..workgroup.addAll(workgroups)
+      ..hubLocation.addAll(hubLocations));
     try {
       final headers = {
         'Content-Type': 'application/json',
-        'Authorization':
-            'Basic dG9yZWV0aGVyeXdoaW1hbmRpZmVyc2VlOjU1NjA4YmQzZTMyNTVmZTE4NTFkZTIyNWNlNTYyZDRjYWI3ZDhmYTI=',
       };
-
+      //'Authorization': 'Basic dG9yZWV0aGVyeXdoaW1hbmRpZmVyc2VlOjU1NjA4YmQzZTMyNTVmZTE4NTFkZTIyNWNlNTYyZDRjYWI3ZDhmYTI=',
       final body = jsonEncode({
-        "aaId": "70000152",
+        "aaId": _ssoAuth.currentUser.id,
         "preferences": {
-          "location": "DFW",
+          "userlocation": _ssoAuth.currentUser.userlocation,
+          "userworkgroup": _ssoAuth.currentUser.userworkgroup,
           "topics": topics,
-          "workgroup": workgroups
+          "workgroup": workgroups,
+          "hubLocation": hubLocations
         },
         "created": 1582726346,
         "updated": 1582726346
       });
 
       final rev_headers = {'Accept': 'application/json'};
-
-      final rev_res = await http.head(apiEndpoint, headers: rev_headers);
-
-      String _rev = rev_res.headers['etag'].replaceAll('"', '');
-
-      print(_rev);
-
-      final res = await http.put('$apiEndpoint?rev=$_rev',
-          headers: headers, body: body);
-      if (res.statusCode != 201)
+      final res = await http.post('$apiEndpointInsert', headers: headers, body: body);
+      if (res.statusCode > 299)
         throw Exception('get error: statusCode= ${res.statusCode}');
       print(res.body);
     } catch (e, s) {
@@ -134,36 +130,50 @@ class ProfileRepository implements Repository {
 
   /// Updates the [Profile] for the current user.
   Future<bool> updateProfile(Profile updatedProfile) async {
+
     try {
       var headers = {
         'Content-Type': 'application/json',
-        'Authorization':
-            'Basic dG9yZWV0aGVyeXdoaW1hbmRpZmVyc2VlOjU1NjA4YmQzZTMyNTVmZTE4NTFkZTIyNWNlNTYyZDRjYWI3ZDhmYTI=',
       };
-
       List<String> topics = updatedProfile.topics.asList();
       List<String> workgroups = updatedProfile.workgroup.asList();
+      List<String> hubLocations = updatedProfile.hubLocation.asList();
+      String strAAId = _ssoAuth.currentUser.id.toString();
 
+
+      var rev_headers = {'Accept': 'application/json'};
+
+      final response = await http.get(apiEndpointGetRev + "?aaId=" + strAAId , headers: rev_headers);
+      String strRev = "";
+      Map<String, dynamic> json = jsonDecode(response.body);
+
+      print(json['docs'].toString());
+      print(json['docs'][0].toString());
+      //print(json['docs'][0]._rev.toString());
+
+      if (json['docs'].length != 0) {
+        Map<String, dynamic> revMap = json['docs'][0];
+        strRev = revMap['_rev'];
+      }
+
+      //String _rev = rev_res.headers['etag'].replaceAll('"', '');
       var body = jsonEncode({
-        "aaId": "70000152",
+        "_id": strAAId,
+        "_rev": strRev,
+        "aaId": strAAId,
         "preferences": {
-          "location": 'Dallas/Fort Worth',
+          "userlocation": _ssoAuth.currentUser.userlocation,
+          "userworkgroup": _ssoAuth.currentUser.userworkgroup,
           "topics": topics,
-          "workgroup": workgroups
+          "workgroup": workgroups,
+          "hubLocation": hubLocations,
         },
         "created": 1582726346,
         "updated": 1582726346
       });
 
-      var rev_headers = {'Accept': 'application/json'};
-
-      var rev_res = await http.head(apiEndpoint, headers: rev_headers);
-
-      String _rev = rev_res.headers['etag'].replaceAll('"', '');
-
-      var res = await http.put('$apiEndpoint?rev=$_rev',
-          headers: headers, body: body);
-      if (res.statusCode != 201)
+      var res = await http.post(apiEndpointUpdate, headers: headers, body: body);
+      if (res.statusCode > 299)
         throw Exception('get error: statusCode= ${res.statusCode}');
     } catch (e, s) {
       _log.severe('Failed to update profile:', e, s);
@@ -187,6 +197,7 @@ class ProfileRepository implements Repository {
 //  }
 
   Future<Profile> fetchActiveProfile() async {
+    //blockingLatest: subscribes the observable at the time of this method is called and returns a Future of the latest emission of the Observable.
     return (await blockingLatest(profile));
   }
 

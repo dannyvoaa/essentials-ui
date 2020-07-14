@@ -18,10 +18,16 @@ class _$ProfileSerializer implements StructuredSerializer<Profile> {
   Iterable<Object> serialize(Serializers serializers, Profile object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
-    if (object.location != null) {
+    if (object.userlocation != null) {
       result
-        ..add('location')
-        ..add(serializers.serialize(object.location,
+        ..add('userlocation')
+        ..add(serializers.serialize(object.userlocation,
+            specifiedType: const FullType(String)));
+    }
+    if (object.userworkgroup != null) {
+      result
+        ..add('userworkgroup')
+        ..add(serializers.serialize(object.userworkgroup,
             specifiedType: const FullType(String)));
     }
     if (object.username != null) {
@@ -56,6 +62,13 @@ class _$ProfileSerializer implements StructuredSerializer<Profile> {
             specifiedType:
                 const FullType(BuiltList, const [const FullType(String)])));
     }
+    if (object.hubLocation != null) {
+      result
+        ..add('hubLocation')
+        ..add(serializers.serialize(object.hubLocation,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
+    }
     return result;
   }
 
@@ -70,8 +83,12 @@ class _$ProfileSerializer implements StructuredSerializer<Profile> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'location':
-          result.location = serializers.deserialize(value,
+        case 'userlocation':
+          result.userlocation = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'userworkgroup':
+          result.userworkgroup = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'username':
@@ -98,6 +115,12 @@ class _$ProfileSerializer implements StructuredSerializer<Profile> {
                       const FullType(BuiltList, const [const FullType(String)]))
               as BuiltList<Object>);
           break;
+        case 'hubLocation':
+          result.hubLocation.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(String)]))
+              as BuiltList<Object>);
+          break;
       }
     }
 
@@ -107,7 +130,9 @@ class _$ProfileSerializer implements StructuredSerializer<Profile> {
 
 class _$Profile extends Profile {
   @override
-  final String location;
+  final String userlocation;
+  @override
+  final String userworkgroup;
   @override
   final String username;
   @override
@@ -118,17 +143,21 @@ class _$Profile extends Profile {
   final BuiltList<String> topics;
   @override
   final BuiltList<String> workgroup;
+  @override
+  final BuiltList<String> hubLocation;
 
   factory _$Profile([void Function(ProfileBuilder) updates]) =>
       (new ProfileBuilder()..update(updates)).build();
 
   _$Profile._(
-      {this.location,
+      {this.userlocation,
+      this.userworkgroup,
       this.username,
       this.email,
       this.displayName,
       this.topics,
-      this.workgroup})
+      this.workgroup,
+      this.hubLocation})
       : super._();
 
   @override
@@ -142,12 +171,14 @@ class _$Profile extends Profile {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Profile &&
-        location == other.location &&
+        userlocation == other.userlocation &&
+        userworkgroup == other.userworkgroup &&
         username == other.username &&
         email == other.email &&
         displayName == other.displayName &&
         topics == other.topics &&
-        workgroup == other.workgroup;
+        workgroup == other.workgroup &&
+        hubLocation == other.hubLocation;
   }
 
   @override
@@ -155,22 +186,30 @@ class _$Profile extends Profile {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, location.hashCode), username.hashCode),
-                    email.hashCode),
-                displayName.hashCode),
-            topics.hashCode),
-        workgroup.hashCode));
+                $jc(
+                    $jc(
+                        $jc(
+                            $jc($jc(0, userlocation.hashCode),
+                                userworkgroup.hashCode),
+                            username.hashCode),
+                        email.hashCode),
+                    displayName.hashCode),
+                topics.hashCode),
+            workgroup.hashCode),
+        hubLocation.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Profile')
-          ..add('location', location)
+          ..add('userlocation', userlocation)
+          ..add('userworkgroup', userworkgroup)
           ..add('username', username)
           ..add('email', email)
           ..add('displayName', displayName)
           ..add('topics', topics)
-          ..add('workgroup', workgroup))
+          ..add('workgroup', workgroup)
+          ..add('hubLocation', hubLocation))
         .toString();
   }
 }
@@ -178,9 +217,14 @@ class _$Profile extends Profile {
 class ProfileBuilder implements Builder<Profile, ProfileBuilder> {
   _$Profile _$v;
 
-  String _location;
-  String get location => _$this._location;
-  set location(String location) => _$this._location = location;
+  String _userlocation;
+  String get userlocation => _$this._userlocation;
+  set userlocation(String userlocation) => _$this._userlocation = userlocation;
+
+  String _userworkgroup;
+  String get userworkgroup => _$this._userworkgroup;
+  set userworkgroup(String userworkgroup) =>
+      _$this._userworkgroup = userworkgroup;
 
   String _username;
   String get username => _$this._username;
@@ -204,16 +248,24 @@ class ProfileBuilder implements Builder<Profile, ProfileBuilder> {
       _$this._workgroup ??= new ListBuilder<String>();
   set workgroup(ListBuilder<String> workgroup) => _$this._workgroup = workgroup;
 
+  ListBuilder<String> _hubLocation;
+  ListBuilder<String> get hubLocation =>
+      _$this._hubLocation ??= new ListBuilder<String>();
+  set hubLocation(ListBuilder<String> hubLocation) =>
+      _$this._hubLocation = hubLocation;
+
   ProfileBuilder();
 
   ProfileBuilder get _$this {
     if (_$v != null) {
-      _location = _$v.location;
+      _userlocation = _$v.userlocation;
+      _userworkgroup = _$v.userworkgroup;
       _username = _$v.username;
       _email = _$v.email;
       _displayName = _$v.displayName;
       _topics = _$v.topics?.toBuilder();
       _workgroup = _$v.workgroup?.toBuilder();
+      _hubLocation = _$v.hubLocation?.toBuilder();
       _$v = null;
     }
     return this;
@@ -238,12 +290,14 @@ class ProfileBuilder implements Builder<Profile, ProfileBuilder> {
     try {
       _$result = _$v ??
           new _$Profile._(
-              location: location,
+              userlocation: userlocation,
+              userworkgroup: userworkgroup,
               username: username,
               email: email,
               displayName: displayName,
               topics: _topics?.build(),
-              workgroup: _workgroup?.build());
+              workgroup: _workgroup?.build(),
+              hubLocation: _hubLocation?.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -251,6 +305,8 @@ class ProfileBuilder implements Builder<Profile, ProfileBuilder> {
         _topics?.build();
         _$failedField = 'workgroup';
         _workgroup?.build();
+        _$failedField = 'hubLocation';
+        _hubLocation?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Profile', _$failedField, e.toString());

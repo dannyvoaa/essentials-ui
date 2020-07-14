@@ -22,8 +22,7 @@ class D0StatsRepository implements Repository {
   static String stocksKey = 'stocks';
 
   Observable<StockStats> get stocksValiditySubject => _stocksValiditySubject;
-  Observable<PerformanceStats> get performanceValiditySubject =>
-      _performanceValiditySubject;
+  Observable<PerformanceStats> get performanceValiditySubject => _performanceValiditySubject;
 
   @provide
   @singleton

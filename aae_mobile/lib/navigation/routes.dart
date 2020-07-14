@@ -19,6 +19,15 @@ const signIn = 'sign-in';
 /// Route key for the [SettingsPage] widget.
 const settingsPage = 'settings';
 
+/// Route key for the [HubLocationPage] widget.
+const hubLocationPage = 'hubLocation';
+
+/// Route key for the [TopicsPage] widget.
+const topicsPage = 'topics';
+
+/// Route key for the [WorkgroupPage] widget.
+const workgroupPage = 'workgroup';
+
 /// Route key for the [PaycheckPage] widget.
 const paycheck = 'paycheck';
 
@@ -37,27 +46,23 @@ const article = 'article';
 /// Route key for the [EventsPage].
 const events = 'events';
 
-String buildRouteName(
-        {@required String tab,
-        @required String pageWidgetRoute,
-        Map<String, dynamic> queryParameters}) =>
-    Uri(pathSegments: [tab, pageWidgetRoute], queryParameters: queryParameters)
-        .toString();
+String buildRouteName({@required String tab, @required String pageWidgetRoute, Map<String, dynamic> queryParameters}) =>
+    Uri(pathSegments: [tab, pageWidgetRoute], queryParameters: queryParameters).toString();
 
 /// Builds a route to the sign in flow.
-String buildSignInRoute() =>
-    buildRouteName(tab: global, pageWidgetRoute: signIn);
+String buildSignInRoute() => buildRouteName(tab: global, pageWidgetRoute: signIn);
 
-String buildArticlePageRoute({
-  @required String article,
-  Map<String, dynamic> parameters,
-}) =>
-    buildRouteName(
-      tab: home,
-      pageWidgetRoute: article,
-      queryParameters: parameters,
-    );
+String buildArticlePageRoute({@required String article, Map<String, dynamic> parameters}) =>
+    buildRouteName(tab: home, pageWidgetRoute: article, queryParameters: parameters);
 
 /// Builds a route to the settings page.
-String buildSettingsPageRoute() =>
-    Uri(pathSegments: [home, settingsPage]).toString();
+String buildSettingsPageRoute() => Uri(pathSegments: [home, settingsPage]).toString();
+
+/// Builds a route to the hubs page.
+String buildHubLocationPageRoute() => Uri(pathSegments: [home, hubLocationPage]).toString();
+
+/// Builds a route to the hubs page.
+String buildTopicsPageRoute() => Uri(pathSegments: [home, topicsPage]).toString();
+
+/// Builds a route to the wg page.
+String buildWorkgroupPageRoute() => Uri(pathSegments: [home, workgroupPage]).toString();

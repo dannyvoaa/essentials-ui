@@ -22,8 +22,7 @@ abstract class TopicsSelectionViewModel
   }) = _$TopicsSelectionViewModel._;
 }
 
-abstract class TopicsViewModel
-    implements Built<TopicsViewModel, TopicsViewModelBuilder> {
+abstract class TopicsViewModel implements Built<TopicsViewModel, TopicsViewModelBuilder> {
   String get topic;
 
   /// Action to take when the user selects this topic.

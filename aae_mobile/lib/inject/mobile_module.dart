@@ -8,7 +8,7 @@ import 'package:aae/cache/cache_service.dart';
 import 'package:aae/common/repository/repository.dart';
 import 'package:aae/common/repository/repository_lifecycle_manager.dart';
 import 'package:aae/events/repository/events_repository.dart';
-import 'package:aae/home/repository/news_feed_repository.dart';
+import 'package:aae/home/news_feed_repository.dart';
 import 'package:aae/inject/annotations.dart';
 import 'package:aae/lifecycle_managed_service.dart';
 import 'package:aae/logging/log_buffer.dart';

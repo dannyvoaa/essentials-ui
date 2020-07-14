@@ -26,10 +26,7 @@ class TopicsSelectionBloc {
   Observable<WorkflowEvent> get events => _events;
 
   /// Publishes the [TopicsSelectionViewModel].
-  Source<TopicsSelectionViewModel> get viewModel => toSource(
-        combineLatest2(Observable.fromFuture(_topicsRepository.topicsList),
-            _selectedTopics, _createViewModel),
-      );
+  Source<TopicsSelectionViewModel> get viewModel => toSource(combineLatest2(Observable.fromFuture(_topicsRepository.topicsList), _selectedTopics, _createViewModel));
 
   @provide
   TopicsSelectionBloc(
@@ -37,10 +34,7 @@ class TopicsSelectionBloc {
     this._topicsRepository,
   );
 
-  TopicsSelectionViewModel _createViewModel(
-    UnmodifiableListView<Topics> topics,
-    List<String> selectedTopics,
-  ) =>
+  TopicsSelectionViewModel _createViewModel(UnmodifiableListView<Topics> topics, List<String> selectedTopics) =>
       TopicsSelectionViewModel(
         nextButtonEnabled: true,
         topics: BuiltList(

@@ -30,14 +30,10 @@ class WorkgroupsSelectionBloc {
   Observable<WorkflowEvent> get events => _events;
 
   /// Publishes the [WorkgroupsSelectionViewModel].
-  Source<WorkgroupsSelectionViewModel> get viewModel => toSource(combineLatest2(
-      Observable.fromFuture(_workgroupsRepository.workgroupsList),
-      _currentWorkgroups,
-      _createViewModel));
+  Source<WorkgroupsSelectionViewModel> get viewModel => toSource(combineLatest2(Observable.fromFuture(_workgroupsRepository.workgroupsList), _currentWorkgroups, _createViewModel));
 
   @provide
-  WorkgroupsSelectionBloc(
-      this._sharedDataRepository, this._workgroupsRepository);
+  WorkgroupsSelectionBloc(this._sharedDataRepository, this._workgroupsRepository);
 
   WorkgroupsSelectionViewModel _createViewModel(
     UnmodifiableListView<Workgroup> workgroups,

@@ -13,7 +13,10 @@ abstract class SettingsListViewModel
   String get displayName;
 
   /// The currently signed in users location.
-  String get location;
+  String get userlocation;
+
+  /// The currently signed in users workgroup.
+  String get userworkgroup;
 
   /// The current topics for this user
   @nullable
@@ -25,6 +28,17 @@ abstract class SettingsListViewModel
 
   /// The topic tapped
   AaeValueCommand<String> get onWorkgroupTapped;
+
+  /// The current topics for this user
+  @nullable
+  BuiltList<String> get selectedHubLocations;
+
+  /// The currently signed in users workgroup.
+  @nullable
+  List<String> get hubLocation;
+
+  /// The topic tapped
+  AaeValueCommand<String> get onHubLocationTapped;
 
   /// The current topics for this user
   @nullable
@@ -40,10 +54,14 @@ abstract class SettingsListViewModel
 
   factory SettingsListViewModel({
     @required String displayName,
-    @required String location,
+    @required String userlocation,
+    @required String userworkgroup,
     @required List<String> workgroup,
     @required BuiltList<String> selectedWorkgroups,
     @required AaeValueCommand<String> onWorkgroupTapped,
+    @required List<String> hubLocation,
+    @required BuiltList<String> selectedHubLocations,
+    @required AaeValueCommand<String> onHubLocationTapped,
     @required BuiltList<String> selectedTopics,
     @required List<String> topics,
     @required AaeValueCommand<String> onTopicTapped,
