@@ -6,12 +6,14 @@ import 'package:aae/rx/rx_util.dart';
 import 'package:aae/rxdart/rx.dart';
 import 'package:aae/sign_in/repository/sign_in_repository.dart';
 import 'package:aae/sign_in/workflow/constants/sign_in_events.dart';
+import 'package:aae/sign_in/workflow/sign_in_workflow.dart';
 import 'package:aae/workflow/common/workflow_event.dart';
 import 'package:inject/inject.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:logging/logging.dart';
 import 'package:quiver/strings.dart' show isNotEmpty;
 
+import 'login_view.dart';
 import 'login_view_model.dart';
 
 /// BloC for the [LoginComponent].
@@ -47,9 +49,13 @@ class LoginBloc {
   LoginBloc(this._signInRepository);
 
   void _signIn() {
+    LoginViewState mystate = LoginViewState();
+    mystate.signin();
+
     try {
       String _username;
       String _password;
+      String _token;
 
       _loginInProgress.sendNext(true);
 
@@ -63,10 +69,16 @@ class LoginBloc {
         _log.fine(_password);
       }
 
+      printToken(String token) {
+        _token = token;
+        _log.fine(_token);
+      }
+
       _currentUsername.subscribe(onNext: printUsername);
       _currentPassword.subscribe(onNext: printPassword);
+      //_currentPassword.subscribe(onNext: printPassword);
 
-      _signInRepository.signIn(_username, _password).catchError((onError) {});
+      _signInRepository.signIn(_username, _password, _token).catchError((onError) {});
     } on Exception catch (e, s) {
       SignInEvents.silentSignInFailed;
       _log.severe('Sign in plugin failed: ', e, s);
@@ -99,7 +111,7 @@ class LoginBloc {
           onSignInButtonPressed: _signIn,
           showLoadingSpinner: loginInProgress,
           biometricAuthEnabled: biometricAvailable,
-          signInButtonEnabled: isNotEmpty(password) && isNotEmpty(username));
+          signInButtonEnabled: true);
 }
 
 /// Constructs new instances of [LoginBloc]s via the DI framework.

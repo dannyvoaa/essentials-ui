@@ -28,17 +28,17 @@ class SignInRepository implements SSOIdentityProvider {
             .shareReplay();
 
   /// Prompts the user to sign in.
-  Future<void> signIn(String un, String pw) async {
+  Future<void> signIn(String un, String pw, String token) async {
     try {
-      _promptSignIn(un, pw);
+      _promptSignIn(un, pw, token);
     } on PlatformException catch (e) {
       throw TokenException('Error signing in with SSO:', e);
     }
   }
 
-  Future<void> _promptSignIn(String un, String pw) {
+  Future<void> _promptSignIn(String un, String pw, String token) {
     _log.info('Showing login screen');
-    return _ssoAuthPlugin.signIn(un, pw);
+    return _ssoAuthPlugin.signIn(un, pw, token);
   }
 
   Future<bool> signInSilently() async {

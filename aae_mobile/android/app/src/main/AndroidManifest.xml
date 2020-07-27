@@ -37,6 +37,13 @@
                 <data
                     android:scheme="aae" />
             </intent-filter>
+            <!-- App Links -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="notused" />
+            </intent-filter>
         </activity>
     </application>
 </manifest>

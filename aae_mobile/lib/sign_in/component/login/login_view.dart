@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:aae/common/widgets/button/large_button.dart';
 import 'package:aae/rx/rx_util.dart';
 import 'package:aae/rxdart/rx.dart';
@@ -8,11 +10,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'package:keyboard_visibility/keyboard_visibility.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:oauth2/oauth2.dart' as oauth2;
+import 'package:uni_links/uni_links.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'login_view_model.dart';
 
 /// A login screen that signed-out users see.
-
+final authorizationEndpoint = Uri.parse("https://idpstage.aa.com/as/authorization.oauth2");
+final tokenEndpoint = Uri.parse("https://idpstage.aa.com/as/token.oauth2");
+final identifier = "aa_essentials_stage";
+final secret = "x66rbjeC0Wh70qfrcxlAy6fPGGQ9fLBjA27mY7CWkzTPZkUB8YKNsreDwwufaIAt";
+final redirectUrl = Uri.parse("https://notused");
+//final credentialsFile = new File("~/.myapp/credentials.json");
+final _scopes = ['openid'];
 
 class LoginView extends StatefulWidget {
 //  LoginView({Key key}) : super(key: key);
@@ -26,24 +37,76 @@ class LoginView extends StatefulWidget {
   final _textEditingController = TextEditingController();
   final authType = "FaceID";
 
+
+
   void _textFieldHasFocus(FocusNode textFocus) {
 //    print('keyboard visible');
   }
 
   LoginView({@required this.viewModel, this.textFocus, Key key}) : super(key: key) {
-    combineLatest(
-      Observable.just(_textFieldFocusNode),
-      _textFieldHasFocus,
-    );
+    combineLatest(Observable.just(_textFieldFocusNode), _textFieldHasFocus);
     Observable.just(_keyboardVisible);
     _focusSubject.distinctUntilChanged();
   }
 
   @override
-  _LoginViewState createState() => _LoginViewState();
+  LoginViewState createState() => LoginViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class LoginViewState extends State<LoginView> {
+
+  oauth2.AuthorizationCodeGrant grant;
+  oauth2.Client _client;
+  Uri _uri;
+
+  @override
+  void initState() {
+    print('*********i am here***********');
+    super.initState();
+    grant = new oauth2.AuthorizationCodeGrant(identifier, authorizationEndpoint, tokenEndpoint, secret: secret);
+    _uri = grant.getAuthorizationUrl(redirectUrl, scopes: _scopes);
+    getUriLinksStream().listen((Uri uri) async {
+      print("Init URL Listener: $uri");
+      var client = await grant.handleAuthorizationResponse(uri.queryParameters);
+      setState(() {
+        _client = client;
+      });
+    });
+
+    _keyboardState = _keyboardVisibility.isKeyboardVisible;
+
+    _keyboardVisibilitySubscriberId = _keyboardVisibility.addNewListener(
+      onChange: (bool visible) {
+        setState(() {
+          _keyboardState = visible;
+          _logoHeight = _keyboardState ? 100 : logoBox(context, dividedBy: 3.2);
+        });
+        print(visible);
+        print(logoBox);
+      },
+    );
+  }
+
+  signin() async {
+    var url = _uri.toString();
+    await launch(url);
+  }
+
+  String tryParseJwt(String token) {
+    if (token == null) return null;
+    final parts = token.split('.');
+    if (parts.length != 3) {
+      return null;
+    }
+    final payload = parts[1];
+    var normalized = base64Url.normalize(payload);
+    var jwt = utf8.decode(base64Url.decode(normalized));
+    final payloadMap = json.decode(jwt);
+    if (payloadMap is! Map<String, dynamic>) {
+      return null;
+    }
+    return payloadMap.toString();
+  }
 
   KeyboardVisibilityNotification _keyboardVisibility = new KeyboardVisibilityNotification();
   int _keyboardVisibilitySubscriberId;
@@ -58,6 +121,7 @@ class _LoginViewState extends State<LoginView> {
     return (screenSize(context).height)/dividedBy;
   }
 
+  /*
   @protected
   void initState() {
     super.initState();
@@ -77,6 +141,7 @@ class _LoginViewState extends State<LoginView> {
 
 //    double _logoHeight = logoBox(context, dividedBy: 2);
   }
+   */
 
   @override
   void dispose() {
@@ -85,70 +150,28 @@ class _LoginViewState extends State<LoginView> {
   }
 
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('This is a test'),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: RaisedButton(
+          child: new Text("Sign in"),
+          onPressed: () => {signin()},
+        ),
+      ),
+      body: Center(
+        child: Padding(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.max,
             children: <Widget>[
-              Expanded(
-//                color:AaeColors.lightOrange,
-                child: Container(),
-//                height: 300,
-              ),
-              Container(
-                color: AaeColors.white,
-                height: 200,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(40),
-                      child: Text(
-                        'This is a placeholder for the privacy statement. A privacy statement will go here once it is written and approved, but for the time being, this is only a placeholder.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color:AaeColors.ultraLightGray,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              Text(tryParseJwt(_client?.credentials?.accessToken) ?? 'Not signed in yet'),
+              // ExtractTokenInfo(token: _client?.credentials?.accessToken), // Uncomment to display name from claims
             ],
           ),
-          //margin: EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: AaeColors.blue,
-//            image: DecorationImage(
-//              alignment: Alignment.topCenter,
-//              fit: BoxFit.fitHeight,
-//              image: AssetImage('assets/common/sign_in_background.png'),
-//            ),
-          ),
+          padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
         ),
-        SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 36.0, right: 36.0, bottom: 36.0, top: 0.0,),
-//            child: CustomScrollView(
-//              controller: _scrollController,
-//              slivers: <Widget>[
-//                _sectionLogo(context),
-//                _buildLoginTextFields(context),
-//              ],
-//            ),
-            child: Column(
-              children: <Widget>[
-                _sectionLogoStatic(context),
-                _buildLoginTextFieldsStatic(context),
-              ],
-            ),
-          ),
-        ),
-      ],
+      ),
     );
   }
 
