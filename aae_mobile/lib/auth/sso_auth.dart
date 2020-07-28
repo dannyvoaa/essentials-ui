@@ -6,6 +6,7 @@ import 'package:aae/cache/cache_service.dart';
 import 'package:inject/inject.dart';
 import 'package:logging/logging.dart';
 import 'package:oauth2/oauth2.dart' as oauth2;
+import 'package:aae/sign_in/component/login/SharedPrefUtils.dart';
 
 import 'sso_identity.dart';
 
@@ -54,7 +55,7 @@ class SSOAuth {
       cachedUser['refresh_token'],
       cachedUser['name'],
       'DFW',
-      'Leadership and Support Staff',
+      'Fleet',
     );
     _setCurrentUser(_user);
     return _user;
@@ -83,27 +84,21 @@ class SSOAuth {
     return payloadMap;
   }
 
-  /// Retrieves tokens and user profile, signs in user
-  Future<void> signIn(String username, String password, String token) async {
+  Future<void> signIn() async {
     try {
-      //var client = await oauth2.resourceOwnerPasswordGrant(Uri.parse(sso_auth_constants.ACCESS_TOKEN_URL), 'username', 'password', identifier: sso_auth_constants.CLIENT_ID, secret: sso_auth_constants.CLIENT_SECRET, scopes: sso_auth_constants.SCOPE);
-      token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IkFFIiwicGkuYXRtIjoiYzl1NiJ9.eyJzY29wZSI6Im9wZW5pZCIsImNsaWVudF9pZCI6ImFhX2Vzc2VudGlhbHNfc3RhZ2UiLCJpc3MiOiJodHRwczovL2lkcHN0YWdlLmFhLmNvbSIsImp0aSI6IlFacVQ3bTFLIiwidWlkIjoiMDA2MjgyMzAiLCJsb2NhdGlvbiI6IkhEUSIsImFtcm9yZ3VuaXRkZXNjcmlwdGlvbiI6IkxlYWRlcnNoaXAgYW5kIFN1cHBvcnQgU3RhZmYiLCJmdWxsbmFtZSI6IkFTSUYiLCJlbWFpbCI6ImFzaWYubW9oYW1tZWRAYWEuY29tIiwiZXhwIjoxNTk1Mzc2OTc4fQ.TKgN-JsMdcTkAss7cTAXgEV4Ddmo9ZH_Bm361T23kWZMpUaPZ3F_hvYqigmC1Om7ei0LdOk8svWerBCpkLm9GRCvv4Sm-ish7MfsxmUt9rXll_SW6OpNcq7X0cidEQ3Wjw2lAR2REzqRDIThZHyR9QFDrk-OkPh5eqzNVZzd-nHxTZbR8fMMM8Fw6HdSt7syTkxoLYpgLxQLroayHh-OA_DL-pelf7YkmNJ7XW_AQ6c_nYMuld7oTtHUE5ZxxKuXQor0f1jvK6c8RxxnWzA-vgjCA31TEsap9MBJNNSuc_Jx_tyQJoy_FoPaR_sTc9YLmSR51wxvNien21oZJY6WlQ";
-      var jwt = tryParseJwt(token);
+      String tokenvalue = _cache.readString("tokenvalue").value;
+      var jwt = tryParseJwt(tokenvalue);
       print(jwt);
 
-      //jwt['userlocation'],jwt['userworkgroup'],jwt['given_name'], jwt['family_name']
       SSOIdentity _user = new SSOIdentity(
-        token,
+        tokenvalue,
         jwt['email'],
-        jwt['preferred_username'],
+        jwt['uid'],
         '',
-        jwt['name'],
-        'DFW',
-        'Leadership and Support Staff',
+        jwt['fullname'],
+        jwt['location'],
+        'Fleet',
       );
-
-      //TODO: Asif
-      //_cache.writeString(currentUserAuthKey, client.credentials.idToken);
 
       _setCurrentUser(_user);
       // Wait for sign in flow to complete.
