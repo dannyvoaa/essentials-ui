@@ -20,6 +20,15 @@ platform :ios do
 
 #beta lane is just to build app
  	lane :beta do
+
+	 increment_build_number(
+      		build_number: "1.0.0"
+                )		
+
+    increment_version_number(
+      		version_number: "1.0.0"
+    		)
+
 	build_app(scheme: "Runner",
             workspace: "Runner.xcworkspace",
             include_bitcode: true)
@@ -27,6 +36,13 @@ platform :ios do
 
 # created following releaase lane to have automatic sign and provisioning profile from xCode set up - Nag
  	lane :release do
+ 		increment_build_number(
+      			build_number: "1.0.0"
+    			)
+
+    		increment_version_number(
+      			version_number: "1.0.0"
+    			)
 	gym(
         scheme: "Runner",
         archive_path: "build/Runner.xcarchive",
