@@ -9,11 +9,23 @@ import 'package:aae/theme/dimensions.dart';
 import 'package:aae/theme/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:aae/sign_in/component/login/login_view.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'drawer_button.dart';
 
 class AaeDrawer extends StatelessWidget {
-
+  final flutterWebviewPlugin = new FlutterWebviewPlugin();
+  _logoutfromSM() {
+    String logouturl = logoutEndpoint + "?originalTarget=" + redirectUri;
+    flutterWebviewPlugin.launch(logouturl, hidden: true);
+    /*
+    Map<String, dynamic> bodyparams = Map<String, dynamic>();
+    bodyparams['originalTarget'] = redirectUri;
+    NetUtils.get(logoutEndpoint, bodyparams).then((data) {
+      print('$data');
+    });
+     */
+  }
   Widget build(BuildContext context) {
     EdgeInsets edgeInsets = EdgeInsets.only(
       left: AaeDimens.safeArea(buildContext: context).left > 0
@@ -142,9 +154,8 @@ class AaeDrawer extends StatelessWidget {
                         SharedPreferences _sharedPref =
                             await SharedPreferences.getInstance();
                         _sharedPref.clear();
-                        ServiceProvider.serviceOf<AaeNavigator>(context)
-                            .pushNamed(context, routes.buildSignInRoute(),
-                                fromRoot: true);
+                        _logoutfromSM();
+                        ServiceProvider.serviceOf<AaeNavigator>(context).pushNamed(context, routes.buildSignInRoute(), fromRoot: true);
                       },
                     ),
                   ],

@@ -23,6 +23,7 @@ final secret = "x66rbjeC0Wh70qfrcxlAy6fPGGQ9fLBjA27mY7CWkzTPZkUB8YKNsreDwwufaIAt
 final authorizationsecret = 'Basic YWFfZXNzZW50aWFsc19zdGFnZTp4NjZyYmplQzBXaDcwcWZyY3hsQXk2ZlBHR1E5ZkxCakEyN21ZN0NXa3pUUFprVUI4WUtOc3JlRHd3dWZhSUF0';
 final redirectUri = "aae://www.aa.com";
 final _scopes = ['openid'];
+final logoutEndpoint = "https://smlogin.stage.aa.com/login/SMLogout.jsp";
 
 class NetUtils {
   static Future<String> get(String url, Map<String, dynamic> params) async {

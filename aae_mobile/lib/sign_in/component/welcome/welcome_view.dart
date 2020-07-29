@@ -16,7 +16,9 @@ class WelcomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return new WillPopScope(
+      onWillPop: () async => false,
+    child: Scaffold(
       backgroundColor: AaeColors.white,
       body: Stack(
         children: <Widget>[
@@ -48,6 +50,7 @@ class WelcomeView extends StatelessWidget {
           ),
         ],
       ),
+    )
     );
   }
 
