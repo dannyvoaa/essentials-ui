@@ -5,7 +5,6 @@ import 'package:aae/auth/sso_auth_constants.dart' as sso_auth_constants;
 import 'package:aae/cache/cache_service.dart';
 import 'package:inject/inject.dart';
 import 'package:logging/logging.dart';
-import 'package:oauth2/oauth2.dart' as oauth2;
 import 'package:aae/sign_in/component/login/SharedPrefUtils.dart';
 
 import 'sso_identity.dart';
