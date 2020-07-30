@@ -1,14 +1,10 @@
 import 'dart:convert';
-
 import 'package:aae/common/widgets/button/large_button.dart';
-import 'package:aae/sign_in/component/login/login_bloc.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
 import 'package:aae/theme/typography.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:uni_links/uni_links.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'login_view_model.dart';
 import 'package:aae/cache/cache_service.dart';
 import 'package:aae/sign_in/component/login/SharedPrefUtils.dart';
@@ -67,6 +63,8 @@ class LoginViewState extends State<LoginView> {
   StreamSubscription _onDestroy;
   StreamSubscription<String> _onUrlChanged;
   StreamSubscription<WebViewStateChanged> _onStateChanged;
+  StreamSubscription<WebViewHttpError> _onHttpError;
+
   String authUrl = "https://idpstage.aa.com/as/authorization.oauth2?response_type=code&client_id=aa_essentials_stage&redirect_uri=aae://www.aa.com&scope=openid";
   String redirectUrl = "aae://www.aa.com";
 
@@ -85,6 +83,7 @@ class LoginViewState extends State<LoginView> {
     _onDestroy.cancel();
     _onUrlChanged.cancel();
     _onStateChanged.cancel();
+    _onHttpError.cancel();
     flutterWebviewPlugin.dispose();
     super.dispose();
   }
@@ -96,23 +95,37 @@ class LoginViewState extends State<LoginView> {
 
     // Add a listener to on destroy WebView, so you can make came actions.
     _onDestroy = flutterWebviewPlugin.onDestroy.listen((_) {
-      print("destroy");
+      //print("destroy");
     });
 
-    _onStateChanged =
-        flutterWebviewPlugin.onStateChanged.listen((WebViewStateChanged state) {
+    _onStateChanged = flutterWebviewPlugin.onStateChanged.listen((WebViewStateChanged state) {
+      if (mounted) {
+        if(state.type== WebViewState.finishLoad){ // if the full website page loaded
+          //print("------------loaded...");
+        }else if (state.type== WebViewState.abortLoad){ // if there is a problem with loading the url
+          //print("------------there is a problem...");
+        } else if(state.type== WebViewState.startLoad){ // if the url started loading
+          //print("------------start loading...");
+        }
+      }
           //print("onStateChanged: ${state.type} ${state.url}");
         });
-
+    _onHttpError =
+        flutterWebviewPlugin.onHttpError.listen((WebViewHttpError error) {
+          if (mounted) {
+            //print('onHttpError: ${error.code}-${error.url}');
+          }
+        });
     // Add a listener to on url changed
     _onUrlChanged = flutterWebviewPlugin.onUrlChanged.listen((String url) {
+
       if (mounted) {
         setState(() {
-          print("URL changed: $url");
+          //print("URL changed: $url");
           if (url.startsWith("aae://www.aa.com")) {
             if (url.contains("code=")) {
               this.code = url.replaceAll("aae://www.aa.com?code=", "");
-              print("code: $code");
+              //print("code: $code");
               this.strUrl = url;
 
               Map<String, dynamic> bodyparams = Map<String, dynamic>();
@@ -125,12 +138,12 @@ class LoginViewState extends State<LoginView> {
               headerparams['Authorization'] = authorizationsecret;
               NetUtils.post(tokenEndpoint, bodyparams, headerparams).then((data) {
                 this.token = data;
-                print('$data');
+                //print('$data');
                 if (data != null) {
                   Map<String, dynamic> map = json.decode(data);
                   if (map != null && map.isNotEmpty) {
                     this.token = map["access_token"];
-                    print('$token');
+                    //print('$token');
                     SharedPrefUtils.saveStr('tokenvalue', token);
                   }
                 }
@@ -148,9 +161,10 @@ class LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    print('********Inside Build value of strUrl:$strUrl**********');
+    //print('********Inside Build value of strUrl:$strUrl**********');
     if ((strUrl == null) || (strUrl == "")) {
-      flutterWebviewPlugin.launch(authUrl, withJavascript: true, supportMultipleWindows: true, useWideViewPort: true, clearCache: false, clearCookies: false, withLocalStorage: true );
+      //flutterWebviewPlugin.launch(authUrl, withJavascript: true, supportMultipleWindows: true, useWideViewPort: true, clearCache: false, clearCookies: false, withLocalStorage: true);
+      return WebviewScaffold(url: authUrl, withJavascript: true, useWideViewPort: true, ignoreSSLErrors: true);
     }
     return Scaffold(
       backgroundColor: AaeColors.white,

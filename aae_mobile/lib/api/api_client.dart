@@ -35,7 +35,7 @@ class NewsServiceApi {
     for (var tag in tags) {
       final response = await httpClient.get('$baseUrl$tag&count=5&page=0').then((http.Response r) => r);
       if (response.statusCode == 200) {
-        _log.info("Newsfeed API request successful");
+        //_log.info("Newsfeed API request successful");
         NewsFeedJsonList myFeedJsonListResponse = serializers.deserializeWith(NewsFeedJsonList.serializer, json.decode(response.body));
         myFeedJsonList.add(myFeedJsonListResponse);
       } else {
@@ -63,8 +63,8 @@ class NewsServiceApi {
             }
       );
 
-      print(profile);
-      _log.info("Profile request successful");
+      //print(profile);
+      //_log.info("Profile request successful");
       return profile;
     } else {
         throw Exception('Failed on profile request \n ${response.body} - ${response.statusCode}');
@@ -95,8 +95,8 @@ class NewsServiceApi {
       Docs query = serializers.deserializeWith(
           Docs.serializer, json.decode(response.body));
 
-      _log.info("Events request successful");
-      _log.shout('dataQuery: $query');
+      //_log.info("Events request successful");
+      //_log.shout('dataQuery: $query');
       return query;
     } else {
       throw Exception(
@@ -126,7 +126,7 @@ class NewsServiceApi {
         .then((http.Response r) => r);
     if (response.statusCode == 200) {
       Docs query = serializers.deserializeWith(Docs.serializer, json.decode(response.body));
-      _log.info("Events request successful");
+      //_log.info("Events request successful");
       return query.events.toList();
     } else {
       throw Exception(
@@ -137,7 +137,7 @@ class NewsServiceApi {
   Future<PerformanceStats> getD0StatsData() async {
     final response = await httpClient.get(performanceEndpoint);
     if (response.statusCode == 200) {
-      _log.info("PerformanceStats API request successful");
+      //_log.info("PerformanceStats API request successful");
       PerformanceStats feed = serializers.deserializeWith(PerformanceStats.serializer, json.decode(response.body));
       return feed;
     } else {
@@ -149,7 +149,7 @@ class NewsServiceApi {
   Future<StockStats> getStockStatsData() async {
     final response = await httpClient.get(stocksEndpoint);
     if (response.statusCode == 200) {
-      _log.info("StockStats API request successful");
+      //_log.info("StockStats API request successful");
       StockStats feed = serializers.deserializeWith(StockStats.serializer, json.decode(response.body));
       return feed;
     } else {
@@ -161,7 +161,7 @@ class NewsServiceApi {
   Future<NewsArticle> getArticleData({String articleId}) async {
     final response = await httpClient.get('$articleEndpoint$articleId');
     if (response.statusCode == 200) {
-      _log.info("Articles API request successful");
+      //_log.info("Articles API request successful");
       NewsArticle article = serializers.deserializeWith(NewsArticle.serializer, json.decode(response.body));
       return article;
     } else {
