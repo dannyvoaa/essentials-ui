@@ -163,7 +163,6 @@ class LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     //print('********Inside Build value of strUrl:$strUrl**********');
     if ((strUrl == null) || (strUrl == "")) {
-      //flutterWebviewPlugin.launch(authUrl, withJavascript: true, supportMultipleWindows: true, useWideViewPort: true, clearCache: false, clearCookies: false, withLocalStorage: true);
       return WebviewScaffold(url: authUrl, withJavascript: true, useWideViewPort: true, ignoreSSLErrors: true);
     }
     return Scaffold(
