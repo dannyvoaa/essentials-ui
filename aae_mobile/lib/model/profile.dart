@@ -19,12 +19,6 @@ abstract class Profile implements Built<Profile, ProfileBuilder> {
   @nullable
   String get userlocation;
 
-
-  @BuiltValueField(wireName: 'userworkgroup')
-  @BuiltValueSerializer(serializeNulls: true)
-  @nullable
-  String get userworkgroup;
-
   @BuiltValueField(wireName: 'username')
   @BuiltValueSerializer(serializeNulls: true)
   @nullable

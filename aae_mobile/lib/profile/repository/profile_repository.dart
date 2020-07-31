@@ -93,7 +93,6 @@ class ProfileRepository implements Repository {
       ..displayName = _ssoAuth.currentUser.displayName
       ..email = _ssoAuth.currentUser.email
       ..userlocation = _ssoAuth.currentUser.userlocation
-      ..userworkgroup = _ssoAuth.currentUser.userworkgroup
       ..workgroup.addAll(workgroups)
       ..hubLocation.addAll(hubLocations));
     try {
@@ -105,7 +104,6 @@ class ProfileRepository implements Repository {
         "aaId": _ssoAuth.currentUser.id,
         "preferences": {
           "userlocation": _ssoAuth.currentUser.userlocation,
-          "userworkgroup": _ssoAuth.currentUser.userworkgroup,
           "topics": topics,
           "workgroup": workgroups,
           "hubLocation": hubLocations
@@ -163,7 +161,6 @@ class ProfileRepository implements Repository {
         "aaId": strAAId,
         "preferences": {
           "userlocation": _ssoAuth.currentUser.userlocation,
-          "userworkgroup": _ssoAuth.currentUser.userworkgroup,
           "topics": topics,
           "workgroup": workgroups,
           "hubLocation": hubLocations,

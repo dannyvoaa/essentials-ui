@@ -56,7 +56,6 @@ class NewsServiceApi {
         (b) {
               b.topics.addAll(profileQuery.docs[0].preferences.topics);
               b.userlocation = profileQuery.docs[0].preferences.userlocation;
-              b.userworkgroup = profileQuery.docs[0].preferences.userworkgroup;
               b.workgroup.addAll(profileQuery.docs[0].preferences.workgroup);
               b.hubLocation.addAll(profileQuery.docs[0].preferences.hubLocation);
               return b;

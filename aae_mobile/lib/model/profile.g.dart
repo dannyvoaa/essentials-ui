@@ -24,12 +24,6 @@ class _$ProfileSerializer implements StructuredSerializer<Profile> {
         ..add(serializers.serialize(object.userlocation,
             specifiedType: const FullType(String)));
     }
-    if (object.userworkgroup != null) {
-      result
-        ..add('userworkgroup')
-        ..add(serializers.serialize(object.userworkgroup,
-            specifiedType: const FullType(String)));
-    }
     if (object.username != null) {
       result
         ..add('username')
@@ -87,10 +81,6 @@ class _$ProfileSerializer implements StructuredSerializer<Profile> {
           result.userlocation = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'userworkgroup':
-          result.userworkgroup = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'username':
           result.username = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -132,8 +122,6 @@ class _$Profile extends Profile {
   @override
   final String userlocation;
   @override
-  final String userworkgroup;
-  @override
   final String username;
   @override
   final String email;
@@ -151,7 +139,6 @@ class _$Profile extends Profile {
 
   _$Profile._(
       {this.userlocation,
-      this.userworkgroup,
       this.username,
       this.email,
       this.displayName,
@@ -172,7 +159,6 @@ class _$Profile extends Profile {
     if (identical(other, this)) return true;
     return other is Profile &&
         userlocation == other.userlocation &&
-        userworkgroup == other.userworkgroup &&
         username == other.username &&
         email == other.email &&
         displayName == other.displayName &&
@@ -187,11 +173,7 @@ class _$Profile extends Profile {
         $jc(
             $jc(
                 $jc(
-                    $jc(
-                        $jc(
-                            $jc($jc(0, userlocation.hashCode),
-                                userworkgroup.hashCode),
-                            username.hashCode),
+                    $jc($jc($jc(0, userlocation.hashCode), username.hashCode),
                         email.hashCode),
                     displayName.hashCode),
                 topics.hashCode),
@@ -203,7 +185,6 @@ class _$Profile extends Profile {
   String toString() {
     return (newBuiltValueToStringHelper('Profile')
           ..add('userlocation', userlocation)
-          ..add('userworkgroup', userworkgroup)
           ..add('username', username)
           ..add('email', email)
           ..add('displayName', displayName)
@@ -220,11 +201,6 @@ class ProfileBuilder implements Builder<Profile, ProfileBuilder> {
   String _userlocation;
   String get userlocation => _$this._userlocation;
   set userlocation(String userlocation) => _$this._userlocation = userlocation;
-
-  String _userworkgroup;
-  String get userworkgroup => _$this._userworkgroup;
-  set userworkgroup(String userworkgroup) =>
-      _$this._userworkgroup = userworkgroup;
 
   String _username;
   String get username => _$this._username;
@@ -259,7 +235,6 @@ class ProfileBuilder implements Builder<Profile, ProfileBuilder> {
   ProfileBuilder get _$this {
     if (_$v != null) {
       _userlocation = _$v.userlocation;
-      _userworkgroup = _$v.userworkgroup;
       _username = _$v.username;
       _email = _$v.email;
       _displayName = _$v.displayName;
@@ -291,7 +266,6 @@ class ProfileBuilder implements Builder<Profile, ProfileBuilder> {
       _$result = _$v ??
           new _$Profile._(
               userlocation: userlocation,
-              userworkgroup: userworkgroup,
               username: username,
               email: email,
               displayName: displayName,
