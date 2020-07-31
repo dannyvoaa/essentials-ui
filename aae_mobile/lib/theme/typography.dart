@@ -10,6 +10,8 @@ class AaeTextStyles {
   static const _bold = FontWeight.bold;
   static const _americanSans = 'AmericanSans';
 
+  static const font = 'AmericanSans';
+
   static const h1 = TextStyle(
     fontSize: 40.0,
     height: 1.40,
@@ -303,7 +305,7 @@ class AaeTextStyles {
   }) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       fontSize: 14,
-      height: .6,
+      height: 1,
     );
 
     // Default style

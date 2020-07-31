@@ -11,7 +11,7 @@ import 'package:aae/settings/page/topics_page.dart';
 import 'package:aae/common/commands/navigate_command.dart';
 import 'settings_list_bloc.dart';
 import 'settings_list_view_model.dart';
-
+import 'package:aae/theme/colors.dart';
 
 /// A [Component] that ties together [SettingsListBloc] and
 /// [SettingsListView].
@@ -85,7 +85,8 @@ class _SettingsListView extends StatelessWidget {
                 boolEnabled: true,
                 boolShowDisclosureIndicator: true,
                 stringTitle: 'Topics of interest',
-                stringValue: 'Manage',
+              //  stringValue: 'Manage',
+                 txt: 'Manage',
                 onTapAction: () {
                   navigateCommand(routes.buildTopicsPageRoute())(context);
 
@@ -96,7 +97,8 @@ class _SettingsListView extends StatelessWidget {
                 boolEnabled: true,
                 boolShowDisclosureIndicator: true,
                 stringTitle: 'Hub news',
-                stringValue: 'Manage',
+              //  stringValue: 'Manage',
+                 txt: 'Manage',
                 onTapAction: () {
                   navigateCommand(routes.buildHubLocationPageRoute())(context);
 
@@ -108,7 +110,8 @@ class _SettingsListView extends StatelessWidget {
                 boolEnabled: true,
                 boolShowDisclosureIndicator: true,
                 stringTitle: 'Workgroup news',
-                stringValue: 'Manage',
+                //  stringValue: 'Manage',
+                txt: 'Manage',
                 onTapAction: () {
                   navigateCommand(routes.buildWorkgroupPageRoute())(context);
 

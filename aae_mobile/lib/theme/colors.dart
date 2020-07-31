@@ -62,10 +62,11 @@ class AaeColors {
   static const black = Color.fromRGBO(19, 19, 19, 1.0);
   static const darkGray = Color.fromRGBO(98, 122, 136, 1.0);
   static const mediumGray = Color.fromRGBO(110, 137, 153, 1.0);
+  static const titleGray = Color.fromRGBO(54, 73, 90, 1.0);
   static const gray = Color.fromRGBO(157, 166, 171, 1.0);
   static const lightGray = Color.fromRGBO(112, 112, 112, 1.0);
   static const ultraLightGray = Color.fromRGBO(185, 188, 190, 1.0);
-  static const darkRead = Color.fromRGBO(195, 0, 25, 1.0);
+  static const darkRed = Color.fromRGBO(195, 0, 25, 1.0);
   static const red = Color.fromRGBO(245, 35, 5, 1.0);
   static const orange = Color.fromRGBO(255, 115, 24, 1.0);
   static const lightOrange = Color.fromRGBO(250, 175, 0, 1.0);
