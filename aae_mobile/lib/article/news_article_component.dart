@@ -167,6 +167,12 @@ class NewsArticleComponent extends StatelessWidget {
                           "div.responsive-col": Style(
                             color: AaeColors.titleGray,
                           ),
+                          ".ae-headline, .ae-summary, .ae-image": Style(
+                            display: Display.BLOCK,
+                            height: 0,
+                            margin: EdgeInsets.all(0),
+                            padding: EdgeInsets.all(0),
+                          ),
                           "p": Style(
                             margin: EdgeInsets.only(top:2, bottom:12),
                           ),
