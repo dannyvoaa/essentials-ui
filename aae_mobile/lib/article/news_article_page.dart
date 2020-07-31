@@ -7,12 +7,12 @@ class NewsArticlePage extends StatelessWidget {
 
   NewsArticlePage({@required Map<String, dynamic> arguments})
       : assert(arguments != null), _arguments = arguments {
-    print('1***Inside-NewsArticlePage-Constructor***');
+    //print('1***Inside-NewsArticlePage-Constructor***');
   }
 
   @override
   Widget build(BuildContext context) {
-    print('2***Inside-NewsArticlePage-Build***');
+    //print('2***Inside-NewsArticlePage-Build***');
     return NewsArticleComponent(arguments: _arguments);
   }
 

@@ -4,14 +4,9 @@ import 'package:aae/common/widgets/tables/table_components.dart';
 import 'package:aae/common/widgets/tables/table_header.dart';
 import 'package:flutter/material.dart';
 import 'package:aae/navigation/routes.dart' as routes;
-import 'package:aae/navigation/paage_provider.dart';
-import 'package:aae/settings/page/hub_location_page.dart';
-import 'package:aae/settings/page/workgroup_page.dart';
-import 'package:aae/settings/page/topics_page.dart';
 import 'package:aae/common/commands/navigate_command.dart';
 import 'settings_list_bloc.dart';
 import 'settings_list_view_model.dart';
-import 'package:aae/theme/colors.dart';
 
 /// A [Component] that ties together [SettingsListBloc] and
 /// [SettingsListView].
@@ -70,12 +65,6 @@ class _SettingsListView extends StatelessWidget {
                 //   onTapAction: () {
                 // Present the Settings Location view
                 //  },
-              ),
-              TableCellTitleValue(
-                boolBorderTop: false,
-                boolEnabled: false,
-                stringTitle: 'Workgroup',
-                stringValue: viewModel.userworkgroup,
               ),
               TableHeader(
                 stringTitle: 'Newsfeed preferences',

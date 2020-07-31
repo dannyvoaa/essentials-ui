@@ -1,17 +1,14 @@
 import 'package:aae/common/commands/navigate_command.dart';
-import 'package:aae/auth/sso_identity.dart';
 import 'package:aae/navigation/navigation_helper.dart';
 import 'package:aae/navigation/routes.dart' as routes;
-import 'package:aae/profile/repository/profile_repository.dart';
 import 'package:aae/service_provider.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
-import 'package:aae/theme/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:aae/sign_in/component/login/login_view.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-import 'drawer_button.dart';
+import 'package:aae/assets/aae_icons.dart';
 
 class AaeDrawer extends StatelessWidget {
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
@@ -42,132 +39,95 @@ class AaeDrawer extends StatelessWidget {
           : AaeDimens.drawerHeight,
     );
 
-    return Container(
-      width: 320,
-      color: AaeColors.white,
-      child: ConstrainedBox(
-        child: IntrinsicHeight(
-          child: Container(
-            child: Column(
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    SizedBox(
-                      height: AaeDimens.drawerHeight,
-                    ),
-                    SizedBox(
-                      height: AaeDimens.drawerHeight,
-                    ),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      child: Row(
+    return Scaffold(
+      //   endDrawer: AaeDrawer(),
 
-                        children: <Widget>[
-                          Container(
-                            child: Image(
-                                image: AssetImage(
-                                    'assets/common/american-airlines-eaagle-logo.png')),
-                            decoration: BoxDecoration(
-                              color: AaeColors.lightGray,
-                              shape: BoxShape.circle,
-                            ),
-                            height: AaeDimens.baseUnit3x,
-                            width: AaeDimens.baseUnit3x,
-                          ),
-                          Flexible(
-                            child: Container(
-                              child: Column(
-                                children: <Widget>[
-                                  Text(
-                                    'Employee Name: {John Wick}',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.clip,
-                                    style: AaeTextStyles.description(),
-                                  ),
-                                  Text(
-                                    'Location: {DFW}',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.clip,
-                                    style: AaeTextStyles.description(),
-                                  ),
-                                ],
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                              ),
-                              margin: EdgeInsets.only(
-                                left: AaeDimens.baseUnit,
-                              ),
 
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: AaeDimens.drawerHeight,
-                    ),
-//                    Container(
-//                      color: AaeColors.darkGray,
-//                      height: AaeDimens.sizeDivider,
-//                    ),
-//                    SizedBox(
-//                      height: AaeDimens.drawerHeight,
-//                    ),
-//                    DrawerButton(
-//                      stringTitle: 'Home',
-//                      onTapAction: () {},
-//                    ),
-//                    DrawerButton(
-//                      stringTitle: 'Neighborhood',
-//                      onTapAction: () {},
-//                    ),
-//                    DrawerButton(
-//                      stringTitle: 'Recognition',
-//                      onTapAction: () {},
-//                    ),
-//                    DrawerButton(
-//                      stringTitle: 'To Do',
-//                      onTapAction: () {},
-//                    ),
-                  ],
-                ),
-               // Spacer(),
-                Column(
+      appBar: AppBar(
+
+        backgroundColor: AaeColors.blue,
+        elevation: 1,
+        //   title: Text(
+        //     'Topics of interest',
+        //     style: TextStyle(fontSize: 16, color: AaeColors.white),
+        //   ),
+        centerTitle: true,
+        //leading: new IconButton(icon: new Icon(Icons.arrow_back_ios, color: Colors.white), onPressed: () => Navigator.of(context).pop(),),
+        leading: new Container(),
+        actions: <Widget>[CloseButton(color: AaeColors.white), ],
+        //new IconButton(icon: new Icon(Icons.arrow_back), color: AaeColors.white),
+        // CloseButton(color: AaeColors.white),
+      ),
+      body:   Center(
+        //  height : MediaQuery.of(context).size.height - Scaffold.of(context).appBarMaxHeight,
+
+        child: Container(
+          constraints: BoxConstraints.expand(),
+          child: Column(
+            children: <Widget>[
+
+              Container(
+                decoration: const BoxDecoration(border: Border(bottom: BorderSide( color: AaeColors.ultraLightGray),),),
+                alignment: Alignment.centerLeft,
+                child:  Column(
                   children: <Widget>[
-//                    Container(
-//                      color: AaeColors.darkGray,
-//                      height: AaeDimens.sizeDivider,
-//                    ),
-                    DrawerButton(
-                      stringTitle: 'Preferences',
-                      onTapAction: () {
-                        navigateCommand(routes.buildSettingsPageRoute())(
-                            context);
-                      },
+                    Padding(
+                      padding: const EdgeInsets.only (bottom:12.0),
+                      child:  Text('Full Name',maxLines: 1, style: TextStyle(fontWeight: FontWeight.bold, color: AaeColors.lightGray),),
                     ),
-//                    DrawerButton(
-//                      stringTitle: 'Help',
-//                      onTapAction: () {},
-//                    ),
-                    DrawerButton(
-                      stringTitle: 'Log Out',
-                      onTapAction: () async {
-                        SharedPreferences _sharedPref =
-                            await SharedPreferences.getInstance();
-                        _sharedPref.clear();
-                        _logoutfromSM();
-                        ServiceProvider.serviceOf<AaeNavigator>(context).pushNamed(context, routes.buildSignInRoute(), fromRoot: true);
-                      },
+
+                    Padding(
+                      padding: const EdgeInsets.only (bottom:16.0),
+                      child:  Text( 'Location', maxLines: 1, style: TextStyle( color: AaeColors.lightGray), ),
                     ),
                   ],
+                  crossAxisAlignment: CrossAxisAlignment.start,
                 ),
-              ],
-            ),
-            margin: edgeInsets,
+              ),
+
+              Container(
+                padding: const EdgeInsets.only(top:16),
+                alignment: Alignment.centerLeft,
+                child: FlatButton.icon(
+                  padding: const EdgeInsets.all(0.0),
+                  icon: Icon(  AaeIconsv4.setting,color: AaeColors.lightGray,size: 20),
+                  label: Text('Preferences', style: TextStyle(color: AaeColors.lightGray, fontSize:16,height:1.5) ),
+                  onPressed: () {
+                    navigateCommand(routes.buildSettingsPageRoute())(context);
+                  },
+                ),
+              ),
+
+              Container(
+                alignment: Alignment.centerLeft,
+                child: FlatButton.icon(
+                  padding: const EdgeInsets.all(0.0),
+                  icon: Icon(  AaeIconsv4.info, color: AaeColors.lightGray,size: 20 ),
+                  label: Text('About      ', style: TextStyle(color: AaeColors.lightGray, fontSize:16,height:1.5) ),
+                    onPressed: (){},
+                ),
+              ),
+
+              Container(
+                alignment: Alignment.centerLeft,
+                child: FlatButton.icon(
+                  padding: const EdgeInsets.all(0.0),
+                  icon: Icon(  AaeIconsv4.lock, color: AaeColors.lightGray,size: 20),
+                  label: Text('Logout     ', style: TextStyle(color: AaeColors.lightGray, fontSize:16,height:1.5) ),
+                  onPressed: ()
+                  async {
+                    SharedPreferences _sharedPref = await SharedPreferences.getInstance();
+                    _sharedPref.clear();
+                    _logoutfromSM();
+                    ServiceProvider.serviceOf<AaeNavigator>(context).pushNamed(context, routes.buildSignInRoute(), fromRoot: true);
+                  },
+                ),
+              ),
+            ],
           ),
+          margin: edgeInsets,
         ),
-        constraints: BoxConstraints(
-          minHeight: MediaQuery.of(context).size.height,
-        ),
+
       ),
     );
   }
