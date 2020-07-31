@@ -46,8 +46,6 @@ class NewsFeedRepository implements Repository {
       List<String> tags = ['news'];
       if (profile.userlocation != "" || profile.userlocation != null)
         tags.add(profile.userlocation);
-      if (profile.userworkgroup != "" || profile.userworkgroup != null)
-        tags.add(profile.userworkgroup);
       tags.addAll(profile.topics);
       tags.addAll(profile.workgroup);
       tags.addAll(profile.hubLocation);

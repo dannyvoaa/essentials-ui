@@ -27,7 +27,6 @@ class SettingsListBloc {
       SettingsListViewModel(
           displayName: profile.displayName,
           userlocation: profile.userlocation,
-          userworkgroup: profile.userworkgroup,
           topics: ['Headlines', 'Business Education', 'Fleet', 'Network', 'Operations', 'People Culture', 'Products Services'],
           selectedTopics: profile.topics,
           hubLocation: ['BOS', 'CLT', 'DCA', 'DFW', 'LAX', 'MIA', 'NYC', 'JFK', 'LGA', 'ORD', 'PHL', 'PHX', 'TUL', 'INTL', 'GSC', 'Central Region', 'Northeast Region', 'Southeast Region', 'West Region', 'Asia Pacific', 'Canada', 'Europe', 'MCLA'],

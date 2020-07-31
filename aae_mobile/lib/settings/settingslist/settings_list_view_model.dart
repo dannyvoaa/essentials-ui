@@ -15,9 +15,6 @@ abstract class SettingsListViewModel
   /// The currently signed in users location.
   String get userlocation;
 
-  /// The currently signed in users workgroup.
-  String get userworkgroup;
-
   /// The current topics for this user
   @nullable
   BuiltList<String> get selectedWorkgroups;
@@ -55,7 +52,6 @@ abstract class SettingsListViewModel
   factory SettingsListViewModel({
     @required String displayName,
     @required String userlocation,
-    @required String userworkgroup,
     @required List<String> workgroup,
     @required BuiltList<String> selectedWorkgroups,
     @required AaeValueCommand<String> onWorkgroupTapped,

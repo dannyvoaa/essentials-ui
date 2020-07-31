@@ -11,16 +11,13 @@ import 'sso_identity.dart';
 
 class SSOAuth {
   static final _log = Logger('SSOAuth');
-
   static const currentUserAuthKey = 'SSOSSOAuth.lastUser';
 
   final CacheService _cache;
 
   @provide
   @singleton
-  SSOAuth(
-    this._cache,
-  );
+  SSOAuth(this._cache);
 
   final _currentUserController = StreamController<SSOIdentity>.broadcast();
 
@@ -36,26 +33,16 @@ class SSOAuth {
   }
 
   /// The currently signed in account, or null if the user is signed out
-  // TODO: (kiheke) - Implement in memory log-out
   SSOIdentity _currentUser;
-
   SSOIdentity get currentUser => _currentUser;
 
   _returnUser(vars) {
     var cachedUser = tryParseJwt(vars);
 
-    print(cachedUser);
-    print("-------------------------------${cachedUser['preferred_username']}-----------------");
-    //cachedUser['userlocation'],cachedUser['userworkgroup'],
-    SSOIdentity _user = new SSOIdentity(
-      cachedUser['access_token'],
-      cachedUser['email'],
-      cachedUser['preferred_username'],
-      cachedUser['refresh_token'],
-      cachedUser['name'],
-      'DFW',
-      'Fleet',
-    );
+    //print(cachedUser);
+    //print("-------------------------------${cachedUser['uid']}-----------------");
+
+    SSOIdentity _user = new SSOIdentity(cachedUser['access_token'], cachedUser['email'], cachedUser['uid'], cachedUser['refresh_token'], cachedUser['fullname'], cachedUser['userlocation']);
     _setCurrentUser(_user);
     return _user;
   }
@@ -87,21 +74,11 @@ class SSOAuth {
     try {
       String tokenvalue = _cache.readString("tokenvalue").value;
       var jwt = tryParseJwt(tokenvalue);
-      print(jwt);
+      //print(jwt);
 
-      SSOIdentity _user = new SSOIdentity(
-        tokenvalue,
-        jwt['email'],
-        jwt['uid'],
-        '',
-        jwt['fullname'],
-        jwt['location'],
-        'Fleet',
-      );
-
+      SSOIdentity _user = new SSOIdentity(tokenvalue, jwt['email'], jwt['uid'], '', jwt['fullname'], jwt['location']);
       _setCurrentUser(_user);
       // Wait for sign in flow to complete.
-
     } on Exception catch (e, s) {
       _log.severe('Error signing in with SSO:', e, s);
       throw TokenException('Error signing in with SSO:', e);

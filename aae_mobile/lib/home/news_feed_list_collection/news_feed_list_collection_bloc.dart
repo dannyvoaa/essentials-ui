@@ -45,9 +45,6 @@ class NewsFeedListCollectionBloc {
         //don't add
       //}
     }
-    if (profile.userworkgroup != ""|| profile.userworkgroup != null) {
-      categories.add(profile.userworkgroup);
-    }
     categories.addAll(profile.topics);
     categories.addAll(profile.workgroup);
     categories.addAll(profile.hubLocation);
