@@ -37,7 +37,7 @@ class NewsFeedListCollectionBloc {
   List<String> listOfNewsFeedCategories(Profile profile) {
     List<String> hubLocationsList = <String>['BOS','CLT','DCA','DFW','LAX','MIA','NYC','JFK','LGA','ORD','PHL','PHX','TUL','INTL','GSC','Central Region','Northeast Region','Southeast Region','West Region','Asia Pacific','Canada','Europe','MCLA'];
     List<String> categories = <String>['news'];
-    if (profile.userlocation != "" || profile.userlocation != null) {
+    if (profile.userlocation != "" && profile.userlocation != null) {
       //temporary workaround
       //if (hubLocationsList.any((e) => e.contains(profile.userlocation.toUpperCase()))) {
         categories.add(profile.userlocation);
@@ -45,9 +45,10 @@ class NewsFeedListCollectionBloc {
         //don't add
       //}
     }
-    categories.addAll(profile.topics);
-    categories.addAll(profile.workgroup);
     categories.addAll(profile.hubLocation);
+    categories.addAll(profile.workgroup);
+    categories.addAll(profile.topics);
+
     return categories;
   }
 

@@ -83,18 +83,15 @@ class ProfileRepository implements Repository {
   }
 
   /// Creates a new [Profile] for the current user.
-  Future<bool> createProfile(
-    List<String> topics,
-    List<String> workgroups,
-    List<String> hubLocations
-  ) async {
+  Future<bool> createProfile(List<String> hubLocations, List<String> workgroups, List<String> topics) async {
     final responseProfile = Profile((b) => b
-      ..topics.addAll(topics)
       ..displayName = _ssoAuth.currentUser.displayName
       ..email = _ssoAuth.currentUser.email
       ..userlocation = _ssoAuth.currentUser.userlocation
+      ..hubLocation.addAll(hubLocations)
       ..workgroup.addAll(workgroups)
-      ..hubLocation.addAll(hubLocations));
+      ..topics.addAll(topics));
+
     try {
       final headers = {
         'Content-Type': 'application/json',
@@ -104,9 +101,9 @@ class ProfileRepository implements Repository {
         "aaId": _ssoAuth.currentUser.id,
         "preferences": {
           "userlocation": _ssoAuth.currentUser.userlocation,
-          "topics": topics,
+          "hubLocation": hubLocations,
           "workgroup": workgroups,
-          "hubLocation": hubLocations
+          "topics": topics
         },
         "created": 1582726346,
         "updated": 1582726346
@@ -133,9 +130,10 @@ class ProfileRepository implements Repository {
       var headers = {
         'Content-Type': 'application/json',
       };
-      List<String> topics = updatedProfile.topics.asList();
-      List<String> workgroups = updatedProfile.workgroup.asList();
       List<String> hubLocations = updatedProfile.hubLocation.asList();
+      List<String> workgroups = updatedProfile.workgroup.asList();
+      List<String> topics = updatedProfile.topics.asList();
+
       String strAAId = _ssoAuth.currentUser.id.toString();
 
 

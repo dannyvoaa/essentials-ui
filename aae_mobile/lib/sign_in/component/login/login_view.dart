@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:aae/common/widgets/button/large_button.dart';
+import 'package:aae/common/widgets/loading/aae_loading_spinner.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
 import 'package:aae/theme/typography.dart';
@@ -163,7 +164,11 @@ class LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     //print('********Inside Build value of strUrl:$strUrl**********');
     if ((strUrl == null) || (strUrl == "")) {
-      return WebviewScaffold(url: authUrl, withJavascript: true, useWideViewPort: true, ignoreSSLErrors: true);
+      return WebviewScaffold(url: authUrl, withJavascript: true, useWideViewPort: true, ignoreSSLErrors: true, hidden: true, initialChild: Container(
+        child: const Center(
+          child: AaeLoadingSpinner(),
+        ),
+      ),);
     }
     return Scaffold(
       backgroundColor: AaeColors.white,

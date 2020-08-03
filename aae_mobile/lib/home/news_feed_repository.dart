@@ -44,11 +44,12 @@ class NewsFeedRepository implements Repository {
   fetchNewsFeedJsonList(Profile profile) async {
     try {
       List<String> tags = ['news'];
-      if (profile.userlocation != "" || profile.userlocation != null)
+      if (profile.userlocation != "" && profile.userlocation != null)
         tags.add(profile.userlocation);
-      tags.addAll(profile.topics);
-      tags.addAll(profile.workgroup);
       tags.addAll(profile.hubLocation);
+      tags.addAll(profile.workgroup);
+      tags.addAll(profile.topics);
+
       List<NewsFeedJsonList> jfeed = (await _apiClient.getNewsFeed(tags));
       _publishNewsFeed(jfeed);
       return jfeed;
