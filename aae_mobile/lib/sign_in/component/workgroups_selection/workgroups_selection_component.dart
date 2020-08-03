@@ -22,9 +22,7 @@ class WorkgroupsSelectionComponent extends StatelessWidget {
           source: bloc.viewModel,
           builder: (snapshot) {
             if (snapshot.present) {
-              return WorkgroupsSelectionView(
-                viewModel: snapshot.value,
-              );
+              return WorkgroupsSelectionView(viewModel: snapshot.value);
             } else {
               return _buildLoadingState(context);
             }

@@ -158,13 +158,11 @@ class LoginViewState extends State<LoginView> {
     });
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     //print('********Inside Build value of strUrl:$strUrl**********');
     if ((strUrl == null) || (strUrl == "")) {
-      return WebviewScaffold(url: authUrl, withJavascript: true, useWideViewPort: true, ignoreSSLErrors: true, hidden: true, initialChild: Container(
+      return WebviewScaffold(url: authUrl, withJavascript: true, useWideViewPort: true, ignoreSSLErrors: true, scrollBar: false, hidden: true, initialChild: Container(
         child: const Center(
           child: AaeLoadingSpinner(),
         ),
