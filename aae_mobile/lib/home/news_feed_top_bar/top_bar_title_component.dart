@@ -57,8 +57,18 @@ class _TopBarTitleView extends StatelessWidget {
       return 'Evening';
     }
 
+    String toTitleCase(String str) {
+      return str
+          .replaceAllMapped(
+          RegExp(
+              r'[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+'),
+              (Match m) =>
+          "${m[0][0].toUpperCase()}${m[0].substring(1).toLowerCase()}")
+          .replaceAll(RegExp(r'(_|-)+'), ' ');
+    }
+
     return Text(
-      "Good ${greeting()}, ${viewModel.displayName}",
+      "Good ${greeting()}, ${toTitleCase(viewModel.displayName)}",
       textAlign: TextAlign.left,
       style: AaeTextStyles.h6,
     );
