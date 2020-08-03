@@ -39,11 +39,11 @@ class NewsFeedListCollectionBloc {
     List<String> categories = <String>['news'];
     if (profile.userlocation != "" && profile.userlocation != null) {
       //temporary workaround
-      //if (hubLocationsList.any((e) => e.contains(profile.userlocation.toUpperCase()))) {
+      if (hubLocationsList.any((e) => e.contains(profile.userlocation.toUpperCase()))) {
         categories.add(profile.userlocation);
-      //} else {
+      } else {
         //don't add
-      //}
+      }
     }
     categories.addAll(profile.hubLocation);
     categories.addAll(profile.workgroup);
