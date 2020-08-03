@@ -95,9 +95,9 @@ class SignInStateMachine extends WorkflowStateMachineBase {
   }
 
   void _setUpAccountCreation() {
-    _setUpTopicsSelection();
     _setUpHubLocationsSelection();
     _setUpWorkgroupsSelection();
+    _setUpTopicsSelection();
   }
 
   void _setUpSilentSignIn() {
@@ -130,17 +130,7 @@ class SignInStateMachine extends WorkflowStateMachineBase {
 
   void _setUpLoginPage() {
     // Handle a plugin failure by navigating to the failure page.
-    _hsm[SignInStates.loginPage].addHandlers(SignInEvents.profileNotFound, [forwardTransition(SignInStates.topicsSelection, transition: WorkflowTransition.push)]);
-  }
-
-  void _setUpTopicsSelection() {
-    // Pop when user presses back -- only in-app back button, this will happen automatically from system back button.
-    _hsm[SignInStates.topicsSelection].addHandler(SignInEvents.userPressedSecondaryButton, action: (event, context) {_navigation.pop(context);});
-
-    // When the navigator pops, transition state to workgroups selection.
-    // This is done here rather than in the handler for userPressedBack to cover both the in-app back button and the system back button.
-    _hsm[SignInStates.topicsSelection].addHandlers(SignInEvents.routePopped, [backwardTransition(SignInStates.loginPage)]);
-    _hsm[SignInStates.topicsSelection].addHandlers(SignInEvents.userPressedPrimaryButton, [forwardTransition(SignInStates.hubLocationsSelection, transition: WorkflowTransition.push)]);
+    _hsm[SignInStates.loginPage].addHandlers(SignInEvents.profileNotFound, [forwardTransition(SignInStates.hubLocationsSelection, transition: WorkflowTransition.push)]);
   }
 
   void _setUpHubLocationsSelection() {
@@ -149,7 +139,7 @@ class SignInStateMachine extends WorkflowStateMachineBase {
 
     // When the navigator pops, transition state to workgroups selection.
     // This is done here rather than in the handler for userPressedBack to cover both the in-app back button and the system back button.
-    _hsm[SignInStates.hubLocationsSelection].addHandlers(SignInEvents.routePopped, [backwardTransition(SignInStates.topicsSelection)]);
+    _hsm[SignInStates.hubLocationsSelection].addHandlers(SignInEvents.routePopped, [backwardTransition(SignInStates.loginPage)]);
     _hsm[SignInStates.hubLocationsSelection].addHandlers(SignInEvents.userPressedPrimaryButton, [forwardTransition(SignInStates.workgroupsSelection, transition: WorkflowTransition.push)]);
   }
 
@@ -160,7 +150,17 @@ class SignInStateMachine extends WorkflowStateMachineBase {
     // When the navigator pops, transition state to workgroups selection.
     // This is done here rather than in the handler for userPressedBack to cover both the in-app back button and the system back button.
     _hsm[SignInStates.workgroupsSelection].addHandlers(SignInEvents.routePopped, [backwardTransition(SignInStates.hubLocationsSelection)]);
-    _hsm[SignInStates.workgroupsSelection].addHandler(SignInEvents.userPressedPrimaryButton, action: (event, context) {
+    _hsm[SignInStates.workgroupsSelection].addHandlers(SignInEvents.userPressedPrimaryButton, [forwardTransition(SignInStates.topicsSelection, transition: WorkflowTransition.push)]);
+  }
+
+  void _setUpTopicsSelection(){
+    // Pop when user presses back -- only in-app back button, this will happen automatically from system back button.
+    _hsm[SignInStates.topicsSelection].addHandler(SignInEvents.userPressedSecondaryButton, action: (event, context) {_navigation.pop(context);});
+
+    // When the navigator pops, transition state to workgroups selection.
+    // This is done here rather than in the handler for userPressedBack to cover both the in-app back button and the system back button.
+    _hsm[SignInStates.topicsSelection].addHandlers(SignInEvents.routePopped, [backwardTransition(SignInStates.workgroupsSelection)]);
+    _hsm[SignInStates.topicsSelection].addHandler(SignInEvents.userPressedPrimaryButton, action: (event, context) {
         _blocProvider.createProfileBloc().createProfile();
         _blocProvider.signInBloc().onAccountCreated();
         _navigation.pushReplacementNamed(context, root, fromRoot: true);
