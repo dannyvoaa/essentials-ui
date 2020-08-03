@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:aae/sign_in/component/login/login_view.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:aae/assets/aae_icons.dart';
+import 'package:recase/recase.dart';
 
 class AaeDrawer extends StatelessWidget {
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
@@ -77,12 +78,12 @@ class AaeDrawer extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only (bottom:12.0),
-                      child:  Text(username,maxLines: 1, style: TextStyle(fontWeight: FontWeight.bold, color: AaeColors.lightGray),),
+                      child:  Text(username.titleCase,maxLines: 1, style: TextStyle(fontWeight: FontWeight.bold, color: AaeColors.lightGray),),
                     ),
 
                     Padding(
                       padding: const EdgeInsets.only (bottom:16.0),
-                      child:  Text( location, maxLines: 1, style: TextStyle( color: AaeColors.lightGray), ),
+                      child:  Text( location.toUpperCase(), maxLines: 1, style: TextStyle( color: AaeColors.lightGray), ),
                     ),
                   ],
                   crossAxisAlignment: CrossAxisAlignment.start,

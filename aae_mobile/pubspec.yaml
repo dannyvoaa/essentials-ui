@@ -39,6 +39,7 @@ dependencies:
   flutter_keyboard_visibility: ^0.7.0
   keyboard_avoider: ^0.1.2
   flutter_svg: ^0.18.0
+  recase: ^3.0.0
   flutter:
     sdk: flutter
 
