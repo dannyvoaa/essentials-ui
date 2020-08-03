@@ -6,6 +6,7 @@ import 'package:aae/cache/cache_service.dart';
 import 'package:inject/inject.dart';
 import 'package:logging/logging.dart';
 import 'package:aae/sign_in/component/login/SharedPrefUtils.dart';
+import 'package:aae/profile/profile_details.dart';
 
 import 'sso_identity.dart';
 
@@ -75,6 +76,9 @@ class SSOAuth {
       String tokenvalue = _cache.readString("tokenvalue").value;
       var jwt = tryParseJwt(tokenvalue);
       //print(jwt);
+      ProfileDetails profiledetails = ProfileDetails.getInstance();
+      profiledetails.setFullname(jwt['fullname']);
+      profiledetails.setLocation(jwt['location']);
 
       SSOIdentity _user = new SSOIdentity(tokenvalue, jwt['email'], jwt['uid'], '', jwt['fullname'], jwt['location']);
       _setCurrentUser(_user);

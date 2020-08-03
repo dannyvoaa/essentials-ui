@@ -1,6 +1,7 @@
 import 'package:aae/common/commands/navigate_command.dart';
 import 'package:aae/navigation/navigation_helper.dart';
 import 'package:aae/navigation/routes.dart' as routes;
+import 'package:aae/profile/profile_details.dart';
 import 'package:aae/service_provider.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
@@ -38,6 +39,9 @@ class AaeDrawer extends StatelessWidget {
           ? AaeDimens.safeArea(buildContext: context).bottom
           : AaeDimens.drawerHeight,
     );
+    ProfileDetails profiledetails = ProfileDetails.getInstance();
+    String username = profiledetails.userfullname;
+    String location = profiledetails.userlocation;
 
     return Scaffold(
       //   endDrawer: AaeDrawer(),
@@ -73,12 +77,12 @@ class AaeDrawer extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only (bottom:12.0),
-                      child:  Text('Full Name',maxLines: 1, style: TextStyle(fontWeight: FontWeight.bold, color: AaeColors.lightGray),),
+                      child:  Text(username,maxLines: 1, style: TextStyle(fontWeight: FontWeight.bold, color: AaeColors.lightGray),),
                     ),
 
                     Padding(
                       padding: const EdgeInsets.only (bottom:16.0),
-                      child:  Text( 'Location', maxLines: 1, style: TextStyle( color: AaeColors.lightGray), ),
+                      child:  Text( location, maxLines: 1, style: TextStyle( color: AaeColors.lightGray), ),
                     ),
                   ],
                   crossAxisAlignment: CrossAxisAlignment.start,
