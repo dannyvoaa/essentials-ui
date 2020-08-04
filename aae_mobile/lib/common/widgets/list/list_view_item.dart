@@ -36,12 +36,12 @@ class ListViewItem extends StatelessWidget {
     @required String author,
     GestureTapCallback onTapped,
   }) : this(
-      image: image,
-      infoPanelChildren: <Widget>[
-        _buildTitle(title),
-        _buildShortBody(body, author),
-      ],
-      onTapped: onTapped);
+            image: image,
+            infoPanelChildren: <Widget>[
+              _buildTitle(title),
+              _buildShortBody(body, author),
+            ],
+            onTapped: onTapped);
 
   @override
   Widget build(BuildContext context) {
@@ -114,30 +114,36 @@ class ListViewItem extends StatelessWidget {
 
   static Widget _buildTitle(String text) {
     return Padding(
-      padding: const EdgeInsets.only(top: 6.0, bottom: 0.0,),
-//      child: Text(summary),
+      padding: const EdgeInsets.only(
+        top: 6.0,
+        bottom: 0.0,
+      ),
+      child: Text(
+        text,
+        style: AaeTextStyles.newsCardHeadline,
+      ),
 //      child: Html(
 //        data: text,
 //        useRichText: false,
 //        defaultTextStyle: AaeTextStyles.smallHeadline,
 //      ),
-      child: Html(
-          data: text,
-          style: {
-            "html": Style(
-              color: AaeColors.darkGray,
-              fontSize: FontSize(18),
-              height: 37,
-              margin: EdgeInsets.only(top:0, bottom:2, left:0, right:0,),
-            ),
-            "body": Style(
-              color: AaeColors.darkGray,
-              fontSize: FontSize(18),
-              height: 42,
-              margin: EdgeInsets.only(top:0, bottom:0, left:0, right:0,),
-            ),
-          }
-      ),
+//      child: Html(
+//          data: text,
+//          style: {
+//            "html": Style(
+//              color: AaeColors.darkGray,
+//              fontSize: FontSize(18),
+//              height: 46,
+//              margin: EdgeInsets.only(top:0, bottom:2, left:0, right:0,),
+//            ),
+//            "body": Style(
+//              color: AaeColors.darkGray,
+//              fontSize: FontSize(18),
+//              height: 42,
+//              margin: EdgeInsets.only(top:0, bottom:0, left:0, right:0,),
+//            ),
+//          }
+//      ),
     );
   }
 
@@ -146,7 +152,7 @@ class ListViewItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(bottom: 8.0, top: 0.0),
+          padding: const EdgeInsets.only(bottom: 4.0, top: 6.0),
 //          child: RichText(text: body),
 //          child: Text(summary),
 //          child: Html(
@@ -159,25 +165,30 @@ class ListViewItem extends StatelessWidget {
               "html": Style(
 //                backgroundColor: Colors.black12,
                 color: AaeColors.gray,
-                fontSize: FontSize(12),
-                height: 44,
+                fontSize: FontSize(14),
+                height: 30,
                 padding: EdgeInsets.all(0),
 //                margin: EdgeInsets.only(top:0, bottom:2, left:0, right:0,),
               ),
               "body": Style(
 //                backgroundColor: Colors.black12,
                 color: AaeColors.gray,
-                fontSize: FontSize(12),
+                fontSize: FontSize(14),
 //                height: 42,
                 padding: EdgeInsets.all(0),
-                margin: EdgeInsets.only(top:0, bottom:2, left:0, right:0,),
+                margin: EdgeInsets.only(
+                  top: 0,
+                  bottom: 2,
+                  left: 0,
+                  right: 0,
+                ),
                 alignment: Alignment(0, 0),
                 textAlign: TextAlign.start,
                 after: '...',
               ),
               "h1, h2, h3, h4, h5": Style(
                 color: AaeColors.gray,
-                fontSize: FontSize(12),
+                fontSize: FontSize(14),
                 fontWeight: FontWeight.w100,
               ),
               "a": Style(

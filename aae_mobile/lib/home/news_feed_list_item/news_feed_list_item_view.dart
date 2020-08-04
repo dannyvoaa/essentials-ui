@@ -40,7 +40,7 @@ class NewsFeedListItemView extends StatelessWidget {
   Widget _buildNewsFeedListItemImageProvider(BuildContext context) {
       String strTitle = HtmlUtils.reduceSize(viewModel.displayName.trim(), 50);
       strTitle = HtmlUtils.decodeMessage(strTitle);
-      String strShortBody = HtmlUtils.reduceSize(viewModel.shortBody.trim(), 114);
+      String strShortBody = HtmlUtils.reduceSize(viewModel.shortBody.trim(), 78);
       strShortBody = HtmlUtils.decodeMessage(strShortBody);
       return ListViewItem.titleAndBody(
         image: CachedNetworkImageProvider(viewModel.image.toString()),
