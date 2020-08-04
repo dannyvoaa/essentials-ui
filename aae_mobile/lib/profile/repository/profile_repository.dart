@@ -23,8 +23,7 @@ class ProfileRepository implements Repository {
   static const cacheKey = 'ProfileRepository.Profile';
 
   /// Endpoint for the user_preferences cloudant database
-  static const apiEndpoint =
-      'https://toreetherywhimandifersee:55608bd3e3255fe1851de225ce562d4cab7d8fa2@b23661f9-9acc-4aab-9a2b-f8aa0f41b993-bluemix.cloudantnosqldb.appdomain.cloud/user_preferences/b4eabdbfde6a14ad41a342a5a9a4b99c';
+  //static const apiEndpoint = 'https://toreetherywhimandifersee:55608bd3e3255fe1851de225ce562d4cab7d8fa2@b23661f9-9acc-4aab-9a2b-f8aa0f41b993-bluemix.cloudantnosqldb.appdomain.cloud/user_preferences/b4eabdbfde6a14ad41a342a5a9a4b99c';
 
   static const apiEndpointInsert = "https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/user-profile/aeuserinsertintodb.json";
   static const apiEndpointGetRev = "https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/user-profile/aeuserexistsindb.json";
@@ -83,18 +82,15 @@ class ProfileRepository implements Repository {
   }
 
   /// Creates a new [Profile] for the current user.
-  Future<bool> createProfile(
-    List<String> topics,
-    List<String> workgroups,
-    List<String> hubLocations
-  ) async {
+  Future<bool> createProfile(List<String> hubLocations, List<String> workgroups, List<String> topics) async {
     final responseProfile = Profile((b) => b
-      ..topics.addAll(topics)
       ..displayName = _ssoAuth.currentUser.displayName
       ..email = _ssoAuth.currentUser.email
       ..userlocation = _ssoAuth.currentUser.userlocation
+      ..hubLocation.addAll(hubLocations)
       ..workgroup.addAll(workgroups)
-      ..hubLocation.addAll(hubLocations));
+      ..topics.addAll(topics));
+
     try {
       final headers = {
         'Content-Type': 'application/json',
@@ -102,11 +98,14 @@ class ProfileRepository implements Repository {
       //'Authorization': 'Basic dG9yZWV0aGVyeXdoaW1hbmRpZmVyc2VlOjU1NjA4YmQzZTMyNTVmZTE4NTFkZTIyNWNlNTYyZDRjYWI3ZDhmYTI=',
       final body = jsonEncode({
         "aaId": _ssoAuth.currentUser.id,
+        "fullname": _ssoAuth.currentUser.displayName,
+        "email": _ssoAuth.currentUser.email,
+        "defaultlocation": _ssoAuth.currentUser.userlocation,
         "preferences": {
           "userlocation": _ssoAuth.currentUser.userlocation,
-          "topics": topics,
+          "hubLocation": hubLocations,
           "workgroup": workgroups,
-          "hubLocation": hubLocations
+          "topics": topics
         },
         "created": 1582726346,
         "updated": 1582726346
@@ -133,9 +132,10 @@ class ProfileRepository implements Repository {
       var headers = {
         'Content-Type': 'application/json',
       };
-      List<String> topics = updatedProfile.topics.asList();
-      List<String> workgroups = updatedProfile.workgroup.asList();
       List<String> hubLocations = updatedProfile.hubLocation.asList();
+      List<String> workgroups = updatedProfile.workgroup.asList();
+      List<String> topics = updatedProfile.topics.asList();
+
       String strAAId = _ssoAuth.currentUser.id.toString();
 
 
@@ -145,8 +145,8 @@ class ProfileRepository implements Repository {
       String strRev = "";
       Map<String, dynamic> json = jsonDecode(response.body);
 
-      print(json['docs'].toString());
-      print(json['docs'][0].toString());
+      //print(json['docs'].toString());
+      //print(json['docs'][0].toString());
       //print(json['docs'][0]._rev.toString());
 
       if (json['docs'].length != 0) {
@@ -159,6 +159,9 @@ class ProfileRepository implements Repository {
         "_id": strAAId,
         "_rev": strRev,
         "aaId": strAAId,
+        "fullname": _ssoAuth.currentUser.displayName,
+        "email": _ssoAuth.currentUser.email,
+        "defaultlocation": _ssoAuth.currentUser.userlocation,
         "preferences": {
           "userlocation": _ssoAuth.currentUser.userlocation,
           "topics": topics,

@@ -73,18 +73,6 @@ class _SettingsListView extends StatelessWidget {
                 boolBorderTop: false,
                 boolEnabled: true,
                 boolShowDisclosureIndicator: true,
-                stringTitle: 'Topics of interest',
-              //  stringValue: 'Manage',
-                 txt: 'Manage',
-                onTapAction: () {
-                  navigateCommand(routes.buildTopicsPageRoute())(context);
-
-                },
-              ),
-              TableCellTitleValue(
-                boolBorderTop: false,
-                boolEnabled: true,
-                boolShowDisclosureIndicator: true,
                 stringTitle: 'Hub news',
               //  stringValue: 'Manage',
                  txt: 'Manage',
@@ -103,6 +91,18 @@ class _SettingsListView extends StatelessWidget {
                 txt: 'Manage',
                 onTapAction: () {
                   navigateCommand(routes.buildWorkgroupPageRoute())(context);
+
+                },
+              ),
+              TableCellTitleValue(
+                boolBorderTop: false,
+                boolEnabled: true,
+                boolShowDisclosureIndicator: true,
+                stringTitle: 'Topics of interest',
+                //  stringValue: 'Manage',
+                txt: 'Manage',
+                onTapAction: () {
+                  navigateCommand(routes.buildTopicsPageRoute())(context);
 
                 },
               ),

@@ -13,6 +13,7 @@ abstract class SettingsListViewModel
   String get displayName;
 
   /// The currently signed in users location.
+  @nullable
   String get userlocation;
 
   /// The current topics for this user
@@ -42,6 +43,7 @@ abstract class SettingsListViewModel
   BuiltList<String> get selectedTopics;
 
   /// The list of available topics
+  @nullable
   List<String> get topics;
 
   /// The topic tapped

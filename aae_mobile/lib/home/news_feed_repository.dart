@@ -42,13 +42,21 @@ class NewsFeedRepository implements Repository {
 
 
   fetchNewsFeedJsonList(Profile profile) async {
+    List<String> hubLocationsList = <String>['BOS','CLT','DCA','DFW','LAX','MIA','NYC','JFK','LGA','ORD','PHL','PHX','TUL','INTL','GSC','Central Region','Northeast Region','Southeast Region','West Region','Asia Pacific','Canada','Europe','MCLA'];
     try {
       List<String> tags = ['news'];
-      if (profile.userlocation != "" || profile.userlocation != null)
-        tags.add(profile.userlocation);
-      tags.addAll(profile.topics);
-      tags.addAll(profile.workgroup);
+      if (profile.userlocation != "" && profile.userlocation != null) {
+        //temporary workaround
+        if (hubLocationsList.any((e) => e.contains(profile.userlocation.toUpperCase()))) {
+          tags.add(profile.userlocation);
+        } else {
+          //don't add
+        }
+      }
       tags.addAll(profile.hubLocation);
+      tags.addAll(profile.workgroup);
+      tags.addAll(profile.topics);
+
       List<NewsFeedJsonList> jfeed = (await _apiClient.getNewsFeed(tags));
       _publishNewsFeed(jfeed);
       return jfeed;

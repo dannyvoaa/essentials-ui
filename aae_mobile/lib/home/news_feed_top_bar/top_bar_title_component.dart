@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'top_bar_title_bloc.dart';
 import 'top_bar_title_view_model.dart';
+import 'package:recase/recase.dart';
 
 /// Component that ties together [TopBarTitleBloc] and [TopBarTitleView].
 class TopBarTitleComponent extends StatelessWidget {

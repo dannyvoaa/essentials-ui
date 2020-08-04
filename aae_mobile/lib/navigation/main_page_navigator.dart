@@ -102,12 +102,12 @@ class MainPageNavigator extends StatelessWidget {
         provider = HubLocationPageProvider();
         break;
 
-      case routes.topicsPage:
-        provider = TopicsPageProvider();
-        break;
-
       case routes.workgroupPage:
         provider = WorkgroupPageProvider();
+        break;
+
+      case routes.topicsPage:
+        provider = TopicsPageProvider();
         break;
 
       case routes.events:

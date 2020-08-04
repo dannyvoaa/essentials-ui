@@ -54,10 +54,10 @@ class NewsServiceApi {
 
       Profile profile = Profile(
         (b) {
-              b.topics.addAll(profileQuery.docs[0].preferences.topics);
               b.userlocation = profileQuery.docs[0].preferences.userlocation;
-              b.workgroup.addAll(profileQuery.docs[0].preferences.workgroup);
               b.hubLocation.addAll(profileQuery.docs[0].preferences.hubLocation);
+              b.workgroup.addAll(profileQuery.docs[0].preferences.workgroup);
+              b.topics.addAll(profileQuery.docs[0].preferences.topics);
               return b;
             }
       );

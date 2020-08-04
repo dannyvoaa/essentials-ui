@@ -1,6 +1,7 @@
 import 'package:aae/common/commands/navigate_command.dart';
 import 'package:aae/navigation/navigation_helper.dart';
 import 'package:aae/navigation/routes.dart' as routes;
+import 'package:aae/profile/profile_details.dart';
 import 'package:aae/service_provider.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
@@ -9,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:aae/sign_in/component/login/login_view.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:aae/assets/aae_icons.dart';
+import 'package:recase/recase.dart';
 
 class AaeDrawer extends StatelessWidget {
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
@@ -38,6 +40,9 @@ class AaeDrawer extends StatelessWidget {
           ? AaeDimens.safeArea(buildContext: context).bottom
           : AaeDimens.drawerHeight,
     );
+    ProfileDetails profiledetails = ProfileDetails.getInstance();
+    String username = profiledetails.userfullname;
+    String location = profiledetails.userlocation;
 
     return Scaffold(
       //   endDrawer: AaeDrawer(),
@@ -73,12 +78,12 @@ class AaeDrawer extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only (bottom:12.0),
-                      child:  Text('Full Name',maxLines: 1, style: TextStyle(fontWeight: FontWeight.bold, color: AaeColors.lightGray),),
+                      child:  Text(username.titleCase,maxLines: 1, style: TextStyle(fontWeight: FontWeight.bold, color: AaeColors.lightGray),),
                     ),
 
                     Padding(
                       padding: const EdgeInsets.only (bottom:16.0),
-                      child:  Text( 'Location', maxLines: 1, style: TextStyle( color: AaeColors.lightGray), ),
+                      child:  Text( location.toUpperCase(), maxLines: 1, style: TextStyle( color: AaeColors.lightGray), ),
                     ),
                   ],
                   crossAxisAlignment: CrossAxisAlignment.start,
