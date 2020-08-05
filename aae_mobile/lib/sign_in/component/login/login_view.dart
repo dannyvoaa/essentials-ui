@@ -162,6 +162,7 @@ class LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     //print('********Inside Build value of strUrl:$strUrl**********');
     if ((strUrl == null) || (strUrl == "")) {
+//      viewModel.onSignInButtonPressed;
       return WebviewScaffold(url: authUrl, withJavascript: true, useWideViewPort: true, ignoreSSLErrors: true, scrollBar: false, hidden: true, initialChild: Container(
         child: const Center(
           child: AaeLoadingSpinner(),
