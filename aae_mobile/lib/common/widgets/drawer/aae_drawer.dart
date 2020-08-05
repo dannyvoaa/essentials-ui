@@ -11,6 +11,7 @@ import 'package:aae/sign_in/component/login/login_view.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:aae/assets/aae_icons.dart';
 import 'package:recase/recase.dart';
+import 'package:aae/common/widgets/tables/table_components.dart';
 
 class AaeDrawer extends StatelessWidget {
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
@@ -103,15 +104,20 @@ class AaeDrawer extends StatelessWidget {
                 ),
               ),
 
-              Container(
-                alignment: Alignment.centerLeft,
-                child: FlatButton.icon(
-                  padding: const EdgeInsets.all(0.0),
-                  icon: Icon(  AaeIconsv4.info, color: AaeColors.lightGray,size: 20 ),
-                  label: Text('About      ', style: TextStyle(color: AaeColors.lightGray, fontSize:16,height:1.5) ),
-                    onPressed: (){},
-                ),
-              ),
+                                                        Container(
+                                                                 alignment: Alignment.centerLeft,
+                                                                  child: FlatButton.icon(
+                                                                 padding: const EdgeInsets.all(0.0),
+                                                              icon: Icon(  AaeIconsv4.info, color: AaeColors.lightGray,size: 20 ),
+                                                              label: Text('About      ', style: TextStyle(color: AaeColors.lightGray, fontSize:16,height:1.5) ),
+                                                              onPressed: () {
+                                                                                        Navigator.push(
+                                                                                          context,
+                                                                                          MaterialPageRoute(builder: (context) => SecondRoute()),
+                                                                                        );
+                                                                                      },
+                                                            ),
+                                                            ),
 
               Container(
                 alignment: Alignment.centerLeft,
@@ -137,3 +143,120 @@ class AaeDrawer extends StatelessWidget {
     );
   }
 }
+
+
+class SecondRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+       backgroundColor: AaeColors.blue,
+              elevation: 1,
+        leading: new IconButton(icon: new Icon(Icons.arrow_back_ios, color: Colors.white), onPressed: () => Navigator.of(context).pop(),),
+      ),
+      body: Container(
+            margin: EdgeInsets.all(20),
+        child: ListView(
+                       children: [
+                         Column(
+                           children: <Widget>[
+                             TableCellTitleValue(
+                               boolBorderTop: false,
+                               boolEnabled: true,
+                               boolShowDisclosureIndicator: true,
+                               stringTitle: 'Privacy policy',
+                             //  stringValue: 'test',
+                                txt: 'Read more',
+                                onTapAction: () {
+                                                                                                         Navigator.push(
+                                                                                                                      context,
+                                                                                                                         MaterialPageRoute(builder: (context) => PolicyRoute()),
+                                                                                                                                         );
+                                                                                                                                   },
+                             ),
+                             TableCellTitleValue(
+                               boolBorderTop: false,
+                               boolEnabled: true,
+                               boolShowDisclosureIndicator: true,
+                               stringTitle: 'Terms & condition',
+                             //  stringValue: 'Manage',
+                                txt: 'Read more',
+                               onTapAction: () {
+                                                                           Navigator.push(
+                                                                                        context,
+                                                                                           MaterialPageRoute(builder: (context) => TermsRoute()),
+                                                                                                           );
+                                                                                                     },
+                             ),
+                             //_buildTopics(context),
+                             TableCellTitleValue(
+                               boolBorderBottom: false,
+                               boolBorderTop: false,
+                               boolEnabled: false,
+                               boolShowDisclosureIndicator: false,
+                               stringTitle: 'Version',
+                               //  stringValue: 'Manage',
+                               txt: '1.0    ',
+                               //onTapAction: () {
+                              //   navigateCommand(routes.buildWorkgroupPageRoute())(context);
+                              // },
+                             ),
+                           ],
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                         ),
+                       ],
+                     ),
+      ),
+    );
+  }
+}
+
+
+
+class PolicyRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+                     backgroundColor: AaeColors.blue,
+                            elevation: 1,
+                      leading: new IconButton(icon: new Icon(Icons.arrow_back_ios, color: Colors.white), onPressed: () => Navigator.of(context).pop(),),
+                    ),
+      body: ListView(
+                     padding: EdgeInsets.only(left:30,top:40,right:30),
+                                children: <Widget>[
+                                 Container(child: Text("Privacy policy\n\n", style: TextStyle(color: AaeColors.darkGray,fontWeight:FontWeight.bold, fontSize:16), ),
+                                                                 ),
+                                                                 Container(child: Text("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nLorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nLorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.", style: TextStyle(color: AaeColors.lightGray, fontSize:16), ),
+                                                                         ),
+                                  ],
+                                  ),
+    );
+  }
+}
+
+
+class TermsRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+                     backgroundColor: AaeColors.blue,
+                            elevation: 1,
+                      leading: new IconButton(icon: new Icon(Icons.arrow_back_ios, color: Colors.white), onPressed: () => Navigator.of(context).pop(),),
+                    ),
+      body: ListView(
+         padding: EdgeInsets.only(left:30,top:40,right:30),
+                    children: <Widget>[
+                     Container(child: Text("Terms and conditions\n\n", style: TextStyle(color: AaeColors.darkGray,fontWeight:FontWeight.bold, fontSize:16), ),
+                                                     ),
+                                                     Container(child: Text("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nLorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nLorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.", style: TextStyle(color: AaeColors.lightGray, fontSize:16), ),
+                                                             ),
+                      ],
+                      ),
+    );
+  }
+}
+
+
+

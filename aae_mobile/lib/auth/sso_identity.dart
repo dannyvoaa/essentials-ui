@@ -19,7 +19,7 @@ class SSOIdentity implements AmericanAirlinesIdentity {
   /// Throws [InvalidSSOIdentityException] on failure.
   SSOIdentity(
       this.token, this.email, this.id, this.refreshToken, this.displayName, this.userlocation) {
-    if (email == null || id == null) {
+    if (token == null || id == null) {
       throw InvalidSSOIdentityException();
     }
   }

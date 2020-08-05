@@ -115,7 +115,7 @@ class ProfileRepository implements Repository {
       final res = await http.post('$apiEndpointInsert', headers: headers, body: body);
       if (res.statusCode > 299)
         throw Exception('get error: statusCode= ${res.statusCode}');
-      print(res.body);
+      //print(res.body);
     } catch (e, s) {
       _log.severe('Failed to create profile:', e, s);
       return false;

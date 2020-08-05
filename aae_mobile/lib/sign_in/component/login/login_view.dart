@@ -13,6 +13,7 @@ import 'dart:async';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
 
+/*
 final authorizationEndpoint = "https://idpstage.aa.com/as/authorization.oauth2";
 final tokenEndpoint = "https://idpstage.aa.com/as/token.oauth2";
 final identifier = "aa_essentials_stage";
@@ -21,6 +22,16 @@ final authorizationsecret = 'Basic YWFfZXNzZW50aWFsc19zdGFnZTp4NjZyYmplQzBXaDcwc
 final redirectUri = "aae://www.aa.com";
 final _scopes = ['openid'];
 final logoutEndpoint = "https://smlogin.stage.aa.com/login/SMLogout.jsp";
+*/
+
+final authorizationEndpoint = "https://idp.aa.com/as/authorization.oauth2";
+final tokenEndpoint = "https://idp.aa.com/as/token.oauth2";
+final identifier = "aa_essentials_prod";
+final secret = "XdEh3sq3ewreA8GuOpGqUHr7NTBQFgTxx8wYPFHnG9nUbxH9QVMVatzmiRsyJhzm";
+final authorizationsecret = 'Basic YWFfZXNzZW50aWFsc19wcm9kOlhkRWgzc3EzZXdyZUE4R3VPcEdxVUhyN05UQlFGZ1R4eDh3WVBGSG5HOW5VYnhIOVFWTVZhdHptaVJzeUpoem0=';
+final redirectUri = "aae://www.aa.com";
+final _scopes = ['openid'];
+final logoutEndpoint = "https://smlogin.aa.com/login/SMLogout.jsp";
 
 class NetUtils {
   static Future<String> get(String url, Map<String, dynamic> params) async {
@@ -32,13 +43,13 @@ class NetUtils {
       String paramStr = sb.toString().substring(0, sb.length - 1);
       url += paramStr;
     }
-    print('NetUtils : $url');
+    //print('NetUtils : $url');
     http.Response response = await http.get(url);
     return response.body;
   }
 
   static Future<String> post(String url, Map<String, dynamic> bodyparams, Map<String, String> headerparams) async {
-    print('NetUtils : $url');
+    //print('NetUtils : $url');
     http.Response response = await http.post(url, body: bodyparams, headers: headerparams);
     return response.body;
   }
@@ -66,7 +77,7 @@ class LoginViewState extends State<LoginView> {
   StreamSubscription<WebViewStateChanged> _onStateChanged;
   StreamSubscription<WebViewHttpError> _onHttpError;
 
-  String authUrl = "https://idpstage.aa.com/as/authorization.oauth2?response_type=code&client_id=aa_essentials_stage&redirect_uri=aae://www.aa.com&scope=openid";
+  String authUrl = "https://idp.aa.com/as/authorization.oauth2?response_type=code&client_id=aa_essentials_prod&redirect_uri=aae://www.aa.com&scope=openid";
   String redirectUrl = "aae://www.aa.com";
 
   String strUrl;
@@ -162,7 +173,6 @@ class LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     //print('********Inside Build value of strUrl:$strUrl**********');
     if ((strUrl == null) || (strUrl == "")) {
-//      viewModel.onSignInButtonPressed;
       return WebviewScaffold(url: authUrl, withJavascript: true, useWideViewPort: true, ignoreSSLErrors: true, scrollBar: false, hidden: true, initialChild: Container(
         child: const Center(
           child: AaeLoadingSpinner(),

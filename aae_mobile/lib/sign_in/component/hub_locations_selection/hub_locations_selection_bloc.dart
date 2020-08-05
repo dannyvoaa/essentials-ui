@@ -47,12 +47,10 @@ class HubLocationsSelectionBloc {
                 if (selectedHubLocations.contains(hubLocations.hubLocations)) {
                   selectedHubLocations.remove(hubLocations.hubLocations);
                   _selectedHubLocations.sendNext(selectedHubLocations);
-                  print(
-                      '------------------------------------Removed: ${hubLocations.hubLocations}-------------------------------------');
+                  //print('-----------------------Removed: ${hubLocations.hubLocations}-------------------------------------');
                 } else
                   selectedHubLocations.add(hubLocations.hubLocations);
-                print(
-                    '------------------------------------Added: ${hubLocations.hubLocations}-------------------------------------');
+                //print('---------------------------Added: ${hubLocations.hubLocations}-------------------------------------');
                 _sharedDataRepository.hubLocations.sendNext(selectedHubLocations);
                 _selectedHubLocations.sendNext(selectedHubLocations);
               },

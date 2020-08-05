@@ -39,9 +39,9 @@ class NewsFeedListItemBloc {
   }
 
   void openNewsArticle(BuildContext context) {
-    debugPrint('____________________________________________');
-    debugPrint('hit onTapped in list_item_bloc for articleid: ' + _articleId);
-    debugPrint('____________________________________________');
+    //debugPrint('____________________________________________');
+    //debugPrint('hit onTapped in list_item_bloc for articleid: ' + _articleId);
+    //debugPrint('____________________________________________');
     navigateCommand(
       routes.buildArticlePageRoute(
         article: routes.article,

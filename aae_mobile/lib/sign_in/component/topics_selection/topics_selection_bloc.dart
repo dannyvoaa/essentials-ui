@@ -44,12 +44,10 @@ class TopicsSelectionBloc {
                 if (selectedTopics.contains(topics.topics)) {
                   selectedTopics.remove(topics.topics);
                   _selectedTopics.sendNext(selectedTopics);
-                  print(
-                      '------------------------------------Removed: ${topics.topics}-------------------------------------');
+                  //print('-------------------------Removed: ${topics.topics}-------------------------------------');
                 } else
                   selectedTopics.add(topics.topics);
-                print(
-                    '------------------------------------Added: ${topics.topics}-------------------------------------');
+                //print('----------------------------Added: ${topics.topics}-------------------------------------');
                 _sharedDataRepository.topics.sendNext(selectedTopics);
                 _selectedTopics.sendNext(selectedTopics);
               },
