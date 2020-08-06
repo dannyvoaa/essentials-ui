@@ -7,6 +7,7 @@ import 'package:aae/navigation/routes.dart' as routes;
 import 'package:aae/common/commands/navigate_command.dart';
 import 'settings_list_bloc.dart';
 import 'settings_list_view_model.dart';
+import 'package:aae/common/widgets/drawer/drawer_button.dart';
 
 /// A [Component] that ties together [SettingsListBloc] and
 /// [SettingsListView].
@@ -66,6 +67,7 @@ class _SettingsListView extends StatelessWidget {
                 // Present the Settings Location view
                 //  },
               ),
+                  DrawerButton(                    stringTitle: '',  ),
               TableHeader(
                 stringTitle: 'Newsfeed preferences',
               ),
