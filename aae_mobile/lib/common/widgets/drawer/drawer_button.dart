@@ -32,7 +32,7 @@ class DrawerButton extends StatelessWidget {
           ),
           opacity: boolEnabled ? 1.0 : 0.5,
         ),
-        height: AaeDimens.drawerButtonHeight,
+        height: 18, //AaeDimens.drawerButtonHeight,
       ),
       onTap: this.boolEnabled
           ? () {
