@@ -113,11 +113,11 @@ class LoginViewState extends State<LoginView> {
     _onStateChanged = flutterWebviewPlugin.onStateChanged.listen((WebViewStateChanged state) {
       if (mounted) {
         if(state.type== WebViewState.finishLoad){ // if the full website page loaded
-          //print("------------loaded...");
+          print("------------loaded...");
         }else if (state.type== WebViewState.abortLoad){ // if there is a problem with loading the url
-          //print("------------there is a problem...");
+          print("------------there is a problem...");
         } else if(state.type== WebViewState.startLoad){ // if the url started loading
-          //print("------------start loading...");
+          print("------------start loading...");
         }
       }
           //print("onStateChanged: ${state.type} ${state.url}");
@@ -130,7 +130,6 @@ class LoginViewState extends State<LoginView> {
         });
     // Add a listener to on url changed
     _onUrlChanged = flutterWebviewPlugin.onUrlChanged.listen((String url) {
-
       if (mounted) {
         setState(() {
           //print("URL changed: $url");
