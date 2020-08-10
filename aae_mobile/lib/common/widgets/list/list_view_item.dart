@@ -93,13 +93,6 @@ class ListViewItem extends StatelessWidget {
       child: Image(
         image: image,
       ),
-//      decoration: BoxDecoration(
-//        image: DecorationImage(
-//          alignment: Alignment.topCenter,
-//          fit: BoxFit.fill,
-//          image: image,
-//        ),
-//      ),
     );
   }
 
@@ -123,32 +116,21 @@ class ListViewItem extends StatelessWidget {
         top: 6.0,
         bottom: 0.0,
       ),
-      child: Text(
-        text,
-        style: AaeTextStyles.newsCardHeadline,
+      child: Html(
+          data: text,
+          style: {
+            "html": Style(
+              color: AaeColors.darkGray,
+              fontSize: FontSize(18),
+              margin: EdgeInsets.only(top:6, bottom:2, left:0, right:0,),
+            ),
+            "body": Style(
+              color: AaeColors.darkGray,
+              fontSize: FontSize(18),
+              margin: EdgeInsets.only(top:0, bottom:0, left:0, right:0,),
+            ),
+          }
       ),
-//      child: Html(
-//        data: text,
-//        useRichText: false,
-//        defaultTextStyle: AaeTextStyles.smallHeadline,
-//      ),
-//      child: Html(
-//          data: text,
-//          style: {
-//            "html": Style(
-//              color: AaeColors.darkGray,
-//              fontSize: FontSize(18),
-//              height: 46,
-//              margin: EdgeInsets.only(top:0, bottom:2, left:0, right:0,),
-//            ),
-//            "body": Style(
-//              color: AaeColors.darkGray,
-//              fontSize: FontSize(18),
-//              height: 42,
-//              margin: EdgeInsets.only(top:0, bottom:0, left:0, right:0,),
-//            ),
-//          }
-//      ),
     );
   }
 
