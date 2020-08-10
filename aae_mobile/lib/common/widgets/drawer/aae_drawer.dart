@@ -45,6 +45,8 @@ class AaeDrawer extends StatelessWidget {
     String username = profiledetails.userfullname;
     String location = profiledetails.userlocation;
 
+    if (location == null) { location = ""; }
+
     return Scaffold(
       //   endDrawer: AaeDrawer(),
 
