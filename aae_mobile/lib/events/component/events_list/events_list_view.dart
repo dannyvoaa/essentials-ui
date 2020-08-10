@@ -17,6 +17,7 @@ class EventsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.max,
       children: <Widget>[
         _buildSelectedDated(context),
         _buildEventsList(context)
@@ -94,6 +95,7 @@ class EventsListView extends StatelessWidget {
               ),
             )
           : ListView.separated(
+//              physics: NeverScrollableScrollPhysics(),
               padding: EdgeInsets.only(
                 left: 6.0,
                 right: 6.0,
