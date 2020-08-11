@@ -20,11 +20,17 @@ class _EventsPageState extends State<EventsPage> {
       appBar: AaeTopNavBar(),
       body: Padding(
         padding: const EdgeInsets.only(top: AaeDimens.baseUnit, left: AaeDimens.baseUnit, right: AaeDimens.baseUnit,),
-        child: Column(
-          children: <Widget>[
-            CalendarComponent(),
-            Expanded(child: EventsListComponent()),
-          ],
+        child: SingleChildScrollView(
+          child: Container(
+//            color: AaeColors.red,
+            height: 700,
+            child: Column(
+              children: <Widget>[
+                CalendarComponent(),
+                Expanded(child: EventsListComponent()),
+              ],
+            ),
+          ),
         ),
       ),
     );

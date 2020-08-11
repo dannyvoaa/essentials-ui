@@ -218,6 +218,7 @@ class CalendarView extends StatelessWidget {
     return GridView.count(
       shrinkWrap: true,
       crossAxisCount: 7,
+      physics: NeverScrollableScrollPhysics(),
       children: List.generate(
           viewModel.numOfDaysInCurrentMonth + viewModel.firstWeekdayInMonth,
           (index) {
