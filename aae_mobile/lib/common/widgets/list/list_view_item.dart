@@ -34,12 +34,13 @@ class ListViewItem extends StatelessWidget {
     @required String title,
     @required String body,
     @required String author,
+    @required BuildContext context,
     GestureTapCallback onTapped,
   }) : this(
             image: image,
             infoPanelChildren: <Widget>[
               _buildTitle(title),
-              _buildShortBody(body, author),
+              _buildShortBody(context, body, author),
             ],
             onTapped: onTapped);
 
@@ -64,21 +65,24 @@ class ListViewItem extends StatelessWidget {
 //        height: 300,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(3.0),
-          child: GestureDetector(
-            child: _buildListItemRow(),
-            onTap: onTapped,
+          child: MediaQuery(
+            data: MediaQueryData(textScaleFactor: 1.0),
+            child: GestureDetector(
+              child: _buildListItemRow(context),
+              onTap: onTapped,
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildListItemRow() {
+  Widget _buildListItemRow(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         _buildImage(image),
-        _buildInfoPanel(infoPanelChildren)
+        _buildInfoPanel(context, infoPanelChildren)
       ],
     );
   }
@@ -89,23 +93,17 @@ class ListViewItem extends StatelessWidget {
       child: Image(
         image: image,
       ),
-//      decoration: BoxDecoration(
-//        image: DecorationImage(
-//          alignment: Alignment.topCenter,
-//          fit: BoxFit.fill,
-//          image: image,
-//        ),
-//      ),
     );
   }
 
-  Widget _buildInfoPanel(List<Widget> children) {
+  Widget _buildInfoPanel(BuildContext context, List<Widget> children) {
     return Expanded(
       child: Container(
+        width: double.infinity,
         color: AaeColors.white,
         padding: EdgeInsets.symmetric(horizontal: 14.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: children,
         ),
       ),
@@ -118,38 +116,28 @@ class ListViewItem extends StatelessWidget {
         top: 6.0,
         bottom: 0.0,
       ),
-      child: Text(
-        text,
-        style: AaeTextStyles.newsCardHeadline,
+      child: Html(
+          data: text,
+          style: {
+            "html": Style(
+              color: AaeColors.darkGray,
+              fontSize: FontSize(18),
+              margin: EdgeInsets.only(top:6, bottom:2, left:0, right:0,),
+            ),
+            "body": Style(
+              color: AaeColors.darkGray,
+              fontSize: FontSize(18),
+              margin: EdgeInsets.only(top:0, bottom:0, left:0, right:0,),
+            ),
+          }
       ),
-//      child: Html(
-//        data: text,
-//        useRichText: false,
-//        defaultTextStyle: AaeTextStyles.smallHeadline,
-//      ),
-//      child: Html(
-//          data: text,
-//          style: {
-//            "html": Style(
-//              color: AaeColors.darkGray,
-//              fontSize: FontSize(18),
-//              height: 46,
-//              margin: EdgeInsets.only(top:0, bottom:2, left:0, right:0,),
-//            ),
-//            "body": Style(
-//              color: AaeColors.darkGray,
-//              fontSize: FontSize(18),
-//              height: 42,
-//              margin: EdgeInsets.only(top:0, bottom:0, left:0, right:0,),
-//            ),
-//          }
-//      ),
     );
   }
 
-  static Widget _buildShortBody(String body, author) {
+  static Widget _buildShortBody(BuildContext context, String body, author) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(bottom: 4.0, top: 6.0),

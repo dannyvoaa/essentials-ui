@@ -80,6 +80,7 @@ flutter:
     - assets/static_records/RecognitionHistory.json
     - assets/static_records/image.jpeg
     - assets/common/sign_in_background.png
+    - assets/raw/imageserverbase64.cer
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
