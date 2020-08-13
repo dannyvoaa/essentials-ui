@@ -22,7 +22,7 @@ class _EventsPageState extends State<EventsPage> {
         padding: const EdgeInsets.only(top: AaeDimens.baseUnit, left: AaeDimens.baseUnit, right: AaeDimens.baseUnit,),
         child: SingleChildScrollView(
           child: Container(
-            height: 1100,
+            height: 900,
             child: Column(
               children: <Widget>[
                 CalendarComponent(),
