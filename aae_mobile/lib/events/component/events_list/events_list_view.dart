@@ -17,6 +17,7 @@ class EventsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         _buildSelectedDated(context),
         _buildEventsList(context)
@@ -93,12 +94,15 @@ class EventsListView extends StatelessWidget {
                 ),
               ),
             )
-          : ListView.separated(
+          : Container(
+            height: 200,
+            child: ListView.separated(
+              physics: NeverScrollableScrollPhysics(),
               padding: EdgeInsets.only(
                 left: 6.0,
                 right: 6.0,
               ),
-              shrinkWrap: true,
+//              shrinkWrap: true,
               itemCount: viewModel.events.length,
               separatorBuilder: (_, __) {
                 return Container(
@@ -130,7 +134,7 @@ class EventsListView extends StatelessWidget {
                           builder: (context) {
                             return Container(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              const EdgeInsets.symmetric(horizontal: 8.0),
 //                        height: double.infinity,
                               height: MediaQuery.of(context).size.height,
                               width: MediaQuery.of(context).size.width,
@@ -173,17 +177,17 @@ class EventsListView extends StatelessWidget {
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         children: <Widget>[
                                           Container(
-                                          decoration: BoxDecoration(
-                                            color: AaeColors.blue,
-                                            shape: BoxShape.circle,
-                                          ),
-                                          height: 12,
-                                          margin: EdgeInsets.only(
-                                            right: AaeDimens.baseUnit,
-                                            top: 4,
-                                          ),
-                                          width: AaeDimens.baseUnit,
+                                            decoration: BoxDecoration(
+                                              color: AaeColors.blue,
+                                              shape: BoxShape.circle,
                                             ),
+                                            height: 12,
+                                            margin: EdgeInsets.only(
+                                              right: AaeDimens.baseUnit,
+                                              top: 4,
+                                            ),
+                                            width: AaeDimens.baseUnit,
+                                          ),
                                           Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: <Widget>[
@@ -361,6 +365,7 @@ class EventsListView extends StatelessWidget {
                 );
               },
             ),
+          ),
     );
   }
 }
