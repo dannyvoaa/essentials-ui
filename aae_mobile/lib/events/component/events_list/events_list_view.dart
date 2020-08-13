@@ -188,23 +188,25 @@ class EventsListView extends StatelessWidget {
                                             ),
                                             width: AaeDimens.baseUnit,
                                           ),
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Text(
-                                                viewModel.events[index].eventName,
-                                                textAlign: TextAlign.left,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: AaeTextStyles.eventTitle(
-                                                    boolDefaultHeight: true),
-                                              ),
-                                              Text(
-                                                dateFormatter(index),
-                                                overflow: TextOverflow.ellipsis,
-                                                style: AaeTextStyles.eventDate(
-                                                    boolDefaultHeight: true),
-                                              ),
-                                            ],
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Text(
+                                                  viewModel.events[index].eventName,
+                                                  textAlign: TextAlign.left,
+                                                  overflow: TextOverflow.visible,
+                                                  style: AaeTextStyles.eventTitle(
+                                                      boolDefaultHeight: true),
+                                                ),
+                                                Text(
+                                                  dateFormatter(index),
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style: AaeTextStyles.eventDate(
+                                                      boolDefaultHeight: true),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),

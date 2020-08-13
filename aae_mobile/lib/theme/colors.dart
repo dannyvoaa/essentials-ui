@@ -105,6 +105,6 @@ class AaeColors {
   static const tickerGradient = LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
-      stops: [0.02, 0.4,],
-      colors: [AaeColors.gray, Color(0xFFD0DAE0)]);
+      stops: [0.02, 0.8,],
+      colors: [AaeColors.ultraLightGray, Color(0xFFD0DAE0)]);
 }
