@@ -66,7 +66,7 @@ class _TopBarTitleView extends StatelessWidget {
           .replaceAll(RegExp(r'(_|-)+'), ' ');
     }
     return Text(
-      "Good ${greeting()}, ${(viewModel.displayName).titleCase}",
+      "Good ${greeting()}, ${(viewModel.displayName.substring(0, viewModel.displayName.indexOf(' '))).titleCase}",
       textAlign: TextAlign.left,
       style: AaeTextStyles.h6,
     );
