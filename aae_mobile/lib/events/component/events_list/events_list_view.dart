@@ -50,9 +50,9 @@ class EventsListView extends StatelessWidget {
           borderRadius: BorderRadius.circular(6.0),
           child: Container(
             padding: EdgeInsets.only(
-              top: 16,
               left: 16,
             ),
+            alignment: Alignment.centerLeft,
             width: double.infinity,
             height: 36,
             color: AaeColors.white,
