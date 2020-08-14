@@ -83,6 +83,15 @@ class ProfileRepository implements Repository {
 
   /// Creates a new [Profile] for the current user.
   Future<bool> createProfile(List<String> hubLocations, List<String> workgroups, List<String> topics) async {
+    List<String> hubLocationsList = <String>['BOS','CLT','DCA','DFW','LAX','MIA','NYC','JFK','LGA','ORD','PHL','PHX','TUL','INTL','GSC','Central Region','Northeast Region','Southeast Region','West Region','Asia Pacific','Canada','Europe','MCLA'];
+
+    if (_ssoAuth.currentUser.userlocation != "" && _ssoAuth.currentUser.userlocation != null) {
+      if (hubLocationsList.any((e) => e.contains(_ssoAuth.currentUser.userlocation.toUpperCase()))) {
+        hubLocations.removeWhere((item) => item == _ssoAuth.currentUser.userlocation.toUpperCase());
+      } else {
+        //do nothing
+      }
+    }
     final responseProfile = Profile((b) => b
       ..displayName = _ssoAuth.currentUser.displayName
       ..email = _ssoAuth.currentUser.email
@@ -90,6 +99,8 @@ class ProfileRepository implements Repository {
       ..hubLocation.addAll(hubLocations)
       ..workgroup.addAll(workgroups)
       ..topics.addAll(topics));
+
+
 
     try {
       final headers = {
