@@ -46,16 +46,15 @@ class _TopBarTitleView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: (kiheke) - Move this to BLoC
     String greeting() {
       var hour = DateTime.now().hour;
       if (hour < 12) {
-        return 'Morning';
+        return 'morning';
       }
       if (hour < 17) {
-        return 'Afternoon';
+        return 'afternoon';
       }
-      return 'Evening';
+      return 'evening';
     }
     String toTitleCase(String str) {
       return str
