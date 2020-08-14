@@ -45,8 +45,8 @@ class NewsFeedListCollectionBloc {
         //don't add
       }
     }
-    categories.addAll(profile.hubLocation);
     categories.addAll(profile.workgroup);
+    categories.addAll(profile.hubLocation);
     categories.addAll(profile.topics);
 
     return categories;

@@ -9,6 +9,7 @@ import 'package:aae/sign_in/component/welcome/welcome_component.dart';
 import 'package:aae/sign_in/component/workgroups_selection/workgroups_selection_component.dart';
 import 'package:aae/sign_in/component/hub_locations_selection/hub_locations_selection_component.dart';
 import 'package:aae/sign_in/workflow/sign_in_state_machine.dart';
+import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
 import 'package:aae/workflow/common/workflow.dart';
 import 'package:aae/workflow/common/workflow_event.dart';
@@ -30,7 +31,7 @@ class SignInWorkflow extends StatelessWidget {
   final _routeTable = <String, WidgetBuilder>{
     SignInRoutes.welcome: (context) => WelcomeComponent(),
     SignInRoutes.login: (context) => LoginComponent(),
-    SignInRoutes.loading: (context) => Center(child: AaeLoadingSpinner()),
+    SignInRoutes.loading: (context) => Container(decoration: new BoxDecoration(color: AaeColors.white),child:Center(child: AaeLoadingSpinner())),
     SignInRoutes.failed: (context) => SignInFailedComponent(),
     SignInRoutes.topicsSelection: (context) => TopicsSelectionComponent(),
     SignInRoutes.hubLocationsSelection: (context) => HubLocationsSelectionComponent(),
