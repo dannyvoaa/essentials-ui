@@ -23,9 +23,12 @@ class LoginComponent extends StatelessWidget {
             source: bloc.viewModel,
             builder: (snapshot) {
               if (snapshot.present) {
-                return LoginView(
-                  viewModel: snapshot.value,
-                );
+                  if (snapshot.value != null) {
+                    return LoginView(viewModel: snapshot.value);
+                  }
+                  else {
+                    return _buildLoadingState(context);
+                  }
               } else {
                 return _buildLoadingState(context);
               }

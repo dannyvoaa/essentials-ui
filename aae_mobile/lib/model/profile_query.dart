@@ -56,8 +56,11 @@ class Preferences {
   Preferences.fromJson(Map<String, dynamic> json) {
     userlocation = json['userlocation'];
     topics = json['topics'].cast<String>();
+    topics.sort();
     workgroup = json['workgroup'].cast<String>();
+    workgroup.sort();
     hubLocation = json['hubLocation'].cast<String>();
+    hubLocation.sort();
   }
 
   Map<String, dynamic> toJson() {

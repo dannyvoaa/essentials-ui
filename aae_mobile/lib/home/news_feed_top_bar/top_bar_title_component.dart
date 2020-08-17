@@ -46,16 +46,15 @@ class _TopBarTitleView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: (kiheke) - Move this to BLoC
     String greeting() {
       var hour = DateTime.now().hour;
       if (hour < 12) {
-        return 'Morning';
+        return 'morning';
       }
       if (hour < 17) {
-        return 'Afternoon';
+        return 'afternoon';
       }
-      return 'Evening';
+      return 'evening';
     }
     String toTitleCase(String str) {
       return str
@@ -67,7 +66,7 @@ class _TopBarTitleView extends StatelessWidget {
           .replaceAll(RegExp(r'(_|-)+'), ' ');
     }
     return Text(
-      "Good ${greeting()}, ${(viewModel.displayName).titleCase}",
+      "Good ${greeting()}, ${(viewModel.displayName.substring(0, viewModel.displayName.indexOf(' '))).titleCase}",
       textAlign: TextAlign.left,
       style: AaeTextStyles.h6,
     );
