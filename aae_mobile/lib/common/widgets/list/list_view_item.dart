@@ -55,7 +55,7 @@ class ListViewItem extends StatelessWidget {
             BoxShadow(
               color: Colors.black12,
 //              color: AaeColors.lightGray,
-              offset: Offset(0.0, 0.0),
+              offset: Offset(0.0, 2.0),
               blurRadius: 2,
               spreadRadius: 1,
             ),

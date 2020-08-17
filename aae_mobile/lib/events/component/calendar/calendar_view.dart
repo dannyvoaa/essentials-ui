@@ -381,7 +381,8 @@ class CalendarView extends StatelessWidget {
                     height: AaeDimens.sizeDynamic_48px(),
                     width: AaeDimens.sizeDynamic_48px(),
                   ),
-                  onTap: viewModel.onNextMonthPressed,
+                  onTap: viewModel.onNextMonthPressed
+                  ,
                 ),
               ],
               crossAxisAlignment: CrossAxisAlignment.center,
