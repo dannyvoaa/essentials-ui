@@ -61,7 +61,7 @@ class AaeColors {
   static const highlightBlue = Color.fromRGBO(225, 240, 250, 1.0);
   static const black = Color.fromRGBO(19, 19, 19, 1.0);
   static const darkGray = Color.fromRGBO(56,74,91, 1.0);
-  static const lightGray = Color.fromRGBO(208, 218, 224, 1.0);
+  static const lightGray = Color.fromRGBO(112, 112, 112, 1.0);
   static const mediumGray = Color.fromRGBO(110, 137, 153, 1.0);
   static const titleGray = Color.fromRGBO(54, 73, 90, 1.0);
   static const gray = Color.fromRGBO(157, 166, 171, 1.0);
@@ -106,5 +106,5 @@ class AaeColors {
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       stops: [0.01, 0.4,],
-      colors: [Color(0xFFbac3c8), AaeColors.lightGray]);
+      colors: [Color(0xFFbac3c8), Color.fromRGBO(208, 218, 224, 1.0)]);
 }

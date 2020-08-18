@@ -100,8 +100,8 @@ class BottomNavigation extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(top:10),
             child: Text(
-//              tabText[page],
-              'Test Text Test Text',
+              tabText[page],
+//              'Test Text Test Text',
               style: _labelTextStyle.copyWith(color: tabColor),
               textAlign: TextAlign.center,
             ),
