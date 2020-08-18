@@ -237,8 +237,9 @@ class AaeTextStyles {
   }) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       color: AaeColors.darkGray,
-      fontSize: 16,
+      fontSize: 18,
       height: 1.165,
+      fontWeight:FontWeight.bold,
     );
     // Default style
     return textStyle;
@@ -250,6 +251,7 @@ class AaeTextStyles {
   }) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       color: AaeColors.lightGray,
+        fontSize: 18,
     );
     // Default style
 
@@ -322,6 +324,7 @@ class AaeTextStyles {
       {bool boolDefaultHeight = false, bool boolEnabled = true}) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       color: AaeColors.ultraLightGray,
+        fontSize: 18,
     );
 
     // Default style

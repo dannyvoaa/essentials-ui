@@ -306,7 +306,7 @@ class LoginViewState extends State<LoginView> {
             ),
             Text(
               'Login Success',
-              style: AaeTextStyles.titleLarge(),
+              style: AaeTextStyles.eventTitle(),
             ),
             Text(
               'Please click continue to access the app!',

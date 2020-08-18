@@ -20,7 +20,7 @@ class TableHeader extends StatelessWidget {
       ),
       margin: EdgeInsets.only(
         left: AaeDimens.baseUnit,
-        top: 24,
+        top: 16,
         right: 16,
         bottom: 8,
       ),

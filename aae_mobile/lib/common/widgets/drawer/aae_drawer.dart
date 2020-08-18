@@ -49,11 +49,21 @@ class AaeDrawer extends StatelessWidget {
 
     return Scaffold(
       //   endDrawer: AaeDrawer(),
-
-
       appBar: AppBar(
+      flexibleSpace: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter,
+                      colors: <Color>[
 
-        backgroundColor: AaeColors.blue,
+                    AaeColors.blue,
+                    AaeColors.gradientTop
+
+                  ])
+               ),
+           ),
+       // backgroundColor: AaeColors.blue,
         elevation: 1,
         //   title: Text(
         //     'Topics of interest',
@@ -99,7 +109,7 @@ class AaeDrawer extends StatelessWidget {
                 child: FlatButton.icon(
                   padding: const EdgeInsets.all(0.0),
                   icon: Icon(  AaeIconsv4.setting,color: AaeColors.lightGray,size: 20),
-                  label: Text('Preferences', style: TextStyle(color: AaeColors.lightGray, fontSize:16,height:1.5) ),
+                  label: Text('Preferences', style: TextStyle(color: AaeColors.lightGray, fontSize:18,height:1.5) ),
                   onPressed: () {
                     navigateCommand(routes.buildSettingsPageRoute())(context);
                   },
@@ -111,7 +121,7 @@ class AaeDrawer extends StatelessWidget {
                                                                   child: FlatButton.icon(
                                                                  padding: const EdgeInsets.all(0.0),
                                                               icon: Icon(  AaeIconsv4.info, color: AaeColors.lightGray,size: 20 ),
-                                                              label: Text('About      ', style: TextStyle(color: AaeColors.lightGray, fontSize:16,height:1.5) ),
+                                                              label: Text('About      ', style: TextStyle(color: AaeColors.lightGray, fontSize:18,height:1.5) ),
                                                               onPressed: () {
                                                                                         Navigator.push(
                                                                                           context,
@@ -126,7 +136,7 @@ class AaeDrawer extends StatelessWidget {
                 child: FlatButton.icon(
                   padding: const EdgeInsets.all(0.0),
                   icon: Icon(  AaeIconsv4.lock, color: AaeColors.lightGray,size: 20),
-                  label: Text('Logout     ', style: TextStyle(color: AaeColors.lightGray, fontSize:16,height:1.5) ),
+                  label: Text('Logout     ', style: TextStyle(color: AaeColors.lightGray, fontSize:18,height:1.5) ),
                   onPressed: ()
                   async {
                     SharedPreferences _sharedPref = await SharedPreferences.getInstance();
@@ -152,7 +162,20 @@ class SecondRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-       backgroundColor: AaeColors.blue,
+      flexibleSpace: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                            colors: <Color>[
+
+                          AaeColors.blue,
+                          AaeColors.gradientTop
+
+                        ])
+                     ),
+                 ),
+      // backgroundColor: AaeColors.blue,
               elevation: 1,
         leading: new IconButton(icon: new Icon(Icons.arrow_back_ios, color: Colors.white), onPressed: () => Navigator.of(context).pop(),),
       ),
@@ -220,7 +243,20 @@ class PolicyRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-                     backgroundColor: AaeColors.blue,
+                   flexibleSpace: Container(
+                                   decoration: BoxDecoration(
+                                     gradient: LinearGradient(
+                                       begin: Alignment.bottomCenter,
+                                             end: Alignment.topCenter,
+                                         colors: <Color>[
+
+                                       AaeColors.blue,
+                                       AaeColors.gradientTop
+
+                                     ])
+                                  ),
+                              ),
+                              //  backgroundColor: AaeColors.blue,
                             elevation: 1,
                       leading: new IconButton(icon: new Icon(Icons.arrow_back_ios, color: Colors.white), onPressed: () => Navigator.of(context).pop(),),
                     ),
@@ -309,7 +345,20 @@ class TermsRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-                     backgroundColor: AaeColors.blue,
+                   flexibleSpace: Container(
+                                   decoration: BoxDecoration(
+                                     gradient: LinearGradient(
+                                       begin: Alignment.bottomCenter,
+                                             end: Alignment.topCenter,
+                                         colors: <Color>[
+
+                                       AaeColors.blue,
+                                       AaeColors.gradientTop
+
+                                     ])
+                                  ),
+                              ),
+                               // backgroundColor: AaeColors.blue,
                             elevation: 1,
                       leading: new IconButton(icon: new Icon(Icons.arrow_back_ios, color: Colors.white), onPressed: () => Navigator.of(context).pop(),),
                     ),
