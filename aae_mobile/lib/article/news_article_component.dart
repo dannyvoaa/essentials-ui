@@ -11,7 +11,6 @@ import 'package:aae/bloc/source_builder.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_html/style.dart';
-import 'package:flutter_advanced_networkimage/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NewsArticleComponent extends StatelessWidget {
@@ -74,12 +73,8 @@ class NewsArticleComponent extends StatelessWidget {
                   delegate: SliverChildListDelegate(
                     [
                       Container(
-                        child: Image(
-                          image: AdvancedNetworkImage(
-                            args['articleImage'],
-                            useDiskCache: true,
-                            cacheRule: CacheRule(maxAge: const Duration(days:7)),
-                          ),
+                        child: Image.network(
+                          args['articleImage'],
                           fit: BoxFit.fill,
                           loadingBuilder: (BuildContext context, Widget child,
                               ImageChunkEvent loadingProgress) {
@@ -142,12 +137,8 @@ class NewsArticleComponent extends StatelessWidget {
 //                            return Image.network(imageUrl);
                               return Container(
 //                              child: Text(imageUrl),
-                                child: Image(
-                                  image: AdvancedNetworkImage(
-                                    imageUrl,
-                                    useDiskCache: true,
-                                    cacheRule: CacheRule(maxAge: const Duration(days:7)),
-                                  ),
+                                child: Image.network(
+                                  args['articleImage'],
                                   fit: BoxFit.fill,
                                 ),
 

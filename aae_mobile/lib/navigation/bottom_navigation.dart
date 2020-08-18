@@ -81,12 +81,12 @@ class BottomNavigation extends StatelessWidget {
     return BottomNavigationBarItem(
         icon: Container(
           height: 20,
-          width: 1000,
+//          width: 1000,
           padding: EdgeInsets.only(top: offset,),
 //          alignment: Alignment.bottomCenter,
           child: Container(
             height:80,
-            width:1000,
+//            width:1000,
             child: Icon(
               tabIconData[page],
               size: size,
@@ -101,6 +101,7 @@ class BottomNavigation extends StatelessWidget {
             padding: const EdgeInsets.only(top:10),
             child: Text(
               tabText[page],
+//              'Test Text Test Text',
               style: _labelTextStyle.copyWith(color: tabColor),
               textAlign: TextAlign.center,
             ),

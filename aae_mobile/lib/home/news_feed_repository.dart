@@ -53,8 +53,8 @@ class NewsFeedRepository implements Repository {
           //don't add
         }
       }
-      tags.addAll(profile.hubLocation);
       tags.addAll(profile.workgroup);
+      tags.addAll(profile.hubLocation);
       tags.addAll(profile.topics);
 
       List<NewsFeedJsonList> jfeed = (await _apiClient.getNewsFeed(tags));

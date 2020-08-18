@@ -21,6 +21,9 @@ class CalendarBloc {
   final _currentMonth =
       createBehaviorSubject<DateTime>(initial: DateTime.now());
 
+  final _currentYear =
+      createBehaviorSubject<DateTime>(initial: DateTime.now());
+
   final _currentlySelectedDate =
       createBehaviorSubject<int>(initial: DateTime.now().day);
 
@@ -76,6 +79,7 @@ class CalendarBloc {
     _currentlySelectedDate.sendNext(date);
 
     print('$previousTime');
+    print('hello!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
   }
 
   _moveToNextMonth() {
