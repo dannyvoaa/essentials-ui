@@ -112,7 +112,6 @@ class NewsArticleComponent extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10.0, vertical: 10.0),
-//                      child: Text(strArticleBody),
                         child: Html(
                           data: strArticleBody,
                           onLinkTap: (url) {
@@ -126,22 +125,13 @@ class NewsArticleComponent extends StatelessWidget {
                             print(exception);
                           },
                           customRender: {
-//                          'img': (renderContext, child, attributes, _) {
-//                            var imageUrl = attributes['h2'];
-//                            return Text('H2');
-//                          },
                             'img': (renderContext, child, attributes, _) {
                               var imageUrl = attributes['src'];
-                              print(imageUrl);
-
-//                            return Image.network(imageUrl);
                               return Container(
-//                              child: Text(imageUrl),
-                                child: Image.network(
-                                  args['articleImage'],
+                                child: Image(
+                                  image: NetworkImage(imageUrl),
                                   fit: BoxFit.fill,
                                 ),
-
                               );
                             },
                           },
