@@ -28,9 +28,9 @@ class CalendarView extends StatelessWidget {
     var now = DateTime.now();
     var today = now.weekday;
     var thisMonth = now.month;
-    print(today);
-    print('day');
-    print(index);
+//    print(today);
+//    print('day');
+//    print(index);
 
     var color = today == index && thisMonth == viewModel.datePage.month
         ? AaeColors.lightBlue
@@ -274,9 +274,6 @@ class CalendarView extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   color: formatHighlight(stringDay),
-//                  color: int.tryParse(stringDay) == viewModel.selectedDate
-//                      ? AaeColors.lightBlue
-//                      : null,
                   shape: BoxShape.circle,
                 ),
                 padding: EdgeInsets.only(top: 2.5),
@@ -309,12 +306,9 @@ class CalendarView extends StatelessWidget {
 
     bool thisMonth() {
       var selectedMonth = viewModel.datePage.month;
-
       var now = DateTime.now();
       var thisMonth = now.month;
-
       var result = selectedMonth == thisMonth ? true : false;
-
       return result;
     }
 
@@ -323,6 +317,8 @@ class CalendarView extends StatelessWidget {
       var now = DateTime.now();
       var thisMonth = now.month;
       var thisYear = now.year;
+      var selectedMonth = viewModel.datePage.month;
+      var today = now.day;
 
       var result = thisMonth == viewModel.datePage.month
           ? false
@@ -333,6 +329,36 @@ class CalendarView extends StatelessWidget {
           : true;
       return result;
     }
+
+    void backMonth(){
+      var now = DateTime.now();
+      var thisMonth = now.month;
+      var selectedMonth = viewModel.datePage.month - 1;
+      var today = now.day;
+
+      viewModel.onPreviousMonthPressed();
+      print("Testing............................................");
+      print(selectedMonth);
+      print(thisMonth);
+
+      selectedMonth == thisMonth
+          ? viewModel.onDaySelected(today)
+          : selectedMonth != thisMonth
+          ? viewModel.onDaySelected(1)
+          : viewModel.onDaySelected(1);
+
+    }
+
+    void forwardMonth(){
+      viewModel.onNextMonthPressed();
+      viewModel.onDaySelected(1);
+    }
+
+
+
+
+
+
 
     return Padding(
       padding: EdgeInsets.only(left: 6.0, right: 6.0),
@@ -363,10 +389,7 @@ class CalendarView extends StatelessWidget {
                     height: AaeDimens.sizeDynamic_48px(),
                     width: AaeDimens.sizeDynamic_48px(),
                   ),
-                  onTap: formatMonthTap()
-                      ? viewModel.onPreviousMonthPressed
-                      : (){},
-//                  onTap: viewModel.onPreviousMonthPressed,
+                  onTap: backMonth,
                 ),
                 Text(
                   stringMonthYear,
@@ -381,8 +404,11 @@ class CalendarView extends StatelessWidget {
                     height: AaeDimens.sizeDynamic_48px(),
                     width: AaeDimens.sizeDynamic_48px(),
                   ),
-                  onTap: viewModel.onNextMonthPressed
-                  ,
+                  onTap: forwardMonth,
+//                  onTap: viewModel.onNextMonthPressed,
+//                  onTap: (){viewModel.onNextMonthPressed(); viewModel.onDaySelected(1);},
+//                  onTap: ()=>[viewModel.onNextMonthPressed,],
+//                  onTap: ()=>[viewModel.onDaySelected(1), viewModel.onNextMonthPressed,],
                 ),
               ],
               crossAxisAlignment: CrossAxisAlignment.center,
