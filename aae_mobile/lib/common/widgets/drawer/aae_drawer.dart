@@ -29,6 +29,7 @@ class AaeDrawer extends StatelessWidget {
     });
      */
   }
+
   Widget build(BuildContext context) {
     EdgeInsets edgeInsets = EdgeInsets.only(
       left: AaeDimens.safeArea(buildContext: context).left > 0

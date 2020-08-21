@@ -89,6 +89,7 @@ class EventsListView extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(12),
                 child: Text(
+//                    DateFormat.yMMMMEEEEd('en_US').format(viewModel.observingDate),
                   'Nothing planned today.',
                   style: AaeTextStyles.description(),
                 ),
@@ -124,7 +125,6 @@ class EventsListView extends StatelessWidget {
                     ],
                   ),
                   child: InkWell(
-//              borderRadius: BorderRadius.circular(30),
                     onTap: () {
 //                      showBottomSheet(
                       showModalBottomSheet(

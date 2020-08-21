@@ -13,6 +13,8 @@ const _labelTextStyle = TextStyle(
   fontSize: 10,
 );
 
+GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
 class BottomNavigation extends StatelessWidget {
   final MainPage _currentPage;
   final ValueChanged<MainPage> _onSelectTab;
@@ -34,6 +36,10 @@ class BottomNavigation extends StatelessWidget {
     MainPage.events: AaeIcons.calendar,
   };
 
+//  void _closeDrawer() {
+//  _scaffoldKey.currentState.openDrawer();
+//  }
+
   BottomNavigation(
       {@required MainPage currentPage,
       @required ValueChanged<MainPage> onSelectTab})
@@ -42,6 +48,7 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Scaffold(key: _scaffoldKey,);
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -50,17 +57,6 @@ class BottomNavigation extends StatelessWidget {
             color: AaeColors.ultraLightGray,
           ),
         ),
-//        boxShadow: [
-//          BoxShadow(
-//            color: AaeColors.darkGray,
-//            blurRadius: 15.0,
-//            spreadRadius: 5.0,
-//            offset: Offset(
-//              15.0,
-//              15.0,
-//            ),
-//          ),
-//        ],
       ),
       child: BottomNavigationBar(
         elevation: 8.0,
@@ -71,7 +67,11 @@ class BottomNavigation extends StatelessWidget {
        //   _buildItem(MainPage.travel, context, 18, 5.0),
           _buildItem(MainPage.events, context, 24, 2.0),
         ],
+//        onTap: _scaffoldKey.currentState.openDrawer,
+//        onTap: (index) => [_onSelectTab(MainPage.values[index]), Navigator.of(context).pop()],
         onTap: (index) => _onSelectTab(MainPage.values[index]),
+//          onTap: _scaffoldKey.currentState.isDrawerOpen ? (index) => _onSelectTab(MainPage.values[index]) : (){},
+//        onTap: menuTap(index, context),
       ),
     );
   }
@@ -106,7 +106,8 @@ class BottomNavigation extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-        ));
+        ),
+    );
   }
 
   Color _tabColor(MainPage page) {

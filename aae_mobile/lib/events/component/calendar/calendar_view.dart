@@ -188,25 +188,15 @@ class CalendarView extends StatelessWidget {
       var thisMonth = now.month;
       var thisYear = now.year;
 
-//      var result = viewModel.daysWithEvents.contains(int?.parse(x)) &&
-//              day >= today &&
-//              thisMonth <= viewModel.datePage.month
-//          ? AaeColors.blue
-//          : viewModel.daysWithEvents.contains(int?.parse(x)) &&
-//                  thisMonth < viewModel.datePage.month
-//              ? AaeColors.blue
-//              : thisMonth >= viewModel.datePage.month
-//                  ? null
-//                  : viewModel.daysWithEvents.contains(int?.parse(x)) &&
-//                          day == viewModel.selectedDate
-//                      ? AaeColors.white
-//                      : null;
-
       var result = viewModel.daysWithEvents.contains(int?.parse(x)) &&
-              day != viewModel.selectedDate &&
-              day >= today
+              thisMonth < viewModel.datePage.month &&
+              day != viewModel.selectedDate
           ? AaeColors.blue
-          : null;
+          : viewModel.daysWithEvents.contains(int?.parse(x)) &&
+                  day != viewModel.selectedDate &&
+                  day >= today
+              ? AaeColors.blue
+              : null;
 
       return result;
     }
@@ -340,18 +330,21 @@ class CalendarView extends StatelessWidget {
       var thisMonth = now.month;
       var displayedMonth = viewModel.datePage.month;
       var selectedMonth = viewModel.datePage.month - 1;
-      var today = now.day;
+      int today = now.day;
+      int index = today;
 
       viewModel.onPreviousMonthPressed();
-      print("Testing............................................");
-      print(selectedMonth);
-      print(thisMonth);
+//      print("Testing............................................");
+//      print(selectedMonth);
+//      print(today);
 
       selectedMonth == thisMonth
           ? viewModel.onDaySelected(today)
           : selectedMonth != thisMonth
               ? viewModel.onDaySelected(1)
               : viewModel.onDaySelected(1);
+
+//      viewModel.onDaySelected((index + 1) - viewModel.firstWeekdayInMonth);
     }
 
     void forwardMonth() {
