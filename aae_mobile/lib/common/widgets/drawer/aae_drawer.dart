@@ -1679,7 +1679,7 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
-          padding: EdgeInsets.only(bottom: 8),
+         
           child: Text('American Airlines, Inc.Orient House (HAA3),\nPo Box 365, Waterside,\nHarmondsworth,\nUB7 0GB\nUnited Kingdom\nContact:  Lisa.Banks@aa.com\n',
           style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                                                         ),
