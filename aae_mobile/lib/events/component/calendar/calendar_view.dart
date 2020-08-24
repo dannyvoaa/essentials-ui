@@ -163,7 +163,7 @@ class CalendarView extends StatelessWidget {
       return result;
     }
 
-    bool formatTap(x){
+    bool formatTap(x) {
       int day = int.tryParse(x) ?? 0;
       var now = DateTime.now();
       var today = now.day;
@@ -173,13 +173,11 @@ class CalendarView extends StatelessWidget {
       var result = day < today && thisMonth == viewModel.datePage.month
           ? false
           : thisMonth > viewModel.datePage.month ||
-          thisYear > viewModel.datePage.year
-          ? false
-          : thisYear < viewModel.datePage.year
-          ? true
-          : day == viewModel.selectedDate
-          ? false
-          : true;
+                  thisYear > viewModel.datePage.year
+              ? false
+              : thisYear < viewModel.datePage.year
+                  ? true
+                  : day == viewModel.selectedDate ? false : true;
       return result;
     }
 
@@ -191,18 +189,14 @@ class CalendarView extends StatelessWidget {
       var thisYear = now.year;
 
       var result = viewModel.daysWithEvents.contains(int?.parse(x)) &&
-              day >= today &&
-              thisMonth <= viewModel.datePage.month
+              thisMonth < viewModel.datePage.month &&
+              day != viewModel.selectedDate
           ? AaeColors.blue
           : viewModel.daysWithEvents.contains(int?.parse(x)) &&
-                  thisMonth < viewModel.datePage.month
+                  day != viewModel.selectedDate &&
+                  day >= today
               ? AaeColors.blue
-              : thisMonth >= viewModel.datePage.month
-                  ? null
-                  : viewModel.daysWithEvents.contains(int?.parse(x)) &&
-                          day == viewModel.selectedDate
-                      ? AaeColors.white
-                      : null;
+              : null;
 
       return result;
     }
@@ -214,19 +208,22 @@ class CalendarView extends StatelessWidget {
       var thisMonth = now.month;
       var thisYear = now.year;
 
-      var result = day == viewModel.selectedDate &&
-              today != viewModel.selectedDate &&
-              thisMonth != viewModel.datePage.month
-          ? AaeColors.lightGray
-          : day == viewModel.selectedDate &&
-                  today != viewModel.selectedDate &&
-                  thisMonth == viewModel.datePage.month
+      var result =
+          day == viewModel.selectedDate && thisMonth != viewModel.datePage.month
               ? AaeColors.lightGray
               : day == viewModel.selectedDate &&
-                      today == viewModel.selectedDate &&
+                      today != viewModel.selectedDate &&
                       thisMonth == viewModel.datePage.month
-                  ? AaeColors.lightBlue
-                  : null;
+                  ? AaeColors.lightGray
+                  : day == viewModel.selectedDate &&
+                          today == viewModel.selectedDate &&
+                          thisMonth == viewModel.datePage.month &&
+                          thisYear == viewModel.datePage.year
+                      ? AaeColors.lightBlue
+                      : day == viewModel.selectedDate &&
+                              thisYear != viewModel.datePage.year
+                          ? AaeColors.lightGray
+                          : null;
 
       return result;
     }
@@ -312,7 +309,7 @@ class CalendarView extends StatelessWidget {
       return result;
     }
 
-    bool formatMonthTap(){
+    bool formatMonthTap() {
 //      int day = int.tryParse(x) ?? 0;
       var now = DateTime.now();
       var thisMonth = now.month;
@@ -323,42 +320,37 @@ class CalendarView extends StatelessWidget {
       var result = thisMonth == viewModel.datePage.month
           ? false
           : thisMonth > viewModel.datePage.month
-          ? true
-          : thisYear < viewModel.datePage.year
-          ? false
-          : true;
+              ? true
+              : thisYear < viewModel.datePage.year ? false : true;
       return result;
     }
 
-    void backMonth(){
+    void backMonth() {
       var now = DateTime.now();
       var thisMonth = now.month;
+      var displayedMonth = viewModel.datePage.month;
       var selectedMonth = viewModel.datePage.month - 1;
-      var today = now.day;
+      int today = now.day;
+      int index = today;
 
       viewModel.onPreviousMonthPressed();
-      print("Testing............................................");
-      print(selectedMonth);
-      print(thisMonth);
+//      print("Testing............................................");
+//      print(selectedMonth);
+//      print(today);
 
       selectedMonth == thisMonth
           ? viewModel.onDaySelected(today)
           : selectedMonth != thisMonth
-          ? viewModel.onDaySelected(1)
-          : viewModel.onDaySelected(1);
+              ? viewModel.onDaySelected(1)
+              : viewModel.onDaySelected(1);
 
+//      viewModel.onDaySelected((index + 1) - viewModel.firstWeekdayInMonth);
     }
 
-    void forwardMonth(){
+    void forwardMonth() {
       viewModel.onNextMonthPressed();
       viewModel.onDaySelected(1);
     }
-
-
-
-
-
-
 
     return Padding(
       padding: EdgeInsets.only(left: 6.0, right: 6.0),
@@ -384,12 +376,14 @@ class CalendarView extends StatelessWidget {
                   child: Container(
                     child: Icon(
                       Icons.chevron_left,
-                      color: formatMonthTap() ? AaeColors.blue : AaeColors.ultraLightGray,
+                      color: formatMonthTap()
+                          ? AaeColors.blue
+                          : AaeColors.ultraLightGray,
                     ),
                     height: AaeDimens.sizeDynamic_48px(),
                     width: AaeDimens.sizeDynamic_48px(),
                   ),
-                  onTap: backMonth,
+                  onTap: formatMonthTap() ? backMonth : () {},
                 ),
                 Text(
                   stringMonthYear,
@@ -405,10 +399,6 @@ class CalendarView extends StatelessWidget {
                     width: AaeDimens.sizeDynamic_48px(),
                   ),
                   onTap: forwardMonth,
-//                  onTap: viewModel.onNextMonthPressed,
-//                  onTap: (){viewModel.onNextMonthPressed(); viewModel.onDaySelected(1);},
-//                  onTap: ()=>[viewModel.onNextMonthPressed,],
-//                  onTap: ()=>[viewModel.onDaySelected(1), viewModel.onNextMonthPressed,],
                 ),
               ],
               crossAxisAlignment: CrossAxisAlignment.center,
