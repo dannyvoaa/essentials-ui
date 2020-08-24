@@ -229,7 +229,7 @@ class SecondRoute extends StatelessWidget {
                           fontSize: 18,
                           height: 2.2)),
                   SizedBox(width: 160),
-                  Text("1.0.2",
+                  Text("1.0.3",
                       style: TextStyle(
                           color: AaeColors.lightGray,
                           fontSize: 18,
@@ -288,12 +288,34 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+          padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              'This Privacy Policy is applicable to all former and current team members (together, “employees” or “you”) of American Airlines, Inc. (“we”, “us”, “our”, or “American”) and certain of its affiliates.  This Privacy Policy applies to our employees globally and therefore provides a global overview of how and why American will use employees’ personal information. It will be supplemented from time to time by more detailed information which will be provided to employees locally, for example at the point of collection of their data for a specific purpose.\n\nWe take your privacy seriously because we know you do.  This Privacy Policy will help answer your questions about how we collect, use, share, and maintain the confidentiality, availability, integrity and security of our employees’ personal information.\n\nThis Privacy Policy applies to employees’ personal information and to the management of that personal information in any form, whether oral, electronic, or written. This Privacy Policy is not a contract and American reserves the right to change it at any time and will notify employees of any material changes.\n\n We are providing this Privacy Policy to help you better understand the following:\n',
+              'This Privacy Policy is applicable to all former and current team members (together, “employees” or “you”) of American Airlines, Inc. (“we”, “us”, “our”, or “American”) and certain of its affiliates.  This Privacy Policy applies to our employees globally and therefore provides a global overview of how and why American will use employees’ personal information. It will be supplemented from time to time by more detailed information which will be provided to employees locally, for example at the point of collection of their data for a specific purpose.',
               style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
           ),
+
+          Container(
+                   padding: EdgeInsets.only(bottom: 8),
+                      child: Text('We take your privacy seriously because we know you do.  This Privacy Policy will help answer your questions about how we collect, use, share, and maintain the confidentiality, availability, integrity and security of our employees’ personal information.',
+                        style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                      ),
+                    ),
+                Container(
+                                   padding: EdgeInsets.only(bottom: 8),
+                                      child: Text('This Privacy Policy applies to employees’ personal information and to the management of that personal information in any form, whether oral, electronic, or written. This Privacy Policy is not a contract and American reserves the right to change it at any time and will notify employees of any material changes.',
+                                      style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                              ),
+                                            ),
+
+                       Container(
+                                                       padding: EdgeInsets.only(bottom: 20),
+                                                          child: Text('We are providing this Privacy Policy to help you better understand the following:',
+                                                          style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                                                  ),
+                                                                ),
+
           Container(
             padding: EdgeInsets.only(bottom: 8),
             child: Text(
@@ -306,8 +328,9 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+          padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              'The types of personal information that American may, where applicable and where permitted in accordance with applicable laws and regulations, collect and maintain as part of your employment with American, include:\n',
+              'The types of personal information that American may, where applicable and where permitted in accordance with applicable laws and regulations, collect and maintain as part of your employment with American, include:',
               style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
@@ -326,14 +349,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Contact and personal information - including name, gender, ethnicity (if volunteered or where necessary to comply with legal obligations, such as for diversity purposes), nationality/citizenship, home address and telephone number and other contact details, date of birth, disability status, marital status and dependents, emergency contacts;\n',
+                  'Contact and personal information - including name, gender, ethnicity (if volunteered or where necessary to comply with legal obligations, such as for diversity purposes), nationality/citizenship, home address and telephone number and other contact details, date of birth, disability status, marital status and dependents, emergency contacts;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+          Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -347,14 +370,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Recruitment/separation information  - including any information shared in the application process - residency and work permit status, military status, national identification, drivers’ license and passport information, references and other curriculum vitae information, date of resignation or termination, reason for resignation or termination, information relating to administering termination of employment;\n',
+                  'Recruitment/separation information  - including any information shared in the application process - residency and work permit status, military status, national identification, drivers’ license and passport information, references and other curriculum vitae information, date of resignation or termination, reason for resignation or termination, information relating to administering termination of employment;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+          Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -368,14 +391,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Financial information - taxpayer identification number(s) such as a social security number, banking details including credit and debit card information;\n',
+                  'Financial information - taxpayer identification number(s) such as a social security number, banking details including credit and debit card information;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+          Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -389,14 +412,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Benefits distribution information - sick pay, pensions, insurance and other incentives and benefits information (including the gender, age, marital status, nationality and passport information for any spouse, guest travelers, minor children or other eligible dependents and beneficiaries);\n',
+                  'Benefits distribution information - sick pay, pensions, insurance and other incentives and benefits information (including the gender, age, marital status, nationality and passport information for any spouse, guest travelers, minor children or other eligible dependents and beneficiaries);',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+           Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -410,14 +433,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Career and job performance information - employee ID number, job title, job grade and function, date of hire, date(s) of promotions(s), work history, hours worked, work location, direct manager/supervisor information, technical skills, educational background, professional certifications and registrations, language capabilities, training courses attended and training assessment, records of work absences, vacation entitlement and requests, salary information (history and expectations), performance appraisals/evaluations, letters of appreciation and commendation, disciplinary and grievance procedures (including monitoring compliance with and enforcing American policies), employee complaints;\n',
+                  'Career and job performance information - employee ID number, job title, job grade and function, date of hire, date(s) of promotions(s), work history, hours worked, work location, direct manager/supervisor information, technical skills, educational background, professional certifications and registrations, language capabilities, training courses attended and training assessment, records of work absences, vacation entitlement and requests, salary information (history and expectations), performance appraisals/evaluations, letters of appreciation and commendation, disciplinary and grievance procedures (including monitoring compliance with and enforcing American policies), employee complaints;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+             Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -431,14 +454,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Health-related information - height, weight, clothing sizes, photographs, symptoms, physical limitations and special needs;\n',
+                  'Health-related information - height, weight, clothing sizes, photographs, symptoms, physical limitations and special needs;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+             Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -452,14 +475,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Background check information where permitted by law and proportionate in view of the function to be carried out by an employee or prospective employee - the results of credit and criminal background checks, the results of drug and alcohol testing, screening, health certifications, medical records and reports, information on accidents at work, vehicle registration, driving history;\n',
+                  'Background check information where permitted by law and proportionate in view of the function to be carried out by an employee or prospective employee - the results of credit and criminal background checks, the results of drug and alcohol testing, screening, health certifications, medical records and reports, information on accidents at work, vehicle registration, driving history;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+             Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -473,14 +496,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Compliance information as required to comply with laws, including the requests and directions of law enforcement authorities or court orders (child support and debt payment information) and acknowledgements regarding American policies; and\n',
+                  'Compliance information as required to comply with laws, including the requests and directions of law enforcement authorities or court orders (child support and debt payment information) and acknowledgements regarding American policies; and',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+             Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -514,8 +537,9 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+           padding: EdgeInsets.only(bottom: 20),
             child: Text(
-              'Most of the personal information we collect and process is information that you knowingly provide to us, for example during the onboarding process or during your employment.  It may also include information about you that we may receive from a third party, such as references from former employers, recruiters, personal references, and benefit providers.\n',
+              'Most of the personal information we collect and process is information that you knowingly provide to us, for example during the onboarding process or during your employment.  It may also include information about you that we may receive from a third party, such as references from former employers, recruiters, personal references, and benefit providers.',
               style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
@@ -532,13 +556,19 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+             padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              '"Sensitive personal information” includes any information about an employee that reveals racial or ethnic origin, political opinions, religious or philosophical beliefs, trade union membership, sexual orientation or information concerning a person’s sex life, genetic and biometric data, and health information.\n\nTo the extent that any of the personal information we collect constitutes special categories of personal information, American will collect and process this information within the limits provided for relevant, applicable law, and only after establishing appropriate security safeguards for it. Where required by law, American will seek the explicit written consent of employees before processing special categories of personal information.  We may process special categories of personal information in the following additional circumstances:\n',
+              '"Sensitive personal information” includes any information about an employee that reveals racial or ethnic origin, political opinions, religious or philosophical beliefs, trade union membership, sexual orientation or information concerning a person’s sex life, genetic and biometric data, and health information.',
               style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
           ),
-
+                Container(
+                padding: EdgeInsets.only(bottom: 8),
+                child: Text('To the extent that any of the personal information we collect constitutes special categories of personal information, American will collect and process this information within the limits provided for relevant, applicable law, and only after establishing appropriate security safeguards for it. Where required by law, American will seek the explicit written consent of employees before processing special categories of personal information.  We may process special categories of personal information in the following additional circumstances:',
+                style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                                              ),
+                                                            ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -552,14 +582,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Where we need to in order to carry out our legal obligations;\n',
+                  'Where we need to in order to carry out our legal obligations;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -573,14 +603,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Where it is needed in the public interest, such as for equal opportunities monitoring or in relation to our occupational pension scheme; or\n',
+                  'Where it is needed in the public interest, such as for equal opportunities monitoring or in relation to our occupational pension scheme; or',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -594,22 +624,29 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Where it is needed to assess your working capacity on health grounds, subject to appropriate confidentiality safeguards.\n',
+                  'Where it is needed to assess your working capacity on health grounds, subject to appropriate confidentiality safeguards.',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Container(
+          padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              'We may use this type of data, where it is necessary in relation to legal claims, where it is necessary to protect your interests (or someone else’s) and where you are not capable of giving consent, or where you have already made the information public.\n\nWe will also use sensitive personal data to carry out our obligations in connection with your employment as set out below:\n',
+              'We may use this type of data, where it is necessary in relation to legal claims, where it is necessary to protect your interests (or someone else’s) and where you are not capable of giving consent, or where you have already made the information public.',
               style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
           ),
 
+        Container(
+        padding: EdgeInsets.only(bottom: 8),
+        child: Text('We will also use sensitive personal data to carry out our obligations in connection with your employment as set out below:',
+        style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                                      ),
+                                                    ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -623,14 +660,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Information relating to leaves of absence, which may include sickness absence or family related leaves, to comply with employment and other laws;\n',
+                  'Information relating to leaves of absence, which may include sickness absence or family related leaves, to comply with employment and other laws;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+    Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -644,14 +681,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Information about your physical or mental health or disability status, to ensure your health and safety in the workplace and to assess your fitness to work, to provide appropriate workplace adjustments, to monitor and manage sickness absence and to administer benefits;\n',
+                  'Information about your physical or mental health or disability status, to ensure your health and safety in the workplace and to assess your fitness to work, to provide appropriate workplace adjustments, to monitor and manage sickness absence and to administer benefits;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -665,14 +702,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Information about your race or national or ethnic origin, religious, philosophical or moral beliefs, or your sex life or sexual orientation, to ensure meaningful equal opportunity monitoring and reporting;\n',
+                  'Information about your race or national or ethnic origin, religious, philosophical or moral beliefs, or your sex life or sexual orientation, to ensure meaningful equal opportunity monitoring and reporting;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -706,12 +743,22 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+          padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              'We may only use information relating to criminal convictions where the law allows us to do so. This will usually be where such processing is necessary to carry out our obligations and in accordance with our policies.\n\nWe may use information relating to criminal convictions where it is necessary in relation to legal claims, where it is necessary to protect your interests (or someone else’s) and you are not capable of giving your consent, or where you have already made the information public.\n',
+              'We may only use information relating to criminal convictions where the law allows us to do so. This will usually be where such processing is necessary to carry out our obligations and in accordance with our policies.',
               style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
           ),
+
+          Container(
+          padding: EdgeInsets.only(bottom: 20),
+          child: Text('We may use information relating to criminal convictions where it is necessary in relation to legal claims, where it is necessary to protect your interests (or someone else’s) and you are not capable of giving your consent, or where you have already made the information public.',
+          style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                                        ),
+                                                      ),
+
+
           Container(
             padding: EdgeInsets.only(bottom: 8),
             child: Text(
@@ -724,13 +771,20 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+           padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              'We need all of the categories of information in the list above (Collection of Your Personal Information) primarily to allow us to perform our contract with you (designated by “*”) or to enable us to comply with our legal obligations (designated by “**”).  In some cases, we may use your personal information to pursue legitimate interests of our own or those of third parties (designated by “***”), provided your interests and fundamental rights do not override those interests.\n\nThe purposes for which American may process your personal information include, without limitation, those set out in the list below. For those employees based in the European Union, Switzerland and any other jurisdiction which legally requires us to specify the purposes for which we process personal information, we have used asterisks to indicate the purpose or purposes (referred to in the preceding paragraph) for which we may process your personal information.\n',
+              'We need all of the categories of information in the list above (Collection of Your Personal Information) primarily to allow us to perform our contract with you (designated by “*”) or to enable us to comply with our legal obligations (designated by “**”).  In some cases, we may use your personal information to pursue legitimate interests of our own or those of third parties (designated by “***”), provided your interests and fundamental rights do not override those interests.',
               style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
           ),
 
+            Container(
+            padding: EdgeInsets.only(bottom: 8),
+            child: Text('The purposes for which American may process your personal information include, without limitation, those set out in the list below. For those employees based in the European Union, Switzerland and any other jurisdiction which legally requires us to specify the purposes for which we process personal information, we have used asterisks to indicate the purpose or purposes (referred to in the preceding paragraph) for which we may process your personal information.',
+            style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                                          ),
+                                                        ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -744,14 +798,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Facilitate internal applications: evaluate applications for employment opportunities within American*** - visa status/right to work in the jurisdiction** and background checks, where appropriate***;\n',
+                  'Facilitate internal applications: evaluate applications for employment opportunities within American*** - visa status/right to work in the jurisdiction** and background checks, where appropriate***;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -765,14 +819,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Internal employee management: manage all aspects of an employee’s employment relationship - including without limitation payroll, benefits, incentives, compensation, corporate travel and other reimbursable expenses, development and training, absence monitoring, timekeeping, performance appraisal, disciplinary and grievance processes, administration of termination of employment, resource planning and allocation, talent management, succession planning and other general administrative and human resource related processes*;\n',
+                  'Internal employee management: manage all aspects of an employee’s employment relationship - including without limitation payroll, benefits, incentives, compensation, corporate travel and other reimbursable expenses, development and training, absence monitoring, timekeeping, performance appraisal, disciplinary and grievance processes, administration of termination of employment, resource planning and allocation, talent management, succession planning and other general administrative and human resource related processes*;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -786,14 +840,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Career planning: resource planning and allocation, talent management, succession planning***;\n',
+                  'Career planning: resource planning and allocation, talent management, succession planning***;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -807,14 +861,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Business travel, relocation, transfers and cross-border programs: coordinate global employee programs, international moves and cross-border team work and project management*;\n',
+                  'Business travel, relocation, transfers and cross-border programs: coordinate global employee programs, international moves and cross-border team work and project management*;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -828,14 +882,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Compensation and benefits management: coordinate compensation and maintain medical and sickness records and occupational health programs - emergency contact and beneficiary details (which involves American holding information of those you nominate in this respect)*;\n',
+                  'Compensation and benefits management: coordinate compensation and maintain medical and sickness records and occupational health programs - emergency contact and beneficiary details (which involves American holding information of those you nominate in this respect)*;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+        Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -849,14 +903,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Security management: protect the safety and security of American customers, staff and property (including controlling and facilitating access to and monitoring activity in secured premises and activity using American computers, communications and other resources), investigate and respond to claims against American and its customers and employees, including any internal complaints**;\n',
+                  'Security management: protect the safety and security of American customers, staff and property (including controlling and facilitating access to and monitoring activity in secured premises and activity using American computers, communications and other resources), investigate and respond to claims against American and its customers and employees, including any internal complaints**;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -870,14 +924,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Corporate communications: to communicate with internal and external audiences (e.g., conduct employee surveys, administer employee recognition programs and promotions and diversity programs)*; and\n',
+                  'Corporate communications: to communicate with internal and external audiences (e.g., conduct employee surveys, administer employee recognition programs and promotions and diversity programs)*; and',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -891,22 +945,31 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Compliance requirements: comply with applicable laws (e.g., health and safety), including judicial or administrative orders regarding individual employees (e.g., garnishments, child support payments)**.\n',
+                  'Compliance requirements: comply with applicable laws (e.g., health and safety), including judicial or administrative orders regarding individual employees (e.g., garnishments, child support payments)**.',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
 
           Container(
+          padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              'Some of the grounds for processing will overlap and there may be several grounds which justify our use of your personal information.\n\nThere are Closed Circuit Television (CCTV) cameras in operation within and around our stations and other premises, which are used for the following purposes:\n',
+              'Some of the grounds for processing will overlap and there may be several grounds which justify our use of your personal information.',
+
               style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
           ),
 
+         Container(
+         padding: EdgeInsets.only(bottom: 8),
+         child: Text('There are Closed Circuit Television (CCTV) cameras in operation within and around our stations and other premises, which are used for the following purposes:',
+         style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                                       ),
+                                                     ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -920,14 +983,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'to prevent and detect crime**;\n',
+                  'to prevent and detect crime**;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+        Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -941,14 +1004,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'to protect the health and safety of American customers and employees**;\n',
+                  'to protect the health and safety of American customers and employees**;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -962,14 +1025,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  ' to manage and protect American’s property and the property of American’s guests and other visitors***; and\n',
+                  ' to manage and protect American’s property and the property of American’s guests and other visitors***; and',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1003,12 +1066,20 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+           padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              'To the extent permitted by law, we also monitor employees’ use of American information technology (IT) systems, the use of American’s resources, and communications, including without limitation internet use, in accordance with the Security Policy (available on Jetnet), and any other applicable policies that may replace, amend or supplement those policies from time to time ***.\n\nAs a result, within the limits provided for by relevant, applicable law employees should not have an expectation of complete privacy while at work or while using or accessing company equipment, information, computer, or communication systems, as those systems may be accessed at any time in accordance with our monitoring policies.\n',
+              'To the extent permitted by law, we also monitor employees’ use of American information technology (IT) systems, the use of American’s resources, and communications, including without limitation internet use, in accordance with the Security Policy (available on Jetnet), and any other applicable policies that may replace, amend or supplement those policies from time to time ***.',
               style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
           ),
+
+          Container(
+          padding: EdgeInsets.only(bottom:20),
+          child: Text('As a result, within the limits provided for by relevant, applicable law employees should not have an expectation of complete privacy while at work or while using or accessing company equipment, information, computer, or communication systems, as those systems may be accessed at any time in accordance with our monitoring policies.',
+          style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                                        ),
+                                                      ),
           Container(
             padding: EdgeInsets.only(bottom: 8),
             child: Text(
@@ -1021,12 +1092,20 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+             padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              'We will only use your personal information for the purposes for which we collected it, unless we reasonably consider that we need to use it for another reason and that reason is compatible with the original purpose. If we need to use your personal information for an unrelated purpose, we will notify you and we will explain the legal basis which allows us to do so.\n\nPlease note that we may process your personal information without your knowledge or consent, in compliance with the above rules, where this is required or permitted by law.\n',
+              'We will only use your personal information for the purposes for which we collected it, unless we reasonably consider that we need to use it for another reason and that reason is compatible with the original purpose. If we need to use your personal information for an unrelated purpose, we will notify you and we will explain the legal basis which allows us to do so.',
+
               style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
           ),
+           Container(
+           padding: EdgeInsets.only(bottom: 20),
+           child: Text('Please note that we may process your personal information without your knowledge or consent, in compliance with the above rules, where this is required or permitted by law.',
+           style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                                         ),
+                                                       ),
           Container(
             padding: EdgeInsets.only(bottom: 8),
             child: Text(
@@ -1039,12 +1118,20 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+            padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              'American is committed to protecting the security of your personal information. Whenever and wherever we collect, process or use personal information, we apply appropriate technical, physical and administrative safeguards and access restrictions to secure that information in accordance with this Privacy Policy in order to prevent unauthorized access and use, unlawful processing, unauthorized or accidental loss, destruction, or damage to that information.  For further information, contact the Information Security Officer aa.it.security@aa.com.\n\nAmerican will generally retain personal data in accordance with our data retention and schedules (available on Jetnet).\n',
+              'American is committed to protecting the security of your personal information. Whenever and wherever we collect, process or use personal information, we apply appropriate technical, physical and administrative safeguards and access restrictions to secure that information in accordance with this Privacy Policy in order to prevent unauthorized access and use, unlawful processing, unauthorized or accidental loss, destruction, or damage to that information.  For further information, contact the Information Security Officer aa.it.security@aa.com.',
+
               style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
           ),
+          Container(
+          padding: EdgeInsets.only(bottom: 20),
+          child: Text('American will generally retain personal data in accordance with our data retention and schedules (available on Jetnet).',
+          style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                                        ),
+                                                      ),
           Container(
             padding: EdgeInsets.only(bottom: 8),
             child: Text(
@@ -1057,8 +1144,9 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+             padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              'In order to carry out the purposes set forth above, your information will be disclosed to the appropriate personnel within American, including without limitation human resources and payroll/accounting staff, and managers as well as American’s affiliates, consultants and other advisers or persons when necessary.  This includes disclosure of personal information to or for:\n',
+              'In order to carry out the purposes set forth above, your information will be disclosed to the appropriate personnel within American, including without limitation human resources and payroll/accounting staff, and managers as well as American’s affiliates, consultants and other advisers or persons when necessary.  This includes disclosure of personal information to or for:',
               style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
@@ -1077,14 +1165,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'In order to carry out the purposes set forth above, your information will be disclosed to the appropriate personnel within American, including without limitation human resources and payroll/accounting staff, and managers as well as American’s affiliates, consultants and other advisers or persons when necessary.  This includes disclosure of personal information to or for:\n',
+                  'In order to carry out the purposes set forth above, your information will be disclosed to the appropriate personnel within American, including without limitation human resources and payroll/accounting staff, and managers as well as American’s affiliates, consultants and other advisers or persons when necessary.  This includes disclosure of personal information to or for:',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1098,14 +1186,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Our Agents, Services Providers and Suppliers: From time to time, we outsource the processing of certain functions and/or information to third parties. For example, we use an employee management platform called Success Factors which is hosted by SAP in the US as a platform to store employee data and manage your employee profile so when you apply online for an internal employment position with American for example, you will be directed to Success Factors. Further information will be provided about service providers who have access to your personal data locally from time to time.\n',
+                  'Our Agents, Services Providers and Suppliers: From time to time, we outsource the processing of certain functions and/or information to third parties. For example, we use an employee management platform called Success Factors which is hosted by SAP in the US as a platform to store employee data and manage your employee profile so when you apply online for an internal employment position with American for example, you will be directed to Success Factors. Further information will be provided about service providers who have access to your personal data locally from time to time.',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1119,14 +1207,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'When we outsource the processing of your personal information to third parties or provide your personal information to third party service providers, we take reasonable measures, such as implementing contractual controls, to endeavor to provide that those third parties safeguard your personal information with appropriate security measures and prohibit them from using your personal information for their own purposes or from disclosing your personal information to other third parties.\n',
+                  'When we outsource the processing of your personal information to third parties or provide your personal information to third party service providers, we take reasonable measures, such as implementing contractual controls, to endeavor to provide that those third parties safeguard your personal information with appropriate security measures and prohibit them from using your personal information for their own purposes or from disclosing your personal information to other third parties.',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1140,14 +1228,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Business Transitions: In the event we undergo a business transition involving another company, such as a merger, corporate reorganization, acquisition, the sale of all or a portion of our assets, or in the event of bankruptcy, information that we have collected from or about you may be disclosed to such other entities as part of the due diligence or business integration process and will be transferred to such entity as one of the transferred assets.*** For internationally based employees, the personal information disclosed will vary based on local labor laws.  Please contact your local human resources representative for country specifics.\n',
+                  'Business Transitions: In the event we undergo a business transition involving another company, such as a merger, corporate reorganization, acquisition, the sale of all or a portion of our assets, or in the event of bankruptcy, information that we have collected from or about you may be disclosed to such other entities as part of the due diligence or business integration process and will be transferred to such entity as one of the transferred assets.*** For internationally based employees, the personal information disclosed will vary based on local labor laws.  Please contact your local human resources representative for country specifics.',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1161,14 +1249,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Legal and Regulatory Requirements: To the extent required by relevant, applicable law or regulation, we may be obligated to disclose personal information to government authorities, or to third parties pursuant to a subpoena or other legal process.**  Such information may be disclosed to:\n',
+                  'Legal and Regulatory Requirements: To the extent required by relevant, applicable law or regulation, we may be obligated to disclose personal information to government authorities, or to third parties pursuant to a subpoena or other legal process.**  Such information may be disclosed to:',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1182,14 +1270,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Protect your or American’s legal claims and interests\n',
+                  'Protect your or American’s legal claims and interests',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1203,14 +1291,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Defend against potential or actual litigation\n',
+                  'Defend against potential or actual litigation',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1224,14 +1312,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Abide by applicable law, regulation or contracts\n',
+                  'Abide by applicable law, regulation or contracts',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1245,14 +1333,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Respond to a court order, governmental administrative or judicial process, including but not limited to, a subpoena or search warrant\n',
+                  'Respond to a court order, governmental administrative or judicial process, including but not limited to, a subpoena or search warrant',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1286,12 +1374,19 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+          padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              'Please note that personal information submitted to us may be transferred to, stored and processed on servers located in various countries around the world, including when it is used as set out in this Privacy Policy by American in the United States of America, in accordance with applicable laws and regulations.\n\nThis may include transfers to American’s affiliates and to third parties with whom we share personal information, as described in this Privacy Policy.  The laws of those countries might not be equivalent to those in your country of residence, but please be assured that we take reasonable steps to protect your privacy, such as by implementing contractual controls such as American’s EU Standard Contractual Clauses which American has entered into with all of its branches located in the EU (a copy of which can be requested by contacting American at Privacy@aa.com) or seeking employee consent, where required by law.\n',
-              style: TextStyle(
+              'Please note that personal information submitted to us may be transferred to, stored and processed on servers located in various countries around the world, including when it is used as set out in this Privacy Policy by American in the United States of America, in accordance with applicable laws and regulations.',          style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
           ),
+          Container(
+          padding: EdgeInsets.only(bottom: 20),
+          child: Text(
+              'This may include transfers to American’s affiliates and to third parties with whom we share personal information, as described in this Privacy Policy.  The laws of those countries might not be equivalent to those in your country of residence, but please be assured that we take reasonable steps to protect your privacy, such as by implementing contractual controls such as American’s EU Standard Contractual Clauses which American has entered into with all of its branches located in the EU (a copy of which can be requested by contacting American at Privacy@aa.com) or seeking employee consent, where required by law.',
+          style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                                        ),
+                                                      ),
           Container(
             padding: EdgeInsets.only(bottom: 8),
             child: Text(
@@ -1322,16 +1417,24 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+           padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              'When collecting personal information from you, American will, where required by applicable law, inform you whether your provision of the requested information is voluntary or whether provision of it is mandatory and if so the consequences of not providing it. The provision of certain personal information is necessary for us to enter into an employment contract with you and/or for us to perform our obligations under that contract and without it we will be unable to do so, such as the provision of your bank details in order for us to pay you for your services via direct deposit.\n\nIf you choose not to provide certain information, this may impact your use of certain resources (e.g., if you refuse to provide information about your spouse, you may not be eligible for spousal coverage under employer-sponsored health insurance).\n',
-              style: TextStyle(
+              'When collecting personal information from you, American will, where required by applicable law, inform you whether your provision of the requested information is voluntary or whether provision of it is mandatory and if so the consequences of not providing it. The provision of certain personal information is necessary for us to enter into an employment contract with you and/or for us to perform our obligations under that contract and without it we will be unable to do so, such as the provision of your bank details in order for us to pay you for your services via direct deposit.',
+                style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
           ),
+
           Container(
-            padding: EdgeInsets.only(bottom: 8),
+          padding: EdgeInsets.only(bottom:20),
+          child: Text( 'If you choose not to provide certain information, this may impact your use of certain resources (e.g., if you refuse to provide information about your spouse, you may not be eligible for spousal coverage under employer-sponsored health insurance).',
+          style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                                        ),
+                                                      ),
+          Container(
+
             child: Text(
-              "Your Rights with Respect to Your Personal Information",
+              "Your Rights with Respect to Your Personal Information\n",
               style: TextStyle(
                   color: AaeColors.lightGray,
                   fontWeight: FontWeight.bold,
@@ -1340,8 +1443,9 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+            padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              "Right to Object\n",
+              "Right to Object",
               style: TextStyle(
                   color: AaeColors.lightGray,
                   fontWeight: FontWeight.bold,
@@ -1350,6 +1454,7 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+
             child: Text(
               'If you are located in the European Union or Switzerland you have the right to object to our use of your personal data, on grounds relating to your particular situation, to the extent the processing is based on our legitimate interests.  If we receive an objection, then we will stop processing the personal data unless we demonstrate compelling legitimate grounds for the processing which override your interests, rights and freedoms or if the processing is necessary for the establishment, exercise or defense of legal claims.\n',
               style: TextStyle(
@@ -1357,8 +1462,9 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+          padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              "Additional Rights\n",
+              "Additional Rights",
               style: TextStyle(
                   color: AaeColors.lightGray,
                   fontWeight: FontWeight.bold,
@@ -1367,8 +1473,9 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+          padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              'If you are located in the European Union or Switzerland, you have the following rights under applicable data privacy laws (unless exemptions apply), which can be exercised by contacting your local employer or American using the details provided below.\n',
+              'If you are located in the European Union or Switzerland, you have the following rights under applicable data privacy laws (unless exemptions apply), which can be exercised by contacting your local employer or American using the details provided below.',
               style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
@@ -1387,14 +1494,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Request access to your personal information. This enables you to receive a copy of the personal information we hold about you and to check that we are lawfully processing it.\n',
+                  'Request access to your personal information. This enables you to receive a copy of the personal information we hold about you and to check that we are lawfully processing it.',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1408,14 +1515,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Request correction of the personal information that we hold about you. This enables you to have any incomplete or inaccurate information we hold about you corrected.\n',
+                  'Request correction of the personal information that we hold about you. This enables you to have any incomplete or inaccurate information we hold about you corrected.',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1429,14 +1536,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Request erasure of your personal information. This enables you to ask us to delete or remove personal information where there is no good reason for us continuing to process it. You also have the right to ask us to delete or remove your personal information where you have exercised your right to object to processing (see above).\n',
+                  'Request erasure of your personal information. This enables you to ask us to delete or remove personal information where there is no good reason for us continuing to process it. You also have the right to ask us to delete or remove your personal information where you have exercised your right to object to processing (see above).',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1450,14 +1557,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Request the restriction of processing of your personal information. This enables you to ask us to suspend the processing of personal information about you, for example if you want us to establish its accuracy or the reason for processing it;\n',
+                  'Request the restriction of processing of your personal information. This enables you to ask us to suspend the processing of personal information about you, for example if you want us to establish its accuracy or the reason for processing it;',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1471,14 +1578,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Request the transfer of your personal information to another party; and\n',
+                  'Request the transfer of your personal information to another party; and',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+            Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1492,14 +1599,14 @@ class PolicyRoute extends StatelessWidget {
               SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'The right to withdraw consent at any time where we have relied on it to process your personal data.\n',
+                  'The right to withdraw consent at any time where we have relied on it to process your personal data.',
                   style: TextStyle(
                       color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                 ),
               ),
             ],
           ),
-
+                Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
           Container(
             child: Text(
               'Similar rights may exist under local data protection laws of other countries outside of the EU and the US. For further details please use the contact details below.\n',
@@ -1509,8 +1616,9 @@ class PolicyRoute extends StatelessWidget {
           ),
 
           Container(
+           padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              "Contact Details\n",
+              "Contact Details",
               style: TextStyle(
                   color: AaeColors.lightGray,
                   fontWeight: FontWeight.bold,
@@ -1519,15 +1627,23 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+           padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              'If you wish to exercise your rights, issue a request, or if you have other questions, comments or concerns about our privacy practices, please contact the Privacy Office at Privacy@aa.com.  Please provide your name and contact information along with the request. Alternatively, inquiries may be mailed to the following address:\n\nAmerican Airlines\nc/o Privacy Office\n1 Skyview Drive, MD 8B503\nFort Worth, Texas 76155\n',
+              'If you wish to exercise your rights, issue a request, or if you have other questions, comments or concerns about our privacy practices, please contact the Privacy Office at Privacy@aa.com.  Please provide your name and contact information along with the request. Alternatively, inquiries may be mailed to the following address:',
               style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
           ),
+            Container(
+
+            child: Text('American Airlines\nc/o Privacy Office\n1 Skyview Drive, MD 8B503\nFort Worth, Texas 76155\n',
+            style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                                          ),
+                                                        ),
           Container(
+             padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              "Data Protection Officer\n",
+              "Data Protection Officer",
               style: TextStyle(
                   color: AaeColors.lightGray,
                   fontWeight: FontWeight.bold,
@@ -1536,6 +1652,7 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+
             child: Text(
               'American has assigned a data protection officer, Russell Hubbard, who is responsible for overseeing American’s compliance with EU data protection law, whom you may contact at Privacy@aa.com or via the postal address above in case of any questions or concerns regarding the processing of your personal data.\n',
               style: TextStyle(
@@ -1543,8 +1660,9 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+          padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              "EU Representative\n",
+              "EU Representative",
               style: TextStyle(
                   color: AaeColors.lightGray,
                   fontWeight: FontWeight.bold,
@@ -1553,15 +1671,23 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+          padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              'American in the US has appointed the following representative in the EU:\n\nAmerican Airlines, Inc.Orient House (HAA3),\nPo Box 365, Waterside,\nHarmondsworth,\nUB7 0GB\nUnited Kingdom\nContact:  Lisa.Banks@aa.com\n',
+              'American in the US has appointed the following representative in the EU:',
               style: TextStyle(
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
           ),
           Container(
+          padding: EdgeInsets.only(bottom: 8),
+          child: Text('American Airlines, Inc.Orient House (HAA3),\nPo Box 365, Waterside,\nHarmondsworth,\nUB7 0GB\nUnited Kingdom\nContact:  Lisa.Banks@aa.com\n',
+          style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                                        ),
+                                                      ),
+          Container(
+           padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              "Complaints\n",
+              "Complaints",
               style: TextStyle(
                   color: AaeColors.lightGray,
                   fontWeight: FontWeight.bold,
@@ -1577,8 +1703,9 @@ class PolicyRoute extends StatelessWidget {
             ),
           ),
           Container(
+           padding: EdgeInsets.only(bottom: 8),
             child: Text(
-              "Effective Date\n",
+              "Effective Date",
               style: TextStyle(
                   color: AaeColors.lightGray,
                   fontWeight: FontWeight.bold,
