@@ -150,16 +150,13 @@ class CalendarView extends StatelessWidget {
       var thisMonth = now.month;
       var thisYear = now.year;
 
-      var result = day < today && thisMonth == viewModel.datePage.month
+      var result = day < today &&
+              thisMonth == viewModel.datePage.month &&
+              thisYear == viewModel.datePage.year
           ? AaeTextStyles.calendarOld(boolDefaultHeight: true)
-          : thisMonth > viewModel.datePage.month ||
-                  thisYear > viewModel.datePage.year
-              ? AaeTextStyles.calendarOld(boolDefaultHeight: true)
-              : thisYear < viewModel.datePage.year
-                  ? AaeTextStyles.calendarMain(boolDefaultHeight: true)
-                  : day == viewModel.selectedDate
-                      ? TextStyle(color: AaeColors.white)
-                      : AaeTextStyles.calendarMain(boolDefaultHeight: true);
+          : day == viewModel.selectedDate
+              ? TextStyle(color: AaeColors.white)
+              : AaeTextStyles.calendarMain(boolDefaultHeight: true);
       return result;
     }
 
@@ -170,14 +167,11 @@ class CalendarView extends StatelessWidget {
       var thisMonth = now.month;
       var thisYear = now.year;
 
-      var result = day < today && thisMonth == viewModel.datePage.month
+      var result = day < today &&
+              thisMonth == viewModel.datePage.month &&
+              thisYear == viewModel.datePage.year
           ? false
-          : thisMonth > viewModel.datePage.month ||
-                  thisYear > viewModel.datePage.year
-              ? false
-              : thisYear < viewModel.datePage.year
-                  ? true
-                  : day == viewModel.selectedDate ? false : true;
+          : day == viewModel.selectedDate ? false : true;
       return result;
     }
 
@@ -318,11 +312,10 @@ class CalendarView extends StatelessWidget {
       var selectedYear = viewModel.datePage.year;
       var today = now.day;
 
-      var result = thisMonth == viewModel.datePage.month && thisYear == selectedYear
-          ? false
-          : thisMonth > viewModel.datePage.month
-              ? true
-              : true;
+      var result =
+          thisMonth == viewModel.datePage.month && thisYear == selectedYear
+              ? false
+              : thisMonth > viewModel.datePage.month ? true : true;
       return result;
     }
 
