@@ -13,7 +13,7 @@ class NewsFeedListCollectionView extends StatelessWidget {
       children: <Widget>[
         Expanded(
             child: ListView.builder(
-          itemCount: viewModel.newsFeedCategories.length - 1,
+          itemCount: viewModel.newsFeedCategories.length,
           itemBuilder: (BuildContext context, int myindex) {
             return NewsFeedListRowCollectionView(
                 viewModel:
