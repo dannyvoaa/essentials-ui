@@ -102,6 +102,12 @@ class AaeColors {
 //      stops: [0.1, 0.4, 0.6, 0.9],
       colors: [AaeColors.blue, AaeColors.gradientTop]);
 
+  static const newsAppBarGradient = LinearGradient(
+      begin: Alignment.bottomCenter,
+      end: Alignment.topCenter,
+      stops: [0.4, 1.0,],
+      colors: [AaeColors.blue, AaeColors.gradientTop]);
+
   static const tickerGradient = LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,

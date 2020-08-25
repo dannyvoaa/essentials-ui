@@ -1751,7 +1751,7 @@ class TermsRoute extends StatelessWidget {
         children: <Widget>[
           Container(
             child: Text(
-              "Terms and conditions\n\n",
+              "Terms and conditions\n",
               style: TextStyle(
                   color: AaeColors.darkGray,
                   fontWeight: FontWeight.bold,
