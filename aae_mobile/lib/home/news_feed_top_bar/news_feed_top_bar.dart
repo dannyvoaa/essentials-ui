@@ -19,11 +19,12 @@ class NewsFeedTopBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+//      height:200,
       child: Container(
         child: GradientAppBar(
           centerTitle: false,
           title: TopBarTitleComponent(),
-          gradient: AaeColors.appBarGradient,
+          gradient: AaeColors.newsAppBarGradient,
           bottom: PreferredSize(
             preferredSize: preferredSize,
             child: Column(
