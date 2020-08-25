@@ -27,9 +27,9 @@ class SettingsListBloc {
       SettingsListViewModel(
           displayName: profile.displayName,
           userlocation: profile.userlocation,
-          topics: ['Headlines', 'Business Education', 'Fleet', 'Network', 'Operations', 'People Culture', 'Products Services'],
+          topics: ['Business Education', 'Fleet', 'Network', 'Operations', 'People Culture', 'Products Services'],
           selectedTopics: profile.topics,
-          hubLocation: ['BOS', 'CLT', 'DCA', 'DFW', 'LAX', 'MIA', 'NYC', 'JFK', 'LGA', 'ORD', 'PHL', 'PHX', 'TUL', 'INTL', 'GSC', 'Central Region', 'Northeast Region', 'Southeast Region', 'West Region', 'Asia Pacific', 'Canada', 'Europe', 'MCLA'],
+          hubLocation: ['CLT','DCA','DFW','LAX','MIA','NYC','ORD','PHL','PHX','TUL'],
           selectedHubLocations: profile.hubLocation,
           workgroup: ['Airport Customer Service', 'Cargo', 'Fleet Service', 'Flight', 'Flight Service', 'Leadership and Support Staff', 'Premium Guest Services', 'Reservations', 'Tech Ops'],
           selectedWorkgroups: profile.workgroup,
