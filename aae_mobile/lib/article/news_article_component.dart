@@ -134,6 +134,12 @@ class NewsArticleComponent extends StatelessWidget {
                                 ),
                               );
                             },
+                            'video': (renderContext, child, attributes, _){
+                              return Container(
+                                height: 0,
+                                child: Text(''),
+                              );
+                            },
                           },
                           style: {
                             "body": Style(
@@ -231,8 +237,17 @@ class NewsArticleComponent extends StatelessWidget {
                             "table > tr": Style(
                               margin: EdgeInsets.only(bottom:40,),
                             ),
+                            ".video":Style(
+                              height:0,
+                              backgroundColor: AaeColors.red,
+                              margin: EdgeInsets.all(0),
+                              padding: EdgeInsets.all(0),
+                            ),
                             "iframe": Style(
                               height: 0,
+                              backgroundColor: AaeColors.red,
+                              margin: EdgeInsets.all(0),
+                              padding: EdgeInsets.all(0),
                             ),
                             "a": Style(
                               textDecoration: TextDecoration.none,
@@ -345,9 +360,9 @@ class NewsArticleComponent extends StatelessWidget {
                             ".aa_lightgray": Style(
                               color: AaeColors.gray,
                             ),
-                            ".aa_ultralightgray_bg": Style(
-                              backgroundColor: AaeColors.ultraLightGray,
-                            ),
+//                            ".aa_ultralightgray_bg": Style(
+//                              backgroundColor: AaeColors.ultraLightGray,
+//                            ),
                             ".aa_ultralightgray": Style(
                               color: AaeColors.ultraLightGray,
                             ),

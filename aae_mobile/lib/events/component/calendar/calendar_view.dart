@@ -315,13 +315,14 @@ class CalendarView extends StatelessWidget {
       var thisMonth = now.month;
       var thisYear = now.year;
       var selectedMonth = viewModel.datePage.month;
+      var selectedYear = viewModel.datePage.year;
       var today = now.day;
 
-      var result = thisMonth == viewModel.datePage.month
+      var result = thisMonth == viewModel.datePage.month && thisYear == selectedYear
           ? false
           : thisMonth > viewModel.datePage.month
               ? true
-              : thisYear < viewModel.datePage.year ? false : true;
+              : true;
       return result;
     }
 
