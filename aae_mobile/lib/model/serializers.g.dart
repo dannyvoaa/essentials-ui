@@ -14,6 +14,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(NewsArticle.serializer)
       ..add(NewsFeedItem.serializer)
       ..add(NewsFeedJsonList.serializer)
+      ..add(Nfdocs.serializer)
       ..add(PerformanceStats.serializer)
       ..add(Profile.serializer)
       ..add(RecognitionHistory.serializer)
@@ -27,6 +28,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(NewsFeedItem)]),
           () => new ListBuilder<NewsFeedItem>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(NewsFeedJsonList)]),
+          () => new ListBuilder<NewsFeedJsonList>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(RecognitionRegister)]),

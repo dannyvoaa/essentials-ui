@@ -42,7 +42,7 @@ class NewsFeedRepository implements Repository {
 
 
   fetchNewsFeedJsonList(Profile profile) async {
-    List<String> hubLocationsList = <String>['BOS','CLT','DCA','DFW','LAX','MIA','NYC','JFK','LGA','ORD','PHL','PHX','TUL','INTL','GSC','Central Region','Northeast Region','Southeast Region','West Region','Asia Pacific','Canada','Europe','MCLA'];
+    List<String> hubLocationsList = <String>['CLT','DCA','DFW','LAX','MIA','NYC','ORD','PHL','PHX','TUL'];
     try {
       List<String> tags = ['news'];
       if (profile.userlocation != "" && profile.userlocation != null) {

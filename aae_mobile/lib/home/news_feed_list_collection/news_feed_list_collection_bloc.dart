@@ -35,7 +35,7 @@ class NewsFeedListCollectionBloc {
   }
 
   List<String> listOfNewsFeedCategories(Profile profile) {
-    List<String> hubLocationsList = <String>['BOS','CLT','DCA','DFW','LAX','MIA','NYC','JFK','LGA','ORD','PHL','PHX','TUL','INTL','GSC','Central Region','Northeast Region','Southeast Region','West Region','Asia Pacific','Canada','Europe','MCLA'];
+    List<String> hubLocationsList = <String>['CLT','DCA','DFW','LAX','MIA','NYC','ORD','PHL','PHX','TUL'];
     List<String> categories = <String>['news'];
     if (profile.userlocation != "" && profile.userlocation != null) {
       //temporary workaround

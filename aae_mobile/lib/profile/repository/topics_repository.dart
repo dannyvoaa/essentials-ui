@@ -20,7 +20,6 @@ class TopicsRepository {
 
   Future<UnmodifiableListView<Topics>> _fetchTopicsList() async {
     List<Topics> listOfTopics = List<Topics>();
-    listOfTopics.add(Topics((b) => b.topics = 'Headlines'));
     listOfTopics.add(Topics((b) => b.topics = 'Business Education'));
     listOfTopics.add(Topics((b) => b.topics = 'Fleet'));
     listOfTopics.add(Topics((b) => b.topics = 'Network'));
