@@ -229,7 +229,7 @@ class SecondRoute extends StatelessWidget {
                           fontSize: 18,
                           height: 2.2)),
                   SizedBox(width: 160),
-                  Text("1.0.3",
+                  Text("1.0.4",
                       style: TextStyle(
                           color: AaeColors.lightGray,
                           fontSize: 18,
