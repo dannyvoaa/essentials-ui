@@ -21,6 +21,7 @@ class NewsFeedTopBar extends StatelessWidget implements PreferredSizeWidget {
     return Container(
       child: Container(
         child: GradientAppBar(
+        automaticallyImplyLeading: false,
           centerTitle: false,
           title: TopBarTitleComponent(),
           gradient: AaeColors.appBarGradient,
