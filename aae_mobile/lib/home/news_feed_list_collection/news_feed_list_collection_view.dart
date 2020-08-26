@@ -7,8 +7,6 @@ class NewsFeedListCollectionView extends StatelessWidget {
 
   NewsFeedListCollectionView({@required this.viewModel});
 
-  // itemCount could be cause of page length errors...
-
   @override
   Widget build(BuildContext context) {
     return Column(

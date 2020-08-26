@@ -61,7 +61,7 @@ class NewsServiceApi {
         throw Exception('Failed to load the news feed\n ${response.body} - ${response.statusCode} - $tag');
       }
 
-      sleep(Duration(milliseconds:200));
+      //sleep(Duration(milliseconds:500));
       //await Future.delayed(Duration(seconds: 2));
     }
     return myFeedJsonList;

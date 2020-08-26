@@ -32,10 +32,7 @@ class HubLocationsSelectionBloc {
   @provide
   HubLocationsSelectionBloc(this._sharedDataRepository, this._hubLocationsRepository);
 
-  HubLocationsSelectionViewModel _createViewModel(
-      UnmodifiableListView<HubLocation> hubLocations,
-      List<String> selectedHubLocations,
-      ) =>
+  HubLocationsSelectionViewModel _createViewModel(UnmodifiableListView<HubLocation> hubLocations, List<String> selectedHubLocations) =>
       HubLocationsSelectionViewModel(
         nextButtonEnabled: true,
         hubLocations: BuiltList(

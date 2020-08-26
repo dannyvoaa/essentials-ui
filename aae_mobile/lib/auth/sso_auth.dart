@@ -80,7 +80,7 @@ class SSOAuth {
       profiledetails.setFullname(jwt['fullname']);
       profiledetails.setLocation(jwt['location']);
 
-      SSOIdentity _user = new SSOIdentity(tokenvalue, jwt['email'], jwt['uid'], '', jwt['fullname'], jwt['location']);
+      SSOIdentity _user = new SSOIdentity(tokenvalue, jwt['email'], jwt['uid'], jwt['firstname'], jwt['fullname'], jwt['location']);
       _setCurrentUser(_user);
       // Wait for sign in flow to complete.
     } on Exception catch (e, s) {
