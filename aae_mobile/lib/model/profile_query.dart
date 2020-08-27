@@ -47,28 +47,28 @@ class Docss {
 
 class Preferences {
   String userlocation;
-  String userworkgroup;
   List<String> topics;
   List<String> workgroup;
   List<String> hubLocation;
 
-  Preferences({this.userlocation, this.userworkgroup, this.topics, this.workgroup, this.hubLocation});
+  Preferences({this.userlocation, this.topics, this.workgroup, this.hubLocation});
 
   Preferences.fromJson(Map<String, dynamic> json) {
     userlocation = json['userlocation'];
-    userworkgroup = json['userworkgroup'];
-    topics = json['topics'].cast<String>();
     workgroup = json['workgroup'].cast<String>();
+    workgroup.sort();
     hubLocation = json['hubLocation'].cast<String>();
+    hubLocation.sort();
+    topics = json['topics'].cast<String>();
+    topics.sort();
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['userlocation'] = this.userlocation;
-    data['userworkgroup'] = this.userworkgroup;
-    data['topics'] = this.topics;
     data['workgroup'] = this.workgroup;
     data['hubLocation'] = this.hubLocation;
+    data['topics'] = this.topics;
     return data;
   }
 }

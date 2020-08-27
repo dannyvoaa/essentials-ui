@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 /// Main navigation bar.
 
-enum MainPage { home, notifications, travel, events }
+enum MainPage { home, events, notifications, travel }
 
 const _labelTextStyle = TextStyle(
   fontFamily: 'AmericanSans',
@@ -12,6 +12,8 @@ const _labelTextStyle = TextStyle(
   fontWeight: FontWeight.w500,
   fontSize: 10,
 );
+
+GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
 class BottomNavigation extends StatelessWidget {
   final MainPage _currentPage;
@@ -22,17 +24,21 @@ class BottomNavigation extends StatelessWidget {
 
   static final Map<MainPage, String> tabText = {
     MainPage.home: 'Home',
-    MainPage.notifications: 'Notifications',
-    MainPage.travel: 'Trips',
+  //  MainPage.notifications: 'Notifications',
+  //  MainPage.travel: 'Trips',
     MainPage.events: 'Calendar',
   };
 
   static final Map<MainPage, IconData> tabIconData = {
     MainPage.home: AaeIcons.home,
-    MainPage.notifications: AaeIcons.notifications,
-    MainPage.travel: AaeIcons.travel,
+  //  MainPage.notifications: AaeIcons.notifications,
+  //  MainPage.travel: AaeIcons.travel,
     MainPage.events: AaeIcons.calendar,
   };
+
+//  void _closeDrawer() {
+//  _scaffoldKey.currentState.openDrawer();
+//  }
 
   BottomNavigation(
       {@required MainPage currentPage,
@@ -42,6 +48,7 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Scaffold(key: _scaffoldKey,);
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -50,28 +57,21 @@ class BottomNavigation extends StatelessWidget {
             color: AaeColors.ultraLightGray,
           ),
         ),
-//        boxShadow: [
-//          BoxShadow(
-//            color: AaeColors.darkGray,
-//            blurRadius: 15.0,
-//            spreadRadius: 5.0,
-//            offset: Offset(
-//              15.0,
-//              15.0,
-//            ),
-//          ),
-//        ],
       ),
       child: BottomNavigationBar(
         elevation: 8.0,
         type: BottomNavigationBarType.fixed,
         items: [
           _buildItem(MainPage.home, context, 24, 2.0),
-          _buildItem(MainPage.notifications, context, 18, 6.0),
-          _buildItem(MainPage.travel, context, 18, 5.0),
+       //   _buildItem(MainPage.notifications, context, 18, 6.0),
+       //   _buildItem(MainPage.travel, context, 18, 5.0),
           _buildItem(MainPage.events, context, 24, 2.0),
         ],
+//        onTap: _scaffoldKey.currentState.openDrawer,
+//        onTap: (index) => [_onSelectTab(MainPage.values[index]), Navigator.of(context).pop()],
         onTap: (index) => _onSelectTab(MainPage.values[index]),
+//          onTap: _scaffoldKey.currentState.isDrawerOpen ? (index) => _onSelectTab(MainPage.values[index]) : (){},
+//        onTap: menuTap(index, context),
       ),
     );
   }
@@ -81,12 +81,12 @@ class BottomNavigation extends StatelessWidget {
     return BottomNavigationBarItem(
         icon: Container(
           height: 20,
-          width: 1000,
+//          width: 1000,
           padding: EdgeInsets.only(top: offset,),
 //          alignment: Alignment.bottomCenter,
           child: Container(
             height:80,
-            width:1000,
+//            width:1000,
             child: Icon(
               tabIconData[page],
               size: size,
@@ -101,11 +101,13 @@ class BottomNavigation extends StatelessWidget {
             padding: const EdgeInsets.only(top:10),
             child: Text(
               tabText[page],
+//              'Test Text Test Text',
               style: _labelTextStyle.copyWith(color: tabColor),
               textAlign: TextAlign.center,
             ),
           ),
-        ));
+        ),
+    );
   }
 
   Color _tabColor(MainPage page) {

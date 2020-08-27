@@ -68,7 +68,7 @@ class _SettingsListView extends StatelessWidget {
         for (var i = 0; i < viewModel.workgroup.length; i++)
           TableCellTitleValue(
               onTapAction: () {
-                print(viewModel.workgroup[i]);
+                //print(viewModel.workgroup[i]);
                 viewModel.onWorkgroupTapped(viewModel.workgroup[i]);
               },
               boolShowAdd:false,

@@ -19,103 +19,17 @@ class NewsFeedTopBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+//      height:200,
       child: Container(
-//        decoration: BoxDecoration(
-//          boxShadow: [
-//            BoxShadow(
-//              color: AaeColors.lightGray,
-//              blurRadius: 5.0,
-//              spreadRadius: 1.0,
-//              offset: Offset(
-//                0.0,
-//                0.0,
-//              ),
-//            ),
-//          ],
-//        ),
         child: GradientAppBar(
+        automaticallyImplyLeading: false,
           centerTitle: false,
-//      backgroundColor: AaeColors.lightOrange,
           title: TopBarTitleComponent(),
-          gradient: AaeColors.appBarGradient,
-//      flexibleSpace: Container(
-//        decoration: BoxDecoration(
-//          gradient: LinearGradient(
-//            begin: Alignment.topLeft,
-//            end: Alignment.bottomRight,
-//            colors: [
-//              Color(0xFF0293FF),
-//              Color(0xFF0078D2),
-//            ],
-//          ),
-//        ),
-//      ),
+          gradient: AaeColors.newsAppBarGradient,
           bottom: PreferredSize(
             preferredSize: preferredSize,
             child: Column(
               children: <Widget>[
-//            Row(
-//              children: <Widget>[
-//                GestureDetector(
-//                  onTap: () {
-//                    navigateCommand(routes.buildRouteName(
-//                        tab: routes.notifications,
-//                        pageWidgetRoute: routes.notifications))(context);
-//                  },
-//                  child: Row(
-//                    children: <Widget>[
-//                      Padding(
-//                        padding: const EdgeInsets.only(left: 20, bottom: 9.0),
-//                        child: Icon(
-//                          AaeIcons.notifications,
-//                          color: AaeColors.white,
-//                          size: 11,
-//                        ),
-//                      ),
-//                      Padding(
-//                        padding: const EdgeInsets.only(left: 10.0, bottom: 7.0),
-//                        child: Text(
-//                          'Notifications',
-//                          style: TextStyle(
-//                            fontSize: 14,
-//                            color: AaeColors.white,
-//                          ),
-//                        ),
-//                      ),
-//                    ],
-//                  ),
-//                ),
-//                GestureDetector(
-//                  onTap: () {
-//                    navigateCommand(routes.buildRouteName(
-//                        tab: routes.events,
-//                        pageWidgetRoute: routes.events))(context);
-//                  },
-//                  child: Row(
-//                    children: <Widget>[
-//                      Padding(
-//                        padding: const EdgeInsets.only(left: 20, bottom: 9.0),
-//                        child: Icon(
-//                          AaeIcons.calendar,
-//                          color: AaeColors.white,
-//                          size: 14,
-//                        ),
-//                      ),
-//                      Padding(
-//                        padding: const EdgeInsets.only(left: 10.0, bottom: 7.0),
-//                        child: Text(
-//                          'Events',
-//                          style: TextStyle(
-//                            fontSize: 14,
-//                            color: AaeColors.white,
-//                          ),
-//                        ),
-//                      ),
-//                    ],
-//                  ),
-//                ),
-//              ],
-//            ),
                 D0StatsComponent(),
               ],
             ),

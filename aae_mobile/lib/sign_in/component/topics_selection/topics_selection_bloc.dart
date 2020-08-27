@@ -23,16 +23,14 @@ class TopicsSelectionBloc {
 
   final _events = Subject<WorkflowEvent>();
 
+  /// Publishes events to be consumed by the [SignInStateMachine].
   Observable<WorkflowEvent> get events => _events;
 
   /// Publishes the [TopicsSelectionViewModel].
   Source<TopicsSelectionViewModel> get viewModel => toSource(combineLatest2(Observable.fromFuture(_topicsRepository.topicsList), _selectedTopics, _createViewModel));
 
   @provide
-  TopicsSelectionBloc(
-    this._sharedDataRepository,
-    this._topicsRepository,
-  );
+  TopicsSelectionBloc(this._sharedDataRepository, this._topicsRepository);
 
   TopicsSelectionViewModel _createViewModel(UnmodifiableListView<Topics> topics, List<String> selectedTopics) =>
       TopicsSelectionViewModel(
@@ -46,12 +44,10 @@ class TopicsSelectionBloc {
                 if (selectedTopics.contains(topics.topics)) {
                   selectedTopics.remove(topics.topics);
                   _selectedTopics.sendNext(selectedTopics);
-                  print(
-                      '------------------------------------Removed: ${topics.topics}-------------------------------------');
+                  //print('-------------------------Removed: ${topics.topics}-------------------------------------');
                 } else
                   selectedTopics.add(topics.topics);
-                print(
-                    '------------------------------------Added: ${topics.topics}-------------------------------------');
+                //print('----------------------------Added: ${topics.topics}-------------------------------------');
                 _sharedDataRepository.topics.sendNext(selectedTopics);
                 _selectedTopics.sendNext(selectedTopics);
               },

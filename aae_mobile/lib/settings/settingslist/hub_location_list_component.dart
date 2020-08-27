@@ -67,7 +67,7 @@ class _SettingsListView extends StatelessWidget {
            for (var i = 0; i < viewModel.hubLocation.length; i++)
              TableCellTitleValue(
                  onTapAction: () {
-                   print(viewModel.hubLocation[i]);
+                   //print(viewModel.hubLocation[i]);
                    viewModel.onHubLocationTapped(viewModel.hubLocation[i]);
                  },
                  boolShowCheckmark:viewModel.selectedHubLocations.contains(viewModel.hubLocation[i]),

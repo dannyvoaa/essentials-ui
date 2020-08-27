@@ -12,6 +12,7 @@ class TableCellTitleValue extends StatelessWidget {
   final bool boolShowDisclosureIndicator;
   final bool boolEnabled;
   final String stringTitle;
+  final String txt;
   final String stringValue;
   final void Function() onTapAction;
 
@@ -22,6 +23,7 @@ class TableCellTitleValue extends StatelessWidget {
     this.stringTitle = '',
     this.stringValue = '',
     this.onTapAction,
+    this.txt = '',
     this.boolEnabled = true,
     this.boolShowCheckmark = false,
     this.boolShowAdd = false,
@@ -64,8 +66,19 @@ class TableCellTitleValue extends StatelessWidget {
                     style: AaeTextStyles.tableCellValue(
                       boolEnabled: this.boolEnabled,
                     ),
+
                     textAlign: TextAlign.right,
                   ),
+                                Text(
+                                      txt,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: AaeTextStyles.tableCellTitle(
+                                                                     boolEnabled: this.boolEnabled,
+
+                                                                   ),
+                                      textAlign: TextAlign.right,
+                                    ),
                   this._cellAccessory(),
                 ],
               ),
@@ -115,7 +128,7 @@ class TableCellTitleValue extends StatelessWidget {
 
     // Check to see if the disclosure indicator should be shown
     if (this.boolShowDisclosureIndicator) {
-      colorAccessory = AaeColors.ultraLightGray
+      colorAccessory = AaeColors.lightGray
           .withAlpha(this.boolEnabled ? 255 : (255 * 0.40).round());
       iconAccessory = Icons.chevron_right;
     }

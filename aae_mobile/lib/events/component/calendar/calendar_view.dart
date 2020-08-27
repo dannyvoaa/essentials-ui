@@ -9,7 +9,9 @@ import 'package:intl/intl.dart';
 class CalendarView extends StatelessWidget {
   final CalendarViewModel viewModel;
 
-  CalendarView({this.viewModel});
+  final CalendarDayViewModel dayViewModel;
+
+  CalendarView({this.viewModel, this.dayViewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +22,21 @@ class CalendarView extends StatelessWidget {
         _buildCalendarGrid(context),
       ],
     );
+  }
+
+  Color formatDayWeek(index) {
+    var now = DateTime.now();
+    var today = now.weekday;
+    var thisMonth = now.month;
+//    print(today);
+//    print('day');
+//    print(index);
+
+    var color = today == index && thisMonth == viewModel.datePage.month
+        ? AaeColors.lightBlue
+        : AaeColors.lightGray;
+
+    return color;
   }
 
   /// The calendar's header row (includes day names)
@@ -33,49 +50,84 @@ class CalendarView extends StatelessWidget {
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('Sun'),
+                    child: Text(
+                      'Sun',
+                      style: TextStyle(
+                        color: formatDayWeek(7),
+                      ),
+                    ),
                     height: double.infinity,
                   ),
                 ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('Mon'),
+                    child: Text(
+                      'Mon',
+                      style: TextStyle(
+                        color: formatDayWeek(1),
+                      ),
+                    ),
                     height: double.infinity,
                   ),
                 ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('Tue'),
+                    child: Text(
+                      'Tue',
+                      style: TextStyle(
+                        color: formatDayWeek(2),
+                      ),
+                    ),
                     height: double.infinity,
                   ),
                 ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('Wed'),
+                    child: Text(
+                      'Wed',
+                      style: TextStyle(
+                        color: formatDayWeek(3),
+                      ),
+                    ),
                     height: double.infinity,
                   ),
                 ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('Thu'),
+                    child: Text(
+                      'Thu',
+                      style: TextStyle(
+                        color: formatDayWeek(4),
+                      ),
+                    ),
                     height: double.infinity,
                   ),
                 ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('Fri'),
+                    child: Text(
+                      'Fri',
+                      style: TextStyle(
+                        color: formatDayWeek(5),
+                      ),
+                    ),
                     height: double.infinity,
                   ),
                 ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text('Sat'),
+                    child: Text(
+                      'Sat',
+                      style: TextStyle(
+                        color: formatDayWeek(6),
+                      ),
+                    ),
                     height: double.infinity,
                   ),
                 ),
@@ -98,16 +150,28 @@ class CalendarView extends StatelessWidget {
       var thisMonth = now.month;
       var thisYear = now.year;
 
-      var result = day < today && thisMonth == viewModel.datePage.month
+      var result = day < today &&
+              thisMonth == viewModel.datePage.month &&
+              thisYear == viewModel.datePage.year
           ? AaeTextStyles.calendarOld(boolDefaultHeight: true)
-          : thisMonth > viewModel.datePage.month ||
-                  thisYear > viewModel.datePage.year
-              ? AaeTextStyles.calendarOld(boolDefaultHeight: true)
-              : thisYear < viewModel.datePage.year
-                  ? AaeTextStyles.calendarMain(boolDefaultHeight: true)
-                  : day == viewModel.selectedDate
-                      ? TextStyle(color: AaeColors.white)
-                      : AaeTextStyles.calendarMain(boolDefaultHeight: true);
+          : day == viewModel.selectedDate
+              ? TextStyle(color: AaeColors.white)
+              : AaeTextStyles.calendarMain(boolDefaultHeight: true);
+      return result;
+    }
+
+    bool formatTap(x) {
+      int day = int.tryParse(x) ?? 0;
+      var now = DateTime.now();
+      var today = now.day;
+      var thisMonth = now.month;
+      var thisYear = now.year;
+
+      var result = day < today &&
+              thisMonth == viewModel.datePage.month &&
+              thisYear == viewModel.datePage.year
+          ? false
+          : day == viewModel.selectedDate ? false : true;
       return result;
     }
 
@@ -119,18 +183,41 @@ class CalendarView extends StatelessWidget {
       var thisYear = now.year;
 
       var result = viewModel.daysWithEvents.contains(int?.parse(x)) &&
-              day >= today &&
-              thisMonth <= viewModel.datePage.month
+              thisMonth < viewModel.datePage.month &&
+              day != viewModel.selectedDate
           ? AaeColors.blue
           : viewModel.daysWithEvents.contains(int?.parse(x)) &&
-                  thisMonth < viewModel.datePage.month
+                  day != viewModel.selectedDate &&
+                  day >= today
               ? AaeColors.blue
-              : thisMonth >= viewModel.datePage.month
-                  ? null
-                  : viewModel.daysWithEvents.contains(int?.parse(x)) &&
-                          day == viewModel.selectedDate
-                      ? null
-                      : null;
+              : null;
+
+      return result;
+    }
+
+    Color formatHighlight(x) {
+      int day = int.tryParse(x);
+      var now = DateTime.now();
+      var today = now.day;
+      var thisMonth = now.month;
+      var thisYear = now.year;
+
+      var result =
+          day == viewModel.selectedDate && thisMonth != viewModel.datePage.month
+              ? AaeColors.lightGray
+              : day == viewModel.selectedDate &&
+                      today != viewModel.selectedDate &&
+                      thisMonth == viewModel.datePage.month
+                  ? AaeColors.lightGray
+                  : day == viewModel.selectedDate &&
+                          today == viewModel.selectedDate &&
+                          thisMonth == viewModel.datePage.month &&
+                          thisYear == viewModel.datePage.year
+                      ? AaeColors.lightBlue
+                      : day == viewModel.selectedDate &&
+                              thisYear != viewModel.datePage.year
+                          ? AaeColors.lightGray
+                          : null;
 
       return result;
     }
@@ -138,6 +225,7 @@ class CalendarView extends StatelessWidget {
     return GridView.count(
       shrinkWrap: true,
       crossAxisCount: 7,
+      physics: NeverScrollableScrollPhysics(),
       children: List.generate(
           viewModel.numOfDaysInCurrentMonth + viewModel.firstWeekdayInMonth,
           (index) {
@@ -176,9 +264,7 @@ class CalendarView extends StatelessWidget {
                   ],
                 ),
                 decoration: BoxDecoration(
-                  color: int.tryParse(stringDay) == viewModel.selectedDate
-                      ? AaeColors.darkGray
-                      : null,
+                  color: formatHighlight(stringDay),
                   shape: BoxShape.circle,
                 ),
                 padding: EdgeInsets.only(top: 2.5),
@@ -186,7 +272,7 @@ class CalendarView extends StatelessWidget {
               ),
             ],
           ),
-          onTap: stringDay != ''
+          onTap: formatTap(stringDay)
               ? () {
                   viewModel.onDaySelected(
                       (index + 1) - viewModel.firstWeekdayInMonth);
@@ -209,8 +295,59 @@ class CalendarView extends StatelessWidget {
         ? DateFormat.MMMM().format(dateBuilder)
         : DateFormat.yMMMM().format(dateBuilder);
 
+    bool thisMonth() {
+      var selectedMonth = viewModel.datePage.month;
+      var now = DateTime.now();
+      var thisMonth = now.month;
+      var result = selectedMonth == thisMonth ? true : false;
+      return result;
+    }
+
+    bool formatMonthTap() {
+//      int day = int.tryParse(x) ?? 0;
+      var now = DateTime.now();
+      var thisMonth = now.month;
+      var thisYear = now.year;
+      var selectedMonth = viewModel.datePage.month;
+      var selectedYear = viewModel.datePage.year;
+      var today = now.day;
+
+      var result =
+          thisMonth == viewModel.datePage.month && thisYear == selectedYear
+              ? false
+              : thisMonth > viewModel.datePage.month ? true : true;
+      return result;
+    }
+
+    void backMonth() {
+      var now = DateTime.now();
+      var thisMonth = now.month;
+      var displayedMonth = viewModel.datePage.month;
+      var selectedMonth = viewModel.datePage.month - 1;
+      int today = now.day;
+      int index = today;
+
+      viewModel.onPreviousMonthPressed();
+//      print("Testing............................................");
+//      print(selectedMonth);
+//      print(today);
+
+      selectedMonth == thisMonth
+          ? viewModel.onDaySelected(today)
+          : selectedMonth != thisMonth
+              ? viewModel.onDaySelected(1)
+              : viewModel.onDaySelected(1);
+
+//      viewModel.onDaySelected((index + 1) - viewModel.firstWeekdayInMonth);
+    }
+
+    void forwardMonth() {
+      viewModel.onNextMonthPressed();
+      viewModel.onDaySelected(1);
+    }
+
     return Padding(
-      padding: EdgeInsets.only(left:6.0, right:6.0),
+      padding: EdgeInsets.only(left: 6.0, right: 6.0),
       child: Container(
         decoration: BoxDecoration(
           boxShadow: [
@@ -233,12 +370,14 @@ class CalendarView extends StatelessWidget {
                   child: Container(
                     child: Icon(
                       Icons.chevron_left,
-                      color: AaeColors.blue,
+                      color: formatMonthTap()
+                          ? AaeColors.blue
+                          : AaeColors.ultraLightGray,
                     ),
                     height: AaeDimens.sizeDynamic_48px(),
                     width: AaeDimens.sizeDynamic_48px(),
                   ),
-                  onTap: viewModel.onPreviousMonthPressed,
+                  onTap: formatMonthTap() ? backMonth : () {},
                 ),
                 Text(
                   stringMonthYear,
@@ -253,7 +392,7 @@ class CalendarView extends StatelessWidget {
                     height: AaeDimens.sizeDynamic_48px(),
                     width: AaeDimens.sizeDynamic_48px(),
                   ),
-                  onTap: viewModel.onNextMonthPressed,
+                  onTap: forwardMonth,
                 ),
               ],
               crossAxisAlignment: CrossAxisAlignment.center,

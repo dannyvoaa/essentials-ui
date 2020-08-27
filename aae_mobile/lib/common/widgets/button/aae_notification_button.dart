@@ -46,7 +46,7 @@ class CustomCirclesPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     var indicator = Paint()..color = color;
-    print(size);
+    //print(size);
     canvas.translate(size.width / 2, size.height / 2);
     canvas.drawCircle(Offset.zero, buttonRadius, button);
     canvas.drawCircle(Offset(-8.125, -6.95), indicatorRadius, indicator);

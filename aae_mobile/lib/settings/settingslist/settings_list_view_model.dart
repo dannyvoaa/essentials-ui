@@ -13,10 +13,8 @@ abstract class SettingsListViewModel
   String get displayName;
 
   /// The currently signed in users location.
+  @nullable
   String get userlocation;
-
-  /// The currently signed in users workgroup.
-  String get userworkgroup;
 
   /// The current topics for this user
   @nullable
@@ -45,6 +43,7 @@ abstract class SettingsListViewModel
   BuiltList<String> get selectedTopics;
 
   /// The list of available topics
+  @nullable
   List<String> get topics;
 
   /// The topic tapped
@@ -55,7 +54,6 @@ abstract class SettingsListViewModel
   factory SettingsListViewModel({
     @required String displayName,
     @required String userlocation,
-    @required String userworkgroup,
     @required List<String> workgroup,
     @required BuiltList<String> selectedWorkgroups,
     @required AaeValueCommand<String> onWorkgroupTapped,

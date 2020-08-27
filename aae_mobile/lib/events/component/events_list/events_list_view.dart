@@ -17,6 +17,7 @@ class EventsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         _buildSelectedDated(context),
         _buildEventsList(context)
@@ -36,8 +37,8 @@ class EventsListView extends StatelessWidget {
               color: Colors.black12,
 //              color: AaeColors.lightGray,
               offset: Offset(0.2, 2),
-              blurRadius: 4,
-              spreadRadius: 2,
+              blurRadius: 2,
+              spreadRadius: 1,
             ),
           ],
         ),
@@ -49,9 +50,9 @@ class EventsListView extends StatelessWidget {
           borderRadius: BorderRadius.circular(6.0),
           child: Container(
             padding: EdgeInsets.only(
-              top: 16,
               left: 16,
             ),
+            alignment: Alignment.centerLeft,
             width: double.infinity,
             height: 36,
             color: AaeColors.white,
@@ -88,17 +89,21 @@ class EventsListView extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(12),
                 child: Text(
+//                    DateFormat.yMMMMEEEEd('en_US').format(viewModel.observingDate),
                   'Nothing planned today.',
                   style: AaeTextStyles.description(),
                 ),
               ),
             )
-          : ListView.separated(
+          : Container(
+            height: 200,
+            child: ListView.separated(
+              physics: NeverScrollableScrollPhysics(),
               padding: EdgeInsets.only(
                 left: 6.0,
                 right: 6.0,
               ),
-              shrinkWrap: true,
+//              shrinkWrap: true,
               itemCount: viewModel.events.length,
               separatorBuilder: (_, __) {
                 return Container(
@@ -120,7 +125,6 @@ class EventsListView extends StatelessWidget {
                     ],
                   ),
                   child: InkWell(
-//              borderRadius: BorderRadius.circular(30),
                     onTap: () {
 //                      showBottomSheet(
                       showModalBottomSheet(
@@ -130,7 +134,7 @@ class EventsListView extends StatelessWidget {
                           builder: (context) {
                             return Container(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              const EdgeInsets.symmetric(horizontal: 8.0),
 //                        height: double.infinity,
                               height: MediaQuery.of(context).size.height,
                               width: MediaQuery.of(context).size.width,
@@ -173,34 +177,36 @@ class EventsListView extends StatelessWidget {
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         children: <Widget>[
                                           Container(
-                                          decoration: BoxDecoration(
-                                            color: AaeColors.blue,
-                                            shape: BoxShape.circle,
-                                          ),
-                                          height: 12,
-                                          margin: EdgeInsets.only(
-                                            right: AaeDimens.baseUnit,
-                                            top: 4,
-                                          ),
-                                          width: AaeDimens.baseUnit,
+                                            decoration: BoxDecoration(
+                                              color: AaeColors.blue,
+                                              shape: BoxShape.circle,
                                             ),
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Text(
-                                                viewModel.events[index].eventName,
-                                                textAlign: TextAlign.left,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: AaeTextStyles.eventTitle(
-                                                    boolDefaultHeight: true),
-                                              ),
-                                              Text(
-                                                dateFormatter(index),
-                                                overflow: TextOverflow.ellipsis,
-                                                style: AaeTextStyles.eventDate(
-                                                    boolDefaultHeight: true),
-                                              ),
-                                            ],
+                                            height: 12,
+                                            margin: EdgeInsets.only(
+                                              right: AaeDimens.baseUnit,
+                                              top: 4,
+                                            ),
+                                            width: AaeDimens.baseUnit,
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Text(
+                                                  viewModel.events[index].eventName,
+                                                  textAlign: TextAlign.left,
+                                                  overflow: TextOverflow.visible,
+                                                  style: AaeTextStyles.eventTitle(
+                                                      boolDefaultHeight: true),
+                                                ),
+                                                Text(
+                                                  dateFormatter(index),
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style: AaeTextStyles.eventDate(
+                                                      boolDefaultHeight: true),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -361,6 +367,7 @@ class EventsListView extends StatelessWidget {
                 );
               },
             ),
+          ),
     );
   }
 }

@@ -11,7 +11,20 @@ class TopicsPage extends StatelessWidget {
     return Scaffold(
       //   endDrawer: AaeDrawer(),
       appBar: AppBar(
-        backgroundColor: AaeColors.blue,
+      flexibleSpace: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                            colors: <Color>[
+
+                          AaeColors.blue,
+                          AaeColors.gradientTop
+
+                        ])
+                     ),
+                 ),
+       // backgroundColor: AaeColors.blue,
         elevation: 1,
         //   title: Text(
         //     'Topics of interest',

@@ -27,14 +27,8 @@ class SignInStates {
 
   /// State while the user is creating an account - the workflow will enter this
   /// state if the account that signs in needs to create a AAE profile.
-  static final accountCreation = WorkflowState(
-    name: 'AccountCreation',
-    children: {
-      topicsSelection,
-      hubLocationsSelection,
-      workgroupsSelection,
-    },
-    initial: topicsSelection,
+  static final accountCreation = WorkflowState(name: 'AccountCreation', children: {hubLocationsSelection, workgroupsSelection, topicsSelection},
+    initial: hubLocationsSelection,
     navigateOnTransition: true,
   );
 

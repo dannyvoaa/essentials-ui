@@ -54,12 +54,10 @@ class WorkgroupsSelectionBloc {
                 if (selectedWorkgroups.contains(workgroups.workgroups)) {
                   selectedWorkgroups.remove(workgroups.workgroups);
                   _currentWorkgroups.sendNext(selectedWorkgroups);
-                  print(
-                      '------------------------------------Removed: ${workgroups.workgroups}-------------------------------------');
+                  //print('--------------------------Removed: ${workgroups.workgroups}-------------------------------------');
                 } else
                   selectedWorkgroups.add(workgroups.workgroups);
-                print(
-                    '------------------------------------Added: ${workgroups.workgroups}-------------------------------------');
+                //print('-----------------------------Added: ${workgroups.workgroups}-------------------------------------');
                 _sharedDataRepository.workgroups.sendNext(selectedWorkgroups);
                 _currentWorkgroups.sendNext(selectedWorkgroups);
               },

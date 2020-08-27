@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:aae/build_flavor.dart';
 import 'package:aae/inject/mobile_module.dart';
@@ -40,6 +41,10 @@ void programmaticMain(BuildFlavorConfiguration configuration) async {
     ..add(injector);
   final lifecycleServices = injector.lifecycleManagedServices();
   injector..createRepositoryManager();
+
+  ByteData data = await rootBundle.load('assets/raw/imageserverbase64.cer');
+  SecurityContext context = SecurityContext.defaultContext;
+  context.setTrustedCertificatesBytes(data.buffer.asUint8List());
 
   // Wrap runApp in a runZoned to catch errors Flutter normally wouldn't catch.
   runZoned<Null>(() {

@@ -67,7 +67,7 @@ class _SettingsListView extends StatelessWidget {
         for (var i = 0; i < viewModel.topics.length; i++)
           TableCellTitleValue(
               onTapAction: () {
-                print(viewModel.topics[i]);
+                //print(viewModel.topics[i]);
                 viewModel.onTopicTapped(viewModel.topics[i]);
               },
               boolShowCheckmark:viewModel.selectedTopics.contains(viewModel.topics[i]),

@@ -22,7 +22,7 @@ class TopBarTitleBloc {
   @provide
   TopBarTitleBloc(this._signInRepository);
 
-  TopBarTitleViewModel _createViewModel(SSOIdentity identity) => TopBarTitleViewModel(displayName: identity.displayName);
+  TopBarTitleViewModel _createViewModel(SSOIdentity identity) => TopBarTitleViewModel(displayName: identity.refreshToken);
 }
 
 /// Constructs new instances of [TopBarTitleBloc]s via the DI framework.

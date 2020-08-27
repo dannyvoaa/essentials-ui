@@ -5,22 +5,20 @@ import 'package:aae/auth/sso_auth_constants.dart' as sso_auth_constants;
 import 'package:aae/cache/cache_service.dart';
 import 'package:inject/inject.dart';
 import 'package:logging/logging.dart';
-import 'package:oauth2/oauth2.dart' as oauth2;
+import 'package:aae/sign_in/component/login/SharedPrefUtils.dart';
+import 'package:aae/profile/profile_details.dart';
 
 import 'sso_identity.dart';
 
 class SSOAuth {
   static final _log = Logger('SSOAuth');
-
   static const currentUserAuthKey = 'SSOSSOAuth.lastUser';
 
   final CacheService _cache;
 
   @provide
   @singleton
-  SSOAuth(
-    this._cache,
-  );
+  SSOAuth(this._cache);
 
   final _currentUserController = StreamController<SSOIdentity>.broadcast();
 
@@ -36,26 +34,16 @@ class SSOAuth {
   }
 
   /// The currently signed in account, or null if the user is signed out
-  // TODO: (kiheke) - Implement in memory log-out
   SSOIdentity _currentUser;
-
   SSOIdentity get currentUser => _currentUser;
 
   _returnUser(vars) {
     var cachedUser = tryParseJwt(vars);
 
-    print(cachedUser);
-    print("-------------------------------${cachedUser['preferred_username']}-----------------");
-    //cachedUser['userlocation'],cachedUser['userworkgroup'],
-    SSOIdentity _user = new SSOIdentity(
-      cachedUser['access_token'],
-      cachedUser['email'],
-      cachedUser['preferred_username'],
-      cachedUser['refresh_token'],
-      cachedUser['name'],
-      'DFW',
-      'Leadership and Support Staff',
-    );
+    //print(cachedUser);
+    //print("-------------------------------${cachedUser['uid']}-----------------");
+
+    SSOIdentity _user = new SSOIdentity(cachedUser['access_token'], cachedUser['email'], cachedUser['uid'], cachedUser['refresh_token'], cachedUser['fullname'], cachedUser['userlocation']);
     _setCurrentUser(_user);
     return _user;
   }
@@ -83,34 +71,18 @@ class SSOAuth {
     return payloadMap;
   }
 
-  /// Retrieves tokens and user profile, signs in user
-  Future<void> signIn(String username, String password) async {
+  Future<void> signIn() async {
     try {
-      var client = await oauth2.resourceOwnerPasswordGrant(
-          Uri.parse(sso_auth_constants.ACCESS_TOKEN_URL), username, password,
-          identifier: sso_auth_constants.CLIENT_ID,
-          secret: sso_auth_constants.CLIENT_SECRET,
-          scopes: sso_auth_constants.SCOPE);
+      String tokenvalue = _cache.readString("tokenvalue").value;
+      var jwt = tryParseJwt(tokenvalue);
+      //print(jwt);
+      ProfileDetails profiledetails = ProfileDetails.getInstance();
+      profiledetails.setFullname(jwt['fullname']);
+      profiledetails.setLocation(jwt['location']);
 
-      var jwt = tryParseJwt(client.credentials.idToken);
-      print(jwt);
-
-      //jwt['userlocation'],jwt['userworkgroup'],jwt['given_name'], jwt['family_name']
-      SSOIdentity _user = new SSOIdentity(
-        client.credentials.accessToken,
-        jwt['email'],
-        jwt['preferred_username'],
-        client.credentials.refreshToken,
-        jwt['name'],
-        'DFW',
-        'Leadership and Support Staff',
-      );
-
-      _cache.writeString(currentUserAuthKey, client.credentials.idToken);
-
+      SSOIdentity _user = new SSOIdentity(tokenvalue, jwt['email'], jwt['uid'], jwt['firstname'], jwt['fullname'], jwt['location']);
       _setCurrentUser(_user);
       // Wait for sign in flow to complete.
-
     } on Exception catch (e, s) {
       _log.severe('Error signing in with SSO:', e, s);
       throw TokenException('Error signing in with SSO:', e);

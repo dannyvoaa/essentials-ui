@@ -23,8 +23,8 @@ class ProfileRepository implements Repository {
   static const cacheKey = 'ProfileRepository.Profile';
 
   /// Endpoint for the user_preferences cloudant database
-  static const apiEndpoint =
-      'https://toreetherywhimandifersee:55608bd3e3255fe1851de225ce562d4cab7d8fa2@b23661f9-9acc-4aab-9a2b-f8aa0f41b993-bluemix.cloudantnosqldb.appdomain.cloud/user_preferences/b4eabdbfde6a14ad41a342a5a9a4b99c';
+  //static const apiEndpoint = 'https://toreetherywhimandifersee:55608bd3e3255fe1851de225ce562d4cab7d8fa2@b23661f9-9acc-4aab-9a2b-f8aa0f41b993-bluemix.cloudantnosqldb.appdomain.cloud/user_preferences/b4eabdbfde6a14ad41a342a5a9a4b99c';
+  static const apiEndpoint = 'https://toreetherywhimandifersee:55608bd3e3255fe1851de225ce562d4cab7d8fa2@b23661f9-9acc-4aab-9a2b-f8aa0f41b993-bluemix.cloudantnosqldb.appdomain.cloud/user_preferences/';
 
   static const apiEndpointInsert = "https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/user-profile/aeuserinsertintodb.json";
   static const apiEndpointGetRev = "https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/user-profile/aeuserexistsindb.json";
@@ -83,39 +83,53 @@ class ProfileRepository implements Repository {
   }
 
   /// Creates a new [Profile] for the current user.
-  Future<bool> createProfile(
-    List<String> topics,
-    List<String> workgroups,
-    List<String> hubLocations
-  ) async {
+  Future<bool> createProfile(List<String> hubLocations, List<String> workgroups, List<String> topics) async {
+    List<String> hubLocationsList = <String>['CLT','DCA','DFW','LAX','MIA','NYC','ORD','PHL','PHX','TUL'];
+
+    if (_ssoAuth.currentUser.userlocation != "" && _ssoAuth.currentUser.userlocation != null) {
+      if (hubLocationsList.any((e) => e.contains(_ssoAuth.currentUser.userlocation.toUpperCase()))) {
+        hubLocations.removeWhere((item) => item == _ssoAuth.currentUser.userlocation.toUpperCase());
+      } else {
+        //do nothing
+      }
+    }
+
     final responseProfile = Profile((b) => b
-      ..topics.addAll(topics)
       ..displayName = _ssoAuth.currentUser.displayName
       ..email = _ssoAuth.currentUser.email
       ..userlocation = _ssoAuth.currentUser.userlocation
-      ..userworkgroup = _ssoAuth.currentUser.userworkgroup
       ..workgroup.addAll(workgroups)
-      ..hubLocation.addAll(hubLocations));
+      ..hubLocation.addAll(hubLocations)
+      ..topics.addAll(topics));
     try {
       final headers = {
         'Content-Type': 'application/json',
+        'Authorization':
+        'Basic dG9yZWV0aGVyeXdoaW1hbmRpZmVyc2VlOjU1NjA4YmQzZTMyNTVmZTE4NTFkZTIyNWNlNTYyZDRjYWI3ZDhmYTI=',
       };
-      //'Authorization': 'Basic dG9yZWV0aGVyeXdoaW1hbmRpZmVyc2VlOjU1NjA4YmQzZTMyNTVmZTE4NTFkZTIyNWNlNTYyZDRjYWI3ZDhmYTI=',
+
       final body = jsonEncode({
+        "_id":  _ssoAuth.currentUser.id,
         "aaId": _ssoAuth.currentUser.id,
+        "fullname": _ssoAuth.currentUser.displayName,
+        "email": _ssoAuth.currentUser.email,
+        "defaultlocation": _ssoAuth.currentUser.userlocation,
         "preferences": {
           "userlocation": _ssoAuth.currentUser.userlocation,
-          "userworkgroup": _ssoAuth.currentUser.userworkgroup,
-          "topics": topics,
           "workgroup": workgroups,
-          "hubLocation": hubLocations
+          "hubLocation": hubLocations,
+          "topics": topics
         },
         "created": 1582726346,
         "updated": 1582726346
       });
 
-      final rev_headers = {'Accept': 'application/json'};
-      final res = await http.post('$apiEndpointInsert', headers: headers, body: body);
+      //final rev_headers = {'Accept': 'application/json'};
+      //final rev_res = await http.head(apiEndpoint + _ssoAuth.currentUser.id, headers: rev_headers);
+      //String _rev = rev_res.headers['etag'].replaceAll('"', '');
+      //print(_rev);
+
+      final res = await http.put('$apiEndpoint' + _ssoAuth.currentUser.id, headers: headers, body: body);
       if (res.statusCode > 299)
         throw Exception('get error: statusCode= ${res.statusCode}');
       print(res.body);
@@ -128,16 +142,121 @@ class ProfileRepository implements Repository {
     return true;
   }
 
+  /// Creates a new [Profile] for the current user.
+  Future<bool> createProfile2(List<String> hubLocations, List<String> workgroups, List<String> topics) async {
+    List<String> hubLocationsList = <String>['CLT','DCA','DFW','LAX','MIA','NYC','ORD','PHL','PHX','TUL'];
+
+    if (_ssoAuth.currentUser.userlocation != "" && _ssoAuth.currentUser.userlocation != null) {
+      if (hubLocationsList.any((e) => e.contains(_ssoAuth.currentUser.userlocation.toUpperCase()))) {
+        hubLocations.removeWhere((item) => item == _ssoAuth.currentUser.userlocation.toUpperCase());
+      } else {
+        //do nothing
+      }
+    }
+
+    final responseProfile = Profile((b) => b
+      ..displayName = _ssoAuth.currentUser.displayName
+      ..email = _ssoAuth.currentUser.email
+      ..userlocation = _ssoAuth.currentUser.userlocation
+      ..hubLocation.addAll(hubLocations)
+      ..workgroup.addAll(workgroups)
+      ..topics.addAll(topics));
+
+    try {
+      final headers = {
+        'Content-Type': 'application/json',
+      };
+      //'Authorization': 'Basic dG9yZWV0aGVyeXdoaW1hbmRpZmVyc2VlOjU1NjA4YmQzZTMyNTVmZTE4NTFkZTIyNWNlNTYyZDRjYWI3ZDhmYTI=',
+      final body = jsonEncode({
+        "aaId": _ssoAuth.currentUser.id,
+        "fullname": _ssoAuth.currentUser.displayName,
+        "email": _ssoAuth.currentUser.email,
+        "defaultlocation": _ssoAuth.currentUser.userlocation,
+        "preferences": {
+          "userlocation": _ssoAuth.currentUser.userlocation,
+          "hubLocation": hubLocations,
+          "workgroup": workgroups,
+          "topics": topics
+        },
+        "created": 1582726346,
+        "updated": 1582726346
+      });
+
+      final rev_headers = {'Accept': 'application/json'};
+      final res = await http.post('$apiEndpointInsert', headers: headers, body: body);
+      if (res.statusCode > 299)
+        throw Exception('get error: statusCode= ${res.statusCode}');
+      //print(res.body);
+    } catch (e, s) {
+      _log.severe('Failed to create profile:', e, s);
+      return false;
+    }
+    _saveToCache(responseProfile);
+    _profile.sendNext(responseProfile);
+    return true;
+  }
+
   /// Updates the [Profile] for the current user.
   Future<bool> updateProfile(Profile updatedProfile) async {
+    try {
+      var headers = {
+        'Content-Type': 'application/json',
+        'Authorization':
+        'Basic dG9yZWV0aGVyeXdoaW1hbmRpZmVyc2VlOjU1NjA4YmQzZTMyNTVmZTE4NTFkZTIyNWNlNTYyZDRjYWI3ZDhmYTI=',
+      };
+
+      List<String> hubLocations = updatedProfile.hubLocation.asList();
+      List<String> workgroups = updatedProfile.workgroup.asList();
+      List<String> topics = updatedProfile.topics.asList();
+
+      String strAAId = _ssoAuth.currentUser.id.toString();
+
+      var body = jsonEncode({
+        "_id": strAAId,
+        "aaId": strAAId,
+        "fullname": _ssoAuth.currentUser.displayName,
+        "email": _ssoAuth.currentUser.email,
+        "defaultlocation": _ssoAuth.currentUser.userlocation,
+        "preferences": {
+          "userlocation": _ssoAuth.currentUser.userlocation,
+          "workgroup": workgroups,
+          "hubLocation": hubLocations,
+          "topics": topics,
+        },
+        "created": 1582726346,
+        "updated": 1582726346
+      });
+
+      var rev_headers = {'Accept': 'application/json'};
+
+      var rev_res = await http.head(apiEndpoint + _ssoAuth.currentUser.id, headers: rev_headers);
+
+      String _rev = rev_res.headers['etag'].replaceAll('"', '');
+
+      var res = await http.put('$apiEndpoint' + _ssoAuth.currentUser.id + '?rev=$_rev',
+          headers: headers, body: body);
+      if (res.statusCode > 299)
+        throw Exception('get error: statusCode= ${res.statusCode}');
+    } catch (e, s) {
+      _log.severe('Failed to update profile:', e, s);
+      return false;
+    }
+    _saveToCache(updatedProfile);
+    _profile.sendNext(updatedProfile);
+    return true;
+  }
+
+  /// Updates the [Profile] for the current user.
+  Future<bool> updateProfile2(Profile updatedProfile) async {
 
     try {
       var headers = {
         'Content-Type': 'application/json',
       };
-      List<String> topics = updatedProfile.topics.asList();
-      List<String> workgroups = updatedProfile.workgroup.asList();
       List<String> hubLocations = updatedProfile.hubLocation.asList();
+      List<String> workgroups = updatedProfile.workgroup.asList();
+      List<String> topics = updatedProfile.topics.asList();
+
       String strAAId = _ssoAuth.currentUser.id.toString();
 
 
@@ -147,8 +266,8 @@ class ProfileRepository implements Repository {
       String strRev = "";
       Map<String, dynamic> json = jsonDecode(response.body);
 
-      print(json['docs'].toString());
-      print(json['docs'][0].toString());
+      //print(json['docs'].toString());
+      //print(json['docs'][0].toString());
       //print(json['docs'][0]._rev.toString());
 
       if (json['docs'].length != 0) {
@@ -161,9 +280,11 @@ class ProfileRepository implements Repository {
         "_id": strAAId,
         "_rev": strRev,
         "aaId": strAAId,
+        "fullname": _ssoAuth.currentUser.displayName,
+        "email": _ssoAuth.currentUser.email,
+        "defaultlocation": _ssoAuth.currentUser.userlocation,
         "preferences": {
           "userlocation": _ssoAuth.currentUser.userlocation,
-          "userworkgroup": _ssoAuth.currentUser.userworkgroup,
           "topics": topics,
           "workgroup": workgroups,
           "hubLocation": hubLocations,

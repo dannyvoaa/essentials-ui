@@ -10,6 +10,8 @@ class AaeTextStyles {
   static const _bold = FontWeight.bold;
   static const _americanSans = 'AmericanSans';
 
+  static const font = 'AmericanSans';
+
   static const h1 = TextStyle(
     fontSize: 40.0,
     height: 1.40,
@@ -57,6 +59,12 @@ class AaeTextStyles {
     height: 1.0,
     fontWeight: _medium,
     fontFamily: _americanSans,
+  );
+
+  static const newsCardHeadline = TextStyle(
+    color: AaeColors.darkGray,
+    fontSize: 18,
+    height: 1.1,
   );
 
   static const smallSummary = TextStyle(
@@ -229,8 +237,9 @@ class AaeTextStyles {
   }) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       color: AaeColors.darkGray,
-      fontSize: 16,
+      fontSize: 18,
       height: 1.165,
+      fontWeight:FontWeight.bold,
     );
     // Default style
     return textStyle;
@@ -242,6 +251,7 @@ class AaeTextStyles {
   }) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       color: AaeColors.lightGray,
+        fontSize: 18,
     );
     // Default style
 
@@ -303,7 +313,7 @@ class AaeTextStyles {
   }) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       fontSize: 14,
-      height: .6,
+      height: 1,
     );
 
     // Default style
@@ -314,6 +324,7 @@ class AaeTextStyles {
       {bool boolDefaultHeight = false, bool boolEnabled = true}) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       color: AaeColors.ultraLightGray,
+        fontSize: 18,
     );
 
     // Default style
@@ -397,7 +408,6 @@ class AaeTextStyles {
     // Default style
     return textStyle;
   }
-
 
   static const pageHeadline = TextStyle(fontSize: 24, fontWeight: _bold);
 }

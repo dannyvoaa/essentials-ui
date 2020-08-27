@@ -27,10 +27,9 @@ class SettingsListBloc {
       SettingsListViewModel(
           displayName: profile.displayName,
           userlocation: profile.userlocation,
-          userworkgroup: profile.userworkgroup,
-          topics: ['Headlines', 'Business Education', 'Fleet', 'Network', 'Operations', 'People Culture', 'Products Services'],
+          topics: ['Business Education', 'Fleet', 'Network', 'Operations', 'People Culture', 'Products Services'],
           selectedTopics: profile.topics,
-          hubLocation: ['BOS', 'CLT', 'DCA', 'DFW', 'LAX', 'MIA', 'NYC', 'JFK', 'LGA', 'ORD', 'PHL', 'PHX', 'TUL', 'INTL', 'GSC', 'Central Region', 'Northeast Region', 'Southeast Region', 'West Region', 'Asia Pacific', 'Canada', 'Europe', 'MCLA'],
+          hubLocation: ['CLT','DCA','DFW','LAX','MIA','NYC','ORD','PHL','PHX','TUL'],
           selectedHubLocations: profile.hubLocation,
           workgroup: ['Airport Customer Service', 'Cargo', 'Fleet Service', 'Flight', 'Flight Service', 'Leadership and Support Staff', 'Premium Guest Services', 'Reservations', 'Tech Ops'],
           selectedWorkgroups: profile.workgroup,
@@ -44,10 +43,10 @@ class SettingsListBloc {
       Profile updatedProfile = currentProfile.rebuild((b) => b.topics.removeWhere((topic) => topic == tappedTopic));
       _profileRepository.updateProfile(updatedProfile);
       _newsFeedRepository.fetchNewsFeedJsonList(updatedProfile);
-      print(updatedProfile);
+      //print(updatedProfile);
     } else {
       Profile updatedProfile = currentProfile.rebuild((b) => b.topics.add(tappedTopic));
-      print(updatedProfile);
+      //print(updatedProfile);
       _profileRepository.updateProfile(updatedProfile);
       _newsFeedRepository.fetchNewsFeedJsonList(updatedProfile);
     }
@@ -59,11 +58,11 @@ class SettingsListBloc {
       Profile updatedProfile = currentProfile.rebuild((b) => b.hubLocation.removeWhere((hubLocation) => hubLocation == tappedHubLocation));
       _profileRepository.updateProfile(updatedProfile);
       _newsFeedRepository.fetchNewsFeedJsonList(updatedProfile);
-      print(updatedProfile);
+      //print(updatedProfile);
     } else {
       Profile updatedProfile =
       currentProfile.rebuild((b) => b.hubLocation.add(tappedHubLocation));
-      print(updatedProfile);
+      //print(updatedProfile);
       _profileRepository.updateProfile(updatedProfile);
       _newsFeedRepository.fetchNewsFeedJsonList(updatedProfile);
     }
@@ -74,10 +73,10 @@ class SettingsListBloc {
       Profile updatedProfile = currentProfile.rebuild((b) => b.workgroup.removeWhere((workgroup) => workgroup == tappedWorkgroup));
       _profileRepository.updateProfile(updatedProfile);
       _newsFeedRepository.fetchNewsFeedJsonList(updatedProfile);
-      print(updatedProfile);
+      //print(updatedProfile);
     } else {
       Profile updatedProfile = currentProfile.rebuild((b) => b.workgroup.add(tappedWorkgroup));
-      print(updatedProfile);
+      //print(updatedProfile);
       _profileRepository.updateProfile(updatedProfile);
       _newsFeedRepository.fetchNewsFeedJsonList(updatedProfile);
     }
