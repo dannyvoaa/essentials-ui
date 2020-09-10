@@ -34,6 +34,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(NewsFeedJsonList)]),
           () => new ListBuilder<NewsFeedJsonList>())
       ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Pnr)]),
+          () => new ListBuilder<Pnr>())
+      ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(RecognitionRegister)]),
           () => new ListBuilder<RecognitionRegister>())
