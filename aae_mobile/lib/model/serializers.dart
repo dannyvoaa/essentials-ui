@@ -6,7 +6,8 @@ import 'package:aae/model/event.dart';
 import 'package:aae/model/news_feed_json_list.dart';
 import 'package:aae/model/news_feed_item.dart';
 import 'package:aae/model/recognition_history.dart';
-import 'package:aae/model/recognition_register.dart';
+import 'package:aae/model/trips.dart';
+import 'package:aae/model/pnr.dart';
 
 import 'package:aae/model/notification.dart';
 import 'package:aae/model/performance_stats.dart';
