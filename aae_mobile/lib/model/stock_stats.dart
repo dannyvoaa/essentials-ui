@@ -14,9 +14,13 @@ abstract class StockStats implements Built<StockStats, StockStatsBuilder> {
   factory StockStats([updates(StockStatsBuilder b)]) = _$StockStats;
 
   @BuiltValueField(wireName: 'AAL')
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   String get price;
 
   @BuiltValueField(wireName: 'AALChange')
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   String get aalChange;
 
   String toJson() {

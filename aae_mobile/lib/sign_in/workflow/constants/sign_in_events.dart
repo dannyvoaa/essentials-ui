@@ -8,8 +8,7 @@ class SignInEvents {
   // Referencing the common [WorkflowEvents] for a common import path.
   static WorkflowEvent get routePopped => WorkflowEvents.routePopped;
 
-  static WorkflowEvent get userPressedPrimaryButton =>
-      WorkflowEvents.userPressedPrimaryButton;
+  static WorkflowEvent get userPressedPrimaryButton => WorkflowEvents.userPressedPrimaryButton;
 
   static WorkflowEvent get userPressedSecondaryButton =>
       WorkflowEvents.userPressedSecondaryButton;

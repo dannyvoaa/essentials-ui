@@ -3,13 +3,17 @@ import 'package:aae/common/widgets/component/component.dart';
 import 'package:aae/common/widgets/tables/table_components.dart';
 import 'package:aae/common/widgets/tables/table_header.dart';
 import 'package:flutter/material.dart';
-
+import 'package:aae/navigation/routes.dart' as routes;
+import 'package:aae/common/commands/navigate_command.dart';
 import 'settings_list_bloc.dart';
 import 'settings_list_view_model.dart';
-// test comment
+import 'package:aae/common/widgets/drawer/drawer_button.dart';
+import 'package:aae/theme/colors.dart';
+
 /// A [Component] that ties together [SettingsListBloc] and
 /// [SettingsListView].
 class SettingsListComponent extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Component<SettingsListBloc, SettingsListBlocFactory>(
@@ -59,59 +63,64 @@ class _SettingsListView extends StatelessWidget {
               TableCellTitleValue(
                 boolShowDisclosureIndicator: false,
                 stringTitle: 'Location',
-                stringValue: viewModel.location,
-             //   onTapAction: () {
-                  // Present the Settings Location view
-              //  },
+                stringValue: viewModel.userlocation,
+                //   onTapAction: () {
+                // Present the Settings Location view
+                //  },
               ),
-              TableCellTitleValue(
-                boolBorderTop: false,
-                boolEnabled: false,
-                stringTitle: 'Workgroup',
-                stringValue: viewModel.workgroup[1],
-              ),
-
+                  DrawerButton(                    stringTitle: '',  ),
               TableHeader(
                 stringTitle: 'Newsfeed preferences',
               ),
               TableCellTitleValue(
                 boolBorderTop: false,
-                boolEnabled: false,
-                boolShowDisclosureIndicator: true,
-                stringTitle: 'Topics of interest',
-                stringValue: 'Manage',
-                onTapAction: () {
-               //   navigateCommand(routes.buildTopicsPageRoute())(context);
-
-                },
-
-              ),
-             //_buildTopics(context),
-              TableCellTitleValue(
-                boolBorderTop: false,
-                boolEnabled: false,
-                boolShowDisclosureIndicator: true,
-                stringTitle: 'Workgroup news',
-                stringValue: 'Manage',
-              ),
-              TableCellTitleValue(
-                boolBorderTop: false,
-                boolEnabled: false,
+                boolEnabled: true,
                 boolShowDisclosureIndicator: true,
                 stringTitle: 'Hub news',
-                stringValue: 'Manage',
+              //  stringValue: 'Manage',
+                 txt: 'Manage',
+                onTapAction: () {
+                  navigateCommand(routes.buildHubLocationPageRoute())(context);
+
+                },
               ),
-              TableHeader(
-                stringTitle: 'Notifications',
+              //_buildTopics(context),
+              TableCellTitleValue(
+                boolBorderTop: false,
+                boolEnabled: true,
+                boolShowDisclosureIndicator: true,
+                stringTitle: 'Workgroup news',
+                //  stringValue: 'Manage',
+                txt: 'Manage',
+                onTapAction: () {
+                  navigateCommand(routes.buildWorkgroupPageRoute())(context);
+
+                },
               ),
               TableCellTitleValue(
                 boolBorderTop: false,
-                boolEnabled: false,
-                boolShowDisclosureIndicator: false,
-                stringTitle: 'Alert',
-                stringValue: 'Off',
+                boolEnabled: true,
+                boolShowDisclosureIndicator: true,
+                stringTitle: 'Topics of interest',
+                //  stringValue: 'Manage',
+                txt: 'Manage',
+                onTapAction: () {
+                  navigateCommand(routes.buildTopicsPageRoute())(context);
+
+                },
               ),
-            //  _buildTopics(context),
+
+              //    TableHeader(
+              //       stringTitle: 'Notifications',
+              //      ),
+              //    TableCellTitleValue(
+              //    boolBorderTop: false,
+              //        boolEnabled: false,
+              //      boolShowDisclosureIndicator: false,
+              //      stringTitle: 'Alert',
+              //      stringValue: '⬤',
+              //  ),
+              //  _buildTopics(context),
 //              Padding(
 //                padding: const EdgeInsets.only(top:0),
 //                child: _buildWorkgroups(context),
@@ -128,48 +137,6 @@ class _SettingsListView extends StatelessWidget {
     );
   }
 
-  Widget _buildTopics(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        for (var i = 0; i < viewModel.topics.length; i++)
-          TableCellTitleValue(
-              onTapAction: () {
-                print(viewModel.topics[i]);
-                viewModel.onTopicTapped(viewModel.topics[i]);
-              },
-              boolShowCheckmark:
-                  viewModel.selectedTopics.contains(viewModel.topics[i]),
-              boolBorderTop: true,
-              boolEnabled: true,
-              boolShowDisclosureIndicator: false,
-              stringTitle: viewModel.topics[i],
-              stringValue: '')
-      ],
-    );
-  }
 
-  Widget _buildWorkgroups(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        for (var i = 0; i < viewModel.workgroup.length; i++)
-          TableCellTitleValue(
-              onTapAction: () {
-                print(viewModel.workgroup[i]);
-                viewModel.onWorkgroupTapped(viewModel.workgroup[i]);
-              },
-              boolShowCheckmark:
-                  viewModel.selectedWorkgroups.contains(viewModel.workgroup[i]),
-              boolBorderTop: true,
-              boolEnabled: true,
-              boolShowDisclosureIndicator: false,
-              stringTitle: viewModel.workgroup[i],
-              stringValue: '')
-      ],
-    );
-  }
+
 }
-
-
-

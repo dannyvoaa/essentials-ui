@@ -20,17 +20,13 @@ class WorkgroupsRepository {
 
   Future<UnmodifiableListView<Workgroup>> _fetchWorkgroupsList() async {
     List<Workgroup> listOfWorkgroups = List<Workgroup>();
-    listOfWorkgroups
-        .add(Workgroup((b) => b.workgroups = 'ACS (Airport Customer Service)'));
+    listOfWorkgroups.add(Workgroup((b) => b.workgroups = 'Airport Customer Service'));
     listOfWorkgroups.add(Workgroup((b) => b.workgroups = 'Cargo'));
     listOfWorkgroups.add(Workgroup((b) => b.workgroups = 'Fleet Service'));
-    listOfWorkgroups.add(Workgroup((b) => b.workgroups = 'Flight (Pilots)'));
-    listOfWorkgroups.add(
-        Workgroup((b) => b.workgroups = 'Flight Service  (Flight Attendants)'));
-    listOfWorkgroups.add(
-        Workgroup((b) => b.workgroups = 'LSS (Leadership & Support Staff)'));
-    listOfWorkgroups
-        .add(Workgroup((b) => b.workgroups = 'PGS  (Premium Guest Services)'));
+    listOfWorkgroups.add(Workgroup((b) => b.workgroups = 'Flight'));
+    listOfWorkgroups.add(Workgroup((b) => b.workgroups = 'Flight Service'));
+    listOfWorkgroups.add(Workgroup((b) => b.workgroups = 'Leadership and Support Staff'));
+    listOfWorkgroups.add(Workgroup((b) => b.workgroups = 'Premium Guest Services'));
     listOfWorkgroups.add(Workgroup((b) => b.workgroups = 'Reservations'));
     listOfWorkgroups.add(Workgroup((b) => b.workgroups = 'Tech Ops'));
     return UnmodifiableListView(listOfWorkgroups);

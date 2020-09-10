@@ -13,23 +13,34 @@ abstract class PerformanceStats implements Built<PerformanceStats, PerformanceSt
 
   factory PerformanceStats([updates(PerformanceStatsBuilder b)]) = _$PerformanceStats;
 
-  @nullable
   @BuiltValueField(wireName: 'A14')
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   String get a14;
 
   @BuiltValueField(wireName: 'A14Change')
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   String get a14Change;
 
   @BuiltValueField(wireName: 'CF')
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   String get cf;
 
   @BuiltValueField(wireName: 'CFChange')
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   String get cfChange;
 
   @BuiltValueField(wireName: 'D0')
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   String get d0;
 
   @BuiltValueField(wireName: 'D0Change')
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   String get d0Change;
 
   String toJson() {

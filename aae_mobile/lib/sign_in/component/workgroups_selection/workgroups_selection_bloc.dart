@@ -30,14 +30,10 @@ class WorkgroupsSelectionBloc {
   Observable<WorkflowEvent> get events => _events;
 
   /// Publishes the [WorkgroupsSelectionViewModel].
-  Source<WorkgroupsSelectionViewModel> get viewModel => toSource(combineLatest2(
-      Observable.fromFuture(_workgroupsRepository.workgroupsList),
-      _currentWorkgroups,
-      _createViewModel));
+  Source<WorkgroupsSelectionViewModel> get viewModel => toSource(combineLatest2(Observable.fromFuture(_workgroupsRepository.workgroupsList), _currentWorkgroups, _createViewModel));
 
   @provide
-  WorkgroupsSelectionBloc(
-      this._sharedDataRepository, this._workgroupsRepository);
+  WorkgroupsSelectionBloc(this._sharedDataRepository, this._workgroupsRepository);
 
   WorkgroupsSelectionViewModel _createViewModel(
     UnmodifiableListView<Workgroup> workgroups,
@@ -58,12 +54,10 @@ class WorkgroupsSelectionBloc {
                 if (selectedWorkgroups.contains(workgroups.workgroups)) {
                   selectedWorkgroups.remove(workgroups.workgroups);
                   _currentWorkgroups.sendNext(selectedWorkgroups);
-                  print(
-                      '------------------------------------Removed: ${workgroups.workgroups}-------------------------------------');
+                  //print('--------------------------Removed: ${workgroups.workgroups}-------------------------------------');
                 } else
                   selectedWorkgroups.add(workgroups.workgroups);
-                print(
-                    '------------------------------------Added: ${workgroups.workgroups}-------------------------------------');
+                //print('-----------------------------Added: ${workgroups.workgroups}-------------------------------------');
                 _sharedDataRepository.workgroups.sendNext(selectedWorkgroups);
                 _currentWorkgroups.sendNext(selectedWorkgroups);
               },

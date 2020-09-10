@@ -10,7 +10,7 @@ import 'package:aae/programmatic_main.dart';
 void main() async {
   programmaticMain(
     BuildFlavorConfiguration.configurationFor(
-      BuildFlavor.debug,
+      BuildFlavor.production,
     ),
   );
 }

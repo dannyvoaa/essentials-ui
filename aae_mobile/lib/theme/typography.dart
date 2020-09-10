@@ -10,6 +10,8 @@ class AaeTextStyles {
   static const _bold = FontWeight.bold;
   static const _americanSans = 'AmericanSans';
 
+  static const font = 'AmericanSans';
+
   static const h1 = TextStyle(
     fontSize: 40.0,
     height: 1.40,
@@ -57,6 +59,12 @@ class AaeTextStyles {
     height: 1.0,
     fontWeight: _medium,
     fontFamily: _americanSans,
+  );
+
+  static const newsCardHeadline = TextStyle(
+    color: AaeColors.darkGray,
+    fontSize: 18,
+    height: 1.1,
   );
 
   static const smallSummary = TextStyle(
@@ -161,14 +169,77 @@ class AaeTextStyles {
     return textStyle;
   }
 
+  static TextStyle calendarMain({
+    bool boolDefaultHeight = false,
+  }) {
+    TextStyle textStyle = TextStyle(
+      color: AaeColors.darkGray,
+      fontFamily: _americanSans,
+      fontSize: 16,
+      height: boolDefaultHeight ? 1.00 : 1.33,
+      // backgroundColor: AaColors.lightGray,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  static TextStyle calendarOld({
+    bool boolDefaultHeight = false,
+  }) {
+    TextStyle textStyle = TextStyle(
+      color: AaeColors.ultraLightGray,
+      fontFamily: _americanSans,
+      fontSize: 16,
+      height: boolDefaultHeight ? 1.00 : 1.33,
+      // backgroundColor: AaColors.lightGray,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  /// Calendar page summary blocks
+  static TextStyle calendarSummary({
+    bool boolDefaultHeight = false,
+  }) {
+    TextStyle textStyle = TextStyle(
+      color: AaeColors.darkGray,
+      fontFamily: _americanSans,
+      fontSize: 13,
+      height: boolDefaultHeight ? 1.00 : 1.33,
+      // backgroundColor: AaColors.lightGray,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  static TextStyle calendarSummaryBold({
+    bool boolDefaultHeight = false,
+  }) {
+    TextStyle textStyle = TextStyle(
+      color: AaeColors.darkGray,
+      fontFamily: _americanSans,
+      fontSize: 13,
+      fontWeight: FontWeight.bold,
+      height: boolDefaultHeight ? 1.00 : 1.33,
+      // backgroundColor: AaColors.lightGray,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
   static TextStyle tableHeaderFooter({
     bool boolDefaultHeight = false,
     bool boolEnabled = true,
   }) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       color: AaeColors.darkGray,
-      fontSize: 16,
+      fontSize: 18,
       height: 1.165,
+      fontWeight:FontWeight.bold,
     );
     // Default style
     return textStyle;
@@ -180,11 +251,11 @@ class AaeTextStyles {
   }) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       color: AaeColors.lightGray,
+        fontSize: 18,
     );
     // Default style
 
     return textStyle;
-
   }
 
   /// Used for regular-sized headline content
@@ -242,7 +313,7 @@ class AaeTextStyles {
   }) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       fontSize: 14,
-      height: 1.165,
+      height: 1,
     );
 
     // Default style
@@ -253,6 +324,39 @@ class AaeTextStyles {
       {bool boolDefaultHeight = false, bool boolEnabled = true}) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       color: AaeColors.ultraLightGray,
+        fontSize: 18,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  /// Used for Event detail layout
+  static TextStyle eventTitle({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = h4.copyWith(
+      color: AaeColors.darkGray,
+      height: 1.0,
+      fontSize: 22,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  static TextStyle eventText({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
+      color: AaeColors.darkGray,
+      height: 1.0,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  static TextStyle eventDate({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = t2.copyWith(
+      color: AaeColors.darkGray,
+      fontSize: 12,
     );
 
     // Default style
@@ -263,8 +367,8 @@ class AaeTextStyles {
   static TextStyle largeButtonTitle({bool boolDefaultHeight = false}) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       color: AaeColors.white,
-      fontSize: 24,
-      fontWeight: FontWeight.bold,
+      fontSize: 18,
+      fontWeight: FontWeight.normal,
       height: 1.0,
     );
 
@@ -286,8 +390,19 @@ class AaeTextStyles {
   // Used for user-entered content in a [TextField]
   static TextStyle textFieldModern({bool boolDefaultHeight = false}) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      fontSize: 24,
-      color: AaeColors.white,
+      fontSize: 18,
+      color: AaeColors.darkBlue,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  // Used for user-entered content in a [TextField]
+  static TextStyle textFieldTitle({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
+      fontSize: 18,
+      color: AaeColors.gray,
     );
 
     // Default style

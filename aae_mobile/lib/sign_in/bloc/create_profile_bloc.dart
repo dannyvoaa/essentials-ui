@@ -1,3 +1,4 @@
+import 'package:aae/home/news_feed_repository.dart';
 import 'package:aae/profile/repository/profile_repository.dart';
 import 'package:aae/provided_service.dart';
 import 'package:aae/rx/rx_util.dart';
@@ -13,6 +14,7 @@ class CreateProfileBloc {
 
   final ProfileRepository _profileRepository;
   final SignInSharedDataRepository _sharedDataRepository;
+  final NewsFeedRepository _newsFeedRepository;
 
   final _events = Subject<WorkflowEvent>();
 
@@ -21,23 +23,27 @@ class CreateProfileBloc {
 
   @provide
   @singleton
-  CreateProfileBloc(this._profileRepository, this._sharedDataRepository);
+  CreateProfileBloc(this._profileRepository, this._sharedDataRepository, this._newsFeedRepository);
 
   /// Attempts to create a profile using the current Workgroups and Topics.
   Future<void> createProfile() async {
-    final topics = lastEvent(_sharedDataRepository.topics);
+    final hubLocations = lastEvent(_sharedDataRepository.hubLocations);
+    hubLocations.sort();
     final workgroups = lastEvent(_sharedDataRepository.workgroups);
+    workgroups.sort();
+    final topics = lastEvent(_sharedDataRepository.topics);
+    topics.sort();
 
-    if (topics.length == 0 || workgroups.length == 0) {
-      _log.severe('Workgroups or Topics not set before creating a profile.');
-      _events.sendNext(SignInEvents.profileCreationFailed);
-      return;
-    }
+    //if (topics.length == 0 || workgroups.length == 0) {
+    //  _log.severe('Workgroups or Topics not set before creating a profile.');
+    //  _events.sendNext(SignInEvents.profileCreationFailed);
+    //  return;
+    //}
 
-    if (await _profileRepository.createProfile(topics, workgroups)) {
+    if (await _profileRepository.createProfile(hubLocations, workgroups, topics )) {
       _events.sendNext(SignInEvents.profileCreationSucceeded);
-      _log.shout(
-          '-------------------PROFILE CREATION SUCCEEDED------------------------');
+      _log.shout('---------------PROFILE CREATION SUCCEEDED--------------------');
+      _newsFeedRepository.fetchNewsFeedJsonList(await _profileRepository.fetchActiveProfile());
     } else {
       _events.sendNext(SignInEvents.profileCreationFailed);
     }

@@ -1,11 +1,12 @@
-import 'package:aae/article/page/news_article_page.dart';
+import 'package:aae/article/news_article_page.dart';
 import 'package:aae/events/page/events_page.dart';
-import 'package:aae/home/page/home_page.dart';
-import 'package:aae/home/page/news_page.dart';
+import 'package:aae/home/news_feed_page.dart';
 import 'package:aae/notification/page/notification_page.dart';
-import 'package:aae/recognition/page/recognition_page.dart';
+import 'package:aae/settings/page/hub_location_page.dart';
+import 'package:aae/settings/page/workgroup_page.dart';
 import 'package:aae/travel/page/travel_page.dart';
 import 'package:aae/settings/page/settings_page.dart';
+import 'package:aae/settings/page/topics_page.dart';
 import 'package:aae/travel/page/travel_page.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
@@ -41,7 +42,7 @@ class MainPageNavigator extends StatelessWidget {
 
     switch (_page) {
       case MainPage.home:
-        provider = NewsPageProvider();
+        provider = NewsFeedPageProvider();
         break;
       case MainPage.notifications:
         provider = NotificationPageProvider();
@@ -97,12 +98,27 @@ class MainPageNavigator extends StatelessWidget {
       case routes.settingsPage:
         provider = SettingsPageProvider();
         break;
+
+      case routes.hubLocationPage:
+        provider = HubLocationPageProvider();
+        break;
+
+      case routes.workgroupPage:
+        provider = WorkgroupPageProvider();
+        break;
+
+      case routes.topicsPage:
+        provider = TopicsPageProvider();
+        break;
+
       case routes.events:
         provider = EventsPageProvider();
         break;
+
       case routes.notifications:
         provider = NotificationPageProvider();
         break;
+
       case routes.article:
         provider = NewsArticlePageProvider(arguments: arguments);
         break;

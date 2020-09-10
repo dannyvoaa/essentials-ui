@@ -8,9 +8,11 @@ class TableCellTitleValue extends StatelessWidget {
   final bool boolBorderBottom;
   final bool boolBorderTop;
   final bool boolShowCheckmark;
+  final bool boolShowAdd;
   final bool boolShowDisclosureIndicator;
   final bool boolEnabled;
   final String stringTitle;
+  final String txt;
   final String stringValue;
   final void Function() onTapAction;
 
@@ -21,8 +23,10 @@ class TableCellTitleValue extends StatelessWidget {
     this.stringTitle = '',
     this.stringValue = '',
     this.onTapAction,
+    this.txt = '',
     this.boolEnabled = true,
     this.boolShowCheckmark = false,
+    this.boolShowAdd = false,
     this.boolShowDisclosureIndicator = false,
   });
 
@@ -32,9 +36,9 @@ class TableCellTitleValue extends StatelessWidget {
       children: <Widget>[
         this.boolBorderTop
             ? Container(
-                height: AaeDimens.sizeDivider,
-                color: AaeColors.lightGray,
-              )
+          height: AaeDimens.sizeDivider,
+          color: AaeColors.white,
+        )
             : Container(),
         Material(
           child: InkWell(
@@ -48,6 +52,7 @@ class TableCellTitleValue extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: AaeTextStyles.tableCellTitle(
                         boolEnabled: this.boolEnabled,
+                        //  padding:10,
                       ),
                     ),
                   ),
@@ -61,8 +66,19 @@ class TableCellTitleValue extends StatelessWidget {
                     style: AaeTextStyles.tableCellValue(
                       boolEnabled: this.boolEnabled,
                     ),
+
                     textAlign: TextAlign.right,
                   ),
+                                Text(
+                                      txt,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: AaeTextStyles.tableCellTitle(
+                                                                     boolEnabled: this.boolEnabled,
+
+                                                                   ),
+                                      textAlign: TextAlign.right,
+                                    ),
                   this._cellAccessory(),
                 ],
               ),
@@ -70,6 +86,9 @@ class TableCellTitleValue extends StatelessWidget {
               margin: EdgeInsets.only(
                 left: 16,
                 right: 16,
+                top:6,
+                bottom:6,
+
               ),
             ),
             onTap: () {
@@ -83,13 +102,13 @@ class TableCellTitleValue extends StatelessWidget {
                 ? AaeColors.tableViewCellBackgroundSelected
                 : Colors.transparent,
           ),
-        //  color: AaeColors.tableViewCellBackground,
+          //  color: AaeColors.tableViewCellBackground,
         ),
         this.boolBorderBottom
             ? Container(
-                height: AaeDimens.sizeDivider,
-                color: AaeColors.ultraLightGray,
-              )
+          height: AaeDimens.sizeDivider,
+          color: AaeColors.ultraLightGray,
+        )
             : Container(),
       ],
     );
@@ -112,6 +131,13 @@ class TableCellTitleValue extends StatelessWidget {
       colorAccessory = AaeColors.lightGray
           .withAlpha(this.boolEnabled ? 255 : (255 * 0.40).round());
       iconAccessory = Icons.chevron_right;
+    }
+
+    // Check to see if the disclosure indicator should be shown
+    if (this.boolShowAdd) {
+      colorAccessory = AaeColors.ultraLightGray
+          .withAlpha(this.boolEnabled ? 255 : (255 * 0.40).round());
+      iconAccessory = Icons.add;
     }
 
     // Setup the accessory

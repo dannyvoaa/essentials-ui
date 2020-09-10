@@ -16,6 +16,12 @@ class SignInSharedDataRepository {
   /// Consumed by: [ProfileCreationBloc].
   final Subject<List<String>> workgroups = createBehaviorSubject(initial: []);
 
+  /// The selected hubLocations.
+  ///
+  /// Set by: [HubLocationsSelectionBloc].
+  /// Consumed by: [ProfileCreationBloc].
+  final Subject<List<String>> hubLocations = createBehaviorSubject(initial: []);
+
   /// The selected Topics.
   ///
   /// Set by: [TopicsSelectionBloc].

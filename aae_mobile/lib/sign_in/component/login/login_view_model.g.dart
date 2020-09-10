@@ -14,17 +14,7 @@ class _$LoginViewModel extends LoginViewModel {
   @override
   final bool signInButtonEnabled;
   @override
-  final AaeValueCommand<String> onPasswordChanged;
-  @override
-  final AaeValueCommand<String> onUsernameChanged;
-  @override
-  final AaeCommand onBiometricAuthPressed;
-  @override
-  final BiometricType authType;
-  @override
   final bool showLoadingSpinner;
-  @override
-  final bool biometricAuthEnabled;
 
   factory _$LoginViewModel([void Function(LoginViewModelBuilder) updates]) =>
       (new LoginViewModelBuilder()..update(updates)).build();
@@ -33,12 +23,7 @@ class _$LoginViewModel extends LoginViewModel {
       {this.primaryButtonText,
       this.onSignInButtonPressed,
       this.signInButtonEnabled,
-      this.onPasswordChanged,
-      this.onUsernameChanged,
-      this.onBiometricAuthPressed,
-      this.authType,
-      this.showLoadingSpinner,
-      this.biometricAuthEnabled})
+      this.showLoadingSpinner})
       : super._() {
     if (primaryButtonText == null) {
       throw new BuiltValueNullFieldError('LoginViewModel', 'primaryButtonText');
@@ -51,26 +36,9 @@ class _$LoginViewModel extends LoginViewModel {
       throw new BuiltValueNullFieldError(
           'LoginViewModel', 'signInButtonEnabled');
     }
-    if (onPasswordChanged == null) {
-      throw new BuiltValueNullFieldError('LoginViewModel', 'onPasswordChanged');
-    }
-    if (onUsernameChanged == null) {
-      throw new BuiltValueNullFieldError('LoginViewModel', 'onUsernameChanged');
-    }
-    if (onBiometricAuthPressed == null) {
-      throw new BuiltValueNullFieldError(
-          'LoginViewModel', 'onBiometricAuthPressed');
-    }
-    if (authType == null) {
-      throw new BuiltValueNullFieldError('LoginViewModel', 'authType');
-    }
     if (showLoadingSpinner == null) {
       throw new BuiltValueNullFieldError(
           'LoginViewModel', 'showLoadingSpinner');
-    }
-    if (biometricAuthEnabled == null) {
-      throw new BuiltValueNullFieldError(
-          'LoginViewModel', 'biometricAuthEnabled');
     }
   }
 
@@ -90,32 +58,17 @@ class _$LoginViewModel extends LoginViewModel {
         primaryButtonText == other.primaryButtonText &&
         onSignInButtonPressed == _$dynamicOther.onSignInButtonPressed &&
         signInButtonEnabled == other.signInButtonEnabled &&
-        onPasswordChanged == _$dynamicOther.onPasswordChanged &&
-        onUsernameChanged == _$dynamicOther.onUsernameChanged &&
-        onBiometricAuthPressed == _$dynamicOther.onBiometricAuthPressed &&
-        authType == other.authType &&
-        showLoadingSpinner == other.showLoadingSpinner &&
-        biometricAuthEnabled == other.biometricAuthEnabled;
+        showLoadingSpinner == other.showLoadingSpinner;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc($jc(0, primaryButtonText.hashCode),
-                                    onSignInButtonPressed.hashCode),
-                                signInButtonEnabled.hashCode),
-                            onPasswordChanged.hashCode),
-                        onUsernameChanged.hashCode),
-                    onBiometricAuthPressed.hashCode),
-                authType.hashCode),
-            showLoadingSpinner.hashCode),
-        biometricAuthEnabled.hashCode));
+            $jc($jc(0, primaryButtonText.hashCode),
+                onSignInButtonPressed.hashCode),
+            signInButtonEnabled.hashCode),
+        showLoadingSpinner.hashCode));
   }
 
   @override
@@ -124,12 +77,7 @@ class _$LoginViewModel extends LoginViewModel {
           ..add('primaryButtonText', primaryButtonText)
           ..add('onSignInButtonPressed', onSignInButtonPressed)
           ..add('signInButtonEnabled', signInButtonEnabled)
-          ..add('onPasswordChanged', onPasswordChanged)
-          ..add('onUsernameChanged', onUsernameChanged)
-          ..add('onBiometricAuthPressed', onBiometricAuthPressed)
-          ..add('authType', authType)
-          ..add('showLoadingSpinner', showLoadingSpinner)
-          ..add('biometricAuthEnabled', biometricAuthEnabled))
+          ..add('showLoadingSpinner', showLoadingSpinner))
         .toString();
   }
 }
@@ -153,34 +101,10 @@ class LoginViewModelBuilder
   set signInButtonEnabled(bool signInButtonEnabled) =>
       _$this._signInButtonEnabled = signInButtonEnabled;
 
-  AaeValueCommand<String> _onPasswordChanged;
-  AaeValueCommand<String> get onPasswordChanged => _$this._onPasswordChanged;
-  set onPasswordChanged(AaeValueCommand<String> onPasswordChanged) =>
-      _$this._onPasswordChanged = onPasswordChanged;
-
-  AaeValueCommand<String> _onUsernameChanged;
-  AaeValueCommand<String> get onUsernameChanged => _$this._onUsernameChanged;
-  set onUsernameChanged(AaeValueCommand<String> onUsernameChanged) =>
-      _$this._onUsernameChanged = onUsernameChanged;
-
-  AaeCommand _onBiometricAuthPressed;
-  AaeCommand get onBiometricAuthPressed => _$this._onBiometricAuthPressed;
-  set onBiometricAuthPressed(AaeCommand onBiometricAuthPressed) =>
-      _$this._onBiometricAuthPressed = onBiometricAuthPressed;
-
-  BiometricType _authType;
-  BiometricType get authType => _$this._authType;
-  set authType(BiometricType authType) => _$this._authType = authType;
-
   bool _showLoadingSpinner;
   bool get showLoadingSpinner => _$this._showLoadingSpinner;
   set showLoadingSpinner(bool showLoadingSpinner) =>
       _$this._showLoadingSpinner = showLoadingSpinner;
-
-  bool _biometricAuthEnabled;
-  bool get biometricAuthEnabled => _$this._biometricAuthEnabled;
-  set biometricAuthEnabled(bool biometricAuthEnabled) =>
-      _$this._biometricAuthEnabled = biometricAuthEnabled;
 
   LoginViewModelBuilder();
 
@@ -189,12 +113,7 @@ class LoginViewModelBuilder
       _primaryButtonText = _$v.primaryButtonText;
       _onSignInButtonPressed = _$v.onSignInButtonPressed;
       _signInButtonEnabled = _$v.signInButtonEnabled;
-      _onPasswordChanged = _$v.onPasswordChanged;
-      _onUsernameChanged = _$v.onUsernameChanged;
-      _onBiometricAuthPressed = _$v.onBiometricAuthPressed;
-      _authType = _$v.authType;
       _showLoadingSpinner = _$v.showLoadingSpinner;
-      _biometricAuthEnabled = _$v.biometricAuthEnabled;
       _$v = null;
     }
     return this;
@@ -220,12 +139,7 @@ class LoginViewModelBuilder
             primaryButtonText: primaryButtonText,
             onSignInButtonPressed: onSignInButtonPressed,
             signInButtonEnabled: signInButtonEnabled,
-            onPasswordChanged: onPasswordChanged,
-            onUsernameChanged: onUsernameChanged,
-            onBiometricAuthPressed: onBiometricAuthPressed,
-            authType: authType,
-            showLoadingSpinner: showLoadingSpinner,
-            biometricAuthEnabled: biometricAuthEnabled);
+            showLoadingSpinner: showLoadingSpinner);
     replace(_$result);
     return _$result;
   }

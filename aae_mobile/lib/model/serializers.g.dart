@@ -10,9 +10,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ArticleBody.serializer)
       ..add(Docs.serializer)
       ..add(Event.serializer)
+      ..add(HubLocation.serializer)
       ..add(NewsArticle.serializer)
-      ..add(NewsFeed.serializer)
       ..add(NewsFeedItem.serializer)
+      ..add(NewsFeedJsonList.serializer)
+      ..add(Nfdocs.serializer)
       ..add(PerformanceStats.serializer)
       ..add(Pnr.serializer)
       ..add(Profile.serializer)
@@ -29,12 +31,15 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(NewsFeedItem)]),
           () => new ListBuilder<NewsFeedItem>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Pnr)]),
-          () => new ListBuilder<Pnr>())
+          const FullType(BuiltList, const [const FullType(NewsFeedJsonList)]),
+          () => new ListBuilder<NewsFeedJsonList>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(RecognitionRegister)]),
           () => new ListBuilder<RecognitionRegister>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

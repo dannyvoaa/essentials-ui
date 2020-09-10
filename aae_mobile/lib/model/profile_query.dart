@@ -5,7 +5,8 @@ class ProfileQuery {
   ProfileQuery({this.docs, this.bookmark});
 
   ProfileQuery.fromJson(Map<String, dynamic> json) {
-    if (json['docs'] != null) {
+    //if (json['docs'] != null) {
+    if (json['docs'].length != 0) {
       docs = new List<Docss>();
       json['docs'].forEach((v) {
         docs.add(new Docss.fromJson(v));
@@ -45,23 +46,29 @@ class Docss {
 }
 
 class Preferences {
-  String location;
+  String userlocation;
   List<String> topics;
   List<String> workgroup;
+  List<String> hubLocation;
 
-  Preferences({this.location, this.topics, this.workgroup});
+  Preferences({this.userlocation, this.topics, this.workgroup, this.hubLocation});
 
   Preferences.fromJson(Map<String, dynamic> json) {
-    location = json['location'];
-    topics = json['topics'].cast<String>();
+    userlocation = json['userlocation'];
     workgroup = json['workgroup'].cast<String>();
+    workgroup.sort();
+    hubLocation = json['hubLocation'].cast<String>();
+    hubLocation.sort();
+    topics = json['topics'].cast<String>();
+    topics.sort();
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['location'] = this.location;
-    data['topics'] = this.topics;
+    data['userlocation'] = this.userlocation;
     data['workgroup'] = this.workgroup;
+    data['hubLocation'] = this.hubLocation;
+    data['topics'] = this.topics;
     return data;
   }
 }
