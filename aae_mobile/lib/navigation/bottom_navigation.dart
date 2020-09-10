@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 /// Main navigation bar.
 
-enum MainPage { home, events, notifications, travel }
+enum MainPage { home, travel, events, notifications }
 
 const _labelTextStyle = TextStyle(
   fontFamily: 'AmericanSans',
