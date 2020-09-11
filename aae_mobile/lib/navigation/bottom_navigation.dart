@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 /// Main navigation bar.
 
-enum MainPage { home, travel, events, notifications }
+enum MainPage { home,  events, travel, notifications }
 
 const _labelTextStyle = TextStyle(
   fontFamily: 'AmericanSans',
@@ -22,20 +22,20 @@ class BottomNavigation extends StatelessWidget {
   static final selectedColor = AaeColors.blue;
   static final deselectedColor = AaeColors.darkGray;
 
+  //if working on travel feature uncomment lines 30, 37, 69.  Please do not stage these changes when merging into develop.
+
   static final Map<MainPage, String> tabText = {
     MainPage.home: 'Home',
-  //  MainPage.notifications: 'Notifications',
-    MainPage.travel: 'Trips',
     MainPage.events: 'Calendar',
-    //  MainPage.notifications: 'Notifications',
+//    MainPage.travel: 'Trips',
+//    MainPage.notifications: 'Notifications',
   };
 
   static final Map<MainPage, IconData> tabIconData = {
     MainPage.home: AaeIcons.home,
-  //  MainPage.notifications: AaeIcons.notifications,
-    MainPage.travel: AaeIcons.travel,
     MainPage.events: AaeIcons.calendar,
-    //  MainPage.notifications: AaeIcons.notifications,
+//    MainPage.travel: AaeIcons.travel,
+//    MainPage.notifications: AaeIcons.notifications,
   };
 
 //  void _closeDrawer() {
@@ -65,10 +65,9 @@ class BottomNavigation extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         items: [
           _buildItem(MainPage.home, context, 24, 2.0),
-       //   _buildItem(MainPage.notifications, context, 18, 6.0),
-          _buildItem(MainPage.travel, context, 18, 5.0),
           _buildItem(MainPage.events, context, 24, 2.0),
-          //   _buildItem(MainPage.notifications, context, 18, 6.0),
+//          _buildItem(MainPage.travel, context, 18, 5.0),
+//          _buildItem(MainPage.notifications, context, 18, 6.0),
         ],
 //        onTap: _scaffoldKey.currentState.openDrawer,
 //        onTap: (index) => [_onSelectTab(MainPage.values[index]), Navigator.of(context).pop()],
