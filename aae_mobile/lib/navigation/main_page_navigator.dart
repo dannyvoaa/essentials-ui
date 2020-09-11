@@ -7,6 +7,7 @@ import 'package:aae/settings/page/workgroup_page.dart';
 import 'package:aae/travel/page/travel_page.dart';
 import 'package:aae/settings/page/settings_page.dart';
 import 'package:aae/settings/page/topics_page.dart';
+import 'package:aae/travel/page/travel_page.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
