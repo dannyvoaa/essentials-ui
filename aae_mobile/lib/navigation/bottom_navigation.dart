@@ -27,6 +27,7 @@ class BottomNavigation extends StatelessWidget {
   //  MainPage.notifications: 'Notifications',
     MainPage.travel: 'Trips',
     MainPage.events: 'Calendar',
+    //  MainPage.notifications: 'Notifications',
   };
 
   static final Map<MainPage, IconData> tabIconData = {
@@ -34,6 +35,7 @@ class BottomNavigation extends StatelessWidget {
   //  MainPage.notifications: AaeIcons.notifications,
     MainPage.travel: AaeIcons.travel,
     MainPage.events: AaeIcons.calendar,
+    //  MainPage.notifications: AaeIcons.notifications,
   };
 
 //  void _closeDrawer() {
@@ -66,6 +68,7 @@ class BottomNavigation extends StatelessWidget {
        //   _buildItem(MainPage.notifications, context, 18, 6.0),
           _buildItem(MainPage.travel, context, 18, 5.0),
           _buildItem(MainPage.events, context, 24, 2.0),
+          //   _buildItem(MainPage.notifications, context, 18, 6.0),
         ],
 //        onTap: _scaffoldKey.currentState.openDrawer,
 //        onTap: (index) => [_onSelectTab(MainPage.values[index]), Navigator.of(context).pop()],
