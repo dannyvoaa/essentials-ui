@@ -25,20 +25,23 @@ class TravelListTile<T> extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.only(
             bottom: AaeDimens.smallCardVerticalContentPadding),
-        child: Container(
-          child: ListTile(
-            title: buttonContent,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(3.0),
-            color: const Color(0xffffffff),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0x29131313),
-                offset: Offset(0, 2),
-                blurRadius: 3,
-              ),
-            ],
+        child: InkWell(
+          onTap: (){},
+          child: Container(
+            child: ListTile(
+              title: buttonContent,
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(3.0),
+              color: const Color(0xffffffff),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0x29131313),
+                  offset: Offset(0, 2),
+                  blurRadius: 3,
+                ),
+              ],
+            ),
           ),
         ));
   }
