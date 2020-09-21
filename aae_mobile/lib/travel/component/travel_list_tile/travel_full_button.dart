@@ -12,9 +12,10 @@ import 'package:flutter/material.dart';
 
 /// A app bar for the news feed page.
 class TravelListTile<T> extends StatelessWidget {
-  TravelListTile({this.buttonContent});
+  TravelListTile({this.buttonContent, this.detailNav});
 
   final Widget buttonContent;
+  final Widget detailNav;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,9 @@ class TravelListTile<T> extends StatelessWidget {
         padding: const EdgeInsets.only(
             bottom: AaeDimens.smallCardVerticalContentPadding),
         child: InkWell(
-          onTap: (){},
+          onTap: (){
+            print('tapped...');
+          },
           child: Container(
             child: ListTile(
               title: buttonContent,

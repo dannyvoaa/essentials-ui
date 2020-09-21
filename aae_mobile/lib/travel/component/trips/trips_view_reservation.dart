@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'trips_view_model.dart';
 
 class TripsReservation extends StatelessWidget {
-  final TripsReservationModel viewModel;
-
-  TripsView({
-    @required this.viewModel,
-  });
+//  final TripsReservationModel viewModel;
+//
+//  TripsView({
+//    @required this.viewModel,
+//  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,8 @@ class TripsReservation extends StatelessWidget {
               //?
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                TripsCollection(viewModel: this.viewModel, header: 'Current trips'),
-                TripsCollection(viewModel: null, header: 'Tools')
+                Text('test'),
+                Text('test'),
               ],
             )),
         padding: const EdgeInsets.all(16.0));

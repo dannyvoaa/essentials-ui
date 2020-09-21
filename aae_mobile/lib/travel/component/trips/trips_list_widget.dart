@@ -4,6 +4,7 @@ import 'package:aae/travel/component/travel_list_tile/travel_full_button.dart';
 import 'package:aae/travel/component/trips/tools_button.dart';
 import 'package:aae/travel/component/trips/trips_button.dart';
 import 'package:aae/travel/component/trips/trips_view_model.dart';
+import 'package:aae/travel/component/trips/trips_view_reservation.dart';
 import 'package:flutter/material.dart';
 
 class TripsListWidget extends StatelessWidget {
@@ -30,6 +31,7 @@ class TripsListWidget extends StatelessWidget {
               itemCount: viewModel.pnrs.length,
               itemBuilder: (context, index) {
                 return TravelListTile(
+                  detailNav: TripsReservation(),
                   buttonContent: TripsButton(
                       pnr: this.viewModel.pnrs[index], context: context),
                 );
