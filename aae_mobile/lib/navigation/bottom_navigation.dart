@@ -83,7 +83,7 @@ class BottomNavigation extends StatelessWidget {
           height: 20,
 //          width: 1000,
           padding: EdgeInsets.only(top: offset,),
-//          alignment: Alignment.bottomCenter,
+          alignment: Alignment.bottomCenter,
           child: Container(
             height:80,
 //            width:1000,
@@ -97,11 +97,14 @@ class BottomNavigation extends StatelessWidget {
         ),
         title: Container(
           height: 24,
+padding: EdgeInsets.all(0),
+//          width: double.infinity,
+          alignment: Alignment.topCenter,
           child: Padding(
             padding: const EdgeInsets.only(top:10),
             child: Text(
               tabText[page],
-//              'Test Text Test Text',
+//              'Home',
               style: _labelTextStyle.copyWith(color: tabColor),
               textAlign: TextAlign.center,
             ),

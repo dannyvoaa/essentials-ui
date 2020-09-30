@@ -356,7 +356,7 @@ class AaeTextStyles {
   static TextStyle eventDate({bool boolDefaultHeight = false}) {
     TextStyle textStyle = t2.copyWith(
       color: AaeColors.darkGray,
-      fontSize: 12,
+      fontSize: 14,
     );
 
     // Default style
