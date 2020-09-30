@@ -12,6 +12,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_html/style.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 class NewsArticleComponent extends StatelessWidget {
   final Map<String, String> args;
@@ -60,7 +61,9 @@ class NewsArticleComponent extends StatelessWidget {
 
     return Scaffold(
       endDrawer: AaeDrawer(),
-      appBar: AppBar(),
+      appBar: GradientAppBar(
+        gradient: AaeColors.appBarGradient,
+      ),
       body: SafeArea(
         child: MediaQuery(
           data: MediaQueryData(textScaleFactor: 1.0),

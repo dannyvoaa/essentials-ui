@@ -73,6 +73,7 @@ flutter:
 
   assets:
     - assets/common/
+    - assets/svg/
     - assets/static_records/RecognitionHistory.json
     - assets/static_records/image.jpeg
     - assets/common/sign_in_background.png
