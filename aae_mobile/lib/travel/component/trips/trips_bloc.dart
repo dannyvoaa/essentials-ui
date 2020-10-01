@@ -7,12 +7,13 @@ import 'package:aae/rx/rx_util.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:inject/inject.dart';
 import 'package:logging/logging.dart';
+import 'package:get/get.dart';
 
 /// BloC for the [TripsComponent].
 ///
 /// Exposes a [TripsViewModel] for that component to use.
 
-class TripsBloc {
+class TripsBloc extends GetxController {
   static final _log = Logger('TripsBloc');
   final TravelRepository _travelRepository;
 
