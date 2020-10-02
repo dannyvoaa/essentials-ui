@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>492576401971-l3eivon9av31sd7rqcqt16vh9acf8nte.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.492576401971-l3eivon9av31sd7rqcqt16vh9acf8nte</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDE6aBEBecLNvHE1U2eS4RoMwZBeM8rKc8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>492576401971</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>american-essentials.aae</string>
+	<key>PROJECT_ID</key>
+	<string>aa-essentials</string>
+	<key>STORAGE_BUCKET</key>
+	<string>aa-essentials.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:492576401971:ios:41b647dc30cc9e7076d146</string>
+	<key>DATABASE_URL</key>
+	<string>https://aa-essentials.firebaseio.com</string>
+</dict>
+</plist>
