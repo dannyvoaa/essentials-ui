@@ -31,7 +31,7 @@ class TripsListWidget extends StatelessWidget {
               itemCount: viewModel.pnrs.length,
               itemBuilder: (context, index) {
                 return TravelListTile(
-                  detailNav: TripsReservation(),
+                  detailNav: TripsReservationView(),
                   buttonContent: TripsButton(
                       pnr: this.viewModel.pnrs[index], context: context),
                 );
