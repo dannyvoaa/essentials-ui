@@ -301,42 +301,6 @@ class EventsListView extends StatelessWidget {
                                           ],
                                         ),
                                       ),
-                                      Container(
-//                                      child: Text('test...'),
-                                        child: Padding(
-                                          padding: EdgeInsets.all(24),
-                                          child: SvgPicture.asset(
-                                            'assets/svg/ribbon-new.svg',
-//                                          height: 200,
-//                                          width: 200,
-                                            color: AaeColors.orange,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-//                                      child: Text('test...'),
-                                        child: Padding(
-                                          padding: EdgeInsets.all(24),
-                                          child: SvgPicture.asset(
-                                            'assets/svg/gatsby.svg',
-//                                          height: 200,
-//                                          width: 200,
-                                            color: AaeColors.darkRed,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-//                                      child: Text('test...'),
-                                        child: Padding(
-                                          padding: EdgeInsets.all(24),
-                                          child: SvgPicture.asset(
-                                            'assets/svg/instagram.svg',
-                                          height: 100,
-                                          width: 100,
-                                            color: AaeColors.lightBlue,
-                                          ),
-                                        ),
-                                      ),
                                     ],
                                   ),
                                 ),

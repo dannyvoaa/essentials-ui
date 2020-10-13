@@ -95,9 +95,10 @@ class BottomNavigation extends StatelessWidget {
             ),
           ),
         ),
+//        label: tabText[page],
         title: Container(
           height: 24,
-padding: EdgeInsets.all(0),
+          padding: EdgeInsets.all(0),
 //          width: double.infinity,
           alignment: Alignment.topCenter,
           child: Padding(

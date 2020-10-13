@@ -11,6 +11,9 @@ import 'package:aae/theme/typography.dart';
 import 'package:aae/travel/component/trips/trips_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:aae/travel/component/trips/trips_navigator.dart';
+import 'package:aae/travel/component/trips/trips_view_reservation.dart';
+
 
 /// A app bar for the news feed page.
 class TravelListTile<T> extends StatelessWidget {
@@ -32,7 +35,8 @@ class TravelListTile<T> extends StatelessWidget {
           onTap: (){
             print('tapped...');
 //            Navigator.pushNamed(context, '/second');
-            Get.toNamed('/second');
+//            Get.toNamed('/resview');
+          Get.to(TripsReservationView());
           },
           child: Container(
             child: ListTile(

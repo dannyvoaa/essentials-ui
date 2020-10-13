@@ -3,6 +3,7 @@ import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
 import 'package:aae/theme/typography.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/html_parser.dart';
 import 'package:intl/intl.dart';
 
 /// A view that shows a calendar on the events page.
@@ -235,6 +236,8 @@ class CalendarView extends StatelessWidget {
             : '${(index + 1) - viewModel.firstWeekdayInMonth}';
 
         return InkWell(
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
           child: Stack(
             children: <Widget>[
               Container(
