@@ -235,6 +235,8 @@ class CalendarView extends StatelessWidget {
             : '${(index + 1) - viewModel.firstWeekdayInMonth}';
 
         return InkWell(
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
           child: Stack(
             children: <Widget>[
               Container(
