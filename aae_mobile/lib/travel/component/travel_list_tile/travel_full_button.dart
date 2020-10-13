@@ -34,9 +34,9 @@ class TravelListTile<T> extends StatelessWidget {
         child: InkWell(
           onTap: (){
             print('tapped...');
-//            Navigator.pushNamed(context, '/second');
+            Navigator.pushNamed(context, '/resview');
 //            Get.toNamed('/resview');
-          Get.to(TripsReservationView());
+//          Get.to(TripsReservationView());
           },
           child: Container(
             child: ListTile(

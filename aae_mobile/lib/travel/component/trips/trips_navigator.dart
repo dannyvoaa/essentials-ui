@@ -11,11 +11,11 @@ class TripsNavigator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Navigator(
-      initialRoute: '/tripsview',
+      initialRoute: '/',
       onGenerateRoute: (RouteSettings settings) {
         WidgetBuilder builder;
         switch (settings.name) {
-          case '/tripsview':
+          case '/':
             builder = (BuildContext _) => TripsComponent();
 //            MaterialPageRoute(builder: (_) => TripsComponent());
             break;

@@ -25,15 +25,22 @@ class TripsReservationView extends StatelessWidget {
           alignment: Alignment.topLeft,
           child: Padding(
             padding: const EdgeInsets.only(bottom: 5),
-            child: Text(
-              "test",
-              style: TextStyle(
-                fontSize: 15,
-                color: AaeColors.blue,
-                fontWeight: FontWeight.w700,
-                height: 2.6666666666666665,
+            child: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Container(
+                child: Text(
+                  "test",
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: AaeColors.blue,
+                    fontWeight: FontWeight.w700,
+                    height: 2.6666666666666665,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
               ),
-              textAlign: TextAlign.left,
             ),
           )),
 //          padding: const EdgeInsets.all(16.0)),
