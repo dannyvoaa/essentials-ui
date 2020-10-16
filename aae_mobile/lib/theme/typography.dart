@@ -199,6 +199,19 @@ class AaeTextStyles {
     return textStyle;
   }
 
+  /// Travel module text styles
+  static const locatorInfoHeading = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    color: AaeColors.lightGray,
+  );
+
+  static const locatorInfo = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+    color: AaeColors.gray,
+  );
+
   /// Calendar page summary blocks
   static TextStyle calendarSummary({
     bool boolDefaultHeight = false,
