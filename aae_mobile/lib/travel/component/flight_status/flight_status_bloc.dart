@@ -1,3 +1,4 @@
+import 'package:aae/model/flight_status.dart';
 import 'package:aae/model/pnr.dart';
 import 'package:aae/provided_service.dart';
 import 'package:aae/travel/component/flight_status/flight_status_view_model.dart';
@@ -17,21 +18,13 @@ class FlightStatusBloc {
   final TravelRepository _travelRepository;
 
   Source<FlightStatusViewModel> get viewModel =>
-      toSource(combineLatest(_travelRepository.pnrs, _createViewModel));
+      toSource(combineLatest(_travelRepository.flightStatus, _createViewModel));
 
   @provide
   FlightStatusBloc(this._travelRepository);
 
-  FlightStatusViewModel _createViewModel(BuiltList<Pnr> pnrs) {
-    pnrs = _sortByFirstDepartureDate(pnrs);
-    return FlightStatusViewModel((b) => b..pnrs.addAll(pnrs));
-  }
-
-  BuiltList<Pnr> _sortByFirstDepartureDate(BuiltList<Pnr> pnrs) {
-    List<Pnr> pnrsList = pnrs.toList();
-    pnrsList.sort((a, b) => a.firstDepartureDateTime.compareTo(b.firstDepartureDateTime));
-    pnrs = pnrsList.toBuiltList();
-    return pnrs;
+  FlightStatusViewModel _createViewModel(FlightStatus flightStatus) {
+    return FlightStatusViewModel((b) => b..flightStatus);
   }
 }
 

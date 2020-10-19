@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:aae/model/flight_status.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:aae/model/trips.dart';
 import 'package:http/http.dart' as http;
@@ -13,6 +14,9 @@ class TravelServiceApi {
 
   final travelReservationsEndpoint =
       'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/travel/reservations';
+
+  final travelFlightStatusEndpoint =
+      'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/travel/flightstatus/1085/2020-10-06';
 
   Map<String, String> _getRequestHeaders(String employeeId) {
     String username = employeeId;
@@ -31,9 +35,21 @@ class TravelServiceApi {
   }
 
   static Trips _tripsToModel(String tripsJson) {
+
+    _log.info(jsonDecode(tripsJson));
+
     Trips trips =
         serializers.deserializeWith(Trips.serializer, jsonDecode(tripsJson));
     return trips;
+  }
+
+  static FlightStatus _flightStatusToModel(String flightStatusJson) {
+    _log.info(jsonDecode(flightStatusJson));
+
+    _log.info(jsonDecode(flightStatusJson));
+
+    FlightStatus flightStatus = serializers.deserializeWith(FlightStatus.serializer, jsonDecode(flightStatusJson));
+    return flightStatus;
   }
 
   Future<Trips> getReservations(String employeeId) async {
@@ -50,6 +66,31 @@ class TravelServiceApi {
     } else {
       throw Exception(
           'Failed to load the trips\n ${response.body} - ${response.statusCode}');
+    }
+  }
+
+  //getFlightStatus(1085, '2020-10-06')
+
+  Future<FlightStatus> getFlightStatus(
+      String employeeId, String flightNumber, String date) async {
+    Map<String, String> headers = _getRequestHeaders(employeeId);
+    final response =
+        await httpClient.get(travelFlightStatusEndpoint, headers: headers);
+    if (response.statusCode == 200) {
+      _log.info("Flight Status API request successful");
+      _log.info(response.body);
+      FlightStatus flightStatus;
+      try {
+        flightStatus = _flightStatusToModel(response.body);
+      } catch(e, s){
+        _log.info("FAILED BECAUSE OF", e, s);
+        _log.info(s);
+
+      }
+      return flightStatus;
+    } else {
+      throw Exception(
+          'Failed to load the flightStatus\n ${response.body} - ${response.statusCode}');
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:aae/model/article_body.dart';
 import 'package:aae/model/biometric_auth.dart';
+import 'package:aae/model/gate_time_flight_info.dart';
 import 'package:aae/model/news_article.dart';
 import 'package:aae/model/docs.dart';
 import 'package:aae/model/event.dart';
@@ -28,6 +29,8 @@ import 'package:aae/model/trips.dart';
 
 import 'package:aae/model/nfdocs.dart';
 
+import 'flight_status.dart';
+
 
 part 'serializers.g.dart';
 
@@ -37,6 +40,8 @@ part 'serializers.g.dart';
   RecognitionHistory,
   Trips,
   Pnr,
+  FlightStatus,
+  GateTimeFlightInfo,
   Profile,
   Workgroup,
   HubLocation,

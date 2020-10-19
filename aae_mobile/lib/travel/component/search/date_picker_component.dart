@@ -1,22 +1,28 @@
+import 'package:aae/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 
 class DatePickerComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MyHomePage(title: 'Date Picker Timeline Demo');
+    return DatePickerPage();
   }
 }
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
+class _SearchFormData {
+  String searchField1;
+  String searchField2;
+  DateTime searchDate;
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class DatePickerPage extends StatefulWidget {
+  DatePickerPage({Key key, this.searchFormData}) : super(key: key);
+  final _SearchFormData searchFormData;
+
+  @override
+  _DatePickerPageState createState() => _DatePickerPageState();
+}
+
+class _DatePickerPageState extends State<DatePickerPage> {
   DatePickerController _controller = DatePickerController();
 
   DateTime _selectedValue = DateTime.now();
@@ -28,30 +34,45 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(20),
-            child: DatePicker(
-              DateTime.now().add(Duration(days: -1)),
-              width: 60,
-              height: 80,
-              controller: _controller,
-              initialSelectedDate: DateTime.now(),
-              selectionColor: Colors.black,
-              selectedTextColor: Colors.white,
-              daysCount: 3,
-              onDateChange: (date) {
-                setState(() {
-                  _selectedValue = date;
-                });
-              },
+    return Container(
+        padding: EdgeInsets.only(top: 20, bottom: 20),
+        child: Column(
+          children: <Widget>[
+            Text(
+              "Date",
+              textAlign: TextAlign.left,
             ),
-          ),
-          Text(_selectedValue.toString()),
-        ],
-      ),
-    );
+            Expanded(
+                child: DatePicker(
+                  DateTime.now().add(Duration(days: -1)),
+                  controller: _controller,
+                  initialSelectedDate: DateTime.now(),
+                  selectionColor: Color(0xffebeff0),
+                  selectedTextColor: AaeColors.black,
+                  monthTextStyle: TextStyle(
+                    fontFamily: 'AmericanSans',
+                    fontSize: 13,
+                    color: AaeColors.lightGray,
+                  ),
+                  dateTextStyle: TextStyle(
+                    fontFamily: 'AmericanSans Medium',
+                    fontSize: 26,
+                    color: AaeColors.black,
+                  ),
+                  dayTextStyle: TextStyle(
+                    fontFamily: 'AmericanSans',
+                    fontSize: 13,
+                    color: AaeColors.lightGray,
+                  ),
+                  daysCount: 3,
+                  onDateChange: (date) {
+                    setState(() {
+                      _selectedValue = date;
+                    });
+                  },
+                )),
+          ],
+          crossAxisAlignment: CrossAxisAlignment.start,
+        ));
   }
 }

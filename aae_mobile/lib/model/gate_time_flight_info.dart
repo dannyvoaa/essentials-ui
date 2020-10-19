@@ -14,25 +14,39 @@ abstract class GateTimeFlightInfo
 
   factory GateTimeFlightInfo([updates(GateTimeFlightInfoBuilder b)]) =
   _$GateTimeFlightInfo;
-  
+
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'actualTime')
   String get actualTime;
 
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'airportCode')
   String get airportCode;
 
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'estimatedTime')
   String get estimatedTime;
 
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'gate')
   String get gate;
 
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'scheduledTime')
   String get scheduledTime;
 
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'status')
   String get status;
 
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'terminal')
   String get terminal;
 

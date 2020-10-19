@@ -15,37 +15,59 @@ abstract class FlightStatus
 
   factory FlightStatus([updates(FlightStatusBuilder b)]) =
   _$FlightStatus;
-  
+
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'baggageClaimArea')
   String get baggageClaimArea;
 
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'carrierCode')
   String get carrierCode;
 
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'carrierName')
   String get carrierName;
 
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'codeShare')
-  String get codeShare;
+  bool get codeShare;
 
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'dateChange')
-  String get dateChange;
+  bool get dateChange;
 
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'flightNumber')
   String get flightNumber;
 
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'isWifiAvailable')
-  String get isWifiAvailable;
+  bool get isWifiAvailable;
 
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'operatingCarrierCode')
   String get operatingCarrierCode;
 
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'destinationInfo')
   GateTimeFlightInfo get destinationInfo;
 
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'originInfo')
   GateTimeFlightInfo get originInfo;
 
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'status')
   String get status;
 
