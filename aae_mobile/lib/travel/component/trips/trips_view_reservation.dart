@@ -1,5 +1,6 @@
 import 'package:aae/common/widgets/drawer/aae_drawer.dart';
 import 'package:aae/navigation/app_scaffold.dart';
+import 'package:aae/theme/typography.dart';
 import 'package:aae/travel/component/trips/trips_collection.dart';
 import 'package:flutter/material.dart';
 import 'trips_view_model.dart';
@@ -18,7 +19,9 @@ class TripsReservationView extends StatelessWidget {
 //  final Map<String, String> args;
 
   TripsReservationView({
-    this.viewModel, this.origin, this.destination,
+    this.viewModel,
+    this.origin,
+    this.destination,
   });
 
   @override
@@ -41,20 +44,26 @@ class TripsReservationView extends StatelessWidget {
                   padding: EdgeInsets.only(
                       bottom: AaeDimens.smallCardVerticalContentPadding),
                   child: SizedBox(
-                    height: 68.00,
+                    height: 48.00,
                     child: Column(children: <Widget>[
                       Container(
                         alignment: Alignment.topCenter,
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 5),
-                          child: Text('DFW - MAD 11/22/2020'),
+                          child: Text(
+                            'DFW - MAD 11/22/2020',
+                            style: AaeTextStyles.reservationHeading,
+                          ),
                         ),
                       ),
                       Container(
                         alignment: Alignment.topCenter,
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 5),
-                          child: Text('Nov 22 - Nov 30 Boards 10:45 AM'),
+                          child: Text(
+                            'Nov 22 - Nov 30 Boards 10:45 AM',
+                            style: AaeTextStyles.reservationSubHeading,
+                          ),
                         ),
                       ),
                     ]),
@@ -68,7 +77,7 @@ class TripsReservationView extends StatelessWidget {
                 child: TripsPassengerPanel(),
               ),
               Container(
-                child:TripsCollection(viewModel: null, header: 'Tools'),
+                child: TripsCollection(viewModel: null, header: 'Tools'),
               ),
               Container(
                 child: CancelSlider(),
@@ -99,25 +108,28 @@ class CancelSlider extends StatelessWidget {
       label: Text(
         "Slide to cancel trip",
         style: TextStyle(
-            color: AaeColors.white,
-            fontWeight: FontWeight.w500,
-            fontSize: 16,
+          color: AaeColors.white,
+          fontWeight: FontWeight.w500,
+          fontSize: 16,
 //          margin: marginOnly(right: 12),
         ),
       ),
       icon: Center(
           child: Icon(
-            Icons.arrow_forward_sharp,
-            color: AaeColors.mediumGray,
-            size: 26.0,
-            semanticLabel: 'Slide to cancel trip',
-          )),
+        Icons.arrow_forward_sharp,
+        color: AaeColors.mediumGray,
+        size: 26.0,
+        semanticLabel: 'Slide to cancel trip',
+      )),
 
       ///Change All the color and size from here.
       width: 300,
       height: 50,
       buttonSize: 44,
-      boxShadow: BoxShadow(color: AaeColors.darkGray,blurRadius: 4,),
+      boxShadow: BoxShadow(
+        color: AaeColors.darkGray,
+        blurRadius: 4,
+      ),
       radius: 10,
       buttonColor: AaeColors.white,
       backgroundColor: AaeColors.mediumGray,
@@ -126,8 +138,7 @@ class CancelSlider extends StatelessWidget {
       shimmer: false,
       vibrationFlag: true,
       dismissible: false,
-      alignLabel: 	Alignment(0, 0),
+      alignLabel: Alignment(0, 0),
     );
   }
 }
-

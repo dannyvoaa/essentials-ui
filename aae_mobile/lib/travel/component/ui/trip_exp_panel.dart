@@ -87,7 +87,7 @@ class RouteSummary extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           RouteSummaryColumn('11:15 AM', 'DFW'),
-          Icon(Icons.arrow_forward_sharp),
+          Icon(Icons.arrow_forward_sharp, color: AaeColors.gray,),
           RouteSummaryColumn('1:20 PM', 'MAD'),
         ],
       ),
@@ -107,7 +107,7 @@ class RouteSummaryColumn extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(time),
+        Text(time, style:AaeTextStyles.timeSummary,),
         Text(location),
       ],
     );
@@ -138,14 +138,61 @@ Widget _routeDetails(BuildContext context) {
 class RouteDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        RouteDetail('Dallas/Fort Worth International Airport (DFW)',
-            '12hr 5min', true, 'Main', 'Airbus A321', true),
-        RouteDetail('Dallas/Fort Worth International Airport (DFW)',
-            '12hr 5min', true, 'Main', 'Airbus A321', true),
-        Text('Madrid-Barajas Adolfo Suarez Airport (MAD)'),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(top:12,),
+      child: Column(
+        children: <Widget>[
+          RouteDetail('Dallas/Fort Worth International Airport (DFW)',
+              '12hr 5min', true, 'Main', 'Airbus A321', true),
+          RouteDetail('Paris Charles de Gaulle Airport (CDG)',
+              '12hr 5min', true, 'Main', 'Airbus A321', true),
+          RouteDetailEnd('Madrid-Barajas Adolfo Suarez Airport (MAD)'),
+        ],
+      ),
+    );
+  }
+}
+
+class RouteDetailEnd extends StatelessWidget {
+  final String hub;
+  const RouteDetailEnd(this.hub);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(
+        right: 20,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            alignment: Alignment.topCenter,
+            height: 12,
+            width: 12,
+            padding: EdgeInsets.only(top: 20),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: AaeColors.ultraLightGray,
+                width: 1,
+              ),
+              color: AaeColors.white,
+              borderRadius: BorderRadius.all(
+                Radius.circular(20),
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Column(
+            children: [
+              Container(child: Text(hub, style:AaeTextStyles.hubDetailHeading)),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
@@ -172,13 +219,13 @@ class RouteDetail extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.topCenter,
-            height: 14,
-            width: 14,
-            padding: EdgeInsets.only(top:20),
+            height: 12,
+            width: 12,
+            padding: EdgeInsets.only(top: 20),
             decoration: BoxDecoration(
               border: Border.all(
-                color: AaeColors.blue,
-                width: 2,
+                color: AaeColors.ultraLightGray,
+                width: 1,
               ),
               color: AaeColors.white,
               borderRadius: BorderRadius.all(
@@ -186,38 +233,55 @@ class RouteDetail extends StatelessWidget {
               ),
             ),
             child: Align(
-              alignment: Alignment.topCenter,
-              child: OverflowBox(
-                minWidth: 0.0,
-                maxWidth: 2.0,
-                minHeight: 0.0,
-                maxHeight: 10.0,
-                child: Container(
-                  height:20,
-                  color: Colors.blue,
+//              alignment: const Alignment(0.0, 0.0),
+            alignment: Alignment.topCenter,
+              child: SizedBox(
+                width: 1.0,
+                height: 40.0,
+                child: OverflowBox(
+//              minWidth: 0.0,
+//              maxWidth: 2.0,
+//              minHeight: 0.0,
+                  maxHeight: 50.0,
+                  child: Container(
+                    padding: EdgeInsets.only(top:12,),
+//                    width: 1,
+//                    height: double.infinity,
+                    color: AaeColors.ultraLightGray,
+                  ),
                 ),
               ),
             ),
           ),
           SizedBox(
-            width:10,
+            width: 10,
           ),
           Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(hub),
-              Row(
-                children: [
-                  Text(duration),
-                  Text(String.fromCharCode(0x2022)),
-                  overnight
-                      ? Text('Overnight' + String.fromCharCode(0x2022))
-                      : null,
-                  Text(cabin),
-                  Text(String.fromCharCode(0x2022)),
-                  Text(equipment),
-                  wifi ? Text(String.fromCharCode(0x2022)) : null,
-                  wifi ? Icon(Icons.wifi) : null,
-                ],
+              Container(child: Text(hub, style:AaeTextStyles.hubDetailHeading)),
+              Padding(
+                padding: const EdgeInsets.only(top:16, bottom:16,),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(duration, style: AaeTextStyles.routeDetailHeading,),
+                    Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,),
+                    overnight
+                        ? Text('Overnight', style: AaeTextStyles.routeDetailHeading,)
+                        : null,
+                    overnight
+                        ? Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,)
+                        : null,
+                    Text(cabin, style: AaeTextStyles.routeDetailHeading,),
+                    Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,),
+                    Text(equipment, style: AaeTextStyles.routeDetailHeading,),
+                    wifi ? Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,) : null,
+                    wifi ? Icon(Icons.wifi, color:AaeColors.ultraLightGray, size: 12,) : null,
+                  ],
+                ),
               ),
             ],
           ),
@@ -238,7 +302,7 @@ class LocatorInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: AaeColors.bgLightGray,
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.only(left:20, right:20, top:8, bottom:8,),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -285,14 +349,23 @@ class DepartureStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final padding = EdgeInsets.all(20);
+    final padding = EdgeInsets.only(left:0, right:20,);
     return Container(
       padding: padding,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Text('1234 Departs in 1 hr 33 min'),
-          Text('ONTIME'),
+          Row(
+            children: [
+              Image(
+                image:
+                    AssetImage('assets/common/american-airlines-eaagle-logo.png'),
+                height:30,
+              ),
+              Text('1234 Departs in 1 hr 33 min', style:AaeTextStyles.departureHeading),
+            ],
+          ),
+          Text('ONTIME', style: AaeTextStyles.departureOnTime,),
         ],
       ),
     );

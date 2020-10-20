@@ -93,28 +93,36 @@ class Passenger extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Row(
-            children: [
-              Text(name),
-              Text(status),
-            ],
-          ),
-          CustomSwitchButton(
-            buttonHeight: 30,
-            buttonWidth: 60,
-            indicatorWidth: 26,
-            indicatorBorderRadius: 50,
-            backgroundBorderRadius: 20,
-            backgroundColor: AaeColors.blue,
-            unCheckedColor: AaeColors.white,
-            animationDuration: Duration(milliseconds: 200),
-            checkedColor: AaeColors.white,
-            checked: isChecked,
-          ),
-        ],
+//      padding: EdgeInsets.only(top:10,bottom:10,left:20,right:20,),
+      margin: EdgeInsets.only(top:10,bottom:0,left:20,right:20,),
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(width: 1.0, color: AaeColors.ultraLightGray),),
+      ),
+      child: Padding(
+        padding: EdgeInsets.only(top:6,bottom:8,),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              children: [
+                Text(name),
+                Text(status),
+              ],
+            ),
+            CustomSwitchButton(
+              buttonHeight: 30,
+              buttonWidth: 60,
+              indicatorWidth: 26,
+              indicatorBorderRadius: 50,
+              backgroundBorderRadius: 20,
+              backgroundColor: AaeColors.blue,
+              unCheckedColor: AaeColors.white,
+              animationDuration: Duration(milliseconds: 200),
+              checkedColor: AaeColors.white,
+              checked: isChecked,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -127,6 +135,21 @@ class CheckInButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      padding: EdgeInsets.only(top:10,bottom:10,left:20,right:20,),
+      child: ButtonTheme(
+        minWidth: 300.0,
+        height: 48.0,
+        child: RaisedButton(
+          textColor: Colors.white,
+          color: AaeColors.blue,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.0),),
+          onPressed: () {
+            print('Check in pressed...');
+          },
+          child: Text('Check in', style:AaeTextStyles.checkInButton),
+        ),
+      ),
+    );
   }
 }
