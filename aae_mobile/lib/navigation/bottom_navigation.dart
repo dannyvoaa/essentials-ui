@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 /// Main navigation bar.
 
-enum MainPage { home,  events, travel, notifications }
+enum MainPage { home, travel, events, notifications }
 
 const _labelTextStyle = TextStyle(
   fontFamily: 'AmericanSans',
@@ -26,6 +26,8 @@ class BottomNavigation extends StatelessWidget {
 
   static final Map<MainPage, String> tabText = {
     MainPage.home: 'Home',
+  //  MainPage.notifications: 'Notifications',
+    MainPage.travel: 'Trips',
     MainPage.events: 'Calendar',
     MainPage.travel: 'Trips',
 //    MainPage.notifications: 'Notifications',
@@ -33,6 +35,8 @@ class BottomNavigation extends StatelessWidget {
 
   static final Map<MainPage, IconData> tabIconData = {
     MainPage.home: AaeIcons.home,
+  //  MainPage.notifications: AaeIcons.notifications,
+    MainPage.travel: AaeIcons.travel,
     MainPage.events: AaeIcons.calendar,
     MainPage.travel: AaeIcons.travel,
 //    MainPage.notifications: AaeIcons.notifications,
@@ -65,6 +69,8 @@ class BottomNavigation extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         items: [
           _buildItem(MainPage.home, context, 24, 2.0),
+       //   _buildItem(MainPage.notifications, context, 18, 6.0),
+          _buildItem(MainPage.travel, context, 18, 5.0),
           _buildItem(MainPage.events, context, 24, 2.0),
           _buildItem(MainPage.travel, context, 18, 5.0),
 //          _buildItem(MainPage.notifications, context, 18, 6.0),
@@ -85,7 +91,7 @@ class BottomNavigation extends StatelessWidget {
           height: 20,
 //          width: 1000,
           padding: EdgeInsets.only(top: offset,),
-//          alignment: Alignment.bottomCenter,
+          alignment: Alignment.bottomCenter,
           child: Container(
             height:80,
 //            width:1000,
@@ -97,13 +103,17 @@ class BottomNavigation extends StatelessWidget {
             ),
           ),
         ),
+//        label: tabText[page],
         title: Container(
           height: 24,
+          padding: EdgeInsets.all(0),
+//          width: double.infinity,
+          alignment: Alignment.topCenter,
           child: Padding(
             padding: const EdgeInsets.only(top:10),
             child: Text(
               tabText[page],
-//              'Test Text Test Text',
+//              'Home',
               style: _labelTextStyle.copyWith(color: tabColor),
               textAlign: TextAlign.center,
             ),

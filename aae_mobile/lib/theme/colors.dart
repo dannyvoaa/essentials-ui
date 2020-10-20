@@ -9,6 +9,9 @@ class AaeColors {
   static const Color tableViewCellBackground =
       Color.fromRGBO(255, 255, 255, 1.0);
 
+  // Additional light gray colors for neutral backgrounds
+  static const bgLightGray = Color.fromRGBO(240, 240, 240, 1.0);
+
   // General Text
   static const defaultText = Color.fromRGBO(255, 255, 255, 0.9);
   static const secondaryText = Color.fromRGBO(255, 255, 255, 0.6);

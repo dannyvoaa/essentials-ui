@@ -199,6 +199,74 @@ class AaeTextStyles {
     return textStyle;
   }
 
+  /// Travel module text styles
+  static const locatorInfoHeading = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    color: AaeColors.ultraLightGray,
+  );
+
+  static const locatorInfo = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.normal,
+    color: AaeColors.titleGray,
+  );
+
+  static const reservationHeading = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.bold,
+    color: AaeColors.titleGray,
+  );
+
+  static const reservationSubHeading = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+    color: AaeColors.titleGray,
+  );
+
+  static const departureHeading = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.normal,
+    color: AaeColors.titleGray,
+  );
+
+  static const departureOnTime = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    color: AaeColors.green,
+  );
+
+  static const hubDetailHeading = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+    color: AaeColors.titleGray,
+  );
+
+  static const routeDetailHeading = TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.normal,
+    color: AaeColors.ultraLightGray,
+  );
+
+  static const dividerDot = TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.normal,
+    color: AaeColors.ultraLightGray,
+    letterSpacing: 10,
+  );
+
+  static const timeSummary = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    color: AaeColors.titleGray,
+  );
+
+  static const checkInButton = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.normal,
+  );
+
+
   /// Calendar page summary blocks
   static TextStyle calendarSummary({
     bool boolDefaultHeight = false,
@@ -356,7 +424,7 @@ class AaeTextStyles {
   static TextStyle eventDate({bool boolDefaultHeight = false}) {
     TextStyle textStyle = t2.copyWith(
       color: AaeColors.darkGray,
-      fontSize: 12,
+      fontSize: 14,
     );
 
     // Default style
@@ -409,5 +477,5 @@ class AaeTextStyles {
     return textStyle;
   }
 
-  static const pageHeadline = TextStyle(fontSize: 24, fontWeight: _bold);
+  static TextStyle pageHeadline = TextStyle(fontSize: 24, fontWeight: _bold);
 }

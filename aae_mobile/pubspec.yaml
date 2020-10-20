@@ -40,6 +40,11 @@ dependencies:
   keyboard_avoider: ^0.1.2
   flutter_svg: ^0.18.0
   recase: ^3.0.0
+  get: ^3.12.1
+  logger: ^0.9.4
+  expandable: ^4.1.4
+  slider_button: ^0.6.0
+  custom_switch_button: ^0.5.0
   flutter:
     sdk: flutter
 
@@ -74,6 +79,7 @@ flutter:
 
   assets:
     - assets/common/
+    - assets/svg/
     - assets/static_records/RecognitionHistory.json
     - assets/static_records/image.jpeg
     - assets/common/sign_in_background.png

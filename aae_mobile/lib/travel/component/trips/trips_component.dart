@@ -1,6 +1,7 @@
 import 'package:aae/bloc/source_builder.dart';
 import 'package:aae/common/widgets/component/component.dart';
 import 'package:aae/common/widgets/loading/aae_loading_spinner.dart';
+import 'package:aae/travel/component/trips/trips_view_reservation.dart';
 import 'package:flutter/material.dart';
 
 import 'trips_bloc.dart';

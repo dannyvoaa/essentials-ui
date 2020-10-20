@@ -16,6 +16,7 @@ import 'package:aae/sign_in/workflow/sign_in_workflow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
+import 'package:get/get.dart';
 
 final _log = Logger('main');
 
@@ -74,7 +75,7 @@ class Aae extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    return MaterialApp(
+    return GetMaterialApp(
       theme: ThemeData(fontFamily: 'AmericanSans'),
       title: 'American Essentials',
       navigatorKey: navigatorKey,
