@@ -16,7 +16,7 @@ class TravelServiceApi {
       'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/travel/reservations';
 
   final travelFlightStatusEndpoint =
-      'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/travel/flightstatus/1085/2020-10-06';
+      'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/travel/flightstatus';
 
   Map<String, String> _getRequestHeaders(String employeeId) {
     String username = employeeId;
@@ -35,7 +35,6 @@ class TravelServiceApi {
   }
 
   static Trips _tripsToModel(String tripsJson) {
-
     _log.info(jsonDecode(tripsJson));
 
     Trips trips =
@@ -48,7 +47,8 @@ class TravelServiceApi {
 
     _log.info(jsonDecode(flightStatusJson));
 
-    FlightStatus flightStatus = serializers.deserializeWith(FlightStatus.serializer, jsonDecode(flightStatusJson));
+    FlightStatus flightStatus = serializers.deserializeWith(
+        FlightStatus.serializer, jsonDecode(flightStatusJson));
     return flightStatus;
   }
 
@@ -74,18 +74,20 @@ class TravelServiceApi {
   Future<FlightStatus> getFlightStatus(
       String employeeId, String flightNumber, String date) async {
     Map<String, String> headers = _getRequestHeaders(employeeId);
-    final response =
-        await httpClient.get(travelFlightStatusEndpoint, headers: headers);
+    print('travelFlightStatusEndpoint');
+    print(travelFlightStatusEndpoint + '/' + flightNumber + '/' + date);
+    final response = await httpClient.get(
+        travelFlightStatusEndpoint + '/' + flightNumber + '/' + date,
+        headers: headers);
     if (response.statusCode == 200) {
       _log.info("Flight Status API request successful");
       _log.info(response.body);
       FlightStatus flightStatus;
       try {
         flightStatus = _flightStatusToModel(response.body);
-      } catch(e, s){
+      } catch (e, s) {
         _log.info("FAILED BECAUSE OF", e, s);
         _log.info(s);
-
       }
       return flightStatus;
     } else {

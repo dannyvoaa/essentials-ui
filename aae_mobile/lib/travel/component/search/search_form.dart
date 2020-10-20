@@ -7,7 +7,6 @@ import 'package:aae/travel/page/travel_page.dart';
 import 'package:flutter/material.dart';
 import '../search/date_picker_component.dart';
 
-
 class _SearchFormData {
   String searchField1;
   String searchField2;
@@ -47,7 +46,9 @@ class SearchForm<T> extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => FlightStatusComponent(),
+          builder: (context) => FlightStatusComponent(
+              searchField1: _data.searchField1,
+              searchField2: _data.searchField2),
         ),
       );
     }
@@ -87,7 +88,7 @@ class SearchForm<T> extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: this.searchHint1,
                         ),
-                        onSaved: (String value){
+                        onSaved: (String value) {
                           this._data.searchField1 = value;
                         },
                         validator: (value) {
@@ -104,7 +105,7 @@ class SearchForm<T> extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: this.searchHint2,
                         ),
-                        onSaved: (String value){
+                        onSaved: (String value) {
                           this._data.searchField2 = value;
                         },
                         validator: (value) {
@@ -140,7 +141,7 @@ class SearchForm<T> extends StatelessWidget {
 //                      Navigator.pushNamed(context, '/second');
 //                    }
 
-                  this.submit(context);
+                    this.submit(context);
                   },
                   shape: RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(8.0)),

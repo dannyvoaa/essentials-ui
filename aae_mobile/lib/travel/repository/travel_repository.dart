@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:aae/api/travel_api_client.dart';
@@ -35,6 +36,7 @@ class TravelRepository implements Repository {
   static String tripsKey = 'trips';
 
   Observable<BuiltList<Pnr>> get pnrs => _pnrs;
+
   Observable<FlightStatus> get flightStatus => _flightStatus;
 
   @provide
@@ -42,7 +44,7 @@ class TravelRepository implements Repository {
   TravelRepository(this._cache, this._travelApiClient, this._ssoAuth) {
     _loadFromTripsCache();
     _fetchTrips();
-    _fetchFlightStatus();
+//    fetchFlightStatus(1,2);
   }
 
   void _loadFromTripsCache() {
@@ -52,9 +54,10 @@ class TravelRepository implements Repository {
         .ifPresent(_publishTrips);
   }
 
-  void _loadFromFlightStatusCache() {
+  void _loadFromFlightStatusCache(flightNumber, date) {
+    String flightStatusKey = '' + flightNumber + date;
     _cache
-        .readString('2020-10-06')
+        .readString(flightStatusKey)
         .transform(_flightStatusToModel)
         .ifPresent(_publishFlightStatus);
   }
@@ -74,30 +77,42 @@ class TravelRepository implements Repository {
   }
 
   static FlightStatus _flightStatusToModel(String flightStatusJson) {
-    FlightStatus flightStatus =
-    serializers.deserializeWith(FlightStatus.serializer, jsonDecode(flightStatusJson));
+    FlightStatus flightStatus = serializers.deserializeWith(
+        FlightStatus.serializer, jsonDecode(flightStatusJson));
     return flightStatus;
   }
 
   _fetchTrips() async {
     Trips trips = await _travelApiClient.getReservations('72000027');
     try {
-
+      _saveToCache(tripsKey, trips.toJson());
+      _loadFromTripsCache();
     } catch (e, s) {
       _log.severe('Failed to fetch trips: ', e, s);
       return null;
     }
   }
 
-  _fetchFlightStatus() async {
+  fetchFlightStatus(flightNumber, date) async {
+    print('FETCCHFLIGHTSTATUS');
     FlightStatus flightStatus = await _travelApiClient.getFlightStatus(
-        '72000027', '1085', '2020-10-06');
+        '72000027', flightNumber, '2020-10-06');
     try {
-      _saveToCache('2020-10-06', flightStatus.toJson());
-      _loadFromFlightStatusCache();
+      _saveToCache(flightNumber + '2020-10-06', flightStatus.toJson());
+      _loadFromFlightStatusCache(flightNumber, '2020-10-06');
     } catch (e, s) {
       _log.severe('Failed to fetch flightStatus: ', e, s);
       return null;
+    }
+  }
+
+  Future<FlightStatus> searchFlightStatus(String query) async {
+    final searchResult = await _travelApiClient.getFlightStatus(
+        '72000027', '0020', '2020-10-06');
+    if (searchResult.flightNumber.isEmpty) {
+      _log.severe('Failed to fetch flightStatus: ');
+    } else {
+      return searchResult;
     }
   }
 

@@ -16,6 +16,8 @@ class FlightStatusView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('RIGHT HERE');
+    print(this.viewModel.flightStatus);
     return _buildFlightStatusContainer(context);
   }
 
@@ -27,7 +29,7 @@ class FlightStatusView extends StatelessWidget {
             //?
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              FlightStatusDetails(),
+              FlightStatusDetails(viewModel: this.viewModel),
             ],
           )),
     );
