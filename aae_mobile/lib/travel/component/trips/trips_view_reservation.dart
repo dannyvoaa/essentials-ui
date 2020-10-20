@@ -8,6 +8,8 @@ import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
 import 'package:aae/travel/component/trips/trips_view_model.dart';
 import 'package:aae/travel/component/ui/trip_exp_panel.dart';
+import 'package:aae/travel/component/ui/trip_passenger_panel.dart';
+import 'package:slider_button/slider_button.dart';
 
 class TripsReservationView extends StatelessWidget {
   final TripsViewModel viewModel;
@@ -16,14 +18,8 @@ class TripsReservationView extends StatelessWidget {
 //  final Map<String, String> args;
 
   TripsReservationView({
-    @required this.viewModel,
-    @required this.origin,
-    @required this.destination,
+    this.viewModel, this.origin, this.destination,
   });
-
-//  TripsReservationView({@required Map<String, dynamic> arguments})
-//      : assert(arguments != null),
-//        args = arguments;
 
   @override
   Widget build(BuildContext context) {
@@ -66,28 +62,16 @@ class TripsReservationView extends StatelessWidget {
                 ),
               ),
               Container(
-                child: Column(
-                  children: [
-                    TripsExpPanel(),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        child: Text(
-                          "test",
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: AaeColors.blue,
-                            fontWeight: FontWeight.w700,
-                            height: 2.6666666666666665,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                child: TripsExpPanel(),
+              ),
+              Container(
+                child: TripsPassengerPanel(),
+              ),
+              Container(
+                child:TripsCollection(viewModel: null, header: 'Tools'),
+              ),
+              Container(
+                child: CancelSlider(),
               ),
             ],
           ),
@@ -97,62 +81,53 @@ class TripsReservationView extends StatelessWidget {
   }
 }
 
-//class TripsExpPanel extends StatelessWidget {
-//  const TripsExpPanel({
-//    Key key,
-//  }) : super(key: key);
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return ExpansionTile(
-//      title: Text(
-//        'Sub title',
-//      ),
-//      children: <Widget>[
-//        ListTile(
-//          title: Text('data'),
-//        )
-//      ],
-//    );
-//  }
-//}
+class CancelSlider extends StatelessWidget {
+  const CancelSlider({
+    Key key,
+  }) : super(key: key);
 
-//class TripsReservationView extends StatefulWidget {
-//  final TripsViewModel viewModel;
-//
-//  TripsReservationView({
-//    @required this.viewModel,
-//  });
-//
-//  @override
-//  _TripsViewState createState() => _TripsViewState();
-//}
-//
-//class _TripsViewState extends State<TripsReservationView> {
-//  @override
-//  Widget build(BuildContext context) {
-//    return _buildTripsContainer(context);
-//  }
-//
-//  Widget _buildTripsContainer(BuildContext context) {
-//    return Scaffold(
-//      backgroundColor: const Color(0xfff0f0f0),
-//      body: Container(
-//          alignment: Alignment.topLeft,
-//          child: Padding(
-//            padding: const EdgeInsets.only(bottom: 5),
-//            child: Text(
-//              "test",
-//              style: TextStyle(
-//                fontSize: 15,
-//                color: AaeColors.blue,
-//                fontWeight: FontWeight.w700,
-//                height: 2.6666666666666665,
-//              ),
-//              textAlign: TextAlign.left,
-//            ),
-//          )),
-////          padding: const EdgeInsets.all(16.0)),
-//    );
-//  }
-//}
+  @override
+  Widget build(BuildContext context) {
+    return SliderButton(
+      action: () {
+        ///Do something here OnSlide
+        Navigator.pop(context);
+        print('slide button has been slid...');
+      },
+
+      ///Put label over here
+      label: Text(
+        "Slide to cancel trip",
+        style: TextStyle(
+            color: AaeColors.white,
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+//          margin: marginOnly(right: 12),
+        ),
+      ),
+      icon: Center(
+          child: Icon(
+            Icons.arrow_forward_sharp,
+            color: AaeColors.mediumGray,
+            size: 26.0,
+            semanticLabel: 'Slide to cancel trip',
+          )),
+
+      ///Change All the color and size from here.
+      width: 300,
+      height: 50,
+      buttonSize: 44,
+      boxShadow: BoxShadow(color: AaeColors.darkGray,blurRadius: 4,),
+      radius: 10,
+      buttonColor: AaeColors.white,
+      backgroundColor: AaeColors.mediumGray,
+      highlightedColor: Colors.white,
+      baseColor: Colors.red,
+      shimmer: false,
+      vibrationFlag: true,
+      dismissible: false,
+      alignLabel: 	Alignment(0, 0),
+    );
+  }
+}
+
