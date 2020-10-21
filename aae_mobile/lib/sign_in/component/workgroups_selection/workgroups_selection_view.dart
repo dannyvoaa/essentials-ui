@@ -20,9 +20,9 @@ class WorkgroupsSelectionView extends StatelessWidget {
         builder: (context) => WorkflowPageTemplate(
           title: 'Select your workgroup',
           scrollableChild: _workgroupsList(context, viewModel.workgroups),
-          primaryButtonText: 'Next',
+          primaryButtonText: 'NEXT',
           primaryButtonEnabled: viewModel.nextButtonEnabled,
-          secondaryButtonText: 'Back',
+          secondaryButtonText: 'BACK',
         ),
       ),
     );
@@ -39,26 +39,27 @@ class WorkgroupsSelectionView extends StatelessWidget {
 
   Widget _workgroupsItem(BuildContext context, WorkgroupsViewModel viewModel) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+    padding: const EdgeInsets.all(8),
       child: GestureDetector(
         onTap: viewModel.onWorkgroupPressed,
         child: Container(
+        margin: const EdgeInsets.only(left:40,right:40),
           width: AaeDimens.workgroupsButtonWidth,
           height: AaeDimens.workgroupsButtonHeight,
           decoration: BoxDecoration(
-            color: AaeColors.white,
+            color: viewModel.isSelected ? AaeColors.lightBlue : AaeColors.white,
             borderRadius: BorderRadius.circular(AaeDimens.topicsIconRadius),
             shape: BoxShape.rectangle,
             border: viewModel.isSelected
-                ? Border.all(
-                    color: AaeColors.black,
-                    width: AaeDimens.topicsIconSelectionBorderSize)
-                : Border.all(color: AaeColors.black, width: 1),
+                              ? Border.all(
+                                  color: AaeColors.white,
+                                  width: 0)
+                              : Border.all(color: AaeColors.black, width: 1),
           ),
           child: Center(
             child: Text(viewModel.workgroup,
                 style: TextStyle(
-                  color: AaeColors.black,
+                  color:  viewModel.isSelected ? AaeColors.white : AaeColors.black,
                   fontSize: 17,
                   fontWeight: FontWeight.normal,
                 )),

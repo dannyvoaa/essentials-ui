@@ -12,6 +12,8 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:aae/assets/aae_icons.dart';
 import 'package:recase/recase.dart';
 import 'package:aae/common/widgets/tables/table_components.dart';
+import 'package:link/link.dart';
+import 'package:linkable/linkable.dart';
 
 class AaeDrawer extends StatelessWidget {
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
@@ -228,8 +230,8 @@ class SecondRoute extends StatelessWidget {
                           color: AaeColors.lightGray,
                           fontSize: 18,
                           height: 2.2)),
-                  SizedBox(width: 160),
-                  Text("1.0.5",
+                  SizedBox(width: 162),
+                  Text("1.0.6",
                       style: TextStyle(
                           color: AaeColors.lightGray,
                           fontSize: 18,
@@ -1117,15 +1119,12 @@ class PolicyRoute extends StatelessWidget {
                   height: 1),
             ),
           ),
-          Container(
-            padding: EdgeInsets.only(bottom: 8),
-            child: Text(
-              'American is committed to protecting the security of your personal information. Whenever and wherever we collect, process or use personal information, we apply appropriate technical, physical and administrative safeguards and access restrictions to secure that information in accordance with this Privacy Policy in order to prevent unauthorized access and use, unlawful processing, unauthorized or accidental loss, destruction, or damage to that information.  For further information, contact the Information Security Officer aa.it.security@aa.com.',
 
-              style: TextStyle(
-                  color: AaeColors.lightGray, fontSize: 16, height: 1.3),
-            ),
-          ),
+
+           Container( padding: EdgeInsets.only(bottom: 8), child: Wrap(  children: [
+                               Linkable(text:"American is committed to protecting the security of your personal information. Whenever and wherever we collect, process or use personal information, we apply appropriate technical, physical and administrative safeguards and access restrictions to secure that information in accordance with this Privacy Policy in order to prevent unauthorized access and use, unlawful processing, unauthorized or accidental loss, destruction, or damage to that information.  For further information, contact the Information Security Officer aa.it.security@aa.com.",textColor: AaeColors.lightGray, style: TextStyle( fontFamily: 'AmericanSans',fontSize: 16, height: 1.3), )
+                               ] ),  ),
+
           Container(
           padding: EdgeInsets.only(bottom: 20),
           child: Text('American will generally retain personal data in accordance with our data retention and schedules (available on Jetnet).',
@@ -1380,13 +1379,13 @@ class PolicyRoute extends StatelessWidget {
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
           ),
-          Container(
-          padding: EdgeInsets.only(bottom: 20),
-          child: Text(
-              'This may include transfers to American’s affiliates and to third parties with whom we share personal information, as described in this Privacy Policy.  The laws of those countries might not be equivalent to those in your country of residence, but please be assured that we take reasonable steps to protect your privacy, such as by implementing contractual controls such as American’s EU Standard Contractual Clauses which American has entered into with all of its branches located in the EU (a copy of which can be requested by contacting American at Privacy@aa.com) or seeking employee consent, where required by law.',
-          style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
-                                                        ),
-                                                      ),
+
+
+
+           Container(  padding: EdgeInsets.only(bottom: 20), child: Wrap(  children: [
+                                Linkable(text:"This may include transfers to American’s affiliates and to third parties with whom we share personal information, as described in this Privacy Policy.  The laws of those countries might not be equivalent to those in your country of residence, but please be assured that we take reasonable steps to protect your privacy, such as by implementing contractual controls such as American’s EU Standard Contractual Clauses which American has entered into with all of its branches located in the EU (a copy of which can be requested by contacting American at Privacy@aa.com) or seeking employee consent, where required by law.",textColor: AaeColors.lightGray, style: TextStyle( fontFamily: 'AmericanSans',fontSize: 16, height: 1.3), )
+                                ] ),  ),
+
           Container(
             padding: EdgeInsets.only(bottom: 8),
             child: Text(
@@ -1626,16 +1625,20 @@ class PolicyRoute extends StatelessWidget {
                   height: 1),
             ),
           ),
-          Container(
-           padding: EdgeInsets.only(bottom: 8),
-            child: Text(
-              'If you wish to exercise your rights, issue a request, or if you have other questions, comments or concerns about our privacy practices, please contact the Privacy Office at Privacy@aa.com.  Please provide your name and contact information along with the request. Alternatively, inquiries may be mailed to the following address:',
-              style: TextStyle(
-                  color: AaeColors.lightGray, fontSize: 16, height: 1.3),
-            ),
-          ),
-            Container(
 
+        //  Container(
+        //   padding: EdgeInsets.only(bottom: 8),
+        //    child: Text( 'If you wish to exercise your rights, issue a request, or if you have other questions, comments or concerns about our privacy practices, please contact the Privacy Office at Privacy@aa.com.  Please provide your name and contact information along with the request. Alternatively, inquiries may be mailed to the following address:',
+         //     style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),   ), ),
+
+
+
+          Container(  child: Wrap(  children: [
+                     Linkable(text:"If you wish to exercise your rights, issue a request, or if you have other questions, comments or concerns about our privacy practices, please contact the Privacy Office at Privacy@aa.com. Please provide your name and contact information along with the request. Alternatively, inquiries may be mailed to the following address:",textColor: AaeColors.lightGray, style: TextStyle( fontFamily: 'AmericanSans',fontSize: 16, height: 1.3), )
+                     ] ),  ),
+
+
+            Container(
             child: Text('American Airlines\nc/o Privacy Office\n1 Skyview Drive, MD 8B503\nFort Worth, Texas 76155\n',
             style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
                                                           ),
@@ -1651,14 +1654,17 @@ class PolicyRoute extends StatelessWidget {
                   height: 1),
             ),
           ),
-          Container(
 
-            child: Text(
-              'American has assigned a data protection officer, Russell Hubbard, who is responsible for overseeing American’s compliance with EU data protection law, whom you may contact at Privacy@aa.com or via the postal address above in case of any questions or concerns regarding the processing of your personal data.\n',
-              style: TextStyle(
-                  color: AaeColors.lightGray, fontSize: 16, height: 1.3),
-            ),
-          ),
+       //   Container(
+        //    child: Text( 'American has assigned a data protection officer, Russell Hubbard, who is responsible for overseeing American’s compliance with EU data protection law, whom you may contact at Privacy@aa.com or via the postal address above in case of any questions or concerns regarding the processing of your personal data.\n',
+       //       style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3), ), ),
+
+
+          Container(  child: Wrap(  children: [
+                     Linkable(text:"American has assigned a data protection officer, Russell Hubbard, who is responsible for overseeing American’s compliance with EU data protection law, whom you may contact at Privacy@aa.com or via the postal address above in case of any questions or concerns regarding the processing of your personal data.\n",textColor: AaeColors.lightGray, style: TextStyle( fontFamily: 'AmericanSans',fontSize: 16, height: 1.3), )
+                     ] ),  ),
+
+
           Container(
           padding: EdgeInsets.only(bottom: 8),
             child: Text(
@@ -1678,12 +1684,13 @@ class PolicyRoute extends StatelessWidget {
                   color: AaeColors.lightGray, fontSize: 16, height: 1.3),
             ),
           ),
-          Container(
-         
-          child: Text('American Airlines, Inc.Orient House (HAA3),\nPo Box 365, Waterside,\nHarmondsworth,\nUB7 0GB\nUnited Kingdom\nContact:  Lisa.Banks@aa.com\n',
-          style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),
-                                                        ),
-                                                      ),
+
+
+           Container(  child: Wrap(  children: [
+           Linkable(text:"American Airlines, Inc.\nOrient House (HAA3),\nPo Box 365, Waterside,\nHarmondsworth,\nUB7 0GB\nUnited Kingdom\nContact:  Lisa.Banks@aa.com\n",textColor: AaeColors.lightGray, style: TextStyle( fontFamily: 'AmericanSans',fontSize: 16, height: 1.3), )
+           ] ),  ),
+
+
           Container(
            padding: EdgeInsets.only(bottom: 8),
             child: Text(
@@ -1695,13 +1702,17 @@ class PolicyRoute extends StatelessWidget {
                   height: 1),
             ),
           ),
-          Container(
-            child: Text(
-              'If American’s processing of your personal data is covered by EU law or Swiss Law you may also contact or lodge a complaint with the corresponding data protection supervisory authority in your country of residence. You can find the relevant EU supervisory authority name and contact details under http://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm.\n',
-              style: TextStyle(
-                  color: AaeColors.lightGray, fontSize: 16, height: 1.3),
-            ),
-          ),
+
+
+
+            Container(  child: Wrap(  children: [
+                      Linkable(text:"If American’s processing of your personal data is covered by EU law or Swiss Law you may also contact or lodge a complaint with the corresponding data protection supervisory authority in your country of residence. You can find the relevant EU supervisory authority name and contact details under http://ec.europa.eu/justice/data-protection/bodies/authorities/index_en\n",textColor: AaeColors.lightGray, style: TextStyle( fontFamily: 'AmericanSans',fontSize: 16, height: 1.3), )
+                      ] ),  ),
+
+    // webview link
+      //    Container(  child: Wrap(  children: [  Text('If American’s processing of your personal data is covered by EU law or Swiss Law you may also contact or lodge a complaint with the corresponding data protection supervisory authority in your country of residence. You can find the relevant EU supervisory authority name and contact details under',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3), ), Link( child: Text('http://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm.\n',style: TextStyle(color: AaeColors.blue, fontSize: 16, height: 1.3),), url: 'http://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm.\n', ),  ] ),  ),
+
+
           Container(
            padding: EdgeInsets.only(bottom: 8),
             child: Text(
@@ -1726,6 +1737,8 @@ class PolicyRoute extends StatelessWidget {
     );
   }
 }
+
+
 
 class TermsRoute extends StatelessWidget {
   @override
@@ -1758,29 +1771,407 @@ class TermsRoute extends StatelessWidget {
                   fontSize: 20),
             ),
           ),
-          Container(
-            child: Text(
-              'Thank you for choosing American Airlines, Inc. Flight Status Notification text messaging service for your mobile device. Your use of the Service, as hereafter defined, constitutes your agreement to these terms and conditions. We may amend these terms, or modify or cancel the Service or any of its features without notice. Message and Data Rates may apply. Check with your mobile service provider for details on specific fees and charges that may apply for you. Click to view aa.com Privacy Policy. American Airlines offers its customers mobile access to flight information (e.g., for tracking flight status, gate, time, and baggage claim) over Short Message Service ("SMS") or SMS text messages (the "Service"). The Service will be ongoing but may be cancelled by us at any time. Customers may opt out of the Service at any time (see "To Stop the Service" below).\n',
-              style: TextStyle(
-                  color: AaeColors.lightGray, fontSize: 16, height: 1.3),
-            ),
-          ),
-          Container(
-            child: Text(
-              'Questions and To Stop the Service:',
-              style: TextStyle(
-                  color: AaeColors.lightGray,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15),
-            ),
-          ),
-          Container(
-            child: Text(
-              'If you have questions, please visit us via the options listed below.\n\nUnited States of America:\nWeb site - www.aa.com/FLYAA\nMobile Phone - (35922)\nTo get help, you can contact us at any time from your mobile phone by sending a text message with the word "HELP" to FLYAA (35922).\nTo Stop the Service: To stop the messages coming to your mobile phone, you can opt out of the Service via SMS. Just send a text message with the word "STOP" to FLYAA (35922). You will receive a one-time opt-out confirmation text message. After that, you will not receive any future messages.\n\nSpain or United Kingdom:\nMobile Phone - (447950080989)\nTo get help, you can contact us at any time from your mobile phone by sending a text message with the word "HELP" to (447950080989).\nTo Stop the Service: To stop the messages coming to your mobile phone, you can opt out of the Service via SMS. Just send a text message with the word "STOP" to (447950080989). You will receive a one-time opt-out confirmation text message. After that, you will not receive any future messages.\n\nAgreement to Terms & Conditions: Your use of the Service constitutes your agreement to these terms and conditions and to the aa.com Site Usage terms.\n\nYou agree to provide American Airlines with a valid mobile number. You agree that we may send you text messages through your wireless provider. We do not charge for the Service, but you are responsible for all charges and fees associated with text messaging imposed by your wireless provider.\n\nNotify us immediately of any changes to your registered device. In case of unauthorized access to your device or Service, you agree to cancel enrollment associated with such device immediately.\n\nYou agree to indemnify, defend, and hold harmless American Airlines and its affiliates from and against any and all third party claims, demands, proceedings, suits, actions, liabilities, obligations, losses,, damages, penalties, taxes, levies, fines, judgments, settlements or costs (collectively, "Claims") based on, arising or resulting from your use of the Service, including without limitation any Claims alleging facts that if true would constitute your breach of these terms, or from you providing us with a phone number that is not your own.\n\nYou agree that we will not be liable for failed, delayed, or misdirected delivery of, any information sent through the Service; any errors in such information; any action you may or may not take in reliance on the information of Service. AMERICAN AIRLINES WILL NOT UNDER ANY CIRCUMSTANCE BE LIABLE TO YOU FOR SPECIAL, INDIRECT, PUNITIVE, EXEMPLARY OR CONSQUENTIAL DAMAGES.\n\nOur participating carriers include, but are not limited to AT&T, Sprint, Verizon Wireless, U.S. Cellular®, T-Mobile® and MetroPCS®. The mobile carriers are not liable for delayed or undelivered messages.\n\nAny failure of American Airlines to assert any rights it may have hereunder does not constitute a waiver of its right to assert the same or any other right at any other time or against any other person or entity. If any provision of these terms and conditions is found to be invalid or unenforceable, then the invalid or unenforceable provision will be stricken without affecting the validity or enforceability of any other provision.',
-              style: TextStyle(
-                  color: AaeColors.lightGray, fontSize: 16, height: 1.3),
-            ),
-          ),
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                       "Introduction",
+                       style: TextStyle( color: AaeColors.lightGray, fontWeight: FontWeight.bold,  fontSize: 18,height: 1),  ), ),
+                        Container( padding: EdgeInsets.only(bottom: 20), child: Text(
+                         'By using this application, you agree you will use it in a professional, ethical, and lawful manner. With each login, you agree to be bound by these terms and conditions without limitation or qualification. By proceeding, you represent and warrant that you have the legal right to enter into this Agreement on your behalf.',
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),),
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                         'Who has access?',
+                         style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
+                        "This application is for use by American Airlines employees. As an authorized user, you've been provided with a user ID and password to access this application. Keep in mind that this app contains confidential American information as well as personalized services for you.",
+                        style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'Confidential information',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
+                        "Computer access codes and associated passwords that allow access to American's information technology assets are confidential information. Except as required by law or with American's prior written consent, you agree to keep confidential and not discuss with or disclose to any person (including your friends or family) your computer access code and password and to not access this app with another person's access code. Except as required by law or with American's prior written, you will keep confidential and will not sell, transfer, publish, display, discuss with, disclose, or other make available to any person, other than employees of American, on a need to know basis, any confidential or competitive information processed as a consequence of your computer access code and password. You will immediately report to American any inadvertent or intentional violation or breach of any commitment and agreement you make under this Section. You agree to abide by the commitments and agreements made in this Section until American releases you from these commitments, but in no event before the termination of your employment or contract with American.",
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'Security',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
+                        "You agree to observe all security features of this application and to not disable or bypass any security protocols. You may not use this app to gain unauthorized access to other devices or computer networks, or for malicious or destructive purposes (such as the development or transmission of computer viruses). You are responsible for all usage or activity on your account.",
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'Using this app for your personal matters',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
+                        "This application offers many features for your own personal use. Your personal use of this application must be consistent with American's policies and this Agreement.",
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+
+
+                          Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'A few reminders when accessing this application from your mobile device',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1.2),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 8), child: Text(
+                        "You may not use this application in any disruptive, offensive, unprofessional, unethical, or illegal manner. For example, you may not use this app to link to, search for, download, upload, store, send, distribute, or display material that may (or does):",
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+                                Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '1.',
+                                        style: TextStyle(
+                                            color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                      ),
+                                      SizedBox(width: 8),
+                                      Expanded(
+                                        child: Text(
+                                          "Interfere with any American employee's job performance (including your own);",
+                                          style: TextStyle(
+                                              color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
+
+                                    Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '2.',
+                                        style: TextStyle(
+                                            color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                      ),
+                                      SizedBox(width: 8),
+                                      Expanded(
+                                        child: Text(
+                                          'Cause undue expense for American;',
+                                          style: TextStyle(
+                                              color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
+
+                                    Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '3.',
+                                        style: TextStyle(
+                                            color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                      ),
+                                      SizedBox(width: 8),
+                                      Expanded(
+                                        child: Text(
+                                          "Compromise American's reputation;",
+                                          style: TextStyle(
+                                              color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
+
+                                    Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '4.',
+                                        style: TextStyle(
+                                            color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                      ),
+                                      SizedBox(width: 8),
+                                      Expanded(
+                                        child: Text(
+                                          'Constitute indecent, obscene, or pornographic material;',
+                                          style: TextStyle(
+                                              color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
+
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '5.',
+                                        style: TextStyle(
+                                            color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                      ),
+                                      SizedBox(width: 8),
+                                      Expanded(
+                                        child: Text(
+                                          'Harass, threaten, embarrass, deceive, or degrade any person; or',
+                                          style: TextStyle(
+                                              color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
+
+                                    Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '6.',
+                                        style: TextStyle(
+                                            color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                      ),
+                                      SizedBox(width: 8),
+                                      Expanded(
+                                        child: Text(
+                                          'Discriminate or harass any employee based on a characteristic protected by law or American’s policies. ',
+                                          style: TextStyle(
+                                              color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
+
+                                    Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '7.',
+                                        style: TextStyle(
+                                            color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                      ),
+                                      SizedBox(width: 8),
+                                      Expanded(
+                                        child: Text(
+                                          'Access, copy, distribute, or use confidential, proprietary, copyrighted, patented, trademarked, or trade secret material without authorization;',
+                                          style: TextStyle(
+                                              color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
+
+
+                                     Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '8.',
+                                        style: TextStyle(
+                                            color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                      ),
+                                      SizedBox(width: 8),
+                                      Expanded(
+                                        child: Text(
+                                          'Engage in a private, commercial business; or',
+                                          style: TextStyle(
+                                              color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:.5), ), ]),
+
+                                    Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '9.',
+                                        style: TextStyle(
+                                            color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                      ),
+                                      SizedBox(width: 8),
+                                      Expanded(
+                                        child: Text(
+                                          'Modify, encrypt, or destroy Company property.',
+                                          style: TextStyle(
+                                              color: AaeColors.lightGray, fontSize: 16, height: 1.3),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row( children: [ Text('\u0020',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height:1.5), ), ]),
+
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'Accessing this application from an American company-issued mobile device',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1.2),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
+                        "American may monitor your use of this application, without notice, to ensure compliance with this Agreement and American's policies.",
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'Accessing this application from a personal mobile device',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1.2),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
+                        "Outside your use of this application, American does not monitor your use of non-Company devices. When you use this application from a personal device, however, American may monitor your use of this application, including Internet links through this application, without notice, to ensure compliance with this Agreement and American's policies.",
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'Cookie use',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
+                        "To help you find and receive information easily, this application uses small session cookies files, which are erased when you close your browser. This app does not examine other cookies or information stored on your computer. If you choose to not accept the session cookie, you will not be able to use this app. However, this app does not control the use of cookies or other tracking devices from other web sites you may link to from this application.",
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'E-mail address use',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
+                        "If you send us an e-mail or provide your e-mail address through any of the sites contained within this application, we may use e-mail to communicate with you. American will not share your e-mail address with outside parties except to companies contracted for employee services to provide those services. As an American employee, adding your e-mail address to the employee directory signifies your willingness to have your e-mail address available to any American employee. The e-mail directory is American's sole property. You may not give to any person not employed by American any e-mail address from the e-mail directory. You may not use the e-mail directory to solicit employees to participate in, to join, or to purchase from any organization outside American, or to disseminate, unsolicited, your personal views or opinions.",
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'Linking to other applications and web sites',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
+                        "This application provides you with the convenience of additional links to other applications and web sites that we think you'll find useful. These sites may operate under different use and privacy guidelines. American has no control over information gathered or submitted by these other sites. Be sure to read and understand their guidelines. Be aware that you are responsible for familiarizing yourself with the guidelines of these other sites.",
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'Intellectual property',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
+                        "Information contained in this application is American's exclusive property. Unless otherwise noted, all information, text, articles, data, images, screens, Web pages, logos, trademarks and service marks, and other material on this application are American's exclusive property or used by permission. You do not, by virtue of downloading any material from this app, obtain title to, or any other ownership interest in, those materials. American retains full and complete title to this material, and all related intellectual property rights, and is licensing you to use the material subject to this Agreement and any other terms connected to the material. Modification of the material or use of the material for any other purpose violates American's copyright and other proprietary rights.",
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'Responsibility for misuse',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
+                        "Every user of this application is responsible for any misuse of the system or use of the system in violation of this Agreement.",
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'Violations',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
+                        "Any person who violates this Agreement may be subject to the loss of access to this application, disciplinary employment action up to and including termination, and civil and criminal liability.",
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'Reporting concerns',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1),    ), ),
+                    //    Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
+                     //   "If you think another person is using this application in violation of this Agreement, report your concerns. In North America, report concerns to the EthicsPoint helpline online at www.aa.ethicspoint.com or to 1-877-422-3844. This number is toll-free, 24 hours a day, 7 days a week. If you are calling from outside North America, go to www.aa.ethicspoint.com for international, toll-free dialing instructions.",
+                     //    style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+                         Container(  padding: EdgeInsets.only(bottom: 20), child: Wrap(  children: [
+                          Linkable(text:"If you think another person is using this application in violation of this Agreement, report your concerns. In North America, report concerns to the EthicsPoint helpline online at www.aa.ethicspoint.com or to 1-877-422-3844. This number is toll-free, 24 hours a day, 7 days a week. If you are calling from outside North America, go to www.aa.ethicspoint.com for international, toll-free dialing instructions.\n",textColor: AaeColors.lightGray, style: TextStyle( fontFamily: 'AmericanSans',fontSize: 16, height: 1.3), )
+                           ] ),  ),
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'Importance of logout',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
+                        "You must always log out to protect your privacy. It is your responsibility. We also use a timeout feature to protect you. So after a period of inactivity on this application, you will be logged out automatically.",
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'Disclaimers',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 8), child: Text(
+                        "The content of this application may contain inaccuracies or typographical errors. American may alter, change, or improve the content at any time and without notice. American makes no representations or warranties as to the Content's completeness or accuracy, and makes no commitment to update the content or application. American makes no representations about the content's or application's suitability for any purpose.",
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+                         Container(  padding: EdgeInsets.only(bottom: 8), child: Text(
+                         'YOU USE THIS APPLICATION AT YOUR OWN RISK. THE APPLICATION AND ALL CONTENT FOUND THEREIN IS PROVIDED "AS IS" AND WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OF EXPECTATION OF PRIVACY, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, NON-INFRINGEMENT, OR TITLE. AMERICAN DOES NOT WARRANT THAT THIS APPLICATION OR APPLICATIONS LINKED TO THIS APPLICATION WILL BE UNINTERRUPTED, FREE FROM DEFECTS, RELIABLE, OR FREE FROM ERRORS; THAT DEFECTS WILL BE CORRECTED; OR THAT THIS APPLICATION OR APPLICATIONS LINKED TO THIS APPLICATION ARE FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.',
+                          style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+                         Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
+                         "IN NO EVENT WILL AMERICAN BE LIABLE FOR ANY DAMAGES (WHETHER CONSEQUENTIAL, DIRECT, INCIDENTAL, INDIRECT, PUNITIVE, SPECIAL, OR OTHERWISE) ARISING OUT OF, OR IN ANY WAY CONNECTED WITH, THE USE OF OR INABILITY TO USE THE APPLICATION OR FOR ANY OF THE CONTENT OBTAINED THROUGH OR OTHERWISE IN CONNECTION WITH THE APPLICATION, IN EACH CASE REGARDLESS OF WHETHER THE DAMAGES ARE BASED ON CONTRACT, STRICT LIABILITY, TORT, OR OTHER THEORIES OF LIABILITY, AND ALSO REGARDLESS OF WHETHER AMERICAN WAS GIVEN ACTUAL OR CONSTRUCTIVE NOTICE THAT DAMAGES WERE POSSIBLE.",
+                          style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'Applicable law',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
+                        "This application is created and controlled by American in the State of Texas, USA. As such, the laws of the State of Texas will govern these disclaimers, terms, and conditions, without giving effect to any principles of conflicts of laws. You agree to bring any claims against American exclusively in the state or federal courts of Texas. In addition, you hereby irrevocably and unconditionally consent to submit to the exclusive jurisdiction of the courts of the State of Texas for any litigation arising out of or relating to use of or purchases made through this application. If any provision of this Agreement is held by a court or arbitrator of competent jurisdiction to be invalid, unenforceable, or void, then that provision will be deemed severable from this agreement and will not affect the validity and enforceability of any remaining provisions. You agree that you will comply with all applicable laws in connection with your use of this application.",
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+                        Container( padding: EdgeInsets.only(bottom: 8), child: Text(
+                        'Legal terms',
+                        style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1),    ), ),
+                        Container(  padding: EdgeInsets.only(bottom: 8), child: Text(
+                        "This application is restricted solely to authorized users for legitimate business purposes. Unauthorized users are subject to disciplinary action, civil liability, and criminal penalties. In accordance with published security policies, individuals accessing this system consent to having their activities monitored and recorded. Any evidence of unauthorized activity may be provided to law enforcement officials.",
+                         style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
+
+
+
+            //    Container(  child: Wrap(  children: [ Linkable(text:"Hi!\nI'm Anup.\n\nYou can email me at 1anuppanwar@gmail.com.\nOr just whatsapp me @ +91-8968894728.\n", )    ] ),  ),
+             //          Container(  child: Link( child: Text('link'), url: 'https://flutter.dev', )  ),
+  //     Container(padding: EdgeInsets.only(bottom: 10),
+       //     child: Text( 'Thank you for choosing American Airlines, Inc. Flight Status Notification text messaging service for your mobile device. Your use of the Service, as hereafter defined, constitutes your agreement to these terms and conditions. We may amend these terms, or modify or cancel the Service or any of its features without notice. Message and Data Rates may apply. Check with your mobile service provider for details on specific fees and charges that may apply for you. Click to view aa.com Privacy Policy. American Airlines offers its customers mobile access to flight information (e.g., for tracking flight status, gate, time, and baggage claim) over Short Message Service ("SMS") or SMS text messages (the "Service"). The Service will be ongoing but may be cancelled by us at any time. Customers may opt out of the Service at any time (see "To Stop the Service" below).',
+        //      style: TextStyle(  color: AaeColors.lightGray, fontSize: 16, height: 1.3), ),  ),
+
+        //  Container(  child: Text('United States of America:',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),),   ),
+
+       //   Container( padding: EdgeInsets.only(bottom: 8), child: Wrap( children: [
+        //   Text('Web site - ',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),),
+       //     Link( child: Text('www.aa.com/FLYAA',style: TextStyle(color: AaeColors.blue, fontSize: 16, height: 1.3),), url: 'https://www.aa.com/FLYAA', ),
+       //    Text('Mobile Phone - (35922)\nTo get help, you can contact us at any time from your mobile phone by sending a text message with the word "HELP" to FLYAA (35922).\nTo Stop the Service: To stop the messages coming to your mobile phone, you can opt out of the Service via SMS. Just send a text message with the word "STOP" to FLYAA (35922). You will receive a one-time opt-out confirmation text message. After that, you will not receive any future messages.',style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),), ],  ), ),
+
+                       //         Container(   padding: EdgeInsets.only(bottom: 8), child: Wrap(  children: [
+                       //         Linkable(text:'Web site - www.aa.com/FLYAA\nMobile Phone - (35922)\nTo get help, you can contact us at any time from your mobile phone by sending a text message with the word "HELP" to FLYAA (35922).\nTo Stop the Service: To stop the messages coming to your mobile phone, you can opt out of the Service via SMS. Just send a text message with the word "STOP" to FLYAA (35922). You will receive a one-time opt-out confirmation text message. After that, you will not receive any future messages.',textColor: AaeColors.lightGray, style: TextStyle( fontFamily: 'AmericanSans',fontSize: 16, height: 1.3), )
+                        //                             ] ),  ),
+
+
+
+       //     Container(padding: EdgeInsets.only(bottom: 8),
+       //              child: Text('Spain or United Kingdom:\nMobile Phone - (447950080989)\nTo get help, you can contact us at any time from your mobile phone by sending a text message with the word "HELP" to (447950080989).\nTo Stop the Service: To stop the messages coming to your mobile phone, you can opt out of the Service via SMS. Just send a text message with the word "STOP" to (447950080989). You will receive a one-time opt-out confirmation text message. After that, you will not receive any future messages.',
+       //              style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),    ),  ),
+
+      //     Container( padding: EdgeInsets.only(bottom: 8),
+       //             child: Text('Agreement to Terms & Conditions: Your use of the Service constitutes your agreement to these terms and conditions and to the aa.com Site Usage terms.',
+       //             style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),   ),  ),
+
+        //   Container( padding: EdgeInsets.only(bottom: 8),
+           //         child: Text('You agree to provide American Airlines with a valid mobile number. You agree that we may send you text messages through your wireless provider. We do not charge for the Service, but you are responsible for all charges and fees associated with text messaging imposed by your wireless provider.',
+            //        style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),   ),  ),
+
+         //    Container(  padding: EdgeInsets.only(bottom: 8),
+           //           child: Text('Notify us immediately of any changes to your registered device. In case of unauthorized access to your device or Service, you agree to cancel enrollment associated with such device immediately.',
+          //            style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),    ),   ),
+          //    Container(             padding: EdgeInsets.only(bottom: 8),
+            //           child: Text('You agree to indemnify, defend, and hold harmless American Airlines and its affiliates from and against any and all third party claims, demands, proceedings, suits, actions, liabilities, obligations, losses,, damages, penalties, taxes, levies, fines, judgments, settlements or costs (collectively, "Claims") based on, arising or resulting from your use of the Service, including without limitation any Claims alleging facts that if true would constitute your breach of these terms, or from you providing us with a phone number that is not your own.',
+            //           style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),    ), ),
+           //    Container( padding: EdgeInsets.only(bottom: 8),
+            //            child: Text('You agree that we will not be liable for failed, delayed, or misdirected delivery of, any information sent through the Service; any errors in such information; any action you may or may not take in reliance on the information of Service. AMERICAN AIRLINES WILL NOT UNDER ANY CIRCUMSTANCE BE LIABLE TO YOU FOR SPECIAL, INDIRECT, PUNITIVE, EXEMPLARY OR CONSQUENTIAL DAMAGES.',
+            //            style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),      ),
+          //      Container( padding: EdgeInsets.only(bottom: 8),
+            //             child: Text('Our participating carriers include, but are not limited to AT&T, Sprint, Verizon Wireless, U.S. Cellular®, T-Mobile® and MetroPCS®. The mobile carriers are not liable for delayed or undelivered messages.',
+            //             style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),),
+            //     Container(  padding: EdgeInsets.only(bottom: 8),
+             //             child: Text('Any failure of American Airlines to assert any rights it may have hereunder does not constitute a waiver of its right to assert the same or any other right at any other time or against any other person or entity. If any provision of these terms and conditions is found to be invalid or unenforceable, then the invalid or unenforceable provision will be stricken without affecting the validity or enforceability of any other provision.',
+              //            style: TextStyle(color: AaeColors.lightGray, fontSize: 16, height: 1.3),   ),    ),
+
         ],
       ),
     );

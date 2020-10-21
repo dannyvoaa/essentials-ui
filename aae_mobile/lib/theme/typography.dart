@@ -409,5 +409,5 @@ class AaeTextStyles {
     return textStyle;
   }
 
-  static const pageHeadline = TextStyle(fontSize: 24, fontWeight: _bold);
+  static const pageHeadline = TextStyle(fontSize: 24, fontWeight: _bold, color: AaeColors.onboardTitle);
 }
