@@ -36,10 +36,8 @@ class SignInBloc {
 
   @provide
   @singleton
-  SignInBloc(this._signInRepository, this._profileRepository,
-      this._cacheService, this._cacheAuth) {
-    _signInRepository.currentUser.subscribe(
-        onNext: (_) => _eventSubject.sendNext(SignInEvents.currentUserChanged));
+  SignInBloc(this._signInRepository, this._profileRepository, this._cacheService, this._cacheAuth) {
+    _signInRepository.currentUser.subscribe(onNext: (_) => _eventSubject.sendNext(SignInEvents.currentUserChanged));
   }
 
   /// Signals that an account was successfully created so that repositories can
@@ -100,7 +98,7 @@ class SignInBloc {
           ..password = identity.token);
       });
       unawaited(_cacheAuth.writeCredentials(authorizedUser: validAuth));
-      await _profileRepository.validateIdentity();
+      //await _profileRepository.validateIdentity();
     }
   }
 }

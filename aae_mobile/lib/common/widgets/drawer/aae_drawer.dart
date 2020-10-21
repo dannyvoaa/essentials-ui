@@ -53,6 +53,7 @@ class AaeDrawer extends StatelessWidget {
     }
 
     return Scaffold(
+      drawerEnableOpenDragGesture: false,
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(

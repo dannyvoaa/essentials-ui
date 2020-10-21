@@ -1,6 +1,7 @@
 import 'package:aae/common/widgets/drawer/aae_drawer.dart';
 import 'package:aae/events/component/calendar/calendar_component.dart';
 import 'package:aae/events/component/events_list/events_list_component.dart';
+import 'package:aae/home/news_feed_page.dart';
 import 'package:aae/navigation/paage_provider.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
@@ -15,7 +16,9 @@ class EventsPage extends StatefulWidget {
 class _EventsPageState extends State<EventsPage> {
   @override
   Widget build(BuildContext context) {
+    setState(() {});
     return Scaffold(
+      key: SSKeys.scaffoldKeyE,
       endDrawer: AaeDrawer(),
       appBar: AaeTopNavBar(),
       body: Padding(

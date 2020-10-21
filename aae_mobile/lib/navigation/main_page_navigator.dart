@@ -22,14 +22,12 @@ class MainPageNavigator extends StatelessWidget {
   final GlobalKey<NavigatorState> _navigatorKey;
   final MainPage _page;
 
-  MainPageNavigator({
-    @required GlobalKey<NavigatorState> navigatorKey,
-    @required MainPage page,
-  })  : _navigatorKey = navigatorKey,
-        _page = page;
+  MainPageNavigator({@required GlobalKey<NavigatorState> navigatorKey, @required MainPage page,
+  })  : _navigatorKey = navigatorKey, _page = page;
 
   // Determines how to build the route specified by [routeName].
   WidgetBuilder _getRouteBuilder(BuildContext context, String routeName) {
+    //print('RouteName-$routeName');
     if (routeName == routes.root) {
       return _rootPages(context);
     }
@@ -139,16 +137,18 @@ class MainPageNavigator extends StatelessWidget {
       key: _navigatorKey,
       initialRoute: routes.root,
       onGenerateRoute: (RouteSettings routeSettings) {
-        if (routeSettings.name == routes.root)
+        if (routeSettings.name == routes.root) {
           return TransitionlessPageRoute(
             builder: _getRouteBuilder(context, routeSettings.name),
             settings: routeSettings,
           );
-        else
+        }
+        else {
           return MaterialPageRoute(
             builder: _getRouteBuilder(context, routeSettings.name),
             settings: routeSettings,
           );
+        }
       },
     );
   }

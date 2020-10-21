@@ -6,7 +6,7 @@ import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
-
+import 'package:aae/profile/profile_details.dart';
 import 'hub_locations_selection_bloc.dart';
 import 'hub_locations_selection_view_model.dart';
 
@@ -67,36 +67,73 @@ Widget _hubLocationsList(
   }
 
   Widget _hubLocationsItem(BuildContext context, HubLocationsViewModel viewModel) {
-        return Padding(
-         padding: const EdgeInsets.all(8.0),
-          child: GestureDetector(
-              onTap: viewModel.onHubLocationPressed,
-            child: Container(
-             margin: const EdgeInsets.only(left:40,right:40),
-                  width: AaeDimens.workgroupsButtonWidth,
-                  height: AaeDimens.workgroupsButtonHeight,
-              decoration: BoxDecoration(
-                color: viewModel.isSelected ? AaeColors.lightBlue : AaeColors.white,
+    ProfileDetails profiledetails = ProfileDetails.getInstance();
+    String location = profiledetails.userlocation;
+    if (location == null) {
+      location = "";
+    }
+
+    if (viewModel.hubLocation == location) {
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GestureDetector(
+          child: Container(
+            margin: const EdgeInsets.only(left: 40, right: 40),
+            width: AaeDimens.workgroupsButtonWidth,
+            height: AaeDimens.workgroupsButtonHeight,
+            decoration: BoxDecoration(
+                color: Colors.grey,
                 borderRadius: BorderRadius.circular(AaeDimens.topicsIconRadius),
                 shape: BoxShape.rectangle,
-                border: viewModel.isSelected
-                    ? Border.all(
-                        color: AaeColors.white,
-                        width: 0)
-                    : Border.all(color: AaeColors.black, width: 1),
-              ),
-              child: Center(
-                child: Text(viewModel.hubLocation,
-                    style: TextStyle(
-                      color:  viewModel.isSelected ? AaeColors.white : AaeColors.black,
-                      fontSize: 17,
-                      fontWeight: FontWeight.normal,
-                    )),
-              ),
+                border:
+                Border.all(
+                    color: AaeColors.white,
+                    width: 0)
+              //: Border.all(color: AaeColors.black, width: 1),
+            ),
+            child: Center(
+              child: Text(viewModel.hubLocation,
+                  style: TextStyle(
+                    color: AaeColors.white,
+                    fontSize: 17,
+                    fontWeight: FontWeight.normal,
+                  )),
             ),
           ),
-        );
-      }
+        ),
+      );
+    } else {
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GestureDetector(
+          onTap: viewModel.onHubLocationPressed,
+          child: Container(
+            margin: const EdgeInsets.only(left: 40, right: 40),
+            width: AaeDimens.workgroupsButtonWidth,
+            height: AaeDimens.workgroupsButtonHeight,
+            decoration: BoxDecoration(
+              color: viewModel.isSelected ? AaeColors.lightBlue : AaeColors.white,
+              borderRadius: BorderRadius.circular(AaeDimens.topicsIconRadius),
+              shape: BoxShape.rectangle,
+              border: viewModel.isSelected
+                  ? Border.all(
+                  color: AaeColors.white,
+                  width: 0)
+                  : Border.all(color: AaeColors.black, width: 1),
+            ),
+            child: Center(
+              child: Text(viewModel.hubLocation,
+                  style: TextStyle(
+                    color: viewModel.isSelected ? AaeColors.white : AaeColors.black,
+                    fontSize: 17,
+                    fontWeight: FontWeight.normal,
+                  )),
+            ),
+          ),
+        ),
+      );
+    }
+  }
 
 
 }
