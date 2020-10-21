@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:aae/api/api_client.dart';
 import 'package:aae/api/hsm_state_machine.dart';
+import 'package:aae/api/travel_api_client.dart';
 import 'package:aae/auth/auth.dart';
 import 'package:aae/bloc/bloc_factory.dart';
 import 'package:aae/cache/cache_service.dart';
@@ -17,6 +18,7 @@ import 'package:aae/provided_service.dart';
 import 'package:aae/recognition/repository/recognition_repository.dart';
 import 'package:aae/sign_in/workflow/constants/sign_in_states.dart';
 import 'package:aae/sign_in/workflow/sign_in_state_machine.dart';
+import 'package:aae/travel/repository/travel_repository.dart';
 import 'package:aae/workflow/common/workflow_event.dart';
 import 'package:aae/workflow/common/workflow_state.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -41,6 +43,10 @@ class MobileModule {
   @provide
   @singleton
   NewsServiceApi apiClient() => NewsServiceApi();
+
+  @provide
+  @singleton
+  TravelServiceApi travelApiClient() => TravelServiceApi();
 
   @provide
   @singleton
@@ -74,12 +80,14 @@ class MobileModule {
   UnmodifiableListView<ProvidedService> services(
     NewsFeedRepository newsFeedRepository,
     RecognitionRepository recognitionRepository,
+    TravelRepository travelRepository,
     EventsRepository eventsRepository,
     AaeNavigator aaeNavigator,
   ) =>
       UnmodifiableListView<ProvidedService>([
         newsFeedRepository,
         recognitionRepository,
+        travelRepository,
         eventsRepository,
         aaeNavigator,
       ]);
@@ -125,6 +133,9 @@ abstract class AppInjector implements BlocFactory {
 
   @provide
   NewsServiceApi apiClient();
+
+  @provide
+  TravelServiceApi travelApiClient();
 
   @provide
   FlutterSecureStorage secureStorage();
