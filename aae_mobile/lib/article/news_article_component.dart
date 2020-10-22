@@ -112,17 +112,16 @@ class NewsArticleComponent extends StatelessWidget {
                             "html": Style(
                               color: AaeColors.darkBlue,
                               fontSize: FontSize(24),
-                              textAlign: TextAlign.center,
-                              margin: EdgeInsets.only(top: 12, bottom: 2, left: 2, right: 2),
+                              textAlign: TextAlign.left,
+                              margin: EdgeInsets.only(top: 12, bottom: 2, left: 16, right: 2),
                             ),
                           },
                         ),
                       ),
                       Container(
-                        child: Center(
-//                        child: Text(image),
-                          child: Text(strAuthor),
-                        ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24.0, vertical: 0.0),
+                        child: Text(strAuthor, textAlign: TextAlign.start,),
                       ),
                       Container(
                         padding: const EdgeInsets.symmetric(
