@@ -1,4 +1,5 @@
 import 'package:aae/home/news_feed_list_item/news_feed_list_item_component.dart';
+import 'package:aae/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -28,7 +29,7 @@ _buildRow(NewsFeedListRowCollectionViewModel viewModel, index) {
           child: _buildRowHeader(viewModel, index),
         ),
         Container(
-          height: 270,
+          height: 290,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: viewModel.newsFeedItemIds.length,

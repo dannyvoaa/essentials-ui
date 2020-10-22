@@ -34,13 +34,14 @@ class ListViewItem extends StatelessWidget {
     @required String title,
     @required String body,
     @required String author,
+    @required String date,
     @required BuildContext context,
     GestureTapCallback onTapped,
   }) : this(
             image: image,
             infoPanelChildren: <Widget>[
               _buildTitle(title),
-              _buildShortBody(context, body, author),
+              _buildShortBody(context, body, author, date),
             ],
             onTapped: onTapped);
 
@@ -116,25 +117,33 @@ class ListViewItem extends StatelessWidget {
         top: 6.0,
         bottom: 0.0,
       ),
-      child: Html(
-          data: text,
-          style: {
-            "html": Style(
-              color: AaeColors.darkGray,
-              fontSize: FontSize(18),
-              margin: EdgeInsets.only(top:6, bottom:2, left:0, right:0,),
-            ),
-            "body": Style(
-              color: AaeColors.darkGray,
-              fontSize: FontSize(18),
-              margin: EdgeInsets.only(top:0, bottom:0, left:0, right:0,),
-            ),
-          }
-      ),
+      child: Html(data: text, style: {
+        "html": Style(
+          color: AaeColors.darkGray,
+          fontSize: FontSize(18),
+          margin: EdgeInsets.only(
+            top: 6,
+            bottom: 2,
+            left: 0,
+            right: 0,
+          ),
+        ),
+        "body": Style(
+          color: AaeColors.darkGray,
+          fontSize: FontSize(18),
+          margin: EdgeInsets.only(
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+          ),
+        ),
+      }),
     );
   }
 
-  static Widget _buildShortBody(BuildContext context, String body, author) {
+  static Widget _buildShortBody(
+      BuildContext context, String body, author, date) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -184,6 +193,16 @@ class ListViewItem extends StatelessWidget {
                 textDecoration: TextDecoration.none,
               ),
             },
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top:8),
+          child: Text(
+            'September 22, 2020',
+            style: TextStyle(
+              color: AaeColors.gray,
+              fontSize: 12,
+            ),
           ),
         ),
       ],
