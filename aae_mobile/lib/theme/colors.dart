@@ -16,6 +16,7 @@ class AaeColors {
   static const linkText = Color.fromRGBO(0, 229, 255, 1.0);
   static const premiumText = Color.fromRGBO(141, 91, 255, 1.0);
   static const modernHint = Color.fromRGBO(255, 255, 255, 0.4);
+  static const onboardTitle = Color.fromRGBO(54, 73, 90, 1);
 
   // Button Text
   static const buttonPrimaryText = Color.fromRGBO(32, 33, 36, 1.0);
@@ -36,6 +37,7 @@ class AaeColors {
 
   // Button
   static const buttonPrimaryBackground = Color.fromRGBO(255, 255, 255, 0.9);
+  static const boardBackground = Color.fromRGBO(250, 250, 250, 0.8);
   static const buttonPrimaryDisabledBackground =
       Color.fromRGBO(255, 255, 255, 0.6);
   static const buttonSecondaryBackground = Color.fromRGBO(255, 255, 255, 0.2);

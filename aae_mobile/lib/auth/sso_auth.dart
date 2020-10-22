@@ -73,15 +73,20 @@ class SSOAuth {
 
   Future<void> signIn() async {
     try {
-      String tokenvalue = _cache.readString("tokenvalue").value;
-      var jwt = tryParseJwt(tokenvalue);
-      //print(jwt);
-      ProfileDetails profiledetails = ProfileDetails.getInstance();
-      profiledetails.setFullname(jwt['fullname']);
-      profiledetails.setLocation(jwt['location']);
+      if (_cache.readString("tokenvalue").toString() != null) {
+        String tokenvalue = _cache.readString("tokenvalue").toString();
+        var jwt = tryParseJwt(tokenvalue);
+        if (jwt != null) {
+          //print('-------$jwt');
+          ProfileDetails profiledetails = ProfileDetails.getInstance();
+          profiledetails.setFullname(jwt['fullname'].toString());
+          profiledetails.setLocation(jwt['location'].toString());
 
-      SSOIdentity _user = new SSOIdentity(tokenvalue, jwt['email'], jwt['uid'], jwt['firstname'], jwt['fullname'], jwt['location']);
-      _setCurrentUser(_user);
+          SSOIdentity _user = new SSOIdentity(
+              tokenvalue, jwt['email'].toString(), jwt['uid'].toString(), jwt['firstname'].toString(), jwt['fullname'].toString(), jwt['location'].toString());
+          _setCurrentUser(_user);
+        }
+      }
       // Wait for sign in flow to complete.
     } on Exception catch (e, s) {
       _log.severe('Error signing in with SSO:', e, s);

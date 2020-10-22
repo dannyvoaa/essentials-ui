@@ -43,64 +43,59 @@ class _TopicsSelectionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WorkflowPageTemplate(
-        title: 'Personalize your content',
-        body: 'Select topics that matter to you',
-        scrollableChild: _topicsList(context, viewModel.topics),
-        primaryButtonText: 'Next',
-        primaryButtonEnabled: true,
+      body: Builder(
+        builder: (context) => WorkflowPageTemplate(
+          title: 'Select topics of interest',
+          scrollableChild: _topicsList(context, viewModel.topics),
+          primaryButtonText: 'FINISH',
+          primaryButtonEnabled: viewModel.nextButtonEnabled,
+          secondaryButtonText: 'BACK',
+        ),
       ),
     );
   }
 
-  Widget _topicsList(
+ Widget _topicsList(
       BuildContext context, BuiltList<TopicsViewModel> viewModels) {
-    return GridView.builder(
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: AaeDimens.topicsIconSize,
-          mainAxisSpacing: AaeDimens.topicsIconSpacing,
-          crossAxisSpacing: AaeDimens.topicsIconSpacing,
-        ),
+    return ListView.builder(
         itemBuilder: (context, i) {
           return _topicsItem(context, viewModels[i]);
-        },
-        itemCount: viewModels.length);
+                  },
+                  itemCount: viewModels.length);
   }
 
-  Widget _topicsItem(BuildContext context, TopicsViewModel viewModel) {
-    return GestureDetector(
-      onTap: viewModel.onTopicPressed,
-      child: Container(
-        width: AaeDimens.topicsIconSize,
-        height: AaeDimens.topicsIconSize,
-        decoration: BoxDecoration(
-          color: viewModel.isSelected ? AaeColors.blue : AaeColors.lightBlue,
-          borderRadius: BorderRadius.circular(AaeDimens.topicsIconRadius),
-          shape: BoxShape.rectangle,
-        ),
-        child: Container(
-          child: Stack(
-            children: <Widget>[
-              Container(
-                alignment: Alignment.center,
-                child: Icon(
-                  viewModel.isSelected ? Icons.check : null,
-                  color: AaeColors.white,
-                  size: 120,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Text(viewModel.topic,
-                    style: TextStyle(
+
+   Widget _topicsItem(BuildContext context, TopicsViewModel viewModel) {
+      return Padding(
+       padding: const EdgeInsets.all(8.0),
+        child: GestureDetector(
+          onTap: viewModel.onTopicPressed,
+          child: Container(
+           margin: const EdgeInsets.only(left:40,right:40),
+                width: AaeDimens.workgroupsButtonWidth,
+                       height: AaeDimens.workgroupsButtonHeight,
+            decoration: BoxDecoration(
+              color: viewModel.isSelected ? AaeColors.lightBlue : AaeColors.white,
+              borderRadius: BorderRadius.circular(AaeDimens.topicsIconRadius),
+              shape: BoxShape.rectangle,
+              border: viewModel.isSelected
+                  ? Border.all(
                       color: AaeColors.white,
-                      fontSize: 16,
-                    )),
-              ),
-            ],
+                      width: 0)
+                  : Border.all(color: AaeColors.black, width: 1),
+            ),
+            child: Center(
+              child: Text(viewModel.topic,
+                  style: TextStyle(
+                    color:  viewModel.isSelected ? AaeColors.white : AaeColors.black,
+                    fontSize: 17,
+                    fontWeight: FontWeight.normal,
+                  )),
+            ),
           ),
         ),
-      ),
-    );
-  }
+      );
+    }
+
+
 }

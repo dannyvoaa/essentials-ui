@@ -15,8 +15,7 @@ class AppScaffoldState extends State<AppScaffold> {
 
   // Shared with the root navigator in main.dart for top-level Profile
   // navigation.
-  static WillPopCallback willPopCallback(
-      {@required GlobalKey<NavigatorState> key}) {
+  static WillPopCallback willPopCallback({@required GlobalKey<NavigatorState> key}) {
     return () async => !await key.currentState.maybePop();
   }
 

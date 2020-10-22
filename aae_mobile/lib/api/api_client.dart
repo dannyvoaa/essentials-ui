@@ -105,7 +105,7 @@ class NewsServiceApi {
         ..hubLocation.addAll(profileQuery.docs[0].preferences.hubLocation)
         ..topics.addAll(profileQuery.docs[0].preferences.topics));
 
-      print(profile);
+      //print(profile);
 
       _log.info("Profile request successful");
       return profile;

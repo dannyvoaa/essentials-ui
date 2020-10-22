@@ -46,9 +46,7 @@ class SignInWorkflow extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async => !await key.currentState.maybePop(),
       child: Workflow<WorkflowEvent>(
-        factory: (context) =>
-            ServiceProvider.serviceOf<SignInStateMachineFactory>(context)
-                .signInStateMachine(),
+        factory: (context) => ServiceProvider.serviceOf<SignInStateMachineFactory>(context).signInStateMachine(),
         onGenerateRoute: _generatePage,
         navigatorKey: key,
       ),

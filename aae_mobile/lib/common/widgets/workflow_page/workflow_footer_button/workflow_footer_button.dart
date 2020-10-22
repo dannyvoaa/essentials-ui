@@ -64,7 +64,7 @@ class WorkflowFooterButton extends StatelessWidget {
     this.onSecondaryButtonTapped,
   })  : _primaryButton = isEmpty(primaryButtonText)
             ? null
-            : AaeButton.primaryRegular(
+            : AaeButton.primarySmall(
                 key: primaryButtonKey,
                 text: primaryButtonText,
                 enabled: primaryButtonEnabled,
@@ -72,7 +72,7 @@ class WorkflowFooterButton extends StatelessWidget {
               ),
         _secondaryButton = isEmpty(secondaryButtonText)
             ? null
-            : AaeButton.secondaryRegular(
+            : AaeButton.primarySmall(
                 key: secondaryButtonKey,
                 text: secondaryButtonText,
                 enabled: secondaryButtonEnabled,
@@ -103,7 +103,7 @@ class WorkflowFooterButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(
         top: AaeDimens.workflowButtonHorizontalFooterTopMargin,
-        bottom: AaeDimens.workflowButtonHorizontalFooterBottomMargin,
+        bottom: AaeDimens.workflowButtonHorizontalFooterTopMargin,
       ).add(EdgeInsets.symmetric(
         horizontal: AaeDimens.workflowButtonHorizontalFooterSideMargin,
       )),

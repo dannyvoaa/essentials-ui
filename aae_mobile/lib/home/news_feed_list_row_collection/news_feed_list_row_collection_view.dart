@@ -108,10 +108,10 @@ _buildRowHeader(NewsFeedListRowCollectionViewModel viewModel, index) {
       case 0:
         {
           return Text(
-            'Latest News',
+            'Latest news',
             style: TextStyle(
-                fontSize: 17,
-                color: AaeColors.orange,
+                fontSize: 16,
+                color: Colors.orange,
                 fontWeight: FontWeight.bold),
           );
         }

@@ -1,4 +1,6 @@
 import 'package:aae/assets/aae_icons.dart';
+import 'package:aae/events/page/events_page.dart';
+import 'package:aae/home/news_feed_page.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -10,10 +12,9 @@ const _labelTextStyle = TextStyle(
   fontFamily: 'AmericanSans',
   letterSpacing: .25,
   fontWeight: FontWeight.w500,
-  fontSize: 10,
+  fontSize: 14,
+  textBaseline: TextBaseline.alphabetic,
 );
-
-GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
 class BottomNavigation extends StatelessWidget {
   final MainPage _currentPage;
@@ -50,7 +51,6 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Scaffold(key: _scaffoldKey,);
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -62,6 +62,8 @@ class BottomNavigation extends StatelessWidget {
       ),
       child: BottomNavigationBar(
         elevation: 8.0,
+        selectedFontSize: 14,
+        unselectedFontSize: 14,
         type: BottomNavigationBarType.fixed,
         items: [
           _buildItem(MainPage.home, context, 24, 2.0),
@@ -69,11 +71,27 @@ class BottomNavigation extends StatelessWidget {
 //          _buildItem(MainPage.travel, context, 18, 5.0),
 //          _buildItem(MainPage.notifications, context, 18, 6.0),
         ],
-//        onTap: _scaffoldKey.currentState.openDrawer,
-//        onTap: (index) => [_onSelectTab(MainPage.values[index]), Navigator.of(context).pop()],
-        onTap: (index) => _onSelectTab(MainPage.values[index]),
-//          onTap: _scaffoldKey.currentState.isDrawerOpen ? (index) => _onSelectTab(MainPage.values[index]) : (){},
-//        onTap: menuTap(index, context),
+          onTap: (index) {
+          try {
+            if (SSKeys.scaffoldKeyH.currentState != null) {
+              if (SSKeys.scaffoldKeyH.currentState.hasEndDrawer) {
+                if (SSKeys.scaffoldKeyH.currentState.isEndDrawerOpen) {
+                  SSKeys.scaffoldKeyH.currentState.openDrawer();
+                }
+              }
+            }
+            if (SSKeys.scaffoldKeyE.currentState != null) {
+              if (SSKeys.scaffoldKeyE.currentState.hasEndDrawer) {
+                if (SSKeys.scaffoldKeyE.currentState.isEndDrawerOpen) {
+                  SSKeys.scaffoldKeyE.currentState.openDrawer();
+                }
+              }
+            }
+          } catch (e) {
+            print(e.toString());
+          }
+            return _onSelectTab(MainPage.values[index]);
+          }
       ),
     );
   }
@@ -83,12 +101,9 @@ class BottomNavigation extends StatelessWidget {
     return BottomNavigationBarItem(
         icon: Container(
           height: 20,
-//          width: 1000,
           padding: EdgeInsets.only(top: offset,),
-          alignment: Alignment.bottomCenter,
           child: Container(
             height:80,
-//            width:1000,
             child: Icon(
               tabIconData[page],
               size: size,
@@ -97,21 +112,18 @@ class BottomNavigation extends StatelessWidget {
             ),
           ),
         ),
-        title: Container(
-          height: 24,
-padding: EdgeInsets.all(0),
-//          width: double.infinity,
-          alignment: Alignment.topCenter,
-          child: Padding(
-            padding: const EdgeInsets.only(top:10),
-            child: Text(
-              tabText[page],
-//              'Home',
-              style: _labelTextStyle.copyWith(color: tabColor),
-              textAlign: TextAlign.center,
-            ),
+      title: Container(
+        height: 24,
+        padding: EdgeInsets.only(top:10.0),
+        child: Container(
+          child: Text(
+            tabText[page],
+            style: _labelTextStyle.copyWith(color: tabColor),
+            textAlign: TextAlign.center,
+            maxLines: 1,
           ),
         ),
+      ),
     );
   }
 

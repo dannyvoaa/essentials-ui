@@ -4,15 +4,28 @@ import 'package:aae/home/news_feed_list_collection/news_feed_list_collection_com
 import 'package:aae/navigation/paage_provider.dart';
 import 'package:flutter/material.dart';
 
-class NewsFeedPage extends StatelessWidget {
+class SSKeys {
+  static final GlobalKey<ScaffoldState> scaffoldKeyH = new GlobalKey<ScaffoldState>(debugLabel: 'scaffoldKeyH');
+  static final GlobalKey<ScaffoldState> scaffoldKeyE = new GlobalKey<ScaffoldState>(debugLabel: 'scaffoldKeyH');
+}
+
+class NewsFeedPage extends StatefulWidget {
+  @override
+  _NewsFeedPageState createState() => _NewsFeedPageState();
+}
+
+class _NewsFeedPageState extends State<NewsFeedPage> {
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      endDrawer: AaeDrawer(),
-      appBar: NewsFeedTopBar(),
-      body: NewsFeedListCollectionComponent(),
-    );
-  }
+    setState(() {});
+      return Scaffold(
+        key: SSKeys.scaffoldKeyH,
+        endDrawer: AaeDrawer(),
+        appBar: NewsFeedTopBar(),
+        body: NewsFeedListCollectionComponent(),
+      );
+    }
 }
 
 class NewsFeedPageProvider implements PageProvider {

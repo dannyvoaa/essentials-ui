@@ -15,15 +15,25 @@ import 'welcome_view_model.dart';
 /// Exposes a [WelcomeViewModel] for that component to use.
 class WelcomeBloc {
   static final _log = Logger('WelcomeBloc');
-
   final SignInRepository _signInRepository;
   final _events = Subject<WorkflowEvent>();
 
   /// Events to be consumed by any workflows this BLoC is part of.
-  Observable<WorkflowEvent> get events => _events;
+  Observable<WorkflowEvent> get events {
+    return _events;
+  }
 
   /// Publishes the [WelcomeViewModel].
-  Source<WelcomeViewModel> get viewModel => toSource(Observable.just(_createViewModel()));
+  Source<WelcomeViewModel> get viewModel {
+    return toSource(Observable.just(_createViewModel()));
+  }
+
+  WelcomeViewModel _createViewModel() {
+    return WelcomeViewModel((b) =>
+    b
+      ..primaryButtonText = 'Sign in'
+      ..onPrimaryButtonPressed = _login);
+  }
 
   @provide
   WelcomeBloc(this._signInRepository);
@@ -37,9 +47,7 @@ class WelcomeBloc {
     }
   }
 
-  WelcomeViewModel _createViewModel() => WelcomeViewModel((b) => b
-    ..primaryButtonText = 'Sign in'
-    ..onPrimaryButtonPressed = _login);
+
 }
 
 /// Constructs new instances of [WelcomeBloc]s via the DI framework.

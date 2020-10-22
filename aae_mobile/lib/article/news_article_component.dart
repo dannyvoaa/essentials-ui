@@ -60,10 +60,22 @@ class NewsArticleComponent extends StatelessWidget {
     var image = args['articleImage'];
 
     return Scaffold(
-      endDrawer: AaeDrawer(),
-      appBar: GradientAppBar(
-        gradient: AaeColors.appBarGradient,
-      ),
+    //  endDrawer: AaeDrawer(),
+      appBar: AppBar(
+                      flexibleSpace: Container(
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                                colors: <Color>[AaeColors.blue, AaeColors.gradientTop])),
+                      ),
+
+                      elevation: 1,
+                      leading: new IconButton(
+                        icon: new Icon(Icons.arrow_back_ios, color: Colors.white),
+                        onPressed: () => Navigator.of(context).pop(),
+                      ),
+                    ),
       body: SafeArea(
         child: MediaQuery(
           data: MediaQueryData(textScaleFactor: 1.0),
