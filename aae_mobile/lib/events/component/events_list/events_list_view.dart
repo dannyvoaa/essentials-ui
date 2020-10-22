@@ -170,9 +170,7 @@ class EventsListView extends StatelessWidget {
                                                       Navigator.of(context)
                                                           .pop(),
                                                   child: Icon(
-                                                    IconData(57676,
-                                                        fontFamily:
-                                                            'MaterialIcons'),
+                                                    Icons.clear,
                                                     size: 20,
                                                     color: AaeColors.darkGray,
                                                   ),
