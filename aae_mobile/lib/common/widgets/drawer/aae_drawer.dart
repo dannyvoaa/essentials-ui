@@ -53,7 +53,6 @@ class AaeDrawer extends StatelessWidget {
     }
 
     return Scaffold(
-      endDrawerEnableOpenDragGesture: false,
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -2083,11 +2082,11 @@ class TermsRoute extends StatelessWidget {
                         'Reporting concerns',
                         style: TextStyle(color: AaeColors.lightGray, fontWeight: FontWeight.bold, fontSize: 18, height: 1),    ), ),
                     //    Container(  padding: EdgeInsets.only(bottom: 20), child: Text(
-                     //   "If you think another person is using this application in violation of this Agreement, report your concerns. In North America, report concerns to the EthicsPoint helpline online at www.aa.ethicspoint.com or to 1-877-422-3844. This number is toll-free, 24 hours a day, 7 days a week. If you are calling from outside North America, go to www.aa.ethicspoint.com for international, toll-free dialing instructions.",
+                     //   "If you think another person is using this application in violation of this Agreement, report your concerns. In North America, report concerns to the EthicsPoint helpline online at www.aa.ethicspoint.com or to 877-422-3844. This number is toll-free, 24 hours a day, 7 days a week. If you are calling from outside North America, go to www.aa.ethicspoint.com for international, toll-free dialing instructions.",
                      //    style: TextStyle( color: AaeColors.lightGray, fontSize: 16, height: 1.3),  ),  ),
 
                          Container(  padding: EdgeInsets.only(bottom: 20), child: Wrap(  children: [
-                          Linkable(text:"If you think another person is using this application in violation of this Agreement, report your concerns. In North America, report concerns to the EthicsPoint helpline online at www.aa.ethicspoint.com or to 1-877-422-3844. This number is toll-free, 24 hours a day, 7 days a week. If you are calling from outside North America, go to www.aa.ethicspoint.com for international, toll-free dialing instructions.\n",textColor: AaeColors.lightGray, style: TextStyle( fontFamily: 'AmericanSans',fontSize: 16, height: 1.3), )
+                          Linkable(text:"If you think another person is using this application in violation of this Agreement, report your concerns. In North America, report concerns to the EthicsPoint helpline online at www.aa.ethicspoint.com or to 877-422-3844. This number is toll-free, 24 hours a day, 7 days a week. If you are calling from outside North America, go to www.aa.ethicspoint.com for international, toll-free dialing instructions.\n",textColor: AaeColors.lightGray, style: TextStyle( fontFamily: 'AmericanSans',fontSize: 16, height: 1.3), )
                            ] ),  ),
 
                         Container( padding: EdgeInsets.only(bottom: 8), child: Text(
