@@ -19,13 +19,13 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
   @override
   Widget build(BuildContext context) {
     setState(() {});
-    return Scaffold(
-      key: SSKeys.scaffoldKeyH,
-      endDrawer: AaeDrawer(),
-      appBar: NewsFeedTopBar(),
-      body: NewsFeedListCollectionComponent(),
-    );
-  }
+      return Scaffold(
+        key: SSKeys.scaffoldKeyH,
+        endDrawer: AaeDrawer(),
+        appBar: NewsFeedTopBar(),
+        body: NewsFeedListCollectionComponent(),
+      );
+    }
 }
 
 class NewsFeedPageProvider implements PageProvider {

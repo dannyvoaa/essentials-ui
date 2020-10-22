@@ -17,25 +17,25 @@ class _EventsPageState extends State<EventsPage> {
   @override
   Widget build(BuildContext context) {
     setState(() {});
-    return Scaffold(
-      key: SSKeys.scaffoldKeyE,
-      endDrawer: AaeDrawer(),
-      appBar: AaeTopNavBar(),
-      body: Padding(
-        padding: const EdgeInsets.only(top: AaeDimens.baseUnit, left: AaeDimens.baseUnit, right: AaeDimens.baseUnit,),
-        child: SingleChildScrollView(
-          child: Container(
-            height: 900,
-            child: Column(
-              children: <Widget>[
-                CalendarComponent(),
-                Expanded(child: EventsListComponent()),
-              ],
+      return Scaffold(
+        key: SSKeys.scaffoldKeyE,
+        endDrawer: AaeDrawer(),
+        appBar: AaeTopNavBar(),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AaeDimens.baseUnit, left: AaeDimens.baseUnit, right: AaeDimens.baseUnit,),
+          child: SingleChildScrollView(
+            child: Container(
+              height: 900,
+              child: Column(
+                children: <Widget>[
+                  CalendarComponent(),
+                  Expanded(child: EventsListComponent()),
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
 

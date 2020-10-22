@@ -153,7 +153,11 @@ class EventsListView extends StatelessWidget {
                                             Container(
                                               child: GestureDetector(
                                                 onTap: () => Navigator.of(context).pop(),
-
+                                                child: Icon(
+                                                  IconData(57676, fontFamily: 'MaterialIcons'),
+                                                  size: 20,
+                                                  color: AaeColors.darkGray,
+                                                ),
                                               ),
 //                                            height: 12,
                                               margin: EdgeInsets.only(
