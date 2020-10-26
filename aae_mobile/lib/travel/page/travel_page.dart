@@ -4,6 +4,7 @@ import 'package:aae/travel/component/flight_status/flight_status_navigator.dart'
 import 'package:aae/travel/component/trips/trips_component.dart';
 import 'package:aae/travel/component/flight_status/flight_status_component.dart';
 import 'package:aae/travel/component/travel_top_bar/travel_top_bar.dart';
+import 'package:aae/travel/component/trips/trips_navigator.dart';
 import 'package:flutter/material.dart';
 
 class TravelPage extends StatelessWidget {
@@ -14,7 +15,6 @@ class TravelPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      initialIndex: this.selectedPage,
       length: 3,
       child: Scaffold(
         endDrawer: AaeDrawer(),
@@ -22,7 +22,7 @@ class TravelPage extends StatelessWidget {
         body: Container(
           child: TabBarView(
             children: <Widget>[
-              TripsComponent(),
+              TripsNavigator(),
               TripsComponent(),
               FlightStatusNavigator(),
             ],
@@ -37,6 +37,6 @@ class TravelPage extends StatelessWidget {
 class TravelPageProvider implements PageProvider {
   @override
   WidgetBuilder providePageBuilder(BuildContext context) {
-    return (context) => TravelPage(selectedPage: 2);
+    return (context) => TravelPage();
   }
 }

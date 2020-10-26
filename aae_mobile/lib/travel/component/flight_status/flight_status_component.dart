@@ -46,7 +46,7 @@ class FlightStatusComponent extends StatelessWidget {
                 return FlightStatusView(viewModel: snapshot.value);
               }
             } else {
-              return _buildLoadingPageState();
+              return FlightStatusView(viewModel: snapshot.value);
             }
           },
         );

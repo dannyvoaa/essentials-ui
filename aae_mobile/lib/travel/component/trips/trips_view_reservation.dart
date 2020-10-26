@@ -116,7 +116,7 @@ class CancelSlider extends StatelessWidget {
       ),
       icon: Center(
           child: Icon(
-        Icons.arrow_forward_sharp,
+        Icons.arrow_forward_ios,
         color: AaeColors.mediumGray,
         size: 26.0,
         semanticLabel: 'Slide to cancel trip',

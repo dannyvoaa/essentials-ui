@@ -1,6 +1,7 @@
 import 'package:aae/assets/aae_icons.dart';
 import 'package:aae/common/widgets/drawer/aae_drawer.dart';
 import 'package:aae/navigation/app_scaffold.dart';
+import 'package:aae/travel/component/flight_status/flight_status_view_model.dart';
 import 'package:aae/travel/component/trips/trips_collection.dart';
 import 'package:flutter/material.dart';
 import 'package:aae/travel/component/trips/trips_view_model.dart';
@@ -12,10 +13,12 @@ import 'package:aae/theme/dimensions.dart';
 import 'package:aae/travel/component/trips/trips_view_model.dart';
 import 'package:expandable/expandable.dart';
 
-class TripsExpPanel extends StatelessWidget {
-  const TripsExpPanel({
+class FlightStatusExpPanel extends StatelessWidget {
+  const FlightStatusExpPanel({
     Key key,
+    this.viewModel,
   }) : super(key: key);
+  final FlightStatusViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +38,9 @@ class TripsExpPanel extends StatelessWidget {
       ),
       child: Column(
         children: <Widget>[
-          DepartureStatus(),
-          RouteInfo(),
-          LocatorInfo(),
+          DepartureStatus(viewModel: this.viewModel),
+          RouteInfo(viewModel: this.viewModel),
+          LocatorInfo(viewModel: this.viewModel),
         ],
       ),
     );
@@ -47,7 +50,9 @@ class TripsExpPanel extends StatelessWidget {
 class RouteInfo extends StatelessWidget {
   const RouteInfo({
     Key key,
+    this.viewModel,
   }) : super(key: key);
+  final FlightStatusViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +71,7 @@ class RouteInfo extends StatelessWidget {
         ),
         child: Container(
           child: ExpandablePanel(
-            header: RouteSummary(),
+            header: RouteSummary(viewModel: viewModel),
             expanded: RouteDetails(),
 //            collapsed: _routeDetails(context),
           ),
@@ -77,6 +82,10 @@ class RouteInfo extends StatelessWidget {
 }
 
 class RouteSummary extends StatelessWidget {
+  const RouteSummary({this.viewModel});
+
+  final FlightStatusViewModel viewModel;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -86,9 +95,16 @@ class RouteSummary extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          RouteSummaryColumn('11:15 AM', 'DFW'),
-          Icon(Icons.arrow_forward_ios, color: AaeColors.gray,),
-          RouteSummaryColumn('1:20 PM', 'MAD'),
+          RouteSummaryColumn(
+              '${viewModel.flightStatus.originInfo.estimatedTime}',
+              '${viewModel.flightStatus.originInfo.airportCode}'),
+          Icon(
+            Icons.arrow_forward,
+            color: AaeColors.gray,
+          ),
+          RouteSummaryColumn(
+              '${viewModel.flightStatus.destinationInfo.estimatedTime}',
+              '${viewModel.flightStatus.destinationInfo.airportCode}'),
         ],
       ),
     );
@@ -107,7 +123,10 @@ class RouteSummaryColumn extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(time, style:AaeTextStyles.timeSummary,),
+        Text(
+          time,
+          style: AaeTextStyles.timeSummary,
+        ),
         Text(location),
       ],
     );
@@ -139,12 +158,12 @@ class RouteDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top:12,),
+      padding: const EdgeInsets.only(
+        top: 12,
+      ),
       child: Column(
         children: <Widget>[
           RouteDetail('Dallas/Fort Worth International Airport (DFW)',
-              '12hr 5min', true, 'Main', 'Airbus A321', true),
-          RouteDetail('Paris Charles de Gaulle Airport (CDG)',
               '12hr 5min', true, 'Main', 'Airbus A321', true),
           RouteDetailEnd('Madrid-Barajas Adolfo Suarez Airport (MAD)'),
         ],
@@ -155,6 +174,7 @@ class RouteDetails extends StatelessWidget {
 
 class RouteDetailEnd extends StatelessWidget {
   final String hub;
+
   const RouteDetailEnd(this.hub);
 
   @override
@@ -188,7 +208,8 @@ class RouteDetailEnd extends StatelessWidget {
           ),
           Column(
             children: [
-              Container(child: Text(hub, style:AaeTextStyles.hubDetailHeading)),
+              Container(
+                  child: Text(hub, style: AaeTextStyles.hubDetailHeading)),
             ],
           ),
         ],
@@ -204,6 +225,7 @@ class RouteDetail extends StatelessWidget {
   final String cabin;
   final String equipment;
   final bool wifi;
+
   const RouteDetail(this.hub, this.duration, this.overnight, this.cabin,
       this.equipment, this.wifi);
 
@@ -221,7 +243,7 @@ class RouteDetail extends StatelessWidget {
             alignment: Alignment.topCenter,
             height: 12,
             width: 12,
-            padding: EdgeInsets.only(top: 20),
+            padding: EdgeInsets.only(top: 35),
             decoration: BoxDecoration(
               border: Border.all(
                 color: AaeColors.ultraLightGray,
@@ -234,7 +256,7 @@ class RouteDetail extends StatelessWidget {
             ),
             child: Align(
 //              alignment: const Alignment(0.0, 0.0),
-            alignment: Alignment.topCenter,
+              alignment: Alignment.topCenter,
               child: SizedBox(
                 width: 1.0,
                 height: 40.0,
@@ -244,7 +266,9 @@ class RouteDetail extends StatelessWidget {
 //              minHeight: 0.0,
                   maxHeight: 50.0,
                   child: Container(
-                    padding: EdgeInsets.only(top:12,),
+                    padding: EdgeInsets.only(
+                      top: 12,
+                    ),
 //                    width: 1,
 //                    height: double.infinity,
                     color: AaeColors.ultraLightGray,
@@ -260,26 +284,62 @@ class RouteDetail extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(child: Text(hub, style:AaeTextStyles.hubDetailHeading)),
+              Container(
+                  child: Text(hub, style: AaeTextStyles.hubDetailHeading)),
               Padding(
-                padding: const EdgeInsets.only(top:16, bottom:16,),
+                padding: const EdgeInsets.only(
+                  top: 16,
+                  bottom: 16,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(duration, style: AaeTextStyles.routeDetailHeading,),
-                    Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,),
+                    Text(
+                      duration,
+                      style: AaeTextStyles.routeDetailHeading,
+                    ),
+                    Text(
+                      String.fromCharCode(0x2022),
+                      style: AaeTextStyles.dividerDot,
+                    ),
                     overnight
-                        ? Text('Overnight', style: AaeTextStyles.routeDetailHeading,)
+                        ? Text(
+                            'Overnight',
+                            style: AaeTextStyles.routeDetailHeading,
+                          )
                         : null,
                     overnight
-                        ? Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,)
+                        ? Text(
+                            String.fromCharCode(0x2022),
+                            style: AaeTextStyles.dividerDot,
+                          )
                         : null,
-                    Text(cabin, style: AaeTextStyles.routeDetailHeading,),
-                    Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,),
-                    Text(equipment, style: AaeTextStyles.routeDetailHeading,),
-                    wifi ? Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,) : null,
-                    wifi ? Icon(Icons.wifi, color:AaeColors.ultraLightGray, size: 12,) : null,
+                    Text(
+                      cabin,
+                      style: AaeTextStyles.routeDetailHeading,
+                    ),
+                    Text(
+                      String.fromCharCode(0x2022),
+                      style: AaeTextStyles.dividerDot,
+                    ),
+                    Text(
+                      equipment,
+                      style: AaeTextStyles.routeDetailHeading,
+                    ),
+                    wifi
+                        ? Text(
+                            String.fromCharCode(0x2022),
+                            style: AaeTextStyles.dividerDot,
+                          )
+                        : null,
+                    wifi
+                        ? Icon(
+                            Icons.wifi,
+                            color: AaeColors.ultraLightGray,
+                            size: 12,
+                          )
+                        : null,
                   ],
                 ),
               ),
@@ -296,20 +356,33 @@ class RouteDetail extends StatelessWidget {
 class LocatorInfo extends StatelessWidget {
   const LocatorInfo({
     Key key,
+    this.viewModel,
   }) : super(key: key);
+  final FlightStatusViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: AaeColors.bgLightGray,
-      padding: EdgeInsets.only(left:20, right:20, top:8, bottom:8,),
+      padding: EdgeInsets.only(
+        left: 20,
+        right: 20,
+        top: 8,
+        bottom: 8,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          LocatorColumn('LOCATOR', 'XDSSWP', CrossAxisAlignment.start),
-          LocatorColumn('GATE', '25', CrossAxisAlignment.center),
-          LocatorColumn('TERMINAL', 'C', CrossAxisAlignment.center),
-          LocatorColumn('SEAT', '18A', CrossAxisAlignment.end),
+          LocatorColumn(
+              'BOARDING',
+              '${viewModel.flightStatus.originInfo.estimatedTime}',
+              CrossAxisAlignment.start),
+          LocatorColumn('GATE', '${viewModel.flightStatus.originInfo.gate}',
+              CrossAxisAlignment.center),
+          LocatorColumn(
+              'TERMINAL',
+              '${viewModel.flightStatus.originInfo.terminal}',
+              CrossAxisAlignment.end),
         ],
       ),
     );
@@ -345,11 +418,16 @@ class LocatorColumn extends StatelessWidget {
 class DepartureStatus extends StatelessWidget {
   const DepartureStatus({
     Key key,
+    this.viewModel,
   }) : super(key: key);
+  final FlightStatusViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
-    final padding = EdgeInsets.only(left:0, right:20,);
+    final padding = EdgeInsets.only(
+      left: 0,
+      right: 20,
+    );
     return Container(
       padding: padding,
       child: Row(
@@ -358,14 +436,19 @@ class DepartureStatus extends StatelessWidget {
           Row(
             children: [
               Image(
-                image:
-                    AssetImage('assets/common/american-airlines-eaagle-logo.png'),
-                height:30,
+                image: AssetImage(
+                    'assets/common/american-airlines-eaagle-logo.png'),
+                height: 30,
               ),
-              Text('1234 Departs in 1 hr 33 min', style:AaeTextStyles.departureHeading),
+              Text(
+                  '${viewModel.flightStatus.flightNumber} Departs in 1 hr 33 min',
+                  style: AaeTextStyles.departureHeading),
             ],
           ),
-          Text('ONTIME', style: AaeTextStyles.departureOnTime,),
+          Text(
+            '${viewModel.flightStatus.status}',
+            style: AaeTextStyles.departureOnTime,
+          ),
         ],
       ),
     );
