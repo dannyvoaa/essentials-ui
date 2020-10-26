@@ -21,6 +21,8 @@ class ListViewItem extends StatelessWidget {
   /// The callback to invoke when the widget is tapped.
   final GestureTapCallback onTapped;
 
+//  final String title = "test";
+
   ListViewItem({
     @required this.image,
     @required this.infoPanelChildren,
@@ -112,12 +114,13 @@ class ListViewItem extends StatelessWidget {
   }
 
   static Widget _buildTitle(String text) {
+    final String textUpdate = (text.replaceAll(new RegExp(r'\\'),''));
     return Padding(
       padding: const EdgeInsets.only(
         top: 6.0,
         bottom: 0.0,
       ),
-      child: Html(data: text, style: {
+      child: Html(data: textUpdate, style: {
         "html": Style(
           color: AaeColors.darkGray,
           fontSize: FontSize(18),
@@ -198,7 +201,8 @@ class ListViewItem extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(top:8),
           child: Text(
-            'September 22, 2020',
+            author,
+//            'September 22, 2020',
             style: TextStyle(
               color: AaeColors.gray,
               fontSize: 12,
