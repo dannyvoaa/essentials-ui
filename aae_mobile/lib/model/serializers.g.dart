@@ -9,11 +9,13 @@ part of 'serializers.dart';
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ArticleBody.serializer)
       ..add(Docs.serializer)
+      ..add(Dzerodocs.serializer)
       ..add(Event.serializer)
       ..add(HubLocation.serializer)
       ..add(NewsArticle.serializer)
       ..add(NewsFeedItem.serializer)
       ..add(NewsFeedJsonList.serializer)
+      ..add(Newsarticledocs.serializer)
       ..add(Nfdocs.serializer)
       ..add(PerformanceStats.serializer)
       ..add(Pnr.serializer)
@@ -21,6 +23,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(RecognitionHistory.serializer)
       ..add(RecognitionRegister.serializer)
       ..add(StockStats.serializer)
+      ..add(Stockdocs.serializer)
       ..add(Topics.serializer)
       ..add(Trips.serializer)
       ..add(Workgroup.serializer)
@@ -28,11 +31,17 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(Event)]),
           () => new ListBuilder<Event>())
       ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(NewsArticle)]),
+          () => new ListBuilder<NewsArticle>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(NewsFeedItem)]),
           () => new ListBuilder<NewsFeedItem>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(NewsFeedJsonList)]),
           () => new ListBuilder<NewsFeedJsonList>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(PerformanceStats)]),
+          () => new ListBuilder<PerformanceStats>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Pnr)]),
           () => new ListBuilder<Pnr>())
@@ -40,6 +49,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(
               BuiltList, const [const FullType(RecognitionRegister)]),
           () => new ListBuilder<RecognitionRegister>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(StockStats)]),
+          () => new ListBuilder<StockStats>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

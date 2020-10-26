@@ -21,8 +21,6 @@ class ListViewItem extends StatelessWidget {
   /// The callback to invoke when the widget is tapped.
   final GestureTapCallback onTapped;
 
-//  final String title = "test";
-
   ListViewItem({
     @required this.image,
     @required this.infoPanelChildren,

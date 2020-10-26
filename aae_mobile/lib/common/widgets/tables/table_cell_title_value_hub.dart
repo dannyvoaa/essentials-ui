@@ -159,22 +159,16 @@ class TableCellTitleValueHub extends StatelessWidget {
       iconAccessory = Icons.add;
     }
 
-    // Check to see if the disclosure indicator should be shown
+    // Check to see if the add indicator should be shown
     if (this.boolShowAdd) {
-      colorAccessory = AaeColors.ultraLightGray
-          .withAlpha(this.boolEnabled ? 255 : (255 * 0.40).round());
+      colorAccessory = AaeColors.ultraLightGray.withAlpha(this.boolEnabled ? 255 : (255 * 0.40).round());
       iconAccessory = Icons.add;
     }
 
     // Setup the accessory
     Container container = Container(
-      child: Icon(
-        iconAccessory,
-        color: colorAccessory,
-      ),
-      padding: EdgeInsets.only(
-        left: 8,
-      ),
+      child: Icon(iconAccessory, color: colorAccessory),
+      padding: EdgeInsets.only(left: 8),
     );
 
     return this.boolShowCheckmark
