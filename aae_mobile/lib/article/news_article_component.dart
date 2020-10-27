@@ -59,6 +59,8 @@ class NewsArticleComponent extends StatelessWidget {
 
     var image = args['articleImage'];
 
+    final String titleFormat = (args['articleSubject'].replaceAll(new RegExp(r'\\'),''));
+
     return Scaffold(
     //  endDrawer: AaeDrawer(),
       appBar: AppBar(
@@ -107,7 +109,7 @@ class NewsArticleComponent extends StatelessWidget {
                       ),
                       Container(
                         child: Html(
-                          data: args['articleSubject'],
+                          data: titleFormat,
                           style: {
                             "html": Style(
                               color: AaeColors.darkBlue,
