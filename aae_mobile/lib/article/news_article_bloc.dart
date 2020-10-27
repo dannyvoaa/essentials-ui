@@ -30,7 +30,8 @@ class NewsArticleBloc {
             (b) {
                   b..articleID = article.contentID;
                   b..author = article.authorName;
-                  b..articleBody = article.contentString.content;
+                  //b..articleBody = article.contentString.content;
+                  b..articleBody = article.contentString;
             }
       );
 

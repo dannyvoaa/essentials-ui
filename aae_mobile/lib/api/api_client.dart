@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:aae/model/docs.dart';
+import 'package:aae/model/dzerodocs.dart';
 import 'package:aae/model/event.dart';
 import 'package:aae/model/news_article.dart';
+import 'package:aae/model/news_articledocs.dart';
 import 'package:aae/model/news_feed_json_list.dart';
 import 'package:aae/model/nfdocs.dart';
 import 'package:aae/model/performance_stats.dart';
@@ -11,6 +13,7 @@ import 'package:aae/model/profile.dart';
 import 'package:aae/model/profile_query.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:aae/model/stock_stats.dart';
+import 'package:aae/model/stockdocs.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:http/http.dart' as http;
 import 'package:logging/logging.dart';
@@ -32,7 +35,10 @@ class NewsServiceApi {
   final eventsEndpoint = 'https://beredididleatecturingele:457299efd6f5f57dbd679a0362d377a1ccf5018a@b23661f9-9acc-4aab-9a2b-f8aa0f41b993-bluemix.cloudantnosqldb.appdomain.cloud/events/_find';
   final stocksEndpoint = strSFDomain + '/default/AALStock.json';
   final performanceEndpoint = strSFDomain + '/default/PerformanceStats.json';
+  final stocksEndpoint1 = 'https://toreetherywhimandifersee:55608bd3e3255fe1851de225ce562d4cab7d8fa2@b23661f9-9acc-4aab-9a2b-f8aa0f41b993-bluemix.cloudantnosqldb.appdomain.cloud/american-essentials/_find';
+  final performanceEndpoint1 = 'https://toreetherywhimandifersee:55608bd3e3255fe1851de225ce562d4cab7d8fa2@b23661f9-9acc-4aab-9a2b-f8aa0f41b993-bluemix.cloudantnosqldb.appdomain.cloud/american-essentials/_find';
   final articleEndpoint = strSFDomain + '/default/ae-newsarticle.json?contentID=';
+  final articleEndpoint1 = 'https://toreetherywhimandifersee:55608bd3e3255fe1851de225ce562d4cab7d8fa2@b23661f9-9acc-4aab-9a2b-f8aa0f41b993-bluemix.cloudantnosqldb.appdomain.cloud/news_articles/_find';
 
   Future<List<NewsFeedJsonList>> getNewsFeed(List<String> tags) async {
     final headers = {'content-type': 'application/json'};
@@ -203,23 +209,34 @@ class NewsServiceApi {
     }
   }
 
-  Future<PerformanceStats> getD0StatsData() async {
-    final response = await httpClient.get(performanceEndpoint);
+  Future<StockStats> getStockStatsData() async {
+    String aaId = 'id-aalstock';
+    final headers = {'content-type': 'application/json'};
+    final body = jsonEncode({"selector": {"_id": {"\$eq": aaId}}});
+    final response = await httpClient.post(stocksEndpoint1, headers: headers, body: body).then((http.Response r) => r);
     if (response.statusCode == 200) {
-      //_log.info("PerformanceStats API request successful");
-      PerformanceStats feed = serializers.deserializeWith(PerformanceStats.serializer, json.decode(response.body));
-      return feed;
+      //print('*************STOCKS-RESPONSE-BODY**************');
+      //print(response.body.toString());
+      Stockdocs feed = serializers.deserializeWith(Stockdocs.serializer, json.decode(response.body));
+      //print('*************STOCKS**************');
+      //print(feed.stocks[0].toString());
+      StockStats stockStats = StockStats((b) => b
+        ..price = feed.stocks[0].price
+        ..aalChange = feed.stocks[0].aalChange);
+      return stockStats;
     } else {
-      throw Exception(
-          'Failed to load the performance\n ${response.body} - ${response.statusCode}');
+      throw Exception('Failed to load the stocks\n ${response.body} - ${response.statusCode}');
     }
   }
 
-  Future<StockStats> getStockStatsData() async {
+  Future<StockStats> getStockStatsData1() async {
     final response = await httpClient.get(stocksEndpoint);
     if (response.statusCode == 200) {
-      //_log.info("StockStats API request successful");
+      //print('*************STOCKS-RESPONSE-BODY**************');
+      //print(response.body.toString());
       StockStats feed = serializers.deserializeWith(StockStats.serializer, json.decode(response.body));
+      //print('*************STOCKS**************');
+      //print(feed.toString());
       return feed;
     } else {
       throw Exception(
@@ -227,7 +244,70 @@ class NewsServiceApi {
     }
   }
 
+  Future<PerformanceStats> getD0StatsData() async {
+    String aaId = 'id-dzero';
+    final headers = {'content-type': 'application/json'};
+    final body = jsonEncode({"selector": {"_id": {"\$eq": aaId}}});
+    final response = await httpClient.post(performanceEndpoint1, headers: headers, body: body).then((http.Response r) => r);
+    if (response.statusCode == 200) {
+      //print('*************PERFORMANCE-RESPONSE-BODY**************');
+      //print(response.body.toString());
+      Dzerodocs feed = serializers.deserializeWith(Dzerodocs.serializer, json.decode(response.body));
+      //print('************PERFORMANCE***************');
+      //print(feed.dzero[0].toString());
+      PerformanceStats dzeroStats = PerformanceStats((b) => b
+        ..a14 = feed.dzero[0].a14
+        ..a14Change = feed.dzero[0].a14Change
+        ..cf = feed.dzero[0].cf
+        ..cfChange = feed.dzero[0].cfChange
+        ..d0 = feed.dzero[0].d0
+        ..d0Change = feed.dzero[0].d0);
+
+      return dzeroStats;
+    } else {
+      throw Exception(
+          'Failed to load the performance\n ${response.body} - ${response.statusCode}');
+    }
+  }
+
+  Future<PerformanceStats> getD0StatsData1() async {
+    final response = await httpClient.get(performanceEndpoint);
+    if (response.statusCode == 200) {
+      //print('*************PERFORMANCE-RESPONSE-BODY**************');
+      //print(response.body.toString());
+      PerformanceStats feed = serializers.deserializeWith(PerformanceStats.serializer, json.decode(response.body));
+      //print('*************PERFORMANCE**************');
+      //print(feed.toString());
+      return feed;
+    } else {
+      throw Exception(
+          'Failed to load the performance\n ${response.body} - ${response.statusCode}');
+    }
+  }
+
+
   Future<NewsArticle> getArticleData({String articleId}) async {
+    final headers = {'content-type': 'application/json'};
+    final body = jsonEncode({"selector": {"_id": {"\$eq": articleId}}});
+    final response = await httpClient.post(articleEndpoint1, headers: headers, body: body).then((http.Response r) => r);
+    if (response.statusCode == 200) {
+      //print('*************ARTICLE-RESPONSE-BODY**************');
+      //print(response.body.toString());
+      Newsarticledocs feed = serializers.deserializeWith(Newsarticledocs.serializer, json.decode(response.body));
+      //print('*************ARTICLE**************');
+      //print(feed.article[0].toString());
+      NewsArticle article = NewsArticle((b) => b
+        ..id = feed.article[0].toString()
+        ..authorName = feed.article[0].authorName
+        ..contentString = feed.article[0].contentString
+        ..contentID = feed.article[0].toString());
+      return article;
+    } else {
+      throw Exception('Failed to load the article\n ${response.body} - ${response.statusCode}');
+    }
+  }
+
+  Future<NewsArticle> getArticleData1({String articleId}) async {
     final response = await httpClient.get('$articleEndpoint$articleId');
     if (response.statusCode == 200) {
       //_log.info("Articles API request successful");

@@ -36,8 +36,8 @@
             <key>CFBundleURLName</key>
             <array>
                 <string>www.aa.com</string>
-                <string>smlogin.stage.aa.com</string>
-                <string>idpstage.aa.com</string>
+                <string>smlogin.aa.com</string>
+                <string>idp.aa.com</string>
                 <string>notused</string>
             </array>
             <key>CFBundleURLSchemes</key>
@@ -52,8 +52,8 @@
             <key>CFBundleURLName</key>
             <array>
                 <string>www.aa.com</string>
-                <string>smlogin.stage.aa.com</string>
-                <string>idpstage.aa.com</string>
+                <string>smlogin.aa.com</string>
+                <string>idp.aa.com</string>
                 <string>notused</string>
             </array>
             <key>CFBundleURLSchemes</key>
