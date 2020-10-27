@@ -1,4 +1,4 @@
-library docs;
+library news_articledocs;
 
 import 'dart:convert';
 

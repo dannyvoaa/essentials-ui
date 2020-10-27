@@ -1,4 +1,4 @@
-library docs;
+library dzerodocs;
 
 import 'dart:convert';
 

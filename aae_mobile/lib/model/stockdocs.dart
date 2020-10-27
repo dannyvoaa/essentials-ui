@@ -1,4 +1,4 @@
-library docs;
+library stockdocs;
 
 import 'dart:convert';
 
