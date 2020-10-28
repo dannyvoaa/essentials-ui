@@ -26,6 +26,10 @@ class PriorityListBloc {
   Source<PriorityListViewModel> get viewModel =>
       toSource(combineLatest(_travelRepository.currentPriorityList, _createViewModel));
 
+  //Source<PriorityListViewModel> get viewModel =>
+  //    toSource(combineLatest(_dummyPriorityListObservable, _createViewModel));
+
+
   @provide
   PriorityListBloc(this._travelRepository) {
 
@@ -57,23 +61,35 @@ class PriorityListBloc {
         ..unassignedSeats = 18
     );
 
+    var revenueStandbys = BuiltList<PriorityListPassenger>([
+      PriorityListPassenger((b) => b
+        ..firstName = "T"
+        ..lastName = "ASF"
+        ..groupNumber = null
+        ..priorityNumber = 1
+        ..seatNumber = "4B"
+      ),
+    ]).toBuilder();
+
     var nonRevStandbys = BuiltList<PriorityListPassenger>([
       PriorityListPassenger((b) => b
           ..firstName = "J"
           ..lastName = "CON"
           ..groupNumber = "AC2"
           ..remarks = "HERE"
-          ..priorityNumber = 1
+          ..priorityNumber = 2
           ..priorityCode = "D1"
-          ..seatNumber = null
+          ..cabin = "FIRST"
+          ..seatNumber = "4D"
       ),
       PriorityListPassenger((b) => b
         ..firstName = "N"
         ..lastName = "FAN"
         ..groupNumber = "AC2"
         ..remarks = null
-        ..priorityNumber = 2
-        ..seatNumber = "22B"
+        ..priorityCode = "D3"
+        ..priorityNumber = 3
+        ..cabin = "COACH"
       )
     ]).toBuilder();
 
@@ -90,6 +106,7 @@ class PriorityListBloc {
         dummyMainCabin,
       ]).toBuilder()
       ..nonrevStandbys = nonRevStandbys
+      ..revenueStandbys = revenueStandbys
     );
 
     _dummyPriorityListObservable = createBehaviorSubject<PriorityList>(
@@ -97,12 +114,20 @@ class PriorityListBloc {
     );
   }
 
+  void _loadPriorityList(String origin, int flightNum, DateTime date) {
+    _travelRepository.loadPriorityList(origin, flightNum, date);
+  }
+
+
   PriorityListViewModel _createViewModel(PriorityList priorityList) {
-    return PriorityListViewModel((b) => b
-      ..priorityList = priorityList.toBuilder()
+    return PriorityListViewModel(
+        priorityList: priorityList,
+        loadPriorityList: _loadPriorityList
     );
   }
 }
+
+
 
 /// Constructs new instances of [PriorityListBloc]s via the DI framework.
 abstract class PriorityListBlocFactory implements ProvidedService {

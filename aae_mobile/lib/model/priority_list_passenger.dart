@@ -21,6 +21,7 @@ abstract class PriorityListPassenger implements Built<PriorityListPassenger, Pri
   String get lastName;
 
   @BuiltValueField(wireName: 'groupNumber')
+  @nullable
   String get groupNumber;
 
   @BuiltValueField(wireName: 'priorityCode')
@@ -38,6 +39,10 @@ abstract class PriorityListPassenger implements Built<PriorityListPassenger, Pri
   @BuiltValueField(wireName: 'priorityNumber')
   @nullable
   int get priorityNumber;
+
+  @BuiltValueField(wireName: 'cabin')
+  @nullable
+  String get cabin;
 
   String toJson() {
     return json

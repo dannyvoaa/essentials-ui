@@ -16,7 +16,7 @@ class PriorityListResults extends StatelessWidget {
 
   final ScrollController _scroller = ScrollController();
 
-  PriorityListResults(this.viewModel);
+  PriorityListResults({@required this.viewModel});
 
   @override
   Widget build(BuildContext context) {

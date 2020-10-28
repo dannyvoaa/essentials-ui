@@ -62,9 +62,17 @@ class TravelServiceApi {
 
     Map<String, String> headers = _getRequestHeaders("72000027");
     String constructedUrl = "$priorityListEndpoint/$origin/$flightNum/${dateFormatter.format(date)}";
-
     _log.info(constructedUrl);
-    final response = await httpClient.get(constructedUrl, headers: headers);
+
+    var response;
+    try {
+      response = await httpClient.get(constructedUrl, headers: headers);
+    } catch (e) {
+      String msg = 'failed to load the priority list.\n' + e.toString();
+      _log.severe(msg);
+      throw Exception(msg);
+    }
+
     if (response.statusCode == 200) {
 
       _log.info("priority list request successful");

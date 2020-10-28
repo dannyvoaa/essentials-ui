@@ -42,7 +42,7 @@ class TravelRepository implements Repository {
   TravelRepository(this._cache, this._travelApiClient, this._ssoAuth) {
     _loadFromTripsCache();
     _fetchTrips();
-    loadPriorityList("DFW", 1243, DateTime(2020, 10, 22));
+    loadPriorityList("DFW", 1243, DateTime(2020, 10, 27));
   }
 
   void _loadFromTripsCache() {
@@ -74,6 +74,8 @@ class TravelRepository implements Repository {
   }
 
   loadPriorityList(String origin, int flightNum, DateTime date) async {
+
+    //_currentPriorityList.sendNext(null);
     PriorityList priorityList = await _travelApiClient.getPriorityList(origin, flightNum, date);
     _currentPriorityList.sendNext(priorityList);
   }
