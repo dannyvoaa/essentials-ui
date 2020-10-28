@@ -114,7 +114,7 @@ class PriorityListBloc {
     );
   }
 
-  void _loadPriorityList(String origin, int flightNum, DateTime date) {
+  void loadPriorityList(String origin, int flightNum, DateTime date) {
     _travelRepository.loadPriorityList(origin, flightNum, date);
   }
 
@@ -122,7 +122,7 @@ class PriorityListBloc {
   PriorityListViewModel _createViewModel(PriorityList priorityList) {
     return PriorityListViewModel(
         priorityList: priorityList,
-        loadPriorityList: _loadPriorityList
+        loadPriorityList: loadPriorityList
     );
   }
 }
