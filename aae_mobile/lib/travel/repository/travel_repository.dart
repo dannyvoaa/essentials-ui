@@ -95,11 +95,11 @@ class TravelRepository implements Repository {
 
   fetchFlightStatus(flightNumber, date) async {
     print('FETCCHFLIGHTSTATUS');
-    FlightStatus flightStatus = await _travelApiClient.getFlightStatus(
-        '72000027', flightNumber, '2020-10-06');
+    FlightStatus flightStatus =
+        await _travelApiClient.getFlightStatus('72000027', flightNumber, date);
     try {
-      _saveToCache(flightNumber + '2020-10-06', flightStatus.toJson());
-      _loadFromFlightStatusCache(flightNumber, '2020-10-06');
+      _saveToCache(flightNumber + date, flightStatus.toJson());
+      _loadFromFlightStatusCache(flightNumber, date);
     } catch (e, s) {
       _log.severe('Failed to fetch flightStatus: ', e, s);
       return null;

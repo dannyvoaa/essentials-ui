@@ -22,16 +22,6 @@ class FlightStatusView extends StatelessWidget {
   }
 
   Widget _buildFlightStatusContainer(BuildContext context) {
-    return Container(
-      child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            //?
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              FlightStatusDetails(viewModel: this.viewModel),
-            ],
-          )),
-    );
+    return FlightStatusDetails(viewModel: this.viewModel);
   }
 }

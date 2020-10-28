@@ -17,8 +17,10 @@ import 'flight_status_view_model.dart';
 class FlightStatusComponent extends StatelessWidget {
   final String searchField1;
   final String searchField2;
+  final String searchDate;
 
-  FlightStatusComponent({this.searchField1, this.searchField2});
+  FlightStatusComponent(
+      {this.searchField1, this.searchField2, this.searchDate});
 
   Widget _buildLoadingPageState() {
     return Scaffold(body: Center(child: AaeLoadingSpinner()));
@@ -26,16 +28,10 @@ class FlightStatusComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-//    if(this.travelRepository != null){
-//      this.travelRepository.fetchFlightStatus('1085', '2020-10-06');
-//    }
-  print('TESTING SEARCH FIELD');
-  print(this.searchField1);
-  print(this.searchField2);
     return Component<FlightStatusBloc, FlightStatusBlocFactory>(
       bloc: (factory) => factory.flightStatusBloc(),
       builder: (context, bloc) {
-        bloc.fetchFlightStatus(this.searchField1,this.searchField2);
+        bloc.fetchFlightStatus(this.searchField1, this.searchField2, this.searchDate);
         return SourceBuilder.of<FlightStatusViewModel>(
           source: bloc.viewModel,
           builder: (snapshot) {

@@ -18,8 +18,8 @@ class FlightStatusBloc {
   static final _log = Logger('FlightStatusBloc');
   final TravelRepository _travelRepository;
 
-  fetchFlightStatus(String searchField1, String searchField2){
-    _travelRepository.fetchFlightStatus(searchField1, '2020-10-06');
+  fetchFlightStatus(String searchField1, String searchField2, String searchDate){
+    _travelRepository.fetchFlightStatus(searchField1, searchDate);
   }
 
   Source<FlightStatusViewModel> get viewModel =>
