@@ -15,7 +15,7 @@ class PriorityListHeader extends StatelessWidget {
 
   static const largeTextStyle = TextStyle(
     fontFamily: 'AmericanSansMedium',
-    fontSize: 46,
+    fontSize: 38,
     color: const Color(0xff627a88),
   );
 
