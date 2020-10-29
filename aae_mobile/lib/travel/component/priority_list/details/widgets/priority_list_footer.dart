@@ -2,15 +2,12 @@ import 'package:aae/assets/aae_icons.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
-import '../priority_list_view_model.dart';
 
 class PriorityListFooter extends StatelessWidget {
 
-  void Function() onUpButtonClicked;
+  final void Function() onUpButtonClicked;
 
-  PriorityListFooter({this.onUpButtonClicked});
+  PriorityListFooter({@required this.onUpButtonClicked});
 
   @override
   Widget build(BuildContext context) {

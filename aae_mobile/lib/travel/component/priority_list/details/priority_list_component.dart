@@ -1,11 +1,11 @@
 import 'package:aae/bloc/source_builder.dart';
 import 'package:aae/common/widgets/component/component.dart';
 import 'package:aae/common/widgets/loading/aae_loading_spinner.dart';
+import 'package:aae/travel/component/priority_list/details/priority_list_view.dart';
+import 'package:aae/travel/component/priority_list/details/priority_list_view_model.dart';
 import 'package:flutter/material.dart';
 
 import 'priority_list_bloc.dart';
-import 'priority_list_view.dart';
-import 'priority_list_view_model.dart';
 
 class PriorityListArguments{
   final String origin;

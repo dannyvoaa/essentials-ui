@@ -7,6 +7,7 @@ part 'priority_list_view_model.g.dart';
 /// View model representing a [PriorityListView]
 abstract class PriorityListViewModel
     implements Built<PriorityListViewModel, PriorityListViewModelBuilder> {
+
   @nullable
   PriorityList get priorityList;
 

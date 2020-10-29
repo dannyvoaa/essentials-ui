@@ -1,6 +1,6 @@
 import 'package:aae/model/priority_list_passenger.dart';
 import 'package:aae/theme/dimensions.dart';
-import 'package:aae/travel/component/priority_list/results/priority_passenger_list_item.dart';
+import 'package:aae/travel/component/priority_list/details/widgets/priority_passenger_list_item.dart';
 import 'package:flutter/material.dart';
 
 import '../priority_list_view_model.dart';

@@ -1,10 +1,8 @@
-import 'package:aae/travel/component/priority_list/priority_list_component.dart';
-import 'package:aae/travel/component/priority_list/results/dummy_search_panel.dart';
 import 'package:aae/travel/component/search/search.dart';
-import 'package:aae/travel/component/search/search_form.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
-import 'priority_list_view_model.dart';
+
+import 'details/priority_list_component.dart';
 
 class PriorityListNavigator extends StatelessWidget {
   static final _log = Logger('PriorityListView');

@@ -1,8 +1,7 @@
-
-import 'package:aae/travel/component/priority_list/results/priority_list_flight_inventory_card.dart';
-import 'package:aae/travel/component/priority_list/results/priority_list_footer.dart';
-import 'package:aae/travel/component/priority_list/results/priority_passenger_list.dart';
-import 'package:aae/travel/component/priority_list/results/priority_list_header.dart';
+import 'package:aae/travel/component/priority_list/details/widgets/priority_list_flight_inventory_card.dart';
+import 'package:aae/travel/component/priority_list/details/widgets/priority_list_footer.dart';
+import 'package:aae/travel/component/priority_list/details/widgets/priority_list_header.dart';
+import 'package:aae/travel/component/priority_list/details/widgets/priority_passenger_list.dart';
 import 'package:flutter/material.dart';
 
 import 'priority_list_view_model.dart';
