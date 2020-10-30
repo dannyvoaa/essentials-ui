@@ -1,14 +1,7 @@
 import 'package:aae/bloc/source_builder.dart';
 import 'package:aae/common/widgets/component/component.dart';
 import 'package:aae/common/widgets/loading/aae_loading_spinner.dart';
-import 'package:aae/travel/component/search/search.dart';
-import 'package:aae/travel/component/trips/trips_component.dart';
 import 'package:flutter/material.dart';
-import 'package:aae/travel/repository/travel_repository.dart';
-
-import '../trips/trips_bloc.dart';
-import '../trips/trips_view.dart';
-import '../trips/trips_view_model.dart';
 import 'flight_status_bloc.dart';
 import 'flight_status_view.dart';
 import 'flight_status_view_model.dart';
@@ -22,27 +15,22 @@ class FlightStatusComponent extends StatelessWidget {
   FlightStatusComponent(
       {this.searchField1, this.searchField2, this.searchDate});
 
-  Widget _buildLoadingPageState() {
-    return Scaffold(body: Center(child: AaeLoadingSpinner()));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Component<FlightStatusBloc, FlightStatusBlocFactory>(
       bloc: (factory) => factory.flightStatusBloc(),
       builder: (context, bloc) {
-        bloc.fetchFlightStatus(this.searchField1, this.searchField2, this.searchDate);
+        bloc.loadFlightStatus(
+            this.searchField1, this.searchField2, this.searchDate);
         return SourceBuilder.of<FlightStatusViewModel>(
           source: bloc.viewModel,
           builder: (snapshot) {
-            if (snapshot.present) {
-              if (snapshot.value == null) {
-                return _buildEmptyState(context);
-              } else {
-                return FlightStatusView(viewModel: snapshot.value);
-              }
-            } else {
+            if (snapshot.present &&
+                snapshot.value != null &&
+                snapshot.value.flightStatus != null) {
               return FlightStatusView(viewModel: snapshot.value);
+            } else {
+              return _buildLoadingState(context);
             }
           },
         );

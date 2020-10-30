@@ -39,6 +39,10 @@ class TravelRepository implements Repository {
 
   Observable<FlightStatus> get flightStatus => _flightStatus;
 
+  void set flightStatus(var value) {
+    flightStatus = value;
+  }
+
   @provide
   @singleton
   TravelRepository(this._cache, this._travelApiClient, this._ssoAuth) {
@@ -54,32 +58,14 @@ class TravelRepository implements Repository {
         .ifPresent(_publishTrips);
   }
 
-  void _loadFromFlightStatusCache(flightNumber, date) {
-    String flightStatusKey = '' + flightNumber + date;
-    _cache
-        .readString(flightStatusKey)
-        .transform(_flightStatusToModel)
-        .ifPresent(_publishFlightStatus);
-  }
-
   void _publishTrips(Trips trips) {
     _pnrs.sendNext(trips.pnrs);
-  }
-
-  void _publishFlightStatus(FlightStatus flightStatus) {
-    _flightStatus.sendNext(flightStatus);
   }
 
   static Trips _tripsToModel(String tripsJson) {
     Trips trips =
         serializers.deserializeWith(Trips.serializer, jsonDecode(tripsJson));
     return trips;
-  }
-
-  static FlightStatus _flightStatusToModel(String flightStatusJson) {
-    FlightStatus flightStatus = serializers.deserializeWith(
-        FlightStatus.serializer, jsonDecode(flightStatusJson));
-    return flightStatus;
   }
 
   _fetchTrips() async {
@@ -93,13 +79,13 @@ class TravelRepository implements Repository {
     }
   }
 
-  fetchFlightStatus(flightNumber, date) async {
+  loadFlightStatus(flightNumber, date) async {
     print('FETCCHFLIGHTSTATUS');
+    _flightStatus.sendNext(null);
     FlightStatus flightStatus =
         await _travelApiClient.getFlightStatus('72000027', flightNumber, date);
     try {
-      _saveToCache(flightNumber + date, flightStatus.toJson());
-      _loadFromFlightStatusCache(flightNumber, date);
+      _flightStatus.sendNext(flightStatus);
     } catch (e, s) {
       _log.severe('Failed to fetch flightStatus: ', e, s);
       return null;

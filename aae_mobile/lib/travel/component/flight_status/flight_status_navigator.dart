@@ -8,46 +8,49 @@ import 'flight_status_details.dart';
 
 class FlightStatusNavigator extends StatelessWidget {
   static final _log = Logger('FlightStatusNavigator');
+  final GlobalKey<NavigatorState> nestedNavKey = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
-    return Navigator(
-      initialRoute: '/',
-      onGenerateRoute: (RouteSettings settings) {
-        WidgetBuilder builder;
-        switch (settings.name) {
-          case '/':
-            builder = (BuildContext _) => Search(
-                calendarLength: 5,
-                searchType1: cityAirportSearch,
-                searchType2: flightNumberSearch,
-                title: 'Flight status');
-            break;
-          case '/second':
-            builder = (BuildContext _) => FlightStatusDetails(model: null);
-            break;
-          default:
-            throw Exception('Invalid route: ${settings.name}');
-        }
-        return MaterialPageRoute(builder: builder, settings: settings);
-      },
-    );
+    return WillPopScope(
+        onWillPop: () async {
+          return !await nestedNavKey.currentState.maybePop();
+        },
+        child: Navigator(
+          initialRoute: '/',
+          key: nestedNavKey,
+          onGenerateRoute: (RouteSettings settings) {
+            WidgetBuilder builder;
+            switch (settings.name) {
+              case '/':
+                builder = (BuildContext _) => Search(
+                    calendarLength: 3,
+                    searchType1: cityAirportSearch,
+                    searchType2: flightNumberSearch,
+                    title: 'Flight status');
+//                builder = (BuildContext _) => FlightStatusComponent(
+//                    searchField1: '21',
+//                    searchField2: 'data2',
+//                    searchDate: '2020-10-30');
+                break;
+              case '/second':
+                builder = (BuildContext _) => FlightStatusDetails(model: null);
+                break;
+              default:
+                throw Exception('Invalid route: ${settings.name}');
+            }
+            return MaterialPageRoute(builder: builder, settings: settings);
+          },
+        ));
   }
 
   void Function() cityAirportSearch(
       BuildContext context, String data1, String data2, String searchDate) {
-    print('cityAirportSearch()');
-    print(data1);
-    print(data2);
     Navigator.pushNamed(context, '/second');
   }
 
   void Function() flightNumberSearch(
       BuildContext context, String data1, String data2, String searchDate) {
-    print('flightNumberSearch()');
-    print(data1);
-    print(data2);
-    print(searchDate);
     Navigator.push(
       context,
       MaterialPageRoute(

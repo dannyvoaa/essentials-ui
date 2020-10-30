@@ -14,22 +14,32 @@ class SearchFormData {
 }
 
 class SearchForm extends StatefulWidget {
-  SearchForm({this.searchField1,
+  SearchForm({
+    this.searchField1,
     this.searchHint1,
+    this.searchFieldType1,
     this.searchField1Validation,
+    this.searchField1ValidationLength,
     this.searchField2,
     this.searchHint2,
+    this.searchFieldType2,
     this.searchField2Validation,
+    this.searchField2ValidationLength,
     this.searchDate,
     this.searchType,
-    this.calendarLength,});
+    this.calendarLength,
+  });
 
   final String searchField1;
   final String searchHint1;
+  final TextInputType searchFieldType1;
   final String searchField1Validation;
+  final int searchField1ValidationLength;
   final String searchField2;
   final String searchHint2;
+  final TextInputType searchFieldType2;
   final String searchField2Validation;
+  final int searchField2ValidationLength;
   final String searchDate;
   final int calendarLength;
   final Function(BuildContext, String, String, String) searchType;
@@ -42,10 +52,10 @@ class _SearchFormState extends State<SearchForm> {
   final _formTextController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   SearchFormData _data = new SearchFormData();
-  bool isEnabled = true;
+  bool isEnabled = false;
 
-  enableButton(String value) {
-    if (value.isNotEmpty) {
+  enableButton(SearchFormData data) {
+    if (data.searchField1.isNotEmpty && data.searchField2.isNotEmpty) {
       setState(() {
         isEnabled = true;
       });
@@ -66,10 +76,11 @@ class _SearchFormState extends State<SearchForm> {
     return _buildSearchForm(context);
   }
 
-  void submit(BuildContext context,
+  void submit(
+      BuildContext context,
       Function(BuildContext context, String searchField1, String searchField2,
-          String searchDate)
-      searchType) {
+              String searchDate)
+          searchType) {
     // First validate form.
     if (this._formKey.currentState.validate()) {
       _formKey.currentState.save(); // Save our form now.
@@ -88,8 +99,8 @@ class _SearchFormState extends State<SearchForm> {
         padding: EdgeInsets.all(20),
         child: Wrap(
           children: <Widget>[
-            _buildFormHeader(),
-            _buildFormBody(),
+            _buildFormTitle(),
+            _buildFormFields(),
             _buildFormDatePicker(),
             _buildLargeButton(),
           ],
@@ -98,14 +109,17 @@ class _SearchFormState extends State<SearchForm> {
     );
   }
 
-  _buildFormHeader() {
+  _buildFormTitle() {
     return Row(
       children: <Widget>[
         Expanded(
             child: Padding(
-              padding: EdgeInsets.only(right: 20),
-              child: Text(widget.searchField1, style: TextStyle(fontSize: 15),),
-            )),
+          padding: EdgeInsets.only(right: 20),
+          child: Text(
+            widget.searchField1,
+            style: TextStyle(fontSize: 15),
+          ),
+        )),
         Expanded(
           child: Padding(
             padding: EdgeInsets.only(left: 20, right: 10),
@@ -116,42 +130,31 @@ class _SearchFormState extends State<SearchForm> {
     );
   }
 
-  _buildFormBody() {
+  _buildFormFields() {
     return Row(children: <Widget>[
       Expanded(
           child: Padding(
               padding: EdgeInsets.only(right: 20),
               child: TextFormField(
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  hintText: widget.searchHint1,
-                ),
-                onSaved: (String value) {
-                  this._data.searchField1 = value;
-                },
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return widget.searchField1Validation;
-                  }
-                  return null;
-                },
-              ))),
+                  keyboardType: widget.searchFieldType1,
+                  decoration: InputDecoration(
+                    hintText: widget.searchHint1,
+                  ),
+                  onChanged: (String value) {
+                    this._data.searchField1 = value;
+                    enableButton(this._data);
+                  }))),
       Expanded(
           child: Padding(
               padding: EdgeInsets.only(left: 20, right: 10),
               child: TextFormField(
+                keyboardType: widget.searchFieldType2,
                 decoration: InputDecoration(
                   hintText: widget.searchHint2,
                 ),
-                onSaved: (String value) {
+                onChanged: (String value) {
                   this._data.searchField2 = value;
-                },
-                validator: (value) {
-                  bool isValid = value.length > 3;
-                  if (value.isEmpty) {
-                    return widget.searchField2Validation;
-                  }
-                  return null;
+                  enableButton(this._data);
                 },
               ))),
     ]);
@@ -179,10 +182,11 @@ class _SearchFormState extends State<SearchForm> {
         minWidth: double.infinity,
         child: RaisedButton(
           disabledColor: AaeColors.gray,
+          disabledTextColor: AaeColors.white,
           color: AaeColors.blue,
           textColor: AaeColors.white,
           onPressed:
-          isEnabled ? () => submit(context, widget.searchType) : null,
+              isEnabled ? () => submit(context, widget.searchType) : null,
           shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(8.0)),
           child: Text('Search'),

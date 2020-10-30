@@ -18,8 +18,9 @@ class FlightStatusBloc {
   static final _log = Logger('FlightStatusBloc');
   final TravelRepository _travelRepository;
 
-  fetchFlightStatus(String searchField1, String searchField2, String searchDate){
-    _travelRepository.fetchFlightStatus(searchField1, searchDate);
+  void loadFlightStatus(
+      String searchField1, String searchField2, String searchDate) {
+    _travelRepository.loadFlightStatus(searchField1, searchDate);
   }
 
   Source<FlightStatusViewModel> get viewModel =>
@@ -29,7 +30,8 @@ class FlightStatusBloc {
   FlightStatusBloc(this._travelRepository);
 
   FlightStatusViewModel _createViewModel(FlightStatus flightStatus) {
-    return FlightStatusViewModel((b) => b..flightStatus = flightStatus.toBuilder());
+    return FlightStatusViewModel(
+        flightStatus: flightStatus, loadFlightStatus: loadFlightStatus);
   }
 }
 
