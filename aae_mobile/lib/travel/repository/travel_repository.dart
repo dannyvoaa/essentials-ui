@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:aae/api/travel_api_client.dart';
 import 'package:aae/auth/sso_auth.dart';
 import 'package:aae/cache/cache_service.dart';
 import 'package:aae/common/repository/repository.dart';
+import 'package:aae/model/flight_status.dart';
 import 'package:aae/model/pnr.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:aae/model/trips.dart';
@@ -28,17 +30,25 @@ class TravelRepository implements Repository {
   static const cacheKey = 'TravelRepository.Travel';
 
   final _pnrs = createBehaviorSubject<BuiltList<Pnr>>();
+  final _flightStatus = createBehaviorSubject<FlightStatus>();
 
   final CacheService _cache;
   static String tripsKey = 'trips';
 
   Observable<BuiltList<Pnr>> get pnrs => _pnrs;
 
+  Observable<FlightStatus> get flightStatus => _flightStatus;
+
+  void set flightStatus(var value) {
+    flightStatus = value;
+  }
+
   @provide
   @singleton
   TravelRepository(this._cache, this._travelApiClient, this._ssoAuth) {
     _loadFromTripsCache();
     _fetchTrips();
+//    fetchFlightStatus(1,2);
   }
 
   void _loadFromTripsCache() {
@@ -66,6 +76,28 @@ class TravelRepository implements Repository {
     } catch (e, s) {
       _log.severe('Failed to fetch trips: ', e, s);
       return null;
+    }
+  }
+
+  loadFlightStatus(flightNumber, date) async {
+    _flightStatus.sendNext(null);
+    FlightStatus flightStatus =
+        await _travelApiClient.getFlightStatus('72000027', flightNumber, date);
+    try {
+      _flightStatus.sendNext(flightStatus);
+    } catch (e, s) {
+      _log.severe('Failed to fetch flightStatus: ', e, s);
+      return null;
+    }
+  }
+
+  Future<FlightStatus> searchFlightStatus(String query) async {
+    final searchResult = await _travelApiClient.getFlightStatus(
+        '72000027', '0020', '2020-10-06');
+    if (searchResult.flightNumber.isEmpty) {
+      _log.severe('Failed to fetch flightStatus: ');
+    } else {
+      return searchResult;
     }
   }
 
