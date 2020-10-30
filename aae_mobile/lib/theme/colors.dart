@@ -76,10 +76,14 @@ class AaeColors {
   static const yellowGreen = Color.fromRGBO(209, 213, 50, 1.0);
   static const green = Color.fromRGBO(0, 185, 137, 1.0);
   static const backgroundBlue = Color.fromRGBO(50, 120, 203, 1.0);
+  static const darkOrange = Color.fromRGBO(209, 73, 4, 1.0);
 
   // Misc Colors
   static const cardGradient = Color(0xFF1D3644);
   static const headerBackgroupd = Color(0xFF0293FF);
+  static const lightGrayText = Color.fromRGBO(98, 122, 136, 1.0);
+  static const backgroundLightGray = Color.fromRGBO(245, 245, 247, 1.0);
+
 
   static const recognitionGreen = Color(0xFF00B989);
   static const gradientTop = Color.fromRGBO(77, 180, 250, 1.0);

@@ -9,6 +9,7 @@ class AaeTextStyles {
   static const _medium = FontWeight.w500;
   static const _bold = FontWeight.bold;
   static const _americanSans = 'AmericanSans';
+  static const _americanSansMedium = 'AmericanSansMedium';
 
   static const font = 'AmericanSans';
 
@@ -200,16 +201,22 @@ class AaeTextStyles {
   }
 
   /// Travel module text styles
+  static const travelHeader = TextStyle(
+    fontSize: 15,
+    color: AaeColors.blue,
+    fontWeight: FontWeight.w700,
+  );
+
   static const locatorInfoHeading = TextStyle(
     fontSize: 12,
-    fontWeight: FontWeight.bold,
-    color: AaeColors.ultraLightGray,
+    color: AaeColors.gray,
+    fontFamily: _americanSansMedium,
   );
 
   static const locatorInfo = TextStyle(
-    fontSize: 18,
-    fontWeight: FontWeight.normal,
+    fontSize: 15,
     color: AaeColors.titleGray,
+    fontFamily: _americanSansMedium,
   );
 
   static const reservationHeading = TextStyle(
@@ -232,10 +239,21 @@ class AaeTextStyles {
 
   static const departureOnTime = TextStyle(
     fontSize: 12,
-    fontWeight: FontWeight.bold,
     color: AaeColors.green,
+    fontFamily: _americanSansMedium,
   );
 
+  static const departureDelayed = TextStyle(
+    fontSize: 12,
+    color: AaeColors.darkOrange,
+    fontFamily: _americanSansMedium,
+  );
+
+  static const departureCancelled = TextStyle(
+    fontSize: 12,
+    color: AaeColors.red,
+    fontFamily: _americanSansMedium,
+  );
   static const hubDetailHeading = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.normal,
@@ -257,15 +275,14 @@ class AaeTextStyles {
 
   static const timeSummary = TextStyle(
     fontSize: 18,
-    fontWeight: FontWeight.bold,
     color: AaeColors.titleGray,
+    fontFamily: _americanSansMedium,
   );
 
   static const checkInButton = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.normal,
   );
-
 
   /// Calendar page summary blocks
   static TextStyle calendarSummary({
@@ -307,7 +324,7 @@ class AaeTextStyles {
       color: AaeColors.darkGray,
       fontSize: 18,
       height: 1.165,
-      fontWeight:FontWeight.bold,
+      fontWeight: FontWeight.bold,
     );
     // Default style
     return textStyle;
@@ -319,7 +336,7 @@ class AaeTextStyles {
   }) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       color: AaeColors.lightGray,
-        fontSize: 18,
+      fontSize: 18,
     );
     // Default style
 
@@ -392,7 +409,7 @@ class AaeTextStyles {
       {bool boolDefaultHeight = false, bool boolEnabled = true}) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
       color: AaeColors.ultraLightGray,
-        fontSize: 18,
+      fontSize: 18,
     );
 
     // Default style

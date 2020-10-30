@@ -29,4 +29,6 @@ class AaeIconsv4 {
   static const IconData list = const IconData(0xe06c, fontFamily: _kFontFam);
   static const IconData clock = const IconData(0xe02e, fontFamily: _kFontFam);
   static const IconData more = const IconData(0xe04d, fontFamily: _kFontFam);
+  static const IconData arrow_forward = const IconData(0xe043, fontFamily: _kFontFam);
+
 }
