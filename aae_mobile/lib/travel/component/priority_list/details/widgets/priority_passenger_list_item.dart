@@ -1,6 +1,7 @@
 import 'package:aae/assets/aae_icons.dart';
 import 'package:aae/model/priority_list_passenger.dart';
 import 'package:aae/theme/dimensions.dart';
+import 'package:aae/travel/component/priority_list/details/widgets/priority_list_flight_inventory_card.dart';
 import 'package:aae/travel/component/priority_list/details/widgets/priority_passenger_list.dart';
 import 'package:flutter/material.dart';
 
@@ -93,7 +94,9 @@ class PriorityListPassengerListItem extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Text("First"),
+                  // we try to map the cabin type to a pretty name, fall back
+                  // to the name from sabre if no mapping exists though
+                  Text(_getCabinLabel(passenger.cabin)),
                   Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -171,5 +174,13 @@ class PriorityListPassengerListItem extends StatelessWidget {
       return false;
 
     return passenger.seatNumber != null && passenger.seatNumber.isNotEmpty;
+  }
+
+  String _getCabinLabel(String sabreCabinCode) {
+    if (sabreCabinCode == null)
+      return "";
+    else if (cabinLabels.containsKey(sabreCabinCode))
+      return cabinLabels[passenger.cabin];
+    else return sabreCabinCode;
   }
 }

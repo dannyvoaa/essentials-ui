@@ -5,16 +5,17 @@ import 'package:flutter/material.dart';
 
 import '../priority_list_view_model.dart';
 
+const cabinLabels = {
+  "PREMIUM": "Premium",
+  "FIRST": "First",
+  "BUSINESS": "Business",
+  "PREMIUM_COACH": "PE",
+  "PREMIUMECONOMY": "PE",
+  "MAIN": "Main",
+  "COACH": "Main"
+};
+
 class PriorityListFlightInventory extends StatelessWidget {
-  static const labelMap = {
-    "PREMIUM": "Premium",
-    "FIRST": "First",
-    "BUSINESS": "Business",
-    "PREMIUM_COACH": "PE",
-    "PREMIUMECONOMY": "PE",
-    "MAIN": "Main",
-    "COACH": "Main"
-  };
 
   final PriorityListViewModel viewModel;
 
@@ -53,8 +54,8 @@ class PriorityListFlightInventory extends StatelessWidget {
     List<Widget> unassigned = [_buildCell("Unassigned", centered: false)];
 
     for (PriorityListCabin cabin in viewModel.priorityList.cabins) {
-      if (labelMap.containsKey(cabin.cabinType))
-        labels.add(_buildHeaderCell(labelMap[cabin.cabinType]));
+      if (cabinLabels.containsKey(cabin.cabinType))
+        labels.add(_buildHeaderCell(cabinLabels[cabin.cabinType]));
       else
         labels.add(_buildHeaderCell(cabin.cabinType));
 
