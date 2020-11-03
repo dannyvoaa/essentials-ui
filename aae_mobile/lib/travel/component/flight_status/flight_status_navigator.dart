@@ -1,4 +1,4 @@
-import 'file:///C:/Users/212997/AAProjects/essentials-ui/aae_mobile/lib/travel/component/search/search.dart';
+import 'package:aae/travel/component/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:aae/travel/component/flight_status/flight_status_component.dart';
