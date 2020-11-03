@@ -31,7 +31,7 @@ class Search extends StatelessWidget {
 
   _buildHeader() {
     return Padding(
-        padding: const EdgeInsets.only(bottom: 20),
+        padding: const EdgeInsets.only(bottom: 0),
         child: Container(
           alignment: Alignment.topLeft,
           child: Text(

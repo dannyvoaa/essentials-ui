@@ -79,10 +79,10 @@ class TravelRepository implements Repository {
     }
   }
 
-  loadFlightStatus(flightNumber, date) async {
+  loadFlightStatus(flightNumber, origin, date) async {
     _flightStatus.sendNext(null);
     FlightStatus flightStatus =
-        await _travelApiClient.getFlightStatus('72000027', flightNumber, date);
+        await _travelApiClient.getFlightStatus('72000027', flightNumber, origin, date);
     try {
       _flightStatus.sendNext(flightStatus);
     } catch (e, s) {
@@ -93,7 +93,7 @@ class TravelRepository implements Repository {
 
   Future<FlightStatus> searchFlightStatus(String query) async {
     final searchResult = await _travelApiClient.getFlightStatus(
-        '72000027', '0020', '2020-10-06');
+        '72000027', '0020', 'DFW', '2020-10-06');
     if (searchResult.flightNumber.isEmpty) {
       _log.severe('Failed to fetch flightStatus: ');
     } else {

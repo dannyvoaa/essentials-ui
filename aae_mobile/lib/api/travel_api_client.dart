@@ -69,13 +69,11 @@ class TravelServiceApi {
     }
   }
 
-  //getFlightStatus(1085, '2020-10-06')
-
   Future<FlightStatus> getFlightStatus(
-      String employeeId, String flightNumber, String date) async {
+      String employeeId, String flightNumber, String origin, String date) async {
     Map<String, String> headers = _getRequestHeaders(employeeId);
     final response = await httpClient.get(
-        travelFlightStatusEndpoint + '/' + flightNumber + '/' + date,
+        travelFlightStatusEndpoint + '/' + flightNumber + '/' + origin + '/' + date,
         headers: headers);
     if (response.statusCode == 200) {
       _log.info("Flight Status API request successful");

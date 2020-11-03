@@ -20,7 +20,7 @@ class FlightStatusBloc {
 
   void loadFlightStatus(
       String searchField1, String searchField2, String searchDate) {
-    _travelRepository.loadFlightStatus(searchField1, searchDate);
+    _travelRepository.loadFlightStatus(searchField1, searchField2, searchDate);
   }
 
   Source<FlightStatusViewModel> get viewModel =>
