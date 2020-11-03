@@ -5,6 +5,7 @@ import 'package:aae/travel/component/flight_status/flight_status_component.dart'
 
 import '../../../programmatic_main.dart';
 import 'flight_status_details.dart';
+import 'package:aae/travel/component/search/search.dart';
 
 class FlightStatusNavigator extends StatelessWidget {
   static final _log = Logger('FlightStatusNavigator');
