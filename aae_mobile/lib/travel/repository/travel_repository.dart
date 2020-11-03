@@ -73,6 +73,12 @@ class TravelRepository implements Repository {
     }
   }
 
+  loadReservationDetail(String origin, int flightNum, DateTime date) async {
+    _currentPriorityList.sendNext(null);
+    PriorityList priorityList = await _travelApiClient.getPriorityList(origin, flightNum, date);
+    _currentPriorityList.sendNext(priorityList);
+  }
+
   loadPriorityList(String origin, int flightNum, DateTime date) async {
     _currentPriorityList.sendNext(null);
     PriorityList priorityList = await _travelApiClient.getPriorityList(origin, flightNum, date);
