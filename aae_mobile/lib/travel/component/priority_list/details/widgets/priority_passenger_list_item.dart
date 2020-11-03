@@ -139,7 +139,7 @@ class PriorityListPassengerListItem extends StatelessWidget {
   }
 
   List<Widget> _buildSeatAssignedIcon() {
-    if (passenger.seatNumber == null || passenger.seatNumber.isEmpty)
+    if (!_isSeatAssignedIndicatorNeeded())
       return [];
 
     return [

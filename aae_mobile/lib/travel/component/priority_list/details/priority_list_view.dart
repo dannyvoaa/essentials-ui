@@ -49,7 +49,7 @@ class PriorityListView extends StatelessWidget {
   void scrollUp() {
     _scroller.animateTo(
       _scroller.position.minScrollExtent,
-      duration: Duration(seconds: 1),
+      duration: Duration(milliseconds: 500),
       curve: Curves.fastOutSlowIn,
     );
   }
