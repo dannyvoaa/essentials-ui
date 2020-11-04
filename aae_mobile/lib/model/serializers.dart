@@ -6,6 +6,9 @@ import 'package:aae/model/docs.dart';
 import 'package:aae/model/event.dart';
 import 'package:aae/model/news_feed_json_list.dart';
 import 'package:aae/model/news_feed_item.dart';
+import 'package:aae/model/priority_list.dart';
+import 'package:aae/model/priority_list_cabin.dart';
+import 'package:aae/model/priority_list_passenger.dart';
 import 'package:aae/model/recognition_register.dart';
 import 'package:aae/model/recognition_history.dart';
 import 'package:aae/model/trips.dart';
@@ -39,6 +42,9 @@ part 'serializers.g.dart';
   RecognitionHistory,
   Trips,
   Pnr,
+  PriorityList,
+  PriorityListCabin,
+  PriorityListPassenger,
   FlightStatus,
   GateTimeFlightInfo,
   Profile,

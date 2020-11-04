@@ -31,5 +31,6 @@ class AaeIconsv4 {
   static const IconData more = const IconData(0xe04d, fontFamily: _kFontFam);
   static const IconData arrow_right = const IconData(0xe043, fontFamily: _kFontFam);
   static const IconData notifications = const IconData(0xe034, fontFamily: _kFontFam);
-
+  static const IconData upArrow = const IconData(0xe044, fontFamily: _kFontFam);
+  static const IconData checkMark = const IconData(0xe049, fontFamily: _kFontFam);
 }

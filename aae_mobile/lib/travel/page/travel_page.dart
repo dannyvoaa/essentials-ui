@@ -1,5 +1,6 @@
 import 'package:aae/common/widgets/drawer/aae_drawer.dart';
 import 'package:aae/navigation/paage_provider.dart';
+import 'package:aae/travel/component/priority_list/priority_list_navigator.dart';
 import 'package:aae/travel/component/trips/trips_component.dart';
 import 'package:aae/travel/component/travel_top_bar/travel_top_bar.dart';
 import 'package:aae/travel/component/flight_status/flight_status_navigator.dart';
@@ -18,7 +19,7 @@ class TravelPage extends StatelessWidget {
           child: TabBarView(
             children: <Widget>[
               TripsComponent(),
-              TripsComponent(),
+              PriorityListNavigator(),
               FlightStatusNavigator(),
             ],
           ),

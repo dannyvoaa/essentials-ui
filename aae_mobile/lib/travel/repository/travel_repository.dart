@@ -7,6 +7,7 @@ import 'package:aae/cache/cache_service.dart';
 import 'package:aae/common/repository/repository.dart';
 import 'package:aae/model/flight_status.dart';
 import 'package:aae/model/pnr.dart';
+import 'package:aae/model/priority_list.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:aae/model/trips.dart';
 import 'package:aae/rx/rx_util.dart';
@@ -30,12 +31,14 @@ class TravelRepository implements Repository {
   static const cacheKey = 'TravelRepository.Travel';
 
   final _pnrs = createBehaviorSubject<BuiltList<Pnr>>();
+  final _currentPriorityList = createBehaviorSubject<PriorityList>();
   final _flightStatus = createBehaviorSubject<FlightStatus>();
 
   final CacheService _cache;
   static String tripsKey = 'trips';
 
   Observable<BuiltList<Pnr>> get pnrs => _pnrs;
+  Observable<PriorityList> get currentPriorityList => _currentPriorityList;
 
   Observable<FlightStatus> get flightStatus => _flightStatus;
 
@@ -77,6 +80,12 @@ class TravelRepository implements Repository {
       _log.severe('Failed to fetch trips: ', e, s);
       return null;
     }
+  }
+
+  loadPriorityList(String origin, int flightNum, DateTime date) async {
+    _currentPriorityList.sendNext(null);
+    PriorityList priorityList = await _travelApiClient.getPriorityList(origin, flightNum, date);
+    _currentPriorityList.sendNext(priorityList);
   }
 
   loadFlightStatus(flightNumber, origin, date) async {

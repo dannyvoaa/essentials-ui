@@ -39,7 +39,7 @@ dependencies:
   keyboard_avoider: ^0.1.2
   flutter_svg: ^0.18.0
   recase: ^3.0.0
-  date_picker_timeline: ^1.2.0
+  date_picker_timeline: ^1.2.1
   flutter:
     sdk: flutter
 
