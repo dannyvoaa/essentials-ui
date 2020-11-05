@@ -2,6 +2,7 @@ library priority_list;
 
 import 'dart:convert';
 
+import 'package:aae/model/reservation_detail_passenger.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
@@ -15,35 +16,38 @@ abstract class ReservationDetail implements Built<ReservationDetail, Reservation
   factory ReservationDetail([updates(ReservationDetailBuilder b)]) =
   _$ReservationDetail;
 
-  @BuiltValueField(wireName: 'originAirportCode')
-  String get originAirportCode;
+  @BuiltValueField(wireName: 'description')
+  String get description;
 
-  @BuiltValueField(wireName: 'destinationAirportCode')
-  String get destinationAirportCode;
+  @BuiltValueField(wireName: 'employeeId')
+  String get employeeId;
 
-  @BuiltValueField(wireName: 'flightNumber')
-  int get flightNumber;
+  @BuiltValueField(wireName: 'firstDepartureDateTime')
+  int get firstDepartureDateTime;
 
-  @BuiltValueField(wireName: 'departureTime')
-  String get departureTime;
+  @BuiltValueField(wireName: 'lastArrivalDateTime')
+  String get lastArrivalDateTime;
 
-  @BuiltValueField(wireName: 'departureGate')
-  String get departureGate;
+  @BuiltValueField(wireName: 'passType')
+  String get passType;
 
-  @BuiltValueField(wireName: 'cabins')
-  BuiltList<ReservationDetailCabin> get cabins;
+  @BuiltValueField(wireName: 'recordLocator')
+  String get recordLocator;
 
-  @BuiltValueField(wireName: 'confirmedRevenueOversales')
-  BuiltList<ReservationDetailPassenger> get confirmedRevenueOversales;
+  @BuiltValueField(wireName: 'passengers')
+  BuiltList<ReservationDetailPassenger> get passengers;
 
-  @BuiltValueField(wireName: 'confirmedRevenueUpgrades')
-  BuiltList<ReservationDetailPassenger> get confirmedRevenueUpgrades;
-
-  @BuiltValueField(wireName: 'revenueStandbys')
-  BuiltList<ReservationDetailPassenger> get revenueStandbys;
-
-  @BuiltValueField(wireName: 'nonrevStandbys')
-  BuiltList<ReservationDetailPassenger> get nonrevStandbys;
+//  @BuiltValueField(wireName: 'confirmedRevenueOversales')
+//  BuiltList<ReservationDetailPassenger> get confirmedRevenueOversales;
+//
+//  @BuiltValueField(wireName: 'confirmedRevenueUpgrades')
+//  BuiltList<ReservationDetailPassenger> get confirmedRevenueUpgrades;
+//
+//  @BuiltValueField(wireName: 'revenueStandbys')
+//  BuiltList<ReservationDetailPassenger> get revenueStandbys;
+//
+//  @BuiltValueField(wireName: 'nonrevStandbys')
+//  BuiltList<ReservationDetailPassenger> get nonrevStandbys;
 
   String toJson() {
     return json

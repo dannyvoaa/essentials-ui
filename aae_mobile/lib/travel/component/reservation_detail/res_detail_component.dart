@@ -8,33 +8,33 @@ import 'package:flutter/material.dart';
 import 'package:aae/travel/component/reservation_detail/res_detail_bloc.dart';
 
 class ReservationDetailArguments{
-  final String origin;
-  final int flightNumber;
-  final DateTime departureDate;
+  final String pnr;
+//  final int flightNumber;
+//  final DateTime departureDate;
 
   ReservationDetailArguments({
-    @required this.origin,
-    @required this.flightNumber,
-    @required this.departureDate
+    @required this.pnr,
+//    @required this.flightNumber,
+//    @required this.departureDate
   });
 }
 
 /// Ties together [PriorityListBloc] and [PriorityListView].
 class ReservationDetailComponent extends StatelessWidget {
-  final String origin;
-  final int flightNumber;
-  final DateTime departureDate;
+  final String pnr;
+//  final int flightNumber;
+//  final DateTime departureDate;
 
   ReservationDetailComponent({
-    @required this.origin,
-    @required this.flightNumber,
-    @required this.departureDate
+    @required this.pnr,
+//    @required this.flightNumber,
+//    @required this.departureDate
   });
 
   ReservationDetailComponent.from(ReservationDetailArguments args):
-        this.origin = args.origin,
-        this.flightNumber = args.flightNumber,
-        this.departureDate = args.departureDate;
+        this.pnr = args.pnr
+//        this.flightNumber = args.flightNumber,
+//        this.departureDate = args.departureDate;
 
 
   @override
@@ -43,14 +43,15 @@ class ReservationDetailComponent extends StatelessWidget {
       bloc: (factory) => factory.resDetailBloc(),
       builder: (context, bloc) {
         // initiate our back end call
-        bloc.loadPriorityList(origin, flightNumber, departureDate);
+//        bloc.loadReservationDetail(pnr, flightNumber, departureDate);
+        bloc.loadReservationDetail(pnr);
 
         // and build our view
-        return SourceBuilder.of<PriorityListViewModel>(
+        return SourceBuilder.of<ReservationDetailViewModel>(
           source: bloc.viewModel,
           builder: (snapshot) {
             if (snapshot.present && snapshot.value != null && snapshot.value.priorityList != null) {
-              return PriorityListView(viewModel: snapshot.value);
+              return ReservationView(viewModel: snapshot.value);
             } else {
               return Center(child: AaeLoadingSpinner());
             }

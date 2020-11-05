@@ -6,6 +6,7 @@ import 'package:aae/cache/cache_service.dart';
 import 'package:aae/common/repository/repository.dart';
 import 'package:aae/model/pnr.dart';
 import 'package:aae/model/priority_list.dart';
+import 'package:aae/model/reservation_detail.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:aae/model/trips.dart';
 import 'package:aae/rx/rx_util.dart';
@@ -30,12 +31,14 @@ class TravelRepository implements Repository {
 
   final _pnrs = createBehaviorSubject<BuiltList<Pnr>>();
   final _currentPriorityList = createBehaviorSubject<PriorityList>();
+  final _reservationDetail = createBehaviorSubject<ReservationDetail>();
 
   final CacheService _cache;
   static String tripsKey = 'trips';
 
   Observable<BuiltList<Pnr>> get pnrs => _pnrs;
   Observable<PriorityList> get currentPriorityList => _currentPriorityList;
+  Observable<ReservationDetail> get reservationDetail => _reservationDetail;
 
   @provide
   @singleton
@@ -73,11 +76,17 @@ class TravelRepository implements Repository {
     }
   }
 
-  loadReservationDetail(String origin, int flightNum, DateTime date) async {
+  loadReservationDetail(String pnr) async {
     _currentPriorityList.sendNext(null);
-    PriorityList priorityList = await _travelApiClient.getPriorityList(origin, flightNum, date);
+    PriorityList priorityList = await _travelApiClient.getPriorityList(pnr);
     _currentPriorityList.sendNext(priorityList);
   }
+
+//  loadReservationDetail(String origin, int flightNum, DateTime date) async {
+//    _currentPriorityList.sendNext(null);
+//    PriorityList priorityList = await _travelApiClient.getPriorityList(origin, flightNum, date);
+//    _currentPriorityList.sendNext(priorityList);
+//  }
 
   loadPriorityList(String origin, int flightNum, DateTime date) async {
     _currentPriorityList.sendNext(null);

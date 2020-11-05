@@ -1,8 +1,7 @@
 import 'package:aae/travel/component/search/search.dart';
+import 'package:aae/travel/component/reservation_detail/res_detail_component.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
-
-import 'details/priority_list_component.dart';
 
 class PriorityListNavigator extends StatelessWidget {
   static final _log = Logger('PriorityListView');
@@ -18,18 +17,18 @@ class PriorityListNavigator extends StatelessWidget {
         initialRoute: '/',
         onGenerateRoute: (RouteSettings settings) {
           WidgetBuilder builder;
-          PriorityListArguments args = settings.arguments;
+          ReservationDetailArguments args = settings.arguments;
 
           switch (settings.name) {
             case '/':
               builder = (_) => Search(
                 title: "Priority List",
                 calendarLength: 5,
-                searchType2: loadPriorityList,
+                searchType2: loadReservationDetail,
               );
               break;
             case '/results':
-              builder = (_) => PriorityListComponent.from(args);
+              builder = (_) => ReservationDetailComponent.from(args);
               break;
             default:
               throw Exception('Invalid route: ${settings.name}');
@@ -41,15 +40,16 @@ class PriorityListNavigator extends StatelessWidget {
     );
   }
 
-  void loadPriorityList(BuildContext context, String flightNumber, String origin, String departureDate) {
-    _log.info("loadPriorityList(origin: '$origin', flightNumber: '$flightNumber', departureDate:'$departureDate')");
+  void loadReservationDetail(BuildContext context, String pnr) {
+    _log.info("loadPriorityList(pnr: '$pnr')");
 
     Navigator.of(context).pushNamed(
       '/results',
-      arguments: PriorityListArguments(
-        origin: origin,
-        flightNumber: int.parse(flightNumber),
-        departureDate: DateTime.parse(departureDate),
+      arguments: ReservationDetailArguments(
+        pnr: pnr,
+//        origin: origin,
+//        flightNumber: int.parse(flightNumber),
+//        departureDate: DateTime.parse(departureDate),
       ),
     );
   }

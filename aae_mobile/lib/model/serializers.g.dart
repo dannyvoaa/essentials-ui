@@ -17,9 +17,15 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Nfdocs.serializer)
       ..add(PerformanceStats.serializer)
       ..add(Pnr.serializer)
+      ..add(PriorityList.serializer)
+      ..add(PriorityListCabin.serializer)
+      ..add(PriorityListPassenger.serializer)
       ..add(Profile.serializer)
       ..add(RecognitionHistory.serializer)
       ..add(RecognitionRegister.serializer)
+      ..add(ReservationDetail.serializer)
+      ..add(ReservationDetailPassenger.serializer)
+      ..add(ReservationDetailSegment.serializer)
       ..add(StockStats.serializer)
       ..add(Topics.serializer)
       ..add(Trips.serializer)
@@ -37,9 +43,32 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(Pnr)]),
           () => new ListBuilder<Pnr>())
       ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(PriorityListCabin)]),
+          () => new ListBuilder<PriorityListCabin>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(PriorityListPassenger)]),
+          () => new ListBuilder<PriorityListPassenger>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(PriorityListPassenger)]),
+          () => new ListBuilder<PriorityListPassenger>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(PriorityListPassenger)]),
+          () => new ListBuilder<PriorityListPassenger>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(PriorityListPassenger)]),
+          () => new ListBuilder<PriorityListPassenger>())
+      ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(RecognitionRegister)]),
           () => new ListBuilder<RecognitionRegister>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(ReservationDetailPassenger)]),
+          () => new ListBuilder<ReservationDetailPassenger>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

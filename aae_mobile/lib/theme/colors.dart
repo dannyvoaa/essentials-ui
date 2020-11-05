@@ -73,6 +73,7 @@ class AaeColors {
   static const yellowGreen = Color.fromRGBO(209, 213, 50, 1.0);
   static const green = Color.fromRGBO(0, 185, 137, 1.0);
   static const backgroundBlue = Color.fromRGBO(50, 120, 203, 1.0);
+  static const backgroundBlueTestTest = Color.fromRGBO(50, 120, 203, 1.0);
 
   // Misc Colors
   static const cardGradient = Color(0xFF1D3644);

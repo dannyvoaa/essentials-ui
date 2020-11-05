@@ -16,27 +16,31 @@ class ReservationDetailBloc {
   static final _log = Logger('ResDetailBloc');
   final TravelRepository _travelRepository;
 
-  Source<TripsViewModel> get viewModel =>
+  Source<ReservationDetailViewModel> get viewModel =>
       toSource(combineLatest(_travelRepository.pnrs, _createViewModel));
 
   @provide
   ReservationDetailBloc(this._travelRepository);
 
-  void loadReservationDetail(String origin, int flightNum, DateTime date) {
-    _travelRepository.loadReservationDetail(origin, flightNum, date);
+  void loadReservationDetail(String pnr) {
+    _travelRepository.loadReservationDetail(pnr);
   }
 
-  TripsViewModel _createViewModel(BuiltList<Pnr> pnrs) {
-    pnrs = _sortByFirstDepartureDate(pnrs);
-    return TripsViewModel((b) => b..pnrs.addAll(pnrs));
-  }
-
-//  BuiltList<Pnr> _sortByFirstDepartureDate(BuiltList<Pnr> pnrs) {
-//    List<Pnr> pnrsList = pnrs.toList();
-//    pnrsList.sort((a, b) => a.firstDepartureDateTime.compareTo(b.firstDepartureDateTime));
-//    pnrs = pnrsList.toBuiltList();
-//    return pnrs;
+//  void loadReservationDetail(String origin, int flightNum, DateTime date) {
+//    _travelRepository.loadReservationDetail(origin, flightNum, date);
 //  }
+
+  ReservationDetailViewModel _createViewModel(BuiltList<Pnr> pnrs) {
+    pnrs = _sortByFirstDepartureDate(pnrs);
+    return ReservationDetailViewModel((b) => b..pnrs.addAll(pnrs));
+  }
+
+  BuiltList<Pnr> _sortByFirstDepartureDate(BuiltList<Pnr> pnrs) {
+    List<Pnr> pnrsList = pnrs.toList();
+    pnrsList.sort((a, b) => a.firstDepartureDateTime.compareTo(b.firstDepartureDateTime));
+    pnrs = pnrsList.toBuiltList();
+    return pnrs;
+  }
 }
 
 /// Constructs new instances of [ReservationDetailBloc]s via the DI framework.
@@ -47,32 +51,36 @@ abstract class ResDetailBlocFactory implements ProvidedService {
 
 
 
-//class PriorityListBloc {
-//  static final _log = Logger('PriorityListBloc');
-//  final TravelRepository _travelRepository;
-//
-//  Observable<PriorityList> _dummyPriorityListObservable;
-//
-//  Source<PriorityListViewModel> get viewModel =>
-//      toSource(combineLatest(_travelRepository.currentPriorityList, _createViewModel));
-//
-//  @provide
-//  PriorityListBloc(this._travelRepository);
-//
-//  void loadPriorityList(String origin, int flightNum, DateTime date) {
-//    _travelRepository.loadPriorityList(origin, flightNum, date);
-//  }
-//
-//  PriorityListViewModel _createViewModel(PriorityList priorityList) {
-//    return PriorityListViewModel(
-//        priorityList: priorityList,
-//        loadPriorityList: loadPriorityList
-//    );
-//  }
-//}
-//
-///// Constructs new instances of [PriorityListBloc]s via the DI framework.
-//abstract class PriorityListBlocFactory implements ProvidedService {
-//  @provide
-//  PriorityListBloc priorityListBloc();
-//}
+
+
+
+
+class PriorityListBloc {
+  static final _log = Logger('PriorityListBloc');
+  final TravelRepository _travelRepository;
+
+  Observable<PriorityList> _dummyPriorityListObservable;
+
+  Source<PriorityListViewModel> get viewModel =>
+      toSource(combineLatest(_travelRepository.currentPriorityList, _createViewModel));
+
+  @provide
+  PriorityListBloc(this._travelRepository);
+
+  void loadPriorityList(String origin, int flightNum, DateTime date) {
+    _travelRepository.loadPriorityList(origin, flightNum, date);
+  }
+
+  PriorityListViewModel _createViewModel(PriorityList priorityList) {
+    return PriorityListViewModel(
+        priorityList: priorityList,
+        loadPriorityList: loadPriorityList
+    );
+  }
+}
+
+/// Constructs new instances of [PriorityListBloc]s via the DI framework.
+abstract class PriorityListBlocFactory implements ProvidedService {
+  @provide
+  PriorityListBloc priorityListBloc();
+}
