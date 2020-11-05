@@ -3,6 +3,7 @@ library priority_list;
 import 'dart:convert';
 
 import 'package:aae/model/reservation_detail_passenger.dart';
+import 'package:aae/model/reservation_detail_segment.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
@@ -37,17 +38,8 @@ abstract class ReservationDetail implements Built<ReservationDetail, Reservation
   @BuiltValueField(wireName: 'passengers')
   BuiltList<ReservationDetailPassenger> get passengers;
 
-//  @BuiltValueField(wireName: 'confirmedRevenueOversales')
-//  BuiltList<ReservationDetailPassenger> get confirmedRevenueOversales;
-//
-//  @BuiltValueField(wireName: 'confirmedRevenueUpgrades')
-//  BuiltList<ReservationDetailPassenger> get confirmedRevenueUpgrades;
-//
-//  @BuiltValueField(wireName: 'revenueStandbys')
-//  BuiltList<ReservationDetailPassenger> get revenueStandbys;
-//
-//  @BuiltValueField(wireName: 'nonrevStandbys')
-//  BuiltList<ReservationDetailPassenger> get nonrevStandbys;
+  @BuiltValueField(wireName: 'segments')
+  BuiltList<ReservationDetailPassenger> get segments;
 
   String toJson() {
     return json

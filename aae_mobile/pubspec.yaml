@@ -40,6 +40,9 @@ dependencies:
   flutter_svg: ^0.18.0
   recase: ^3.0.0
   date_picker_timeline: ^1.2.1
+  slider_button: ^0.6.0
+  expandable: ^4.1.4
+  custom_switch_button: ^0.5.0
   flutter:
     sdk: flutter
 
