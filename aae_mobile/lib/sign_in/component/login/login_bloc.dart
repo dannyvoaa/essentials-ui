@@ -20,20 +20,30 @@ import 'login_view_model.dart';
 class LoginBloc {
   static final _log = Logger('LoginBloc');
   final SignInRepository _signInRepository;
-  final _loginInProgress = createBehaviorSubject(initial: false);
+  final loginInProgress = createBehaviorSubject(initial: false);
   final _validitySubject = createBehaviorSubject<bool>();
   final _events = Subject<WorkflowEvent>();
 
   final CacheService _cache;
 
   /// On sign in status changes, publishes whether we have a signed in user with a valid profile.
-  Observable<bool> get profileValidity => _validitySubject.distinctUntilChanged();
-  Observable<WorkflowEvent> get events => _events;
+  Observable<bool> get profileValidity  {
+    return _validitySubject.distinctUntilChanged();
+  }
+  Observable<bool> get loginProgress  {
+    return loginInProgress.distinctUntilChanged();
+  }
+  Observable<WorkflowEvent> get events {
+    return _events;
+  }
 
-  Source<LoginViewModel> get viewModel => toSource(combineLatest(_loginInProgress, _createViewModel,));
+  Source<LoginViewModel> get viewModel {
+    return toSource(combineLatest(loginInProgress, createViewModel));
+  }
 
-  LoginViewModel _createViewModel(bool loginInProgress) =>
-      LoginViewModel(primaryButtonText: 'Sign in', onSignInButtonPressed: signIn, showLoadingSpinner: false, signInButtonEnabled: true);
+  LoginViewModel createViewModel(bool loginInProgress) {
+    return LoginViewModel(primaryButtonText: 'Sign in', onSignInButtonPressed: signIn, showLoadingSpinner: false, signInButtonEnabled: true);
+  }
 
   @provide
   LoginBloc(this._signInRepository, this._cache);

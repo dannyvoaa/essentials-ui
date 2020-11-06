@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:aae/common/widgets/button/large_button.dart';
 import 'package:aae/common/widgets/loading/aae_loading_spinner.dart';
 import 'package:aae/theme/colors.dart';
@@ -6,6 +7,7 @@ import 'package:aae/theme/dimensions.dart';
 import 'package:aae/theme/typography.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'login_bloc.dart';
 import 'login_view_model.dart';
 import 'package:aae/cache/cache_service.dart';
 import 'package:aae/sign_in/component/login/SharedPrefUtils.dart';
@@ -58,19 +60,22 @@ class NetUtils {
 class LoginView extends StatefulWidget {
   final LoginViewModel viewModel;
   final CacheService cache;
+  final LoginBloc bloc;
 
-  LoginView({@required this.viewModel, this.cache, Key key}) : super(key: key) {}
+  LoginView({@required this.viewModel, this.cache, this.bloc, Key key}) : super(key: key) {}
 
   @override
   LoginViewState createState() {
     LoginViewState myloginState = LoginViewState();
-    myloginState.settingViewModel(viewModel);
+    myloginState.settingVCB(viewModel, cache, bloc );
     return myloginState;
   }
 }
 
 class LoginViewState extends State<LoginView> {
   LoginViewModel viewModel;
+  CacheService cache;
+  LoginBloc bloc;
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
   StreamSubscription _onDestroy;
   StreamSubscription<String> _onUrlChanged;
@@ -85,8 +90,10 @@ class LoginViewState extends State<LoginView> {
   String code;
   String token;
 
-  void settingViewModel(LoginViewModel vm) {
-    viewModel = vm;
+  void settingVCB(LoginViewModel vm, CacheService cs, LoginBloc lb) {
+    this.viewModel = vm;
+    this.cache = cs;
+    this.bloc = lb;
   }
 
   @override
@@ -149,17 +156,16 @@ class LoginViewState extends State<LoginView> {
               headerparams['Authorization'] = authorizationsecret;
               NetUtils.post(tokenEndpoint, bodyparams, headerparams).then((data) {
                 this.token = data;
-                //print('$data');
+                //print('--------data:$data');
                 if (data != null) {
                   Map<String, dynamic> map = json.decode(data);
                   if (map != null && map.isNotEmpty) {
                     this.token = map["access_token"];
-                    //print('$token');
+                    print('--------token:$token');
                     SharedPrefUtils.saveStr('tokenvalue', token);
                   }
                 }
               });
-
               flutterWebviewPlugin.close();
             }
           }
@@ -178,144 +184,11 @@ class LoginViewState extends State<LoginView> {
         ),
       ),);
     }
-    return Scaffold(
-      backgroundColor: AaeColors.white,
-      body: Stack(
-        children: <Widget>[
-          SafeArea(
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  _sectionWelcome(
-                    buildContext: context,
-                    boolCompactHeight:
-                    AaeDimens.compactHeight(buildContext: context),
-                  ),
-                  _sectionDescription(
-                    buildContext: context,
-                    boolCompactHeight:
-                    AaeDimens.compactHeight(buildContext: context),
-                  ),
-                  _sectionSignInButton(
-                    buildContext: context,
-                    boolCompactHeight:
-                    AaeDimens.compactHeight(buildContext: context),
-                  ),
-                ],
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.end,
-              ),
-              margin: AaeDimens.pageMarginLarge,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+    sleep(Duration(milliseconds:250));
+    bloc.loginInProgress.sendNext(true);
+    bloc.signIn();
 
-  /// Description text
-  Widget _sectionDescription(
-      {BuildContext buildContext,
-        bool boolKeyboardVisible = false,
-        bool boolCompactHeight = false}) {
-    return Text(
-      '',
-      textAlign: TextAlign.center,
-      style: AaeTextStyles.description(),
-    );
-  }
-
-  /// Sign in button
-  Widget _sectionSignInButton(
-      {BuildContext buildContext,
-        bool boolKeyboardVisible = false,
-        bool boolCompactHeight = false}) {
-    return Container(
-      child: LargeButton(
-        onTapAction: viewModel.onSignInButtonPressed,
-        stringTitle: 'Continue',
-      ),
-      width: double.infinity,
-      padding: EdgeInsets.only(
-        top: AaeDimens.sizeDynamic_32px(
-            boolCompact: boolCompactHeight,
-            boolKeyboardVisible: boolKeyboardVisible),
-        bottom: AaeDimens.sizeDynamic_32px(
-            boolCompact: boolCompactHeight,
-            boolKeyboardVisible: boolKeyboardVisible),
-      ),
-    );
-  }
-  /// Flight Symbol and welcome text
-  Widget _sectionWelcome2(
-      {BuildContext buildContext,
-        bool boolKeyboardVisible = false,
-        bool boolCompactHeight = false}) {
-    // Check to see if the logo should be returned
-    if (boolCompactHeight && boolKeyboardVisible) {
-      return Container();
-    } else {
-      return Expanded(
-        child: Column(
-          children: <Widget>[
-            Hero(
-              child: Image.asset(
-                'assets/common/flight_symbol.png',
-                width: AaeDimens.sizeDynamic_128px(),
-              ),
-              tag: 'aaFlightSymbol',
-            ),
-            SizedBox(
-              height: AaeDimens.sizeDynamic_48px(),
-            ),
-            Text(
-              'Taking you to sign-in page',
-              style: AaeTextStyles.titleLarge(),
-            ),
-            Text(
-              '',
-              style: AaeTextStyles.subTitleLarge(),
-            ),
-          ],
-          mainAxisAlignment: MainAxisAlignment.center,
-        ),
-      );
-    }
-  }
-  /// Flight Symbol and welcome text
-  Widget _sectionWelcome(
-      {BuildContext buildContext,
-        bool boolKeyboardVisible = false,
-        bool boolCompactHeight = false}) {
-    // Check to see if the logo should be returned
-    if (boolCompactHeight && boolKeyboardVisible) {
-      return Container();
-    } else {
-      return Expanded(
-        child: Column(
-          children: <Widget>[
-            Hero(
-              child: Image.asset(
-                'assets/common/flight_symbol.png',
-                width: AaeDimens.sizeDynamic_128px(),
-              ),
-              tag: 'aaFlightSymbol',
-            ),
-            SizedBox(
-              height: AaeDimens.sizeDynamic_48px(),
-            ),
-            Text(
-              'Login Success',
-              style: AaeTextStyles.eventTitle(),
-            ),
-            Text(
-              'Please click continue to access the app!',
-              style: AaeTextStyles.subTitleLarge(),
-            ),
-          ],
-          mainAxisAlignment: MainAxisAlignment.center,
-        ),
-      );
-    }
+    //return FlatButton(child: Text('Continue'), onPressed: viewModel.onSignInButtonPressed);
+    return new Scaffold();
   }
 }

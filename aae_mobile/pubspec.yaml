@@ -11,26 +11,26 @@ description: American Airlines - AA Essentials
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 1.0.6+1
 
 environment:
   sdk: ">=2.5.0 <3.0.0"
 
 dependencies:
   flutter_webview_plugin: ^0.3.11
-  corsac_jwt: ^0.1.2
+  corsac_jwt: ^0.2.2
   mockito: ^4.1.1
-  html: ^0.14.0+3
-  shared_preferences: ^0.5.6+3
+  html: ^0.14.0+4
+  shared_preferences: ^0.5.12+2
   built_value_generator: ^7.1.0
   built_collection: ^4.3.2
-  url_launcher: ^5.5.0
+  url_launcher: ^5.7.6
   intl: ^0.16.1
   logging: ^0.11.4
-  local_auth: ^0.6.1+3
-  flutter_secure_storage: ^3.3.1+1
+  local_auth: ^0.6.3+3
+  flutter_secure_storage: ^3.3.5
   platform: ^2.2.1
-  flutter_widgets: ^0.1.1
+  flutter_widgets: ^0.1.12
   webview_flutter: ^0.3.22+1
   flutter_html: ^1.0.2
   gradient_app_bar: ^0.1.3
@@ -38,13 +38,18 @@ dependencies:
   flutter_keyboard_visibility: ^0.7.0
   keyboard_avoider: ^0.1.2
   flutter_svg: ^0.18.0
+  link: ^1.0.0
   recase: ^3.0.0
   date_picker_timeline: ^1.2.1
   slider_button: ^0.6.0
   expandable: ^4.1.4
   custom_switch_button: ^0.5.0
+  flutter_widget_from_html: ^0.5.1+3
+  linkable: ^1.0.4
   flutter:
     sdk: flutter
+  firebase_core: ^0.5.0
+  firebase_crashlytics: ^0.2.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the Cupertino Icons class for iOS style icons.
@@ -77,6 +82,7 @@ flutter:
 
   assets:
     - assets/common/
+    - assets/svg/
     - assets/static_records/RecognitionHistory.json
     - assets/static_records/image.jpeg
     - assets/common/sign_in_background.png

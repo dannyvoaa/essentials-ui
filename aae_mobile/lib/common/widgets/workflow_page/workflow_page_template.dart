@@ -289,8 +289,8 @@ class WorkflowPageTemplate extends StatelessWidget {
   Widget _titleWidget() {
     return Padding(
       padding: const EdgeInsets.only(
-        top: AaeDimens.baseUnit * 4,
-        bottom: AaeDimens.workflowTitleBottomMargin,
+        top: 50,
+        bottom: 10,
       ),
       child: Text(
         title,
@@ -329,6 +329,7 @@ class WorkflowPageTemplate extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.only(
+        top:10,
         bottom: AaeDimens.workflowBodyBottomMargin,
       ),
       child: child,

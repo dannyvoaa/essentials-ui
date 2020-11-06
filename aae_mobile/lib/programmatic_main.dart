@@ -57,8 +57,8 @@ void programmaticMain(BuildFlavorConfiguration configuration) async {
             services: lifecycleServices as Iterable<LifecycleManagedService>)));
   }, onError: (error, stackTrace) async {
     // Pipe the error over to [FlutterError] which is set up in logging.dart.
-    FlutterError.reportError(
-        FlutterErrorDetails(exception: error, stack: stackTrace));
+    //FlutterError.reportError(FlutterErrorDetails(exception: error, stack: stackTrace));
+    FlutterError.reportError(FlutterErrorDetails(exception: error));
   });
 }
 

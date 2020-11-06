@@ -17,11 +17,13 @@ abstract class NewsArticle implements Built<NewsArticle, NewsArticleBuilder> {
   String get id;
 
   /// [authorName] is the data we retrieve from the server with no formatting in place.
-  @BuiltValueField(wireName: "authorname")
+  @BuiltValueField(wireName: "published")
   String get authorName;
 
-  @BuiltValueField(wireName: "content")
-  ArticleBody get contentString;
+  //ArticleBody type replaced with String
+  //wirename 'content' replaced with 'articlebody'
+  @BuiltValueField(wireName: "articlebody")
+  String get contentString;
 
   @BuiltValueField(wireName: "contentID")
   String get contentID;

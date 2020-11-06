@@ -1,5 +1,6 @@
 import 'package:aae/bloc/source_builder.dart';
 import 'package:aae/common/widgets/component/component.dart';
+import 'package:aae/common/widgets/tables/table_cell_title_value_hub.dart';
 import 'package:aae/common/widgets/tables/table_components.dart';
 import 'package:aae/common/widgets/tables/table_header.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +66,7 @@ class _SettingsListView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         for (var i = 0; i < viewModel.topics.length; i++)
-          TableCellTitleValue(
+          TableCellTitleValueHub(
               onTapAction: () {
                 //print(viewModel.topics[i]);
                 viewModel.onTopicTapped(viewModel.topics[i]);
@@ -73,7 +74,7 @@ class _SettingsListView extends StatelessWidget {
               boolShowCheckmark:viewModel.selectedTopics.contains(viewModel.topics[i]),
               boolBorderTop: true,
               boolEnabled: true,
-              boolShowDisclosureIndicator: false,
+              boolShowDisclosureIndicator: true,
               stringTitle: viewModel.topics[i],
               stringValue: '')
       ],
