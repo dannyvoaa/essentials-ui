@@ -24,7 +24,7 @@ class ReservationDetailComponent extends StatelessWidget {
   });
 
   ReservationDetailComponent.from(ReservationDetailArguments args):
-        this.pnr = args.pnr
+        this.pnr = args.pnr;
 
   @override
   Widget build(BuildContext context) {
