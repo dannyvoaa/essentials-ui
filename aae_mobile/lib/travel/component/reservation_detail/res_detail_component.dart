@@ -15,7 +15,7 @@ class ReservationDetailArguments{
   });
 }
 
-/// Ties together [PriorityListBloc] and [PriorityListView].
+/// Ties together [ReservationDetailBloc] and [ReservationView].
 class ReservationDetailComponent extends StatelessWidget {
   final String pnr;
 
@@ -25,7 +25,7 @@ class ReservationDetailComponent extends StatelessWidget {
 
   ReservationDetailComponent.from(ReservationDetailArguments args):
         this.pnr = args.pnr
-  
+
   @override
   Widget build(BuildContext context) {
     return Component<ReservationDetailBloc, ReservationDetailBlocFactory>(

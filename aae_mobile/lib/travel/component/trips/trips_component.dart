@@ -7,8 +7,14 @@ import 'trips_bloc.dart';
 import 'trips_view.dart';
 import 'trips_view_model.dart';
 
+
 /// Ties together [TripsBloc] and [TripsView].
 class TripsComponent extends StatelessWidget {
+
+  TripsComponent({this.loadReservationDetail});
+
+  final Function(BuildContext, String) loadReservationDetail;
+
   @override
   Widget build(BuildContext context) {
     return Component<TripsBloc, TripsBlocFactory>(

@@ -4,8 +4,8 @@ import 'package:logging/logging.dart';
 import 'package:aae/travel/component/trips/trips_component.dart';
 import 'package:aae/travel/component/reservation_detail/res_detail_component.dart';
 
-class PriorityListNavigator extends StatelessWidget {
-  static final _log = Logger('PriorityListView');
+class TripsNavigator extends StatelessWidget {
+  static final _log = Logger('ReservationDetailView');
 
   final GlobalKey<NavigatorState> nestedNavKey = GlobalKey<NavigatorState>();
 
@@ -22,7 +22,9 @@ class PriorityListNavigator extends StatelessWidget {
 
           switch (settings.name) {
             case '/':
-              builder = (_) => TripsComponent();
+              builder = (_) => TripsComponent(
+                loadReservationDetail: loadReservationDetail,
+              );
               break;
             case '/results':
               builder = (_) => ReservationDetailComponent.from(args);
@@ -37,8 +39,8 @@ class PriorityListNavigator extends StatelessWidget {
     );
   }
 
-  void loadPriorityList(BuildContext context, String pnr) {
-    _log.info("loadPriorityList(pnr: '$pnr')");
+  void loadReservationDetail(BuildContext context, String pnr) {
+    _log.info("loadReservationDetail(pnr: '$pnr')");
 
     Navigator.of(context).pushNamed(
       '/results',
