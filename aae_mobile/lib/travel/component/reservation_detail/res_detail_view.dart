@@ -13,14 +13,9 @@ import 'package:slider_button/slider_button.dart';
 
 class ReservationView extends StatelessWidget {
   final ReservationDetailViewModel viewModel;
-  final String origin;
-  final String destination;
-//  final Map<String, String> args;
 
   ReservationView({
     this.viewModel,
-    this.origin,
-    this.destination,
   });
 
   @override
@@ -50,7 +45,7 @@ class ReservationView extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 5),
                           child: Text(
-                            'DFW - MAD 11/22/2020',
+                            viewModel.reservationDetail.description,
                             style: AaeTextStyles.reservationHeading,
                           ),
                         ),

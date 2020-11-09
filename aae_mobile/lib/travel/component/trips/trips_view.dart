@@ -4,9 +4,11 @@ import 'trips_view_model.dart';
 
 class TripsView extends StatelessWidget {
   final TripsViewModel viewModel;
+  final Function(BuildContext, String) loadReservationDetail;
 
   TripsView({
     @required this.viewModel,
+    this.loadReservationDetail,
   });
 
   @override
@@ -22,7 +24,7 @@ class TripsView extends StatelessWidget {
               //?
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                TripsCollection(viewModel: this.viewModel, header: 'Current trips'),
+                TripsCollection(viewModel: this.viewModel, header: 'Current trips', loadReservationDetail: loadReservationDetail,),
                 TripsCollection(viewModel: null, header: 'Tools')
               ],
             )),

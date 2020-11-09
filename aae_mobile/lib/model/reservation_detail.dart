@@ -1,4 +1,4 @@
-library priority_list;
+library reservation_detail;
 
 import 'dart:convert';
 
@@ -24,7 +24,7 @@ abstract class ReservationDetail implements Built<ReservationDetail, Reservation
   String get employeeId;
 
   @BuiltValueField(wireName: 'firstDepartureDateTime')
-  int get firstDepartureDateTime;
+  String get firstDepartureDateTime;
 
   @BuiltValueField(wireName: 'lastArrivalDateTime')
   String get lastArrivalDateTime;
@@ -39,7 +39,7 @@ abstract class ReservationDetail implements Built<ReservationDetail, Reservation
   BuiltList<ReservationDetailPassenger> get passengers;
 
   @BuiltValueField(wireName: 'segments')
-  BuiltList<ReservationDetailPassenger> get segments;
+  BuiltList<ReservationDetailSegment> get segments;
 
   String toJson() {
     return json

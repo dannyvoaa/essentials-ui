@@ -4,10 +4,11 @@ import 'package:aae/travel/component/trips/trips_view_model.dart';
 import 'package:flutter/material.dart';
 
 class TripsCollection extends StatelessWidget {
-  TripsCollection({this.viewModel, this.header});
+  TripsCollection({this.viewModel, this.header, this.loadReservationDetail});
 
   final TripsViewModel viewModel;
   final String header;
+  final Function(BuildContext, String) loadReservationDetail;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class TripsCollection extends StatelessWidget {
                 textAlign: TextAlign.left,
               ),
             )),
-        TripsListWidget(viewModel: this.viewModel)
+        TripsListWidget(viewModel: this.viewModel, loadReservationDetail: loadReservationDetail,)
       ],
     ));
   }

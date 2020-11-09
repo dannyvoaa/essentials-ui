@@ -27,7 +27,7 @@ abstract class BlocFactory
         PointsHistoryBlocFactory,
         TripsBlocFactory,
         PriorityListBlocFactory,
-        ResDetailBlocFactory,
+        ReservationDetailBlocFactory,
         EventsListBlocFactory,
         D0StatsBlocFactory,
         NewsArticleBlocFactory,

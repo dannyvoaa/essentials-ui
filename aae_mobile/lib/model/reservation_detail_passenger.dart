@@ -1,4 +1,4 @@
-library priority_list_cabin;
+library reservation_detail_passenger;
 
 import 'dart:convert';
 
@@ -15,16 +15,20 @@ abstract class ReservationDetailPassenger implements Built<ReservationDetailPass
   _$ReservationDetailPassenger;
 
   @BuiltValueField(wireName: 'firstName')
+  @nullable
   String get firstName;
 
   @BuiltValueField(wireName: 'lastName')
-  int get lastName;
+  @nullable
+  String get lastName;
 
   @BuiltValueField(wireName: 'nrsTravelerId')
+  @nullable
   int get nrsTravelerId;
 
   @BuiltValueField(wireName: 'passengerId')
-  int get passengerId;
+  @nullable
+  String get passengerId;
 
   String toJson() {
     return json
