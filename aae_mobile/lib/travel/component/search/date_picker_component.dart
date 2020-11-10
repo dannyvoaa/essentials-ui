@@ -1,7 +1,6 @@
 import 'package:aae/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
-import '../search/date_picker_component.dart';
 import 'package:intl/intl.dart';
 
 class DatePickerComponent extends StatelessWidget {
@@ -44,18 +43,20 @@ class _DatePickerPageState extends State<DatePickerPage> {
           children: <Widget>[
             Text(
               "Date",
-              style: TextStyle(fontSize: 15),
+              style: TextStyle(
+                fontSize: 15,
+              ),
               textAlign: TextAlign.left,
             ),
             Expanded(
                 child: DatePicker(
-              DateTime.now().add(Duration(days: calculateCalendarCenter(widget.calendarLength))),
+              DateTime.now().add(Duration(
+                  days: calculateCalendarCenter(widget.calendarLength))),
               controller: _controller,
               initialSelectedDate: DateTime.now(),
               selectionColor: Color(0xffebeff0),
               selectedTextColor: AaeColors.black,
               monthTextStyle: TextStyle(
-                fontFamily: 'AmericanSans',
                 fontSize: 13,
                 color: AaeColors.lightGray,
               ),
@@ -65,8 +66,6 @@ class _DatePickerPageState extends State<DatePickerPage> {
                 color: AaeColors.black,
               ),
               dayTextStyle: TextStyle(
-                fontFamily: 'AmericanSans',
-                fontSize: 13,
                 color: AaeColors.lightGray,
               ),
               daysCount: widget.calendarLength,
