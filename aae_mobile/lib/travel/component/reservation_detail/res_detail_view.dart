@@ -65,7 +65,7 @@ class ReservationView extends StatelessWidget {
                 ),
               ),
               Container(
-                child: TripsExpPanel(),
+                child: TripsExpPanel(viewModel: viewModel,),
               ),
               Container(
                 child: TripsPassengerPanel(),

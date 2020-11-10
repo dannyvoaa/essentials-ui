@@ -92,7 +92,7 @@ abstract class ReservationDetailSegment implements Built<ReservationDetailSegmen
   String get status;
 
 //  @BuiltValueField(wireName: 'seatAssignments')
-//  BuiltList<ReservationDetailSeatAssignment get seatAssignments;
+//  BuiltList<ReservationDetailSeatAssignment> get seatAssignments;
 
   String toJson() {
     return json

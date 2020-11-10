@@ -10,11 +10,18 @@ import 'package:aae/theme/typography.dart';
 import 'package:aae/theme/dimensions.dart';
 import 'package:aae/travel/component/trips/trips_view_model.dart';
 import 'package:expandable/expandable.dart';
+import 'package:aae/travel/component/reservation_detail/res_detail_view_model.dart';
 
 class TripsExpPanel extends StatelessWidget {
-  const TripsExpPanel({
-    Key key,
-  }) : super(key: key);
+
+  final ReservationDetailViewModel viewModel;
+
+  TripsExpPanel({
+    this.viewModel,
+  });
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +41,9 @@ class TripsExpPanel extends StatelessWidget {
       ),
       child: Column(
         children: <Widget>[
-          DepartureStatus(),
-          RouteInfo(),
-          LocatorInfo(),
+          DepartureStatus(viewModel: viewModel,),
+          RouteInfo(viewModel: viewModel,),
+          LocatorInfo(viewModel: viewModel,),
         ],
       ),
     );
@@ -44,9 +51,11 @@ class TripsExpPanel extends StatelessWidget {
 }
 
 class RouteInfo extends StatelessWidget {
-  const RouteInfo({
-    Key key,
-  }) : super(key: key);
+  final ReservationDetailViewModel viewModel;
+
+  RouteInfo({
+    this.viewModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +76,8 @@ class RouteInfo extends StatelessWidget {
           child: ExpandablePanel(
             header: RouteSummary(),
             expanded: RouteDetails(),
-//            collapsed: _routeDetails(context),
+//            expanded: RouteDetails(viewModel.reservationDetail.segments),
+//            expanded: _routeDetails(context),
           ),
         ),
       ),
@@ -113,32 +123,49 @@ class RouteSummaryColumn extends StatelessWidget {
   }
 }
 
-Widget _routeDetails(BuildContext context) {
-  // backing data
-  final items = ['Test01', 'Test02', 'Test03', 'Test04'];
-
-  return ListView.builder(
-    itemCount: items.length,
-    itemBuilder: (context, index) {
-      final item = items[index];
-      return Container(
-        height: 80,
-        width: 80,
-        child: Text(item),
-      );
-//      return ListTile(
-////        title: item.buildTitle(context),
-//        title: Text(item),
+//Widget _routeDetails(BuildContext context) {
+//  // backing data
+////  final items = ['Test01', 'Test02', 'Test03', 'Test04'];
+//
+//  return ListView.builder(
+//    itemCount: viewModel.reservationDetail.segments.length,
+//    itemBuilder: (context, index) {
+////      final item = items[index];
+//      return Container(
+//        height: 80,
+//        width: 80,
+//        child: Text(item),
 //      );
-    },
-  );
-}
+////      return ListTile(
+//////        title: item.buildTitle(context),
+////        title: Text(item),
+////      );
+//    },
+//  );
+//}
+
+
+
+
 
 class RouteDetails extends StatelessWidget {
+//  final  items;
+//
+//  RouteDetails({
+//    this.items,
+//  });
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top:12,),
+//      child: ListView.builder(
+//          physics: NeverScrollableScrollPhysics(),
+//          itemCount: items.length,
+//          itemBuilder: (BuildContext context, int index) {
+//            return Text(items[index]);
+////            return RouteDetail('Dallas/Fort Worth International Airport (DFW)',
+////              '12hr 5min', true, 'Main', 'Airbus A321', true);
+//          }),
       child: Column(
         children: <Widget>[
           RouteDetail('Dallas/Fort Worth International Airport (DFW)',
@@ -344,9 +371,11 @@ class CircleRoute extends StatelessWidget {
 // Locator information band at the bottom of the expanded view widget
 
 class LocatorInfo extends StatelessWidget {
-  const LocatorInfo({
-    Key key,
-  }) : super(key: key);
+  final ReservationDetailViewModel viewModel;
+
+  LocatorInfo({
+    this.viewModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -356,9 +385,9 @@ class LocatorInfo extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          LocatorColumn('LOCATOR', 'XDSSWP', CrossAxisAlignment.start),
-          LocatorColumn('GATE', '25', CrossAxisAlignment.center),
-          LocatorColumn('TERMINAL', 'C', CrossAxisAlignment.center),
+          LocatorColumn('LOCATOR', viewModel.reservationDetail.recordLocator, CrossAxisAlignment.start),
+          LocatorColumn('GATE', viewModel.reservationDetail.segments[0].originGate, CrossAxisAlignment.center),
+          LocatorColumn('TERMINAL', viewModel.reservationDetail.segments[0].originTerminal, CrossAxisAlignment.center),
           LocatorColumn('SEAT', '18A', CrossAxisAlignment.end),
         ],
       ),
@@ -393,9 +422,13 @@ class LocatorColumn extends StatelessWidget {
 }
 
 class DepartureStatus extends StatelessWidget {
-  const DepartureStatus({
-    Key key,
-  }) : super(key: key);
+  final ReservationDetailViewModel viewModel;
+
+  DepartureStatus({
+    this.viewModel,
+  });
+
+//  String onTime
 
   @override
   Widget build(BuildContext context) {
@@ -412,7 +445,8 @@ class DepartureStatus extends StatelessWidget {
                 AssetImage('assets/common/american-airlines-eaagle-logo.png'),
                 height:30,
               ),
-              Text('1234 Departs in 1 hr 33 min', style:AaeTextStyles.departureHeading),
+              Text(viewModel.reservationDetail.segments[0].flightNumber.toString() + " Departs in 1 hr 33 min", style:AaeTextStyles.departureHeading),
+//              Text('1234 Departs in 1 hr 33 min', style:AaeTextStyles.departureHeading),
             ],
           ),
           Text('ONTIME', style: AaeTextStyles.departureOnTime,),
