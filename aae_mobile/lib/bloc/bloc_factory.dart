@@ -12,6 +12,7 @@ import 'package:aae/settings/settingslist/settings_list_bloc.dart';
 import 'package:aae/sign_in/workflow/sign_in_state_machine.dart';
 import 'package:aae/travel/component/priority_list/details/priority_list_bloc.dart';
 import 'package:aae/travel/component/flight_status/flight_status_bloc.dart';
+import 'package:aae/travel/component/flight_search/flight_search_bloc.dart';
 import 'package:aae/travel/component/trips/trips_bloc.dart';
 
 /// A factory that provides BLoC instances.
@@ -28,6 +29,7 @@ abstract class BlocFactory
         TripsBlocFactory,
         PriorityListBlocFactory,
         FlightStatusBlocFactory,
+        FlightSearchBlocFactory,
         EventsListBlocFactory,
         D0StatsBlocFactory,
         NewsArticleBlocFactory,

@@ -5,6 +5,7 @@ import 'package:aae/api/travel_api_client.dart';
 import 'package:aae/auth/sso_auth.dart';
 import 'package:aae/cache/cache_service.dart';
 import 'package:aae/common/repository/repository.dart';
+import 'package:aae/model/flight_search.dart';
 import 'package:aae/model/flight_status.dart';
 import 'package:aae/model/pnr.dart';
 import 'package:aae/model/priority_list.dart';
@@ -33,6 +34,7 @@ class TravelRepository implements Repository {
   final _pnrs = createBehaviorSubject<BuiltList<Pnr>>();
   final _currentPriorityList = createBehaviorSubject<PriorityList>();
   final _flightStatus = createBehaviorSubject<FlightStatus>();
+  final _flightSearch = createBehaviorSubject<FlightSearch>();
 
   final CacheService _cache;
   static String tripsKey = 'trips';
@@ -100,13 +102,15 @@ class TravelRepository implements Repository {
     }
   }
 
-  Future<FlightStatus> searchFlightStatus(String query) async {
-    final searchResult = await _travelApiClient.getFlightStatus(
-        '72000027', '0020', 'DFW', '2020-10-06');
-    if (searchResult.flightNumber.isEmpty) {
-      _log.severe('Failed to fetch flightStatus: ');
-    } else {
-      return searchResult;
+  loadFlightSearch(origin, destination, date) async {
+    _flightSearch.sendNext(null);
+    FlightSearch flightSearch =
+    await _travelApiClient.getFlightSearch('72000027', origin, destination, date);
+    try {
+      _flightSearch.sendNext(flightSearch);
+    } catch (e, s) {
+      _log.severe('Failed to fetch flightStatus: ', e, s);
+      return null;
     }
   }
 

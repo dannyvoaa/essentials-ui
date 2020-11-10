@@ -22,9 +22,9 @@ class AppScaffoldState extends State<AppScaffold> {
 
   final Map<MainPage, GlobalKey<NavigatorState>> _navigatorKeys = {
     MainPage.home: GlobalKey<NavigatorState>(),
-    MainPage.notifications: GlobalKey<NavigatorState>(),
-    MainPage.travel: GlobalKey<NavigatorState>(),
     MainPage.events: GlobalKey<NavigatorState>(),
+    MainPage.travel: GlobalKey<NavigatorState>(),
+    MainPage.notifications: GlobalKey<NavigatorState>(),
   };
 
   void _selectTab(MainPage newPage) {
@@ -47,9 +47,9 @@ class AppScaffoldState extends State<AppScaffold> {
       child: Scaffold(
           body: Stack(children: <Widget>[
             _buildOffstageNavigator(MainPage.home),
-            _buildOffstageNavigator(MainPage.notifications),
-            _buildOffstageNavigator(MainPage.travel),
             _buildOffstageNavigator(MainPage.events),
+            _buildOffstageNavigator(MainPage.travel),
+            _buildOffstageNavigator(MainPage.notifications),
           ]),
           bottomNavigationBar: BottomNavigation(
             currentPage: _currentPage,

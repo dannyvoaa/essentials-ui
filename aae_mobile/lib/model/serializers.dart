@@ -32,6 +32,7 @@ import 'package:aae/model/trips.dart';
 import 'package:aae/model/nfdocs.dart';
 
 import 'flight_status.dart';
+import 'flight_search.dart';
 
 
 part 'serializers.g.dart';
@@ -47,6 +48,7 @@ part 'serializers.g.dart';
   PriorityListPassenger,
   FlightStatus,
   GateTimeFlightInfo,
+  FlightSearch,
   Profile,
   Workgroup,
   HubLocation,
