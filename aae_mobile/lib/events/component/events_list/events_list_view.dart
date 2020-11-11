@@ -195,9 +195,13 @@ class EventsListView extends StatelessWidget {
                                               MainAxisAlignment.start,
                                           children: <Widget>[
                                             Container(
-                                              decoration: BoxDecoration(
-                                                color: AaeColors.blue,
-                                                shape: BoxShape.circle,
+                                              child: GestureDetector(
+                                                onTap: () => Navigator.of(context).pop(),
+                                                child: Icon(
+                                                  const IconData(57676, fontFamily: 'MaterialIcons'),
+                                                  size: 20,
+                                                  color: AaeColors.darkGray,
+                                                ),
                                               ),
                                               height: 12,
                                               margin: EdgeInsets.only(
