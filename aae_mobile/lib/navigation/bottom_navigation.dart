@@ -24,25 +24,23 @@ class BottomNavigation extends StatelessWidget {
   static final deselectedColor = AaeColors.darkGray;
 
   //if working on travel feature uncomment lines 30, 37, 69.  Please do not stage these changes when merging into develop.
-
   static final Map<MainPage, String> tabText = {
     MainPage.home: 'Home',
     MainPage.events: 'Calendar',
-//    MainPage.travel: 'Trips',
+    MainPage.travel: 'Trips',
 //    MainPage.notifications: 'Notifications',
   };
 
   static final Map<MainPage, IconData> tabIconData = {
     MainPage.home: AaeIcons.home,
     MainPage.events: AaeIcons.calendar,
-//    MainPage.travel: AaeIcons.travel,
+    MainPage.travel: AaeIcons.travel,
 //    MainPage.notifications: AaeIcons.notifications,
   };
 
 //  void _closeDrawer() {
 //  _scaffoldKey.currentState.openDrawer();
 //  }
-
   BottomNavigation(
       {@required MainPage currentPage,
       @required ValueChanged<MainPage> onSelectTab})
@@ -68,7 +66,7 @@ class BottomNavigation extends StatelessWidget {
         items: [
           _buildItem(MainPage.home, context, 24, 2.0),
           _buildItem(MainPage.events, context, 24, 2.0),
-//          _buildItem(MainPage.travel, context, 18, 5.0),
+          _buildItem(MainPage.travel, context, 18, 5.0),
 //          _buildItem(MainPage.notifications, context, 18, 6.0),
         ],
           onTap: (index) {

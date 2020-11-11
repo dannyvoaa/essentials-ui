@@ -21,6 +21,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Nfdocs.serializer)
       ..add(PerformanceStats.serializer)
       ..add(Pnr.serializer)
+      ..add(PriorityList.serializer)
+      ..add(PriorityListCabin.serializer)
+      ..add(PriorityListPassenger.serializer)
       ..add(Profile.serializer)
       ..add(RecognitionHistory.serializer)
       ..add(RecognitionRegister.serializer)
@@ -47,6 +50,25 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Pnr)]),
           () => new ListBuilder<Pnr>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(PriorityListCabin)]),
+          () => new ListBuilder<PriorityListCabin>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(PriorityListPassenger)]),
+          () => new ListBuilder<PriorityListPassenger>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(PriorityListPassenger)]),
+          () => new ListBuilder<PriorityListPassenger>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(PriorityListPassenger)]),
+          () => new ListBuilder<PriorityListPassenger>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(PriorityListPassenger)]),
+          () => new ListBuilder<PriorityListPassenger>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(RecognitionRegister)]),
