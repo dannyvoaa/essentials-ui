@@ -20,17 +20,8 @@ import 'package:inject/inject.dart';
 /// Class exists for importing convenience.
 
 /// Provider for BLoCs needed in the SignInWorkflow.
-class SignInWorkflowBlocProvider
-    implements
-        SignInBlocFactory,
-        CreateProfileBlocFactory,
-        WelcomeBlocFactory,
-        LoginBlocFactory,
-        SignInFailedBlocFactory,
-        WorkgroupsSelectionBlocFactory,
-        HubLocationsSelectionBlocFactory,
-        TopicsSelectionBlocFactory,
-        WorkflowFooterButtonBlocFactory {
+class SignInWorkflowBlocProvider implements SignInBlocFactory, CreateProfileBlocFactory, WelcomeBlocFactory, LoginBlocFactory, SignInFailedBlocFactory,
+        WorkgroupsSelectionBlocFactory, HubLocationsSelectionBlocFactory, TopicsSelectionBlocFactory, WorkflowFooterButtonBlocFactory {
   final SignInBloc _signInBloc;
   final CreateProfileBloc _createProfileBloc;
   final WelcomeBloc _welcomeBloc;

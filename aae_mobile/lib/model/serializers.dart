@@ -11,6 +11,8 @@ import 'package:aae/model/priority_list_cabin.dart';
 import 'package:aae/model/priority_list_passenger.dart';
 import 'package:aae/model/recognition_register.dart';
 import 'package:aae/model/recognition_history.dart';
+import 'package:aae/model/stockdocs.dart';
+import 'package:aae/model/dzerodocs.dart';
 import 'package:aae/model/trips.dart';
 import 'package:aae/model/pnr.dart';
 
@@ -32,6 +34,7 @@ import 'package:aae/model/trips.dart';
 import 'package:aae/model/nfdocs.dart';
 
 import 'flight_status.dart';
+import 'package:aae/model/news_articledocs.dart';
 
 
 part 'serializers.g.dart';
@@ -55,8 +58,11 @@ part 'serializers.g.dart';
   Event,
   Notification,
   StockStats,
+  Stockdocs,
   PerformanceStats,
+  Dzerodocs,
   NewsArticle,
+  Newsarticledocs,
   ArticleBody,
   BiometricAuth,
   Nfdocs

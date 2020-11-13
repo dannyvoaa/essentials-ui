@@ -1,9 +1,10 @@
 import 'package:aae/bloc/source_builder.dart';
 import 'package:aae/common/widgets/component/component.dart';
+import 'package:aae/common/widgets/tables/table_cell_title_value_hub.dart';
 import 'package:aae/common/widgets/tables/table_components.dart';
 import 'package:aae/common/widgets/tables/table_header.dart';
 import 'package:flutter/material.dart';
-
+import 'package:aae/profile/profile_details.dart';
 import 'settings_list_bloc.dart';
 import 'settings_list_view_model.dart';
 
@@ -41,6 +42,13 @@ class _SettingsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ProfileDetails profiledetails = ProfileDetails.getInstance();
+    String username = profiledetails.userfullname;
+    String location = profiledetails.userlocation;
+
+    if (location == null) {
+      location = "";
+    }
     return Container(
       margin: EdgeInsets.all(20),
       child: ListView(
@@ -50,7 +58,7 @@ class _SettingsListView extends StatelessWidget {
               TableHeader(
                 stringTitle: 'Select hub',
               ),
-              _buildHubLocations(context),
+              _buildHubLocations(context, location),
             ],
             crossAxisAlignment: CrossAxisAlignment.start,
           ),
@@ -60,21 +68,24 @@ class _SettingsListView extends StatelessWidget {
   }
 
 
-  Widget _buildHubLocations(BuildContext context) {
+  Widget _buildHubLocations(BuildContext context, String location) {
+
        return Column(
          mainAxisAlignment: MainAxisAlignment.center,
          children: <Widget>[
            for (var i = 0; i < viewModel.hubLocation.length; i++)
-             TableCellTitleValue(
+             TableCellTitleValueHub(
                  onTapAction: () {
                    //print(viewModel.hubLocation[i]);
-                   viewModel.onHubLocationTapped(viewModel.hubLocation[i]);
+                   if (viewModel.hubLocation[i] != location)
+                      viewModel.onHubLocationTapped(viewModel.hubLocation[i]);
                  },
                  boolShowCheckmark:viewModel.selectedHubLocations.contains(viewModel.hubLocation[i]),
                  boolBorderTop: true,
                  boolEnabled: true,
-                 boolShowDisclosureIndicator: false,
-                 stringTitle: viewModel.hubLocation[i],
+                 boolShowDisclosureIndicator: viewModel.hubLocation[i] != location ? true : false,
+                 stringTitle: viewModel.hubLocation[i] != location ? viewModel.hubLocation[i] : '$location (Your location)',
+                 boolHubTextGray: viewModel.hubLocation[i] != location ? false : true,
                  stringValue: '')
          ],
        );

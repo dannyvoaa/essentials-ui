@@ -48,8 +48,8 @@ final _sizeConfigs = <ButtonSize, _SizeConfig>{
 
 final _colorConfigs = <ButtonType, _ColorConfig>{
   ButtonType.primary: _ColorConfig((b) => b
-    ..enabledBackground = AaeColors.buttonPrimaryBackground
-    ..enabledText = AaeColors.buttonPrimaryText
+    ..enabledBackground = AaeColors.boardBackground
+    ..enabledText = AaeColors.lightGray
     ..enabledBorder = Colors.transparent
     ..disabledBackground = AaeColors.buttonPrimaryDisabledBackground
     ..disabledText = AaeColors.buttonPrimaryDisabledText

@@ -67,6 +67,7 @@ class ProfileRepository implements Repository {
   /// Throws [ProfileNotFoundException] if the user needs
   /// to create a profile before they can use the app.
   Future<void> validateIdentity() async {
+    //print('************ValidateIdentity************');
     Profile profile;
     try {
       profile = await _apiClient.getProfile(_ssoAuth.currentUser.id);

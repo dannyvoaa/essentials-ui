@@ -1,4 +1,5 @@
 import 'package:aae/theme/colors.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
 /// Common typography constants to be used across the whole application.
@@ -343,6 +344,19 @@ class AaeTextStyles {
     return textStyle;
   }
 
+  static TextStyle tableCellTitleHub({
+    bool boolDefaultHeight = false,
+    bool boolEnabled = true,
+  }) {
+    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
+      color: AaeColors.lightGray.withOpacity(.60),
+      fontSize: 18,
+    );
+    // Default style
+
+    return textStyle;
+  }
+
   /// Used for regular-sized headline content
   static TextStyle headline({bool boolDefaultHeight = false}) {
     TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
@@ -414,6 +428,14 @@ class AaeTextStyles {
 
     // Default style
     return textStyle;
+  }
+
+  static TextStyle tableCellValueHub() {
+    //TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(color: AaeColors.red, fontSize: 18);
+    //TextStyle(fontSize: 16, color: Colors.orange, fontWeight: FontWeight.bold);
+    TextStyle mytextStyle = TextStyle(fontSize: 20, color: Colors.grey, fontWeight: FontWeight.bold);
+    // Default style
+    return mytextStyle;
   }
 
   /// Used for Event detail layout
@@ -494,5 +516,5 @@ class AaeTextStyles {
     return textStyle;
   }
 
-  static TextStyle pageHeadline = TextStyle(fontSize: 24, fontWeight: _bold);
+  static const pageHeadline = TextStyle(fontSize: 24, fontWeight: _bold, color: AaeColors.onboardTitle);
 }
