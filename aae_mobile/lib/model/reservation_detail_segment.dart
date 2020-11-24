@@ -4,10 +4,12 @@ import 'dart:convert';
 
 import 'package:aae/model/serializers.dart';
 import 'package:built_value/built_value.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:aae/model/reservation_detail_seat_assignment.dart';
 
 part 'reservation_detail_segment.g.dart';
+
 
 abstract class ReservationDetailSegment implements Built<ReservationDetailSegment, ReservationDetailSegmentBuilder> {
   ReservationDetailSegment._();
@@ -16,6 +18,7 @@ abstract class ReservationDetailSegment implements Built<ReservationDetailSegmen
   _$ReservationDetailSegment;
 
   @BuiltValueField(wireName: 'aircraftName')
+  @nullable
   String get aircraftName;
 
   @BuiltValueField(wireName: 'arrivalTimeActual')
@@ -23,12 +26,15 @@ abstract class ReservationDetailSegment implements Built<ReservationDetailSegmen
   String get arrivalTimeActual;
 
   @BuiltValueField(wireName: 'arrivalTimeEstimated')
+  @nullable
   String get arrivalTimeEstimated;
 
   @BuiltValueField(wireName: 'arrivalTimeScheduled')
+  @nullable
   String get arrivalTimeScheduled;
 
   @BuiltValueField(wireName: 'cabin')
+  @nullable
   String get cabin;
 
   @BuiltValueField(wireName: 'departureTimeActual')
@@ -36,18 +42,23 @@ abstract class ReservationDetailSegment implements Built<ReservationDetailSegmen
   String get departureTimeActual;
 
   @BuiltValueField(wireName: 'departureTimeEstimated')
+  @nullable
   String get departureTimeEstimated;
 
   @BuiltValueField(wireName: 'departureTimeScheduled')
+  @nullable
   String get departureTimeScheduled;
 
   @BuiltValueField(wireName: 'destinationAirportCode')
+  @nullable
   String get destinationAirportCode;
 
   @BuiltValueField(wireName: 'destinationCity')
+  @nullable
   String get destinationCity;
 
   @BuiltValueField(wireName: 'destinationCountry')
+  @nullable
   String get destinationCountry;
 
   @BuiltValueField(wireName: 'destinationGate')
@@ -59,12 +70,15 @@ abstract class ReservationDetailSegment implements Built<ReservationDetailSegmen
   String get destinationTerminal;
 
   @BuiltValueField(wireName: 'duration')
+  @nullable
   int get duration;
 
   @BuiltValueField(wireName: 'flightNumber')
+  @nullable
   int get flightNumber;
 
   @BuiltValueField(wireName: 'hasWifi')
+  @nullable
   bool get hasWifi;
 
   @BuiltValueField(wireName: 'legNumber')
@@ -83,6 +97,7 @@ abstract class ReservationDetailSegment implements Built<ReservationDetailSegmen
   String get originGate;
 
   @BuiltValueField(wireName: 'originTerminal')
+  @nullable
   String get originTerminal;
 
   @BuiltValueField(wireName: 'segmentNumber')
@@ -91,8 +106,8 @@ abstract class ReservationDetailSegment implements Built<ReservationDetailSegmen
   @BuiltValueField(wireName: 'status')
   String get status;
 
-//  @BuiltValueField(wireName: 'seatAssignments')
-//  BuiltList<ReservationDetailSeatAssignment> get seatAssignments;
+  @BuiltValueField(wireName: 'seatAssignments')
+  BuiltList<ReservationDetailSeatAssignment> get seatAssignments;
 
   String toJson() {
     return json

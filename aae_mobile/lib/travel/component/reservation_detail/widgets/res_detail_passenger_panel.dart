@@ -12,12 +12,15 @@ import 'package:aae/theme/dimensions.dart';
 import 'package:aae/travel/component/trips/trips_view_model.dart';
 import 'package:expandable/expandable.dart';
 import 'package:custom_switch_button/custom_switch_button.dart';
+import 'package:aae/travel/component/reservation_detail/res_detail_view_model.dart';
 
 class TripsPassengerPanel extends StatelessWidget {
 
-  const TripsPassengerPanel({
-    Key key,
-  }) : super(key: key);
+  final ReservationDetailViewModel viewModel;
+
+  TripsPassengerPanel({
+    this.viewModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +60,7 @@ class TripsPassengerPanel extends StatelessWidget {
             child: Column(
               children: <Widget>[
 //                _passengerList(context),
-                PassengerList(),
+                _passengerList(context),
                 CheckInButton(),
               ],
             ),
@@ -66,34 +69,40 @@ class TripsPassengerPanel extends StatelessWidget {
       ),
     );
   }
-}
 
-class PassengerList extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Passenger('BENJAMIN FRANKLIN', 'D2', true),
-        Passenger('ABRAHAM LINCOLN', 'D3', true),
-      ],
+  _passengerList(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top:12,),
+      child: SizedBox(
+        height: 50.00 * viewModel.reservationDetail.passengers.length,
+        child: ListView.builder(
+          itemCount: viewModel.reservationDetail.passengers.length,
+          itemBuilder: (context, index) {
+            return Container(
+              child: Passenger(viewModel.reservationDetail.passengers[index].firstName, viewModel.reservationDetail.passengers[index].lastName, viewModel.reservationDetail.passType, false),
+            );
+          },
+        ),
+      ),
     );
   }
+
 }
 
 
 class Passenger extends StatelessWidget {
-  final String name;
+  final String firstName;
+  final String lastName;
   final String status;
   bool isChecked = false;
 
-  Passenger(this.name, this.status, this.isChecked);
+  Passenger(this.firstName, this.lastName, this.status, this.isChecked);
 
   @override
   Widget build(BuildContext context){
     return Container(
 //      padding: EdgeInsets.only(top:10,bottom:10,left:20,right:20,),
-      margin: EdgeInsets.only(top:10,bottom:0,left:20,right:20,),
+      margin: EdgeInsets.only(top:6,bottom:0,left:20,right:20,),
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(width: 1.0, color: AaeColors.ultraLightGray),),
       ),
@@ -104,7 +113,7 @@ class Passenger extends StatelessWidget {
           children: <Widget>[
             Row(
               children: [
-                Text(name),
+                Text(firstName + ' ' + lastName),
                 Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,),
                 Text(status),
               ],

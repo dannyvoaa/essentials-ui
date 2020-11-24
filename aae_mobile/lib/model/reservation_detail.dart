@@ -24,9 +24,11 @@ abstract class ReservationDetail implements Built<ReservationDetail, Reservation
   String get employeeId;
 
   @BuiltValueField(wireName: 'firstDepartureDateTime')
+  @nullable
   String get firstDepartureDateTime;
 
   @BuiltValueField(wireName: 'lastArrivalDateTime')
+  @nullable
   String get lastArrivalDateTime;
 
   @BuiltValueField(wireName: 'passType')

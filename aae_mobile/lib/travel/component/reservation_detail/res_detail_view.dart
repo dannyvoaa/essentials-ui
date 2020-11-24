@@ -10,6 +10,8 @@ import 'package:aae/travel/component/trips/trips_view_model.dart';
 import 'package:aae/travel/component/reservation_detail/widgets/res_detail_exp_panel.dart';
 import 'package:aae/travel/component/reservation_detail/widgets/res_detail_passenger_panel.dart';
 import 'package:slider_button/slider_button.dart';
+import 'package:date_format/date_format.dart';
+import 'package:intl/intl.dart';
 
 class ReservationView extends StatelessWidget {
   final ReservationDetailViewModel viewModel;
@@ -54,9 +56,9 @@ class ReservationView extends StatelessWidget {
                         alignment: Alignment.topCenter,
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 5),
-                          child: Text(
-                            'Nov 22 - Nov 30 Boards 10:45 AM',
-                            style: AaeTextStyles.reservationSubHeading,
+                          child: _dateSummary(
+                            viewModel.reservationDetail.firstDepartureDateTime,
+                            viewModel.reservationDetail.lastArrivalDateTime,
                           ),
                         ),
                       ),
@@ -65,10 +67,14 @@ class ReservationView extends StatelessWidget {
                 ),
               ),
               Container(
-                child: TripsExpPanel(viewModel: viewModel,),
+                child: TripsExpPanel(
+                  viewModel: viewModel,
+                ),
               ),
               Container(
-                child: TripsPassengerPanel(),
+                child: TripsPassengerPanel(
+                  viewModel: viewModel,
+                ),
               ),
               Container(
                 child: TripsCollection(viewModel: null, header: 'Tools'),
@@ -82,6 +88,22 @@ class ReservationView extends StatelessWidget {
       ),
     );
   }
+
+  Widget _dateSummary(String departure, String arrival) {
+    List months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+    final dep = DateTime.parse(departure);
+    final arr = DateTime.parse(arrival);
+
+    // Format month and day text
+    final monthFormat = new DateFormat('MMM d');
+    final monthText = monthFormat.format(dep) + ' - ' + monthFormat.format(arr);
+    // Format departure time
+    final timeFormat = new DateFormat('h:mm a');
+    final timeText = 'Boards ' + timeFormat.format(dep);
+
+    final text = monthText + ' ' + String.fromCharCode(0x2022) + ' ' + timeText;
+    return Text(text, style: AaeTextStyles.reservationSubHeading,);
+  }
 }
 
 class CancelSlider extends StatelessWidget {
@@ -92,7 +114,7 @@ class CancelSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top:12.0),
+      padding: const EdgeInsets.only(top: 12.0),
       child: SliderButton(
         action: () {
           ///Do something here OnSlide
@@ -112,11 +134,11 @@ class CancelSlider extends StatelessWidget {
         ),
         icon: Center(
             child: Icon(
-              Icons.arrow_forward_sharp,
-              color: AaeColors.mediumGray,
-              size: 26.0,
-              semanticLabel: 'Slide to cancel trip',
-            )),
+          Icons.arrow_forward_sharp,
+          color: AaeColors.mediumGray,
+          size: 26.0,
+          semanticLabel: 'Slide to cancel trip',
+        )),
 
         ///Change All the color and size from here.
         width: 300,
@@ -139,39 +161,3 @@ class CancelSlider extends StatelessWidget {
     );
   }
 }
-
-
-
-//import 'package:aae/travel/component/trips/trips_collection.dart';
-//import 'package:flutter/material.dart';
-//import 'package:aae/travel/component/reservation_detail/res_detail_view_model.dart';
-//
-//class ReservationView extends StatelessWidget {
-//  final ReservationDetailViewModel viewModel;
-//
-//  ReservationView({
-//    @required this.viewModel,
-//  });
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return _buildReservationContainer(context);
-//  }
-//
-//  Widget _buildReservationContainer(BuildContext context) {
-//    return Container(
-//        child: SingleChildScrollView(
-//            scrollDirection: Axis.vertical,
-//            child: Column(
-//              //?
-//              mainAxisSize: MainAxisSize.min,
-//              children: <Widget>[
-//                Text('testing res view'),
-//                Text('testing res view'),
-////                TripsCollection(viewModel: this.viewModel, header: 'Current trips'),
-////                TripsCollection(viewModel: null, header: 'Tools')
-//              ],
-//            )),
-//        padding: const EdgeInsets.all(16.0));
-//  }
-//}

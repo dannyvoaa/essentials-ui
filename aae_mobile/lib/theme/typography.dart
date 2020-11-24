@@ -237,6 +237,12 @@ class AaeTextStyles {
     color: AaeColors.green,
   );
 
+  static const departureDelayed = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    color: AaeColors.red,
+  );
+
   static const hubDetailHeading = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.normal,
@@ -244,7 +250,7 @@ class AaeTextStyles {
   );
 
   static const routeDetailHeading = TextStyle(
-    fontSize: 13,
+    fontSize: 12,
     fontWeight: FontWeight.normal,
     color: AaeColors.ultraLightGray,
   );

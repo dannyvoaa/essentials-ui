@@ -11,6 +11,8 @@ import 'package:aae/theme/dimensions.dart';
 import 'package:aae/travel/component/trips/trips_view_model.dart';
 import 'package:expandable/expandable.dart';
 import 'package:aae/travel/component/reservation_detail/res_detail_view_model.dart';
+import 'package:intl/intl.dart';
+import 'package:date_format/date_format.dart';
 
 class TripsExpPanel extends StatelessWidget {
 
@@ -74,20 +76,71 @@ class RouteInfo extends StatelessWidget {
         ),
         child: Container(
           child: ExpandablePanel(
-            header: RouteSummary(),
-            expanded: RouteDetails(),
+            header: RouteSummary(viewModel: viewModel,),
 //            expanded: RouteDetails(viewModel.reservationDetail.segments),
-//            expanded: _routeDetails(context),
+//            expanded: RouteDetails(viewModel.reservationDetail.segments),
+            expanded: Column(
+              children: [
+                Container(child:_routeDetails(context)),
+//                Text('test'),
+                RouteDetailEnd(viewModel.reservationDetail.segments.last.destinationAirportCode, viewModel.reservationDetail.segments.last.destinationCity),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
+
+  _routeDetails(BuildContext context) {
+    // backing data
+//  final items = ['Test01', 'Test02', 'Test03', 'Test04'];
+
+    return Padding(
+      padding: EdgeInsets.only(top:12,),
+      child: SizedBox(
+        height: 58.00 * viewModel.reservationDetail.segments.length,
+        child: ListView.builder(
+          itemCount: viewModel.reservationDetail.segments.length,
+          itemBuilder: (context, index) {
+            return Container(
+//            height: 80,
+//            width: 80,
+              child: RouteDetail(
+                  viewModel.reservationDetail.segments[index].originCity + ' (' + viewModel.reservationDetail.segments[index].originAirportCode + ')',
+                  duration(viewModel.reservationDetail.segments[index].duration),
+                  overnight(viewModel.reservationDetail.segments[index].departureTimeScheduled, viewModel.reservationDetail.segments[index].arrivalTimeScheduled),
+                  viewModel.reservationDetail.segments[index].cabin ,
+                  viewModel.reservationDetail.segments[index].aircraftName,
+                  wifi(viewModel.reservationDetail.segments[index].hasWifi),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
 }
 
 class RouteSummary extends StatelessWidget {
+  final ReservationDetailViewModel viewModel;
+
+  RouteSummary({
+    this.viewModel,
+  });
+
+
+
+
   @override
   Widget build(BuildContext context) {
+
+    final departureTime = viewModel.reservationDetail.segments.first.departureTimeScheduled;
+    final arrivalTime = viewModel.reservationDetail.segments.last.arrivalTimeScheduled;
+
+//    var newDateTimeObj2 = new DateFormat("dd/MM/yyyy HH:mm:ss").parse(departureTime);
+
     return Container(
       margin: EdgeInsets.only(
         right: 80,
@@ -95,12 +148,59 @@ class RouteSummary extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          RouteSummaryColumn('11:15 AM', 'DFW'),
+          RouteSummaryColumn(getTime(departureTime), viewModel.reservationDetail.segments.first.originAirportCode),
           Icon(Icons.arrow_forward_sharp, color: AaeColors.gray,),
-          RouteSummaryColumn('1:20 PM', 'MAD'),
+          RouteSummaryColumn(getTime(arrivalTime), viewModel.reservationDetail.segments.last.destinationAirportCode),
         ],
       ),
     );
+  }
+}
+
+
+// Date formatting and manipulation functions...
+
+String getTime(String dateStr){
+  DateTime date = DateTime.parse(dateStr);
+  String time = formatDate(date, [h, ':', nn, ' ', am]);
+  return time;
+}
+
+String duration(int minutes){
+  var hours = (minutes / 60).floor();
+  var mins = minutes - (hours * 60);
+  String duration = hours.toString() + 'hr ' + mins.toString() + 'min';
+  return duration;
+}
+
+Widget overnight(String departure, String arrival){
+  DateTime startTime = DateTime.parse(departure);
+  DateTime finishTime = DateTime.parse(arrival);
+  int startDay = startTime.day;
+  int finishDay = finishTime.day;
+
+  if (startDay == finishDay) {
+    return Text('');
+  } else {
+    return Row(
+      children: [
+        Text('Overnight', style: AaeTextStyles.routeDetailHeading,),
+        Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,)
+      ],
+    );
+  }
+}
+
+Widget wifi(bool hasWifi){
+  if (hasWifi = true) {
+    return Row(
+      children: [
+        Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,),
+        Icon(Icons.wifi, color:AaeColors.ultraLightGray, size: 12,),
+      ],
+    );
+  } else {
+    return Text('');
   }
 }
 
@@ -123,65 +223,10 @@ class RouteSummaryColumn extends StatelessWidget {
   }
 }
 
-//Widget _routeDetails(BuildContext context) {
-//  // backing data
-////  final items = ['Test01', 'Test02', 'Test03', 'Test04'];
-//
-//  return ListView.builder(
-//    itemCount: viewModel.reservationDetail.segments.length,
-//    itemBuilder: (context, index) {
-////      final item = items[index];
-//      return Container(
-//        height: 80,
-//        width: 80,
-//        child: Text(item),
-//      );
-////      return ListTile(
-//////        title: item.buildTitle(context),
-////        title: Text(item),
-////      );
-//    },
-//  );
-//}
-
-
-
-
-
-class RouteDetails extends StatelessWidget {
-//  final  items;
-//
-//  RouteDetails({
-//    this.items,
-//  });
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top:12,),
-//      child: ListView.builder(
-//          physics: NeverScrollableScrollPhysics(),
-//          itemCount: items.length,
-//          itemBuilder: (BuildContext context, int index) {
-//            return Text(items[index]);
-////            return RouteDetail('Dallas/Fort Worth International Airport (DFW)',
-////              '12hr 5min', true, 'Main', 'Airbus A321', true);
-//          }),
-      child: Column(
-        children: <Widget>[
-          RouteDetail('Dallas/Fort Worth International Airport (DFW)',
-              '12hr 5min', true, 'Main', 'Airbus A321', true),
-          RouteDetail('Paris Charles de Gaulle Airport (CDG)',
-              '12hr 5min', true, 'Main', 'Airbus A321', true),
-          RouteDetailEnd('Madrid-Barajas Adolfo Suarez Airport (MAD)'),
-        ],
-      ),
-    );
-  }
-}
-
 class RouteDetailEnd extends StatelessWidget {
   final String hub;
-  const RouteDetailEnd(this.hub);
+  final String city;
+  const RouteDetailEnd(this.hub, this.city);
 
   @override
   Widget build(BuildContext context) {
@@ -197,7 +242,7 @@ class RouteDetailEnd extends StatelessWidget {
             alignment: Alignment.topCenter,
             height: 12,
             width: 12,
-            padding: EdgeInsets.only(top: 20),
+            padding: EdgeInsets.only(top: 0),
             decoration: BoxDecoration(
               border: Border.all(
                 color: AaeColors.ultraLightGray,
@@ -214,22 +259,27 @@ class RouteDetailEnd extends StatelessWidget {
           ),
           Column(
             children: [
-              Container(child: Text(hub, style:AaeTextStyles.hubDetailHeading)),
+              Container(child: cityHub(hub, city),),
             ],
           ),
         ],
       ),
     );
   }
+
+  Widget cityHub(hub, city){
+    final text = city + ' (' + hub + ')';
+    return Text(text, style:AaeTextStyles.hubDetailHeading);
+  }
 }
 
 class RouteDetail extends StatelessWidget {
   final String hub;
   final String duration;
-  final bool overnight;
+  final Widget overnight;
   final String cabin;
   final String equipment;
-  final bool wifi;
+  final Widget wifi;
   const RouteDetail(this.hub, this.duration, this.overnight, this.cabin,
       this.equipment, this.wifi);
 
@@ -253,24 +303,18 @@ class RouteDetail extends StatelessWidget {
             children: [
               Container(child: Text(hub, style:AaeTextStyles.hubDetailHeading)),
               Padding(
-                padding: const EdgeInsets.only(top:16, bottom:16,),
+                padding: const EdgeInsets.only(top:12, bottom:12,),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(duration, style: AaeTextStyles.routeDetailHeading,),
                     Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,),
-                    overnight
-                        ? Text('Overnight', style: AaeTextStyles.routeDetailHeading,)
-                        : null,
-                    overnight
-                        ? Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,)
-                        : null,
+                    overnight,
                     Text(cabin, style: AaeTextStyles.routeDetailHeading,),
                     Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,),
                     Text(equipment, style: AaeTextStyles.routeDetailHeading,),
-                    wifi ? Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,) : null,
-                    wifi ? Icon(Icons.wifi, color:AaeColors.ultraLightGray, size: 12,) : null,
+                    wifi,
                   ],
                 ),
               ),
@@ -379,6 +423,10 @@ class LocatorInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    String seat = viewModel.reservationDetail.segments[0].seatAssignments[0].seatAssignment;
+//    String seat = '--';
+
     return Container(
       color: AaeColors.bgLightGray,
       padding: EdgeInsets.only(left:20, right:20, top:8, bottom:8,),
@@ -388,10 +436,18 @@ class LocatorInfo extends StatelessWidget {
           LocatorColumn('LOCATOR', viewModel.reservationDetail.recordLocator, CrossAxisAlignment.start),
           LocatorColumn('GATE', viewModel.reservationDetail.segments[0].originGate, CrossAxisAlignment.center),
           LocatorColumn('TERMINAL', viewModel.reservationDetail.segments[0].originTerminal, CrossAxisAlignment.center),
-          LocatorColumn('SEAT', '18A', CrossAxisAlignment.end),
+          LocatorColumn('SEAT', nonNull(seat), CrossAxisAlignment.end),
         ],
       ),
     );
+  }
+
+  String nonNull(String x){
+    if (x == null){
+      return '--';
+    } else {
+      return x;
+    }
   }
 }
 
@@ -445,13 +501,83 @@ class DepartureStatus extends StatelessWidget {
                 AssetImage('assets/common/american-airlines-eaagle-logo.png'),
                 height:30,
               ),
-              Text(viewModel.reservationDetail.segments[0].flightNumber.toString() + " Departs in 1 hr 33 min", style:AaeTextStyles.departureHeading),
-//              Text('1234 Departs in 1 hr 33 min', style:AaeTextStyles.departureHeading),
+              countDown(context,),
+//              Text(viewModel.reservationDetail.segments[0].flightNumber.toString() + " Departs in 1 hr 33 min", style:AaeTextStyles.departureHeading),
             ],
           ),
-          Text('ONTIME', style: AaeTextStyles.departureOnTime,),
+//          countDown(context),
+//          countDown(viewModel.reservationDetail.segments[0].departureTimeScheduled, viewModel.reservationDetail.segments[0].departureTimeEstimated),
+//          Text('ONTIME', style: AaeTextStyles.departureOnTime,),
+          Text(viewModel.reservationDetail.segments.first.status, style: AaeTextStyles.departureOnTime,),
         ],
       ),
     );
   }
+
+  Widget countDown(BuildContext context){
+
+//    DateTime date = DateTime.parse(dateStr);
+//    String time = formatDate(date, [h, ':', nn, ' ', am]);
+//    return time;
+
+    final number = viewModel.reservationDetail.segments[0].flightNumber.toString();
+
+    final scheduled = viewModel.reservationDetail.segments[0].departureTimeScheduled;
+    final actual = viewModel.reservationDetail.segments[0].departureTimeActual;
+
+    var now = DateTime.now();
+
+    var departure;
+
+    if (actual != null) {
+      departure = DateTime.parse(actual);
+    } else {
+      departure = DateTime.parse(scheduled);
+    }
+
+    final days = departure.difference(now).inDays;
+    final hours = departure.difference(now).inHours;
+    final remainingHours = hours - (days * 24);
+    final minutes = departure.difference(now).inMinutes;
+    final remainingMinutes = (minutes - (days * 1440)) - (remainingHours * 60);
+
+    var dayText;
+    var hourText;
+    var minuteText = remainingMinutes.toString() + ' min';
+
+    if (days > 0){
+      dayText = days.toString() + ' days ';
+    } else {
+      dayText = '';
+    }
+
+    if (remainingHours > 0){
+      hourText = remainingHours.toString() + ' hrs ';
+    } else {
+      hourText = '';
+    }
+
+    final text = number + ' departs in ' + dayText + hourText + minuteText;
+
+    return Text(text, style:AaeTextStyles.departureHeading);
+  }
+
+//  Widget onTime(BuildContext context){
+//    final scheduled = viewModel.reservationDetail.segments[0].departureTimeScheduled;
+//    final sched = DateTime.parse(scheduled);
+//    final actual = viewModel.reservationDetail.segments[0].departureTimeEstimated;
+////    final actual = '2020-12-14T09:48:00';
+//    final act = DateTime.parse(actual);
+//
+//    final diff = sched.difference(act).inMinutes;
+//
+//    if (diff == 0){
+//      print('on time');
+//      return Text('ONTIME', style: AaeTextStyles.departureOnTime,);
+//    } else {
+//      return Text('DELAYED', style: AaeTextStyles.departureDelayed,);
+//    }
+//  }
 }
+
+

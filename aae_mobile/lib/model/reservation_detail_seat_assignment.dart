@@ -18,6 +18,7 @@ abstract class ReservationDetailSeatAssignment implements Built<ReservationDetai
   String get passengerId;
 
   @BuiltValueField(wireName: 'seatAssignment')
+  @nullable
   String get seatAssignment;
 
   String toJson() {
