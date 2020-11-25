@@ -12,6 +12,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_html/style.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 class NewsArticleComponent extends StatelessWidget {
   final Map<String, String> args;
@@ -58,9 +59,25 @@ class NewsArticleComponent extends StatelessWidget {
 
     var image = args['articleImage'];
 
+    final String titleFormat = (args['articleSubject'].replaceAll(new RegExp(r'\\'),''));
+
     return Scaffold(
-      endDrawer: AaeDrawer(),
-      appBar: AppBar(),
+    //  endDrawer: AaeDrawer(),
+      appBar: AppBar(
+                      flexibleSpace: Container(
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                                colors: <Color>[AaeColors.blue, AaeColors.gradientTop])),
+                      ),
+
+                      elevation: 1,
+                      leading: new IconButton(
+                        icon: new Icon(Icons.arrow_back_ios, color: Colors.white),
+                        onPressed: () => Navigator.of(context).pop(),
+                      ),
+                    ),
       body: SafeArea(
         child: MediaQuery(
           data: MediaQueryData(textScaleFactor: 1.0),
@@ -92,22 +109,21 @@ class NewsArticleComponent extends StatelessWidget {
                       ),
                       Container(
                         child: Html(
-                          data: args['articleSubject'],
+                          data: titleFormat,
                           style: {
                             "html": Style(
                               color: AaeColors.darkBlue,
                               fontSize: FontSize(24),
-                              textAlign: TextAlign.center,
-                              margin: EdgeInsets.only(top: 12, bottom: 2, left: 2, right: 2),
+                              textAlign: TextAlign.left,
+                              margin: EdgeInsets.only(top: 12, bottom: 2, left: 16, right: 2),
                             ),
                           },
                         ),
                       ),
                       Container(
-                        child: Center(
-//                        child: Text(image),
-                          child: Text(strAuthor),
-                        ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24.0, vertical: 0.0),
+                        child: Text(strAuthor, textAlign: TextAlign.start,),
                       ),
                       Container(
                         padding: const EdgeInsets.symmetric(

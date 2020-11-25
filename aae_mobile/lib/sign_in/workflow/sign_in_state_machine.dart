@@ -44,11 +44,7 @@ class SignInStateMachine extends WorkflowStateMachineBase {
   ProvidedService get blocProvider => _blocProvider;
 
   @provide
-  SignInStateMachine(
-    @signInHsm this._hsm,
-    this._navigation,
-    this._blocProvider,
-  ) : super(_hsm, _navigation) {
+  SignInStateMachine(@signInHsm this._hsm, this._navigation, this._blocProvider,) : super(_hsm, _navigation) {
     // HSM's initial state depends on whether this is the initial sign in on app startup or an attempt to switch users. It is the initial sign in if
     // the last value on the profile validity subject either is null or false.
     _setUpHsm(isInitialSignIn: lastEvent(_blocProvider.signInBloc().profileValidity) != true);
@@ -75,9 +71,7 @@ class SignInStateMachine extends WorkflowStateMachineBase {
 
   // [isInitial] represents whether this is the initial sign in when the user opens the app.
   void _setUpSignIn(bool isInitial) {
-    _hsm[SignInStates.signIn].initialState = isInitial
-        ? _hsm[SignInStates.silentSignIn]
-        : _hsm[SignInStates.silentSignIn];
+    _hsm[SignInStates.signIn].initialState = isInitial ? _hsm[SignInStates.silentSignIn] : _hsm[SignInStates.silentSignIn];
 
     // Logic for automatic validity check when there is a new user.
     _hsm[SignInStates.signIn].addHandlers(SignInEvents.currentUserChanged, [forwardTransition(SignInStates.validityCheck,

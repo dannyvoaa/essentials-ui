@@ -30,6 +30,7 @@ class SignInRoutes {
   //
   // Utilities:
   //
-  static String _buildSignInRoute(String pageSegment) =>
-      '${Uri(pathSegments: [routes.signIn, pageSegment])}';
+  static String _buildSignInRoute(String pageSegment) {
+    return '${Uri(pathSegments: [routes.signIn, pageSegment])}';
+  }
 }

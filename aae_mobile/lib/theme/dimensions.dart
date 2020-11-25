@@ -153,7 +153,7 @@ class AaeDimens {
 
   // Workgroup selection page dimensions
   static const workgroupsButtonWidth = 180.0;
-  static const workgroupsButtonHeight = 40.0;
+  static const workgroupsButtonHeight = 56.0;
 
   static const workgroupsLoadingSpinnerSize = 18.0;
 
