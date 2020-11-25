@@ -1,0 +1,606 @@
+{
+  "routes": [
+    {
+      "segments": [
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "2459",
+          "legs": [
+            {
+              "destination": {
+                "city": "Los Angeles International",
+                "code": "LAX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Dallas Fort Worth International",
+                "code": "DFW",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T15:56:00-08:00",
+              "scheduledDepartureDateTime": "2020-11-21T14:30:00-06:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "segments": [
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "398",
+          "legs": [
+            {
+              "destination": {
+                "city": "Los Angeles International",
+                "code": "LAX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Dallas Fort Worth International",
+                "code": "DFW",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T16:57:00-08:00",
+              "scheduledDepartureDateTime": "2020-11-21T15:30:00-06:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "segments": [
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "2549",
+          "legs": [
+            {
+              "destination": {
+                "city": "Los Angeles International",
+                "code": "LAX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Dallas Fort Worth International",
+                "code": "DFW",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T18:03:00-08:00",
+              "scheduledDepartureDateTime": "2020-11-21T16:35:00-06:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "segments": [
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "2318",
+          "legs": [
+            {
+              "destination": {
+                "city": "Los Angeles International",
+                "code": "LAX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Dallas Fort Worth International",
+                "code": "DFW",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T18:56:00-08:00",
+              "scheduledDepartureDateTime": "2020-11-21T17:30:00-06:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "segments": [
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "2354",
+          "legs": [
+            {
+              "destination": {
+                "city": "Los Angeles International",
+                "code": "LAX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Dallas Fort Worth International",
+                "code": "DFW",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T20:35:00-08:00",
+              "scheduledDepartureDateTime": "2020-11-21T19:00:00-06:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "segments": [
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "1947",
+          "legs": [
+            {
+              "destination": {
+                "city": "Los Angeles International",
+                "code": "LAX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Dallas Fort Worth International",
+                "code": "DFW",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T21:28:00-08:00",
+              "scheduledDepartureDateTime": "2020-11-21T20:00:00-06:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "segments": [
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "1583",
+          "legs": [
+            {
+              "destination": {
+                "city": "Los Angeles International",
+                "code": "LAX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Dallas Fort Worth International",
+                "code": "DFW",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T22:31:00-08:00",
+              "scheduledDepartureDateTime": "2020-11-21T21:00:00-06:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "segments": [
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "2640",
+          "legs": [
+            {
+              "destination": {
+                "city": "Las Vegas McCarran Intl",
+                "code": "LAS",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Dallas Fort Worth International",
+                "code": "DFW",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T15:39:00-08:00",
+              "scheduledDepartureDateTime": "2020-11-21T14:40:00-06:00"
+            }
+          ]
+        },
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "2641",
+          "legs": [
+            {
+              "destination": {
+                "city": "Los Angeles International",
+                "code": "LAX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Las Vegas McCarran Intl",
+                "code": "LAS",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T17:45:00-08:00",
+              "scheduledDepartureDateTime": "2020-11-21T16:30:00-08:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "segments": [
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "2239",
+          "legs": [
+            {
+              "destination": {
+                "city": "Miami International",
+                "code": "MIA",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Dallas Fort Worth International",
+                "code": "DFW",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T18:33:00-05:00",
+              "scheduledDepartureDateTime": "2020-11-21T14:45:00-06:00"
+            }
+          ]
+        },
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "2289",
+          "legs": [
+            {
+              "destination": {
+                "city": "Los Angeles International",
+                "code": "LAX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Miami International",
+                "code": "MIA",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T22:05:00-08:00",
+              "scheduledDepartureDateTime": "2020-11-21T19:22:00-05:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "segments": [
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "947",
+          "legs": [
+            {
+              "destination": {
+                "city": "Charlotte Douglas International Airport",
+                "code": "CLT",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Dallas Fort Worth International",
+                "code": "DFW",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T19:08:00-05:00",
+              "scheduledDepartureDateTime": "2020-11-21T15:40:00-06:00"
+            }
+          ]
+        },
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "489",
+          "legs": [
+            {
+              "destination": {
+                "city": "Los Angeles International",
+                "code": "LAX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Charlotte Douglas International Airport",
+                "code": "CLT",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T22:50:00-08:00",
+              "scheduledDepartureDateTime": "2020-11-21T20:19:00-05:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "segments": [
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "2266",
+          "legs": [
+            {
+              "destination": {
+                "city": "Miami International",
+                "code": "MIA",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Dallas Fort Worth International",
+                "code": "DFW",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T20:23:00-05:00",
+              "scheduledDepartureDateTime": "2020-11-21T16:35:00-06:00"
+            }
+          ]
+        },
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "1061",
+          "legs": [
+            {
+              "destination": {
+                "city": "Los Angeles International",
+                "code": "LAX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Miami International",
+                "code": "MIA",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-22T00:01:00-08:00",
+              "scheduledDepartureDateTime": "2020-11-21T21:10:00-05:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "segments": [
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "2014",
+          "legs": [
+            {
+              "destination": {
+                "city": "Phoenix Sky Harbor Intl",
+                "code": "PHX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Dallas Fort Worth International",
+                "code": "DFW",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T16:31:00-07:00",
+              "scheduledDepartureDateTime": "2020-11-21T14:50:00-06:00"
+            }
+          ]
+        },
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "44",
+          "legs": [
+            {
+              "destination": {
+                "city": "Los Angeles International",
+                "code": "LAX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Phoenix Sky Harbor Intl",
+                "code": "PHX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T19:21:00-08:00",
+              "scheduledDepartureDateTime": "2020-11-21T18:41:00-07:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "segments": [
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "2504",
+          "legs": [
+            {
+              "destination": {
+                "city": "Denver International",
+                "code": "DEN",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Dallas Fort Worth International",
+                "code": "DFW",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T15:55:00-07:00",
+              "scheduledDepartureDateTime": "2020-11-21T14:46:00-06:00"
+            }
+          ]
+        },
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "3013",
+          "legs": [
+            {
+              "destination": {
+                "city": "Los Angeles International",
+                "code": "LAX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Denver International",
+                "code": "DEN",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T19:58:00-08:00",
+              "scheduledDepartureDateTime": "2020-11-21T18:15:00-07:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "segments": [
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "1049",
+          "legs": [
+            {
+              "destination": {
+                "city": "Phoenix Sky Harbor Intl",
+                "code": "PHX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Dallas Fort Worth International",
+                "code": "DFW",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T18:18:00-07:00",
+              "scheduledDepartureDateTime": "2020-11-21T16:35:00-06:00"
+            }
+          ]
+        },
+        {
+          "displayCarrier": "AA",
+          "flightNumber": "820",
+          "legs": [
+            {
+              "destination": {
+                "city": "Los Angeles International",
+                "code": "LAX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "origin": {
+                "city": "Phoenix Sky Harbor Intl",
+                "code": "PHX",
+                "countryCode": "US",
+                "countryName": "UNITED STATES",
+                "latitude": null,
+                "longitude": null
+              },
+              "scheduledArrivalDateTime": "2020-11-21T20:46:00-08:00",
+              "scheduledDepartureDateTime": "2020-11-21T19:58:00-07:00"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

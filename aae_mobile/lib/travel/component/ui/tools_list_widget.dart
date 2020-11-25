@@ -1,5 +1,6 @@
 import 'package:aae/assets/aae_icons.dart';
 import 'package:aae/theme/colors.dart';
+import 'package:aae/theme/typography.dart';
 import 'package:aae/travel/component/travel_list_tile/travel_full_button.dart';
 import 'package:aae/travel/component/trips/trips_view_model.dart';
 import 'package:flutter/material.dart';
@@ -22,15 +23,10 @@ class ToolsList extends StatelessWidget {
         Container(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 5),
+              padding: const EdgeInsets.only(top: 30, bottom: 5),
               child: Text(
                 header,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: AaeColors.blue,
-                  fontWeight: FontWeight.w700,
-                  height: 2.6666666666666665,
-                ),
+                style: AaeTextStyles.travelHeader,
                 textAlign: TextAlign.left,
               ),
             )),

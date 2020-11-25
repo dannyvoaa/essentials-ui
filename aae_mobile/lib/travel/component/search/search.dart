@@ -31,7 +31,7 @@ class Search extends StatelessWidget {
 
   _buildHeader() {
     return Padding(
-        padding: const EdgeInsets.only(bottom: 20),
+        padding: const EdgeInsets.only(bottom: 10),
         child: Container(
           alignment: Alignment.topLeft,
           child: Text(
@@ -46,7 +46,7 @@ class Search extends StatelessWidget {
     return Container(
         width: double.infinity,
         //need to remove hardcoded height
-        height: 400,
+        height: 370,
         child: DefaultTabController(
           length: 2,
           child: Container(
@@ -104,18 +104,26 @@ class Search extends StatelessWidget {
                   indicatorWeight: 3.0,
                   tabs: [
                     Tab(
-                        child: Text('City/airport',
-                            style: searchHeaderText,
-                            textAlign: TextAlign.left)),
+                      child: Container(
+                          padding: EdgeInsets.only(bottom: 5),
+                          alignment: Alignment.bottomCenter,
+                          child: Text('City/airport',
+                              style: searchHeaderText,
+                              textAlign: TextAlign.left)),
+                    ),
                     Tab(
-                        child: Text('Flight number',
-                            style: searchHeaderText,
-                            textAlign: TextAlign.left)),
+                      child: Container(
+                          padding: EdgeInsets.only(bottom: 5),
+                          alignment: Alignment.bottomCenter,
+                          child: Text('Flight number',
+                              style: searchHeaderText,
+                              textAlign: TextAlign.left)),
+                    ),
                   ],
                 ),
                 decoration: BoxDecoration(
                     border: Border(
-                  bottom: BorderSide(color: AaeColors.gray),
+                  bottom: BorderSide(color: Color.fromRGBO(208, 218, 224, 1.0)),
                 ))),
           ),
           preferredSize: null,

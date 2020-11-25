@@ -12,9 +12,10 @@ import 'package:flutter/material.dart';
 
 /// A app bar for the news feed page.
 class TravelListTile<T> extends StatelessWidget {
-  TravelListTile({this.buttonContent});
+  TravelListTile({this.buttonContent, this.tapFunction});
 
   final Widget buttonContent;
+  final Function() tapFunction;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +29,7 @@ class TravelListTile<T> extends StatelessWidget {
         child: Container(
           child: ListTile(
             title: buttonContent,
+            onTap: tapFunction,
           ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(3.0),

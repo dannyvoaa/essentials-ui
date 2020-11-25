@@ -46,26 +46,6 @@ class TravelServiceApi {
     return trips;
   }
 
-  static FlightStatus _flightStatusToModel(String flightStatusJson) {
-    _log.info(jsonDecode(flightStatusJson));
-
-    _log.info(jsonDecode(flightStatusJson));
-
-    FlightStatus flightStatus = serializers.deserializeWith(
-        FlightStatus.serializer, jsonDecode(flightStatusJson));
-    return flightStatus;
-  }
-
-  static FlightSearch _flightSearchToModel(String flightSearchJson) {
-    _log.info(jsonDecode(flightSearchJson));
-
-    _log.info(jsonDecode(flightSearchJson));
-
-    FlightSearch flightSearch = serializers.deserializeWith(
-        FlightSearch.serializer, jsonDecode(flightSearchJson));
-    return flightSearch;
-  }
-
   Future<Trips> getReservations(String employeeId) async {
     Map<String, String> headers = _getRequestHeaders(employeeId);
     final response =
@@ -119,14 +99,12 @@ class TravelServiceApi {
         "$travelFlightStatusEndpoint/$origin/$flightNumber/$date";
     final response = await httpClient.get(constructedUrl, headers: headers);
     if (response.statusCode == 200) {
-      _log.info("Flight Status API request successful");
-      _log.info(response.body);
       FlightStatus flightStatus;
       try {
-        flightStatus = _flightStatusToModel(response.body);
+        flightStatus = serializers.deserializeWith(
+            FlightStatus.serializer, jsonDecode(response.body));
       } catch (e, s) {
         _log.info("FAILED BECAUSE OF", e, s);
-        _log.info(s);
       }
       return flightStatus;
     } else {
@@ -139,21 +117,21 @@ class TravelServiceApi {
       String employeeId, String origin, String destination, String date) async {
     Map<String, String> headers = _getRequestHeaders(employeeId);
     String constructedUrl =
-        "$travelFlightStatusEndpoint/$origin/$destination/$date";
+        "$travelFlightSearchEndpoint/$origin/$destination/$date";
     final response = await httpClient.get(constructedUrl, headers: headers);
+//    String jsonObject =
+//        await rootBundle.loadString('assets/static_records/FlightSearch.json');
     if (response.statusCode == 200) {
-      _log.info("Flight Search API request successful");
-      _log.info(response.body);
       FlightSearch flightSearch;
       try {
-        flightSearch = _flightSearchToModel(response.body);
+        flightSearch = serializers.deserializeWith(
+            FlightSearch.serializer, jsonDecode(response.body));
       } catch (e, s) {
         _log.info("FAILED BECAUSE OF", e, s);
-        _log.info(s);
       }
       return flightSearch;
     } else {
-      throw Exception(
+      throw new Exception(
           'Failed to load the flightSearch\n ${response.body} - ${response.statusCode}');
     }
   }
