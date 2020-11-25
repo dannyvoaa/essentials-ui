@@ -83,20 +83,23 @@ class RouteInfo extends StatelessWidget {
             header: RouteSummary(index: index, viewModel: viewModel,),
 //            expanded: RouteDetails(viewModel.reservationDetail.segments),
 //            expanded: RouteDetails(viewModel.reservationDetail.segments),
-            expanded: Column(
-              children: [
-                RouteDetail(
-                  viewModel.reservationDetail.segments[index].originCity + ' (' + viewModel.reservationDetail.segments[index].originAirportCode + ')',
-                  duration(viewModel.reservationDetail.segments[index].duration),
-                  overnight(viewModel.reservationDetail.segments[index].departureTimeScheduled, viewModel.reservationDetail.segments[index].arrivalTimeScheduled),
-                  viewModel.reservationDetail.segments[index].cabin ,
-                  viewModel.reservationDetail.segments[index].aircraftName,
-                  wifi(viewModel.reservationDetail.segments[index].hasWifi),
-                ),
+            expanded: Padding(
+              padding: const EdgeInsets.only(top:12),
+              child: Column(
+                children: [
+                  RouteDetail(
+                    viewModel.reservationDetail.segments[index].originCity + ' (' + viewModel.reservationDetail.segments[index].originAirportCode + ')',
+                    duration(viewModel.reservationDetail.segments[index].duration),
+                    overnight(viewModel.reservationDetail.segments[index].departureTimeScheduled, viewModel.reservationDetail.segments[index].arrivalTimeScheduled),
+                    viewModel.reservationDetail.segments[index].cabin ,
+                    viewModel.reservationDetail.segments[index].aircraftName,
+                    wifi(viewModel.reservationDetail.segments[index].hasWifi),
+                  ),
 //                Container(child:_routeDetails(viewModel.reservationDetail.segments[index])),
 //                Text('test'),
-                RouteDetailEnd(viewModel.reservationDetail.segments[index].destinationAirportCode, viewModel.reservationDetail.segments[index].destinationCity),
-              ],
+                  RouteDetailEnd(viewModel.reservationDetail.segments[index].destinationAirportCode, viewModel.reservationDetail.segments[index].destinationCity),
+                ],
+              ),
             ),
           ),
         ),
