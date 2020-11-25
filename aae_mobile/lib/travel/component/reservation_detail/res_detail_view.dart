@@ -12,6 +12,7 @@ import 'package:aae/travel/component/reservation_detail/widgets/res_detail_passe
 import 'package:slider_button/slider_button.dart';
 import 'package:date_format/date_format.dart';
 import 'package:intl/intl.dart';
+import 'package:dotted_line/dotted_line.dart';
 
 class ReservationView extends StatelessWidget {
   final ReservationDetailViewModel viewModel;
@@ -67,10 +68,28 @@ class ReservationView extends StatelessWidget {
                 ),
               ),
               Container(
-                child: TripsExpPanel(
-                  viewModel: viewModel,
+//                constraints: BoxConstraints(
+//                  minHeight: 200,
+//                ),
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: viewModel.reservationDetail.segments.length,
+                  separatorBuilder: (BuildContext context, int index) =>
+                      StopDivider(index: index, viewModel: viewModel),
+                  itemBuilder: (context, index) {
+                    return TripsExpPanel(
+                      index: index,
+                      viewModel: viewModel,
+                    );
+                  },
                 ),
               ),
+//              Container(
+//                child: TripsExpPanel(
+//                  viewModel: viewModel,
+//                ),
+//              ),
               Container(
                 child: TripsPassengerPanel(
                   viewModel: viewModel,
@@ -90,7 +109,20 @@ class ReservationView extends StatelessWidget {
   }
 
   Widget _dateSummary(String departure, String arrival) {
-    List months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+    List months = [
+      'jan',
+      'feb',
+      'mar',
+      'apr',
+      'may',
+      'jun',
+      'jul',
+      'aug',
+      'sep',
+      'oct',
+      'nov',
+      'dec'
+    ];
     final dep = DateTime.parse(departure);
     final arr = DateTime.parse(arrival);
 
@@ -102,7 +134,65 @@ class ReservationView extends StatelessWidget {
     final timeText = 'Boards ' + timeFormat.format(dep);
 
     final text = monthText + ' ' + String.fromCharCode(0x2022) + ' ' + timeText;
-    return Text(text, style: AaeTextStyles.reservationSubHeading,);
+    return Text(
+      text,
+      style: AaeTextStyles.reservationSubHeading,
+    );
+  }
+}
+
+class StopDivider extends StatelessWidget {
+  final ReservationDetailViewModel viewModel;
+  final int index;
+
+  StopDivider({
+    this.index,
+    this.viewModel,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final dest =
+        (viewModel.reservationDetail.segments[index].destinationAirportCode)
+            .toString();
+    final stopText = 'Stop: ' + dest;
+    return Padding(
+      padding: const EdgeInsets.only(top:6, bottom:6,),
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              child: _dottedDivider(),
+            ),
+          ),
+          Container(
+
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(stopText, style: AaeTextStyles.stopDivider,),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              child: _dottedDivider(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  _dottedDivider(){
+    return DottedLine(
+      direction: Axis.horizontal,
+      lineLength: double.infinity,
+      lineThickness: 1.0,
+      dashLength: 4.0,
+      dashColor: AaeColors.darkOrange,
+      dashRadius: 0.0,
+      dashGapLength: 4.0,
+      dashGapColor: Colors.transparent,
+      dashGapRadius: 0.0,
+    );
   }
 }
 

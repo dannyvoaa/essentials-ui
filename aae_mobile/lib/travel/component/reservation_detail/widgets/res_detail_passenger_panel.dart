@@ -12,7 +12,12 @@ import 'package:aae/theme/dimensions.dart';
 import 'package:aae/travel/component/trips/trips_view_model.dart';
 import 'package:expandable/expandable.dart';
 import 'package:custom_switch_button/custom_switch_button.dart';
+import 'package:custom_switch/custom_switch.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:aae/travel/component/reservation_detail/res_detail_view_model.dart';
+import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:flutter/services.dart';
 
 class TripsPassengerPanel extends StatelessWidget {
 
@@ -73,16 +78,15 @@ class TripsPassengerPanel extends StatelessWidget {
   _passengerList(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top:12,),
-      child: SizedBox(
-        height: 50.00 * viewModel.reservationDetail.passengers.length,
-        child: ListView.builder(
-          itemCount: viewModel.reservationDetail.passengers.length,
-          itemBuilder: (context, index) {
-            return Container(
-              child: Passenger(viewModel.reservationDetail.passengers[index].firstName, viewModel.reservationDetail.passengers[index].lastName, viewModel.reservationDetail.passType, false),
-            );
-          },
-        ),
+      child: ListView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: viewModel.reservationDetail.passengers.length,
+        itemBuilder: (context, index) {
+          return Container(
+            child: Passenger(viewModel.reservationDetail.passengers[index].firstName, viewModel.reservationDetail.passengers[index].lastName, viewModel.reservationDetail.passType, false),
+          );
+        },
       ),
     );
   }
@@ -90,13 +94,21 @@ class TripsPassengerPanel extends StatelessWidget {
 }
 
 
-class Passenger extends StatelessWidget {
+class Passenger extends StatefulWidget {
   final String firstName;
   final String lastName;
   final String status;
   bool isChecked = false;
 
   Passenger(this.firstName, this.lastName, this.status, this.isChecked);
+
+  @override
+  _PassengerState createState() => _PassengerState();
+}
+
+class _PassengerState extends State<Passenger> {
+
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context){
@@ -113,22 +125,27 @@ class Passenger extends StatelessWidget {
           children: <Widget>[
             Row(
               children: [
-                Text(firstName + ' ' + lastName),
+                Text(widget.firstName + ' ' + widget.lastName),
                 Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,),
-                Text(status),
+                Text(widget.status),
               ],
             ),
-            CustomSwitchButton(
-              buttonHeight: 30,
-              buttonWidth: 60,
-              indicatorWidth: 26,
-              indicatorBorderRadius: 50,
-              backgroundBorderRadius: 20,
-              backgroundColor: AaeColors.blue,
-              unCheckedColor: AaeColors.white,
-              animationDuration: Duration(milliseconds: 200),
-              checkedColor: AaeColors.white,
-              checked: isChecked,
+            FlutterSwitch(
+              activeColor: AaeColors.blue,
+              inactiveColor: AaeColors.ultraLightGray,
+              toggleColor: AaeColors.white,
+              width: 40.0,
+              height: 22.0,
+              toggleSize: 20.0,
+              value: isChecked,
+              borderRadius: 30.0,
+              padding: 2.0,
+              showOnOff: false,
+              onToggle: (val) {
+                setState(() {
+                  isChecked = val;
+                });
+              },
             ),
           ],
         ),

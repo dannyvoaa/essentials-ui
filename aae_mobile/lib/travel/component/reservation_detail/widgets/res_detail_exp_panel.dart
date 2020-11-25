@@ -17,8 +17,10 @@ import 'package:date_format/date_format.dart';
 class TripsExpPanel extends StatelessWidget {
 
   final ReservationDetailViewModel viewModel;
+  final int index;
 
   TripsExpPanel({
+    this.index,
     this.viewModel,
   });
 
@@ -43,9 +45,9 @@ class TripsExpPanel extends StatelessWidget {
       ),
       child: Column(
         children: <Widget>[
-          DepartureStatus(viewModel: viewModel,),
-          RouteInfo(viewModel: viewModel,),
-          LocatorInfo(viewModel: viewModel,),
+          DepartureStatus(index: index, viewModel: viewModel,),
+          RouteInfo(index: index, viewModel: viewModel,),
+          LocatorInfo(index: index, viewModel: viewModel,),
         ],
       ),
     );
@@ -54,8 +56,10 @@ class TripsExpPanel extends StatelessWidget {
 
 class RouteInfo extends StatelessWidget {
   final ReservationDetailViewModel viewModel;
+  final int index;
 
   RouteInfo({
+    this.index,
     this.viewModel,
   });
 
@@ -76,14 +80,22 @@ class RouteInfo extends StatelessWidget {
         ),
         child: Container(
           child: ExpandablePanel(
-            header: RouteSummary(viewModel: viewModel,),
+            header: RouteSummary(index: index, viewModel: viewModel,),
 //            expanded: RouteDetails(viewModel.reservationDetail.segments),
 //            expanded: RouteDetails(viewModel.reservationDetail.segments),
             expanded: Column(
               children: [
-                Container(child:_routeDetails(context)),
+                RouteDetail(
+                  viewModel.reservationDetail.segments[index].originCity + ' (' + viewModel.reservationDetail.segments[index].originAirportCode + ')',
+                  duration(viewModel.reservationDetail.segments[index].duration),
+                  overnight(viewModel.reservationDetail.segments[index].departureTimeScheduled, viewModel.reservationDetail.segments[index].arrivalTimeScheduled),
+                  viewModel.reservationDetail.segments[index].cabin ,
+                  viewModel.reservationDetail.segments[index].aircraftName,
+                  wifi(viewModel.reservationDetail.segments[index].hasWifi),
+                ),
+//                Container(child:_routeDetails(viewModel.reservationDetail.segments[index])),
 //                Text('test'),
-                RouteDetailEnd(viewModel.reservationDetail.segments.last.destinationAirportCode, viewModel.reservationDetail.segments.last.destinationCity),
+                RouteDetailEnd(viewModel.reservationDetail.segments[index].destinationAirportCode, viewModel.reservationDetail.segments[index].destinationCity),
               ],
             ),
           ),
@@ -92,22 +104,23 @@ class RouteInfo extends StatelessWidget {
     );
   }
 
-  _routeDetails(BuildContext context) {
+  _routeDetails(list) {
     // backing data
 //  final items = ['Test01', 'Test02', 'Test03', 'Test04'];
 
     return Padding(
       padding: EdgeInsets.only(top:12,),
+//child: Text(list.originCity),
       child: SizedBox(
-        height: 58.00 * viewModel.reservationDetail.segments.length,
+        height: 58.00 * list.length,
         child: ListView.builder(
-          itemCount: viewModel.reservationDetail.segments.length,
+          itemCount: list.length,
           itemBuilder: (context, index) {
             return Container(
-//            height: 80,
-//            width: 80,
+            height: 80,
+            width: 80,
               child: RouteDetail(
-                  viewModel.reservationDetail.segments[index].originCity + ' (' + viewModel.reservationDetail.segments[index].originAirportCode + ')',
+                  list.originCity + ' (' + viewModel.reservationDetail.segments[index].originAirportCode + ')',
                   duration(viewModel.reservationDetail.segments[index].duration),
                   overnight(viewModel.reservationDetail.segments[index].departureTimeScheduled, viewModel.reservationDetail.segments[index].arrivalTimeScheduled),
                   viewModel.reservationDetail.segments[index].cabin ,
@@ -125,19 +138,18 @@ class RouteInfo extends StatelessWidget {
 
 class RouteSummary extends StatelessWidget {
   final ReservationDetailViewModel viewModel;
+  final int index;
 
   RouteSummary({
+    this.index,
     this.viewModel,
   });
-
-
-
 
   @override
   Widget build(BuildContext context) {
 
-    final departureTime = viewModel.reservationDetail.segments.first.departureTimeScheduled;
-    final arrivalTime = viewModel.reservationDetail.segments.last.arrivalTimeScheduled;
+    final departureTime = viewModel.reservationDetail.segments[index].departureTimeScheduled;
+    final arrivalTime = viewModel.reservationDetail.segments[index].arrivalTimeScheduled;
 
 //    var newDateTimeObj2 = new DateFormat("dd/MM/yyyy HH:mm:ss").parse(departureTime);
 
@@ -148,9 +160,9 @@ class RouteSummary extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          RouteSummaryColumn(getTime(departureTime), viewModel.reservationDetail.segments.first.originAirportCode),
+          RouteSummaryColumn(getTime(departureTime), viewModel.reservationDetail.segments[index].originAirportCode),
           Icon(Icons.arrow_forward_sharp, color: AaeColors.gray,),
-          RouteSummaryColumn(getTime(arrivalTime), viewModel.reservationDetail.segments.last.destinationAirportCode),
+          RouteSummaryColumn(getTime(arrivalTime), viewModel.reservationDetail.segments[index].destinationAirportCode),
         ],
       ),
     );
@@ -416,15 +428,17 @@ class CircleRoute extends StatelessWidget {
 
 class LocatorInfo extends StatelessWidget {
   final ReservationDetailViewModel viewModel;
+  final int index;
 
   LocatorInfo({
+    this.index,
     this.viewModel,
   });
 
   @override
   Widget build(BuildContext context) {
 
-    String seat = viewModel.reservationDetail.segments[0].seatAssignments[0].seatAssignment;
+    String seat = viewModel.reservationDetail.segments[index].seatAssignments[0].seatAssignment;
 //    String seat = '--';
 
     return Container(
@@ -434,8 +448,8 @@ class LocatorInfo extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           LocatorColumn('LOCATOR', viewModel.reservationDetail.recordLocator, CrossAxisAlignment.start),
-          LocatorColumn('GATE', viewModel.reservationDetail.segments[0].originGate, CrossAxisAlignment.center),
-          LocatorColumn('TERMINAL', viewModel.reservationDetail.segments[0].originTerminal, CrossAxisAlignment.center),
+          LocatorColumn('GATE', viewModel.reservationDetail.segments[index].originGate, CrossAxisAlignment.center),
+          LocatorColumn('TERMINAL', viewModel.reservationDetail.segments[index].originTerminal, CrossAxisAlignment.center),
           LocatorColumn('SEAT', nonNull(seat), CrossAxisAlignment.end),
         ],
       ),
@@ -479,8 +493,10 @@ class LocatorColumn extends StatelessWidget {
 
 class DepartureStatus extends StatelessWidget {
   final ReservationDetailViewModel viewModel;
+  final int index;
 
   DepartureStatus({
+    this.index,
     this.viewModel,
   });
 
@@ -501,7 +517,7 @@ class DepartureStatus extends StatelessWidget {
                 AssetImage('assets/common/american-airlines-eaagle-logo.png'),
                 height:30,
               ),
-              countDown(context,),
+              countDown(index, context,),
 //              Text(viewModel.reservationDetail.segments[0].flightNumber.toString() + " Departs in 1 hr 33 min", style:AaeTextStyles.departureHeading),
             ],
           ),
@@ -514,16 +530,16 @@ class DepartureStatus extends StatelessWidget {
     );
   }
 
-  Widget countDown(BuildContext context){
+  Widget countDown(index, BuildContext context){
 
 //    DateTime date = DateTime.parse(dateStr);
 //    String time = formatDate(date, [h, ':', nn, ' ', am]);
 //    return time;
 
-    final number = viewModel.reservationDetail.segments[0].flightNumber.toString();
+    final number = viewModel.reservationDetail.segments[index].flightNumber.toString();
 
-    final scheduled = viewModel.reservationDetail.segments[0].departureTimeScheduled;
-    final actual = viewModel.reservationDetail.segments[0].departureTimeActual;
+    final scheduled = viewModel.reservationDetail.segments[index].departureTimeScheduled;
+    final actual = viewModel.reservationDetail.segments[index].departureTimeActual;
 
     var now = DateTime.now();
 

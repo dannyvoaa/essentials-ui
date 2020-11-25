@@ -273,6 +273,12 @@ class AaeTextStyles {
     fontWeight: FontWeight.normal,
   );
 
+  static final stopDivider = TextStyle(
+    color: AaeColors.darkOrange,
+    fontWeight: _medium,
+    fontSize: 12,
+  );
+
 
   /// Calendar page summary blocks
   static TextStyle calendarSummary({
