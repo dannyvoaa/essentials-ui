@@ -84,7 +84,7 @@ class RouteInfo extends StatelessWidget {
 //            expanded: RouteDetails(viewModel.reservationDetail.segments),
 //            expanded: RouteDetails(viewModel.reservationDetail.segments),
             expanded: Padding(
-              padding: const EdgeInsets.only(top:12),
+              padding: const EdgeInsets.only(top:14),
               child: Column(
                 children: [
                   RouteDetail(
@@ -249,35 +249,38 @@ class RouteDetailEnd extends StatelessWidget {
       padding: EdgeInsets.only(
         right: 20,
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            alignment: Alignment.topCenter,
-            height: 12,
-            width: 12,
-            padding: EdgeInsets.only(top: 0),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: AaeColors.ultraLightGray,
-                width: 1,
-              ),
-              color: AaeColors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(20),
+      child: Padding(
+        padding: const EdgeInsets.only(bottom:4,),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              alignment: Alignment.topCenter,
+              height: 12,
+              width: 12,
+              padding: EdgeInsets.only(top: 0),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: AaeColors.ultraLightGray,
+                  width: 1,
+                ),
+                color: AaeColors.white,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20),
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          Column(
-            children: [
-              Container(child: cityHub(hub, city),),
-            ],
-          ),
-        ],
+            SizedBox(
+              width: 10,
+            ),
+            Column(
+              children: [
+                Container(child: cityHub(hub, city),),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
