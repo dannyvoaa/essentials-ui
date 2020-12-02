@@ -1,7 +1,7 @@
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
-import 'package:aae/travel/component/flight_status/flight_status_component.dart';
-import 'package:aae/travel/component/flight_status/flight_status_details.dart';
+import 'package:aae/theme/typography.dart';
+import 'package:aae/travel/component/flight_status/details/flight_status_component.dart';
 import 'package:aae/travel/component/trips/trips_component.dart';
 import 'package:aae/travel/page/travel_page.dart';
 import 'package:flutter/material.dart';
@@ -133,24 +133,44 @@ class _SearchFormState extends State<SearchForm> {
   _buildFormFields() {
     return Row(children: <Widget>[
       Expanded(
-          child: Padding(
+          child: Container(
+              height: 35,
               padding: EdgeInsets.only(right: 20),
               child: TextFormField(
+                  style: AaeTextStyles.locatorInfo,
                   keyboardType: widget.searchFieldType1,
                   decoration: InputDecoration(
+                    hintStyle: AaeTextStyles.formHintText,
                     hintText: widget.searchHint1,
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: AaeColors.blue),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color.fromRGBO(208, 218, 224, 1.0)),
+                    ),
                   ),
                   onChanged: (String value) {
                     this._data.searchField1 = value;
                     enableButton(this._data);
                   }))),
       Expanded(
-          child: Padding(
+          child: Container(
+              height: 35,
               padding: EdgeInsets.only(left: 20, right: 10),
               child: TextFormField(
+                style: AaeTextStyles.locatorInfo,
                 keyboardType: widget.searchFieldType2,
                 decoration: InputDecoration(
+                  hintStyle: AaeTextStyles.formHintText,
                   hintText: widget.searchHint2,
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: AaeColors.blue),
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide:
+                        BorderSide(color: Color.fromRGBO(208, 218, 224, 1.0)),
+                  ),
                 ),
                 onChanged: (String value) {
                   this._data.searchField2 = value;
@@ -181,7 +201,7 @@ class _SearchFormState extends State<SearchForm> {
         height: AaeDimens.regularButtonHeight,
         minWidth: double.infinity,
         child: RaisedButton(
-          disabledColor: AaeColors.gray,
+          disabledColor: Color.fromRGBO(208, 218, 224, 1.0),
           disabledTextColor: AaeColors.white,
           color: AaeColors.blue,
           textColor: AaeColors.white,
@@ -189,7 +209,7 @@ class _SearchFormState extends State<SearchForm> {
               isEnabled ? () => submit(context, widget.searchType) : null,
           shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(8.0)),
-          child: Text('Search'),
+          child: Text('Search', style: AaeTextStyles.btn18),
         ),
       ),
     );

@@ -82,13 +82,13 @@ dependencies {
 	// add the Firebase SDK for Google Analytics
 //    implementation 'com.google.firebase:firebase-analytics:17.4.2'
     // Recommended: Add the Firebase SDK for Google Analytics.
-    implementation 'com.google.firebase:firebase-analytics:17.6.0'
+    implementation 'com.google.firebase:firebase-analytics:18.0.0'
     // add SDKs for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
     // Add the dependency for the Performance Monitoring library
-    implementation 'com.google.firebase:firebase-perf:19.0.9'
+    implementation 'com.google.firebase:firebase-perf:19.0.10'
     // Add the Firebase Crashlytics SDK.
-    implementation 'com.google.firebase:firebase-crashlytics:17.2.2'
+    implementation 'com.google.firebase:firebase-crashlytics:17.3.0'
 }
 
 // Apply the Crashlytics Gradle plugin

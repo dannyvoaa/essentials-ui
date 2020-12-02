@@ -76,6 +76,7 @@ class AaeColors {
   static const orange = Color.fromRGBO(255, 115, 24, 1.0);
   static const lightOrange = Color.fromRGBO(250, 175, 0, 1.0);
   static const yellowGreen = Color.fromRGBO(209, 213, 50, 1.0);
+  static const greenMedium = Color.fromRGBO(0, 135, 18, 1.0);
   static const green = Color.fromRGBO(0, 185, 137, 1.0);
   static const backgroundBlue = Color.fromRGBO(50, 120, 203, 1.0);
   static const darkOrange = Color.fromRGBO(209, 73, 4, 1.0);

@@ -1,10 +1,9 @@
+import 'package:aae/travel/component/flight_search/flight_search_component.dart';
 import 'package:aae/travel/component/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
-import 'package:aae/travel/component/flight_status/flight_status_component.dart';
-
-import '../../../programmatic_main.dart';
-import 'flight_status_details.dart';
+import 'details/flight_status_view.dart';
+import 'package:aae/travel/component/flight_status/details/flight_status_component.dart';
 
 class FlightStatusNavigator extends StatelessWidget {
   static final _log = Logger('FlightStatusNavigator');
@@ -28,13 +27,18 @@ class FlightStatusNavigator extends StatelessWidget {
                     searchType1: cityAirportSearch,
                     searchType2: flightNumberSearch,
                     title: 'Flight status');
+//                builder = (BuildContext _) =>
+//                    FlightSearchComponent(
+//                    destination: 'LAX',
+//                    origin: 'DFW',
+//                    date: '2020-11-21');
 //                builder = (BuildContext _) => FlightStatusComponent(
-//                    searchField1: '21',
-//                    searchField2: 'data2',
-//                    searchDate: '2020-10-30');
+//                    flightNumber: '2459',
+//                    origin: 'DFW',
+//                    date: '2020-11-21');
                 break;
               case '/second':
-                builder = (BuildContext _) => FlightStatusDetails(model: null);
+                builder = (BuildContext _) => FlightStatusView(viewModel: null);
                 break;
               default:
                 throw Exception('Invalid route: ${settings.name}');
@@ -44,18 +48,27 @@ class FlightStatusNavigator extends StatelessWidget {
         ));
   }
 
-  void Function() cityAirportSearch(
+  void cityAirportSearch(
       BuildContext context, String data1, String data2, String searchDate) {
-    Navigator.pushNamed(context, '/second');
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FlightSearchComponent(
+            destination: data1.toUpperCase(),
+            origin: data2.toUpperCase(),
+            date: searchDate,
+            searchType: flightNumberSearch),
+      ),
+    );
   }
 
-  void Function() flightNumberSearch(
+  void flightNumberSearch(
       BuildContext context, String data1, String data2, String searchDate) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => FlightStatusComponent(
-            searchField1: data1, searchField2: data2, searchDate: searchDate),
+            flightNumber: data1, origin: data2, date: searchDate),
       ),
     );
   }

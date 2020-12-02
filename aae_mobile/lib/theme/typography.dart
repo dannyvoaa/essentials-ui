@@ -205,7 +205,25 @@ class AaeTextStyles {
   static const travelHeader = TextStyle(
     fontSize: 15,
     color: AaeColors.blue,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.bold,
+  );
+
+  static const datePickerDate = TextStyle(
+    fontSize: 24,
+    color: AaeColors.gray,
+    fontFamily: _americanSansMedium,
+  );
+
+  static const formHintText = TextStyle(
+    fontSize: 15,
+    color: AaeColors.gray,
+    fontFamily: _americanSans,
+  );
+
+  static const datePickerText = TextStyle(
+    fontSize: 13,
+    color: AaeColors.lightGrayText,
+    fontFamily: _americanSans,
   );
 
   static const locatorInfoHeading = TextStyle(
@@ -232,6 +250,12 @@ class AaeTextStyles {
     color: AaeColors.titleGray,
   );
 
+  static const btn18 = TextStyle(
+    fontSize: 18,
+    color: AaeColors.white,
+    fontFamily: _americanSans,
+  );
+
   static const departureHeading = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.normal,
@@ -240,7 +264,7 @@ class AaeTextStyles {
 
   static const departureOnTime = TextStyle(
     fontSize: 12,
-    color: AaeColors.green,
+    color: AaeColors.greenMedium,
     fontFamily: _americanSansMedium,
   );
 
@@ -283,6 +307,23 @@ class AaeTextStyles {
   static const checkInButton = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.normal,
+  );
+
+  static const flightStatusText = TextStyle(
+    fontSize: 12,
+    color: AaeColors.lightGrayText,
+  );
+
+  static const flightSearchHeader = TextStyle(
+    fontSize: 32,
+    color: AaeColors.mediumGray,
+    fontFamily: _americanSansMedium,
+  );
+
+  static const flightSearchSubHeader = TextStyle(
+    fontSize: 18,
+    color: AaeColors.mediumGray,
+    fontFamily: _americanSans,
   );
 
   /// Calendar page summary blocks
