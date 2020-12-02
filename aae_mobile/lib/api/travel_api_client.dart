@@ -104,7 +104,7 @@ class TravelServiceApi {
         flightStatus = serializers.deserializeWith(
             FlightStatus.serializer, jsonDecode(response.body));
       } catch (e, s) {
-        _log.info("FAILED BECAUSE OF", e, s);
+        _log.severe("FAILED BECAUSE OF", e, s);
       }
       return flightStatus;
     } else {
@@ -127,7 +127,7 @@ class TravelServiceApi {
         flightSearch = serializers.deserializeWith(
             FlightSearch.serializer, jsonDecode(response.body));
       } catch (e, s) {
-        _log.info("FAILED BECAUSE OF", e, s);
+        _log.severe("FAILED BECAUSE OF", e, s);
       }
       return flightSearch;
     } else {
