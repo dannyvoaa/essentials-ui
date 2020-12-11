@@ -8,6 +8,19 @@ import 'flight_search_bloc.dart';
 import 'flight_search_view.dart';
 import 'flight_search_view_model.dart';
 
+class FlightSearchArguments {
+  final String destination;
+  final String origin;
+  final String date;
+  final Function(BuildContext, String, String, String) searchType;
+
+  FlightSearchArguments(
+      {@required this.destination,
+      @required this.origin,
+      @required this.date,
+      @required this.searchType});
+}
+
 class FlightSearchComponent extends StatelessWidget {
   final String destination;
   final String origin;
@@ -17,6 +30,12 @@ class FlightSearchComponent extends StatelessWidget {
 
   FlightSearchComponent(
       {this.destination, this.origin, this.date, this.searchType});
+
+  FlightSearchComponent.from(FlightSearchArguments args)
+      : this.destination = args.destination,
+        this.origin = args.origin,
+        this.date = args.date,
+        this.searchType = args.searchType;
 
   @override
   Widget build(BuildContext context) {

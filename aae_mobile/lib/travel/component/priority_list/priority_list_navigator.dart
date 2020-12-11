@@ -19,8 +19,6 @@ class PriorityListNavigator extends StatelessWidget {
         initialRoute: '/',
         onGenerateRoute: (RouteSettings settings) {
           WidgetBuilder builder;
-          PriorityListArguments args = settings.arguments;
-
           switch (settings.name) {
             case '/':
               builder = (_) => Search(
@@ -30,8 +28,11 @@ class PriorityListNavigator extends StatelessWidget {
                     searchType2: loadPriorityList,
                   );
               break;
-            case '/results':
-              builder = (_) => PriorityListComponent.from(args);
+            case '/priorityListDetails':
+              builder = (_) => PriorityListComponent.from(settings.arguments);
+              break;
+            case '/searchResults':
+              builder = (_) => FlightSearchComponent.from(settings.arguments);
               break;
             default:
               throw Exception('Invalid route: ${settings.name}');
@@ -45,15 +46,13 @@ class PriorityListNavigator extends StatelessWidget {
 
   void cityAirportSearch(
       BuildContext context, String data1, String data2, String searchDate) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => FlightSearchComponent(
-            destination: data1.toUpperCase(),
-            origin: data2.toUpperCase(),
-            date: searchDate,
-            searchType: loadPriorityList),
-      ),
+    Navigator.of(context).pushNamed(
+      '/searchResults',
+      arguments: FlightSearchArguments(
+          destination: data1.toUpperCase(),
+          origin: data2.toUpperCase(),
+          date: searchDate,
+          searchType: loadPriorityList),
     );
   }
 
@@ -61,7 +60,7 @@ class PriorityListNavigator extends StatelessWidget {
     _log.info("loadPriorityList(origin: '$origin', flightNumber: '$flightNumber', departureDate:'$departureDate')");
 
     Navigator.of(context).pushNamed(
-      '/results',
+      '/priorityListDetails',
       arguments: PriorityListArguments(
         origin: origin,
         flightNumber: int.parse(flightNumber),
