@@ -1,3 +1,4 @@
+import 'package:aae/travel/component/flight_search/flight_search_component.dart';
 import 'package:aae/travel/component/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
@@ -25,6 +26,7 @@ class PriorityListNavigator extends StatelessWidget {
               builder = (_) => Search(
                     title: "Priority List",
                     calendarLength: 5,
+                    searchType1: cityAirportSearch,
                     searchType2: loadPriorityList,
                   );
               break;
@@ -37,6 +39,20 @@ class PriorityListNavigator extends StatelessWidget {
 
           return MaterialPageRoute(builder: builder, settings: settings);
         },
+      ),
+    );
+  }
+
+  void cityAirportSearch(
+      BuildContext context, String data1, String data2, String searchDate) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FlightSearchComponent(
+            destination: data1.toUpperCase(),
+            origin: data2.toUpperCase(),
+            date: searchDate,
+            searchType: loadPriorityList),
       ),
     );
   }

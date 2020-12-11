@@ -127,7 +127,6 @@ _buildTravelListTile(BuildContext context, FlightRoute flightRoute,
 _buildListTile(BuildContext context, FlightRoute flightRoute,
     Function(BuildContext p1, String p2, String p3, String p4) searchType) {
   List<Widget> list = new List<Widget>();
-  List<FlightSegment> flightSegments = new List();
 
   for (FlightSegment flightSegment in flightRoute.flightSegments) {
     list.add(new Material(
@@ -178,16 +177,6 @@ _convertStringToDate(String strDate) {
   final df = new DateFormat('EEEEE, MMMM d, yyyy');
   String date = df.format(todayDate);
   return date;
-}
-
-String _formatDate(String time) {
-  if (time.isNotEmpty) {
-    DateTime dateTime = DateTime.parse(time);
-    String formattedDate = DateFormat('hh:mm a').format(dateTime);
-    return formattedDate;
-  } else {
-    return time;
-  }
 }
 
 _buildFlightSearchButton(
@@ -306,8 +295,8 @@ class FlightSearchCardBody extends StatelessWidget {
 }
 
 class FlightSearchCardBodyColumn extends StatelessWidget {
-  String time;
-  String location;
+  final String time;
+  final String location;
 
   FlightSearchCardBodyColumn(this.time, this.location);
 
@@ -339,14 +328,4 @@ class FlightSearchCardBodyColumn extends StatelessWidget {
         ));
   }
 
-  Widget _buildClockIcon(bool clockIcon) {
-    if (clockIcon) {
-      return Container(
-        padding: EdgeInsets.only(top: 1, left: 5),
-        child: Icon(AaeIconsv4.clock, size: 12, color: AaeColors.titleGray),
-      );
-    } else {
-      return Container();
-    }
-  }
 }

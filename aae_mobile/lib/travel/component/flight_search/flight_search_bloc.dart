@@ -22,33 +22,6 @@ class FlightSearchBloc {
     _travelRepository.loadFlightSearch(searchField1, searchField2, searchDate);
   }
 
-//  sortFlightSearch(FlightSearch unsortedFlightSearch) {
-//    ListBuilder<FlightRoute> flightRouteBuilder = new ListBuilder();
-//    List<FlightRoute> flightRouteList = new List();
-//    FlightSearch sortedFlightSearch = new FlightSearch();
-//
-//    if (unsortedFlightSearch != null) {
-//      for (FlightRoute flightRoute in unsortedFlightSearch.flightRoutes) {
-//        flightRouteList.add(flightRoute);
-//      }
-//
-//      flightRouteList.sort((a, b) => a
-//          .flightSegments[0].flightLegs[0].scheduledDepartureDateTime
-//          .compareTo(
-//              b.flightSegments[0].flightLegs[0].scheduledDepartureDateTime));
-//
-//      for (FlightRoute flightRoute in flightRouteList) {
-//        flightRouteBuilder.add(flightRoute);
-//      }
-//
-//      sortedFlightSearch = sortedFlightSearch.rebuild(
-//          (b) => b..flightRoutes = flightRouteBuilder.build().toBuilder());
-//
-//      return sortedFlightSearch;
-//    } else
-//      return unsortedFlightSearch;
-//  }
-
   Source<FlightSearchViewModel> get viewModel =>
       toSource(combineLatest(_travelRepository.flightSearch, _createViewModel));
 
