@@ -27,6 +27,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Profile.serializer)
       ..add(RecognitionHistory.serializer)
       ..add(RecognitionRegister.serializer)
+      ..add(ReservationDetail.serializer)
+      ..add(ReservationDetailPassenger.serializer)
+      ..add(ReservationDetailSegment.serializer)
       ..add(StockStats.serializer)
       ..add(Stockdocs.serializer)
       ..add(Topics.serializer)
@@ -74,8 +77,14 @@ Serializers _$serializers = (new Serializers().toBuilder()
               BuiltList, const [const FullType(RecognitionRegister)]),
           () => new ListBuilder<RecognitionRegister>())
       ..addBuilderFactory(
+<<<<<<< HEAD
+          const FullType(
+              BuiltList, const [const FullType(ReservationDetailPassenger)]),
+          () => new ListBuilder<ReservationDetailPassenger>())
+=======
           const FullType(BuiltList, const [const FullType(StockStats)]),
           () => new ListBuilder<StockStats>())
+>>>>>>> iosSettingsFix
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

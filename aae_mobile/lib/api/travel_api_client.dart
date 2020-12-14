@@ -4,6 +4,7 @@ import 'package:aae/model/priority_list.dart';
 import 'package:aae/model/flight_status.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:aae/model/trips.dart';
+import 'package:aae/model/reservation_detail.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:logging/logging.dart';
@@ -19,6 +20,7 @@ class TravelServiceApi {
   static const priorityListEndpoint = '$baseUrl/prioritylist';
   static const travelFlightStatusEndpoint = '$baseUrl/flightstatus';
   static const travelFlightSearchEndpoint = '$baseUrl/flightsearch';
+  static const reservationDetailEndpoint = '$baseUrl/reservation';
 
   final dateFormatter = DateFormat("yyyy-MM-dd");
 
@@ -135,4 +137,34 @@ class TravelServiceApi {
           'Failed to load the flightSearch\n ${response.body} - ${response.statusCode}');
     }
   }
+
+  Future<ReservationDetail> getReservationDetail(String pnr) async {
+    _log.info("initiating priority reservation detail request: $pnr");
+
+    Map<String, String> headers = _getRequestHeaders("72000027");
+    String constructedUrl = "$reservationDetailEndpoint/$pnr";
+
+    _log.info(constructedUrl);
+
+    var response;
+    try {
+      response = await httpClient.get(constructedUrl, headers: headers);
+    } catch (e) {
+      String msg = 'failed to load the reservation details.\n' + e.toString();
+      _log.severe(msg);
+      throw Exception(msg);
+    }
+
+    if (response.statusCode == 200) {
+
+      _log.info("priority list request successful");
+      _log.info(response.body);
+      return serializers.deserializeWith(ReservationDetail.serializer, jsonDecode(response.body));
+
+    } else {
+      throw Exception(
+          'failed to load the reservation details.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
+    }
+  }
+
 }

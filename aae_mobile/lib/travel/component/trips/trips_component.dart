@@ -7,8 +7,16 @@ import 'trips_bloc.dart';
 import 'trips_view.dart';
 import 'trips_view_model.dart';
 
+
 /// Ties together [TripsBloc] and [TripsView].
 class TripsComponent extends StatelessWidget {
+
+//  TripsComponent({this.viewModel, this.loadReservationDetail});
+  TripsComponent({this.loadReservationDetail});
+
+//  final TripsViewModel viewModel;
+  final Function(BuildContext, String) loadReservationDetail;
+
   @override
   Widget build(BuildContext context) {
     return Component<TripsBloc, TripsBlocFactory>(
@@ -21,7 +29,7 @@ class TripsComponent extends StatelessWidget {
               if (snapshot.value == null) {
                 return _buildEmptyState(context);
               } else {
-                return TripsView(viewModel: snapshot.value);
+                return TripsView(viewModel: snapshot.value, loadReservationDetail: loadReservationDetail,);
               }
             } else {
               return _buildLoadingState(context);

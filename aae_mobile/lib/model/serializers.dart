@@ -9,6 +9,10 @@ import 'package:aae/model/news_feed_item.dart';
 import 'package:aae/model/priority_list.dart';
 import 'package:aae/model/priority_list_cabin.dart';
 import 'package:aae/model/priority_list_passenger.dart';
+import 'package:aae/model/reservation_detail.dart';
+import 'package:aae/model/reservation_detail_passenger.dart';
+import 'package:aae/model/reservation_detail_segment.dart';
+import 'package:aae/model/reservation_detail_seat_assignment.dart';
 import 'package:aae/model/recognition_register.dart';
 import 'package:aae/model/recognition_history.dart';
 import 'package:aae/model/stockdocs.dart';
@@ -48,6 +52,10 @@ part 'serializers.g.dart';
   PriorityList,
   PriorityListCabin,
   PriorityListPassenger,
+  ReservationDetail,
+  ReservationDetailPassenger,
+  ReservationDetailSegment,
+  ReservationDetailSeatAssignment,
   FlightStatus,
   GateTimeFlightInfo,
   FlightSearch,

@@ -9,6 +9,7 @@ import 'package:aae/model/flight_search.dart';
 import 'package:aae/model/flight_status.dart';
 import 'package:aae/model/pnr.dart';
 import 'package:aae/model/priority_list.dart';
+import 'package:aae/model/reservation_detail.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:aae/model/trips.dart';
 import 'package:aae/rx/rx_util.dart';
@@ -33,6 +34,7 @@ class TravelRepository implements Repository {
 
   final _pnrs = createBehaviorSubject<BuiltList<Pnr>>();
   final _currentPriorityList = createBehaviorSubject<PriorityList>();
+  final _reservationDetail = createBehaviorSubject<ReservationDetail>();
   final _flightStatus = createBehaviorSubject<FlightStatus>();
   final _flightSearch = createBehaviorSubject<FlightSearch>();
 
@@ -40,11 +42,9 @@ class TravelRepository implements Repository {
   static String tripsKey = 'trips';
 
   Observable<BuiltList<Pnr>> get pnrs => _pnrs;
-
   Observable<PriorityList> get currentPriorityList => _currentPriorityList;
-
+  Observable<ReservationDetail> get reservationDetail => _reservationDetail;
   Observable<FlightStatus> get flightStatus => _flightStatus;
-
   Observable<FlightSearch> get flightSearch => _flightSearch;
 
   void set flightStatus(var value) {
@@ -126,6 +126,12 @@ class TravelRepository implements Repository {
       flightSearch = new FlightSearch();
       _flightSearch.sendNext(flightSearch);
     }
+  }
+
+  loadReservationDetail(String pnr) async {
+    _reservationDetail.sendNext(null);
+    ReservationDetail reservationDetail = await _travelApiClient.getReservationDetail(pnr);
+    _reservationDetail.sendNext(reservationDetail);
   }
 
   Future<void> _saveToCache(String key, String data) =>
