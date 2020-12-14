@@ -14,548 +14,336 @@ class AaeTextStyles {
 
   static const font = 'AmericanSans';
 
-  static const h1 = TextStyle(
-    fontSize: 40.0,
+  /// 50px BASE title text -----------------------------------------------------------------------50px--
+  static const TextStyle title50 = TextStyle(
+    fontFamily: _americanSans,
+    fontSize: 50,
+    color: AaeColors.darkGray,
+    fontWeight: _regular,
+    height: 1.00,
+  );
+  /// Replaces: titleLarge
+  static final title50_cadetGray_bold = title50.copyWith(
+    color: AaeColors.cadetGray,
+    fontWeight: _bold,
+  );
+
+  /// 40px BASE title text -----------------------------------------------------------------------40px--
+  static const TextStyle title40 = TextStyle(
+    fontFamily: _americanSans,
+    fontSize: 40,
+    color: AaeColors.darkGray,
+    fontWeight: _regular,
+    height: 1.00,
+  );
+  /// Replaces: h1
+  static final title40_medium_140 = title40.copyWith(
+    fontWeight: _medium,
     height: 1.40,
-    fontWeight: _medium,
-    fontFamily: _americanSans,
   );
 
-  static const h2 = TextStyle(
-    fontSize: 32.0,
-    height: 1.25,
-    fontWeight: _medium,
+  /// 32px BASE title text -----------------------------------------------------------------------32px--
+  static const TextStyle title32 = TextStyle(
     fontFamily: _americanSans,
-  );
-
-  static const h3 = TextStyle(
-    fontSize: 28.0,
-    height: 1.43,
-    fontWeight: _medium,
-    fontFamily: _americanSans,
-  );
-
-  static const h4 = TextStyle(
-    fontSize: 24.0,
-    height: 1.1,
-    fontWeight: _medium,
-    fontFamily: _americanSans,
-  );
-
-  static const h5 = TextStyle(
-    fontSize: 20.0,
-    height: 1.20,
-    fontWeight: _medium,
-    fontFamily: _americanSans,
-  );
-
-  static const h6 = TextStyle(
-    fontSize: 16.0,
-    height: 1.25,
-    fontWeight: _medium,
-    fontFamily: _americanSans,
-  );
-
-  static const smallHeadline = TextStyle(
-    fontSize: 18.0,
-    height: 1.0,
-    fontWeight: _medium,
-    fontFamily: _americanSans,
-  );
-
-  static const newsCardHeadline = TextStyle(
+    fontSize: 32,
     color: AaeColors.darkGray,
-    fontSize: 18,
-    height: 1.1,
+    fontWeight: _regular,
+    height: 1.00,
   );
-
-  static const smallSummary = TextStyle(
-    fontSize: 12.0,
-    height: 1.0,
+  /// Replaces: largeTextStyle
+  static final title32_mediumGray_medium = title32.copyWith(
+    color: AaeColors.mediumGray,
     fontWeight: _medium,
+  );
+  /// Replaces: h2
+  static final title32_medium_125 = title32.copyWith(
+    fontWeight: _medium,
+    height: 1.25,
+  );
+  /// Add where this style is used
+  static final title32_medium = title32.copyWith(
+    fontWeight: _medium,
+  );
+  /// 28px BASE title text -----------------------------------------------------------------------28px--
+  static const TextStyle title28 = TextStyle(
     fontFamily: _americanSans,
+    fontSize: 28,
     color: AaeColors.darkGray,
+    fontWeight: _regular,
+    height: 1.00,
+  );
+  /// Replaces: h3
+  static final title28_medium_143 = title28.copyWith(
+      fontWeight: _medium,
+      height: 1.43
   );
 
-  static const btn1 = TextStyle(
-    fontSize: 16.0,
-    height: 1.50,
-    fontWeight: _medium,
+  /// 24px BASE title text -----------------------------------------------------------------------24px--
+  static const TextStyle title24 = TextStyle(
     fontFamily: _americanSans,
-  );
-
-  static const btn1SingleLine = TextStyle(
-    fontSize: 16.0,
-    height: 1.0,
-    fontWeight: _medium,
-    fontFamily: _americanSans,
-  );
-
-  static const btn2 = TextStyle(
-    fontSize: 14.0,
-    height: 1.42,
-    fontWeight: _medium,
-    fontFamily: _americanSans,
-  );
-
-  static const btn2SingleLine = TextStyle(
-    fontSize: 14.0,
-    height: 1.0,
-    fontWeight: _medium,
-    fontFamily: _americanSans,
-  );
-
-  static const b1 = TextStyle(
-    fontSize: 20.0,
-    height: 1.60,
-    fontWeight: _regular,
-  );
-
-  static const b1SingleLine = TextStyle(
-    fontSize: 20.0,
-    height: 1.0,
-    fontWeight: _regular,
-  );
-
-  static const b2 = TextStyle(
-    fontSize: 16.0,
-    height: 1.50,
-    fontWeight: _regular,
-  );
-
-  static const b2SingleLine = TextStyle(
-    fontSize: 16.0,
-    height: 1.0,
-    fontWeight: _regular,
-  );
-
-  static const b3 = TextStyle(
-    fontSize: 14.0,
-    height: 1.43,
-    fontWeight: _regular,
-  );
-
-  static const b3SingleLine = TextStyle(
-    fontSize: 14.0,
-    height: 1.0,
-    fontWeight: _regular,
-  );
-
-  static const c1 = TextStyle(
-    fontSize: 12.0,
-    height: 1.50,
-    letterSpacing: 0.30,
-    fontWeight: _regular,
-  );
-
-  static const t2 = TextStyle(
-    fontSize: 11.0,
-    height: 1.50,
-    letterSpacing: 0.30,
-    fontWeight: _regular,
-  );
-
-  /// Used for regular-sized body content
-  static TextStyle body({
-    bool boolDefaultHeight = false,
-  }) {
-    TextStyle textStyle = TextStyle(
-      color: AaeColors.darkGray,
-      fontFamily: _americanSans,
-      fontSize: 16,
-      height: boolDefaultHeight ? 1.00 : 1.33,
-      // backgroundColor: AaColors.lightGray,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  static TextStyle calendarMain({
-    bool boolDefaultHeight = false,
-  }) {
-    TextStyle textStyle = TextStyle(
-      color: AaeColors.darkGray,
-      fontFamily: _americanSans,
-      fontSize: 16,
-      height: boolDefaultHeight ? 1.00 : 1.33,
-      // backgroundColor: AaColors.lightGray,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  static TextStyle calendarOld({
-    bool boolDefaultHeight = false,
-  }) {
-    TextStyle textStyle = TextStyle(
-      color: AaeColors.ultraLightGray,
-      fontFamily: _americanSans,
-      fontSize: 16,
-      height: boolDefaultHeight ? 1.00 : 1.33,
-      // backgroundColor: AaColors.lightGray,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  /// Travel module text styles
-  static const travelHeader = TextStyle(
-    fontSize: 15,
-    color: AaeColors.blue,
-    fontWeight: FontWeight.bold,
-  );
-
-  static const datePickerDate = TextStyle(
     fontSize: 24,
-    color: AaeColors.gray,
-    fontFamily: _americanSansMedium,
+    color: AaeColors.darkGray,
+    fontWeight: _regular,
+    height: 1.00,
+  );
+  /// Replaces: h4 -
+  /// Used: Selected date in PL and FS date pickers,
+  static final title24_medium_110 = title24.copyWith(
+      fontWeight: _medium,
+      height: 1.10
+  );
+  /// Replaces: h4
+  /// Used: unselected date in PL and FS date pickers,
+  static final title24_mediumGray_medium_110 = title24.copyWith(
+      fontWeight: _medium,
+      color: AaeColors.gray,
+      height: 1.10
+  );
+  /// Replaces: pageHeadLine
+  static final title24_bold_110 = title24.copyWith(
+      fontWeight: bold,
+      height: 1.10
   );
 
-  static const formHintText = TextStyle(
-    fontSize: 15,
-    color: AaeColors.gray,
+  /// 22px BASE title text -----------------------------------------------------------------------22px--
+  static const TextStyle title22 = TextStyle(
     fontFamily: _americanSans,
-  );
-
-  static const datePickerText = TextStyle(
-    fontSize: 13,
-    color: AaeColors.lightGrayText,
-    fontFamily: _americanSans,
-  );
-
-  static const locatorInfoHeading = TextStyle(
-    fontSize: 12,
-    color: AaeColors.gray,
-    fontFamily: _americanSansMedium,
-  );
-
-  static const locatorInfo = TextStyle(
-    fontSize: 15,
-    color: AaeColors.titleGray,
-    fontFamily: _americanSansMedium,
-  );
-
-  static const reservationHeading = TextStyle(
     fontSize: 22,
-    fontWeight: FontWeight.bold,
-    color: AaeColors.titleGray,
+    color: AaeColors.darkGray,
+    fontWeight: _regular,
+    height: 1.00,
+  );
+  /// Replaces: eventTitle
+  static final title22_medium_110 = title22.copyWith(
+      fontWeight: _medium,
+      height: 1.10
+  );
+  /// 20px BASE title text -----------------------------------------------------------------------20px--
+  /// Replaces: b1SingleLine, title
+  static const TextStyle title20 = TextStyle(
+    fontFamily: _americanSans,
+    fontSize: 20,
+    color: AaeColors.darkGray,
+    fontWeight: _regular,
+    height: 1.00,
+  );
+  /// Replaces: b1
+  static final title20_160 = title20.copyWith(
+      height: 1.10
+  );
+  /// Replaces: h5
+  static final title20_medium_120 = title20.copyWith(
+      fontWeight: _medium,
+      height: 1.20
   );
 
-  static const reservationSubHeading = TextStyle(
+  /// 18px BASE title text -----------------------------------------------------------------------18px--
+  /// Replaces: largeTextStyle - Used: passenger list
+  static const TextStyle subtitle18 = TextStyle(
+    fontFamily: _americanSans,
+    fontSize: 18,
+    color: AaeColors.darkGray,
+    fontWeight: _regular,
+    height: 1.00,
+  );
+  /// Replaces: smallHeadline
+  static final subtitle18_medium = subtitle18.copyWith(
+    fontWeight: _medium,
+  );
+  /// Replaces: newsCardHeadline
+  static final subtitle18_110 = subtitle18.copyWith(
+    height: 1.10,
+  );
+  /// Replaces: tableHeaderFooter
+  static final subtitle18_bold_1165 = subtitle18.copyWith(
+    fontWeight: _bold,
+    height: 1.165,
+  );
+  /// Replaces: smallTextStyle - Used: flight inventory card, flight number, gate, departure time
+  static final subtitle18_mediumGray = subtitle18.copyWith(
+    color: AaeColors.mediumGray,
+  );
+  /// Replaces: smallTextStyle - Used: flight inventory card cabin names
+  static final subtitle18_mediumGray_scale14 = subtitle18.copyWith(
+    color: AaeColors.mediumGray,
+    fontSize: viewModel.priorityList.cabins.length >= 4 ? 14 : 18,
+  );
+  /// Replaces: subTitleLarge, tabelCellTitle
+  static final subtitle18_cadetGray = subtitle18.copyWith(
+    color: AaeColors.cadetGray,
+  );
+  /// Replaces: tableCellValue
+  static final subtitle18_gray = subtitle18.copyWith(
+    color: AaeColors.gray,
+  );
+  /// Replaces: textFieldModern
+  static final subtitle18_darkBlue = subtitle18.copyWith(
+    color: AaeColors.darkBlue,
+  );
+  /// Replaces: largeTextStyleSeatAssigned - Used: priority list
+  static final subtitle18_green = subtitle18.copyWith(
+    color: AaeColors.green,
+  );
+  /// Replaces: largeTextStyleSeatAssigned - Used: priority list
+  static final subtitle18_white = subtitle18.copyWith(
+    color: AaeColors.white,
+  );
+  /// 16px BASE title text -----------------------------------------------------------------------16px--
+  /// Replaces: b2SingleLine, body, calendarMain
+  static const TextStyle body16 = TextStyle(
+    fontFamily: _americanSans,
+    fontSize: 16,
+    color: AaeColors.darkGray,
+    fontWeight: _regular,
+    height: boolDefaultHeight ? 1.00 : 1.33,
+  );
+  /// Replaces: b2
+  static final body16_150 = body16.copyWith(
+    height: 1.50,
+  );
+  /// Replaces: h6
+  static final body16_medium_125 = body16.copyWith(
+    fontWeight: _medium,
+    height: 1.25,
+  );
+  /// Replaces: headline
+  static final body16_bold = body16.copyWith(
+    fontWeight: _bold,
+  );
+
+  /// 15px BASE title text -----------------------------------------------------------------------15px--
+  static const TextStyle subtitle15 = TextStyle(
+    fontFamily: _americanSans,
+    fontSize: 15,
+    color: AaeColors.darkGray,
+    fontWeight: _regular,
+    height: 1.00,
+  );
+  /// Add where this style is used
+  static final subtitle15_medium = subtitle15.copyWith(
+    fontWeight: _medium,
+  );
+  /// Add where this style is used
+  static final subtitle15_blue_bold = subtitle15.copyWith(
+    color: AaeColors.blue,
+    fontWeight: _bold,
+  );
+
+  /// 14px BASE title text -----------------------------------------------------------------------14px--
+  /// Replaces: priorityCodeTextStyle - Used: priority list
+  static const TextStyle body14 = TextStyle(
+    fontFamily: _americanSans,
     fontSize: 14,
-    fontWeight: FontWeight.normal,
-    color: AaeColors.titleGray,
+    color: AaeColors.darkGray,
+    fontWeight: _regular,
+    height: 1.00,
+  );
+  /// Add where this style is used
+  static final body14_143 = body14.copyWith(
+    height: 1.43,
+  );
+  /// Replaces: secondRowTextStyle
+  static final body14_gray = body14.copyWith(
+    color: AaeColors.gray,
   );
 
-  static const btn18 = TextStyle(
+
+  /// 13px BASE title text -----------------------------------------------------------------------13px--
+  static const TextStyle caption13 = TextStyle(
+    fontFamily: _americanSans,
+    fontSize: 13,
+    color: AaeColors.darkGray,
+    fontWeight: _regular,
+    height: 1.00,
+  );
+  /// Add where this style is used
+  static final caption13_bold_133 = caption13.copyWith(
+    fontWeight: _bold,
+    height: boolDefaultHeight ? 1.00 : 1.33,
+  );
+  /// Replaces: ? - Used month and date PL and FS date pickers,
+  static final caption13_mediumGray = caption13.copyWith(
+    color: AaeColors.mediumGray,
+  );
+
+  /// 12px BASE title text -----------------------------------------------------------------------12px--
+  static const TextStyle caption12 = TextStyle(
+    fontFamily: _americanSans,
+    fontSize: 12,
+    color: AaeColors.darkGray,
+    fontWeight: _regular,
+    height: 1.00,
+  );
+  /// Add where this style is used
+  static final caption12_150 = caption12.copyWith(
+    height: 1.50,
+  );
+  /// Add where this style is used
+  static final caption12_medium = caption12.copyWith(
+    fontWeight: _medium,
+  );
+  /// Used: Stops indicator between multiple flights on a card, flight status,
+  static final caption12_darkOrange_medium = caption12.copyWith(
+    color: AaeColors.darkOrange,
+    fontWeight: _medium,
+  );
+  /// Used: flight status,
+  static final caption12_green_medium = caption12.copyWith(
+    color: AaeColors.green,
+    fontWeight: _medium,
+  );
+  /// Used: flight status,
+  static final caption12_darkRed_medium = caption12.copyWith(
+    color: AaeColors.darkRed,
+    fontWeight: _medium,
+  );
+  /// 11px BASE title text -----------------------------------------------------------------------11px--
+  static const TextStyle caption11 = TextStyle(
+    fontFamily: _americanSans,
+    fontSize: 11,
+    color: AaeColors.darkGray,
+    fontWeight: _regular,
+    height: 1.00,
+  );
+  /// Add where this style is used
+  static final caption11_150 = caption11.copyWith(
+    height: 1.50,
+  );
+  /// Add where this style is used
+  static final caption11_gray_medium = caption11.copyWith(
+    color: AaeColors.gray,
+    fontWeight: _medium,
+  );
+
+  /// BASE for BUTTON text --------------------------------------------------------------BUTTONS-----------
+  /// Base classes = class name and size, white color, regular weight, 1.0 height
+  /// Final classes = class name and size + color if different + weight if different + height if different
+  static const TextStyle btn18 = TextStyle(
+    fontFamily: _americanSans,
     fontSize: 18,
     color: AaeColors.white,
-    fontFamily: _americanSans,
+    fontWeight: _regular,
+    height: 1.00,
   );
-
-  static const departureHeading = TextStyle(
-    fontSize: 12,
-    fontWeight: FontWeight.normal,
-    color: AaeColors.titleGray,
+  /// Add where this style is used
+  static final btn16_medium = btn18.copyWith(
+    fontSize: 16,
+    fontWeight: _medium,
   );
-
-  static const departureOnTime = TextStyle(
-    fontSize: 12,
-    color: AaeColors.greenMedium,
-    fontFamily: _americanSansMedium,
+  /// Add where this style is used
+  static final btn16_medium_150 = btn18.copyWith(
+    fontSize: 16,
+    fontWeight: _medium,
+    height: 1.50,
   );
-
-  static const departureDelayed = TextStyle(
-    fontSize: 12,
-    color: AaeColors.darkOrange,
-    fontFamily: _americanSansMedium,
-  );
-
-  static const departureCancelled = TextStyle(
-    fontSize: 12,
-    color: AaeColors.red,
-    fontFamily: _americanSansMedium,
-  );
-  static const hubDetailHeading = TextStyle(
+  /// Add where this style is used
+  static final btn14_medium = btn18.copyWith(
     fontSize: 14,
-    fontWeight: FontWeight.normal,
-    color: AaeColors.titleGray,
+    fontWeight: _medium,
   );
-
-  static const routeDetailHeading = TextStyle(
-    fontSize: 13,
-    fontWeight: FontWeight.normal,
-    color: AaeColors.ultraLightGray,
+  /// Add where this style is used
+  static final btn14_medium_150 = btn18.copyWith(
+    fontSize: 14,
+    fontWeight: _medium,
+    height: 1.50,
   );
-
-  static const dividerDot = TextStyle(
-    fontSize: 13,
-    fontWeight: FontWeight.normal,
-    color: AaeColors.ultraLightGray,
-    letterSpacing: 10,
-  );
-
-  static const timeSummary = TextStyle(
-    fontSize: 18,
-    color: AaeColors.titleGray,
-    fontFamily: _americanSansMedium,
-  );
-
-  static const checkInButton = TextStyle(
-    fontSize: 22,
-    fontWeight: FontWeight.normal,
-  );
-
-  static const flightStatusText = TextStyle(
-    fontSize: 12,
-    color: AaeColors.lightGrayText,
-  );
-
-  static const flightSearchHeader = TextStyle(
-    fontSize: 32,
-    color: AaeColors.mediumGray,
-    fontFamily: _americanSansMedium,
-  );
-
-  static const flightSearchSubHeader = TextStyle(
-    fontSize: 18,
-    color: AaeColors.mediumGray,
-    fontFamily: _americanSans,
-  );
-
-  /// Calendar page summary blocks
-  static TextStyle calendarSummary({
-    bool boolDefaultHeight = false,
-  }) {
-    TextStyle textStyle = TextStyle(
-      color: AaeColors.darkGray,
-      fontFamily: _americanSans,
-      fontSize: 13,
-      height: boolDefaultHeight ? 1.00 : 1.33,
-      // backgroundColor: AaColors.lightGray,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  static TextStyle calendarSummaryBold({
-    bool boolDefaultHeight = false,
-  }) {
-    TextStyle textStyle = TextStyle(
-      color: AaeColors.darkGray,
-      fontFamily: _americanSans,
-      fontSize: 13,
-      fontWeight: FontWeight.bold,
-      height: boolDefaultHeight ? 1.00 : 1.33,
-      // backgroundColor: AaColors.lightGray,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  static TextStyle tableHeaderFooter({
-    bool boolDefaultHeight = false,
-    bool boolEnabled = true,
-  }) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      color: AaeColors.darkGray,
-      fontSize: 18,
-      height: 1.165,
-      fontWeight: FontWeight.bold,
-    );
-    // Default style
-    return textStyle;
-  }
-
-  static TextStyle tableCellTitle({
-    bool boolDefaultHeight = false,
-    bool boolEnabled = true,
-  }) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      color: AaeColors.lightGray,
-      fontSize: 18,
-    );
-    // Default style
-
-    return textStyle;
-  }
-
-  static TextStyle tableCellTitleHub({
-    bool boolDefaultHeight = false,
-    bool boolEnabled = true,
-  }) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      color: AaeColors.lightGray.withOpacity(.60),
-      fontSize: 18,
-    );
-    // Default style
-
-    return textStyle;
-  }
-
-  /// Used for regular-sized headline content
-  static TextStyle headline({bool boolDefaultHeight = false}) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      fontWeight: FontWeight.bold,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  /// Used for regular-sized titles
-  static TextStyle title({
-    bool boolDefaultHeight = false,
-  }) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      fontSize: 20,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  /// Used for large-sized titles; matches the 'subTitleLarge' text style
-  static TextStyle titleLarge({
-    bool boolDefaultHeight = false,
-  }) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      color: AaeColors.lightGray,
-      fontSize: 50,
-      fontWeight: FontWeight.bold,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  /// Used for large-sized sub-title; matches the 'titleLarge' text style
-  static TextStyle subTitleLarge({
-    bool boolDefaultHeight = false,
-  }) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      color: AaeColors.lightGray,
-      fontSize: 18,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  /// Used for regular-sized description content
-  static TextStyle description({
-    bool boolDefaultHeight = false,
-  }) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      fontSize: 14,
-      height: 1,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  static TextStyle tableCellValue(
-      {bool boolDefaultHeight = false, bool boolEnabled = true}) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      color: AaeColors.ultraLightGray,
-      fontSize: 18,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  static TextStyle tableCellValueHub() {
-    //TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(color: AaeColors.red, fontSize: 18);
-    //TextStyle(fontSize: 16, color: Colors.orange, fontWeight: FontWeight.bold);
-    TextStyle mytextStyle = TextStyle(fontSize: 20, color: Colors.grey, fontWeight: FontWeight.bold);
-    // Default style
-    return mytextStyle;
-  }
-
-  /// Used for Event detail layout
-  static TextStyle eventTitle({bool boolDefaultHeight = false}) {
-    TextStyle textStyle = h4.copyWith(
-      color: AaeColors.darkGray,
-      height: 1.0,
-      fontSize: 22,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  static TextStyle eventText({bool boolDefaultHeight = false}) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      color: AaeColors.darkGray,
-      height: 1.0,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  static TextStyle eventDate({bool boolDefaultHeight = false}) {
-    TextStyle textStyle = t2.copyWith(
-      color: AaeColors.darkGray,
-      fontSize: 14,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  /// Used for the title in [LargeButton]
-  static TextStyle largeButtonTitle({bool boolDefaultHeight = false}) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      color: AaeColors.white,
-      fontSize: 18,
-      fontWeight: FontWeight.normal,
-      height: 1.0,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  // Used for placeholders / hints in a [TextField]
-  static TextStyle textFieldModernHint({bool boolDefaultHeight = false}) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      color: AaeColors.modernHint,
-      fontSize: 24,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  // Used for user-entered content in a [TextField]
-  static TextStyle textFieldModern({bool boolDefaultHeight = false}) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      fontSize: 18,
-      color: AaeColors.darkBlue,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  // Used for user-entered content in a [TextField]
-  static TextStyle textFieldTitle({bool boolDefaultHeight = false}) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      fontSize: 18,
-      color: AaeColors.gray,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  static const pageHeadline = TextStyle(fontSize: 24, fontWeight: _bold, color: AaeColors.onboardTitle);
-}
