@@ -1,10 +1,13 @@
 import 'dart:convert';
+import 'package:aae/model/airport.dart';
+import 'package:aae/model/airports_wrapper.dart';
 import 'package:aae/model/flight_search.dart';
 import 'package:aae/model/priority_list.dart';
 import 'package:aae/model/flight_status.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:aae/model/trips.dart';
 import 'package:aae/model/reservation_detail.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:logging/logging.dart';
@@ -20,6 +23,7 @@ class TravelServiceApi {
   static const priorityListEndpoint = '$baseUrl/prioritylist';
   static const travelFlightStatusEndpoint = '$baseUrl/flightstatus';
   static const travelFlightSearchEndpoint = '$baseUrl/flightsearch';
+  static const airportsEndpoint = '$baseUrl/airports';
   static const reservationDetailEndpoint = '$baseUrl/reservation';
 
   final dateFormatter = DateFormat("yyyy-MM-dd");
@@ -91,6 +95,39 @@ class TravelServiceApi {
     } else {
       throw Exception(
           'failed to load the priority list.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
+    }
+  }
+
+  Future<BuiltList<Airport>> getAirports() async {
+    _log.info("initiating airports request.");
+    _log.info("url: $airportsEndpoint");
+
+    Map<String, String> headers = _getRequestHeaders("72000027");
+
+    var response;
+    try {
+      response = await httpClient.get(airportsEndpoint, headers: headers);
+    } catch (e) {
+      String msg = 'failed to load the airports list.\n' + e.toString();
+      _log.severe(msg);
+      throw Exception(msg);
+    }
+
+    if (response.statusCode == 200) {
+      _log.info("airports request successful");
+      _log.info(response.body);
+      AirportsWrapper wrapper = serializers.deserializeWith(
+          AirportsWrapper.serializer, jsonDecode(response.body));
+
+      if (wrapper != null && wrapper.airports != null)
+        return wrapper.airports;
+      else {
+        throw Exception("failed to load the airports list. received 200 response with no contents.");
+      }
+
+    } else {
+      throw Exception(
+          'failed to load the airports list.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
     }
   }
 

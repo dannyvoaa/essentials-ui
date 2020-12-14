@@ -1,3 +1,5 @@
+import 'package:aae/model/airport.dart';
+import 'package:aae/model/airports_wrapper.dart';
 import 'package:aae/model/article_body.dart';
 import 'package:aae/model/biometric_auth.dart';
 import 'package:aae/model/gate_time_flight_info.dart';
@@ -44,6 +46,8 @@ import 'package:aae/model/news_articledocs.dart';
 part 'serializers.g.dart';
 
 @SerializersFor(const [
+  Airport,
+  AirportsWrapper,
   NewsFeedJsonList,
   NewsFeedItem,
   RecognitionHistory,

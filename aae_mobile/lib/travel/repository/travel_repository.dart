@@ -5,6 +5,7 @@ import 'package:aae/api/travel_api_client.dart';
 import 'package:aae/auth/sso_auth.dart';
 import 'package:aae/cache/cache_service.dart';
 import 'package:aae/common/repository/repository.dart';
+import 'package:aae/model/airport.dart';
 import 'package:aae/model/flight_search.dart';
 import 'package:aae/model/flight_status.dart';
 import 'package:aae/model/pnr.dart';
@@ -37,6 +38,7 @@ class TravelRepository implements Repository {
   final _reservationDetail = createBehaviorSubject<ReservationDetail>();
   final _flightStatus = createBehaviorSubject<FlightStatus>();
   final _flightSearch = createBehaviorSubject<FlightSearch>();
+  final _airports = createBehaviorSubject<BuiltList<Airport>>();
 
   final CacheService _cache;
   static String tripsKey = 'trips';
@@ -46,6 +48,9 @@ class TravelRepository implements Repository {
   Observable<ReservationDetail> get reservationDetail => _reservationDetail;
   Observable<FlightStatus> get flightStatus => _flightStatus;
   Observable<FlightSearch> get flightSearch => _flightSearch;
+  Observable<BuiltList<Airport>> get airports => _airports;
+
+  BuiltList<Airport> _cachedAirports;
 
   void set flightStatus(var value) {
     flightStatus = value;
@@ -60,6 +65,7 @@ class TravelRepository implements Repository {
   TravelRepository(this._cache, this._travelApiClient, this._ssoAuth) {
     _loadFromTripsCache();
     _fetchTrips();
+    loadAirports();
 //    fetchFlightStatus(1,2);
   }
 
@@ -96,6 +102,16 @@ class TravelRepository implements Repository {
     PriorityList priorityList =
         await _travelApiClient.getPriorityList(origin, flightNum, date);
     _currentPriorityList.sendNext(priorityList);
+  }
+
+  loadAirports() async {
+    if (_cachedAirports == null) {
+      _cachedAirports = await _travelApiClient.getAirports();
+    } {
+      _log.info('using cached airport list');
+    }
+
+    _airports.sendNext(_cachedAirports);
   }
 
   loadFlightStatus(flightNumber, origin, date) async {
