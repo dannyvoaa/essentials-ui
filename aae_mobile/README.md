@@ -20,14 +20,14 @@ Alternatively feel free to use vim, vscode, or pretty much any other editor that
 After getting the Android SDK, add platform-tools to your `PATH`:
 
 ```shell
-# add to your ~/.zshrc
+## add to your ~/.zshrc
 export PATH=$PATH:/Users/<name>/Library/Android/Sdk/platform-tools
 ```
 
 Source your `~/.zshrc` or restart your shell and verify `adb` is found:
 
 ```shell
-# prints adb's version and exit:
+## prints adb's version and exit:
 adb version
 ```
 
