@@ -4,13 +4,13 @@ import 'package:flutter/painting.dart';
 
 /// Common typography constants to be used across the whole application.
 /// This class only exists for easy importing!
+/// Naming order = name (title), size (50), color (Gray), weight (Med), line height (133)
 
 class AaeTextStyles {
   static const _regular = FontWeight.w400;
-  static const _medium = FontWeight.w500;
-  static const _bold = FontWeight.bold;
   static const _americanSans = 'AmericanSans';
   static const _americanSansMedium = 'AmericanSansMedium';
+  static const _americanSansBold = 'AmericanSansBold';
 
   static const font = 'AmericanSans';
 
@@ -22,10 +22,11 @@ class AaeTextStyles {
     fontWeight: _regular,
     height: 1.00,
   );
+
   /// Replaces: titleLarge
-  static final title50_cadetGray_bold = title50.copyWith(
+  static final title50CadetGrayBold = title50.copyWith(
+    fontFamily: _americanSansBold,
     color: AaeColors.cadetGray,
-    fontWeight: _bold,
   );
 
   /// 40px BASE title text -----------------------------------------------------------------------40px--
@@ -36,9 +37,10 @@ class AaeTextStyles {
     fontWeight: _regular,
     height: 1.00,
   );
+
   /// Replaces: h1
-  static final title40_medium_140 = title40.copyWith(
-    fontWeight: _medium,
+  static final title40Med140 = title40.copyWith(
+    fontFamily: _americanSansMedium,
     height: 1.40,
   );
 
@@ -50,20 +52,24 @@ class AaeTextStyles {
     fontWeight: _regular,
     height: 1.00,
   );
+
   /// Replaces: largeTextStyle
-  static final title32_mediumGray_medium = title32.copyWith(
+  static final title32MediumGrayMed = title32.copyWith(
+    fontFamily: _americanSansMedium,
     color: AaeColors.mediumGray,
-    fontWeight: _medium,
   );
+
   /// Replaces: h2
-  static final title32_medium_125 = title32.copyWith(
-    fontWeight: _medium,
+  static final title32Med125 = title32.copyWith(
+    fontFamily: _americanSansMedium,
     height: 1.25,
   );
+
   /// Add where this style is used
-  static final title32_medium = title32.copyWith(
-    fontWeight: _medium,
+  static final title32Med = title32.copyWith(
+    fontFamily: _americanSansMedium,
   );
+
   /// 28px BASE title text -----------------------------------------------------------------------28px--
   static const TextStyle title28 = TextStyle(
     fontFamily: _americanSans,
@@ -72,9 +78,10 @@ class AaeTextStyles {
     fontWeight: _regular,
     height: 1.00,
   );
+
   /// Replaces: h3
-  static final title28_medium_143 = title28.copyWith(
-      fontWeight: _medium,
+  static final title28Med143 = title28.copyWith(
+      fontFamily: _americanSansMedium,
       height: 1.43
   );
 
@@ -86,22 +93,25 @@ class AaeTextStyles {
     fontWeight: _regular,
     height: 1.00,
   );
+
   /// Replaces: h4 -
   /// Used: Selected date in PL and FS date pickers,
-  static final title24_medium_110 = title24.copyWith(
-      fontWeight: _medium,
+  static final title24Med110 = title24.copyWith(
+      fontFamily: _americanSansMedium,
       height: 1.10
   );
+
   /// Replaces: h4
   /// Used: unselected date in PL and FS date pickers,
-  static final title24_mediumGray_medium_110 = title24.copyWith(
-      fontWeight: _medium,
+  static final title24MediumGrayMed110 = title24.copyWith(
+      fontFamily: _americanSansMedium,
       color: AaeColors.gray,
       height: 1.10
   );
+
   /// Replaces: pageHeadLine
-  static final title24_bold_110 = title24.copyWith(
-      fontWeight: bold,
+  static final title24Bold110 = title24.copyWith(
+      fontFamily: _americanSansBold,
       height: 1.10
   );
 
@@ -113,11 +123,13 @@ class AaeTextStyles {
     fontWeight: _regular,
     height: 1.00,
   );
+
   /// Replaces: eventTitle
-  static final title22_medium_110 = title22.copyWith(
-      fontWeight: _medium,
+  static final title22Med110 = title22.copyWith(
+      fontFamily: _americanSansMedium,
       height: 1.10
   );
+
   /// 20px BASE title text -----------------------------------------------------------------------20px--
   /// Replaces: b1SingleLine, title
   static const TextStyle title20 = TextStyle(
@@ -127,13 +139,15 @@ class AaeTextStyles {
     fontWeight: _regular,
     height: 1.00,
   );
+
   /// Replaces: b1
-  static final title20_160 = title20.copyWith(
+  static final title20Reg160 = title20.copyWith(
       height: 1.10
   );
+
   /// Replaces: h5
-  static final title20_medium_120 = title20.copyWith(
-      fontWeight: _medium,
+  static final title20Med120 = title20.copyWith(
+      fontFamily: _americanSansMedium,
       height: 1.20
   );
 
@@ -146,48 +160,53 @@ class AaeTextStyles {
     fontWeight: _regular,
     height: 1.00,
   );
+
   /// Replaces: smallHeadline
-  static final subtitle18_medium = subtitle18.copyWith(
-    fontWeight: _medium,
+  static final subtitle18Med = subtitle18.copyWith(
+    fontFamily: _americanSansMedium,
   );
+
   /// Replaces: newsCardHeadline
-  static final subtitle18_110 = subtitle18.copyWith(
+  static final subtitle18Reg110 = subtitle18.copyWith(
     height: 1.10,
   );
+
   /// Replaces: tableHeaderFooter
-  static final subtitle18_bold_1165 = subtitle18.copyWith(
-    fontWeight: _bold,
+  static final subtitle18Bold1165 = subtitle18.copyWith(
+    fontFamily: _americanSansBold,
     height: 1.165,
   );
-  /// Replaces: smallTextStyle - Used: flight inventory card, flight number, gate, departure time
-  static final subtitle18_mediumGray = subtitle18.copyWith(
+
+  /// Replaces: smallTextStyle - Used: flight inventory card priority list, flight number, gate, departure time
+  static final subtitle18MediumGray = subtitle18.copyWith(
     color: AaeColors.mediumGray,
   );
-  /// Replaces: smallTextStyle - Used: flight inventory card cabin names
-  static final subtitle18_mediumGray_scale14 = subtitle18.copyWith(
-    color: AaeColors.mediumGray,
-    fontSize: viewModel.priorityList.cabins.length >= 4 ? 14 : 18,
-  );
+
   /// Replaces: subTitleLarge, tabelCellTitle
-  static final subtitle18_cadetGray = subtitle18.copyWith(
+  static final subtitle18CadetGray = subtitle18.copyWith(
     color: AaeColors.cadetGray,
   );
+
   /// Replaces: tableCellValue
-  static final subtitle18_gray = subtitle18.copyWith(
+  static final subtitle18Gray = subtitle18.copyWith(
     color: AaeColors.gray,
   );
+
   /// Replaces: textFieldModern
-  static final subtitle18_darkBlue = subtitle18.copyWith(
+  static final subtitle18DarkBlue = subtitle18.copyWith(
     color: AaeColors.darkBlue,
   );
+
   /// Replaces: largeTextStyleSeatAssigned - Used: priority list
-  static final subtitle18_green = subtitle18.copyWith(
+  static final subtitle18Green = subtitle18.copyWith(
     color: AaeColors.green,
   );
+
   /// Replaces: largeTextStyleSeatAssigned - Used: priority list
-  static final subtitle18_white = subtitle18.copyWith(
+  static final subtitle18White = subtitle18.copyWith(
     color: AaeColors.white,
   );
+
   /// 16px BASE title text -----------------------------------------------------------------------16px--
   /// Replaces: b2SingleLine, body, calendarMain
   static const TextStyle body16 = TextStyle(
@@ -197,18 +216,21 @@ class AaeTextStyles {
     fontWeight: _regular,
     height: boolDefaultHeight ? 1.00 : 1.33,
   );
+
   /// Replaces: b2
-  static final body16_150 = body16.copyWith(
+  static final body16Reg150 = body16.copyWith(
     height: 1.50,
   );
+
   /// Replaces: h6
-  static final body16_medium_125 = body16.copyWith(
-    fontWeight: _medium,
+  static final body16Med125 = body16.copyWith(
+    fontFamily: _americanSansMedium,
     height: 1.25,
   );
+
   /// Replaces: headline
-  static final body16_bold = body16.copyWith(
-    fontWeight: _bold,
+  static final body16Bold = body16.copyWith(
+    fontFamily: _americanSansBold,
   );
 
   /// 15px BASE title text -----------------------------------------------------------------------15px--
@@ -219,14 +241,16 @@ class AaeTextStyles {
     fontWeight: _regular,
     height: 1.00,
   );
+
   /// Add where this style is used
-  static final subtitle15_medium = subtitle15.copyWith(
-    fontWeight: _medium,
+  static final subtitle15Med = subtitle15.copyWith(
+    fontFamily: _americanSansMedium,
   );
+
   /// Add where this style is used
-  static final subtitle15_blue_bold = subtitle15.copyWith(
+  static final subtitle15BlueBold = subtitle15.copyWith(
+    fontFamily: _americanSansBold,
     color: AaeColors.blue,
-    fontWeight: _bold,
   );
 
   /// 14px BASE title text -----------------------------------------------------------------------14px--
@@ -238,15 +262,21 @@ class AaeTextStyles {
     fontWeight: _regular,
     height: 1.00,
   );
+
   /// Add where this style is used
-  static final body14_143 = body14.copyWith(
+  static final body14Reg143 = body14.copyWith(
     height: 1.43,
   );
+
   /// Replaces: secondRowTextStyle
-  static final body14_gray = body14.copyWith(
+  static final body14Gray = body14.copyWith(
     color: AaeColors.gray,
   );
 
+  /// Used: when 4 cabin in Priority list
+  static final body14MediumGray = body14.copyWith(
+    color: AaeColors.mediumGray,
+  );
 
   /// 13px BASE title text -----------------------------------------------------------------------13px--
   static const TextStyle caption13 = TextStyle(
@@ -256,13 +286,21 @@ class AaeTextStyles {
     fontWeight: _regular,
     height: 1.00,
   );
-  /// Add where this style is used
-  static final caption13_bold_133 = caption13.copyWith(
-    fontWeight: _bold,
-    height: boolDefaultHeight ? 1.00 : 1.33,
+
+  /// Used: priority list
+  static final caption13Bold = caption13.copyWith(
+    fontFamily: _americanSansBold,
+    height: 1.00,
   );
+
+  /// Used: priority list
+  static final caption13Bold133 = caption13.copyWith(
+    fontFamily: _americanSansBold,
+    height: 1.33,
+  );
+
   /// Replaces: ? - Used month and date PL and FS date pickers,
-  static final caption13_mediumGray = caption13.copyWith(
+  static final caption13MediumGray = caption13.copyWith(
     color: AaeColors.mediumGray,
   );
 
@@ -274,29 +312,35 @@ class AaeTextStyles {
     fontWeight: _regular,
     height: 1.00,
   );
+
   /// Add where this style is used
-  static final caption12_150 = caption12.copyWith(
+  static final caption12Reg150 = caption12.copyWith(
     height: 1.50,
   );
+
   /// Add where this style is used
-  static final caption12_medium = caption12.copyWith(
-    fontWeight: _medium,
+  static final caption12Med = caption12.copyWith(
+    fontFamily: _americanSansMedium,
   );
+
   /// Used: Stops indicator between multiple flights on a card, flight status,
-  static final caption12_darkOrange_medium = caption12.copyWith(
+  static final caption12DarkOrangeMed = caption12.copyWith(
+    fontFamily: _americanSansMedium,
     color: AaeColors.darkOrange,
-    fontWeight: _medium,
   );
+
   /// Used: flight status,
-  static final caption12_green_medium = caption12.copyWith(
+  static final caption12GreenMed = caption12.copyWith(
+    fontFamily: _americanSansMedium,
     color: AaeColors.green,
-    fontWeight: _medium,
   );
+
   /// Used: flight status,
-  static final caption12_darkRed_medium = caption12.copyWith(
+  static final caption12DarkRedMed = caption12.copyWith(
+    fontFamily: _americanSansMedium,
     color: AaeColors.darkRed,
-    fontWeight: _medium,
   );
+
   /// 11px BASE title text -----------------------------------------------------------------------11px--
   static const TextStyle caption11 = TextStyle(
     fontFamily: _americanSans,
@@ -305,14 +349,16 @@ class AaeTextStyles {
     fontWeight: _regular,
     height: 1.00,
   );
+
   /// Add where this style is used
-  static final caption11_150 = caption11.copyWith(
+  static final caption11Reg150 = caption11.copyWith(
     height: 1.50,
   );
+
   /// Add where this style is used
-  static final caption11_gray_medium = caption11.copyWith(
+  static final caption11GrayMed = caption11.copyWith(
+    fontFamily: _americanSansMedium,
     color: AaeColors.gray,
-    fontWeight: _medium,
   );
 
   /// BASE for BUTTON text --------------------------------------------------------------BUTTONS-----------
@@ -325,25 +371,30 @@ class AaeTextStyles {
     fontWeight: _regular,
     height: 1.00,
   );
+
   /// Add where this style is used
-  static final btn16_medium = btn18.copyWith(
+  static final btn16Med = btn18.copyWith(
+    fontFamily: _americanSansMedium,
     fontSize: 16,
-    fontWeight: _medium,
   );
+
   /// Add where this style is used
-  static final btn16_medium_150 = btn18.copyWith(
+  static final btn16Med150 = btn18.copyWith(
+    fontFamily: _americanSansMedium,
     fontSize: 16,
-    fontWeight: _medium,
     height: 1.50,
   );
+
   /// Add where this style is used
-  static final btn14_medium = btn18.copyWith(
+  static final btn14Med = btn18.copyWith(
+    fontFamily: _americanSansMedium,
     fontSize: 14,
-    fontWeight: _medium,
   );
+
   /// Add where this style is used
-  static final btn14_medium_150 = btn18.copyWith(
+  static final btn14Med150 = btn18.copyWith(
+    fontFamily: _americanSansMedium,
     fontSize: 14,
-    fontWeight: _medium,
     height: 1.50,
   );
+}
