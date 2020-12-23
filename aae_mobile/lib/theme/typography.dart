@@ -2,8 +2,9 @@ import 'package:aae/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
-/// Common typography constants to be used across the whole application.
-/// This class only exists for easy importing!
+/// BASE for TEXT styles --------------------------------------------------------------TEXT-----------
+/// Base classes = class name and size, dark gray color, regular weight, 1.0 height
+/// Final classes = class name and size + color if different + weight if different + height if different
 /// Naming order = name (title), size (50), color (Gray), weight (Med), line height (133)
 
 class AaeTextStyles {
@@ -415,18 +416,20 @@ class AaeTextStyles {
     height: 1.00,
   );
 
-  /// Add where this style is used
+  /// Replaces: t2
+  /// Used: D0 stats bar,
   static final caption11Reg150 = caption11.copyWith(
     height: 1.50,
   );
 
-  /// Add where this style is used
+  /// Used: flight card footer titles (boards, gate, terminal, baggage)
   static final caption11GrayMed = caption11.copyWith(
     fontFamily: _americanSansMedium,
     color: AaeColors.gray,
   );
 
   /// BASE for BUTTON text --------------------------------------------------------------BUTTONS-----------
+  /// need to check aae_buttons.dart file
   /// Base classes = class name and size, white color, regular weight, 1.0 height
   /// Final classes = class name and size + color if different + weight if different + height if different
   /// Replaces: checkInButton
