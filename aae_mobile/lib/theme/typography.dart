@@ -9,6 +9,7 @@ import 'package:flutter/painting.dart';
 class AaeTextStyles {
   static const _regular = FontWeight.w400;
   static const _americanSans = 'AmericanSans';
+  static const _americanSansLight = 'AmericanSansLight';
   static const _americanSansMedium = 'AmericanSansMedium';
   static const _americanSansBold = 'AmericanSansBold';
 
@@ -94,25 +95,28 @@ class AaeTextStyles {
     height: 1.00,
   );
 
-  /// Replaces: h4 -
+  /// Replaces: h4
   /// Used: Selected date in PL and FS date pickers,
   static final title24Med110 = title24.copyWith(
       fontFamily: _americanSansMedium,
       height: 1.10
   );
 
-  /// Replaces: h4
-  /// Used: unselected date in PL and FS date pickers,
-  static final title24MediumGrayMed110 = title24.copyWith(
-      fontFamily: _americanSansMedium,
-      color: AaeColors.gray,
-      height: 1.10
-  );
-
-  /// Replaces: pageHeadLine
+  /// Replaces: pageHeadLine,
   static final title24Bold110 = title24.copyWith(
       fontFamily: _americanSansBold,
       height: 1.10
+  );
+
+  /// Replaces: textFieldModernHint height1.0,
+  static final title24MediumGray = title24.copyWith(
+    color: AaeColors.mediumGray,
+  );
+
+  /// Replaces: textFieldModernHint height 1.33,
+  static final title24MediumGray133 = title24.copyWith(
+    color: AaeColors.mediumGray,
+    height: 1.33,
   );
 
   /// 22px BASE title text -----------------------------------------------------------------------22px--
@@ -125,9 +129,13 @@ class AaeTextStyles {
   );
 
   /// Replaces: eventTitle
-  static final title22Med110 = title22.copyWith(
+  static final title22Med = title22.copyWith(
       fontFamily: _americanSansMedium,
-      height: 1.10
+  );
+
+  /// Replaces: reservationHeading
+  static final title22Bold = title22.copyWith(
+    fontFamily: _americanSansBold,
   );
 
   /// 20px BASE title text -----------------------------------------------------------------------20px--
@@ -151,6 +159,13 @@ class AaeTextStyles {
       height: 1.20
   );
 
+  /// Replaces: tableCellValueHub
+  static final title20GrayBold = title20.copyWith(
+      fontFamily: _americanSansBold,
+    color: AaeColors.gray,
+
+  );
+
   /// 18px BASE title text -----------------------------------------------------------------------18px--
   /// Replaces: largeTextStyle - Used: passenger list
   static const TextStyle subtitle18 = TextStyle(
@@ -161,7 +176,7 @@ class AaeTextStyles {
     height: 1.00,
   );
 
-  /// Replaces: smallHeadline
+  /// Replaces: smallHeadline, timeSummary
   static final subtitle18Med = subtitle18.copyWith(
     fontFamily: _americanSansMedium,
   );
@@ -177,17 +192,18 @@ class AaeTextStyles {
     height: 1.165,
   );
 
-  /// Replaces: smallTextStyle - Used: flight inventory card priority list, flight number, gate, departure time
+  /// Replaces: smallTextStyle, inlinePriorityList
+  /// Used: flight inventory card priority list, flight number, gate, departure time
   static final subtitle18MediumGray = subtitle18.copyWith(
     color: AaeColors.mediumGray,
   );
 
-  /// Replaces: subTitleLarge, tabelCellTitle
+  /// Replaces: subTitleLarge, tableCellTitle
   static final subtitle18CadetGray = subtitle18.copyWith(
     color: AaeColors.cadetGray,
   );
 
-  /// Replaces: tableCellValue
+  /// Replaces: tableCellValue, tableCellTitleHub
   static final subtitle18Gray = subtitle18.copyWith(
     color: AaeColors.gray,
   );
@@ -197,24 +213,34 @@ class AaeTextStyles {
     color: AaeColors.darkBlue,
   );
 
-  /// Replaces: largeTextStyleSeatAssigned - Used: priority list
+  /// Replaces: largeTextStyleSeatAssigned
+  /// Used: priority list
   static final subtitle18Green = subtitle18.copyWith(
     color: AaeColors.green,
   );
 
-  /// Replaces: largeTextStyleSeatAssigned - Used: priority list
+  /// Used: priority list
   static final subtitle18White = subtitle18.copyWith(
     color: AaeColors.white,
   );
 
   /// 16px BASE title text -----------------------------------------------------------------------16px--
-  /// Replaces: b2SingleLine, body, calendarMain
+  /// Replaces: b2SingleLine, body, calendarMain, eventText
   static const TextStyle body16 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 16,
     color: AaeColors.darkGray,
     fontWeight: _regular,
-    height: boolDefaultHeight ? 1.00 : 1.33,
+    height: 1.00,
+  );
+
+  /// Replaces: b2SingleLine, body, calendarMain as second height setting
+  static const TextStyle body16Reg133 = TextStyle(
+    fontFamily: _americanSans,
+    fontSize: 16,
+    color: AaeColors.darkGray,
+    fontWeight: _regular,
+    height: 1.33,
   );
 
   /// Replaces: b2
@@ -242,19 +268,22 @@ class AaeTextStyles {
     height: 1.00,
   );
 
-  /// Add where this style is used
+  /// Replaces:locatorInfo
   static final subtitle15Med = subtitle15.copyWith(
     fontFamily: _americanSansMedium,
+    color: AaeColors.darkGray,
   );
 
-  /// Add where this style is used
+  /// Replaces: travelHeader, cardTitle,
+  /// Used: Titles (Tools, Travelers, etc) above cards
   static final subtitle15BlueBold = subtitle15.copyWith(
     fontFamily: _americanSansBold,
     color: AaeColors.blue,
   );
 
   /// 14px BASE title text -----------------------------------------------------------------------14px--
-  /// Replaces: priorityCodeTextStyle - Used: priority list
+  /// Replaces: priorityCodeTextStyle, hubDetailHeading, reservationSubHeading
+  /// Used: 3-letter codes under flight times, priority list
   static const TextStyle body14 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 14,
@@ -263,9 +292,16 @@ class AaeTextStyles {
     height: 1.00,
   );
 
-  /// Add where this style is used
+  /// Replaces: b3
+  /// Used: this was used for text above QR codes but that's been changed to body16. Maybe this can be removed.
   static final body14Reg143 = body14.copyWith(
     height: 1.43,
+  );
+
+  /// Replaces: eventDate
+  static final body14Reg150 = body14.copyWith(
+    height: 1.50,
+    letterSpacing: 0.30,
   );
 
   /// Replaces: secondRowTextStyle
@@ -279,6 +315,7 @@ class AaeTextStyles {
   );
 
   /// 13px BASE title text -----------------------------------------------------------------------13px--
+  /// Replaces: calendarSummary height1.0
   static const TextStyle caption13 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 13,
@@ -287,24 +324,42 @@ class AaeTextStyles {
     height: 1.00,
   );
 
+  /// Replaces: calendarSummary height1.33
+  static final caption13Reg133 = caption13.copyWith(
+    height: 1.33,
+  );
+
+  /// Replaces: calendarSummaryBold height1.0
   /// Used: priority list
   static final caption13Bold = caption13.copyWith(
     fontFamily: _americanSansBold,
     height: 1.00,
   );
 
+  /// Replaces: calendarSummaryBold height1.33
   /// Used: priority list
   static final caption13Bold133 = caption13.copyWith(
     fontFamily: _americanSansBold,
     height: 1.33,
   );
 
-  /// Replaces: ? - Used month and date PL and FS date pickers,
+  /// Replaces: routeDetailHeading
+  /// Used: month and date PL and FS date pickers,
   static final caption13MediumGray = caption13.copyWith(
     color: AaeColors.mediumGray,
   );
 
+  /// Replaces: dividerDot
+  /// Used: dot divider between horizontal data
+  static final caption13MediumGrayLS10 = caption13.copyWith(
+    color: AaeColors.mediumGray,
+    letterSpacing: 10,
+  );
+
+
+
   /// 12px BASE title text -----------------------------------------------------------------------12px--
+  /// Replaces: departureHeading,
   static const TextStyle caption12 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 12,
@@ -313,7 +368,7 @@ class AaeTextStyles {
     height: 1.00,
   );
 
-  /// Add where this style is used
+  /// Replaces: c1
   static final caption12Reg150 = caption12.copyWith(
     height: 1.50,
   );
@@ -323,19 +378,29 @@ class AaeTextStyles {
     fontFamily: _americanSansMedium,
   );
 
-  /// Used: Stops indicator between multiple flights on a card, flight status,
+  /// Replaces: this is a new style
+  /// Used: stop indicator card divider,
+  static final caption12MediumGrayMed = caption12.copyWith(
+    fontFamily: _americanSansMedium,
+    color: AaeColors.mediumGray,
+  );
+
+  /// Replaces: departureDelayed
+  /// Used: flight status on cards - delayed,
   static final caption12DarkOrangeMed = caption12.copyWith(
     fontFamily: _americanSansMedium,
     color: AaeColors.darkOrange,
   );
 
-  /// Used: flight status,
+  /// Replaces: departureOnTime,
+  /// Used: flight status on cards - ontime,
   static final caption12GreenMed = caption12.copyWith(
     fontFamily: _americanSansMedium,
     color: AaeColors.green,
   );
 
-  /// Used: flight status,
+  /// Replaces: departureCancelled
+  /// Used: flight status on cards - cancelled,
   static final caption12DarkRedMed = caption12.copyWith(
     fontFamily: _americanSansMedium,
     color: AaeColors.darkRed,
@@ -364,6 +429,7 @@ class AaeTextStyles {
   /// BASE for BUTTON text --------------------------------------------------------------BUTTONS-----------
   /// Base classes = class name and size, white color, regular weight, 1.0 height
   /// Final classes = class name and size + color if different + weight if different + height if different
+  /// Replaces: checkInButton
   static const TextStyle btn18 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 18,
