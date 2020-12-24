@@ -10,7 +10,9 @@ import 'package:aae/recognition/component/points_balance/points_balance_bloc.dar
 import 'package:aae/recognition/component/points_history/points_history_bloc.dart';
 import 'package:aae/settings/settingslist/settings_list_bloc.dart';
 import 'package:aae/sign_in/workflow/sign_in_state_machine.dart';
+import 'package:aae/travel/component/airport_picker/details/airport_picker_bloc.dart';
 import 'package:aae/travel/component/priority_list/details/priority_list_bloc.dart';
+import 'package:aae/travel/component/reservation_detail/res_detail_bloc.dart';
 import 'package:aae/travel/component/flight_status/details/flight_status_bloc.dart';
 import 'package:aae/travel/component/flight_search/flight_search_bloc.dart';
 import 'package:aae/travel/component/trips/trips_bloc.dart';
@@ -28,8 +30,10 @@ abstract class BlocFactory
         PointsHistoryBlocFactory,
         TripsBlocFactory,
         PriorityListBlocFactory,
+        ReservationDetailBlocFactory,
         FlightStatusBlocFactory,
         FlightSearchBlocFactory,
+        AirportPickerBlocFactory,
         EventsListBlocFactory,
         D0StatsBlocFactory,
         NewsArticleBlocFactory,

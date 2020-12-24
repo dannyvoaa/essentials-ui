@@ -34,4 +34,5 @@ class AaeIconsv4 {
   static const IconData upArrow = const IconData(0xe044, fontFamily: _kFontFam);
   static const IconData checkMark = const IconData(0xe049, fontFamily: _kFontFam);
   static const IconData bagInfo = const IconData(0xe013, fontFamily: _kFontFam);
+  static const IconData search = const IconData(0xe039, fontFamily: _kFontFam);
 }
