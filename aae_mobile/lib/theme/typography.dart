@@ -324,6 +324,18 @@ class AaeTextStyles {
     color: AaeColors.lightGrayText,
   );
 
+  static const flightStatusTimeText = TextStyle(
+      fontSize: 18,
+      color: AaeColors.titleGray,
+      fontFamily: _americanSansMedium
+  );
+
+  static const flightSearchText = TextStyle(
+    fontSize: 15,
+    color: AaeColors.titleGray,
+    fontFamily: _americanSansMedium
+  );
+
   static const flightSearchHeader = TextStyle(
     fontSize: 32,
     color: AaeColors.mediumGray,

@@ -44,6 +44,16 @@ class FlightSearchView extends StatelessWidget {
   }
 
   _buildFlightSearchHeader(BuildContext context) {
+    FlightRoute flightRoute = viewModel.flightSearch.flightRoutes[0];
+    String origin = flightRoute.flightSegments[0].flightLegs[0].origin.code;
+    String destination = flightRoute
+        .flightSegments[flightRoute.flightSegments.length - 1]
+        .flightLegs[0]
+        .destination
+        .code;
+    String departureDate =
+        flightRoute.flightSegments[0].flightLegs[0].scheduledDepartureDateTime;
+
     return Column(children: <Widget>[
       Container(
         alignment: Alignment.topLeft,
@@ -51,7 +61,7 @@ class FlightSearchView extends StatelessWidget {
             padding:
                 const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 5),
             child: Text(
-              '$searchField1 to $searchField2',
+              '$origin to $destination',
               style: AaeTextStyles.flightSearchHeader,
               textAlign: TextAlign.left,
             )),
@@ -61,7 +71,7 @@ class FlightSearchView extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(left: 23, right: 20, bottom: 20),
           child: Text(
-            _convertStringToDate(searchDate),
+            _convertStringToDate(departureDate),
             style: AaeTextStyles.flightSearchSubHeader,
             textAlign: TextAlign.left,
           ),
@@ -313,7 +323,7 @@ class FlightSearchCardBodyColumn extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 0),
               child: Container(
                   padding: EdgeInsets.only(top: 0),
-                  child: Text(time, style: AaeTextStyles.locatorInfo)),
+                  child: Text(time, style: AaeTextStyles.flightSearchText)),
             ),
             Row(
               children: [
@@ -327,5 +337,4 @@ class FlightSearchCardBodyColumn extends StatelessWidget {
           ],
         ));
   }
-
 }
