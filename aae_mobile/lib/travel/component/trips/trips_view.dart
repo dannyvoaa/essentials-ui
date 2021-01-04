@@ -20,14 +20,12 @@ class TripsView extends StatelessWidget {
     return Container(
         child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
-            child: Column(
-              //?
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                TripsCollection(viewModel: this.viewModel, header: 'Current trips', loadReservationDetail: loadReservationDetail,),
-                TripsCollection(viewModel: null, header: 'Tools')
-              ],
-            )),
+            child: TripsCollection(
+              viewModel: this.viewModel,
+              header: 'Current trips',
+              loadReservationDetail: loadReservationDetail,
+            )
+        ),
         padding: const EdgeInsets.all(16.0));
   }
 }

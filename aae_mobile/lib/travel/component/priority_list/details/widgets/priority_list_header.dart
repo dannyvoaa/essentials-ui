@@ -24,7 +24,7 @@ class PriorityListHeader extends StatelessWidget {
     width: AaeDimens.sizeDynamic_16px(),
   );
 
-  final dateFormat = DateFormat('EEEE, MMMM d, y');
+  final dateFormat = DateFormat('EEEE, MMM d, y');
   final timeFormat = DateFormat.jm();
 
   final bulletDivider = Padding(

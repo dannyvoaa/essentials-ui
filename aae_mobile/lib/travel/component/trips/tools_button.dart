@@ -54,12 +54,6 @@ class ToolsButton extends StatelessWidget {
                   ),
                 )
               ]))),
-      Expanded(
-        child: Align(
-            alignment: Alignment.centerRight,
-            child:
-                Icon(Icons.arrow_forward_ios, color: AaeColors.ultraLightGray)),
-      )
     ]);
   }
 }
