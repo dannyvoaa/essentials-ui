@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class AaeColors {
   static const white = Colors.white;
   static const Color tableViewCellBackgroundSelected = Color.fromRGBO(0, 120,
-      210, 0.05); // not sure what this brand blue opacity is suppoed to be???
+      210, 0.05); // not sure what this brand blue opacity is supposed to be???
   static const Color tableViewCellBackground =
       Color.fromRGBO(255, 255, 255, 1.0); // white
 
@@ -20,8 +20,8 @@ class AaeColors {
       Color.fromRGBO(0, 229, 255, 1.0); // #00E5FF - replace with 'teal'
   static const premiumText = Color.fromRGBO(
       141, 91, 255, 1.0); // replace with 'premium'. Do we need both?
-  static const modernHint = Color.fromRGBO(
-      255, 255, 255, 0.4); // this is a duplicate of disabledText above
+  static const modernHint = Color.fromRGBO(255, 255, 255,
+      0.4); // #666666 - replace with 'mediumGray'
 
   // Button Text
   static const buttonPrimaryText = Color.fromRGBO(32, 33, 36, 1.0);
@@ -69,11 +69,11 @@ class AaeColors {
   static const highlightBlue = Color.fromRGBO(225, 240, 250, 1.0); //#E1F0FA
   // Brand palette - grays
   static const black = Color.fromRGBO(19, 19, 19, 1.0); //#131313
-  static const darkGray = Color.fromRGBO(54, 73, 90, 1.0); //#36495A
+  static const darkGray = Color.fromRGBO(54, 73, 90, 1.0); //#36495A - replaces: titleGray, darkGray, onboardTitle
   static const darkCadetGray = Color.fromRGBO(70, 87, 98, 1.0); //#465762 - new
   static const cadetGray = Color.fromRGBO(83, 103, 115, 1.0); //#536773 - new
   static const mediumGray = Color.fromRGBO(98, 122, 136, 1.0); //#627A88
-  static const gray = Color.fromRGBO(157, 166, 171, 1.0); //#9DA6AB
+  static const gray = Color.fromRGBO(157, 166, 171, 1.0); //#9DA6AB - replaces ultraLightGray
   static const lightGray = Color.fromRGBO(208, 218, 224, 1.0); //#D0DAE0
   static const halfwayLightGray =
       Color.fromRGBO(231, 236, 239, 1.0); //#E7ECEF - new

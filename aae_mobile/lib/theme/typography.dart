@@ -119,6 +119,12 @@ class AaeTextStyles {
     color: AaeColors.mediumGray,
     height: 1.33,
   );
+  /// Used: 'No trips yet' on home page,
+  static final title24MediumGrayBold140 = title24.copyWith(
+      fontFamily: _americanSansBold,
+      color: AaeColors.mediumGray,
+  );
+
 
   /// 22px BASE title text -----------------------------------------------------------------------22px--
   static const TextStyle title22 = TextStyle(
@@ -194,9 +200,15 @@ class AaeTextStyles {
   );
 
   /// Replaces: smallTextStyle, inlinePriorityList
-  /// Used: flight inventory card priority list, flight number, gate, departure time
+  /// Used: flight inventory card priority list, flight number, gate, departure time,
   static final subtitle18MediumGray = subtitle18.copyWith(
     color: AaeColors.mediumGray,
+  );
+
+  /// Used: no current trips subtext,
+  static final subtitle18MediumGray140 = subtitle18.copyWith(
+    color: AaeColors.mediumGray,
+    height: 1.40,
   );
 
   /// Replaces: subTitleLarge, tableCellTitle
