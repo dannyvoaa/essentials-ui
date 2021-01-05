@@ -43,10 +43,11 @@ class PriorityListPassengerListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(top:15, bottom: 15),
       margin: EdgeInsets.only(
-        bottom: AaeDimens.baseUnit,
-        left: AaeDimens.baseUnit,
-        right: AaeDimens.baseUnit,
+        bottom: 0,
+        left: 16,
+        right: 16,
       ),
       decoration:  BoxDecoration(
         color: Colors.white,
@@ -62,7 +63,7 @@ class PriorityListPassengerListItem extends StatelessWidget {
           // header row
           Container(
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   "${passenger.priorityNumber}. ${passenger.lastName} / ${passenger.firstName}",
@@ -88,9 +89,8 @@ class PriorityListPassengerListItem extends StatelessWidget {
             style: secondRowTextStyle,
             child: Container(
               padding: EdgeInsets.only(
-                top: AaeDimens.baseUnit / 2,
+                top: 10,
                 left: AaeDimens.baseUnit,
-                bottom: AaeDimens.baseUnit,
               ),
               child: Row(
                 children: [
@@ -156,7 +156,7 @@ class PriorityListPassengerListItem extends StatelessWidget {
 
   static _buildBulletDivider(Color color) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(3.0)),

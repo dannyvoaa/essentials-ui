@@ -32,7 +32,7 @@ class TripsButton extends StatelessWidget {
       Expanded(
         flex: 2,
         child: Align(
-            alignment: Alignment.centerLeft,
+            alignment: Alignment.centerRight,
             child: Text(
               '${pnr.recordLocator}',
               style: TextStyle(
@@ -42,13 +42,6 @@ class TripsButton extends StatelessWidget {
               textAlign: TextAlign.right,
             )),
       ),
-      Expanded(
-        flex: 1,
-        child: Align(
-            alignment: Alignment.centerRight,
-            child:
-                Icon(Icons.arrow_forward_ios, color: AaeColors.ultraLightGray)),
-      )
     ]);
   }
 }

@@ -65,16 +65,15 @@ class PriorityPassengerList extends StatelessWidget {
       return Container();
 
     return Container(
+      padding: EdgeInsets.only(top:20, bottom: 10),
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-
           // header row
           Container(
             padding: EdgeInsets.only(
-              top: AaeDimens.baseUnit * 1.5,
-              bottom: AaeDimens.baseUnit,
+              bottom: 5,
               left: AaeDimens.baseUnit,
               right: AaeDimens.baseUnit,
             ),

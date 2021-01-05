@@ -17,16 +17,19 @@ class PriorityListFooter extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Container(
-            width: 40,
-            padding: EdgeInsets.only(right:AaeDimens.baseUnit),
-            child: FlatButton(
-              padding: EdgeInsets.all(0.0),
+            padding: EdgeInsets.all(7),
+            margin: EdgeInsets.only(top: 20, bottom: 16, right: 16),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF5F5F7),
+              borderRadius: BorderRadius.all(Radius.circular(5)),
+            ),
+            child: InkWell(
               child: Icon(
                   AaeIconsv4.upArrow,
-                  size: 20,
-                  color: AaeColors.lightGray
+                  size: 24,
+                  color: const Color(0xff9da6ab),
               ),
-              onPressed: onUpButtonClicked,
+              onTap: onUpButtonClicked,
             ),
           ),
         ],

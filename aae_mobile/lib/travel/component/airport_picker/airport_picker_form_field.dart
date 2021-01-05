@@ -1,5 +1,6 @@
 import 'package:aae/model/airport.dart';
 import 'package:aae/theme/colors.dart';
+import 'package:aae/theme/typography.dart';
 import 'package:aae/travel/component/airport_picker/airport_picker_component.dart';
 import 'package:flutter/material.dart';
 
@@ -21,12 +22,6 @@ class AirportPickerFormField extends StatefulWidget {
 class _AirportPickerFormFieldState extends State<AirportPickerFormField> {
   Airport _selectedAirport;
 
-  final _fieldStyle = TextStyle(
-    fontSize: 15,
-    color: AaeColors.titleGray,
-    fontFamily: 'AmericanSansMedium',
-  );
-
   final _hintStyle = TextStyle(
     fontSize: 15,
     color: AaeColors.gray,
@@ -47,7 +42,7 @@ class _AirportPickerFormFieldState extends State<AirportPickerFormField> {
           ),
         ),
         child: Text(_selectedAirport == null ? 'City/airport' : _selectedAirport.code,
-          style: _selectedAirport == null ? _hintStyle : _fieldStyle,
+          style: _selectedAirport == null ? _hintStyle : AaeTextStyles.locatorInfo,
         ),
       ),
       onTap: () => AirportPickerComponent.showAsModalBottomSheet(

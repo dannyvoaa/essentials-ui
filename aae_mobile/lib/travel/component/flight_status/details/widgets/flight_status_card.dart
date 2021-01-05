@@ -53,7 +53,7 @@ class FlightStatusCardHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 8, right: 15, top: 8),
+      padding: EdgeInsets.only(left: 8, right: 8, top: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -106,7 +106,7 @@ class FlightStatusCardHeader extends StatelessWidget {
 
   convertStringToDate(String strDate) {
     DateTime todayDate = DateTime.parse(strDate);
-    final df = new DateFormat('EEEEE, MMM. d, yyyy');
+    final df = new DateFormat('EEEEE, MMM d, yyyy');
     String date = df.format(todayDate);
     return date;
   }
@@ -197,7 +197,7 @@ class FlightStatusCardBodyColumn extends StatelessWidget {
           ]),
         ),
         Container(
-          padding: EdgeInsets.only(bottom: 5),
+          padding: EdgeInsets.only(bottom: 10),
           child: Text(
             location,
             style: AaeTextStyles.reservationSubHeading,

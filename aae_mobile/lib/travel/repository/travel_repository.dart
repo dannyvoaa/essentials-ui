@@ -120,6 +120,16 @@ class TravelRepository implements Repository {
     _airports.sendNext(_cachedAirports);
   }
 
+  loadAirports() async {
+    if (_cachedAirports == null) {
+      _cachedAirports = await _travelApiClient.getAirports();
+    } {
+      _log.info('using cached airport list');
+    }
+
+    _airports.sendNext(_cachedAirports);
+  }
+
   loadFlightStatus(flightNumber, origin, date) async {
     FlightStatus flightStatus;
     try {
