@@ -66,7 +66,7 @@ class BottomNavigation extends StatelessWidget {
         items: [
           _buildItem(MainPage.home, context, 24, 2.0),
           _buildItem(MainPage.events, context, 24, 2.0),
-//          _buildItem(MainPage.travel, context, 18, 5.0),
+          _buildItem(MainPage.travel, context, 18, 5.0),
 //          _buildItem(MainPage.notifications, context, 18, 6.0),
         ],
           onTap: (index) {
@@ -98,16 +98,14 @@ class BottomNavigation extends StatelessWidget {
     final tabColor = _tabColor(page);
     return BottomNavigationBarItem(
         icon: Container(
-          height: 20,
           padding: EdgeInsets.only(top: offset,),
-          child: Container(
-            height:80,
-            child: Icon(
-              tabIconData[page],
-              size: size,
-              color: tabColor,
-              key: Key("TabIcon.$page"),
-            ),
+          height:20,
+          width: 50,
+          child: Icon(
+            tabIconData[page],
+            size: size,
+            color: tabColor,
+            key: Key("TabIcon.$page"),
           ),
         ),
       title: Container(

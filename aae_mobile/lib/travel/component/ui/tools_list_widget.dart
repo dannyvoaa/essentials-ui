@@ -6,10 +6,7 @@ import 'package:aae/travel/component/trips/trips_view_model.dart';
 import 'package:flutter/material.dart';
 
 class ToolsList extends StatelessWidget {
-  ToolsList({this.header, this.viewModel});
-
-  final TripsViewModel viewModel;
-  final String header;
+  static const String header = 'Tools';
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +45,7 @@ class ToolsList extends StatelessWidget {
           buttonContent: ToolsButton(
               iconData: AaeIconsv4.notifications,
               title: 'Create travel notifications',
-              subtitle: 'Create text or email notification for this flight'),
+              subtitle: 'Create text or email notification for this flight.'),
         ),
       ],
     );

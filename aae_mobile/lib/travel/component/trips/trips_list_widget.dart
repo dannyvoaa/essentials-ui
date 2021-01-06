@@ -7,9 +7,10 @@ import 'package:aae/travel/component/trips/trips_view_model.dart';
 import 'package:flutter/material.dart';
 
 class TripsListWidget extends StatelessWidget {
-  TripsListWidget({this.viewModel});
+  TripsListWidget({this.viewModel, this.loadReservationDetail});
 
   final TripsViewModel viewModel;
+  final Function(BuildContext, String) loadReservationDetail;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +31,14 @@ class TripsListWidget extends StatelessWidget {
               itemCount: viewModel.pnrs.length,
               itemBuilder: (context, index) {
                 return TravelListTile(
-                  buttonContent: TripsButton(
-                      pnr: this.viewModel.pnrs[index], context: context),
+                  buttonContent: InkWell(
+                    onTap: (){
+                      print('tapped...');
+                      loadReservationDetail(context, this.viewModel.pnrs[index].recordLocator);
+                    },
+                    child: TripsButton(
+                        pnr: this.viewModel.pnrs[index], context: context),
+                  ),
                 );
               }),
         );

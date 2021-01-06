@@ -1,6 +1,7 @@
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
 import 'package:aae/theme/typography.dart';
+import 'package:aae/travel/component/airport_picker/airport_picker_form_field.dart';
 import 'package:aae/travel/component/flight_status/details/flight_status_component.dart';
 import 'package:aae/travel/component/trips/trips_component.dart';
 import 'package:aae/travel/page/travel_page.dart';
@@ -12,6 +13,8 @@ class SearchFormData {
   String searchField2;
   String searchDate;
 }
+
+enum SearchFormFieldType { text, number, airport }
 
 class SearchForm extends StatefulWidget {
   SearchForm({
@@ -32,12 +35,12 @@ class SearchForm extends StatefulWidget {
 
   final String searchField1;
   final String searchHint1;
-  final TextInputType searchFieldType1;
+  final SearchFormFieldType searchFieldType1;
   final String searchField1Validation;
   final int searchField1ValidationLength;
   final String searchField2;
   final String searchHint2;
-  final TextInputType searchFieldType2;
+  final SearchFormFieldType searchFieldType2;
   final String searchField2Validation;
   final int searchField2ValidationLength;
   final String searchDate;
@@ -54,8 +57,20 @@ class _SearchFormState extends State<SearchForm> {
   SearchFormData _data = new SearchFormData();
   bool isEnabled = false;
 
+  final InputDecoration textFieldDecoration = InputDecoration(
+    hintStyle: AaeTextStyles.formHintText,
+    focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: AaeColors.blue),
+    ),
+    enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Color.fromRGBO(208, 218, 224, 1.0)),
+    ),
+  );
+
   enableButton(SearchFormData data) {
-    if (data.searchField1.isNotEmpty && data.searchField2.isNotEmpty) {
+    if (data.searchField1 != null && data.searchField2 != null &&
+        data.searchField1.isNotEmpty && data.searchField2.isNotEmpty) {
+
       setState(() {
         isEnabled = true;
       });
@@ -133,51 +148,69 @@ class _SearchFormState extends State<SearchForm> {
   _buildFormFields() {
     return Row(children: <Widget>[
       Expanded(
-          child: Container(
-              height: 35,
-              padding: EdgeInsets.only(right: 20),
-              child: TextFormField(
-                  style: AaeTextStyles.locatorInfo,
-                  keyboardType: widget.searchFieldType1,
-                  decoration: InputDecoration(
-                    hintStyle: AaeTextStyles.formHintText,
-                    hintText: widget.searchHint1,
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: AaeColors.blue),
-                    ),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color.fromRGBO(208, 218, 224, 1.0)),
-                    ),
-                  ),
-                  onChanged: (String value) {
-                    this._data.searchField1 = value;
-                    enableButton(this._data);
-                  }))),
+        child: Container(
+          height: 35,
+          padding: EdgeInsets.only(right: 20),
+          child: _buildSingleFormField(
+            type: widget.searchFieldType1,
+            hint: widget.searchHint1,
+            onChanged: (value) {
+              this._data.searchField1 = value;
+              enableButton(this._data);
+            },
+          ),
+        ),
+      ),
       Expanded(
-          child: Container(
-              height: 35,
-              padding: EdgeInsets.only(left: 20, right: 10),
-              child: TextFormField(
-                style: AaeTextStyles.locatorInfo,
-                keyboardType: widget.searchFieldType2,
-                decoration: InputDecoration(
-                  hintStyle: AaeTextStyles.formHintText,
-                  hintText: widget.searchHint2,
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: AaeColors.blue),
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color.fromRGBO(208, 218, 224, 1.0)),
-                  ),
-                ),
-                onChanged: (String value) {
-                  this._data.searchField2 = value;
-                  enableButton(this._data);
-                },
-              ))),
+        child: Container(
+          height: 35,
+          padding: EdgeInsets.only(left:20),
+          child: _buildSingleFormField(
+            type: widget.searchFieldType2,
+            hint: widget.searchHint2,
+            onChanged: (value) {
+              this._data.searchField2 = value;
+              enableButton(this._data);
+            },
+          ),
+        ),
+      ),
     ]);
+  }
+
+  Widget _buildSingleFormField({
+    Function(String) onChanged,
+    SearchFormFieldType type,
+    String hint,
+  }) {
+    switch (type) {
+      case SearchFormFieldType.airport:
+        return AirportPickerFormField(
+          onAirportSelected: (airport) {
+            onChanged(airport?.code);
+          },
+        );
+
+      case SearchFormFieldType.text:
+        return TextFormField(
+          style: AaeTextStyles.locatorInfo,
+          keyboardType: TextInputType.text,
+          decoration: textFieldDecoration.copyWith(
+            hintText: hint,
+          ),
+          onChanged: onChanged,
+        );
+
+      case SearchFormFieldType.number:
+        return TextFormField(
+          style: AaeTextStyles.locatorInfo,
+          keyboardType: TextInputType.number,
+          decoration: textFieldDecoration.copyWith(
+            hintText: hint,
+          ),
+          onChanged: onChanged,
+        );
+    }
   }
 
   _buildFormDatePicker() {

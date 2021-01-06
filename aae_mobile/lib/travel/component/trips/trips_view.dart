@@ -4,9 +4,11 @@ import 'trips_view_model.dart';
 
 class TripsView extends StatelessWidget {
   final TripsViewModel viewModel;
+  final Function(BuildContext, String) loadReservationDetail;
 
   TripsView({
     @required this.viewModel,
+    this.loadReservationDetail,
   });
 
   @override
@@ -18,14 +20,12 @@ class TripsView extends StatelessWidget {
     return Container(
         child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
-            child: Column(
-              //?
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                TripsCollection(viewModel: this.viewModel, header: 'Current trips'),
-                TripsCollection(viewModel: null, header: 'Tools')
-              ],
-            )),
+            child: TripsCollection(
+              viewModel: this.viewModel,
+              header: 'Current trips',
+              loadReservationDetail: loadReservationDetail,
+            )
+        ),
         padding: const EdgeInsets.all(16.0));
   }
 }
