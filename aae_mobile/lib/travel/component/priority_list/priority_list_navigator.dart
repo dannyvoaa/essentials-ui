@@ -56,7 +56,7 @@ class PriorityListNavigator extends StatelessWidget {
     );
   }
 
-  void loadPriorityList(BuildContext context, String flightNumber, String origin, String departureDate) {
+  void loadPriorityList(BuildContext context, String origin,  String flightNumber, String departureDate) {
     _log.info("loadPriorityList(origin: '$origin', flightNumber: '$flightNumber', departureDate:'$departureDate')");
 
     Navigator.of(context).pushNamed(

@@ -37,7 +37,7 @@ class FlightStatusComponent extends StatelessWidget {
     return Component<FlightStatusBloc, FlightStatusBlocFactory>(
       bloc: (factory) => factory.flightStatusBloc(),
       builder: (context, bloc) {
-        bloc.loadFlightStatus(this.flightNumber, this.origin, this.date);
+        bloc.loadFlightStatus(this.origin, this.flightNumber,  this.date);
         return SourceBuilder.of<FlightStatusViewModel>(
           source: bloc.viewModel,
           builder: (snapshot) {

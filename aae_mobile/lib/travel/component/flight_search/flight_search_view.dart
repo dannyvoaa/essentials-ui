@@ -56,6 +56,7 @@ class FlightSearchView extends StatelessWidget {
 
     return Column(children: <Widget>[
       Container(
+        padding: EdgeInsets.only(left: 3),
         alignment: Alignment.topLeft,
         child: Padding(
             padding:
@@ -117,7 +118,10 @@ _buildTravelListTile(BuildContext context, FlightRoute flightRoute,
     Function(BuildContext p1, String p2, String p3, String p4) searchType) {
   return Padding(
       padding: const EdgeInsets.only(
-          top: 0, bottom: AaeDimens.smallCardVerticalContentPadding),
+          top: 0,
+          bottom: AaeDimens.smallCardVerticalContentPadding,
+          left: 3,
+          right: 3),
       child: Container(
         child: _buildListTile(context, flightRoute, searchType),
         decoration: BoxDecoration(
@@ -144,8 +148,8 @@ _buildListTile(BuildContext context, FlightRoute flightRoute,
             onTap: () {
               searchType(
                   context,
-                  flightSegment.flightNumber,
                   flightSegment.flightLegs[0].origin.code,
+                  flightSegment.flightNumber,
                   flightSegment.flightLegs[0].scheduledDepartureDateTime
                       .substring(0, 10));
             },
