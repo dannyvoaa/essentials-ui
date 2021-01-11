@@ -98,16 +98,14 @@ class BottomNavigation extends StatelessWidget {
     final tabColor = _tabColor(page);
     return BottomNavigationBarItem(
         icon: Container(
-          height: 20,
           padding: EdgeInsets.only(top: offset,),
-          child: Container(
-            height:80,
-            child: Icon(
-              tabIconData[page],
-              size: size,
-              color: tabColor,
-              key: Key("TabIcon.$page"),
-            ),
+          height:20,
+          width: 50,
+          child: Icon(
+            tabIconData[page],
+            size: size,
+            color: tabColor,
+            key: Key("TabIcon.$page"),
           ),
         ),
       title: Container(

@@ -22,7 +22,7 @@ class FlightStatusView extends StatelessWidget {
           children: [
             _buildHeader(),
             FlightStatusCard(viewModel: viewModel),
-            ToolsList(viewModel: null, header: 'Tools'),
+            ToolsList(),
           ],
         ),
       ),

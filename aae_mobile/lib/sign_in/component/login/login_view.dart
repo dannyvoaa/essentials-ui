@@ -144,7 +144,7 @@ class LoginViewState extends State<LoginView> {
                   Map<String, dynamic> map = json.decode(data);
                   if (map != null && map.isNotEmpty) {
                     this.token = map["access_token"];
-                    print('--------token:$token');
+                    print('--------token saved');
                     SharedPrefUtils.saveStr('tokenvalue', token);
                   }
                 }
@@ -158,7 +158,6 @@ class LoginViewState extends State<LoginView> {
   }
 
   Future<Null> _getAllCookies(String url, String message) async {
-    print('*********************************************************************');
     //print(url);
     try {
       final String result = await flutterWebviewPlugin.getAllCookies(url);
