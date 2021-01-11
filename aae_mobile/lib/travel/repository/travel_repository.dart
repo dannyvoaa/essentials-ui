@@ -42,6 +42,8 @@ class TravelRepository implements Repository {
 
   final CacheService _cache;
   static String tripsKey = 'trips';
+  String strEmployeeId;
+  String strSmsession;
 
   Observable<BuiltList<Pnr>> get pnrs => _pnrs;
   Observable<PriorityList> get currentPriorityList => _currentPriorityList;
@@ -85,147 +87,111 @@ class TravelRepository implements Repository {
     return trips;
   }
 
-  fetchTrips() async {
-    String strEmployeeId = "";
-    String strSmsession = "";
+  void _getEmployeeIdAndSMSession() {
     if (_ssoAuth.currentUser != null) {
       strEmployeeId = _ssoAuth.currentUser.id;
-      strSmsession = _cache.readString("SMSESSION").value.toString();
-      if ((strSmsession != "") || (strSmsession != null)) {
-        try {
-          Trips trips = await _travelApiClient.getReservations(strEmployeeId,strSmsession);
-          _saveToCache(tripsKey, trips.toJson());
-          _loadFromTripsCache();
-        } catch (e, s) {
-          _log.severe('Failed to fetch trips: ', e, s);
-          return null;
-        }
-      } else {
-        _log.info('No SMSession found');
+      strSmsession = _cache
+          .readString("SMSESSION")
+          .value
+          .toString();
+    } else {
+      _log.info('No current User found');
+    }
+  }
+
+  fetchTrips() async {
+    _getEmployeeIdAndSMSession();
+    if ((strSmsession != "") || (strSmsession != null)) {
+      try {
+        Trips trips = await _travelApiClient.getReservations(strEmployeeId,strSmsession);
+        _saveToCache(tripsKey, trips.toJson());
+        _loadFromTripsCache();
+      } catch (e, s) {
+        _log.severe('Failed to fetch trips: ', e, s);
         return null;
       }
     } else {
-      _log.info('No current User found');
+      _log.info('No SMSession found');
       return null;
     }
   }
 
   loadPriorityList(String origin, int flightNum, DateTime date) async {
-    String strEmployeeId = "";
-    String strSmsession = "";
-    if (_ssoAuth.currentUser != null) {
-      strEmployeeId = _ssoAuth.currentUser.id;
-      strSmsession = _cache.readString("SMSESSION").value.toString();
-      if ((strSmsession != "") || (strSmsession != null)) {
-        _currentPriorityList.sendNext(null);
-        PriorityList priorityList = await _travelApiClient.getPriorityList(strEmployeeId, strSmsession, origin, flightNum, date);
-        _currentPriorityList.sendNext(priorityList);
-      } else {
-        _log.info('No SMSession found');
-        return null;
-      }
+    _getEmployeeIdAndSMSession();
+    if ((strSmsession != "") || (strSmsession != null)) {
+      _currentPriorityList.sendNext(null);
+      PriorityList priorityList = await _travelApiClient.getPriorityList(strEmployeeId, strSmsession, origin, flightNum, date);
+      _currentPriorityList.sendNext(priorityList);
     } else {
-        _log.info('No current User found');
-        return null;
+      _log.info('No SMSession found');
+      return null;
     }
   }
 
   loadAirports() async {
-    String strEmployeeId = "";
-    String strSmsession = "";
-    if (_ssoAuth.currentUser != null) {
-      strEmployeeId = _ssoAuth.currentUser.id;
-      strSmsession = _cache.readString("SMSESSION").value.toString();
-      if ((strSmsession != "") || (strSmsession != null)) {
-        if (_cachedAirports == null) {
-          _cachedAirports = await _travelApiClient.getAirports(strEmployeeId, strSmsession);
-        } else {
-          _log.info('using cached airport list');
-        }
-        _airports.sendNext(_cachedAirports);
+    _getEmployeeIdAndSMSession();
+    if ((strSmsession != "") || (strSmsession != null)) {
+      if (_cachedAirports == null) {
+        _cachedAirports = await _travelApiClient.getAirports(strEmployeeId, strSmsession);
       } else {
-        _log.info('No SMSession found');
-        return null;
+        _log.info('using cached airport list');
       }
+      _airports.sendNext(_cachedAirports);
     } else {
-      _log.info('No current User found');
+      _log.info('No SMSession found');
       return null;
     }
   }
 
   loadFlightStatus(flightNumber, origin, date) async {
-    String strEmployeeId = "";
-    String strSmsession = "";
-    if (_ssoAuth.currentUser != null) {
-      strEmployeeId = _ssoAuth.currentUser.id;
-      strSmsession = _cache.readString("SMSESSION").value.toString();
-      if ((strSmsession != "") || (strSmsession != null)) {
-        FlightStatus flightStatus;
-        try {
-          _flightStatus.sendNext(null);
-          flightStatus = await _travelApiClient.getFlightStatus(strEmployeeId, strSmsession, flightNumber, origin, date);
-          _flightStatus.sendNext(flightStatus);
-          return true;
-        } catch (e, s) {
-          _log.severe('Failed to fetch flightStatus', e, s);
-          flightStatus = new FlightStatus();
-          _flightStatus.sendNext(flightStatus);
-        }
-      } else {
-        _log.info('No SMSession found');
-        return null;
+    _getEmployeeIdAndSMSession();
+    if ((strSmsession != "") || (strSmsession != null)) {
+      FlightStatus flightStatus;
+      try {
+        _flightStatus.sendNext(null);
+        flightStatus = await _travelApiClient.getFlightStatus(strEmployeeId, strSmsession, flightNumber, origin, date);
+        _flightStatus.sendNext(flightStatus);
+        return true;
+      } catch (e, s) {
+        _log.severe('Failed to fetch flightStatus', e, s);
+        flightStatus = new FlightStatus();
+        _flightStatus.sendNext(flightStatus);
       }
     } else {
-      _log.info('No current User found');
+      _log.info('No SMSession found');
       return null;
     }
   }
 
   loadFlightSearch(origin, destination, date) async {
-    String strEmployeeId = "";
-    String strSmsession = "";
-    if (_ssoAuth.currentUser != null) {
-      strEmployeeId = _ssoAuth.currentUser.id;
-      strSmsession = _cache.readString("SMSESSION").value.toString();
-      if ((strSmsession != "") || (strSmsession != null)) {
-        FlightSearch flightSearch;
-        try {
-          _flightSearch.sendNext(null);
-          flightSearch = await _travelApiClient.getFlightSearch(strEmployeeId, strSmsession, origin, destination, date);
-          _flightSearch.sendNext(flightSearch);
-          return true;
-        } catch (e, s) {
-          _log.severe('Failed to fetch flightSearch', e, s);
-          flightSearch = new FlightSearch();
-          _flightSearch.sendNext(flightSearch);
-        }
-      } else {
-        _log.info('No SMSession found');
-        return null;
+    _getEmployeeIdAndSMSession();
+    if ((strSmsession != "") || (strSmsession != null)) {
+      FlightSearch flightSearch;
+      try {
+        _flightSearch.sendNext(null);
+        flightSearch = await _travelApiClient.getFlightSearch(strEmployeeId, strSmsession, origin, destination, date);
+        _flightSearch.sendNext(flightSearch);
+        return true;
+      } catch (e, s) {
+        _log.severe('Failed to fetch flightSearch', e, s);
+        flightSearch = new FlightSearch();
+        _flightSearch.sendNext(flightSearch);
       }
     } else {
-      _log.info('No current User found');
+      _log.info('No SMSession found');
       return null;
     }
   }
 
   loadReservationDetail(String pnr) async {
-    String strEmployeeId = "";
-    String strSmsession = "";
-    if (_ssoAuth.currentUser != null) {
-      strEmployeeId = _ssoAuth.currentUser.id;
-      strSmsession = _cache.readString("SMSESSION").value.toString();
-      if ((strSmsession != "") || (strSmsession != null)) {
-        _reservationDetail.sendNext(null);
-        ReservationDetail reservationDetail = await _travelApiClient.getReservationDetail(strEmployeeId, strSmsession, pnr);
-        _reservationDetail.sendNext(reservationDetail);
-      } else {
-      _log.info('No SMSession found');
-      return null;
-      }
+    _getEmployeeIdAndSMSession();
+    if ((strSmsession != "") || (strSmsession != null)) {
+      _reservationDetail.sendNext(null);
+      ReservationDetail reservationDetail = await _travelApiClient.getReservationDetail(strEmployeeId, strSmsession, pnr);
+      _reservationDetail.sendNext(reservationDetail);
     } else {
-      _log.info('No current User found');
-      return null;
+    _log.info('No SMSession found');
+    return null;
     }
   }
 
