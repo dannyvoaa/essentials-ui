@@ -1,22 +1,23 @@
 import 'package:aae/bloc/source_builder.dart';
 import 'package:aae/common/widgets/component/component.dart';
 import 'package:aae/common/widgets/loading/aae_loading_spinner.dart';
+import 'package:aae/theme/colors.dart';
 import 'package:aae/travel/component/priority_list/details/priority_list_view.dart';
 import 'package:aae/travel/component/priority_list/details/priority_list_view_model.dart';
+import 'package:aae/travel/component/ui/travel_snack_bar.dart';
 import 'package:flutter/material.dart';
 
 import 'priority_list_bloc.dart';
 
-class PriorityListArguments{
+class PriorityListArguments {
   final String origin;
   final int flightNumber;
   final DateTime departureDate;
 
-  PriorityListArguments({
-    @required this.origin,
-    @required this.flightNumber,
-    @required this.departureDate
-  });
+  PriorityListArguments(
+      {@required this.origin,
+      @required this.flightNumber,
+      @required this.departureDate});
 }
 
 /// Ties together [PriorityListBloc] and [PriorityListView].
@@ -24,18 +25,17 @@ class PriorityListComponent extends StatelessWidget {
   final String origin;
   final int flightNumber;
   final DateTime departureDate;
+  final TravelSnackBar travelSnackBar = new TravelSnackBar();
 
-  PriorityListComponent({
-    @required this.origin,
-    @required this.flightNumber,
-    @required this.departureDate
-  });
+  PriorityListComponent(
+      {@required this.origin,
+      @required this.flightNumber,
+      @required this.departureDate});
 
-  PriorityListComponent.from(PriorityListArguments args):
-      this.origin = args.origin,
-      this.flightNumber = args.flightNumber,
-      this.departureDate = args.departureDate;
-
+  PriorityListComponent.from(PriorityListArguments args)
+      : this.origin = args.origin,
+        this.flightNumber = args.flightNumber,
+        this.departureDate = args.departureDate;
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +49,21 @@ class PriorityListComponent extends StatelessWidget {
         return SourceBuilder.of<PriorityListViewModel>(
           source: bloc.viewModel,
           builder: (snapshot) {
-            if (snapshot.present && snapshot.value != null && snapshot.value.priorityList != null) {
+            if (snapshot.present &&
+                snapshot.value != null &&
+                snapshot.value.priorityList != null &&
+                snapshot.value.priorityList.flightNumber != null) {
               return PriorityListView(viewModel: snapshot.value);
+            } else if (snapshot.present &&
+                snapshot.value != null &&
+                snapshot.value.priorityList == null) {
+              return Center(child: AaeLoadingSpinner());
             } else {
+              travelSnackBar.showSnackBar(
+                  context,
+                  'No results were found. Please try again.',
+                  AaeColors.darkRed,
+                  true);
               return Center(child: AaeLoadingSpinner());
             }
           },

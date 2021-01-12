@@ -8,6 +8,19 @@ import 'flight_search_bloc.dart';
 import 'flight_search_view.dart';
 import 'flight_search_view_model.dart';
 
+class FlightSearchArguments {
+  final String destination;
+  final String origin;
+  final String date;
+  final Function(BuildContext, String, String, String) searchType;
+
+  FlightSearchArguments(
+      {@required this.destination,
+      @required this.origin,
+      @required this.date,
+      @required this.searchType});
+}
+
 class FlightSearchComponent extends StatelessWidget {
   final String destination;
   final String origin;
@@ -17,6 +30,12 @@ class FlightSearchComponent extends StatelessWidget {
 
   FlightSearchComponent(
       {this.destination, this.origin, this.date, this.searchType});
+
+  FlightSearchComponent.from(FlightSearchArguments args)
+      : this.destination = args.destination,
+        this.origin = args.origin,
+        this.date = args.date,
+        this.searchType = args.searchType;
 
   @override
   Widget build(BuildContext context) {
@@ -57,61 +76,5 @@ class FlightSearchComponent extends StatelessWidget {
 
   Widget _buildLoadingState(BuildContext context) {
     return Center(child: AaeLoadingSpinner());
-  }
-}
-
-class FlightSearch2Component extends StatelessWidget {
-  static const String _title = 'Flutter Code Sample';
-  final String destination;
-  final String origin;
-  final String date;
-  final Function(BuildContext, String, String, String) searchType;
-  final TravelSnackBar travelSnackBar = new TravelSnackBar();
-
-  FlightSearch2Component(
-      {this.destination, this.origin, this.date, this.searchType});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: _title,
-      home: MyStatefulWidget(
-          destination: this.destination,
-          origin: this.origin,
-          date: this.date,
-          searchType: this.searchType),
-    );
-  }
-}
-
-class MyStatefulWidget extends StatefulWidget {
-  MyStatefulWidget(
-      {Key key,
-      String destination,
-      String origin,
-      String date,
-      Function(BuildContext p1, String p2, String p3, String p4) searchType})
-      : super(key: key);
-
-  @override
-  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
-}
-
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  Future<String> _calculation = Future<String>.delayed(
-    Duration(seconds: 2),
-    () => 'Data Loaded',
-  );
-
-  Widget build(BuildContext context) {
-    return DefaultTextStyle(
-      style: Theme.of(context).textTheme.headline2,
-      textAlign: TextAlign.center,
-      child: FutureBuilder<String>(
-          future: _calculation, // a previously-obtained Future<String> or null
-          builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-
-          }),
-    );
   }
 }

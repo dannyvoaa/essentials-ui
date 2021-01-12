@@ -190,7 +190,7 @@ class FlightStatusCardBodyColumn extends StatelessWidget {
               padding: EdgeInsets.only(top: 12),
               child: Text(
                 time,
-                style: AaeTextStyles.timeSummary,
+                style: AaeTextStyles.flightStatusTimeText,
               ),
             ),
             _buildArrowIcon(arrowIcon),
