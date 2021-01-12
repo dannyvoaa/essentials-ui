@@ -8,6 +8,17 @@ import 'flight_status_bloc.dart';
 import 'flight_status_view.dart';
 import 'flight_status_view_model.dart';
 
+class FlightStatusArguments {
+  final String origin;
+  final String flightNumber;
+  final String date;
+
+  FlightStatusArguments(
+      {@required this.origin,
+      @required this.flightNumber,
+      @required this.date});
+}
+
 /// Ties together [FlightStatusBloc] and [FlightStatusView].
 class FlightStatusComponent extends StatelessWidget {
   final String flightNumber;
@@ -17,12 +28,16 @@ class FlightStatusComponent extends StatelessWidget {
 
   FlightStatusComponent({this.flightNumber, this.origin, this.date});
 
+  FlightStatusComponent.from(FlightStatusArguments args):
+        this.origin = args.origin,
+        this.flightNumber = args.flightNumber,
+        this.date = args.date;
   @override
   Widget build(BuildContext context) {
     return Component<FlightStatusBloc, FlightStatusBlocFactory>(
       bloc: (factory) => factory.flightStatusBloc(),
       builder: (context, bloc) {
-        bloc.loadFlightStatus(this.flightNumber, this.origin, this.date);
+        bloc.loadFlightStatus(this.origin, this.flightNumber,  this.date);
         return SourceBuilder.of<FlightStatusViewModel>(
           source: bloc.viewModel,
           builder: (snapshot) {
@@ -37,7 +52,10 @@ class FlightStatusComponent extends StatelessWidget {
               return _buildLoadingState(context);
             } else {
               travelSnackBar.showSnackBar(
-                  context, 'No results were found. Please try again.', AaeColors.darkRed, true);
+                  context,
+                  'No results were found. Please try again.',
+                  AaeColors.darkRed,
+                  true);
               return _buildLoadingState(context);
             }
           },

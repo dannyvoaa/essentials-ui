@@ -338,12 +338,14 @@ class AaeTextStyles {
   static const flightStatusTimeText = TextStyle(
       fontSize: 18,
       color: AaeColors.titleGray,
-      fontFamily: _americanSansMedium);
+      fontFamily: _americanSansMedium
+  );
 
   static const flightSearchText = TextStyle(
-      fontSize: 15,
-      color: AaeColors.titleGray,
-      fontFamily: _americanSansMedium);
+    fontSize: 15,
+    color: AaeColors.titleGray,
+    fontFamily: _americanSansMedium
+  );
 
   static const flightSearchHeader = TextStyle(
     fontSize: 32,
