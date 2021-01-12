@@ -220,6 +220,18 @@ class AaeTextStyles {
     color: AaeColors.titleGray,
   );
 
+  static const reservationNoTripsHeading = TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.bold,
+      color: AaeColors.mediumGray,
+      fontFamily: _americanSansMedium);
+
+  static const smallTextStyle = TextStyle(
+    fontFamily: _americanSans,
+    fontSize: 18,
+    color: const Color(0xff627a88),
+  );
+
   static const reservationSubHeading = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.normal,
@@ -280,7 +292,6 @@ class AaeTextStyles {
     fontWeight: _medium,
     fontSize: 12,
   );
-
 
   /// Travel module text styles
   static const travelHeader = TextStyle(
@@ -496,7 +507,8 @@ class AaeTextStyles {
   static TextStyle tableCellValueHub() {
     //TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(color: AaeColors.red, fontSize: 18);
     //TextStyle(fontSize: 16, color: Colors.orange, fontWeight: FontWeight.bold);
-    TextStyle mytextStyle = TextStyle(fontSize: 20, color: Colors.grey, fontWeight: FontWeight.bold);
+    TextStyle mytextStyle = TextStyle(
+        fontSize: 20, color: Colors.grey, fontWeight: FontWeight.bold);
     // Default style
     return mytextStyle;
   }
@@ -579,5 +591,6 @@ class AaeTextStyles {
     return textStyle;
   }
 
-  static const pageHeadline = TextStyle(fontSize: 24, fontWeight: _bold, color: AaeColors.onboardTitle);
+  static const pageHeadline =
+      TextStyle(fontSize: 24, fontWeight: _bold, color: AaeColors.onboardTitle);
 }
