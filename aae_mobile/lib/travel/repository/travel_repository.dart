@@ -87,21 +87,27 @@ class TravelRepository implements Repository {
     return trips;
   }
 
-  void _getEmployeeIdAndSMSession() {
+  bool existsEmployeeIdAndSMSession() {
+    bool bExists = false;
     if (_ssoAuth.currentUser != null) {
       strEmployeeId = _ssoAuth.currentUser.id;
       strSmsession = _cache
           .readString("SMSESSION")
           .value
           .toString();
+      if ((strSmsession != "") || (strSmsession != null)) {
+        bExists = true;
+      } else {
+          _log.info('No SMSession found');
+      }
     } else {
-      _log.info('No current User found');
+        _log.info('No current User found');
     }
+    return bExists;
   }
 
   fetchTrips() async {
-    _getEmployeeIdAndSMSession();
-    if ((strSmsession != "") || (strSmsession != null)) {
+    if (existsEmployeeIdAndSMSession()) {
       try {
         Trips trips = await _travelApiClient.getReservations(strEmployeeId,strSmsession);
         _saveToCache(tripsKey, trips.toJson());
@@ -111,26 +117,22 @@ class TravelRepository implements Repository {
         return null;
       }
     } else {
-      _log.info('No SMSession found');
-      return null;
+        return null;
     }
   }
 
   loadPriorityList(String origin, int flightNum, DateTime date) async {
-    _getEmployeeIdAndSMSession();
-    if ((strSmsession != "") || (strSmsession != null)) {
+    if (existsEmployeeIdAndSMSession()) {
       _currentPriorityList.sendNext(null);
       PriorityList priorityList = await _travelApiClient.getPriorityList(strEmployeeId, strSmsession, origin, flightNum, date);
       _currentPriorityList.sendNext(priorityList);
     } else {
-      _log.info('No SMSession found');
-      return null;
+        return null;
     }
   }
 
   loadAirports() async {
-    _getEmployeeIdAndSMSession();
-    if ((strSmsession != "") || (strSmsession != null)) {
+    if (existsEmployeeIdAndSMSession()) {
       if (_cachedAirports == null) {
         _cachedAirports = await _travelApiClient.getAirports(strEmployeeId, strSmsession);
       } else {
@@ -138,17 +140,15 @@ class TravelRepository implements Repository {
       }
       _airports.sendNext(_cachedAirports);
     } else {
-      _log.info('No SMSession found');
-      return null;
+        return null;
     }
   }
 
   loadFlightStatus(flightNumber, origin, date) async {
-    _getEmployeeIdAndSMSession();
-    if ((strSmsession != "") || (strSmsession != null)) {
+    if (existsEmployeeIdAndSMSession()) {
       FlightStatus flightStatus;
       try {
-        _flightStatus.sendNext(null);
+        //_flightStatus.sendNext(null);
         flightStatus = await _travelApiClient.getFlightStatus(strEmployeeId, strSmsession, flightNumber, origin, date);
         _flightStatus.sendNext(flightStatus);
         return true;
@@ -158,14 +158,12 @@ class TravelRepository implements Repository {
         _flightStatus.sendNext(flightStatus);
       }
     } else {
-      _log.info('No SMSession found');
-      return null;
+        return null;
     }
   }
 
   loadFlightSearch(origin, destination, date) async {
-    _getEmployeeIdAndSMSession();
-    if ((strSmsession != "") || (strSmsession != null)) {
+    if (existsEmployeeIdAndSMSession()) {
       FlightSearch flightSearch;
       try {
         _flightSearch.sendNext(null);
@@ -178,20 +176,17 @@ class TravelRepository implements Repository {
         _flightSearch.sendNext(flightSearch);
       }
     } else {
-      _log.info('No SMSession found');
-      return null;
+        return null;
     }
   }
 
   loadReservationDetail(String pnr) async {
-    _getEmployeeIdAndSMSession();
-    if ((strSmsession != "") || (strSmsession != null)) {
+    if (existsEmployeeIdAndSMSession()) {
       _reservationDetail.sendNext(null);
       ReservationDetail reservationDetail = await _travelApiClient.getReservationDetail(strEmployeeId, strSmsession, pnr);
       _reservationDetail.sendNext(reservationDetail);
     } else {
-    _log.info('No SMSession found');
-    return null;
+        return null;
     }
   }
 

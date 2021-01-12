@@ -56,9 +56,7 @@ class FlightSearchBloc {
   FlightSearchBloc(this._travelRepository);
 
   FlightSearchViewModel _createViewModel(FlightSearch flightSearch) {
-    return FlightSearchViewModel(
-        flightSearch: flightSearch,
-        loadFlightSearch: loadFlightSearch);
+    return FlightSearchViewModel(flightSearch: flightSearch, loadFlightSearch: loadFlightSearch);
   }
 }
 
