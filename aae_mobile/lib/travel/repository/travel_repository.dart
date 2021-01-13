@@ -123,9 +123,15 @@ class TravelRepository implements Repository {
 
   loadPriorityList(String origin, int flightNum, DateTime date) async {
     if (existsEmployeeIdAndSMSession()) {
-      _currentPriorityList.sendNext(null);
-      PriorityList priorityList = await _travelApiClient.getPriorityList(strEmployeeId, strSmsession, origin, flightNum, date);
-      _currentPriorityList.sendNext(priorityList);
+	    PriorityList priorityList;
+    	try {
+      		_currentPriorityList.sendNext(null);
+      		priorityList = await _travelApiClient.getPriorityList(strEmployeeId, strSmsession, origin, flightNum, date);
+      		_currentPriorityList.sendNext(priorityList);
+	} catch (e, s) {
+      		priorityList = new PriorityList();
+      		_currentPriorityList.sendNext(priorityList);
+    	}
     } else {
         return null;
     }
@@ -148,7 +154,7 @@ class TravelRepository implements Repository {
     if (existsEmployeeIdAndSMSession()) {
       FlightStatus flightStatus;
       try {
-        //_flightStatus.sendNext(null);
+        _flightStatus.sendNext(null);
         flightStatus = await _travelApiClient.getFlightStatus(strEmployeeId, strSmsession, flightNumber, origin, date);
         _flightStatus.sendNext(flightStatus);
         return true;

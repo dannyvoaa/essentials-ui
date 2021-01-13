@@ -44,14 +44,25 @@ class FlightSearchView extends StatelessWidget {
   }
 
   _buildFlightSearchHeader(BuildContext context) {
+    FlightRoute flightRoute = viewModel.flightSearch.flightRoutes[0];
+    String origin = flightRoute.flightSegments[0].flightLegs[0].origin.code;
+    String destination = flightRoute
+        .flightSegments[flightRoute.flightSegments.length - 1]
+        .flightLegs[0]
+        .destination
+        .code;
+    String departureDate =
+        flightRoute.flightSegments[0].flightLegs[0].scheduledDepartureDateTime;
+
     return Column(children: <Widget>[
       Container(
+        padding: EdgeInsets.only(left: 3),
         alignment: Alignment.topLeft,
         child: Padding(
             padding:
                 const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 5),
             child: Text(
-              '$searchField1 to $searchField2',
+              '$origin to $destination',
               style: AaeTextStyles.flightSearchHeader,
               textAlign: TextAlign.left,
             )),
@@ -61,7 +72,7 @@ class FlightSearchView extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(left: 23, right: 20, bottom: 20),
           child: Text(
-            _convertStringToDate(searchDate),
+            _convertStringToDate(departureDate),
             style: AaeTextStyles.flightSearchSubHeader,
             textAlign: TextAlign.left,
           ),
@@ -107,7 +118,10 @@ _buildTravelListTile(BuildContext context, FlightRoute flightRoute,
     Function(BuildContext p1, String p2, String p3, String p4) searchType) {
   return Padding(
       padding: const EdgeInsets.only(
-          top: 0, bottom: AaeDimens.smallCardVerticalContentPadding),
+          top: 0,
+          bottom: AaeDimens.smallCardVerticalContentPadding,
+          left: 3,
+          right: 3),
       child: Container(
         child: _buildListTile(context, flightRoute, searchType),
         decoration: BoxDecoration(
@@ -127,7 +141,6 @@ _buildTravelListTile(BuildContext context, FlightRoute flightRoute,
 _buildListTile(BuildContext context, FlightRoute flightRoute,
     Function(BuildContext p1, String p2, String p3, String p4) searchType) {
   List<Widget> list = new List<Widget>();
-  List<FlightSegment> flightSegments = new List();
 
   for (FlightSegment flightSegment in flightRoute.flightSegments) {
     list.add(new Material(
@@ -135,8 +148,8 @@ _buildListTile(BuildContext context, FlightRoute flightRoute,
             onTap: () {
               searchType(
                   context,
-                  flightSegment.flightNumber,
                   flightSegment.flightLegs[0].origin.code,
+                  flightSegment.flightNumber,
                   flightSegment.flightLegs[0].scheduledDepartureDateTime
                       .substring(0, 10));
             },
@@ -178,16 +191,6 @@ _convertStringToDate(String strDate) {
   final df = new DateFormat('EEEEE, MMMM d, yyyy');
   String date = df.format(todayDate);
   return date;
-}
-
-String _formatDate(String time) {
-  if (time.isNotEmpty) {
-    DateTime dateTime = DateTime.parse(time);
-    String formattedDate = DateFormat('hh:mm a').format(dateTime);
-    return formattedDate;
-  } else {
-    return time;
-  }
 }
 
 _buildFlightSearchButton(
@@ -306,8 +309,8 @@ class FlightSearchCardBody extends StatelessWidget {
 }
 
 class FlightSearchCardBodyColumn extends StatelessWidget {
-  String time;
-  String location;
+  final String time;
+  final String location;
 
   FlightSearchCardBodyColumn(this.time, this.location);
 
@@ -324,7 +327,7 @@ class FlightSearchCardBodyColumn extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 0),
               child: Container(
                   padding: EdgeInsets.only(top: 0),
-                  child: Text(time, style: AaeTextStyles.locatorInfo)),
+                  child: Text(time, style: AaeTextStyles.flightSearchText)),
             ),
             Row(
               children: [
@@ -337,16 +340,5 @@ class FlightSearchCardBodyColumn extends StatelessWidget {
             )
           ],
         ));
-  }
-
-  Widget _buildClockIcon(bool clockIcon) {
-    if (clockIcon) {
-      return Container(
-        padding: EdgeInsets.only(top: 1, left: 5),
-        child: Icon(AaeIconsv4.clock, size: 12, color: AaeColors.titleGray),
-      );
-    } else {
-      return Container();
-    }
   }
 }

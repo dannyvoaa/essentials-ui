@@ -70,6 +70,7 @@ class _SearchFormState extends State<SearchForm> {
   enableButton(SearchFormData data) {
     if (data.searchField1 != null && data.searchField2 != null &&
         data.searchField1.isNotEmpty && data.searchField2.isNotEmpty) {
+
       setState(() {
         isEnabled = true;
       });
@@ -90,11 +91,16 @@ class _SearchFormState extends State<SearchForm> {
     return _buildSearchForm(context);
   }
 
-  void submit(BuildContext context, Function(BuildContext context, String searchField1, String searchField2, String searchDate) searchType) {
+  void submit(
+      BuildContext context,
+      Function(BuildContext context, String searchField1, String searchField2,
+              String searchDate)
+          searchType) {
     // First validate form.
     if (this._formKey.currentState.validate()) {
       _formKey.currentState.save(); // Save our form now.
-      searchType(context, this._data.searchField1, this._data.searchField2, this._data.searchDate);
+      searchType(context, this._data.searchField1, this._data.searchField2,
+          this._data.searchDate);
     }
   }
 

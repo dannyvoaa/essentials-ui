@@ -16,8 +16,8 @@ class TravelServiceApi {
   static final Logger _log = Logger('AAE Travel API Client');
   final http.Client httpClient = http.Client();
 
-  //static const String baseUrl = 'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/testtravel';
-  static const String baseUrl = 'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/travel';
+  static const String baseUrl =
+      'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/travel';
 
   static const travelReservationsEndpoint = '$baseUrl/reservations';
   static const priorityListEndpoint = '$baseUrl/prioritylist';
@@ -123,8 +123,7 @@ class TravelServiceApi {
     }
   }
 
-  Future<FlightStatus> getFlightStatus(String employeeId, String smsession, String flightNumber,
-      String origin, String date) async {
+  Future<FlightStatus> getFlightStatus(String employeeId, String smsession, String flightNumber, String origin, String date) async {
     Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
     String constructedUrl = "$travelFlightStatusEndpoint/$origin/$flightNumber/$date";
     final response = await httpClient.get(constructedUrl, headers: headers);
