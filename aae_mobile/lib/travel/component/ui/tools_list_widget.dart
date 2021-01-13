@@ -10,17 +10,17 @@ class ToolsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _buildTripsCollection(context);
+    return _buildToolsCollection(context);
   }
 
-  _buildTripsCollection(BuildContext context) {
+  _buildToolsCollection(BuildContext context) {
     return Container(
         child: Column(
       children: <Widget>[
         Container(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: const EdgeInsets.only(top: 30, bottom: 5),
+              padding: const EdgeInsets.only(top: 30, bottom: 10),
               child: Text(
                 header,
                 style: AaeTextStyles.travelHeader,

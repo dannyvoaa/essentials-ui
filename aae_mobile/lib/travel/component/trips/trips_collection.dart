@@ -3,6 +3,7 @@ import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/typography.dart';
 import 'package:aae/travel/component/trips/trips_list_widget.dart';
 import 'package:aae/travel/component/trips/trips_view_model.dart';
+import 'package:aae/travel/component/ui/tools_list_widget.dart';
 import 'package:flutter/material.dart';
 
 class TripsCollection extends StatelessWidget {
@@ -14,7 +15,9 @@ class TripsCollection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (this.viewModel.pnrs.length > 0) {
+    if (this.viewModel == null) {
+      return ToolsList();
+    } else if (this.viewModel.pnrs.length > 0) {
       return _buildTripsCollection(context);
     } else {
       return _buildNoTripsCollection(context);
