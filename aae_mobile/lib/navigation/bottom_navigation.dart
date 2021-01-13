@@ -28,14 +28,14 @@ class BottomNavigation extends StatelessWidget {
     MainPage.home: 'Home',
     MainPage.events: 'Calendar',
     MainPage.travel: 'Trips',
-//    MainPage.notifications: 'Notifications',
+    MainPage.notifications: 'Notifications',
   };
 
   static final Map<MainPage, IconData> tabIconData = {
     MainPage.home: AaeIcons.home,
     MainPage.events: AaeIcons.calendar,
     MainPage.travel: AaeIcons.travel,
-//    MainPage.notifications: AaeIcons.notifications,
+    MainPage.notifications: AaeIcons.notifications,
   };
 
 //  void _closeDrawer() {
