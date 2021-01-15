@@ -46,13 +46,18 @@ class TravelRepository implements Repository {
   String strSmsession;
 
   Observable<BuiltList<Pnr>> get pnrs => _pnrs;
+
   Observable<PriorityList> get currentPriorityList => _currentPriorityList;
+
   Observable<ReservationDetail> get reservationDetail => _reservationDetail;
+
   Observable<FlightStatus> get flightStatus => _flightStatus;
+
   Observable<FlightSearch> get flightSearch => _flightSearch;
+
   Observable<BuiltList<Airport>> get airports => _airports;
 
-  BuiltList<Airport> _cachedAirports;
+  BuiltList<Airport> cachedAirports;
 
   void set flightStatus(var value) {
     flightStatus = value;
@@ -83,7 +88,8 @@ class TravelRepository implements Repository {
   }
 
   static Trips _tripsToModel(String tripsJson) {
-    Trips trips = serializers.deserializeWith(Trips.serializer, jsonDecode(tripsJson));
+    Trips trips =
+        serializers.deserializeWith(Trips.serializer, jsonDecode(tripsJson));
     return trips;
   }
 
@@ -91,17 +97,14 @@ class TravelRepository implements Repository {
     bool bExists = false;
     if (_ssoAuth.currentUser != null) {
       strEmployeeId = _ssoAuth.currentUser.id;
-      strSmsession = _cache
-          .readString("SMSESSION")
-          .value
-          .toString();
+      strSmsession = _cache.readString("SMSESSION").value.toString();
       if ((strSmsession != "") || (strSmsession != null)) {
         bExists = true;
       } else {
-          _log.info('No SMSession found');
+        _log.info('No SMSession found');
       }
     } else {
-        _log.info('No current User found');
+      _log.info('No current User found');
     }
     return bExists;
   }
@@ -109,7 +112,8 @@ class TravelRepository implements Repository {
   fetchTrips() async {
     if (existsEmployeeIdAndSMSession()) {
       try {
-        Trips trips = await _travelApiClient.getReservations(strEmployeeId,strSmsession);
+        Trips trips =
+            await _travelApiClient.getReservations(strEmployeeId, strSmsession);
         _saveToCache(tripsKey, trips.toJson());
         _loadFromTripsCache();
       } catch (e, s) {
@@ -117,36 +121,38 @@ class TravelRepository implements Repository {
         return null;
       }
     } else {
-        return null;
+      return null;
     }
   }
 
   loadPriorityList(String origin, int flightNum, DateTime date) async {
     if (existsEmployeeIdAndSMSession()) {
-	    PriorityList priorityList;
-    	try {
-      		_currentPriorityList.sendNext(null);
-      		priorityList = await _travelApiClient.getPriorityList(strEmployeeId, strSmsession, origin, flightNum, date);
-      		_currentPriorityList.sendNext(priorityList);
-	} catch (e, s) {
-      		priorityList = new PriorityList();
-      		_currentPriorityList.sendNext(priorityList);
-    	}
+      PriorityList priorityList;
+      try {
+        _currentPriorityList.sendNext(null);
+        priorityList = await _travelApiClient.getPriorityList(
+            strEmployeeId, strSmsession, origin, flightNum, date);
+        _currentPriorityList.sendNext(priorityList);
+      } catch (e, s) {
+        priorityList = new PriorityList();
+        _currentPriorityList.sendNext(priorityList);
+      }
     } else {
-        return null;
+      return null;
     }
   }
 
   loadAirports() async {
     if (existsEmployeeIdAndSMSession()) {
-      if (_cachedAirports == null) {
-        _cachedAirports = await _travelApiClient.getAirports(strEmployeeId, strSmsession);
+      if (cachedAirports == null) {
+        cachedAirports =
+            await _travelApiClient.getAirports(strEmployeeId, strSmsession);
       } else {
         _log.info('using cached airport list');
       }
-      _airports.sendNext(_cachedAirports);
+      _airports.sendNext(cachedAirports);
     } else {
-        return null;
+      return null;
     }
   }
 
@@ -155,7 +161,8 @@ class TravelRepository implements Repository {
       FlightStatus flightStatus;
       try {
         _flightStatus.sendNext(null);
-        flightStatus = await _travelApiClient.getFlightStatus(strEmployeeId, strSmsession, flightNumber, origin, date);
+        flightStatus = await _travelApiClient.getFlightStatus(
+            strEmployeeId, strSmsession, flightNumber, origin, date);
         _flightStatus.sendNext(flightStatus);
         return true;
       } catch (e, s) {
@@ -164,7 +171,7 @@ class TravelRepository implements Repository {
         _flightStatus.sendNext(flightStatus);
       }
     } else {
-        return null;
+      return null;
     }
   }
 
@@ -173,7 +180,8 @@ class TravelRepository implements Repository {
       FlightSearch flightSearch;
       try {
         _flightSearch.sendNext(null);
-        flightSearch = await _travelApiClient.getFlightSearch(strEmployeeId, strSmsession, origin, destination, date);
+        flightSearch = await _travelApiClient.getFlightSearch(
+            strEmployeeId, strSmsession, origin, destination, date);
         _flightSearch.sendNext(flightSearch);
         return true;
       } catch (e, s) {
@@ -182,17 +190,18 @@ class TravelRepository implements Repository {
         _flightSearch.sendNext(flightSearch);
       }
     } else {
-        return null;
+      return null;
     }
   }
 
   loadReservationDetail(String pnr) async {
     if (existsEmployeeIdAndSMSession()) {
       _reservationDetail.sendNext(null);
-      ReservationDetail reservationDetail = await _travelApiClient.getReservationDetail(strEmployeeId, strSmsession, pnr);
+      ReservationDetail reservationDetail = await _travelApiClient
+          .getReservationDetail(strEmployeeId, strSmsession, pnr);
       _reservationDetail.sendNext(reservationDetail);
     } else {
-        return null;
+      return null;
     }
   }
 
