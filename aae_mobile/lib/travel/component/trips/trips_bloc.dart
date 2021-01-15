@@ -16,8 +16,10 @@ class TripsBloc {
   static final _log = Logger('TripsBloc');
   final TravelRepository _travelRepository;
 
-  Source<TripsViewModel> get viewModel =>
-      toSource(combineLatest(_travelRepository.pnrs, _createViewModel));
+  Source<TripsViewModel> get viewModel {
+      _travelRepository.fetchTrips();
+      return toSource(combineLatest(_travelRepository.pnrs, _createViewModel));
+  }
 
   @provide
   TripsBloc(this._travelRepository);

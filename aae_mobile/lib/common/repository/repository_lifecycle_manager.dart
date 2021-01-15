@@ -56,7 +56,7 @@ class RepositoryLifecycleManager {
 
   void _clearData() {
     _log.info('Clearing repository and user data');
-    _cacheService.clear();
+    //_cacheService.clear();
     for (var repo in _repositories) {
       repo.clear();
     }

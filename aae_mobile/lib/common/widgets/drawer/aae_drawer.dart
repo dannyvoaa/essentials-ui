@@ -3,6 +3,7 @@ import 'package:aae/navigation/navigation_helper.dart';
 import 'package:aae/navigation/routes.dart' as routes;
 import 'package:aae/profile/profile_details.dart';
 import 'package:aae/service_provider.dart';
+import 'package:aae/sign_in/component/login/login_settings.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +18,9 @@ import 'package:linkable/linkable.dart';
 
 class AaeDrawer extends StatelessWidget {
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
+  LoginSettings myloginsettings = new LoginSettings();
   _logoutfromSM() {
-    String logouturl = logoutEndpoint + "?originalTarget=" + redirectUri;
+    String logouturl = myloginsettings.logoutEndpoint + "?originalTarget=" + myloginsettings.redirectUri;
     flutterWebviewPlugin.launch(logouturl, hidden: true);
     /*
     Map<String, dynamic> bodyparams = Map<String, dynamic>();

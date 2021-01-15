@@ -28,21 +28,16 @@ class TravelServiceApi {
 
   final dateFormatter = DateFormat("yyyy-MM-dd");
 
-  Map<String, String> _getRequestHeaders(String employeeId) {
-    String username = employeeId;
-    String password = '4Password';
-
-    String basicAuth =
-        'Basic ' + base64Encode(utf8.encode('$username:$password'));
-
-    Map<String, String> headers = {
-      'content-type': 'application/json',
-      'accept': 'application/json',
-      'authorization': basicAuth
-    };
-
-    return headers;
+  Map<String, String> _getRequestHeaders(String employeeId, String smsession) {
+      Map<String, String> headers = {
+        'content-type': 'application/json',
+        'accept': 'application/json',
+        'smsession': smsession,
+        'smuser': employeeId
+      };
+      return headers;
   }
+
 
   static Trips _tripsToModel(String tripsJson) {
     _log.info(jsonDecode(tripsJson));
@@ -52,10 +47,9 @@ class TravelServiceApi {
     return trips;
   }
 
-  Future<Trips> getReservations(String employeeId) async {
-    Map<String, String> headers = _getRequestHeaders(employeeId);
-    final response =
-        await httpClient.get(travelReservationsEndpoint, headers: headers);
+  Future<Trips> getReservations(String employeeId, String smsession) async {
+    Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
+    final response = await httpClient.get(travelReservationsEndpoint, headers: headers);
     if (response.statusCode == 200) {
       _log.info("Reservation API request successful");
       _log.info(response.body);
@@ -69,13 +63,12 @@ class TravelServiceApi {
     }
   }
 
-  Future<PriorityList> getPriorityList(
+  Future<PriorityList> getPriorityList(String employeeId, String smsession,
       String origin, int flightNum, DateTime date) async {
     _log.info("initiating priority list request: $origin $flightNum $date");
 
-    Map<String, String> headers = _getRequestHeaders("72000027");
-    String constructedUrl =
-        "$priorityListEndpoint/$origin/$flightNum/${dateFormatter.format(date)}";
+    Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
+    String constructedUrl = "$priorityListEndpoint/$origin/$flightNum/${dateFormatter.format(date)}";
     _log.info(constructedUrl);
 
     var response;
@@ -90,19 +83,18 @@ class TravelServiceApi {
     if (response.statusCode == 200) {
       _log.info("priority list request successful");
       _log.info(response.body);
-      return serializers.deserializeWith(
-          PriorityList.serializer, jsonDecode(response.body));
+      return serializers.deserializeWith(PriorityList.serializer, jsonDecode(response.body));
     } else {
       throw Exception(
           'failed to load the priority list.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
     }
   }
 
-  Future<BuiltList<Airport>> getAirports() async {
+  Future<BuiltList<Airport>> getAirports(String employeeId, String smsession) async {
     _log.info("initiating airports request.");
     _log.info("url: $airportsEndpoint");
 
-    Map<String, String> headers = _getRequestHeaders("72000027");
+    Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
 
     var response;
     try {
@@ -131,11 +123,9 @@ class TravelServiceApi {
     }
   }
 
-  Future<FlightStatus> getFlightStatus(String employeeId, String flightNumber,
-      String origin, String date) async {
-    Map<String, String> headers = _getRequestHeaders(employeeId);
-    String constructedUrl =
-        "$travelFlightStatusEndpoint/$origin/$flightNumber/$date";
+  Future<FlightStatus> getFlightStatus(String employeeId, String smsession, String flightNumber, String origin, String date) async {
+    Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
+    String constructedUrl = "$travelFlightStatusEndpoint/$origin/$flightNumber/$date";
     final response = await httpClient.get(constructedUrl, headers: headers);
     if (response.statusCode == 200) {
       FlightStatus flightStatus;
@@ -153,8 +143,8 @@ class TravelServiceApi {
   }
 
   Future<FlightSearch> getFlightSearch(
-      String employeeId, String origin, String destination, String date) async {
-    Map<String, String> headers = _getRequestHeaders(employeeId);
+      String employeeId, String smsession, String origin, String destination, String date) async {
+    Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
     String constructedUrl =
         "$travelFlightSearchEndpoint/$origin/$destination/$date";
     final response = await httpClient.get(constructedUrl, headers: headers);
@@ -175,10 +165,10 @@ class TravelServiceApi {
     }
   }
 
-  Future<ReservationDetail> getReservationDetail(String pnr) async {
+  Future<ReservationDetail> getReservationDetail(String employeeId, String smsession,String pnr) async {
     _log.info("initiating priority reservation detail request: $pnr");
 
-    Map<String, String> headers = _getRequestHeaders("72000027");
+    Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
     String constructedUrl = "$reservationDetailEndpoint/$pnr";
 
     _log.info(constructedUrl);

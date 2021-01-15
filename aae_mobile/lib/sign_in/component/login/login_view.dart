@@ -7,33 +7,15 @@ import 'package:aae/theme/dimensions.dart';
 import 'package:aae/theme/typography.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'login_bloc.dart';
+import 'login_settings.dart';
 import 'login_view_model.dart';
 import 'package:aae/cache/cache_service.dart';
 import 'package:aae/sign_in/component/login/SharedPrefUtils.dart';
 import 'dart:async';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
-
-/*
-final authorizationEndpoint = "https://idpstage.aa.com/as/authorization.oauth2";
-final tokenEndpoint = "https://idpstage.aa.com/as/token.oauth2";
-final identifier = "aa_essentials_stage";
-final secret = "x66rbjeC0Wh70qfrcxlAy6fPGGQ9fLBjA27mY7CWkzTPZkUB8YKNsreDwwufaIAt";
-final authorizationsecret = 'Basic YWFfZXNzZW50aWFsc19zdGFnZTp4NjZyYmplQzBXaDcwcWZyY3hsQXk2ZlBHR1E5ZkxCakEyN21ZN0NXa3pUUFprVUI4WUtOc3JlRHd3dWZhSUF0';
-final redirectUri = "aae://www.aa.com";
-final _scopes = ['openid'];
-final logoutEndpoint = "https://smlogin.stage.aa.com/login/SMLogout.jsp";
-*/
-
-final authorizationEndpoint = "https://idp.aa.com/as/authorization.oauth2";
-final tokenEndpoint = "https://idp.aa.com/as/token.oauth2";
-final identifier = "aa_essentials_prod";
-final secret = "XdEh3sq3ewreA8GuOpGqUHr7NTBQFgTxx8wYPFHnG9nUbxH9QVMVatzmiRsyJhzm";
-final authorizationsecret = 'Basic YWFfZXNzZW50aWFsc19wcm9kOlhkRWgzc3EzZXdyZUE4R3VPcEdxVUhyN05UQlFGZ1R4eDh3WVBGSG5HOW5VYnhIOVFWTVZhdHptaVJzeUpoem0=';
-final redirectUri = "aae://www.aa.com";
-final _scopes = ['openid'];
-final logoutEndpoint = "https://smlogin.aa.com/login/SMLogout.jsp";
 
 class NetUtils {
   static Future<String> get(String url, Map<String, dynamic> params) async {
@@ -77,13 +59,11 @@ class LoginViewState extends State<LoginView> {
   CacheService cache;
   LoginBloc bloc;
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
+  LoginSettings myloginSettings = new LoginSettings();
   StreamSubscription _onDestroy;
   StreamSubscription<String> _onUrlChanged;
   StreamSubscription<WebViewStateChanged> _onStateChanged;
   StreamSubscription<WebViewHttpError> _onHttpError;
-
-  String authUrl = "https://idp.aa.com/as/authorization.oauth2?response_type=code&client_id=aa_essentials_prod&redirect_uri=aae://www.aa.com&scope=openid";
-  String redirectUrl = "aae://www.aa.com";
 
   String strUrl;
 
@@ -119,6 +99,7 @@ class LoginViewState extends State<LoginView> {
 
     _onStateChanged = flutterWebviewPlugin.onStateChanged.listen((WebViewStateChanged state) {
       if (mounted) {
+        _getAllCookies(state.url, "2");
         if(state.type== WebViewState.finishLoad){ // if the full website page loaded
           //print("------------loaded...");
         }else if (state.type== WebViewState.abortLoad){ // if there is a problem with loading the url
@@ -137,7 +118,9 @@ class LoginViewState extends State<LoginView> {
         });
     // Add a listener to on url changed
     _onUrlChanged = flutterWebviewPlugin.onUrlChanged.listen((String url) {
+
       if (mounted) {
+        //_getAllCookies(url, "1");
         setState(() {
           //print("URL changed: $url");
           if (url.startsWith("aae://www.aa.com")) {
@@ -148,20 +131,20 @@ class LoginViewState extends State<LoginView> {
 
               Map<String, dynamic> bodyparams = Map<String, dynamic>();
               bodyparams['grant_type'] = 'authorization_code';
-              bodyparams['redirect_uri'] = redirectUri;
+              bodyparams['redirect_uri'] = myloginSettings.redirectUri;
               bodyparams['code'] = '$code';
               bodyparams['dataType'] = 'application/x-www-form-urlencoded';
 
               Map<String, String> headerparams = Map<String, String>();
-              headerparams['Authorization'] = authorizationsecret;
-              NetUtils.post(tokenEndpoint, bodyparams, headerparams).then((data) {
+              headerparams['Authorization'] = myloginSettings.authorizationSecret;
+              NetUtils.post(myloginSettings.tokenEndpoint, bodyparams, headerparams).then((data) {
                 this.token = data;
                 //print('--------data:$data');
                 if (data != null) {
                   Map<String, dynamic> map = json.decode(data);
                   if (map != null && map.isNotEmpty) {
                     this.token = map["access_token"];
-                    print('--------token:$token');
+                    print('--------token saved');
                     SharedPrefUtils.saveStr('tokenvalue', token);
                   }
                 }
@@ -174,11 +157,41 @@ class LoginViewState extends State<LoginView> {
     });
   }
 
+  Future<Null> _getAllCookies(String url, String message) async {
+    //print(url);
+    try {
+      final String result = await flutterWebviewPlugin.getAllCookies(url);
+
+      //print(result);
+      if ((result != null) && (result.contains(";"))){
+        var rawCookieParams = result.split(";");
+        if ((rawCookieParams[0] != null) && (rawCookieParams[0].contains("="))) {
+          for (int i = 1; i < rawCookieParams.length; i++) {
+            var rawCookieParamNameAndValue = rawCookieParams[i].trim().split("=");
+            String paramName = rawCookieParamNameAndValue[0].trim();
+            String paramValue = rawCookieParamNameAndValue[1].trim();
+            //print(paramName + message + ": " + paramValue);
+            if (paramName == 'SMSESSION') {
+              //print(paramName + message + ": " + paramValue);
+
+              if (paramValue.length > 50) {
+                String smsession = 'SMSESSION=$paramValue';
+                SharedPrefUtils.saveStr('SMSESSION', smsession);
+              }
+            }
+          }
+        }
+      }
+    } on PlatformException catch (e) {
+        print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     //print('********Inside Build value of strUrl:$strUrl**********');
     if ((strUrl == null) || (strUrl == "")) {
-      return WebviewScaffold(url: authUrl, withJavascript: true, useWideViewPort: true, ignoreSSLErrors: true, scrollBar: false, hidden: true, initialChild: Container(
+      return WebviewScaffold(url: myloginSettings.authUrl, withJavascript: true, useWideViewPort: true, ignoreSSLErrors: true, scrollBar: false, hidden: true, initialChild: Container(
         child: const Center(
           child: AaeLoadingSpinner(),
         ),

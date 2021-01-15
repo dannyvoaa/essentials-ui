@@ -72,7 +72,7 @@ class ProfileRepository implements Repository {
     try {
       profile = await _apiClient.getProfile(_ssoAuth.currentUser.id);
     } catch (e, s) {
-        _log.severe('Failed to verify profile:', e, s);
+        _log.info('User does not have a profile');
         throw ProfileNotFoundException('User does not have a profile');
     }
     _profile.sendNext(profile.rebuild((builder) => builder.displayName = _ssoAuth.currentUser.displayName));
