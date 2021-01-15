@@ -7,10 +7,17 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(Airport.serializer)
+      ..add(AirportsWrapper.serializer)
       ..add(ArticleBody.serializer)
       ..add(Docs.serializer)
       ..add(Dzerodocs.serializer)
       ..add(Event.serializer)
+      ..add(FlightAirport.serializer)
+      ..add(FlightLeg.serializer)
+      ..add(FlightRoute.serializer)
+      ..add(FlightSearch.serializer)
+      ..add(FlightSegment.serializer)
       ..add(FlightStatus.serializer)
       ..add(GateTimeFlightInfo.serializer)
       ..add(HubLocation.serializer)
@@ -29,6 +36,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(RecognitionRegister.serializer)
       ..add(ReservationDetail.serializer)
       ..add(ReservationDetailPassenger.serializer)
+      ..add(ReservationDetailSeatAssignment.serializer)
       ..add(ReservationDetailSegment.serializer)
       ..add(StockStats.serializer)
       ..add(Stockdocs.serializer)
@@ -36,8 +44,20 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Trips.serializer)
       ..add(Workgroup.serializer)
       ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Airport)]),
+          () => new ListBuilder<Airport>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Event)]),
           () => new ListBuilder<Event>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(FlightLeg)]),
+          () => new ListBuilder<FlightLeg>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(FlightRoute)]),
+          () => new ListBuilder<FlightRoute>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(FlightSegment)]),
+          () => new ListBuilder<FlightSegment>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(NewsArticle)]),
           () => new ListBuilder<NewsArticle>())
@@ -77,14 +97,20 @@ Serializers _$serializers = (new Serializers().toBuilder()
               BuiltList, const [const FullType(RecognitionRegister)]),
           () => new ListBuilder<RecognitionRegister>())
       ..addBuilderFactory(
-<<<<<<< HEAD
           const FullType(
               BuiltList, const [const FullType(ReservationDetailPassenger)]),
           () => new ListBuilder<ReservationDetailPassenger>())
-=======
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(ReservationDetailSegment)]),
+          () => new ListBuilder<ReservationDetailSegment>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(ReservationDetailSeatAssignment)]),
+          () => new ListBuilder<ReservationDetailSeatAssignment>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(StockStats)]),
           () => new ListBuilder<StockStats>())
->>>>>>> iosSettingsFix
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

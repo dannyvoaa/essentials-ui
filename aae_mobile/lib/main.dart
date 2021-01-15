@@ -7,10 +7,10 @@ import 'package:aae/programmatic_main.dart';
 /// Please make all changes in that file, unless your change is  something that
 /// will only ever be needed in the debug flavor. Read the charter comment in
 /// programmatic_main.dart for a discussion of where to make changes.
+
+//Global variable - takes values production, preprod, debug.
+BuildFlavor buildFlavor = BuildFlavor.preprod;
+
 void main() async {
-  programmaticMain(
-    BuildFlavorConfiguration.configurationFor(
-      BuildFlavor.production,
-    ),
-  );
+  programmaticMain(BuildFlavorConfiguration.configurationFor(buildFlavor));
 }
