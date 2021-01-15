@@ -50,7 +50,7 @@ class TravelRepository implements Repository {
   Observable<FlightSearch> get flightSearch => _flightSearch;
   Observable<BuiltList<Airport>> get airports => _airports;
 
-  BuiltList<Airport> _cachedAirports;
+  BuiltList<Airport> cachedAirports;
 
   void set flightStatus(var value) {
     flightStatus = value;
@@ -64,8 +64,8 @@ class TravelRepository implements Repository {
   @singleton
   TravelRepository(this._cache, this._travelApiClient, this._ssoAuth) {
     _loadFromTripsCache();
-    _fetchTrips();
-    loadAirports();
+    fetchTrips();
+//    loadAirports();
 //    fetchFlightStatus(1,2);
   }
 
@@ -111,13 +111,13 @@ class TravelRepository implements Repository {
   }
 
   loadAirports() async {
-    if (_cachedAirports == null) {
-      _cachedAirports = await _travelApiClient.getAirports();
+    if (cachedAirports == null) {
+      cachedAirports = await _travelApiClient.getAirports();
     } {
       _log.info('using cached airport list');
     }
 
-    _airports.sendNext(_cachedAirports);
+    _airports.sendNext(cachedAirports);
   }
 
   loadFlightStatus(flightNumber, origin, date) async {
