@@ -14,10 +14,13 @@ class TripsCollection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (this.viewModel == null ||
-      return _buildTripsCollection(context);
-    } else {
-      return Container(width: 0.0, height: 0.0);
+    Widget build(BuildContext context) {
+      if (this.viewModel == null ||
+          (this.viewModel.pnrs != null && this.viewModel.pnrs.length > 0)) {
+        return _buildTripsCollection(context);
+      } else {
+        return _buildNoTripsCollection(context);
+      }
     }
   }
 
