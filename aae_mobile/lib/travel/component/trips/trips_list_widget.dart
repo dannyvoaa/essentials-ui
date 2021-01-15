@@ -14,7 +14,11 @@ class TripsListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _buildTripsListWidget(context);
+    if (this.viewModel == null) {
+      return _buildToolsListWidget(context);
+    } else {
+      return _buildTripsListWidget(context);
+    }
   }
 
   _buildTripsListWidget(BuildContext context) {
@@ -36,6 +40,25 @@ class TripsListWidget extends StatelessWidget {
               ),
             );
           }),
+    );
+  }
+
+  _buildToolsListWidget(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        TravelListTile(
+          buttonContent: ToolsButton(
+              iconData: AaeIconsv4.list,
+              title: 'Priority list',
+              subtitle: 'Look up available and assigned seats.'),
+        ),
+        TravelListTile(
+          buttonContent: ToolsButton(
+              iconData: AaeIconsv4.clock,
+              title: 'Flight status',
+              subtitle: 'Get arrival and departure information.'),
+        ),
+      ],
     );
   }
 }
