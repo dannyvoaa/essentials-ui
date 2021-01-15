@@ -86,7 +86,7 @@ class TravelRepository implements Repository {
     return trips;
   }
 
-  _fetchTrips() async {
+  fetchTrips() async {
     try {
       Trips trips = await _travelApiClient.getReservations('72000027');
       _saveToCache(tripsKey, trips.toJson());
