@@ -70,18 +70,19 @@ class BottomNavigation extends StatelessWidget {
 //          _buildItem(MainPage.notifications, context, 18, 6.0),
         ],
           onTap: (index) {
+          SSKeys mysskeys = new SSKeys();
           try {
-            if (SSKeys.scaffoldKeyH.currentState != null) {
-              if (SSKeys.scaffoldKeyH.currentState.hasEndDrawer) {
-                if (SSKeys.scaffoldKeyH.currentState.isEndDrawerOpen) {
-                  SSKeys.scaffoldKeyH.currentState.openDrawer();
+            if (mysskeys.scaffoldKeyH.currentState != null) {
+              if (mysskeys.scaffoldKeyH.currentState.hasEndDrawer) {
+                if (mysskeys.scaffoldKeyH.currentState.isEndDrawerOpen) {
+                  mysskeys.scaffoldKeyH.currentState.openDrawer();
                 }
               }
             }
-            if (SSKeys.scaffoldKeyE.currentState != null) {
-              if (SSKeys.scaffoldKeyE.currentState.hasEndDrawer) {
-                if (SSKeys.scaffoldKeyE.currentState.isEndDrawerOpen) {
-                  SSKeys.scaffoldKeyE.currentState.openDrawer();
+            if (mysskeys.scaffoldKeyE.currentState != null) {
+              if (mysskeys.scaffoldKeyE.currentState.hasEndDrawer) {
+                if (mysskeys.scaffoldKeyE.currentState.isEndDrawerOpen) {
+                  mysskeys.scaffoldKeyE.currentState.openDrawer();
                 }
               }
             }

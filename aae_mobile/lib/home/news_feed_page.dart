@@ -5,8 +5,8 @@ import 'package:aae/navigation/paage_provider.dart';
 import 'package:flutter/material.dart';
 
 class SSKeys {
-  static final GlobalKey<ScaffoldState> scaffoldKeyH = new GlobalKey<ScaffoldState>(debugLabel: 'scaffoldKeyH');
-  static final GlobalKey<ScaffoldState> scaffoldKeyE = new GlobalKey<ScaffoldState>(debugLabel: 'scaffoldKeyH');
+  final GlobalKey<ScaffoldState> scaffoldKeyH = new GlobalKey<ScaffoldState>(debugLabel: 'scaffoldKeyH');
+  final GlobalKey<ScaffoldState> scaffoldKeyE = new GlobalKey<ScaffoldState>(debugLabel: 'scaffoldKeyE');
 }
 
 class NewsFeedPage extends StatefulWidget {
@@ -18,9 +18,10 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
 
   @override
   Widget build(BuildContext context) {
+    SSKeys mykeys = new SSKeys();
     setState(() {});
       return Scaffold(
-        key: SSKeys.scaffoldKeyH,
+        key: mykeys.scaffoldKeyH,
         endDrawer: AaeDrawer(),
         appBar: NewsFeedTopBar(),
         body: NewsFeedListCollectionComponent(),
