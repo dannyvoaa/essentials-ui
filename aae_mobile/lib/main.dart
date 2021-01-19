@@ -9,7 +9,7 @@ import 'package:aae/programmatic_main.dart';
 /// programmatic_main.dart for a discussion of where to make changes.
 
 //Global variable - takes values production, preprod, debug.
-BuildFlavor buildFlavor = BuildFlavor.production;
+BuildFlavor buildFlavor = BuildFlavor.preprod;
 
 void main() async {
   programmaticMain(BuildFlavorConfiguration.configurationFor(buildFlavor));
