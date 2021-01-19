@@ -17,7 +17,7 @@ class TravelServiceApi {
   final http.Client httpClient = http.Client();
 
   static const String baseUrl =
-      'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/travel';
+      'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/travel-stage';
 
   static const travelReservationsEndpoint = '$baseUrl/reservations';
   static const priorityListEndpoint = '$baseUrl/prioritylist';
