@@ -161,23 +161,13 @@ class LoginViewState extends State<LoginView> {
     //print(url);
     try {
       final String result = await flutterWebviewPlugin.getAllCookies(url);
-
-      //print(result);
-      if ((result != null) && (result.contains(";"))){
-        var rawCookieParams = result.split(";");
+      if ((result != null) && (result.contains(";"))) {
+        var rawCookieParams = result.trim().split(";");
         if ((rawCookieParams[0] != null) && (rawCookieParams[0].contains("="))) {
-          for (int i = 1; i < rawCookieParams.length; i++) {
-            var rawCookieParamNameAndValue = rawCookieParams[i].trim().split("=");
-            String paramName = rawCookieParamNameAndValue[0].trim();
-            String paramValue = rawCookieParamNameAndValue[1].trim();
-            //print(paramName + message + ": " + paramValue);
-            if (paramName == 'SMSESSION') {
-              //print(paramName + message + ": " + paramValue);
-
-              if (paramValue.length > 50) {
-                String smsession = 'SMSESSION=$paramValue';
-                SharedPrefUtils.saveStr('SMSESSION', smsession);
-              }
+          for (int i = 0; i < rawCookieParams.length-1; i++) {
+            if (rawCookieParams[i].trim().startsWith('SMSESSION')) {
+              String smsession = rawCookieParams[i].trim();
+              SharedPrefUtils.saveStr('SMSESSION', smsession);
             }
           }
         }
