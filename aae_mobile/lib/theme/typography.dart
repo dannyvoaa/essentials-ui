@@ -231,6 +231,22 @@ class AaeTextStyles {
   /// Replaces: tableCellValue, tableCellTitleHub
   static final subtitle18Gray = subtitle18.copyWith(
     color: AaeColors.gray,
+  static const reservationNoTripsHeading = TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.bold,
+      color: AaeColors.mediumGray,
+      fontFamily: _americanSansMedium);
+
+  static const smallTextStyle = TextStyle(
+    fontFamily: _americanSans,
+    fontSize: 18,
+    color: const Color(0xff627a88),
+  );
+
+  static const reservationSubHeading = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+    color: AaeColors.titleGray,
   );
 
   /// Replaces: textFieldModern
@@ -291,6 +307,14 @@ class AaeTextStyles {
   /// 15px base font
   static const TextStyle subtitle15 = TextStyle(
     fontFamily: _americanSans,
+  static final stopDivider = TextStyle(
+    color: AaeColors.darkOrange,
+    fontWeight: _medium,
+    fontSize: 12,
+  );
+
+  /// Travel module text styles
+  static const travelHeader = TextStyle(
     fontSize: 15,
     color: AaeColors.darkGray,
     fontWeight: _regular,
@@ -345,6 +369,20 @@ class AaeTextStyles {
 
   /// Used: when 4 cabin in Priority list
   static final body14MediumGray = body14.copyWith(
+  static const flightStatusTimeText = TextStyle(
+      fontSize: 18,
+      color: AaeColors.titleGray,
+      fontFamily: _americanSansMedium
+  );
+
+  static const flightSearchText = TextStyle(
+    fontSize: 15,
+    color: AaeColors.titleGray,
+    fontFamily: _americanSansMedium
+  );
+
+  static const flightSearchHeader = TextStyle(
+    fontSize: 32,
     color: AaeColors.mediumGray,
   );
 
@@ -513,4 +551,97 @@ class AaeTextStyles {
     fontSize: 14,
     height: 1.50,
   );
+    // Default style
+    return textStyle;
+  }
+
+  static TextStyle tableCellValueHub() {
+    //TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(color: AaeColors.red, fontSize: 18);
+    //TextStyle(fontSize: 16, color: Colors.orange, fontWeight: FontWeight.bold);
+    TextStyle mytextStyle = TextStyle(
+        fontSize: 20, color: Colors.grey, fontWeight: FontWeight.bold);
+    // Default style
+    return mytextStyle;
+  }
+
+  /// Used for Event detail layout
+  static TextStyle eventTitle({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = h4.copyWith(
+      color: AaeColors.darkGray,
+      height: 1.0,
+      fontSize: 22,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  static TextStyle eventText({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
+      color: AaeColors.darkGray,
+      height: 1.0,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  static TextStyle eventDate({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = t2.copyWith(
+      color: AaeColors.darkGray,
+      fontSize: 14,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  /// Used for the title in [LargeButton]
+  static TextStyle largeButtonTitle({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
+      color: AaeColors.white,
+      fontSize: 18,
+      fontWeight: FontWeight.normal,
+      height: 1.0,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  // Used for placeholders / hints in a [TextField]
+  static TextStyle textFieldModernHint({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
+      color: AaeColors.modernHint,
+      fontSize: 24,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  // Used for user-entered content in a [TextField]
+  static TextStyle textFieldModern({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
+      fontSize: 18,
+      color: AaeColors.darkBlue,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  // Used for user-entered content in a [TextField]
+  static TextStyle textFieldTitle({bool boolDefaultHeight = false}) {
+    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
+      fontSize: 18,
+      color: AaeColors.gray,
+    );
+
+    // Default style
+    return textStyle;
+  }
+
+  static const pageHeadline =
+      TextStyle(fontSize: 24, fontWeight: _bold, color: AaeColors.onboardTitle);
 }

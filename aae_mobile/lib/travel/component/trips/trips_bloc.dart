@@ -16,8 +16,14 @@ class TripsBloc {
   static final _log = Logger('TripsBloc');
   final TravelRepository _travelRepository;
 
-  Source<TripsViewModel> get viewModel =>
-      toSource(combineLatest(_travelRepository.pnrs, _createViewModel));
+  Source<TripsViewModel> get viewModel {
+    if (_travelRepository.cachedAirports == null) {
+      _travelRepository.loadAirports();
+    }
+    _travelRepository.fetchTrips();
+
+    return toSource(combineLatest(_travelRepository.pnrs, _createViewModel));
+  }
 
   @provide
   TripsBloc(this._travelRepository);
@@ -29,7 +35,8 @@ class TripsBloc {
 
   BuiltList<Pnr> _sortByFirstDepartureDate(BuiltList<Pnr> pnrs) {
     List<Pnr> pnrsList = pnrs.toList();
-    pnrsList.sort((a, b) => a.firstDepartureDateTime.compareTo(b.firstDepartureDateTime));
+    pnrsList.sort(
+        (a, b) => a.firstDepartureDateTime.compareTo(b.firstDepartureDateTime));
     pnrs = pnrsList.toBuiltList();
     return pnrs;
   }

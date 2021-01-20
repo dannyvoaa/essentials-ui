@@ -16,9 +16,10 @@ class EventsPage extends StatefulWidget {
 class _EventsPageState extends State<EventsPage> {
   @override
   Widget build(BuildContext context) {
+    SSKeys mykeys = new SSKeys();
     setState(() {});
       return Scaffold(
-        key: SSKeys.scaffoldKeyE,
+        key: mykeys.scaffoldKeyE,
         endDrawer: AaeDrawer(),
         appBar: AaeTopNavBar(),
         body: Padding(

@@ -57,7 +57,7 @@ class D0StatsComponent extends StatelessWidget {
                         ),
                         Padding(
                           padding:
-                              const EdgeInsets.only(left: 20.0, right: 20.0),
+                              const EdgeInsets.only(left: 20.0, right: 10.0),
                           child: D0StatsTickPercent(
                               'CF: ',
                               snapshot.value.performanceStats.cf,

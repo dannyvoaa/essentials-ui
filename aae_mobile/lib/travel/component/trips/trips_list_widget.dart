@@ -16,52 +16,31 @@ class TripsListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (this.viewModel == null) {
       return _buildToolsListWidget(context);
-    } else if (this.viewModel.pnrs.length > 0) {
-      return _buildTripsListWidget(context);
     } else {
-      return _buildNoTripsCollection(context);
+      return _buildTripsListWidget(context);
     }
   }
 
   _buildTripsListWidget(BuildContext context) {
     return SizedBox(
-        height: 68.00 * viewModel.pnrs.length,
-          child: ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: viewModel.pnrs.length,
-              itemBuilder: (context, index) {
-                return TravelListTile(
-                  buttonContent: InkWell(
-                    onTap: (){
-                      print('tapped...');
-                      loadReservationDetail(context, this.viewModel.pnrs[index].recordLocator);
-                    },
-                    child: TripsButton(
-                        pnr: this.viewModel.pnrs[index], context: context),
-                  ),
-                );
-              }),
-        );
-  }
-
-  _buildNoTripsCollection(BuildContext context) {
-    return TravelListTile(
-        buttonContent: Row(children: <Widget>[
-      Expanded(
-          flex: 5,
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'There are no current trips.',
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontSize: 14,
-                color: AaeColors.black,
+      height: 68.00 * viewModel.pnrs.length,
+      child: ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: viewModel.pnrs.length,
+          itemBuilder: (context, index) {
+            return TravelListTile(
+              buttonContent: InkWell(
+                onTap: () {
+                  print('tapped...');
+                  loadReservationDetail(
+                      context, this.viewModel.pnrs[index].recordLocator);
+                },
+                child: TripsButton(
+                    pnr: this.viewModel.pnrs[index], context: context),
               ),
-              textAlign: TextAlign.left,
-            ),
-          )),
-    ]));
+            );
+          }),
+    );
   }
 
   _buildToolsListWidget(BuildContext context) {

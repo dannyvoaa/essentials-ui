@@ -16,49 +16,37 @@ import 'flight_search_view_model.dart';
 class FlightSearchBloc {
   static final _log = Logger('FlightSearchBloc');
   final TravelRepository _travelRepository;
+  bool searchPending = false;
+  var _searchResults =
+      createBehaviorSubject<FlightSearch>(initial: FlightSearch());
 
   loadFlightSearch(
       String searchField1, String searchField2, String searchDate) async {
+    searchPending = true;
     _travelRepository.loadFlightSearch(searchField1, searchField2, searchDate);
   }
 
-//  sortFlightSearch(FlightSearch unsortedFlightSearch) {
-//    ListBuilder<FlightRoute> flightRouteBuilder = new ListBuilder();
-//    List<FlightRoute> flightRouteList = new List();
-//    FlightSearch sortedFlightSearch = new FlightSearch();
-//
-//    if (unsortedFlightSearch != null) {
-//      for (FlightRoute flightRoute in unsortedFlightSearch.flightRoutes) {
-//        flightRouteList.add(flightRoute);
-//      }
-//
-//      flightRouteList.sort((a, b) => a
-//          .flightSegments[0].flightLegs[0].scheduledDepartureDateTime
-//          .compareTo(
-//              b.flightSegments[0].flightLegs[0].scheduledDepartureDateTime));
-//
-//      for (FlightRoute flightRoute in flightRouteList) {
-//        flightRouteBuilder.add(flightRoute);
-//      }
-//
-//      sortedFlightSearch = sortedFlightSearch.rebuild(
-//          (b) => b..flightRoutes = flightRouteBuilder.build().toBuilder());
-//
-//      return sortedFlightSearch;
-//    } else
-//      return unsortedFlightSearch;
-//  }
-
   Source<FlightSearchViewModel> get viewModel =>
-      toSource(combineLatest(_travelRepository.flightSearch, _createViewModel));
+      toSource(combineLatest(_searchResults, _createViewModel));
+
+  _populateFlightSearch(flightSearch) {
+    if (!searchPending) return;
+    if (flightSearch != null) {
+      _searchResults.sendNext(flightSearch);
+      searchPending = false;
+    } else {
+      _searchResults.sendNext(null);
+    }
+  }
 
   @provide
-  FlightSearchBloc(this._travelRepository);
+  FlightSearchBloc(this._travelRepository) {
+    _travelRepository.flightSearch.subscribe(onNext: _populateFlightSearch);
+  }
 
   FlightSearchViewModel _createViewModel(FlightSearch flightSearch) {
     return FlightSearchViewModel(
-        flightSearch: flightSearch,
-        loadFlightSearch: loadFlightSearch);
+        flightSearch: flightSearch, loadFlightSearch: loadFlightSearch);
   }
 }
 
