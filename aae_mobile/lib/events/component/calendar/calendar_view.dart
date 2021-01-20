@@ -34,7 +34,7 @@ class CalendarView extends StatelessWidget {
 
     var color = today == index && thisMonth == viewModel.datePage.month
         ? AaeColors.lightBlue
-        : AaeColors.lightGray;
+        : AaeColors.cadetGray;
 
     return color;
   }
@@ -204,11 +204,11 @@ class CalendarView extends StatelessWidget {
 
       var result =
           day == viewModel.selectedDate && thisMonth != viewModel.datePage.month
-              ? AaeColors.lightGray
+              ? AaeColors.cadetGray
               : day == viewModel.selectedDate &&
                       today != viewModel.selectedDate &&
                       thisMonth == viewModel.datePage.month
-                  ? AaeColors.lightGray
+                  ? AaeColors.cadetGray
                   : day == viewModel.selectedDate &&
                           today == viewModel.selectedDate &&
                           thisMonth == viewModel.datePage.month &&
@@ -216,7 +216,7 @@ class CalendarView extends StatelessWidget {
                       ? AaeColors.lightBlue
                       : day == viewModel.selectedDate &&
                               thisYear != viewModel.datePage.year
-                          ? AaeColors.lightGray
+                          ? AaeColors.cadetGray
                           : null;
 
       return result;
@@ -374,7 +374,7 @@ class CalendarView extends StatelessWidget {
                       Icons.chevron_left,
                       color: formatMonthTap()
                           ? AaeColors.blue
-                          : AaeColors.ultraLightGray,
+                          : AaeColors.gray,
                     ),
                     height: AaeDimens.sizeDynamic_48px(),
                     width: AaeDimens.sizeDynamic_48px(),

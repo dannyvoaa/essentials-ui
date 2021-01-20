@@ -69,7 +69,7 @@ class NewsArticleComponent extends StatelessWidget {
                             gradient: LinearGradient(
                                 begin: Alignment.bottomCenter,
                                 end: Alignment.topCenter,
-                                colors: <Color>[AaeColors.blue, AaeColors.gradientTop])),
+                                colors: <Color>[AaeColors.blue, AaeColors.lightBlue])),
                       ),
 
                       elevation: 1,
@@ -159,11 +159,11 @@ class NewsArticleComponent extends StatelessWidget {
                           },
                           style: {
                             "body": Style(
-                              color: AaeColors.titleGray,
+                              color: AaeColors.darkGray,
                               margin: EdgeInsets.all(16),
                             ),
                             "div.responsive-col": Style(
-                              color: AaeColors.titleGray,
+                              color: AaeColors.darkGray,
                             ),
                             ".ae-headline, .ae-summary, .ae-image": Style(
                               display: Display.BLOCK,
@@ -200,7 +200,7 @@ class NewsArticleComponent extends StatelessWidget {
                               fontSize: FontSize(18),
                             ),
                             "h5": Style(
-                              color: AaeColors.titleGray,
+                              color: AaeColors.darkGray,
                               fontSize: FontSize(16),
                             ),
                             "ul, ol": Style(
@@ -311,10 +311,10 @@ class NewsArticleComponent extends StatelessWidget {
                               color: AaeColors.highlightBlue,
                             ),
                             ".aa_green_bg": Style(
-                              backgroundColor: AaeColors.green,
+                              backgroundColor: AaeColors.recognitionGreen,
                             ),
                             ".aa_green": Style(
-                              color: AaeColors.green,
+                              color: AaeColors.recognitionGreen,
                             ),
                             ".aa_yellow_bg": Style(
                               backgroundColor: AaeColors.yellowGreen,
@@ -365,10 +365,10 @@ class NewsArticleComponent extends StatelessWidget {
                               color: AaeColors.mediumGray,
                             ),
                             ".aa_gray_bg": Style(
-                              backgroundColor: AaeColors.lightGray,
+                              backgroundColor: AaeColors.cadetGray,
                             ),
                             ".aa_gray": Style(
-                              color: AaeColors.lightGray,
+                              color: AaeColors.cadetGray,
                             ),
                             ".aa_lightgray_bg": Style(
                               backgroundColor: AaeColors.gray,
@@ -380,7 +380,7 @@ class NewsArticleComponent extends StatelessWidget {
 //                              backgroundColor: AaeColors.ultraLightGray,
 //                            ),
                             ".aa_ultralightgray": Style(
-                              color: AaeColors.ultraLightGray,
+                              color: AaeColors.gray,
                             ),
                           },
                         ),

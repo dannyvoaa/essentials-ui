@@ -118,7 +118,7 @@ class AaeTaggedText extends StatelessWidget {
             tag,
             (text) => TextSpan(
               text: text,
-              style: baseTextStyle.copyWith(color: AaeColors.linkText),
+              style: baseTextStyle.copyWith(color: AaeColors.brightTeal),
               recognizer: _urlTapRecognizer(url),
             ),
           ),

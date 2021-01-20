@@ -21,7 +21,7 @@ class D0StatsTick extends StatelessWidget {
           ]));
 
   Color getColor(String colorId) {
-    return colorId == "Black" ? AaeColors.black : colorId == "Green" ? AaeColors.green : AaeColors.red;
+    return colorId == "Black" ? AaeColors.black : colorId == "Green" ? AaeColors.recognitionGreen : AaeColors.red;
   }
 }
 
@@ -44,6 +44,6 @@ class D0StatsTickPercent extends StatelessWidget {
           ]));
 
   Color getColor(String colorId) {
-    return colorId == "Black" ? AaeColors.black : colorId == "Green" ? AaeColors.green : AaeColors.red;
+    return colorId == "Black" ? AaeColors.black : colorId == "Green" ? AaeColors.recognitionGreen : AaeColors.red;
   }
 }

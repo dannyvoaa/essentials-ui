@@ -99,7 +99,7 @@ class TableCellTitleValue extends StatelessWidget {
               }
             },
             highlightColor: this.boolEnabled && onTapAction != null
-                ? AaeColors.tableViewCellBackgroundSelected
+                ? AaeColors.highlightBlue
                 : Colors.transparent,
           ),
           //  color: AaeColors.tableViewCellBackground,
@@ -107,7 +107,7 @@ class TableCellTitleValue extends StatelessWidget {
         this.boolBorderBottom
             ? Container(
           height: AaeDimens.sizeDivider,
-          color: AaeColors.ultraLightGray,
+          color: AaeColors.gray,
         )
             : Container(),
       ],
@@ -128,14 +128,14 @@ class TableCellTitleValue extends StatelessWidget {
 
     // Check to see if the disclosure indicator should be shown
     if (this.boolShowDisclosureIndicator) {
-      colorAccessory = AaeColors.lightGray
+      colorAccessory = AaeColors.cadetGray
           .withAlpha(this.boolEnabled ? 255 : (255 * 0.40).round());
       iconAccessory = Icons.chevron_right;
     }
 
     // Check to see if the disclosure indicator should be shown
     if (this.boolShowAdd) {
-      colorAccessory = AaeColors.ultraLightGray
+      colorAccessory = AaeColors.gray
           .withAlpha(this.boolEnabled ? 255 : (255 * 0.40).round());
       iconAccessory = Icons.add;
     }

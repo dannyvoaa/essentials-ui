@@ -111,7 +111,7 @@ class TableCellTitleValueHub extends StatelessWidget {
               }
             },
             highlightColor: this.boolEnabled && onTapAction != null
-                ? AaeColors.tableViewCellBackgroundSelected
+                ? AaeColors.highlightBlue
                 : Colors.transparent,
           ),
           //  color: AaeColors.tableViewCellBackground,
@@ -119,7 +119,7 @@ class TableCellTitleValueHub extends StatelessWidget {
         this.boolBorderBottom
             ? Container(
           height: AaeDimens.sizeDivider,
-          color: AaeColors.ultraLightGray,
+          color: AaeColors.gray,
         )
             : Container(),
       ],
@@ -145,7 +145,7 @@ class TableCellTitleValueHub extends StatelessWidget {
 
     // Check to see if the disclosure indicator should be shown
     if (this.boolShowDisclosureIndicator) {
-      colorAccessory = AaeColors.lightGray
+      colorAccessory = AaeColors.cadetGray
           .withAlpha(this.boolEnabled ? 255 : (255 * 0.40).round());
       iconAccessory = Icons.add;
     }
@@ -155,13 +155,13 @@ class TableCellTitleValueHub extends StatelessWidget {
       colorAccessory = AaeColors.blue.withAlpha(255);
       iconAccessory = Icons.check;
     } else {
-      colorAccessory = AaeColors.lightGray.withAlpha(195);
+      colorAccessory = AaeColors.cadetGray.withAlpha(195);
       iconAccessory = Icons.add;
     }
 
     // Check to see if the add indicator should be shown
     if (this.boolShowAdd) {
-      colorAccessory = AaeColors.ultraLightGray.withAlpha(this.boolEnabled ? 255 : (255 * 0.40).round());
+      colorAccessory = AaeColors.gray.withAlpha(this.boolEnabled ? 255 : (255 * 0.40).round());
       iconAccessory = Icons.add;
     }
 

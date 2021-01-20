@@ -56,10 +56,19 @@ class _DatePickerPageState extends State<DatePickerPage> {
               controller: _controller,
               initialSelectedDate: DateTime.now(),
               selectionColor: Color(0xffebeff0),
-              selectedTextColor: AaeColors.titleGray,
-              monthTextStyle: AaeTextStyles.datePickerText,
-              dateTextStyle: AaeTextStyles.datePickerDate,
-              dayTextStyle: AaeTextStyles.datePickerText,
+              selectedTextColor: AaeColors.black,
+              monthTextStyle: TextStyle(
+                fontSize: 13,
+                color: AaeColors.cadetGray,
+              ),
+              dateTextStyle: TextStyle(
+                fontFamily: 'AmericanSans Medium',
+                fontSize: 26,
+                color: AaeColors.black,
+              ),
+              dayTextStyle: TextStyle(
+                color: AaeColors.cadetGray,
+              ),
               daysCount: widget.calendarLength,
               onDateChange: (date) {
                 setState(() {
