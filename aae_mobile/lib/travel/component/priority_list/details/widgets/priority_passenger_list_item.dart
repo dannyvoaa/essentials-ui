@@ -146,7 +146,7 @@ class PriorityListPassengerListItem extends StatelessWidget {
       Padding(
         padding: const EdgeInsets.only(left: AaeDimens.baseUnit),
         child: Icon(
-            AaeIconsv4.checkMark,
+            AmericanIconsv4_6.checkMark,
             size: 20,
             color: const Color(0xff008712)
         ),

@@ -153,10 +153,10 @@ class CalendarView extends StatelessWidget {
       var result = day < today &&
               thisMonth == viewModel.datePage.month &&
               thisYear == viewModel.datePage.year
-          ? AaeTextStyles.calendarOld(boolDefaultHeight: true)
+          ? AaeTextStyles.body16Gray
           : day == viewModel.selectedDate
-              ? TextStyle(color: AaeColors.white)
-              : AaeTextStyles.calendarMain(boolDefaultHeight: true);
+              ? TextStyle(color: AaeColors.white100)
+              : AaeTextStyles.body16;
       return result;
     }
 
@@ -354,7 +354,7 @@ class CalendarView extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.black12,
+              color: AaeColors.black,
 //              color: AaeColors.lightGray,
               offset: Offset(0.2, 2),
               blurRadius: 4,
@@ -365,7 +365,7 @@ class CalendarView extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(6.0),
           child: Container(
-            color: AaeColors.white,
+            color: AaeColors.white100,
             child: Row(
               children: <Widget>[
                 InkWell(
@@ -383,7 +383,7 @@ class CalendarView extends StatelessWidget {
                 ),
                 Text(
                   stringMonthYear,
-                  style: AaeTextStyles.title(),
+                  style: AaeTextStyles.title20,
                 ),
                 InkWell(
                   child: Container(

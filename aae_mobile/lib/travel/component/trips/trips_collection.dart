@@ -59,20 +59,20 @@ class TripsCollection extends StatelessWidget {
                 width: 185,
                 height: 185,
                 decoration: BoxDecoration(
-                    shape: BoxShape.circle, color: AaeColors.white),
+                    shape: BoxShape.circle, color: AaeColors.white100),
                 child: Padding(
                     padding: const EdgeInsets.only(bottom: 15),
-                    child: Icon(AaeIconsv4.vacation,
+                    child: Icon(AmericanIconsv4_6.vacation,
                         size: 120, color: AaeColors.darkGray)))),
         Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 10),
             child: Text('No trips yet...',
-                style: AaeTextStyles.reservationNoTripsHeading)),
+                style: AaeTextStyles.title24MediumGrayBold)),
         Padding(
             padding: const EdgeInsets.only(bottom: 5),
             child: Text('All trips created in Travel Planner',
-                style: AaeTextStyles.smallTextStyle)),
-        Text('will show up here.', style: AaeTextStyles.smallTextStyle)
+                style: AaeTextStyles.subtitle18MediumGray)),
+        Text('will show up here.', style: AaeTextStyles.subtitle18MediumGray)
       ],
     ));
   }

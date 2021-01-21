@@ -31,7 +31,7 @@ final _sizeConfigs = <ButtonSize, _SizeConfig>{
     ..iconTextMargin = _iconTextMargin
     ..border = _border
     ..cornerRadius = AaeDimens.regularButtonCornerRadius
-    ..text = AaeTextStyles.btn1.copyWith(
+    ..text = AaeTextStyles.btn16Med150.copyWith(
       height: 1.0,
     )),
   ButtonSize.small: _SizeConfig((b) => b
@@ -41,7 +41,7 @@ final _sizeConfigs = <ButtonSize, _SizeConfig>{
     ..iconTextMargin = _iconTextMargin
     ..border = _border
     ..cornerRadius = AaeDimens.smallButtonCornerRadius
-    ..text = AaeTextStyles.btn2.copyWith(
+    ..text = AaeTextStyles.btn14Med142.copyWith(
       height: 1.0,
     )),
 };

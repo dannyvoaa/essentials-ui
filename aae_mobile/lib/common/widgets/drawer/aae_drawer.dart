@@ -66,7 +66,7 @@ class AaeDrawer extends StatelessWidget {
         elevation: 1,
         leading: new Container(),
         actions: <Widget>[
-          CloseButton(color: AaeColors.white),
+          CloseButton(color: AaeColors.white100),
         ],
       ),
       body: Center(
@@ -110,7 +110,7 @@ class AaeDrawer extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: FlatButton.icon(
                   padding: const EdgeInsets.all(0.0),
-                  icon: Icon(AaeIconsv4.setting,
+                  icon: Icon(AmericanIconsv4_6.setting,
                       color: AaeColors.cadetGray, size: 20),
                   label: Text('Preferences',
                       style: TextStyle(
@@ -126,7 +126,7 @@ class AaeDrawer extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: FlatButton.icon(
                   padding: const EdgeInsets.all(0.0),
-                  icon: Icon(AaeIconsv4.info,
+                  icon: Icon(AmericanIconsv4_6.info,
                       color: AaeColors.cadetGray, size: 20),
                   label: Text('About      ',
                       style: TextStyle(
@@ -145,7 +145,7 @@ class AaeDrawer extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: FlatButton.icon(
                   padding: const EdgeInsets.all(0.0),
-                  icon: Icon(AaeIconsv4.lock,
+                  icon: Icon(AmericanIconsv4_6.lock,
                       color: AaeColors.cadetGray, size: 20),
                   label: Text('Logout     ',
                       style: TextStyle(

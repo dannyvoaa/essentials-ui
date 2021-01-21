@@ -8,7 +8,7 @@ import 'workflow_footer_button/workflow_footer_button_component.dart';
 import 'workflow_page_image.dart';
 import 'workflow_page_large_icon.dart';
 
-const _bodyTextStyle = AaeTextStyles.b2;
+var _bodyTextStyle = AaeTextStyles.body16Reg150;
 
 /// A reusable [Widget] that contains a title, body, and a space for a custom
 /// [Widget].
@@ -295,7 +295,7 @@ class WorkflowPageTemplate extends StatelessWidget {
       child: Text(
         title,
         textAlign: titleTextAlign,
-        style: AaeTextStyles.pageHeadline,
+        style: AaeTextStyles.title24Med110,
       ),
     );
   }

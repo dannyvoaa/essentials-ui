@@ -59,7 +59,7 @@ class AirportPickerHeader extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(32)),
-              color: AaeColors.white,
+              color: AaeColors.white100,
             ),
             child: TextField(
               onChanged: (filter) {
@@ -74,7 +74,7 @@ class AirportPickerHeader extends StatelessWidget {
                   icon: Padding(
                     padding: EdgeInsets.only(left: 8),
                     child: Icon(
-                      AaeIconsv4.search,
+                      AmericanIconsv4_6.search,
                       size: 20,
                       color: AaeColors.ultraLightGray,
                     ),

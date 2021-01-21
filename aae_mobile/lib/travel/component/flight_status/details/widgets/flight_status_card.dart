@@ -72,16 +72,16 @@ class FlightStatusCardHeader extends StatelessWidget {
               Container(
                 padding: EdgeInsets.only(left: 5),
                 child: Text('${flightStatus.flightNumber}',
-                    style: AaeTextStyles.departureHeading),
+                    style: AaeTextStyles.caption12),
               ),
               Container(
                 padding: EdgeInsets.only(left: 5, right: 5),
-                child: Text(' \u2022', style: AaeTextStyles.departureHeading),
+                child: Text(' \u2022', style: AaeTextStyles.caption12),
               ),
               Container(
                 child: Text(
                     ' ${convertStringToDate(flightStatus.originInfo.scheduledTime)}',
-                    style: AaeTextStyles.departureHeading),
+                    style: AaeTextStyles.caption12),
               )
             ],
           ),
@@ -96,11 +96,11 @@ class FlightStatusCardHeader extends StatelessWidget {
 
   TextStyle calculateStatusColor(String status) {
     if (status.contains("DELAY")) {
-      return AaeTextStyles.departureDelayed;
+      return AaeTextStyles.caption12DarkOrangeMed;
     } else if (status.contains("CANCEL")) {
-      return AaeTextStyles.departureCancelled;
+      return AaeTextStyles.caption12DarkRedMed;
     } else {
-      return AaeTextStyles.departureOnTime;
+      return AaeTextStyles.caption12GreenMed;
     }
   }
 
@@ -190,7 +190,7 @@ class FlightStatusCardBodyColumn extends StatelessWidget {
               padding: EdgeInsets.only(top: 12),
               child: Text(
                 time,
-                style: AaeTextStyles.flightStatusTimeText,
+                style: AaeTextStyles.subtitle18Med,
               ),
             ),
             _buildArrowIcon(arrowIcon),
@@ -200,21 +200,21 @@ class FlightStatusCardBodyColumn extends StatelessWidget {
           padding: EdgeInsets.only(bottom: 10),
           child: Text(
             location,
-            style: AaeTextStyles.reservationSubHeading,
+            style: AaeTextStyles.body14,
           ),
         ),
         Container(
           padding: EdgeInsets.only(bottom: 5),
           child: Text(
             'Scheduled: ' + scheduledTime,
-            style: AaeTextStyles.flightStatusText,
+            style: AaeTextStyles.caption12CadetGray,
           ),
         ),
         Container(
           padding: EdgeInsets.only(bottom: 5),
           child: Text(
             'Terminal: ' + terminal,
-            style: AaeTextStyles.flightStatusText,
+            style: AaeTextStyles.caption12CadetGray,
           ),
         ),
         Container(
@@ -225,7 +225,7 @@ class FlightStatusCardBodyColumn extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 0),
                 child: Text(
                   'Gate: ' + gate,
-                  style: AaeTextStyles.flightStatusText,
+                  style: AaeTextStyles.caption12CadetGray,
                 ),
               ),
               _isDestination(baggage)
@@ -245,14 +245,14 @@ class FlightStatusCardBodyColumn extends StatelessWidget {
               Container(
                 padding: EdgeInsets.only(bottom: 3, right: 5),
                 child: Icon(
-                  AaeIconsv4.bagInfo,
+                  AmericanIconsv4_6.bagInfo,
                   size: 11,
-                  color: AaeColors.lightGrayText,
+                  color: AaeColors.mediumGray,
                 ),
               ),
               Text(
                 baggage,
-                style: AaeTextStyles.flightStatusText,
+                style: AaeTextStyles.caption12CadetGray,
               ),
             ],
           ));
@@ -268,7 +268,7 @@ class FlightStatusCardBodyColumn extends StatelessWidget {
         height: 18,
         padding: EdgeInsets.only(top: 0, left: 30, right: 30),
         child: Icon(
-          AaeIconsv4.arrow_right,
+          AmericanIconsv4_6.arrow_right,
           color: AaeColors.gray,
         ),
       );

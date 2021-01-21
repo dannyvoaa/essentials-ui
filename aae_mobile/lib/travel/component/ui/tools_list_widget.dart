@@ -23,7 +23,7 @@ class ToolsList extends StatelessWidget {
               padding: const EdgeInsets.only(top: 30, bottom: 5),
               child: Text(
                 header,
-                style: AaeTextStyles.travelHeader,
+                style: AaeTextStyles.subtitle15,
                 textAlign: TextAlign.left,
               ),
             )),
@@ -37,13 +37,13 @@ class ToolsList extends StatelessWidget {
       children: <Widget>[
         TravelListTile(
           buttonContent: ToolsButton(
-              iconData: AaeIconsv4.list,
+              iconData: AmericanIconsv4_6.list,
               title: 'Priority list',
               subtitle: 'See available and assigned seats for this flight.'),
         ),
         TravelListTile(
           buttonContent: ToolsButton(
-              iconData: AaeIconsv4.notifications,
+              iconData: AmericanIconsv4_6.notifications,
               title: 'Create travel notifications',
               subtitle: 'Create text or email notification for this flight.'),
         ),

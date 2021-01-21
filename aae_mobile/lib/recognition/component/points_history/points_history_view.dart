@@ -30,7 +30,7 @@ class PointsHistoryView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: AaeDimens.baseUnit),
           child: Container(
             width: AaeDimens.contentWidth,
-            color: AaeColors.white,
+            color: AaeColors.white100,
             child: ListTile(
               leading: Container(
                 width: 40,

@@ -51,7 +51,7 @@ class TableCellTitleValueHub extends StatelessWidget {
         this.boolBorderTop
             ? Container(
           height: AaeDimens.sizeDivider,
-          color: AaeColors.white,
+          color: AaeColors.white100,
         )
             : Container(),
         Material(
@@ -65,9 +65,9 @@ class TableCellTitleValueHub extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                         style: stringTitle.substring(0,3).toUpperCase() != location.toUpperCase() ?
-                        AaeTextStyles.tableCellTitle(boolEnabled: this.boolEnabled) :
+                        AaeTextStyles.subtitle18Gray :
                         //TextStyle(fontSize: 16,color: Colors.orange,fontWeight: FontWeight.bold),
-                        AaeTextStyles.tableCellTitleHub(boolEnabled: this.boolEnabled),
+                        AaeTextStyles.subtitle18LightGray,
                     ),
                   ),
                   SizedBox(
@@ -77,7 +77,7 @@ class TableCellTitleValueHub extends StatelessWidget {
                     stringValue,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: ApplyStyle(),
+                    style: applyStyle(),
 
                     textAlign: TextAlign.right,
                   ),
@@ -85,10 +85,7 @@ class TableCellTitleValueHub extends StatelessWidget {
                     txt,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: AaeTextStyles.tableCellTitle(
-                      boolEnabled: this.boolEnabled,
-
-                    ),
+                    style: AaeTextStyles.subtitle18CadetGray,
                     textAlign: TextAlign.right,
                   ),
                   this._cellAccessory(),
@@ -129,11 +126,11 @@ class TableCellTitleValueHub extends StatelessWidget {
   //AaeTextStyles.tableCellValue(boolEnabled: this.boolEnabled)
   //TextStyle(color: Colors.grey.withOpacity(0.6))
 
-  TextStyle ApplyStyle() {
+  TextStyle applyStyle() {
     if (this.boolHubTextGray)
-      return AaeTextStyles.tableCellValueHub();
+      return AaeTextStyles.title20GrayBold;
     else
-      return AaeTextStyles.tableCellValue(boolEnabled: this.boolEnabled);
+      return AaeTextStyles.subtitle18LightGray;
   }
 
   /// If boolShowDisclosureIndicator == true, the disclosure indicator will be displayed

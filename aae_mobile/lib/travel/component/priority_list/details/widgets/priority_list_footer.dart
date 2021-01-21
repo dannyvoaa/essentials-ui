@@ -25,7 +25,7 @@ class PriorityListFooter extends StatelessWidget {
             ),
             child: InkWell(
               child: Icon(
-                  AaeIconsv4.upArrow,
+                  AmericanIconsv4_6.upArrow,
                   size: 24,
                   color: const Color(0xff9da6ab),
               ),

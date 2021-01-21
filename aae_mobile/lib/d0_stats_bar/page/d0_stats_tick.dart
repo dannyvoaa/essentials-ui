@@ -13,11 +13,11 @@ class D0StatsTick extends StatelessWidget {
   Widget build(BuildContext context) => RichText(
           text: TextSpan(
               text: identifier,
-              style: AaeTextStyles.t2.copyWith(color: AaeColors.black, fontSize: 12.0,),
+              style: AaeTextStyles.caption11Reg150.copyWith(color: AaeColors.black, fontSize: 12.0,),
               children: <TextSpan>[
             TextSpan(
                 text: data,
-                style: AaeTextStyles.t2.copyWith(color: getColor(changeColor), fontSize: 12.0,))
+                style: AaeTextStyles.caption11Reg150.copyWith(color: getColor(changeColor), fontSize: 12.0,))
           ]));
 
   Color getColor(String colorId) {
@@ -36,11 +36,11 @@ class D0StatsTickPercent extends StatelessWidget {
   Widget build(BuildContext context) => RichText(
       text: TextSpan(
           text: identifier,
-          style: AaeTextStyles.t2.copyWith(color: AaeColors.black, fontSize: 12.0,),
+          style: AaeTextStyles.caption11Reg150.copyWith(color: AaeColors.black, fontSize: 12.0,),
           children: <TextSpan>[
             TextSpan(
                 text: data + "%",
-                style: AaeTextStyles.t2.copyWith(color: getColor(changeColor), fontSize: 12.0,))
+                style: AaeTextStyles.caption11Reg150.copyWith(color: getColor(changeColor), fontSize: 12.0,))
           ]));
 
   Color getColor(String colorId) {

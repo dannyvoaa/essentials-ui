@@ -37,7 +37,7 @@ class TableCellTitleValue extends StatelessWidget {
         this.boolBorderTop
             ? Container(
           height: AaeDimens.sizeDivider,
-          color: AaeColors.white,
+          color: AaeColors.white100,
         )
             : Container(),
         Material(
@@ -50,10 +50,7 @@ class TableCellTitleValue extends StatelessWidget {
                       stringTitle,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: AaeTextStyles.tableCellTitle(
-                        boolEnabled: this.boolEnabled,
-                        //  padding:10,
-                      ),
+                      style: AaeTextStyles.subtitle18Gray,
                     ),
                   ),
                   SizedBox(
@@ -63,9 +60,7 @@ class TableCellTitleValue extends StatelessWidget {
                     stringValue,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: AaeTextStyles.tableCellValue(
-                      boolEnabled: this.boolEnabled,
-                    ),
+                    style: AaeTextStyles.subtitle18Gray,
 
                     textAlign: TextAlign.right,
                   ),
@@ -73,10 +68,7 @@ class TableCellTitleValue extends StatelessWidget {
                                       txt,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
-                                      style: AaeTextStyles.tableCellTitle(
-                                                                     boolEnabled: this.boolEnabled,
-
-                                                                   ),
+                                      style: AaeTextStyles.subtitle18CadetGray,
                                       textAlign: TextAlign.right,
                                     ),
                   this._cellAccessory(),

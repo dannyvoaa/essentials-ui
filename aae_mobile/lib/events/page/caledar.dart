@@ -109,9 +109,7 @@ class _CalendarState extends State<Calendar> {
                   ),
                   Text(
                     date != null ? date.day.toString() : '',
-                    style: !boolSelected
-                        ? AaeTextStyles.body(boolDefaultHeight: true)
-                        : AaeTextStyles.body(boolDefaultHeight: true),
+                    style: AaeTextStyles.body16,
                   ),
                   Expanded(
                     child: this.widget.listDateEvents.contains(date)
@@ -121,7 +119,7 @@ class _CalendarState extends State<Calendar> {
                               decoration: BoxDecoration(
                                 color: !boolSelected
                                     ? AaeColors.blue
-                                    : AaeColors.white,
+                                    : AaeColors.white100,
                                 shape: BoxShape.circle,
                               ),
                               height: 5,

@@ -19,7 +19,7 @@ class WelcomeView extends StatelessWidget {
     return new WillPopScope(
       onWillPop: () async => false,
     child: Scaffold(
-      backgroundColor: AaeColors.white,
+      backgroundColor: AaeColors.white100,
       body: Stack(
         children: <Widget>[
           SafeArea(
@@ -62,7 +62,7 @@ class WelcomeView extends StatelessWidget {
     return Text(
       'Please sign in using your company credentials to enjoy your mobile work space',
       textAlign: TextAlign.center,
-      style: AaeTextStyles.description(),
+      style: AaeTextStyles.body14,
     );
   }
 
@@ -112,11 +112,11 @@ class WelcomeView extends StatelessWidget {
             ),
             Text(
               'Welcome',
-              style: AaeTextStyles.titleLarge(),
+              style: AaeTextStyles.title50CadetGrayBold,
             ),
             Text(
               'to American Essentials',
-              style: AaeTextStyles.subTitleLarge(),
+              style: AaeTextStyles.subtitle18CadetGray,
             ),
           ],
           mainAxisAlignment: MainAxisAlignment.center,

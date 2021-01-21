@@ -153,14 +153,14 @@ class _CalendarViewState extends State<CalendarView> {
               children: <Widget>[
                 Text(
                   DateFormat.jm().format(dateTimeStart),
-                  style: AaeTextStyles.body(boolDefaultHeight: true),
+                  style: AaeTextStyles.body16,
                 ),
                 SizedBox(
                   height: 8,
                 ),
                 Text(
                   DateFormat.jm().format(dateTimeEnd),
-                  style: AaeTextStyles.body(boolDefaultHeight: true),
+                  style: AaeTextStyles.body16,
                 ),
               ],
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -178,7 +178,7 @@ class _CalendarViewState extends State<CalendarView> {
                     stringEventName,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: AaeTextStyles.headline(boolDefaultHeight: true),
+                    style: AaeTextStyles.body16Bold,
                   ),
                   SizedBox(
                     height: 8,
@@ -187,7 +187,7 @@ class _CalendarViewState extends State<CalendarView> {
                     stringEventLocation,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: AaeTextStyles.body(boolDefaultHeight: true),
+                    style: AaeTextStyles.body16,
                   ),
                 ],
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -197,7 +197,7 @@ class _CalendarViewState extends State<CalendarView> {
         ],
         crossAxisAlignment: CrossAxisAlignment.start,
       ),
-      color: AaeColors.white,
+      color: AaeColors.white100,
       margin: EdgeInsets.only(
         bottom: AaeDimens.baseUnit,
       ),
@@ -241,7 +241,7 @@ class _CalendarViewState extends State<CalendarView> {
           ),
           Text(
             stringMonthYear,
-            style: AaeTextStyles.title(),
+            style: AaeTextStyles.title20,
           ),
           InkWell(
             child: Container(
@@ -261,7 +261,7 @@ class _CalendarViewState extends State<CalendarView> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
       ),
-      color: AaeColors.white,
+      color: AaeColors.white100,
       margin: EdgeInsets.only(
         left: 0,
         top: AaeDimens.baseUnit,
@@ -300,9 +300,9 @@ class _CalendarViewState extends State<CalendarView> {
       alignment: Alignment.centerLeft,
       child: Text(
         stringSelectedDate,
-        style: AaeTextStyles.description(),
+        style: AaeTextStyles.body14,
       ),
-      color: AaeColors.white,
+      color: AaeColors.white100,
       margin: EdgeInsets.only(
         bottom: AaeDimens.baseUnit,
       ),

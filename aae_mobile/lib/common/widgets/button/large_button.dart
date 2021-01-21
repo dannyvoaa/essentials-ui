@@ -23,7 +23,7 @@ class LargeButton extends StatelessWidget {
     // Use the Light Blue color theme
     colorBackground = AaeColors.blue;
     colorHighlight = AaeColors.blue;
-    styleText = AaeTextStyles.largeButtonTitle();
+    styleText = AaeTextStyles.btn18;
 
     return FlatButton(
       child: Text(

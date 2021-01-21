@@ -101,7 +101,7 @@ class ListViewItem extends StatelessWidget {
     return Expanded(
       child: Container(
         width: double.infinity,
-        color: AaeColors.white,
+        color: AaeColors.white100,
         padding: EdgeInsets.symmetric(horizontal: 14.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

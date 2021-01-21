@@ -29,7 +29,7 @@ class TripSummaryTitle extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 5),
               child: Text(
                 viewModel.reservationDetail.description,
-                style: AaeTextStyles.reservationHeading,
+                style: AaeTextStyles.title22Bold,
               ),
             ),
           ),
@@ -76,7 +76,7 @@ class TripSummaryTitle extends StatelessWidget {
     final text = monthText + ' ' + String.fromCharCode(0x2022) + ' ' + timeText;
     return Text(
       text,
-      style: AaeTextStyles.reservationSubHeading,
+      style: AaeTextStyles.body14,
     );
   }
 }

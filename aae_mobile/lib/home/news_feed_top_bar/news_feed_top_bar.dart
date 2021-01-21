@@ -51,7 +51,7 @@ class TopBarTitle extends StatelessWidget {
     return Text(
       text,
       textAlign: TextAlign.left,
-      style: AaeTextStyles.h5,
+      style: AaeTextStyles.title20Med120,
     );
   }
 }

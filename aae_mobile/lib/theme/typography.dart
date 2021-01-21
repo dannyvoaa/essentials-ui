@@ -10,13 +10,14 @@ import 'package:flutter/painting.dart';
 class AaeTextStyles {
   static const _regular = FontWeight.w400;
   static const _americanSans = 'AmericanSans';
-  static const _americanSansLight = 'AmericanSansLight';
+
+  // static const _americanSansLight = 'AmericanSansLight';
   static const _americanSansMedium = 'AmericanSansMedium';
   static const _americanSansBold = 'AmericanSansBold';
 
   static const font = 'AmericanSans';
 
-  // 50px BASE title text -----------------------------------------------------------------------50px--
+  // 50px BASE title text --------------------------------v---------------------------------------50px--
   /// 50px base font
   static const TextStyle title50 = TextStyle(
     fontFamily: _americanSans,
@@ -32,7 +33,7 @@ class AaeTextStyles {
     color: AaeColors.cadetGray,
   );
 
-  // 40px BASE title text -----------------------------------------------------------------------40px--
+  // 40px BASE title text ----------------------------------v-------------------------------------40px--
   /// 40px base font
   static const TextStyle title40 = TextStyle(
     fontFamily: _americanSans,
@@ -48,7 +49,8 @@ class AaeTextStyles {
     height: 1.40,
   );
 
-  // 32px BASE title text -----------------------------------------------------------------------32px--
+
+  // 32px BASE title text ----------------------------------v-------------------------------------32px--
   /// 32px base font
   static const TextStyle title32 = TextStyle(
     fontFamily: _americanSans,
@@ -75,7 +77,13 @@ class AaeTextStyles {
     fontFamily: _americanSansMedium,
   );
 
-  // 28px BASE title text -----------------------------------------------------------------------28px--
+  /// Replaces: flightSearchHeader
+  static const title32MediumGray = TextStyle(
+    color: AaeColors.mediumGray,
+  );
+
+
+  // 28px BASE title text ------------------------------------v-----------------------------------28px--
   /// 28px base font
   static const TextStyle title28 = TextStyle(
     fontFamily: _americanSans,
@@ -91,7 +99,8 @@ class AaeTextStyles {
       height: 1.43
   );
 
-  // 24px BASE title text -----------------------------------------------------------------------24px--
+
+  // 24px BASE title text ------------------------------------v-----------------------------------24px--
   /// 24px base font
   static const TextStyle title24 = TextStyle(
     fontFamily: _americanSans,
@@ -125,14 +134,15 @@ class AaeTextStyles {
     color: AaeColors.mediumGray,
     height: 1.33,
   );
+
   /// Used: 'No trips yet' on home page,
   static final title24MediumGrayBold = title24.copyWith(
-      fontFamily: _americanSansBold,
-      color: AaeColors.mediumGray,
+    fontFamily: _americanSansBold,
+    color: AaeColors.mediumGray,
   );
 
 
-  // 22px BASE title text -----------------------------------------------------------------------22px--
+  // 22px BASE title text ---------------------------------v--------------------------------------22px--
   /// 22px base font
   static const TextStyle title22 = TextStyle(
     fontFamily: _americanSans,
@@ -144,7 +154,7 @@ class AaeTextStyles {
 
   /// Replaces: eventTitle
   static final title22Med = title22.copyWith(
-      fontFamily: _americanSansMedium,
+    fontFamily: _americanSansMedium,
   );
 
   /// Replaces: reservationHeading
@@ -152,7 +162,26 @@ class AaeTextStyles {
     fontFamily: _americanSansBold,
   );
 
-  // 20px BASE title text -----------------------------------------------------------------------20px--
+  // 21px BASE title text --------------------------------v---------------------------------------21px--
+  /// 21px base font
+  ///
+  /// Replaces: b1SingleLine, title
+  static const TextStyle title21 = TextStyle(
+    fontFamily: _americanSans,
+    fontSize: 21,
+    color: AaeColors.darkGray,
+    fontWeight: _regular,
+    height: 1.00,
+  );
+
+  /// Replaces: inline style in airport_picker_header.dart
+  static final title21MediumGrayMed = title21.copyWith(
+    fontFamily: _americanSansMedium,
+    color: AaeColors.mediumGray,
+  );
+
+
+  // 20px BASE title text ----------------------------------v-------------------------------------20px--
   /// 20px base font
   ///
   /// Replaces: b1SingleLine, title
@@ -177,12 +206,12 @@ class AaeTextStyles {
 
   /// Replaces: tableCellValueHub
   static final title20GrayBold = title20.copyWith(
-      fontFamily: _americanSansBold,
+    fontFamily: _americanSansBold,
     color: AaeColors.gray,
-
   );
 
-  // 18px BASE title text -----------------------------------------------------------------------18px--
+
+  // 18px BASE title text ----------------------------------v-------------------------------------18px--
   /// 18px base font
   ///
   /// Replaces: largeTextStyle - Used: passenger list
@@ -194,9 +223,14 @@ class AaeTextStyles {
     height: 1.00,
   );
 
-  /// Replaces: smallHeadline, timeSummary
+  /// Replaces: smallHeadline
   static final subtitle18Med = subtitle18.copyWith(
     fontFamily: _americanSansMedium,
+  );
+
+  /// Replaces: timeSummary
+  static final subtitle18Bold = subtitle18.copyWith(
+    fontFamily: _americanSansBold,
   );
 
   /// Replaces: newsCardHeadline
@@ -228,25 +262,9 @@ class AaeTextStyles {
     color: AaeColors.cadetGray,
   );
 
-  /// Replaces: tableCellValue, tableCellTitleHub
+  /// Replaces: tableCellValue, tableCellTitleHub, textFieldTitle
   static final subtitle18Gray = subtitle18.copyWith(
     color: AaeColors.gray,
-  static const reservationNoTripsHeading = TextStyle(
-      fontSize: 24,
-      fontWeight: FontWeight.bold,
-      color: AaeColors.mediumGray,
-      fontFamily: _americanSansMedium);
-
-  static const smallTextStyle = TextStyle(
-    fontFamily: _americanSans,
-    fontSize: 18,
-    color: const Color(0xff627a88),
-  );
-
-  static const reservationSubHeading = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.normal,
-    color: AaeColors.titleGray,
   );
 
   /// Replaces: textFieldModern
@@ -263,10 +281,17 @@ class AaeTextStyles {
 
   /// Used: priority list
   static final subtitle18White = subtitle18.copyWith(
-    color: AaeColors.white,
+    color: AaeColors.white100,
   );
 
-  // 16px BASE title text -----------------------------------------------------------------------16px--
+  /// Replaces: tableCellValue
+  static final subtitle18LightGray = subtitle18.copyWith(
+    color: AaeColors.lightGray,
+  );
+
+
+
+  // 16px BASE title text --------------------------------v---------------------------------------16px--
   /// 16px base font
   ///
   /// Replaces: b2SingleLine, body, calendarMain, eventText
@@ -279,12 +304,13 @@ class AaeTextStyles {
   );
 
   /// Replaces: b2SingleLine, body, calendarMain as second height setting
-  static const TextStyle body16Reg133 = TextStyle(
-    fontFamily: _americanSans,
-    fontSize: 16,
-    color: AaeColors.darkGray,
-    fontWeight: _regular,
+  static final TextStyle body16Reg133 = body16.copyWith(
     height: 1.33,
+  );
+
+  /// Replaces: calendarOld
+  static final TextStyle body16Gray = body16.copyWith(
+    color: AaeColors.gray,
   );
 
   /// Replaces: b2
@@ -303,18 +329,11 @@ class AaeTextStyles {
     fontFamily: _americanSansBold,
   );
 
-  // 15px BASE title text -----------------------------------------------------------------------15px--
+
+  // 15px BASE title text ----------------------------------v-------------------------------------15px--
   /// 15px base font
   static const TextStyle subtitle15 = TextStyle(
     fontFamily: _americanSans,
-  static final stopDivider = TextStyle(
-    color: AaeColors.darkOrange,
-    fontWeight: _medium,
-    fontSize: 12,
-  );
-
-  /// Travel module text styles
-  static const travelHeader = TextStyle(
     fontSize: 15,
     color: AaeColors.darkGray,
     fontWeight: _regular,
@@ -324,7 +343,11 @@ class AaeTextStyles {
   /// Replaces:locatorInfo
   static final subtitle15Med = subtitle15.copyWith(
     fontFamily: _americanSansMedium,
-    color: AaeColors.darkGray,
+  );
+
+  /// Replaces:formHintText
+  static final subtitle15Gray = subtitle15.copyWith(
+    color: AaeColors.gray,
   );
 
   /// Replaces: travelHeader, cardTitle,
@@ -335,7 +358,7 @@ class AaeTextStyles {
     color: AaeColors.blue,
   );
 
-  // 14px BASE title text -----------------------------------------------------------------------14px--
+  // 14px BASE title text ---------------------------------v--------------------------------------14px--
   /// 14px base font
   ///
   /// Replaces: priorityCodeTextStyle, hubDetailHeading, reservationSubHeading
@@ -369,24 +392,11 @@ class AaeTextStyles {
 
   /// Used: when 4 cabin in Priority list
   static final body14MediumGray = body14.copyWith(
-  static const flightStatusTimeText = TextStyle(
-      fontSize: 18,
-      color: AaeColors.titleGray,
-      fontFamily: _americanSansMedium
-  );
-
-  static const flightSearchText = TextStyle(
-    fontSize: 15,
-    color: AaeColors.titleGray,
-    fontFamily: _americanSansMedium
-  );
-
-  static const flightSearchHeader = TextStyle(
-    fontSize: 32,
     color: AaeColors.mediumGray,
   );
 
-  // 13px BASE title text -----------------------------------------------------------------------13px--
+
+  // 13px BASE title text ------------------------------------v-----------------------------------13px--
   /// 13px base font
   ///
   /// Replaces: calendarSummary height 1.0,
@@ -435,7 +445,7 @@ class AaeTextStyles {
   );
 
 
-  // 12px BASE title text -----------------------------------------------------------------------12px--
+  // 12px BASE title text -----------------------------------v------------------------------------12px--
   /// 12px base font
   ///
   /// Replaces: departureHeading,
@@ -489,7 +499,23 @@ class AaeTextStyles {
     color: AaeColors.darkRed,
   );
 
-  // 11px BASE title text -----------------------------------------------------------------------11px--
+  /// Replaces: flightStatusText
+  ///
+  /// Used: flight status on cards
+  static final caption12CadetGray = caption12.copyWith(
+    color: AaeColors.cadetGray,
+  );
+
+  /// Replaces: locatorInfoHeading
+  ///
+  /// Used: flight status on cards
+  static final caption12GrayMed = caption12.copyWith(
+    fontFamily: _americanSansMedium,
+    color: AaeColors.gray,
+  );
+
+
+  // 11px BASE title text -------------------------------------v----------------------------------11px--
   /// 11px base font
   static const TextStyle caption11 = TextStyle(
     fontFamily: _americanSans,
@@ -512,16 +538,16 @@ class AaeTextStyles {
     color: AaeColors.gray,
   );
 
-  // BASE for BUTTON text --------------------------------------------------------------BUTTONS-----------
+  // BASE for BUTTON text -------------------------------------v-----------------------------------BUTTONS--
   /// Button text styles
   ///
   /// Naming new classes = class name and size + color if different + weight if different + height if different
   ///
-  /// Replaces: checkInButton
+  /// Replaces: checkInButton, largeButtonTitle
   static const TextStyle btn18 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 18,
-    color: AaeColors.white,
+    color: AaeColors.white100,
     fontWeight: _regular,
     height: 1.00,
   );
@@ -551,97 +577,12 @@ class AaeTextStyles {
     fontSize: 14,
     height: 1.50,
   );
-    // Default style
-    return textStyle;
-  }
 
-  static TextStyle tableCellValueHub() {
-    //TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(color: AaeColors.red, fontSize: 18);
-    //TextStyle(fontSize: 16, color: Colors.orange, fontWeight: FontWeight.bold);
-    TextStyle mytextStyle = TextStyle(
-        fontSize: 20, color: Colors.grey, fontWeight: FontWeight.bold);
-    // Default style
-    return mytextStyle;
-  }
+  /// Replaces: btn2
+  static final btn14Med142 = btn18.copyWith(
+    fontFamily: _americanSansMedium,
+    fontSize: 14,
+    height: 1.42,
+  );
 
-  /// Used for Event detail layout
-  static TextStyle eventTitle({bool boolDefaultHeight = false}) {
-    TextStyle textStyle = h4.copyWith(
-      color: AaeColors.darkGray,
-      height: 1.0,
-      fontSize: 22,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  static TextStyle eventText({bool boolDefaultHeight = false}) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      color: AaeColors.darkGray,
-      height: 1.0,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  static TextStyle eventDate({bool boolDefaultHeight = false}) {
-    TextStyle textStyle = t2.copyWith(
-      color: AaeColors.darkGray,
-      fontSize: 14,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  /// Used for the title in [LargeButton]
-  static TextStyle largeButtonTitle({bool boolDefaultHeight = false}) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      color: AaeColors.white,
-      fontSize: 18,
-      fontWeight: FontWeight.normal,
-      height: 1.0,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  // Used for placeholders / hints in a [TextField]
-  static TextStyle textFieldModernHint({bool boolDefaultHeight = false}) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      color: AaeColors.modernHint,
-      fontSize: 24,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  // Used for user-entered content in a [TextField]
-  static TextStyle textFieldModern({bool boolDefaultHeight = false}) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      fontSize: 18,
-      color: AaeColors.darkBlue,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  // Used for user-entered content in a [TextField]
-  static TextStyle textFieldTitle({bool boolDefaultHeight = false}) {
-    TextStyle textStyle = body(boolDefaultHeight: boolDefaultHeight).copyWith(
-      fontSize: 18,
-      color: AaeColors.gray,
-    );
-
-    // Default style
-    return textStyle;
-  }
-
-  static const pageHeadline =
-      TextStyle(fontSize: 24, fontWeight: _bold, color: AaeColors.onboardTitle);
 }

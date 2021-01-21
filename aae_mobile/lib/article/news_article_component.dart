@@ -189,7 +189,7 @@ class NewsArticleComponent extends StatelessWidget {
                               fontSize: FontSize(26),
                             ),
                             ".blue h2": Style(
-                              color: AaeColors.white,
+                              color: AaeColors.white100,
                             ),
                             "h3": Style(
                               color: AaeColors.mediumGray,
@@ -211,10 +211,10 @@ class NewsArticleComponent extends StatelessWidget {
                               margin: EdgeInsets.only(left: 2, bottom:10),
                             ),
                             ".dark_ul, .dark_ol": Style(
-                              color:AaeColors.white,
+                              color:AaeColors.white100,
                             ),
                             ".dark_hr": Style(
-                              backgroundColor: AaeColors.white,
+                              backgroundColor: AaeColors.white100,
                               height: 2,
                             ),
                             ".page_button, .page_button_two, .page_button_dark, .page_button_dark_two": Style(
@@ -226,7 +226,7 @@ class NewsArticleComponent extends StatelessWidget {
                               height: 40,
                             ),
                             "div.page_button > a": Style(
-                              color:AaeColors.white,
+                              color:AaeColors.white100,
                               textAlign: TextAlign.center,
                               width: double.infinity,
                             ),
@@ -235,20 +235,20 @@ class NewsArticleComponent extends StatelessWidget {
                               height: 40,
                             ),
                             ".dark_link > a": Style(
-                              color: AaeColors.white,
+                              color: AaeColors.white100,
                             ),
                             ".page_button_dark": Style(
-                              backgroundColor: AaeColors.white,
+                              backgroundColor: AaeColors.white100,
                               textAlign: TextAlign.center,
                               height: 40,
                             ),
                             ".page_button_dark_two": Style(
-                              color: AaeColors.white,
+                              color: AaeColors.white100,
                               textAlign: TextAlign.center,
                               height: 40,
                             ),
                             ".page_button_dark_two > a": Style(
-                              color:AaeColors.white,
+                              color:AaeColors.white100,
                             ),
                             "table > tr": Style(
                               margin: EdgeInsets.only(bottom:40,),

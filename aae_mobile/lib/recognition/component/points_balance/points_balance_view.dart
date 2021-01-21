@@ -25,7 +25,7 @@ class PointsBalanceView extends StatelessWidget {
       padding: const EdgeInsets.all(AaeDimens.baseUnit),
       child: Container(
         decoration: BoxDecoration(
-            color: AaeColors.white,
+            color: AaeColors.white100,
             borderRadius: BorderRadius.all(
                 Radius.circular(AaeDimens.currentBalanceCardRadius))),
         height: AaeDimens.currentBalanceCardHeight,

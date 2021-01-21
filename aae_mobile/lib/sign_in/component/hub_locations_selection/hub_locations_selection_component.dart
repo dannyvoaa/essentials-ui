@@ -87,14 +87,14 @@ Widget _hubLocationsList(
                 shape: BoxShape.rectangle,
                 border:
                 Border.all(
-                    color: AaeColors.white,
+                    color: AaeColors.white100,
                     width: 0)
               //: Border.all(color: AaeColors.black, width: 1),
             ),
             child: Center(
               child: Text(viewModel.hubLocation,
                   style: TextStyle(
-                    color: AaeColors.white,
+                    color: AaeColors.white100,
                     fontSize: 17,
                     fontWeight: FontWeight.normal,
                   )),
@@ -112,19 +112,19 @@ Widget _hubLocationsList(
             width: AaeDimens.workgroupsButtonWidth,
             height: AaeDimens.workgroupsButtonHeight,
             decoration: BoxDecoration(
-              color: viewModel.isSelected ? AaeColors.lightBlue : AaeColors.white,
+              color: viewModel.isSelected ? AaeColors.lightBlue : AaeColors.white100,
               borderRadius: BorderRadius.circular(AaeDimens.topicsIconRadius),
               shape: BoxShape.rectangle,
               border: viewModel.isSelected
                   ? Border.all(
-                  color: AaeColors.white,
+                  color: AaeColors.white100,
                   width: 0)
                   : Border.all(color: AaeColors.black, width: 1),
             ),
             child: Center(
               child: Text(viewModel.hubLocation,
                   style: TextStyle(
-                    color: viewModel.isSelected ? AaeColors.white : AaeColors.black,
+                    color: viewModel.isSelected ? AaeColors.white100 : AaeColors.black,
                     fontSize: 17,
                     fontWeight: FontWeight.normal,
                   )),

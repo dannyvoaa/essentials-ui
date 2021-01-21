@@ -29,7 +29,7 @@ class AaeCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        decoration: BoxDecoration(color: AaeColors.white, boxShadow: [
+        decoration: BoxDecoration(color: AaeColors.white100, boxShadow: [
           BoxShadow(
             color: Colors.black,
           ),
@@ -58,7 +58,7 @@ class AaeCard extends StatelessWidget {
                     color: AaeColors.blue,
                     child: Text(
                       primaryActionTitle,
-                      style: TextStyle(color: AaeColors.white),
+                      style: TextStyle(color: AaeColors.white100),
                     ),
                     onPressed: () => onPrimaryAction(context),
                   ),

@@ -108,14 +108,14 @@ class _PassengerState extends State<Passenger> {
             Row(
               children: [
                 Text(widget.firstName + ' ' + widget.lastName),
-                Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,),
+                Text(String.fromCharCode(0x2022), style: AaeTextStyles.caption13MediumGrayLS10,),
                 Text(widget.status),
               ],
             ),
             FlutterSwitch(
               activeColor: AaeColors.blue,
               inactiveColor: AaeColors.ultraLightGray,
-              toggleColor: AaeColors.white,
+              toggleColor: AaeColors.white100,
               width: 40.0,
               height: 22.0,
               toggleSize: 20.0,
@@ -155,7 +155,7 @@ class CheckInButton extends StatelessWidget {
           onPressed: () {
             print('Check in pressed...');
           },
-          child: Text('Check in', style:AaeTextStyles.checkInButton),
+          child: Text('Check in', style:AaeTextStyles.btn18),
         ),
       ),
     );

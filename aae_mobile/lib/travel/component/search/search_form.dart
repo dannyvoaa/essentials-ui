@@ -58,7 +58,7 @@ class _SearchFormState extends State<SearchForm> {
   bool isEnabled = false;
 
   final InputDecoration textFieldDecoration = InputDecoration(
-    hintStyle: AaeTextStyles.formHintText,
+    hintStyle: AaeTextStyles.subtitle15Gray,
     focusedBorder: UnderlineInputBorder(
       borderSide: BorderSide(color: AaeColors.blue),
     ),
@@ -193,7 +193,7 @@ class _SearchFormState extends State<SearchForm> {
 
       case SearchFormFieldType.text:
         return TextFormField(
-          style: AaeTextStyles.locatorInfo,
+          style: AaeTextStyles.subtitle15Med,
           keyboardType: TextInputType.text,
           decoration: textFieldDecoration.copyWith(
             hintText: hint,
@@ -203,7 +203,7 @@ class _SearchFormState extends State<SearchForm> {
 
       case SearchFormFieldType.number:
         return TextFormField(
-          style: AaeTextStyles.locatorInfo,
+          style: AaeTextStyles.subtitle15Med,
           keyboardType: TextInputType.number,
           decoration: textFieldDecoration.copyWith(
             hintText: hint,
@@ -235,9 +235,9 @@ class _SearchFormState extends State<SearchForm> {
         minWidth: double.infinity,
         child: RaisedButton(
           disabledColor: Color.fromRGBO(208, 218, 224, 1.0),
-          disabledTextColor: AaeColors.white,
+          disabledTextColor: AaeColors.white100,
           color: AaeColors.blue,
-          textColor: AaeColors.white,
+          textColor: AaeColors.white100,
           onPressed:
               isEnabled ? () => submit(context, widget.searchType) : null,
           shape: RoundedRectangleBorder(

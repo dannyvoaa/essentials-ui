@@ -36,7 +36,7 @@ class Search extends StatelessWidget {
           alignment: Alignment.topLeft,
           child: Text(
             this.title,
-            style: AaeTextStyles.travelHeader,
+            style: AaeTextStyles.subtitle15,
             textAlign: TextAlign.left,
           ),
         ));
@@ -51,7 +51,7 @@ class Search extends StatelessWidget {
           length: 2,
           child: Container(
             child: Scaffold(
-              backgroundColor: AaeColors.white,
+              backgroundColor: AaeColors.white100,
               appBar: _buildAppBar(),
               body: TabBarView(
                 children: [
@@ -93,7 +93,7 @@ class Search extends StatelessWidget {
 
   _buildAppBar() {
     return AppBar(
-        backgroundColor: AaeColors.white,
+        backgroundColor: AaeColors.white100,
         elevation: 0,
         bottom: new PreferredSize(
           child: new Container(

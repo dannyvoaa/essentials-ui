@@ -31,7 +31,7 @@ class SignInWorkflow extends StatelessWidget {
   final _routeTable = <String, WidgetBuilder>{
     SignInRoutes.welcome: (context) => WelcomeComponent(),
     SignInRoutes.login: (context) => LoginComponent(),
-    SignInRoutes.loading: (context) => Container(decoration: new BoxDecoration(color: AaeColors.white),child:Center(child: AaeLoadingSpinner())),
+    SignInRoutes.loading: (context) => Container(decoration: new BoxDecoration(color: AaeColors.white100),child:Center(child: AaeLoadingSpinner())),
     SignInRoutes.failed: (context) => SignInFailedComponent(),
     SignInRoutes.topicsSelection: (context) => TopicsSelectionComponent(),
     SignInRoutes.hubLocationsSelection: (context) => HubLocationsSelectionComponent(),
