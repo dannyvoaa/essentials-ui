@@ -42,7 +42,7 @@ class AirportPickerHeader extends StatelessWidget {
                   child: Icon(
                       Icons.clear,
                       size: 20,
-                      color: AaeColors.lightGray
+                      color: AaeColors.gray
                   ),
                 ),
               ),
@@ -72,11 +72,14 @@ class AirportPickerHeader extends StatelessWidget {
               },
               decoration: InputDecoration(
                   icon: Padding(
-                    padding: EdgeInsets.only(left: 8),
+                    padding: EdgeInsets.only(
+                      left: 8,
+                      bottom: 5,
+                    ),
                     child: Icon(
                       AmericanIconsv4_6.search,
                       size: 20,
-                      color: AaeColors.ultraLightGray,
+                      color: AaeColors.gray,
                     ),
                   ),
                   border: InputBorder.none,

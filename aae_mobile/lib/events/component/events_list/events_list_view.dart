@@ -39,7 +39,7 @@ class EventsListView extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.black,
+              color: AaeColors.lightGray,
 //              color: AaeColors.lightGray,
               offset: Offset(0.2, 2),
               blurRadius: 2,

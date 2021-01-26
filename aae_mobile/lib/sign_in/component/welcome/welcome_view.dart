@@ -60,9 +60,9 @@ class WelcomeView extends StatelessWidget {
       bool boolKeyboardVisible = false,
       bool boolCompactHeight = false}) {
     return Text(
-      'Please sign in using your company credentials to enjoy your mobile work space',
+      'Please sign in using your company credentials to enjoy your mobile work space.',
       textAlign: TextAlign.center,
-      style: AaeTextStyles.body14,
+      style: AaeTextStyles.body14Reg130,
     );
   }
 

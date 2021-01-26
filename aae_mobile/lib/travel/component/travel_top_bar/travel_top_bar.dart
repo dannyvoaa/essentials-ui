@@ -35,7 +35,7 @@ class TravelTopBar extends StatelessWidget implements PreferredSizeWidget {
       child: Container(
         child: GradientAppBar(
           title: Align(
-              alignment: Alignment.bottomLeft,
+              alignment: Alignment.centerLeft,
               heightFactor: 3,
               child: Text(
                 'Travel',

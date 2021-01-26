@@ -61,7 +61,7 @@ class TripsCollection extends StatelessWidget {
                 decoration: BoxDecoration(
                     shape: BoxShape.circle, color: AaeColors.white100),
                 child: Padding(
-                    padding: const EdgeInsets.only(bottom: 15),
+                    padding: const EdgeInsets.only(bottom: 35),
                     child: Icon(AmericanIconsv4_6.vacation,
                         size: 120, color: AaeColors.darkGray)))),
         Padding(

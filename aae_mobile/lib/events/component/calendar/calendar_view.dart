@@ -354,7 +354,7 @@ class CalendarView extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: AaeColors.black,
+              color: AaeColors.lightGray,
 //              color: AaeColors.lightGray,
               offset: Offset(0.2, 2),
               blurRadius: 4,

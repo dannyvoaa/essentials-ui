@@ -12,7 +12,7 @@ class Search extends StatelessWidget {
   final Function(BuildContext, String, String, String) searchType2;
   var calendarLength;
 
-  static const searchHeaderText = TextStyle(
+  static const subtitle15 = TextStyle(
     fontSize: 15,
     color: AaeColors.darkGray,
   );
@@ -36,7 +36,7 @@ class Search extends StatelessWidget {
           alignment: Alignment.topLeft,
           child: Text(
             this.title,
-            style: AaeTextStyles.subtitle15,
+            style: AaeTextStyles.subtitle15BlueBold,
             textAlign: TextAlign.left,
           ),
         ));
@@ -46,14 +46,15 @@ class Search extends StatelessWidget {
     return Container(
         width: double.infinity,
         //need to remove hardcoded height
-        height: 370,
+        height: 380,
         child: DefaultTabController(
           length: 2,
           child: Container(
             child: Scaffold(
               backgroundColor: AaeColors.white100,
               appBar: _buildAppBar(),
-              body: TabBarView(
+              body: Padding( padding: EdgeInsets.only(top: 10),
+                child: TabBarView(
                 children: [
                   SearchForm(
                       searchType: searchType1,
@@ -83,7 +84,7 @@ class Search extends StatelessWidget {
                     searchField2ValidationLength: 0,
                   ),
                 ],
-              ),
+              ),),
             ),
           ),
         ),
@@ -97,10 +98,10 @@ class Search extends StatelessWidget {
         elevation: 0,
         bottom: new PreferredSize(
           child: new Container(
-            padding: EdgeInsets.only(left: 20, right: 20),
+            padding: EdgeInsets.only(left: 20, right: 20,),
             child: Container(
                 child: TabBar(
-                  labelColor: AaeColors.black,
+                  labelColor: AaeColors.darkGray,
                   indicatorColor: AaeColors.blue,
                   indicatorWeight: 3.0,
                   tabs: [
@@ -109,7 +110,7 @@ class Search extends StatelessWidget {
                           padding: EdgeInsets.only(bottom: 5),
                           alignment: Alignment.bottomCenter,
                           child: Text('City/airport',
-                              style: searchHeaderText,
+                              style: AaeTextStyles.subtitle15,
                               textAlign: TextAlign.left)),
                     ),
                     Tab(
@@ -117,7 +118,7 @@ class Search extends StatelessWidget {
                           padding: EdgeInsets.only(bottom: 5),
                           alignment: Alignment.bottomCenter,
                           child: Text('Flight number',
-                              style: searchHeaderText,
+                              style: AaeTextStyles.subtitle15,
                               textAlign: TextAlign.left)),
                     ),
                   ],
@@ -137,7 +138,7 @@ class Search extends StatelessWidget {
       color: AaeColors.black,
       boxShadow: [
         BoxShadow(
-          color: AaeColors.ultraLightGray,
+          color: AaeColors.lightGray,
           offset: Offset(0, 3),
           blurRadius: 6,
         ),

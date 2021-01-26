@@ -7,15 +7,20 @@ import 'package:flutter/painting.dart';
 /// Final classes = class name and size + color if different + weight if different + height if different
 /// Naming order = name (title), size (50), color (Gray), weight (Med), line height (133)
 
+// static const _regular = FontWeight.w400;
+// static const _medium = FontWeight.w500;
+// static const _bold = FontWeight.bold;
+// static const _americanSans = 'AmericanSans';
+// static const font = 'AmericanSans';
+
 class AaeTextStyles {
-  static const _regular = FontWeight.w400;
-  static const _americanSans = 'AmericanSans';
-
-  // static const _americanSansLight = 'AmericanSansLight';
-  static const _americanSansMedium = 'AmericanSansMedium';
-  static const _americanSansBold = 'AmericanSansBold';
-
+  static const _americanSans = 'AmericanSans'; //400
   static const font = 'AmericanSans';
+  static const _americanSansItalic = 'AmericanSans-Italic'; //400
+  static const _americanSansLight = 'AmericanSans-Light'; //300
+  static const _americanSansMedium = 'AmericanSans-Medium'; //600
+  static const _americanSansBold = 'AmericanSans-Bold'; //700
+
 
   // 50px BASE title text --------------------------------v---------------------------------------50px--
   /// 50px base font
@@ -23,13 +28,13 @@ class AaeTextStyles {
     fontFamily: _americanSans,
     fontSize: 50,
     color: AaeColors.darkGray,
-    fontWeight: _regular,
     height: 1.00,
   );
 
   /// Replaces: titleLarge
   static final title50CadetGrayBold = title50.copyWith(
     fontFamily: _americanSansBold,
+    fontWeight: FontWeight.w700,
     color: AaeColors.cadetGray,
   );
 
@@ -39,13 +44,13 @@ class AaeTextStyles {
     fontFamily: _americanSans,
     fontSize: 40,
     color: AaeColors.darkGray,
-    fontWeight: _regular,
     height: 1.00,
   );
 
   /// Replaces: h1
   static final title40Med140 = title40.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
     height: 1.40,
   );
 
@@ -56,29 +61,31 @@ class AaeTextStyles {
     fontFamily: _americanSans,
     fontSize: 32,
     color: AaeColors.darkGray,
-    fontWeight: _regular,
     height: 1.00,
   );
 
   /// Replaces: largeTextStyle
   static final title32MediumGrayMed = title32.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
     color: AaeColors.mediumGray,
   );
 
   /// Replaces: h2
   static final title32Med125 = title32.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
     height: 1.25,
   );
 
   /// Add where this style is used
   static final title32Med = title32.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
   );
 
   /// Replaces: flightSearchHeader
-  static const title32MediumGray = TextStyle(
+  static final title32MediumGray = title32.copyWith(
     color: AaeColors.mediumGray,
   );
 
@@ -89,13 +96,13 @@ class AaeTextStyles {
     fontFamily: _americanSans,
     fontSize: 28,
     color: AaeColors.darkGray,
-    fontWeight: _regular,
     height: 1.00,
   );
 
   /// Replaces: h3
   static final title28Med143 = title28.copyWith(
       fontFamily: _americanSansMedium,
+      fontWeight: FontWeight.w600,
       height: 1.43
   );
 
@@ -106,7 +113,6 @@ class AaeTextStyles {
     fontFamily: _americanSans,
     fontSize: 24,
     color: AaeColors.darkGray,
-    fontWeight: _regular,
     height: 1.00,
   );
 
@@ -115,12 +121,14 @@ class AaeTextStyles {
   /// Used: Selected date in PL and FS date pickers,
   static final title24Med110 = title24.copyWith(
       fontFamily: _americanSansMedium,
+      fontWeight: FontWeight.w600,
       height: 1.10
   );
 
   /// Replaces: pageHeadLine,
   static final title24Bold110 = title24.copyWith(
       fontFamily: _americanSansBold,
+      fontWeight: FontWeight.w700,
       height: 1.10
   );
 
@@ -138,6 +146,7 @@ class AaeTextStyles {
   /// Used: 'No trips yet' on home page,
   static final title24MediumGrayBold = title24.copyWith(
     fontFamily: _americanSansBold,
+    fontWeight: FontWeight.w700,
     color: AaeColors.mediumGray,
   );
 
@@ -148,18 +157,19 @@ class AaeTextStyles {
     fontFamily: _americanSans,
     fontSize: 22,
     color: AaeColors.darkGray,
-    fontWeight: _regular,
     height: 1.00,
   );
 
   /// Replaces: eventTitle
   static final title22Med = title22.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
   );
 
   /// Replaces: reservationHeading
   static final title22Bold = title22.copyWith(
     fontFamily: _americanSansBold,
+    fontWeight: FontWeight.w700,
   );
 
   // 21px BASE title text --------------------------------v---------------------------------------21px--
@@ -170,13 +180,13 @@ class AaeTextStyles {
     fontFamily: _americanSans,
     fontSize: 21,
     color: AaeColors.darkGray,
-    fontWeight: _regular,
     height: 1.00,
   );
 
   /// Replaces: inline style in airport_picker_header.dart
   static final title21MediumGrayMed = title21.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
     color: AaeColors.mediumGray,
   );
 
@@ -189,7 +199,6 @@ class AaeTextStyles {
     fontFamily: _americanSans,
     fontSize: 20,
     color: AaeColors.darkGray,
-    fontWeight: _regular,
     height: 1.00,
   );
 
@@ -201,12 +210,14 @@ class AaeTextStyles {
   /// Replaces: h5
   static final title20Med120 = title20.copyWith(
       fontFamily: _americanSansMedium,
+      fontWeight: FontWeight.w600,
       height: 1.20
   );
 
   /// Replaces: tableCellValueHub
   static final title20GrayBold = title20.copyWith(
     fontFamily: _americanSansBold,
+    fontWeight: FontWeight.w700,
     color: AaeColors.gray,
   );
 
@@ -219,18 +230,19 @@ class AaeTextStyles {
     fontFamily: _americanSans,
     fontSize: 18,
     color: AaeColors.darkGray,
-    fontWeight: _regular,
     height: 1.00,
   );
 
   /// Replaces: smallHeadline
   static final subtitle18Med = subtitle18.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
   );
 
   /// Replaces: timeSummary
   static final subtitle18Bold = subtitle18.copyWith(
     fontFamily: _americanSansBold,
+    fontWeight: FontWeight.w700,
   );
 
   /// Replaces: newsCardHeadline
@@ -241,6 +253,7 @@ class AaeTextStyles {
   /// Replaces: tableHeaderFooter
   static final subtitle18Bold1165 = subtitle18.copyWith(
     fontFamily: _americanSansBold,
+    fontWeight: FontWeight.w700,
     height: 1.165,
   );
 
@@ -299,7 +312,6 @@ class AaeTextStyles {
     fontFamily: _americanSans,
     fontSize: 16,
     color: AaeColors.darkGray,
-    fontWeight: _regular,
     height: 1.00,
   );
 
@@ -321,12 +333,22 @@ class AaeTextStyles {
   /// Replaces: h6
   static final body16Med125 = body16.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
+    height: 1.25,
+  );
+
+  /// Replaces: h6
+  static final body16WhiteMed125 = body16.copyWith(
+    fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
+    color: AaeColors.white100,
     height: 1.25,
   );
 
   /// Replaces: headline
   static final body16Bold = body16.copyWith(
     fontFamily: _americanSansBold,
+    fontWeight: FontWeight.w700,
   );
 
 
@@ -335,14 +357,15 @@ class AaeTextStyles {
   static const TextStyle subtitle15 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 15,
+    fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
-    fontWeight: _regular,
     height: 1.00,
   );
 
   /// Replaces:locatorInfo
   static final subtitle15Med = subtitle15.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
   );
 
   /// Replaces:formHintText
@@ -355,6 +378,7 @@ class AaeTextStyles {
   /// Used: Titles (Tools, Travelers, etc) above cards
   static final subtitle15BlueBold = subtitle15.copyWith(
     fontFamily: _americanSansBold,
+    fontWeight: FontWeight.w700,
     color: AaeColors.blue,
   );
 
@@ -368,8 +392,12 @@ class AaeTextStyles {
     fontFamily: _americanSans,
     fontSize: 14,
     color: AaeColors.darkGray,
-    fontWeight: _regular,
     height: 1.00,
+  );
+
+  /// Used: Welcome page footer text
+  static final body14Reg130 = body14.copyWith(
+    height: 1.30,
   );
 
   /// Replaces: b3
@@ -404,7 +432,6 @@ class AaeTextStyles {
     fontFamily: _americanSans,
     fontSize: 13,
     color: AaeColors.darkGray,
-    fontWeight: _regular,
     height: 1.00,
   );
 
@@ -418,6 +445,7 @@ class AaeTextStyles {
   /// Used: priority list
   static final caption13Bold = caption13.copyWith(
     fontFamily: _americanSansBold,
+    fontWeight: FontWeight.w700,
     height: 1.00,
   );
 
@@ -426,6 +454,7 @@ class AaeTextStyles {
   /// Used: priority list
   static final caption13Bold133 = caption13.copyWith(
     fontFamily: _americanSansBold,
+    fontWeight: FontWeight.w700,
     height: 1.33,
   );
 
@@ -453,7 +482,6 @@ class AaeTextStyles {
     fontFamily: _americanSans,
     fontSize: 12,
     color: AaeColors.darkGray,
-    fontWeight: _regular,
     height: 1.00,
   );
 
@@ -465,6 +493,7 @@ class AaeTextStyles {
   /// Add where this style is used
   static final caption12Med = caption12.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
   );
 
   /// Replaces: this is a new style
@@ -472,6 +501,7 @@ class AaeTextStyles {
   /// Used: stop indicator card divider,
   static final caption12MediumGrayMed = caption12.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
     color: AaeColors.mediumGray,
   );
 
@@ -480,6 +510,7 @@ class AaeTextStyles {
   /// Used: flight status on cards - delayed,
   static final caption12DarkOrangeMed = caption12.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
     color: AaeColors.darkOrange,
   );
 
@@ -488,6 +519,7 @@ class AaeTextStyles {
   /// Used: flight status on cards - ontime,
   static final caption12GreenMed = caption12.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
     color: AaeColors.green,
   );
 
@@ -496,6 +528,7 @@ class AaeTextStyles {
   /// Used: flight status on cards - cancelled,
   static final caption12DarkRedMed = caption12.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
     color: AaeColors.darkRed,
   );
 
@@ -511,6 +544,7 @@ class AaeTextStyles {
   /// Used: flight status on cards
   static final caption12GrayMed = caption12.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
     color: AaeColors.gray,
   );
 
@@ -521,7 +555,6 @@ class AaeTextStyles {
     fontFamily: _americanSans,
     fontSize: 11,
     color: AaeColors.darkGray,
-    fontWeight: _regular,
     height: 1.00,
   );
 
@@ -535,6 +568,7 @@ class AaeTextStyles {
   /// Used: flight card footer titles (boards, gate, terminal, baggage)
   static final caption11GrayMed = caption11.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
     color: AaeColors.gray,
   );
 
@@ -548,19 +582,20 @@ class AaeTextStyles {
     fontFamily: _americanSans,
     fontSize: 18,
     color: AaeColors.white100,
-    fontWeight: _regular,
     height: 1.00,
   );
 
   /// Add where this style is used
   static final btn16Med = btn18.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
     fontSize: 16,
   );
 
   /// Add where this style is used
   static final btn16Med150 = btn18.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
     fontSize: 16,
     height: 1.50,
   );
@@ -568,12 +603,14 @@ class AaeTextStyles {
   /// Add where this style is used
   static final btn14Med = btn18.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
     fontSize: 14,
   );
 
   /// Add where this style is used
   static final btn14Med150 = btn18.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
     fontSize: 14,
     height: 1.50,
   );
@@ -581,6 +618,7 @@ class AaeTextStyles {
   /// Replaces: btn2
   static final btn14Med142 = btn18.copyWith(
     fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
     fontSize: 14,
     height: 1.42,
   );

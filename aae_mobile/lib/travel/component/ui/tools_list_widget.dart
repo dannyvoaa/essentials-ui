@@ -23,7 +23,7 @@ class ToolsList extends StatelessWidget {
               padding: const EdgeInsets.only(top: 30, bottom: 5),
               child: Text(
                 header,
-                style: AaeTextStyles.subtitle15,
+                style: AaeTextStyles.subtitle15BlueBold,
                 textAlign: TextAlign.left,
               ),
             )),
@@ -99,7 +99,7 @@ class ToolsButton extends StatelessWidget {
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontSize: 13,
-                      color: AaeColors.lightGray,
+                      color: AaeColors.gray,
                     ),
                   ),
                 )
