@@ -106,6 +106,29 @@ class AaeTextStyles {
       height: 1.43
   );
 
+  // 26px BASE title text ------------------------------------v-----------------------------------28px--
+  /// 26px base font
+  static const TextStyle title26 = TextStyle(
+    fontFamily: _americanSans,
+    fontSize: 26,
+    color: AaeColors.darkGray,
+    height: 1.00,
+  );
+
+  /// Used: number dates in travel date pickers (unselected date)
+  static final title26GrayMed = title26.copyWith(
+      fontFamily: _americanSansMedium,
+      fontWeight: FontWeight.w600,
+      color: AaeColors.gray,
+  );
+
+  /// Used: number dates in travel date pickers (selected date)
+  static final title26Med = title26.copyWith(
+    fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
+    color: AaeColors.darkGray,
+  );
+
 
   // 24px BASE title text ------------------------------------v-----------------------------------24px--
   /// 24px base font
@@ -150,6 +173,10 @@ class AaeTextStyles {
     color: AaeColors.mediumGray,
   );
 
+  /// Used: H1 in articles
+  static final title24DarkBlue = title24.copyWith(
+    color: AaeColors.darkBlue,
+  );
 
   // 22px BASE title text ---------------------------------v--------------------------------------22px--
   /// 22px base font
@@ -158,6 +185,11 @@ class AaeTextStyles {
     fontSize: 22,
     color: AaeColors.darkGray,
     height: 1.00,
+  );
+
+  /// Used: H2 in articles
+  static final title22DarkBlue = title22.copyWith(
+    color: AaeColors.darkBlue,
   );
 
   /// Replaces: eventTitle
@@ -219,6 +251,11 @@ class AaeTextStyles {
     fontFamily: _americanSansBold,
     fontWeight: FontWeight.w700,
     color: AaeColors.gray,
+  );
+
+  /// Used: H3 titles in article
+  static final title20MediumGray = title20.copyWith(
+    color: AaeColors.mediumGray,
   );
 
 
@@ -323,6 +360,11 @@ class AaeTextStyles {
   /// Replaces: calendarOld
   static final TextStyle body16Gray = body16.copyWith(
     color: AaeColors.gray,
+  );
+
+  /// Used: Article body text
+  static final body16Reg138 = body16.copyWith(
+    height: 1.38,
   );
 
   /// Replaces: b2
