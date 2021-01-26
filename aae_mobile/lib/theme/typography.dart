@@ -174,8 +174,9 @@ class AaeTextStyles {
   );
 
   /// Used: H1 in articles
-  static final title24DarkBlue = title24.copyWith(
+  static final title24DarkBlue140 = title24.copyWith(
     color: AaeColors.darkBlue,
+    height: 1.40,
   );
 
   // 22px BASE title text ---------------------------------v--------------------------------------22px--
@@ -188,8 +189,9 @@ class AaeTextStyles {
   );
 
   /// Used: H2 in articles
-  static final title22DarkBlue = title22.copyWith(
+  static final title22DarkBlue140 = title22.copyWith(
     color: AaeColors.darkBlue,
+    height: 1.40,
   );
 
   /// Replaces: eventTitle
@@ -236,14 +238,14 @@ class AaeTextStyles {
 
   /// Replaces: b1
   static final title20Reg160 = title20.copyWith(
-      height: 1.10
+      height: 1.10,
   );
 
   /// Replaces: h5
   static final title20Med120 = title20.copyWith(
       fontFamily: _americanSansMedium,
       fontWeight: FontWeight.w600,
-      height: 1.20
+      height: 1.20,
   );
 
   /// Replaces: tableCellValueHub
@@ -254,8 +256,9 @@ class AaeTextStyles {
   );
 
   /// Used: H3 titles in article
-  static final title20MediumGray = title20.copyWith(
+  static final title20MediumGray140 = title20.copyWith(
     color: AaeColors.mediumGray,
+    height: 1.40,
   );
 
 
@@ -625,6 +628,11 @@ class AaeTextStyles {
     fontSize: 18,
     color: AaeColors.white100,
     height: 1.00,
+  );
+
+  /// Used: Articles pages
+  static final btn14 = btn18.copyWith(
+    fontSize: 14,
   );
 
   /// Add where this style is used
