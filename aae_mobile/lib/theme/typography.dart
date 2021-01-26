@@ -2,16 +2,12 @@ import 'package:aae/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
-/// BASE for TEXT styles --------------------------------------------------------------TEXT-----------
 /// Base classes = class name and size, dark gray color, regular weight, 1.0 height
+///
 /// Final classes = class name and size + color if different + weight if different + height if different
+///
 /// Naming order = name (title), size (50), color (Gray), weight (Med), line height (133)
 
-// static const _regular = FontWeight.w400;
-// static const _medium = FontWeight.w500;
-// static const _bold = FontWeight.bold;
-// static const _americanSans = 'AmericanSans';
-// static const font = 'AmericanSans';
 
 class AaeTextStyles {
   static const _americanSans = 'AmericanSans'; //400
@@ -27,6 +23,7 @@ class AaeTextStyles {
   static const TextStyle title50 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 50,
+    fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
   );
@@ -43,6 +40,7 @@ class AaeTextStyles {
   static const TextStyle title40 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 40,
+    fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
   );
@@ -60,6 +58,7 @@ class AaeTextStyles {
   static const TextStyle title32 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 32,
+    fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
   );
@@ -95,6 +94,7 @@ class AaeTextStyles {
   static const TextStyle title28 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 28,
+    fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
   );
@@ -111,6 +111,7 @@ class AaeTextStyles {
   static const TextStyle title26 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 26,
+    fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
   );
@@ -135,6 +136,7 @@ class AaeTextStyles {
   static const TextStyle title24 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 24,
+    fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
   );
@@ -184,6 +186,7 @@ class AaeTextStyles {
   static const TextStyle title22 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 22,
+    fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
   );
@@ -213,6 +216,7 @@ class AaeTextStyles {
   static const TextStyle title21 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 21,
+    fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
   );
@@ -232,6 +236,7 @@ class AaeTextStyles {
   static const TextStyle title20 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 20,
+    fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
   );
@@ -269,6 +274,7 @@ class AaeTextStyles {
   static const TextStyle subtitle18 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 18,
+    fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
   );
@@ -351,6 +357,7 @@ class AaeTextStyles {
   static const TextStyle body16 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 16,
+    fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
   );
@@ -436,6 +443,7 @@ class AaeTextStyles {
   static const TextStyle body14 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 14,
+    fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
   );
@@ -476,6 +484,7 @@ class AaeTextStyles {
   static const TextStyle caption13 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 13,
+    fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
   );
@@ -526,6 +535,7 @@ class AaeTextStyles {
   static const TextStyle caption12 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 12,
+    fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
   );
@@ -599,6 +609,7 @@ class AaeTextStyles {
   static const TextStyle caption11 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 11,
+    fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
   );
@@ -626,6 +637,7 @@ class AaeTextStyles {
   static const TextStyle btn18 = TextStyle(
     fontFamily: _americanSans,
     fontSize: 18,
+    fontWeight: FontWeight.w400,
     color: AaeColors.white100,
     height: 1.00,
   );
