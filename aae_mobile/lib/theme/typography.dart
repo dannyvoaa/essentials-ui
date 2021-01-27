@@ -13,8 +13,8 @@ class AaeTextStyles {
   static const _americanSans = 'AmericanSans'; //400
   static const font = 'AmericanSans';
   static const _americanSansItalic = 'AmericanSans-Italic'; //400
-  static const _americanSansLight = 'AmericanSans-Light'; //300
-  static const _americanSansMedium = 'AmericanSans-Medium'; //600
+  static const _americanSansLight = 'AmericanSansLight'; //300
+  static const _americanSansMedium = 'AmericanSansMedium'; //600
   static const _americanSansBold = 'AmericanSans-Bold'; //700
 
 

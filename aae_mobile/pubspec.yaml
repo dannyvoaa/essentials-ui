@@ -127,12 +127,19 @@ flutter:
       fonts:
         - asset: assets/fonts/AmericanSans-Regular.ttf
         - asset: assets/fonts/AmericanSans-Italic.ttf
-        - asset: assets/fonts/AmericanSans-Light.ttf
-        - asset: assets/fonts/AmericanSans-LightItalic.ttf
-        - asset: assets/fonts/AmericanSans-Medium.otf
-        - asset: assets/fonts/AmericanSans-MediumItalic.otf
+          style: italic
         - asset: assets/fonts/AmericanSans-Bold.ttf
         - asset: assets/fonts/AmericanSans-BoldItalic.ttf
+    - family: AmericanSansMedium
+      fonts:
+        - asset: assets/fonts/AmericanSans-Medium.otf
+        - asset: assets/fonts/AmericanSans-MediumItalic.otf
+          style: italic
+    - family: AmericanSansLight
+      fonts:
+        - asset: assets/fonts/AmericanSans-Light.ttf
+        - asset: assets/fonts/AmericanSans-LightItalic.ttf
+          style: italic
     - family: AaeIcons
       fonts:
         - asset: assets/fonts/AaeIcons.ttf

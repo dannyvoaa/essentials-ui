@@ -39,36 +39,38 @@ class _DatePickerPageState extends State<DatePickerPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.only(top: 30, bottom: 20),
-        child: Column(
-          children: <Widget>[
-            Text(
-              "Date",
-              style: TextStyle(
-                fontSize: 15,
-              ),
-              textAlign: TextAlign.left,
+      padding: EdgeInsets.only(top: 30, bottom: 20),
+      child: Column(
+        children: <Widget>[
+          Text(
+            "Date",
+            style: TextStyle(
+              fontSize: 15,
             ),
-            Expanded(
-                child: DatePicker(
-              DateTime.now().add(Duration(
-                  days: calculateCalendarCenter(widget.calendarLength))),
+            textAlign: TextAlign.left,
+          ),
+          Expanded(
+            child: DatePicker(
+              DateTime.now().add(
+                Duration(
+                  days: calculateCalendarCenter(widget.calendarLength),
+                ),
+              ),
               controller: _controller,
               initialSelectedDate: DateTime.now(),
               selectionColor: Color(0xffebeff0),
               selectedTextColor: AaeColors.darkGray,
               // unselected months
-                  monthTextStyle: TextStyle(
-                fontSize: 13,
+              monthTextStyle: TextStyle(
                 color: AaeColors.mediumGray,
               ),
-                  // unselected large date
+              // unselected large date
               dateTextStyle: TextStyle(
                 fontFamily: 'AmericanSansMedium',
                 fontSize: 26,
                 color: AaeColors.gray,
               ),
-                  // unselected days
+              // unselected days
               dayTextStyle: TextStyle(
                 color: AaeColors.mediumGray,
               ),
@@ -78,10 +80,12 @@ class _DatePickerPageState extends State<DatePickerPage> {
                   setSelectedDate(date);
                 });
               },
-            )),
-          ],
-          crossAxisAlignment: CrossAxisAlignment.start,
-        ));
+            ),
+          ),
+        ],
+        crossAxisAlignment: CrossAxisAlignment.start,
+      ),
+    );
   }
 
   void setSelectedDate(DateTime dateTime) {
