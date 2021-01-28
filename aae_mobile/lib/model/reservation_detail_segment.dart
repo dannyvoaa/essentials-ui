@@ -33,6 +33,10 @@ abstract class ReservationDetailSegment implements Built<ReservationDetailSegmen
   @nullable
   String get arrivalTimeScheduled;
 
+  @BuiltValueField(wireName: 'baggageClaimArea')
+  @nullable
+  String get baggageClaimArea;
+
   @BuiltValueField(wireName: 'cabin')
   @nullable
   String get cabin;
