@@ -22,7 +22,7 @@ class AaeTextStyles {
   /// 50px base font
   static const TextStyle title50 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 50,
+    fontSize: 50.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
@@ -39,7 +39,7 @@ class AaeTextStyles {
   /// 40px base font
   static const TextStyle title40 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 40,
+    fontSize: 40.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
@@ -57,7 +57,7 @@ class AaeTextStyles {
   /// 32px base font
   static const TextStyle title32 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 32,
+    fontSize: 32.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
@@ -93,7 +93,7 @@ class AaeTextStyles {
   /// 28px base font
   static const TextStyle title28 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 28,
+    fontSize: 28.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
@@ -110,7 +110,7 @@ class AaeTextStyles {
   /// 26px base font
   static const TextStyle title26 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 26,
+    fontSize: 26.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
@@ -135,7 +135,7 @@ class AaeTextStyles {
   /// 24px base font
   static const TextStyle title24 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 24,
+    fontSize: 24.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
@@ -185,7 +185,7 @@ class AaeTextStyles {
   /// 22px base font
   static const TextStyle title22 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 22,
+    fontSize: 22.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
@@ -215,7 +215,7 @@ class AaeTextStyles {
   /// Replaces: b1SingleLine, title
   static const TextStyle title21 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 21,
+    fontSize: 21.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
@@ -235,7 +235,7 @@ class AaeTextStyles {
   /// Replaces: b1SingleLine, title
   static const TextStyle title20 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 20,
+    fontSize: 20.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
@@ -273,7 +273,7 @@ class AaeTextStyles {
   /// Replaces: largeTextStyle - Used: passenger list
   static const TextStyle subtitle18 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 18,
+    fontSize: 18.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
@@ -356,7 +356,7 @@ class AaeTextStyles {
   /// Replaces: b2SingleLine, body, calendarMain, eventText
   static const TextStyle body16 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 16,
+    fontSize: 16.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
@@ -408,7 +408,7 @@ class AaeTextStyles {
   /// 15px base font
   static const TextStyle subtitle15 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 15,
+    fontSize: 15.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
@@ -442,7 +442,7 @@ class AaeTextStyles {
   /// Used: 3-letter codes under flight times, priority list
   static const TextStyle body14 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 14,
+    fontSize: 14.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
@@ -483,7 +483,7 @@ class AaeTextStyles {
   /// Replaces: calendarSummary height 1.0,
   static const TextStyle caption13 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 13,
+    fontSize: 13.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
@@ -534,7 +534,7 @@ class AaeTextStyles {
   /// Replaces: departureHeading,
   static const TextStyle caption12 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 12,
+    fontSize: 12.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
@@ -608,7 +608,7 @@ class AaeTextStyles {
   /// 11px base font
   static const TextStyle caption11 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 11,
+    fontSize: 11.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.darkGray,
     height: 1.00,
@@ -636,7 +636,7 @@ class AaeTextStyles {
   /// Replaces: checkInButton, largeButtonTitle
   static const TextStyle btn18 = TextStyle(
     fontFamily: _americanSans,
-    fontSize: 18,
+    fontSize: 18.0,
     fontWeight: FontWeight.w400,
     color: AaeColors.white100,
     height: 1.00,
@@ -644,21 +644,21 @@ class AaeTextStyles {
 
   /// Used: Articles pages
   static final btn14 = btn18.copyWith(
-    fontSize: 14,
+    fontSize: 14.0,
   );
 
   /// Add where this style is used
   static final btn16Med = btn18.copyWith(
     fontFamily: _americanSansMedium,
     fontWeight: FontWeight.w600,
-    fontSize: 16,
+    fontSize: 16.0,
   );
 
   /// Add where this style is used
   static final btn16Med150 = btn18.copyWith(
     fontFamily: _americanSansMedium,
     fontWeight: FontWeight.w600,
-    fontSize: 16,
+    fontSize: 16.0,
     height: 1.50,
   );
 
@@ -666,14 +666,14 @@ class AaeTextStyles {
   static final btn14Med = btn18.copyWith(
     fontFamily: _americanSansMedium,
     fontWeight: FontWeight.w600,
-    fontSize: 14,
+    fontSize: 14.0,
   );
 
   /// Add where this style is used
   static final btn14Med150 = btn18.copyWith(
     fontFamily: _americanSansMedium,
     fontWeight: FontWeight.w600,
-    fontSize: 14,
+    fontSize: 14.0,
     height: 1.50,
   );
 
@@ -681,7 +681,7 @@ class AaeTextStyles {
   static final btn14Med142 = btn18.copyWith(
     fontFamily: _americanSansMedium,
     fontWeight: FontWeight.w600,
-    fontSize: 14,
+    fontSize: 14.0,
     height: 1.42,
   );
 
