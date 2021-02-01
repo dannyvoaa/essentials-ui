@@ -242,7 +242,7 @@ _buildFlightSearchButton(
               padding: const EdgeInsets.all(0.0),
               width: 20.0, // you can adjust the width as you need
               child: Icon(Icons.arrow_forward_ios,
-                  color: AaeColors.ultraLightGray)),
+                  color: AaeColors.gray)),
         ))
   ]));
 }
