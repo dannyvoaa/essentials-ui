@@ -13,6 +13,7 @@ class AaeTextStyles {
   static const _americanSansMedium = 'AmericanSansMedium';
 
   static const font = 'AmericanSans';
+  static const fontLight = 'AmericanSans';
 
   static const h1 = TextStyle(
     fontSize: 40.0,
@@ -154,6 +155,83 @@ class AaeTextStyles {
     letterSpacing: 0.30,
     fontWeight: _regular,
   );
+
+  /// TODO: REPLACE WITH title24DarkBlue140
+  static const articleH2 = TextStyle(
+    fontSize: 24.0,
+    height: 1.40,
+    fontWeight: _regular,
+    fontFamily: _americanSans,
+    color: AaeColors.darkBlue,
+  );
+
+  /// TODO: REPLACE WITH title22DarkBlue140
+  static const articleH3 = TextStyle(
+    fontSize: 22.0,
+    height: 1.40,
+    fontWeight: _regular,
+    fontFamily: _americanSans,
+    color: AaeColors.darkBlue,
+  );
+
+  /// TODO: REPLACE WITH title20MediumGray140
+  static const articleH4 = TextStyle(
+    fontSize: 20.0,
+    height: 1.40,
+    fontWeight: _regular,
+    fontFamily: _americanSans,
+    color: AaeColors.mediumGray,
+  );
+
+  /// TODO: REPLACE WITH body16Reg138
+  static const articleBody = TextStyle(
+    color: AaeColors.darkGray,
+    fontFamily: _americanSans,
+    height: 1.38,
+    fontSize: 16,
+  );
+
+  /// TODO: REPLACE WITH btn14
+  static const articleButtonText = TextStyle(
+    color: AaeColors.white,
+    fontFamily: _americanSans,
+    fontSize: 14,
+  );
+
+//  static const h2 = TextStyle(
+//    fontSize: 32.0,
+//    height: 1.25,
+//    fontWeight: _medium,
+//    fontFamily: _americanSans,
+//  );
+//
+//  static const h3 = TextStyle(
+//    fontSize: 28.0,
+//    height: 1.43,
+//    fontWeight: _medium,
+//    fontFamily: _americanSans,
+//  );
+//
+//  static const h4 = TextStyle(
+//    fontSize: 24.0,
+//    height: 1.1,
+//    fontWeight: _medium,
+//    fontFamily: _americanSans,
+//  );
+//
+//  static const h5 = TextStyle(
+//    fontSize: 20.0,
+//    height: 1.20,
+//    fontWeight: _medium,
+//    fontFamily: _americanSans,
+//  );
+//
+//  static const h6 = TextStyle(
+//    fontSize: 16.0,
+//    height: 1.25,
+//    fontWeight: _medium,
+//    fontFamily: _americanSans,
+//  );
 
   /// Used for regular-sized body content
   static TextStyle body({

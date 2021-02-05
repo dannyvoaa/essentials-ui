@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:aae/bloc/source_builder.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:flutter_html/style.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
@@ -52,6 +53,74 @@ class NewsArticleComponent extends StatelessWidget {
 
   Widget _buildLoadingPageState() {
     return Scaffold(body: Center(child: AaeLoadingSpinner()));
+  }
+
+  Widget _buttonArticle(String text){
+    return Container(
+      width:double.infinity,
+      margin: EdgeInsets.only(bottom:12,),
+      padding: EdgeInsets.all(14),
+//      alignment: Alignment(0.0, 0.0),
+      color: AaeColors.blue,
+      child: Center(
+        child: Container(
+          width:double.infinity,
+          alignment: Alignment.center,
+          child: HtmlWidget(
+            text,
+            customStylesBuilder: (element) {
+              if (element.localName == 'a'){
+                return {'color': 'white', 'text-decoration': 'none'};
+              }
+              return null;
+            },
+            textStyle: AaeTextStyles.articleButtonText,
+          ),
+        ),
+      )
+    );
+  }
+
+  Widget _borderBox(String text){
+    return Container(
+      width: double.infinity,
+      margin: EdgeInsets.only(bottom:12,),
+      padding: EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: AaeColors.ultraLightGray,
+          width:1,
+        ),
+      ),
+      child: HtmlWidget(
+        text,
+//        customStylesBuilder: (element) {},
+        customWidgetBuilder: (element){
+          if (element.localName == 'h2'){
+            return Text(
+              element.innerHtml,
+              style: AaeTextStyles.articleH2,
+            );
+          }
+          else if (element.localName == 'h3'){
+            return Text(
+              element.innerHtml,
+              style: AaeTextStyles.articleH3,
+            );
+          }
+          else if (element.localName == 'h4'){
+            return HtmlWidget(
+              element.innerHtml,
+              textStyle: AaeTextStyles.articleH4,
+            );
+          }
+          else if (element.className == 'page_button'){
+            return _buttonArticle(element.innerHtml);
+          }
+          return null;
+        },
+      ),
+    );
   }
 
   Widget newsArticleScaffoldWidget(BuildContext context, String strAuthor,
@@ -127,262 +196,189 @@ class NewsArticleComponent extends StatelessWidget {
                       ),
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 10.0, vertical: 10.0),
-                        child: Html(
-                          data: strArticleBody,
-                          onLinkTap: (url) {
-                            print("Opening $url...");
-                            launch(url);
+                            horizontal: 24.0, vertical: 16.0),
+//child: Text(strArticleBody),
+                        child: HtmlWidget(
+                          strArticleBody,
+                          customStylesBuilder: (element) {
+                            if (element.classes.contains('ae-image')) {
+                              return {'display': 'none'};
+                            }
+                            else if (element.classes.contains('ae-headline')){
+                              return {'display': 'none'};
+                            }
+                            else if (element.classes.contains('ae-summary')){
+                              return {'display': 'none'};
+                            }
+                            else if (element.classes.contains('video')){
+                              return {'display': 'none'};
+                            }
+                            else if (element.classes.contains('page_button')){
+                              return {'width': '100%', 'background-color': '$AaeColors.blue'};
+                            }
+                            else if (element.localName == 'h3'){
+                              return {'color': '#6E8999', 'font-size': '24px', 'font-family': AaeTextStyles.fontLight, 'font-weight': '$FontWeight.normal'};
+                            }
+//                            else if (element.localName == 'h4'){
+//                              return {'color': '#6E8999', 'font-size': '24px', 'font-family': AaeTextStyles.articleH4, 'font-weight': '$FontWeight.normal'};
+//                            }
+                            else if (element.className == 'two-col-one'){
+                              return{'margin': '0px 0px 0px 0px'};
+                            }
+                            else if (element.className == 'aa_ultralightgray'){
+                              return{'color': '$AaeColors.ultraLightGray'};
+                            }
+                            else if (element.localName == 'li'){
+                              return{'margin': '0px 0px 10px 0px'};
+                            }
+                            else if (element.localName == 'ul'){
+                              return{'margin': '10px 0px 10px 0px'};
+                            }
+                            else if (element.className == 'ae-signature'){
+                              return{'width': '40%'};
+                            }
+                            else if (element.localName == 'table'){
+                              return{'font-size': '12px'};
+                            }
+                            else if (element.localName == 'td'){
+                              return{'padding': '6px'};
+                            }
+                            else if (element.localName == 'div'){
+                              return{'width': '100%'};
+                            }
+                            else if (element.className == 'aa_darkblue'){
+                              return{'color': '$AaeColors.darkBlue'};
+                            }
+                            else if (element.className == 'aa_blue_bg'){
+                              return{'backgroundColor': '$AaeColors.blue'};
+                            }
+                            else if (element.className == 'aa_blue'){
+                              return{'color': '$AaeColors.blue'};
+                            }
+                            else if (element.className == 'aa_lightblue_bg, .light'){
+                              return{'backgroundColor': '$AaeColors.lightBlue'};
+                            }
+                            else if (element.className == 'aa_lightblue'){
+                              return{'color': '$AaeColors.lightBlue'};
+                            }
+                            else if (element.className == 'aa_teal_bg'){
+                              return{'backgroundColor': '$AaeColors.teal'};
+                            }
+                            else if (element.className == 'aa_teal'){
+                              return{'color': '$AaeColors.teal'};
+                            }
+                            else if (element.className == 'aa_ultralightblue_bg'){
+                              return{'backgroundColor': '$AaeColors.highlightBlue'};
+                            }
+                            else if (element.className == 'aa_ultralightblue'){
+                              return{'color': '$AaeColors.highlightBlue'};
+                            }
+                            else if (element.className == 'aa_green_bg'){
+                              return{'backgroundColor': '$AaeColors.green'};
+                            }
+                            else if (element.className == 'aa_green'){
+                              return{'color': '$AaeColors.green'};
+                            }
+                            else if (element.className == 'aa_yellow_bg'){
+                              return{'backgroundColor': '$AaeColors.yellowGreen'};
+                            }
+                            else if (element.className == 'aa_yellow'){
+                              return{'color': '$AaeColors.yellowGreen'};
+                            }
+                            else if (element.className == 'aa_lightorange_bg'){
+                              return{'backgroundColor': '$AaeColors.lightOrange'};
+                            }
+                            else if (element.className == 'aa_lightorange'){
+                              return{'color': '$AaeColors.lightOrange'};
+                            }
+                            else if (element.className == 'aa_orange_bg'){
+                              return{'backgroundColor': '$AaeColors.orange'};
+                            }
+                            else if (element.className == 'aa_orange'){
+                              return{'color': '$AaeColors.orange'};
+                            }
+                            else if (element.className == 'aa_red_bg'){
+                              return{'backgroundColor': '$AaeColors.red'};
+                            }
+                            else if (element.className == 'aa_red'){
+                              return{'color': '$AaeColors.red'};
+                            }
+                            else if (element.className == 'aa_darkred_bg'){
+                              return{'backgroundColor': '$AaeColors.darkRed'};
+                            }
+                            else if (element.className == 'aa_darkred'){
+                              return{'color': '$AaeColors.darkRed'};
+                            }
+                            else if (element.className == 'aa_black_bg'){
+                              return{'backgroundColor': '$AaeColors.black'};
+                            }
+                            else if (element.className == 'aa_black'){
+                              return{'color': '$AaeColors.black'};
+                            }
+                            else if (element.className == 'aa_darkgray_bg'){
+                              return{'backgroundColor': '$AaeColors.darkGray'};
+                            }
+                            else if (element.className == 'aa_darkgray'){
+                              return{'color': '$AaeColors.darkGray'};
+                            }
+                            else if (element.className == 'aa_mediumgray_bg'){
+                              return{'backgroundColor': '$AaeColors.mediumGray'};
+                            }
+                            else if (element.className == 'aa_mediumgray'){
+                              return{'color': '$AaeColors.mediumGray'};
+                            }
+                            else if (element.className == 'aa_gray_bg'){
+                              return{'backgroundColor': '$AaeColors.lightGray'};
+                            }
+                            else if (element.className == 'aa_gray'){
+                              return{'color': '$AaeColors.lightGray'};
+                            }
+                            else if (element.className == 'aa_lightgray_bg'){
+                              return{'backgroundColor': '$AaeColors.gray'};
+                            }
+                            else if (element.className == 'aa_lightgray'){
+                              return{'color': '$AaeColors.gray'};
+                            }
+                            else if (element.className == 'aa_ultralightgray_bg'){
+                              return{'backgroundColor': '$AaeColors.ultraLightGray'};
+                            }
+                            else if (element.className == 'aa_ultralightgray'){
+                              return{'color': '$AaeColors.ultraLightGray'};
+                            }
+                            return null;
                           },
-                          onImageTap: (src) {
-                            print(src);
-                          },
-                          onImageError: (exception, stackTrace) {
-                            print(exception);
-                          },
-                          customRender: {
-                            'img': (renderContext, child, attributes, _) {
-                              var imageUrl = attributes['src'];
-                              return Container(
-                                child: Image(
-                                  image: NetworkImage(imageUrl),
-                                  fit: BoxFit.fill,
-                                ),
+                          customWidgetBuilder: (element){
+                            if (element.className == 'ae-highlight-box'){
+                              return _borderBox(element.innerHtml);
+                            }
+                            else if (element.className == 'page_button'){
+                              return _buttonArticle(element.innerHtml);
+                            }
+                            else if (element.classes.contains('page_button')){
+                              return _buttonArticle(element.innerHtml);
+                            }
+                            else if (element.localName == 'h2'){
+                              return Text(
+                                element.innerHtml,
+                                style: AaeTextStyles.articleH2,
                               );
-                            },
-                            'video': (renderContext, child, attributes, _){
-                              return Container(
-                                height: 0,
-                                child: Text(''),
+                            }
+                            else if (element.localName == 'h3'){
+                              return Text(
+                                element.innerHtml,
+                                style: AaeTextStyles.articleH3,
                               );
-                            },
+                            }
+                            else if (element.localName == 'h4'){
+                              return HtmlWidget(
+                                element.innerHtml,
+                                textStyle: AaeTextStyles.articleH4,
+                              );
+                            }
+                            return null;
                           },
-                          style: {
-                            "body": Style(
-                              color: AaeColors.titleGray,
-                              margin: EdgeInsets.all(16),
-                            ),
-                            "div.responsive-col": Style(
-                              color: AaeColors.titleGray,
-                            ),
-                            ".ae-headline, .ae-summary, .ae-image": Style(
-                              display: Display.BLOCK,
-                              height: 0,
-                              margin: EdgeInsets.all(0),
-                              padding: EdgeInsets.all(0),
-                            ),
-                            "p": Style(
-                              margin: EdgeInsets.only(top:2, bottom:12),
-                            ),
-                            "h1, h2, h3, h4, h5": Style(
-                              color: AaeColors.blue,
-                              fontFamily: AaeTextStyles.font,
-                              fontWeight: FontWeight.w100,
-                              margin: EdgeInsets.only(bottom:4, top:26),
-                            ),
-                            "h1": Style(
-                              color: AaeColors.blue,
-                              fontSize: FontSize(36),
-                            ),
-                            "h2": Style(
-                              color: AaeColors.darkBlue,
-                              fontSize: FontSize(26),
-                            ),
-                            ".blue h2": Style(
-                              color: AaeColors.white,
-                            ),
-                            "h3": Style(
-                              color: AaeColors.mediumGray,
-                              fontSize: FontSize(24),
-                            ),
-                            "h4": Style(
-                              color: AaeColors.mediumGray,
-                              fontSize: FontSize(18),
-                            ),
-                            "h5": Style(
-                              color: AaeColors.titleGray,
-                              fontSize: FontSize(16),
-                            ),
-                            "ul, ol": Style(
-                              margin: EdgeInsets.only(top: 12,),
-                            ),
-                            "li": Style(
-//                            color: AaeColors.red,
-                              margin: EdgeInsets.only(left: 2, bottom:10),
-                            ),
-                            ".dark_ul, .dark_ol": Style(
-                              color:AaeColors.white,
-                            ),
-                            ".dark_hr": Style(
-                              backgroundColor: AaeColors.white,
-                              height: 2,
-                            ),
-                            ".page_button, .page_button_two, .page_button_dark, .page_button_dark_two": Style(
-                                margin:EdgeInsets.only(top:12,bottom:12,)
-                            ),
-                            "div.page_button": Style(
-                              backgroundColor: AaeColors.blue,
-                              textAlign: TextAlign.center,
-                              height: 40,
-                            ),
-                            "div.page_button > a": Style(
-                              color:AaeColors.white,
-                              textAlign: TextAlign.center,
-                              width: double.infinity,
-                            ),
-                            "div.page_button_two": Style(
-                              textAlign: TextAlign.center,
-                              height: 40,
-                            ),
-                            ".dark_link > a": Style(
-                              color: AaeColors.white,
-                            ),
-                            ".page_button_dark": Style(
-                              backgroundColor: AaeColors.white,
-                              textAlign: TextAlign.center,
-                              height: 40,
-                            ),
-                            ".page_button_dark_two": Style(
-                              color: AaeColors.white,
-                              textAlign: TextAlign.center,
-                              height: 40,
-                            ),
-                            ".page_button_dark_two > a": Style(
-                              color:AaeColors.white,
-                            ),
-                            "table > tr": Style(
-                              margin: EdgeInsets.only(bottom:40,),
-                            ),
-                            ".video":Style(
-                              height:0,
-                              backgroundColor: AaeColors.red,
-                              margin: EdgeInsets.all(0),
-                              padding: EdgeInsets.all(0),
-                            ),
-                            "iframe": Style(
-                              height: 0,
-                              backgroundColor: AaeColors.red,
-                              margin: EdgeInsets.all(0),
-                              padding: EdgeInsets.all(0),
-                            ),
-                            "a": Style(
-                              textDecoration: TextDecoration.none,
-                            ),
-                            "img": Style(
-                              textDecoration: TextDecoration.none,
-                            ),
-                            ".hideOnTablet, .hideOnPhone": Style(
-                              display: Display.BLOCK,
-                              height: 0,
-                              margin: EdgeInsets.all(0),
-                              padding: EdgeInsets.all(0),
-                            ),
-                            "div.blue": Style(
-                              padding:EdgeInsets.all(12),
-                            ),
-                            ".aa_darkblue_bg, .blue": Style(
-                              backgroundColor: AaeColors.darkBlue,
-                            ),
-                            ".aa_darkblue": Style(
-                              color: AaeColors.darkBlue,
-                            ),
-                            ".aa_blue_bg": Style(
-                              backgroundColor: AaeColors.blue,
-                            ),
-                            ".aa_blue": Style(
-                              color: AaeColors.blue,
-                            ),
-                            ".aa_lightblue_bg, .light": Style(
-                              backgroundColor: AaeColors.lightBlue,
-                            ),
-                            ".aa_lightblue": Style(
-                              color: AaeColors.lightBlue,
-                            ),
-                            ".aa_teal_bg": Style(
-                              backgroundColor: AaeColors.teal,
-                            ),
-                            ".aa_teal": Style(
-                              color: AaeColors.teal,
-                            ),
-                            ".aa_ultralightblue_bg": Style(
-                              backgroundColor: AaeColors.highlightBlue,
-                            ),
-                            ".aa_ultralightblue": Style(
-                              color: AaeColors.highlightBlue,
-                            ),
-                            ".aa_green_bg": Style(
-                              backgroundColor: AaeColors.green,
-                            ),
-                            ".aa_green": Style(
-                              color: AaeColors.green,
-                            ),
-                            ".aa_yellow_bg": Style(
-                              backgroundColor: AaeColors.yellowGreen,
-                            ),
-                            ".aa_yellow": Style(
-                              color: AaeColors.yellowGreen,
-                            ),
-                            ".aa_lightorange_bg": Style(
-                              backgroundColor: AaeColors.lightOrange,
-                            ),
-                            ".aa_lightorange": Style(
-                              color: AaeColors.lightOrange,
-                            ),
-                            ".aa_orange_bg": Style(
-                              backgroundColor: AaeColors.orange,
-                            ),
-                            ".aa_orange": Style(
-                              color: AaeColors.orange,
-                            ),
-                            ".aa_red_bg": Style(
-                              backgroundColor: AaeColors.red,
-                            ),
-                            ".aa_red": Style(
-                              color: AaeColors.red,
-                            ),
-                            ".aa_darkred_bg": Style(
-                              backgroundColor: AaeColors.darkRed,
-                            ),
-                            ".aa_darkred": Style(
-                              color: AaeColors.darkRed,
-                            ),
-                            ".aa_black_bg": Style(
-                              backgroundColor: AaeColors.black,
-                            ),
-                            ".aa_black": Style(
-                              color: AaeColors.black,
-                            ),
-                            ".aa_darkgray_bg": Style(
-                              backgroundColor: AaeColors.darkGray,
-                            ),
-                            ".aa_darkgray": Style(
-                              color: AaeColors.darkGray,
-                            ),
-                            ".aa_mediumgray_bg": Style(
-                              backgroundColor: AaeColors.mediumGray,
-                            ),
-                            ".aa_mediumgray": Style(
-                              color: AaeColors.mediumGray,
-                            ),
-                            ".aa_gray_bg": Style(
-                              backgroundColor: AaeColors.lightGray,
-                            ),
-                            ".aa_gray": Style(
-                              color: AaeColors.lightGray,
-                            ),
-                            ".aa_lightgray_bg": Style(
-                              backgroundColor: AaeColors.gray,
-                            ),
-                            ".aa_lightgray": Style(
-                              color: AaeColors.gray,
-                            ),
-//                            ".aa_ultralightgray_bg": Style(
-//                              backgroundColor: AaeColors.ultraLightGray,
-//                            ),
-                            ".aa_ultralightgray": Style(
-                              color: AaeColors.ultraLightGray,
-                            ),
-                          },
+                          textStyle: AaeTextStyles.articleBody,
+                          webView: true,
                         ),
                       ),
                     ],
