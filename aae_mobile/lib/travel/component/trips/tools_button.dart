@@ -38,7 +38,7 @@ class ToolsButton extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: 'AmericanSansMedium',
                       fontSize: 16,
-                      color: AaeColors.black,
+                      color: AaeColors.darkGray,
                     ),
                   ),
                 ),
@@ -49,7 +49,7 @@ class ToolsButton extends StatelessWidget {
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontSize: 13,
-                      color: AaeColors.lightGray,
+                      color: AaeColors.mediumGray,
                     ),
                   ),
                 )

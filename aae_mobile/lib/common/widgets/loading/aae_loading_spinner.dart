@@ -21,7 +21,7 @@ class AaeLoadingSpinner extends StatelessWidget {
     return CircularProgressIndicator(
       value: progressValue,
       strokeWidth: _strokeWidth,
-      valueColor: AlwaysStoppedAnimation<Color>(AaeColors.green),
+      valueColor: AlwaysStoppedAnimation<Color>(AaeColors.recognitionGreen),
     );
   }
 }

@@ -26,7 +26,7 @@ class DrawerButton extends StatelessWidget {
           child: Text(
             stringTitle,
             maxLines: 1,
-            style: AaeTextStyles.body().copyWith(
+            style: AaeTextStyles.body16.copyWith(
                 color: !boolActive ? AaeColors.darkGray : AaeColors.blue),
             overflow: TextOverflow.clip,
           ),

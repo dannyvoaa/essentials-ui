@@ -36,7 +36,7 @@ class StopDivider extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 stopText,
-                style: AaeTextStyles.stopDivider,
+                style: AaeTextStyles.caption12MediumGrayMed,
               ),
             ),
           ),

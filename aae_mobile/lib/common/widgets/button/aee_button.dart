@@ -31,7 +31,7 @@ final _sizeConfigs = <ButtonSize, _SizeConfig>{
     ..iconTextMargin = _iconTextMargin
     ..border = _border
     ..cornerRadius = AaeDimens.regularButtonCornerRadius
-    ..text = AaeTextStyles.btn1.copyWith(
+    ..text = AaeTextStyles.btn16Med150.copyWith(
       height: 1.0,
     )),
   ButtonSize.small: _SizeConfig((b) => b
@@ -41,33 +41,33 @@ final _sizeConfigs = <ButtonSize, _SizeConfig>{
     ..iconTextMargin = _iconTextMargin
     ..border = _border
     ..cornerRadius = AaeDimens.smallButtonCornerRadius
-    ..text = AaeTextStyles.btn2.copyWith(
+    ..text = AaeTextStyles.btn14Med142.copyWith(
       height: 1.0,
     )),
 };
 
 final _colorConfigs = <ButtonType, _ColorConfig>{
   ButtonType.primary: _ColorConfig((b) => b
-    ..enabledBackground = AaeColors.boardBackground
-    ..enabledText = AaeColors.lightGray
+    ..enabledBackground = AaeColors.gray
+    ..enabledText = AaeColors.cadetGray
     ..enabledBorder = Colors.transparent
-    ..disabledBackground = AaeColors.buttonPrimaryDisabledBackground
-    ..disabledText = AaeColors.buttonPrimaryDisabledText
+    ..disabledBackground = AaeColors.white60
+    ..disabledText = AaeColors.mediumGray
     ..disabledBorder = Colors.transparent),
   ButtonType.secondary: _ColorConfig((b) => b
-    ..enabledBackground = AaeColors.buttonSecondaryBackground
-    ..enabledText = AaeColors.buttonSecondaryText
+    ..enabledBackground = AaeColors.white20
+    ..enabledText = AaeColors.white90
     ..enabledBorder = Colors.transparent
-    ..disabledBackground = AaeColors.buttonSecondaryDisabledBackground
-    ..disabledText = AaeColors.buttonSecondaryDisabledText
+    ..disabledBackground = AaeColors.white03
+    ..disabledText = AaeColors.white30
     ..disabledBorder = Colors.transparent),
   ButtonType.hairline: _ColorConfig((b) => b
     ..enabledBackground = Colors.transparent
-    ..enabledText = AaeColors.buttonHairlineText
-    ..enabledBorder = AaeColors.buttonHairlineBackground
+    ..enabledText = AaeColors.white90
+    ..enabledBorder = AaeColors.white60
     ..disabledBackground = Colors.transparent
-    ..disabledText = AaeColors.buttonHairlineDisabledText
-    ..disabledBorder = AaeColors.buttonHairlineDisabledBackground),
+    ..disabledText = AaeColors.white20
+    ..disabledBorder = AaeColors.white20),
 };
 
 /// A generic button that contains text and an icon.

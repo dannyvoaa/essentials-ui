@@ -48,13 +48,13 @@ class TripsListWidget extends StatelessWidget {
       children: <Widget>[
         TravelListTile(
           buttonContent: ToolsButton(
-              iconData: AaeIconsv4.list,
+              iconData: AmericanIconsv4_6.list,
               title: 'Priority list',
               subtitle: 'Look up available and assigned seats.'),
         ),
         TravelListTile(
           buttonContent: ToolsButton(
-              iconData: AaeIconsv4.clock,
+              iconData: AmericanIconsv4_6.clock,
               title: 'Flight status',
               subtitle: 'Get arrival and departure information.'),
         ),

@@ -22,7 +22,7 @@ class CancelSlider extends StatelessWidget {
         label: Text(
           "Slide to cancel trip",
           style: TextStyle(
-            color: AaeColors.white,
+            color: AaeColors.white100,
             fontWeight: FontWeight.w500,
             fontSize: 16,
 //          margin: marginOnly(right: 12),
@@ -45,7 +45,7 @@ class CancelSlider extends StatelessWidget {
           blurRadius: 4,
         ),
         radius: 10,
-        buttonColor: AaeColors.white,
+        buttonColor: AaeColors.white100,
         backgroundColor: AaeColors.mediumGray,
         highlightedColor: Colors.white,
         baseColor: Colors.red,

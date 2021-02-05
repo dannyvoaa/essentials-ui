@@ -89,7 +89,7 @@ class PriorityListPassengerListItem extends StatelessWidget {
             style: secondRowTextStyle,
             child: Container(
               padding: EdgeInsets.only(
-                top: 10,
+                top: 5,
                 left: AaeDimens.baseUnit,
               ),
               child: Row(
@@ -144,9 +144,11 @@ class PriorityListPassengerListItem extends StatelessWidget {
 
     return [
       Padding(
-        padding: const EdgeInsets.only(left: AaeDimens.baseUnit),
+        padding: const EdgeInsets.only(
+            left: AaeDimens.baseUnit,
+            bottom: AaeDimens.baseUnit,),
         child: Icon(
-            AaeIconsv4.checkMark,
+            AmericanIconsv4_6.checkMark,
             size: 20,
             color: const Color(0xff008712)
         ),

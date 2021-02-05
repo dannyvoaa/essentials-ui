@@ -22,7 +22,7 @@ class PriorityListNavigator extends StatelessWidget {
           switch (settings.name) {
             case '/':
               builder = (_) => Search(
-                    title: "Priority List",
+                    title: "Priority list",
                     calendarLength: 5,
                     searchType1: cityAirportSearch,
                     searchType2: loadPriorityList,

@@ -15,7 +15,7 @@ class WorkflowPageLargeIcon extends StatelessWidget {
     return Icon(
       icon,
       size: AaeDimens.workflowLargeIconSize,
-      color: AaeColors.disabledText,
+      color: AaeColors.white40,
     );
   }
 }

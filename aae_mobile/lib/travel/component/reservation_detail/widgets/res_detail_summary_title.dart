@@ -21,7 +21,7 @@ class TripSummaryTitle extends StatelessWidget {
       padding:
       EdgeInsets.only(bottom: AaeDimens.smallCardVerticalContentPadding),
       child: SizedBox(
-        height: 48.00,
+        height: 53.00,
         child: Column(children: <Widget>[
           Container(
             alignment: Alignment.topCenter,
@@ -29,14 +29,14 @@ class TripSummaryTitle extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 5),
               child: Text(
                 viewModel.reservationDetail.description,
-                style: AaeTextStyles.reservationHeading,
+                style: AaeTextStyles.title21MediumGrayMed,
               ),
             ),
           ),
           Container(
             alignment: Alignment.topCenter,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 5),
+              padding: const EdgeInsets.only(bottom: 10),
               child: _dateSummary(
                 viewModel.reservationDetail.firstDepartureDateTime,
                 viewModel.reservationDetail.lastArrivalDateTime,
@@ -76,7 +76,7 @@ class TripSummaryTitle extends StatelessWidget {
     final text = monthText + ' ' + String.fromCharCode(0x2022) + ' ' + timeText;
     return Text(
       text,
-      style: AaeTextStyles.reservationSubHeading,
+      style: AaeTextStyles.body14,
     );
   }
 }

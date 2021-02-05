@@ -24,7 +24,7 @@ class TripsButton extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: 18,
-                color: AaeColors.black,
+                color: AaeColors.darkGray,
               ),
               textAlign: TextAlign.left,
             ),
@@ -37,7 +37,7 @@ class TripsButton extends StatelessWidget {
               '${pnr.recordLocator}',
               style: TextStyle(
                 fontSize: 15,
-                color: AaeColors.lightGray,
+                color: AaeColors.mediumGray,
               ),
               textAlign: TextAlign.right,
             )),

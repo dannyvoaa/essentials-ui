@@ -17,7 +17,7 @@ class SignInFailedView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AaeColors.primaryBackground,
+      color: AaeColors.black,
       child: Column(
         children: <Widget>[
           Icon(

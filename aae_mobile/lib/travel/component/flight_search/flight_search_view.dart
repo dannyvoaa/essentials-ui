@@ -63,7 +63,7 @@ class FlightSearchView extends StatelessWidget {
                 const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 5),
             child: Text(
               '$origin to $destination',
-              style: AaeTextStyles.flightSearchHeader,
+              style: AaeTextStyles.title32MediumGray,
               textAlign: TextAlign.left,
             )),
       ),
@@ -73,7 +73,7 @@ class FlightSearchView extends StatelessWidget {
           padding: const EdgeInsets.only(left: 23, right: 20, bottom: 20),
           child: Text(
             _convertStringToDate(departureDate),
-            style: AaeTextStyles.flightSearchSubHeader,
+            style: AaeTextStyles.subtitle18MediumGray,
             textAlign: TextAlign.left,
           ),
         ),
@@ -221,7 +221,7 @@ _buildFlightSearchButton(
                 //                color: AaeColors.green,
                 padding: EdgeInsets.only(top: 5, bottom: 3),
                 child: Text(flightNumber,
-                    style: AaeTextStyles.reservationSubHeading)),
+                    style: AaeTextStyles.body14)),
           ],
         ),
       ),
@@ -242,7 +242,7 @@ _buildFlightSearchButton(
               padding: const EdgeInsets.all(0.0),
               width: 20.0, // you can adjust the width as you need
               child: Icon(Icons.arrow_forward_ios,
-                  color: AaeColors.ultraLightGray)),
+                  color: AaeColors.lightGray)),
         ))
   ]));
 }
@@ -297,7 +297,7 @@ class FlightSearchCardBody extends StatelessWidget {
         height: 45,
         padding: EdgeInsets.only(top: 2, left: 6, right: 20),
         child: Icon(
-          AaeIconsv4.arrow_right,
+          AmericanIconsv4_6.arrow_right,
           color: AaeColors.gray,
           size: 20,
         ),
@@ -327,14 +327,14 @@ class FlightSearchCardBodyColumn extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 0),
               child: Container(
                   padding: EdgeInsets.only(top: 0),
-                  child: Text(time, style: AaeTextStyles.flightSearchText)),
+                  child: Text(time, style: AaeTextStyles.subtitle15Med)),
             ),
             Row(
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 5, bottom: 0),
                   child: Text(location,
-                      style: AaeTextStyles.reservationSubHeading),
+                      style: AaeTextStyles.body14),
                 ),
               ],
             )

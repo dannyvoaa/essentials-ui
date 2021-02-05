@@ -101,7 +101,7 @@ class ListViewItem extends StatelessWidget {
     return Expanded(
       child: Container(
         width: double.infinity,
-        color: AaeColors.white,
+        color: AaeColors.white100,
         padding: EdgeInsets.symmetric(horizontal: 14.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -129,6 +129,7 @@ class ListViewItem extends StatelessWidget {
             right: 0,
           ),
         ),
+        //card titles
         "body": Style(
           color: AaeColors.darkGray,
           fontSize: FontSize(18),
@@ -162,7 +163,7 @@ class ListViewItem extends StatelessWidget {
             style: {
               "html": Style(
 //                backgroundColor: Colors.black12,
-                color: AaeColors.gray,
+                color: AaeColors.mediumGray,
                 fontSize: FontSize(14),
                 height: 30,
                 padding: EdgeInsets.all(0),
@@ -170,7 +171,7 @@ class ListViewItem extends StatelessWidget {
               ),
               "body": Style(
 //                backgroundColor: Colors.black12,
-                color: AaeColors.gray,
+                color: AaeColors.mediumGray,
                 fontSize: FontSize(14),
 //                height: 42,
                 padding: EdgeInsets.all(0),
@@ -202,7 +203,7 @@ class ListViewItem extends StatelessWidget {
             author,
 //            'September 22, 2020',
             style: TextStyle(
-              color: AaeColors.gray,
+              color: AaeColors.mediumGray,
               fontSize: 12,
             ),
           ),

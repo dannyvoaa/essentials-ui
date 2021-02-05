@@ -19,10 +19,10 @@ class AaeIcons {
   static const IconData info = const IconData(0xf24a, fontFamily: _kFontFam);
 }
 
-class AaeIconsv4 {
-  AaeIconsv4._();
+class AmericanIconsv4_6 {
+  AmericanIconsv4_6._();
 
-  static const _kFontFam = 'AaeIconsv4';
+  static const _kFontFam = 'AmericanIconsv4_6';
   static const IconData info = const IconData(0xe03c, fontFamily: _kFontFam);
   static const IconData lock = const IconData(0xe038, fontFamily: _kFontFam);
   static const IconData setting = const IconData(0xe036, fontFamily: _kFontFam);

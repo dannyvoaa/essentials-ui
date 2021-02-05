@@ -51,7 +51,7 @@ class TableCellTitleValueHub extends StatelessWidget {
         this.boolBorderTop
             ? Container(
           height: AaeDimens.sizeDivider,
-          color: AaeColors.white,
+          color: AaeColors.white100,
         )
             : Container(),
         Material(
@@ -65,9 +65,9 @@ class TableCellTitleValueHub extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                         style: stringTitle.substring(0,3).toUpperCase() != location.toUpperCase() ?
-                        AaeTextStyles.tableCellTitle(boolEnabled: this.boolEnabled) :
+                        AaeTextStyles.subtitle18Gray :
                         //TextStyle(fontSize: 16,color: Colors.orange,fontWeight: FontWeight.bold),
-                        AaeTextStyles.tableCellTitleHub(boolEnabled: this.boolEnabled),
+                        AaeTextStyles.subtitle18LightGray,
                     ),
                   ),
                   SizedBox(
@@ -77,7 +77,7 @@ class TableCellTitleValueHub extends StatelessWidget {
                     stringValue,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: ApplyStyle(),
+                    style: applyStyle(),
 
                     textAlign: TextAlign.right,
                   ),
@@ -85,10 +85,7 @@ class TableCellTitleValueHub extends StatelessWidget {
                     txt,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: AaeTextStyles.tableCellTitle(
-                      boolEnabled: this.boolEnabled,
-
-                    ),
+                    style: AaeTextStyles.subtitle18CadetGray,
                     textAlign: TextAlign.right,
                   ),
                   this._cellAccessory(),
@@ -111,7 +108,7 @@ class TableCellTitleValueHub extends StatelessWidget {
               }
             },
             highlightColor: this.boolEnabled && onTapAction != null
-                ? AaeColors.tableViewCellBackgroundSelected
+                ? AaeColors.highlightBlue
                 : Colors.transparent,
           ),
           //  color: AaeColors.tableViewCellBackground,
@@ -119,7 +116,7 @@ class TableCellTitleValueHub extends StatelessWidget {
         this.boolBorderBottom
             ? Container(
           height: AaeDimens.sizeDivider,
-          color: AaeColors.ultraLightGray,
+          color: AaeColors.gray,
         )
             : Container(),
       ],
@@ -129,11 +126,11 @@ class TableCellTitleValueHub extends StatelessWidget {
   //AaeTextStyles.tableCellValue(boolEnabled: this.boolEnabled)
   //TextStyle(color: Colors.grey.withOpacity(0.6))
 
-  TextStyle ApplyStyle() {
+  TextStyle applyStyle() {
     if (this.boolHubTextGray)
-      return AaeTextStyles.tableCellValueHub();
+      return AaeTextStyles.title20GrayBold;
     else
-      return AaeTextStyles.tableCellValue(boolEnabled: this.boolEnabled);
+      return AaeTextStyles.subtitle18LightGray;
   }
 
   /// If boolShowDisclosureIndicator == true, the disclosure indicator will be displayed
@@ -145,7 +142,7 @@ class TableCellTitleValueHub extends StatelessWidget {
 
     // Check to see if the disclosure indicator should be shown
     if (this.boolShowDisclosureIndicator) {
-      colorAccessory = AaeColors.lightGray
+      colorAccessory = AaeColors.cadetGray
           .withAlpha(this.boolEnabled ? 255 : (255 * 0.40).round());
       iconAccessory = Icons.add;
     }
@@ -155,13 +152,13 @@ class TableCellTitleValueHub extends StatelessWidget {
       colorAccessory = AaeColors.blue.withAlpha(255);
       iconAccessory = Icons.check;
     } else {
-      colorAccessory = AaeColors.lightGray.withAlpha(195);
+      colorAccessory = AaeColors.cadetGray.withAlpha(195);
       iconAccessory = Icons.add;
     }
 
     // Check to see if the add indicator should be shown
     if (this.boolShowAdd) {
-      colorAccessory = AaeColors.ultraLightGray.withAlpha(this.boolEnabled ? 255 : (255 * 0.40).round());
+      colorAccessory = AaeColors.gray.withAlpha(this.boolEnabled ? 255 : (255 * 0.40).round());
       iconAccessory = Icons.add;
     }
 

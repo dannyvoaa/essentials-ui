@@ -138,7 +138,7 @@ class NewsArticleComponent extends StatelessWidget {
                             gradient: LinearGradient(
                                 begin: Alignment.bottomCenter,
                                 end: Alignment.topCenter,
-                                colors: <Color>[AaeColors.blue, AaeColors.gradientTop])),
+                                colors: <Color>[AaeColors.blue, AaeColors.lightBlue])),
                       ),
 
                       elevation: 1,

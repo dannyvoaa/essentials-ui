@@ -16,7 +16,7 @@ class TableHeader extends StatelessWidget {
         stringTitle.toString(),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
-        style: AaeTextStyles.tableHeaderFooter(),
+        style: AaeTextStyles.subtitle18Bold1165,
       ),
       margin: EdgeInsets.only(
         left: AaeDimens.baseUnit,

@@ -20,19 +20,21 @@ class TripsPassengerPanel extends StatelessWidget {
           Container(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 5),
+              padding: const EdgeInsets.only(bottom: 10, top: 16),
               child: Text(
                 'Travelers',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: AaeColors.blue,
-                  fontWeight: FontWeight.w700,
-                  height: 2.6666666666666665,
-                ),
+                style: AaeTextStyles.subtitle15BlueBold,
                 textAlign: TextAlign.left,
+                // replaced the inline styles below with the Aae style above
+                // style: TextStyle(
+                //   fontSize: 15,
+                //   color: AaeColors.blue,
+                //   fontWeight: FontWeight.w700,
+                //   height: 2.6666666666666665,
               ),
             ),
           ),
+
           Container(
             alignment: Alignment.topLeft,
             decoration: BoxDecoration(
@@ -108,14 +110,14 @@ class _PassengerState extends State<Passenger> {
             Row(
               children: [
                 Text(widget.firstName + ' ' + widget.lastName),
-                Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,),
+                Text(String.fromCharCode(0x2022), style: AaeTextStyles.caption13MediumGrayLS10,),
                 Text(widget.status),
               ],
             ),
             FlutterSwitch(
               activeColor: AaeColors.blue,
-              inactiveColor: AaeColors.ultraLightGray,
-              toggleColor: AaeColors.white,
+              inactiveColor: AaeColors.lightGray,
+              toggleColor: AaeColors.white100,
               width: 40.0,
               height: 22.0,
               toggleSize: 20.0,
@@ -155,7 +157,7 @@ class CheckInButton extends StatelessWidget {
           onPressed: () {
             print('Check in pressed...');
           },
-          child: Text('Check in', style:AaeTextStyles.checkInButton),
+          child: Text('Check in', style:AaeTextStyles.btn18),
         ),
       ),
     );

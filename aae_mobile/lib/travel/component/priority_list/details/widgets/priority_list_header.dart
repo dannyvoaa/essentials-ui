@@ -1,4 +1,5 @@
 import 'package:aae/theme/dimensions.dart';
+import 'package:aae/theme/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -7,12 +8,14 @@ import '../priority_list_view_model.dart';
 class PriorityListHeader extends StatelessWidget {
   final PriorityListViewModel viewModel;
 
+  // replaced with style: AaeTextStyles.subtitle18MediumGray
   static const smallTextStyle = TextStyle(
     fontFamily: 'AmericanSans',
     fontSize: 18,
     color: const Color(0xff627a88),
   );
 
+  // replaced with style: AaeTextStyles.title32MediumGrayMed
   static const largeTextStyle = TextStyle(
     fontFamily: 'AmericanSansMedium',
     fontSize: 38,
@@ -58,11 +61,11 @@ class PriorityListHeader extends StatelessWidget {
               children: [
                 aaLogo,
                 Text(viewModel.priorityList.flightNumber.toString(),
-                    style: smallTextStyle),
+                    style: AaeTextStyles.subtitle18MediumGray),
                 bulletDivider,
                 Text(
                   "Gate ${viewModel.priorityList.departureGate}",
-                  style: smallTextStyle,
+                  style: AaeTextStyles.subtitle18MediumGray,
                 ),
               ],
             ),
@@ -75,7 +78,7 @@ class PriorityListHeader extends StatelessWidget {
                 viewModel.priorityList.originAirportCode +
                     " to " +
                     viewModel.priorityList.destinationAirportCode,
-                style: largeTextStyle,
+                style: AaeTextStyles.title32MediumGrayMed,
 
               ),
             ),
@@ -83,12 +86,12 @@ class PriorityListHeader extends StatelessWidget {
               children: [
                 Text(
                   dateFormat.format(DateTime.parse(viewModel.priorityList.departureTime)),
-                  style: smallTextStyle,
+                  style: AaeTextStyles.subtitle18MediumGray,
                 ),
                 bulletDivider,
                 Text(
                   timeFormat.format(DateTime.parse(viewModel.priorityList.departureTime)),
-                  style: smallTextStyle,
+                  style: AaeTextStyles.subtitle18MediumGray,
                 )
               ],
             )

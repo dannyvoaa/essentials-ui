@@ -42,7 +42,7 @@ class _AirportPickerFormFieldState extends State<AirportPickerFormField> {
           ),
         ),
         child: Text(_selectedAirport == null ? 'City/airport' : _selectedAirport.code,
-          style: _selectedAirport == null ? _hintStyle : AaeTextStyles.locatorInfo,
+          style: _selectedAirport == null ? _hintStyle : AaeTextStyles.subtitle18,
         ),
       ),
       onTap: () => AirportPickerComponent.showAsModalBottomSheet(

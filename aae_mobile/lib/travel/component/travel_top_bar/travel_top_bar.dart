@@ -9,18 +9,18 @@ class TravelTopBar extends StatelessWidget implements PreferredSizeWidget {
     Tab(
       child: Text(
         'Trips',
-        style: TextStyle(color: AaeColors.white),
+        style: TextStyle(color: AaeColors.white100),
       ),
     ),
     Tab(
         child: Text(
       'Priority list',
-      style: TextStyle(color: AaeColors.white),
+      style: TextStyle(color: AaeColors.white100),
     )),
     Tab(
       child: Text(
         'Flight status',
-        style: TextStyle(color: AaeColors.white),
+        style: TextStyle(color: AaeColors.white100),
       ),
     ),
   ];
@@ -35,11 +35,11 @@ class TravelTopBar extends StatelessWidget implements PreferredSizeWidget {
       child: Container(
         child: GradientAppBar(
           title: Align(
-              alignment: Alignment.bottomLeft,
+              alignment: Alignment.centerLeft,
               heightFactor: 3,
               child: Text(
                 'Travel',
-                style: TextStyle(color: AaeColors.white),
+                style: TextStyle(color: AaeColors.white100),
               )),
           gradient: AaeColors.appBarGradient,
           bottom: PreferredSize(

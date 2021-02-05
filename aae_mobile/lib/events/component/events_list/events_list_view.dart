@@ -39,7 +39,7 @@ class EventsListView extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.black12,
+              color: AaeColors.lightGray,
 //              color: AaeColors.lightGray,
               offset: Offset(0.2, 2),
               blurRadius: 2,
@@ -60,10 +60,10 @@ class EventsListView extends StatelessWidget {
             alignment: Alignment.centerLeft,
             width: double.infinity,
             height: 36,
-            color: AaeColors.white,
+            color: AaeColors.white100,
             child: Text(
               DateFormat.yMMMMEEEEd('en_US').format(viewModel.observingDate),
-              style: AaeTextStyles.description(),
+              style: AaeTextStyles.body14,
             ),
           ),
         ),
@@ -96,7 +96,7 @@ class EventsListView extends StatelessWidget {
                 child: Text(
 //                    DateFormat.yMMMMEEEEd('en_US').format(viewModel.observingDate),
                   'Nothing planned today.',
-                  style: AaeTextStyles.description(),
+                  style: AaeTextStyles.body14,
                 ),
               ),
             )
@@ -119,7 +119,7 @@ class EventsListView extends StatelessWidget {
                   return Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6),
-                      color: AaeColors.white,
+                      color: AaeColors.white100,
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black12,
@@ -222,18 +222,14 @@ class EventsListView extends StatelessWidget {
                                                     overflow:
                                                         TextOverflow.visible,
                                                     style: AaeTextStyles
-                                                        .eventTitle(
-                                                            boolDefaultHeight:
-                                                                true),
+                                                        .title22,
                                                   ),
                                                   Text(
                                                     dateFormatter(index),
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     style:
-                                                        AaeTextStyles.eventDate(
-                                                            boolDefaultHeight:
-                                                                true),
+                                                        AaeTextStyles.caption11Reg150,
                                                   ),
                                                 ],
                                               ),
@@ -265,8 +261,7 @@ class EventsListView extends StatelessWidget {
                                               viewModel
                                                   .events[index].locationVenue,
                                               overflow: TextOverflow.ellipsis,
-                                              style: AaeTextStyles.eventText(
-                                                  boolDefaultHeight: true),
+                                              style: AaeTextStyles.body16,
                                             ),
                                           ],
                                         ),
@@ -281,7 +276,7 @@ class EventsListView extends StatelessWidget {
                                           children: <Widget>[
                                             Container(
                                               child: Icon(
-                                                AaeIconsv4.more,
+                                                AmericanIconsv4_6.more,
                                                 size: 12,
                                                 color: AaeColors.darkGray,
                                               ),
@@ -296,8 +291,7 @@ class EventsListView extends StatelessWidget {
                                                 viewModel.events[index]
                                                     .eventDescription,
 //                                    overflow: TextOverflow.ellipsis,
-                                                style: AaeTextStyles.eventText(
-                                                    boolDefaultHeight: true),
+                                                style: AaeTextStyles.body16,
                                               ),
                                             ),
                                           ],
@@ -334,8 +328,7 @@ class EventsListView extends StatelessWidget {
                                                   1000)),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
-                                      style: AaeTextStyles.calendarSummary(
-                                          boolDefaultHeight: true),
+                                      style: AaeTextStyles.caption13,
                                     ),
                                     SizedBox(
                                       height: 8,
@@ -347,8 +340,7 @@ class EventsListView extends StatelessWidget {
                                                   1000)),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
-                                      style: AaeTextStyles.calendarSummary(
-                                          boolDefaultHeight: true),
+                                      style: AaeTextStyles.caption13,
                                     ),
                                   ],
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -367,8 +359,7 @@ class EventsListView extends StatelessWidget {
                                       viewModel.events[index].eventName,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
-                                      style: AaeTextStyles.calendarSummaryBold(
-                                          boolDefaultHeight: true),
+                                      style: AaeTextStyles.caption13Bold,
                                     ),
                                     SizedBox(
                                       height: 8,
@@ -377,8 +368,7 @@ class EventsListView extends StatelessWidget {
                                       viewModel.events[index].locationVenue,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
-                                      style: AaeTextStyles.calendarSummary(
-                                          boolDefaultHeight: true),
+                                      style: AaeTextStyles.caption13,
                                     ),
                                   ],
                                   crossAxisAlignment: CrossAxisAlignment.start,

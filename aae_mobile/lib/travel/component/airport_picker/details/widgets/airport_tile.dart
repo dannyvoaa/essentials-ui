@@ -18,6 +18,7 @@ class AirportTile extends StatelessWidget {
           child: Container(
             margin: EdgeInsets.only(
               left: 8,
+              top: 5,
             ),
             padding: EdgeInsets.only(
               bottom: 8,
@@ -25,7 +26,7 @@ class AirportTile extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                  width: 2.0,
+                  width: 1.3,
                   color: const Color(0xffe7ecef),
                 ),
               ),
@@ -42,7 +43,7 @@ class AirportTile extends StatelessWidget {
                     ),
                     child: Text(
                       airport.code,
-                      style: AaeTextStyles.b1.copyWith(
+                      style: AaeTextStyles.title20Reg160.copyWith(
                         color: Color.fromRGBO(54, 73, 90, 1.0),
                         fontWeight: FontWeight.w400,
                         fontFamily: 'AmericanSans',
@@ -57,7 +58,7 @@ class AirportTile extends StatelessWidget {
                   child: Text(
                     airport.displayName,
                     overflow: TextOverflow.ellipsis,
-                    style: AaeTextStyles.b1.copyWith(
+                    style: AaeTextStyles.title20Reg160.copyWith(
                       fontSize: 16,
                       fontFamily: 'AmericanSans',
                       color: Color(0xFF627A88),

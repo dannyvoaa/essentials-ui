@@ -33,7 +33,7 @@ class RecognitionPage extends StatelessWidget {
         drawer: Drawer(),
         appBar: AppBar(
           iconTheme: new IconThemeData(color: Colors.grey),
-          backgroundColor: AaeColors.white,
+          backgroundColor: AaeColors.white100,
           elevation: AaeDimens.noElevation,
           actions: <Widget>[],
           bottom: TabBar(tabs: tabs),

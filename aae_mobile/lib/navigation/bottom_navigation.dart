@@ -54,7 +54,7 @@ class BottomNavigation extends StatelessWidget {
         border: Border(
           top: BorderSide(
             width: 1.0,
-            color: AaeColors.ultraLightGray,
+            color: AaeColors.gray,
           ),
         ),
       ),

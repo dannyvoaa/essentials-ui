@@ -53,6 +53,7 @@ class ReservationView extends StatelessWidget {
                 ),
               ),
               Container(
+                padding: EdgeInsets.only(top:16),
                 child: TripsCollection(viewModel: null, header: 'Tools'),
               ),
               Container(

@@ -86,7 +86,7 @@ class AaeTaggedText extends StatelessWidget {
   })  : textAlign = textAlign ?? TextAlign.start,
         linkTagsToUrls = linkTagsToUrls ?? {},
         urlLauncher = urlLauncher ?? UrlLauncher(),
-        baseTextStyle = baseTextStyle ?? AaeTextStyles.b2SingleLine,
+        baseTextStyle = baseTextStyle ?? AaeTextStyles.btn16Med,
         super(key: key);
 
   @override
@@ -118,7 +118,7 @@ class AaeTaggedText extends StatelessWidget {
             tag,
             (text) => TextSpan(
               text: text,
-              style: baseTextStyle.copyWith(color: AaeColors.linkText),
+              style: baseTextStyle.copyWith(color: AaeColors.brightTeal),
               recognizer: _urlTapRecognizer(url),
             ),
           ),

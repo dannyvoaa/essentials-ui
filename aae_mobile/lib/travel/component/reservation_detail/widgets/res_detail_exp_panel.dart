@@ -59,7 +59,7 @@ class RouteInfo extends StatelessWidget {
       padding: EdgeInsets.all(20),
       child: ExpandableTheme(
         data: ExpandableThemeData(
-          iconColor: AaeColors.ultraLightGray,
+          iconColor: AaeColors.lightGray,
           animationDuration: const Duration(milliseconds: 100),
           iconRotationAngle: 1.55,
           hasIcon: true,
@@ -136,8 +136,8 @@ class RouteInfo extends StatelessWidget {
     } else {
       return Row(
         children: [
-          Text('Overnight', style: AaeTextStyles.routeDetailHeading,),
-          Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,)
+          Text('Overnight', style: AaeTextStyles.caption13MediumGray,),
+          Text(String.fromCharCode(0x2022), style: AaeTextStyles.caption13MediumGrayLS10,)
         ],
       );
     }
@@ -147,7 +147,7 @@ class RouteInfo extends StatelessWidget {
     if (hasWifi = true) {
       return Row(
         children: [
-          Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,),
+          Text(String.fromCharCode(0x2022), style: AaeTextStyles.caption13MediumGrayLS10,),
           Icon(Icons.wifi, color:AaeColors.ultraLightGray, size: 12,),
         ],
       );
@@ -207,8 +207,8 @@ class RouteSummaryColumn extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(time, style:AaeTextStyles.timeSummary,),
-        Text(location),
+        Text(time, style:AaeTextStyles.subtitle18Med,),
+        Text(location, style: AaeTextStyles.body14),
       ],
     );
   }
@@ -241,7 +241,7 @@ class RouteDetailEnd extends StatelessWidget {
                   color: AaeColors.ultraLightGray,
                   width: 1,
                 ),
-                color: AaeColors.white,
+                color: AaeColors.white100,
                 borderRadius: BorderRadius.all(
                   Radius.circular(20),
                 ),
@@ -263,7 +263,7 @@ class RouteDetailEnd extends StatelessWidget {
 
   Widget cityHub(hub, city){
     final text = city + ' (' + hub + ')';
-    return Text(text, style:AaeTextStyles.hubDetailHeading);
+    return Text(text, style:AaeTextStyles.body14);
   }
 }
 
@@ -295,19 +295,19 @@ class RouteDetail extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(child: Text(hub, style:AaeTextStyles.hubDetailHeading)),
+              Container(child: Text(hub, style:AaeTextStyles.body14)),
               Padding(
                 padding: const EdgeInsets.only(top:12, bottom:12,),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(duration, style: AaeTextStyles.routeDetailHeading,),
-                    Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,),
+                    Text(duration, style: AaeTextStyles.caption13MediumGray,),
+                    Text(String.fromCharCode(0x2022), style: AaeTextStyles.caption13MediumGrayLS10,),
                     overnight,
-                    Text(cabin, style: AaeTextStyles.routeDetailHeading,),
-                    Text(String.fromCharCode(0x2022), style: AaeTextStyles.dividerDot,),
-                    Text(equipment, style: AaeTextStyles.routeDetailHeading,),
+                    Text(cabin, style: AaeTextStyles.caption13MediumGray,),
+                    Text(String.fromCharCode(0x2022), style: AaeTextStyles.caption13MediumGrayLS10,),
+                    Text(equipment, style: AaeTextStyles.caption13MediumGray,),
                     wifi,
                   ],
                 ),
@@ -336,7 +336,7 @@ class CircleRoute extends StatelessWidget {
               color: AaeColors.ultraLightGray,
               width: 1,
             ),
-            color: AaeColors.white,
+            color: AaeColors.white100,
             borderRadius: BorderRadius.all(
               Radius.circular(20),
             ),
@@ -375,7 +375,7 @@ class LocatorInfo extends StatelessWidget {
     String seat = viewModel.reservationDetail.segments[index].seatAssignments[0].seatAssignment;
 
     return Container(
-      color: AaeColors.bgLightGray,
+      color: AaeColors.superUltralightGray,
       padding: EdgeInsets.only(left:20, right:20, top:8, bottom:8,),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -383,7 +383,7 @@ class LocatorInfo extends StatelessWidget {
           LocatorColumn('LOCATOR', viewModel.reservationDetail.recordLocator, CrossAxisAlignment.start),
           LocatorColumn('GATE', viewModel.reservationDetail.segments[index].originGate, CrossAxisAlignment.center),
           LocatorColumn('TERMINAL', viewModel.reservationDetail.segments[index].originTerminal, CrossAxisAlignment.center),
-          LocatorColumn('SEAT', nonNull(seat), CrossAxisAlignment.end),
+          LocatorColumn('BAGGAGE', nonNull(seat), CrossAxisAlignment.end),
         ],
       ),
     );
@@ -413,11 +413,14 @@ class LocatorColumn extends StatelessWidget {
       children: [
         Text(
           heading,
-          style: AaeTextStyles.locatorInfoHeading,
+          style: AaeTextStyles.caption12GrayMed,
         ),
-        Text(
-          content,
-          style: AaeTextStyles.locatorInfo,
+        Container(
+          padding: EdgeInsets.only(top:6),
+          child: Text(
+            content,
+            style: AaeTextStyles.subtitle15,
+          ),
         ),
       ],
     );
@@ -451,7 +454,7 @@ class DepartureStatus extends StatelessWidget {
               countDown(index, context,),
             ],
           ),
-          Text(viewModel.reservationDetail.segments.first.status, style: AaeTextStyles.departureOnTime,),
+          Text(viewModel.reservationDetail.segments.first.status, style: AaeTextStyles.caption12GreenMed,),
         ],
       ),
     );
@@ -497,7 +500,7 @@ class DepartureStatus extends StatelessWidget {
     }
 
     final text = number + ' departs in ' + dayText + hourText + minuteText;
-    return Text(text, style:AaeTextStyles.departureHeading);
+    return Text(text, style:AaeTextStyles.caption12);
   }
 }
 

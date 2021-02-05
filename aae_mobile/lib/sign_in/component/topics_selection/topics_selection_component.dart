@@ -75,19 +75,19 @@ class _TopicsSelectionView extends StatelessWidget {
                 width: AaeDimens.workgroupsButtonWidth,
                        height: AaeDimens.workgroupsButtonHeight,
             decoration: BoxDecoration(
-              color: viewModel.isSelected ? AaeColors.lightBlue : AaeColors.white,
+              color: viewModel.isSelected ? AaeColors.lightBlue : AaeColors.white100,
               borderRadius: BorderRadius.circular(AaeDimens.topicsIconRadius),
               shape: BoxShape.rectangle,
               border: viewModel.isSelected
                   ? Border.all(
-                      color: AaeColors.white,
+                      color: AaeColors.white100,
                       width: 0)
                   : Border.all(color: AaeColors.black, width: 1),
             ),
             child: Center(
               child: Text(viewModel.topic,
                   style: TextStyle(
-                    color:  viewModel.isSelected ? AaeColors.white : AaeColors.black,
+                    color:  viewModel.isSelected ? AaeColors.white100 : AaeColors.black,
                     fontSize: 17,
                     fontWeight: FontWeight.normal,
                   )),

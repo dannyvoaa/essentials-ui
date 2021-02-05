@@ -19,7 +19,7 @@ class TopicsPage extends StatelessWidget {
                             colors: <Color>[
 
                           AaeColors.blue,
-                          AaeColors.gradientTop
+                          AaeColors.lightBlue
 
                         ])
                      ),

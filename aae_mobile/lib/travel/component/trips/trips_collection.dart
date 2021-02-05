@@ -29,18 +29,20 @@ class TripsCollection extends StatelessWidget {
         Container(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 5),
+              padding: const EdgeInsets.only(bottom: 10),
               child: Text(
                 header,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: AaeColors.blue,
-                  fontWeight: FontWeight.w700,
-                  height: 2.6666666666666665,
-                ),
+                style: AaeTextStyles.subtitle15BlueBold,
                 textAlign: TextAlign.left,
+                // replaced the inline style below with AaeTextStyle above
+                // style: TextStyle(
+                //   fontSize: 15,
+                //   color: AaeColors.blue,
+                //   fontWeight: FontWeight.w700,
+                //   height: 2.6666666666666665,
+                ),
               ),
-            )),
+            ),
         TripsListWidget(
           viewModel: this.viewModel,
           loadReservationDetail: loadReservationDetail,
@@ -59,20 +61,20 @@ class TripsCollection extends StatelessWidget {
                 width: 185,
                 height: 185,
                 decoration: BoxDecoration(
-                    shape: BoxShape.circle, color: AaeColors.white),
+                    shape: BoxShape.circle, color: AaeColors.white100),
                 child: Padding(
-                    padding: const EdgeInsets.only(bottom: 15),
-                    child: Icon(AaeIconsv4.vacation,
+                    padding: const EdgeInsets.only(bottom: 35),
+                    child: Icon(AmericanIconsv4_6.vacation,
                         size: 120, color: AaeColors.darkGray)))),
         Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 10),
             child: Text('No trips yet...',
-                style: AaeTextStyles.reservationNoTripsHeading)),
+                style: AaeTextStyles.title24MediumGrayBold)),
         Padding(
             padding: const EdgeInsets.only(bottom: 5),
             child: Text('All trips created in Travel Planner',
-                style: AaeTextStyles.smallTextStyle)),
-        Text('will show up here.', style: AaeTextStyles.smallTextStyle)
+                style: AaeTextStyles.body14Reg130)),
+        Text('will show up here.', style: AaeTextStyles.body14Reg130)
       ],
     ));
   }

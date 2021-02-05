@@ -13,7 +13,7 @@ class TableFooter extends StatelessWidget {
     return Container(
       child: Text(
         stringMessage,
-        style: AaeTextStyles.tableHeaderFooter(),
+        style: AaeTextStyles.subtitle18Bold1165,
       ),
       margin: EdgeInsets.only(
         left: 16,
