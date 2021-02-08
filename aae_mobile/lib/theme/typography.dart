@@ -375,6 +375,13 @@ class AaeTextStyles {
     fontWeight: FontWeight.w600,
   );
 
+  /// Used: OS dialogue boxes (covid notice for example)
+  static final subtitle18MediumGrayMed = subtitle18.copyWith(
+    fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
+    color: AaeColors.mediumGray,
+  );
+
   /// Replaces: timeSummary
   static final subtitle18Bold = subtitle18.copyWith(
     fontFamily: _americanSansBold,
@@ -566,6 +573,12 @@ class AaeTextStyles {
     color: AaeColors.mediumGray,
   );
 
+  /// Used: OS dialogue box emphasized text
+  static final body14Med = body14.copyWith(
+    fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
+  );
+  
 
   // 13px BASE title text ------------------------------------v-----------------------------------13px--
   /// 13px base font
