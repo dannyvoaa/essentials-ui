@@ -73,8 +73,8 @@ class TripsCollection extends StatelessWidget {
         Padding(
             padding: const EdgeInsets.only(bottom: 5),
             child: Text('All trips created in Travel Planner',
-                style: AaeTextStyles.body14Reg130)),
-        Text('will show up here.', style: AaeTextStyles.body14Reg130)
+                style: AaeTextStyles.body16)),
+        Text('will show up here.', style: AaeTextStyles.body16)
       ],
     ));
   }

@@ -578,7 +578,7 @@ class AaeTextStyles {
     fontFamily: _americanSansMedium,
     fontWeight: FontWeight.w600,
   );
-  
+
 
   // 13px BASE title text ------------------------------------v-----------------------------------13px--
   /// 13px base font
