@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 class SSKeys {
   final GlobalKey<ScaffoldState> scaffoldKeyH = new GlobalKey<ScaffoldState>(debugLabel: 'scaffoldKeyH');
   final GlobalKey<ScaffoldState> scaffoldKeyE = new GlobalKey<ScaffoldState>(debugLabel: 'scaffoldKeyE');
+  final GlobalKey<ScaffoldState> scaffoldKeyT = new GlobalKey<ScaffoldState>(debugLabel: 'scaffoldKeyT');
 }
 
 class NewsFeedPage extends StatefulWidget {
