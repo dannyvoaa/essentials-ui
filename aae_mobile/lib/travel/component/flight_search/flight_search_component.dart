@@ -64,7 +64,7 @@ class FlightSearchComponent extends StatelessWidget {
               travelSnackBar.showSnackBar(
                   context,
                   'No results were found. Please try again.',
-                  AaeColors.darkRed,
+                  AaeColors.orange,
                   true);
               return _buildLoadingState(context);
             }
