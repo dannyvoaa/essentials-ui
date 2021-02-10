@@ -500,6 +500,12 @@ class AaeTextStyles {
     fontWeight: FontWeight.w700,
   );
 
+  /// Used: gate and time info on boarding pass screen
+  static final body16WhiteBold = body16.copyWith(
+    fontFamily: _americanSansBold,
+    fontWeight: FontWeight.w700,
+    color: AaeColors.white100,
+  );
 
   // 15px BASE title text ----------------------------------v-------------------------------------15px--
   /// 15px base font
@@ -571,6 +577,11 @@ class AaeTextStyles {
   /// Used: when 4 cabin in Priority list
   static final body14MediumGray = body14.copyWith(
     color: AaeColors.mediumGray,
+  );
+
+  /// Used: 15 minute boarding text on boarding pass screen
+  static final body14DarkOrange = body14.copyWith(
+    color: AaeColors.darkOrange,
   );
 
   /// Used: OS dialogue box emphasized text
@@ -704,6 +715,12 @@ class AaeTextStyles {
     fontFamily: _americanSansMedium,
     fontWeight: FontWeight.w600,
     color: AaeColors.gray,
+  );
+
+  static final caption12HalfwayLightGrayMed = caption12.copyWith(
+    fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
+    color: AaeColors.halfwayLightGray,
   );
 
 
