@@ -1,4 +1,5 @@
 import 'package:aae/assets/aae_icons.dart';
+import 'package:aae/theme/colors.dart';
 import 'package:aae/model/priority_list_passenger.dart';
 import 'package:aae/theme/dimensions.dart';
 import 'package:aae/travel/component/priority_list/details/widgets/priority_list_flight_inventory_card.dart';
@@ -150,7 +151,7 @@ class PriorityListPassengerListItem extends StatelessWidget {
         child: Icon(
             AmericanIconsv4_6.checkMark,
             size: 20,
-            color: const Color(0xff008712)
+            color: AaeColors.green,
         ),
       )
     ];

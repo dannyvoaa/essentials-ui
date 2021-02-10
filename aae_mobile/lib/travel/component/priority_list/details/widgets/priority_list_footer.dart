@@ -12,7 +12,7 @@ class PriorityListFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: AaeColors.white100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -20,14 +20,14 @@ class PriorityListFooter extends StatelessWidget {
             padding: EdgeInsets.all(7),
             margin: EdgeInsets.only(top: 20, bottom: 16, right: 16),
             decoration: BoxDecoration(
-              color: const Color(0xFFF5F5F7),
+              color: AaeColors.superUltralightGray,
               borderRadius: BorderRadius.all(Radius.circular(5)),
             ),
             child: InkWell(
               child: Icon(
-                  AmericanIconsv4_6.upArrow,
+                  AmericanIconsv4_6.circleArrowUp,
                   size: 24,
-                  color: const Color(0xff9da6ab),
+                  color: AaeColors.gray,
               ),
               onTap: onUpButtonClicked,
             ),
