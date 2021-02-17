@@ -46,6 +46,7 @@ class AmericanIconsv4_6 {
   static const IconData seats = const IconData(0xe007, fontFamily: _kFontFam);
   static const IconData carseat = const IconData(0xe008, fontFamily: _kFontFam);
   static const IconData stroller = const IconData(0xe009, fontFamily: _kFontFam);
+  static const IconData checkin = const IconData(0xe00a, fontFamily: _kFontFam);
   static const IconData book = const IconData(0xe00b, fontFamily: _kFontFam);
   static const IconData account = const IconData(0xe00c, fontFamily: _kFontFam);
   static const IconData join = const IconData(0xe00d, fontFamily: _kFontFam);
