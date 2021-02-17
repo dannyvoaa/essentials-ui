@@ -52,7 +52,7 @@ class TravelServiceApi {
     final response = await httpClient.get(travelReservationsEndpoint, headers: headers);
     if (response.statusCode == 200) {
       _log.info("Reservation API request successful");
-      _log.info(response.body.toString().substring(0,50));
+      //_log.info(response.body.toString().substring(0,50));
 
       Trips trips = _tripsToModel(response.body);
 
@@ -107,7 +107,7 @@ class TravelServiceApi {
 
     if (response.statusCode == 200) {
       _log.info("airports request successful");
-      _log.info(response.body.toString().substring(0,50));
+      //_log.info(response.body.toString().substring(0,50));
       AirportsWrapper wrapper = serializers.deserializeWith(
           AirportsWrapper.serializer, jsonDecode(response.body));
 
