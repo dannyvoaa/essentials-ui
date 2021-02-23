@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:aae/model/airport.dart';
 import 'package:aae/model/airports_wrapper.dart';
+import 'package:aae/model/check_in_request.dart';
+import 'package:aae/model/check_in_basic_request.dart';
 import 'package:aae/model/boarding_pass.dart';
 import 'package:aae/model/boarding_pass_wrapper.dart';
 import 'package:aae/model/flight_search.dart';
@@ -9,6 +11,8 @@ import 'package:aae/model/flight_status.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:aae/model/trips.dart';
 import 'package:aae/model/reservation_detail.dart';
+import 'package:aae/model/check_in_passenger.dart';
+import 'package:aae/travel/component/checkin/checkin_component.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
@@ -27,6 +31,7 @@ class TravelServiceApi {
   static const travelFlightSearchEndpoint = '$baseUrl/flightsearch';
   static const airportsEndpoint = '$baseUrl/airports';
   static const reservationDetailEndpoint = '$baseUrl/reservation';
+  static const checkInEndpoint = '$baseUrl/checkin';
   static const boardingPassEndpoint = '$baseUrl/boardingpass';
 
   final dateFormatter = DateFormat("yyyy-MM-dd");
@@ -57,8 +62,10 @@ class TravelServiceApi {
       _log.info("Reservation API request successful");
       //_log.info(response.body.toString().substring(0,50));
 
+      /// Populates trips object with available PNRs
       Trips trips = _tripsToModel(response.body);
 
+      
       return trips;
     } else {
       throw Exception(
@@ -168,7 +175,42 @@ class TravelServiceApi {
     }
   }
 
-  Future<ReservationDetail> getReservationDetail(String employeeId, String smsession,String pnr) async {
+  void pushCheckIn(CheckInArguments checkInArguments, String employeeId, String smsession) async {
+    Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
+    String constructedUrl = "$checkInEndpoint/${checkInArguments.pnr}";
+
+    _log.info("initiating check in request: ${checkInArguments.pnr}");
+    _log.info(constructedUrl);
+
+    var response;
+    try {
+
+      CheckInBasicRequest request = CheckInBasicRequest((b) => b
+        ..travelerIds = BuiltList<int>(checkInArguments.travelerIds).toBuilder()
+      );
+
+      String checkinDetailsJson = json.encode(serializers.serializeWith(CheckInBasicRequest.serializer, request));
+      _log.info(checkinDetailsJson);
+
+      response = await httpClient.post(constructedUrl, headers: headers, body: checkinDetailsJson);
+    } catch (e) {
+      String msg = 'failed to push the check in request.\n' + e.toString();
+      _log.severe(msg);
+      throw Exception(msg);
+    }
+
+    if (response.statusCode == 200) {
+      _log.info("check in request successful");
+      _log.info(response.body);
+//      return serializers.deserializeWith(CheckInBasicRequest.serializer, jsonDecode(response.body));
+
+    } else {
+      throw Exception(
+          'failed to push the check in request.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
+    }
+  }
+
+  Future<ReservationDetail> getReservationDetail(String employeeId, String smsession, String pnr) async {
     _log.info("initiating priority reservation detail request: $pnr");
 
     Map<String, String> headers = _getRequestHeaders(employeeId, smsession);

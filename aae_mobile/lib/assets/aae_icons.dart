@@ -17,6 +17,7 @@ class AaeIcons {
   static const IconData more = const IconData(0xe950, fontFamily: _kFontFam);
   static const IconData lock = const IconData(0xf271, fontFamily: _kFontFam);
   static const IconData info = const IconData(0xf24a, fontFamily: _kFontFam);
+  static const IconData newPage = const IconData(0xe03f, fontFamily: _kFontFam);
 }
 
 class AmericanIconsv4_6 {
@@ -36,4 +37,6 @@ class AmericanIconsv4_6 {
   static const IconData bagInfo = const IconData(0xe013, fontFamily: _kFontFam);
   static const IconData search = const IconData(0xe039, fontFamily: _kFontFam);
   static const IconData vacation = const IconData(0xe017, fontFamily: _kFontFam);
+  static const IconData newPage = const IconData(0xe03f, fontFamily: _kFontFam);
 }
+

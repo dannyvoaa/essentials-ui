@@ -16,7 +16,7 @@ import 'package:logging/logging.dart';
 
 
 class ReservationDetailBloc {
-  static final _log = Logger('PriorityListBloc');
+  static final _log = Logger('ReservationDetailBloc');
   final TravelRepository _travelRepository;
 
   Observable<ReservationDetail> _dummyPriorityListObservable;
@@ -40,7 +40,7 @@ class ReservationDetailBloc {
   }
 }
 
-/// Constructs new instances of [PriorityListBloc]s via the DI framework.
+/// Constructs new instances of [ReservationDetailBloc]s via the DI framework.
 abstract class ReservationDetailBlocFactory implements ProvidedService {
   @provide
   ReservationDetailBloc reservationDetailBloc();

@@ -13,6 +13,7 @@ import 'package:aae/sign_in/workflow/sign_in_state_machine.dart';
 import 'package:aae/travel/component/airport_picker/details/airport_picker_bloc.dart';
 import 'package:aae/travel/component/priority_list/details/priority_list_bloc.dart';
 import 'package:aae/travel/component/reservation_detail/res_detail_bloc.dart';
+import 'package:aae/travel/component/checkin/checkin_bloc.dart';
 import 'package:aae/travel/component/flight_status/details/flight_status_bloc.dart';
 import 'package:aae/travel/component/flight_search/flight_search_bloc.dart';
 import 'package:aae/travel/component/trips/trips_bloc.dart';
@@ -33,6 +34,7 @@ abstract class BlocFactory
         ReservationDetailBlocFactory,
         FlightStatusBlocFactory,
         FlightSearchBlocFactory,
+        CheckInBlocFactory,
         AirportPickerBlocFactory,
         EventsListBlocFactory,
         D0StatsBlocFactory,

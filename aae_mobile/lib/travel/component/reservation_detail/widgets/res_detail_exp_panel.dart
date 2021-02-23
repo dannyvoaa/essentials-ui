@@ -382,6 +382,8 @@ class LocatorInfo extends StatelessWidget {
     ReservationDetailPassenger passenger = viewModel.reservationDetail.passengers[0];
     ReservationDetailSegment segment = viewModel.reservationDetail.segments[index];
     String seat = segment.getSeat(passenger);
+
+//    return Container();
     
     return Container(
       color: AaeColors.superUltralightGray,
@@ -392,7 +394,7 @@ class LocatorInfo extends StatelessWidget {
           LocatorColumn('LOCATOR', viewModel.reservationDetail.recordLocator, CrossAxisAlignment.start),
           LocatorColumn('GATE', viewModel.reservationDetail.segments[index].originGate, CrossAxisAlignment.center),
           LocatorColumn('TERMINAL', viewModel.reservationDetail.segments[index].originTerminal, CrossAxisAlignment.center),
-          LocatorColumn('BAGGAGE', viewModel.reservationDetail.segments[index].baggageClaimArea, CrossAxisAlignment.center),
+          LocatorColumn('BAGGAGE', viewModel.reservationDetail.segments[index].baggageClaimArea ?? '--', CrossAxisAlignment.center),
         ],
       ),
     );
@@ -417,7 +419,7 @@ class LocatorColumn extends StatelessWidget {
           style: AaeTextStyles.caption12GrayMed,
         ),
         Container(
-          padding: EdgeInsets.only(top:6),
+          padding: EdgeInsets.only(top:4),
           child: Text(
             content,
             style: AaeTextStyles.subtitle15,

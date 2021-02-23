@@ -12,10 +12,12 @@ import 'package:aae/model/flight_status.dart';
 import 'package:aae/model/pnr.dart';
 import 'package:aae/model/priority_list.dart';
 import 'package:aae/model/reservation_detail.dart';
+import 'package:aae/model/check_in_request.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:aae/model/trips.dart';
 import 'package:aae/rx/rx_util.dart';
 import 'package:aae/rxdart/rx.dart';
+import 'package:aae/travel/component/checkin/checkin_component.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:flutter/services.dart';
 import 'package:inject/inject.dart';
@@ -37,6 +39,7 @@ class TravelRepository implements Repository {
   final _pnrs = createBehaviorSubject<BuiltList<Pnr>>();
   final _currentPriorityList = createBehaviorSubject<PriorityList>();
   final _reservationDetail = createBehaviorSubject<ReservationDetail>();
+  final _checkIn = createBehaviorSubject<CheckInRequest>();
   final _flightStatus = createBehaviorSubject<FlightStatus>();
   final _flightSearch = createBehaviorSubject<FlightSearch>();
   final _airports = createBehaviorSubject<BuiltList<Airport>>();
@@ -52,7 +55,7 @@ class TravelRepository implements Repository {
   Observable<PriorityList> get currentPriorityList => _currentPriorityList;
 
   Observable<ReservationDetail> get reservationDetail => _reservationDetail;
-
+  Observable<CheckInRequest> get checkIn => _checkIn;
   Observable<FlightStatus> get flightStatus => _flightStatus;
 
   Observable<FlightSearch> get flightSearch => _flightSearch;
@@ -211,6 +214,13 @@ class TravelRepository implements Repository {
     } else {
       return null;
     }
+  }
+
+  performCheckIn(CheckInArguments checkInArgs) async {
+//    _checkIn.sendNext(null);
+//    CheckInRequest checkInRequest = await _travelApiClient.pushCheckIn(checkInArgs, strEmployeeId, strSmsession);
+    _travelApiClient.pushCheckIn(checkInArgs, strEmployeeId, strSmsession);
+//    _checkIn.sendNext(checkInRequest);
   }
 
   loadBoardingPasses(String pnr, bool forceRefresh) async {
