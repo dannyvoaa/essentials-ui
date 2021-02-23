@@ -245,53 +245,25 @@ class AaeTextStyles {
     fontSize: 14,
   );
 
-//  static const h2 = TextStyle(
-//    fontSize: 32.0,
-//    height: 1.25,
-//    fontWeight: _medium,
-//    fontFamily: _americanSans,
-//  );
-//
-//  static const h3 = TextStyle(
-//    fontSize: 28.0,
-//    height: 1.43,
-//    fontWeight: _medium,
-//    fontFamily: _americanSans,
-//  );
-//
-//  static const h4 = TextStyle(
-//    fontSize: 24.0,
-//    height: 1.1,
-//    fontWeight: _medium,
-//    fontFamily: _americanSans,
-//  );
-//
-//  static const h5 = TextStyle(
-//    fontSize: 20.0,
-//    height: 1.20,
-//    fontWeight: _medium,
-//    fontFamily: _americanSans,
-//  );
-//
-//  static const h6 = TextStyle(
-//    fontSize: 16.0,
-//    height: 1.25,
-//    fontWeight: _medium,
-//    fontFamily: _americanSans,
-//  );
 
-  /// Used for regular-sized body content
-  static TextStyle body({
-    bool boolDefaultHeight = false,
-  }) {
-    TextStyle textStyle = TextStyle(
-      color: AaeColors.darkGray,
-      fontFamily: _americanSans,
-      fontSize: 16,
-      height: boolDefaultHeight ? 1.00 : 1.33,
-      // backgroundColor: AaColors.lightGray,
-    );
-  }
+
+  // These already exists in the 16px section,
+  // it doesn't follow the naming conventions and
+  // it's in the wrong section of this file.
+  // Look at section for 16px text below
+  //
+  // /// Used for regular-sized body content
+  // static TextStyle body({
+  //   bool boolDefaultHeight = false,
+  // }) {
+  //   TextStyle textStyle = TextStyle(
+  //     color: AaeColors.darkGray,
+  //     fontFamily: _americanSans,
+  //     fontSize: 16,
+  //     height: boolDefaultHeight ? 1.00 : 1.33,
+  //     // backgroundColor: AaColors.lightGray,
+  //   );
+  // }
 
   /// Replaces: reservationHeading
   static final title22Bold = title22.copyWith(
@@ -469,6 +441,11 @@ class AaeTextStyles {
     color: AaeColors.gray,
   );
 
+  /// Used: text in place of check in button when all travelers have been checked in
+  static final TextStyle body16Green = body16.copyWith(
+    color: AaeColors.green,
+  );
+
   /// Used: Article body text
   static final body16Reg138 = body16.copyWith(
     height: 1.38,
@@ -524,6 +501,11 @@ class AaeTextStyles {
   );
 
   /// Replaces:formHintText
+  static final subtitle15MediumGray = subtitle15.copyWith(
+    color: AaeColors.mediumGray,
+  );
+
+  /// Replaces:formHintText
   static final subtitle15Gray = subtitle15.copyWith(
     color: AaeColors.gray,
   );
@@ -572,6 +554,12 @@ class AaeTextStyles {
   /// Replaces: secondRowTextStyle
   static final body14Gray = body14.copyWith(
     color: AaeColors.gray,
+  );
+
+  /// Used: link in hazmat screen
+  static final body14Blue143 = body14.copyWith(
+    color: AaeColors.blue,
+    height: 1.43,
   );
 
   /// Used: when 4 cabin in Priority list
