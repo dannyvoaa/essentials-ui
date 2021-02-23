@@ -6,6 +6,7 @@ import 'package:aae/auth/sso_auth.dart';
 import 'package:aae/cache/cache_service.dart';
 import 'package:aae/common/repository/repository.dart';
 import 'package:aae/model/airport.dart';
+import 'package:aae/model/boarding_pass.dart';
 import 'package:aae/model/flight_search.dart';
 import 'package:aae/model/flight_status.dart';
 import 'package:aae/model/pnr.dart';
@@ -39,6 +40,7 @@ class TravelRepository implements Repository {
   final _flightStatus = createBehaviorSubject<FlightStatus>();
   final _flightSearch = createBehaviorSubject<FlightSearch>();
   final _airports = createBehaviorSubject<BuiltList<Airport>>();
+  final _boardingPasses = createBehaviorSubject<BuiltList<BoardingPass>>();
 
   final CacheService _cache;
   static String tripsKey = 'trips';
@@ -57,7 +59,10 @@ class TravelRepository implements Repository {
 
   Observable<BuiltList<Airport>> get airports => _airports;
 
+  Observable<BuiltList<BoardingPass>> get boardingPasses => _boardingPasses;
+
   BuiltList<Airport> cachedAirports;
+  String currentBoardingPassPnr;
 
   void set flightStatus(var value) {
     flightStatus = value;
@@ -98,6 +103,9 @@ class TravelRepository implements Repository {
     if (_ssoAuth.currentUser != null) {
       strEmployeeId = _ssoAuth.currentUser.id;
       strSmsession = _cache.readString("SMSESSION").value.toString();
+
+      _log.info("empId: $strEmployeeId, smsession: $strSmsession");
+
       if ((strSmsession != "") || (strSmsession != null)) {
         bExists = true;
       } else {
@@ -202,6 +210,28 @@ class TravelRepository implements Repository {
       _reservationDetail.sendNext(reservationDetail);
     } else {
       return null;
+    }
+  }
+
+  loadBoardingPasses(String pnr, bool forceRefresh) async {
+    if (!existsEmployeeIdAndSMSession())
+      return;
+
+    // if we already have boarding passes for the given pnr
+    // and we are not forcing a refresh, no need to make a call.
+    if (currentBoardingPassPnr == pnr && !forceRefresh) {
+      return;
+    }
+
+    _boardingPasses.sendNext(null);
+    currentBoardingPassPnr = pnr;
+    try {
+      BuiltList<BoardingPass> passes = await _travelApiClient
+          .getBoardingPasses(strEmployeeId, strSmsession, pnr);
+      _boardingPasses.sendNext(passes);
+    } catch (e) {
+      currentBoardingPassPnr = null;
+      throw e;
     }
   }
 

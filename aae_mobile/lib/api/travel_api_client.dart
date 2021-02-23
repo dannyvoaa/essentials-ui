@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:aae/model/airport.dart';
 import 'package:aae/model/airports_wrapper.dart';
+import 'package:aae/model/boarding_pass.dart';
+import 'package:aae/model/boarding_pass_wrapper.dart';
 import 'package:aae/model/flight_search.dart';
 import 'package:aae/model/priority_list.dart';
 import 'package:aae/model/flight_status.dart';
@@ -25,6 +27,7 @@ class TravelServiceApi {
   static const travelFlightSearchEndpoint = '$baseUrl/flightsearch';
   static const airportsEndpoint = '$baseUrl/airports';
   static const reservationDetailEndpoint = '$baseUrl/reservation';
+  static const boardingPassEndpoint = '$baseUrl/boardingpass';
 
   final dateFormatter = DateFormat("yyyy-MM-dd");
 
@@ -191,6 +194,37 @@ class TravelServiceApi {
     } else {
       throw Exception(
           'failed to load the reservation details.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
+    }
+  }
+
+  Future<BuiltList<BoardingPass>> getBoardingPasses(String employeeId, String smsession, String pnr) async {
+    _log.info("initiating boarding pass request: $pnr");
+
+    Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
+    String constructedUrl = "$boardingPassEndpoint/$pnr";
+
+    _log.info(constructedUrl);
+
+    var response;
+    try {
+      response = await httpClient.get(constructedUrl, headers: headers);
+    } catch (e) {
+      String msg = 'failed to load boarding passes.\n' + e.toString();
+      _log.severe(msg);
+      throw Exception(msg);
+    }
+
+    if (response.statusCode == 200) {
+
+      _log.info("boarding pass request successful");
+      _log.info(response.body);
+
+      BoardingPassWrapper boardingPassWrapper = BoardingPassWrapper.fromJson(response.body);
+      return boardingPassWrapper.boardingPasses;
+
+    } else {
+      throw Exception(
+          'failed to load boarding passes.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
     }
   }
 

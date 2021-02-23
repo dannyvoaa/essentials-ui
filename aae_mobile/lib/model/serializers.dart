@@ -39,6 +39,8 @@ import 'package:aae/model/trips.dart';
 
 import 'package:aae/model/nfdocs.dart';
 
+import 'boarding_pass.dart';
+import 'boarding_pass_wrapper.dart';
 import 'flight_status.dart';
 import 'flight_search.dart';
 import 'package:aae/model/news_articledocs.dart';
@@ -48,6 +50,8 @@ part 'serializers.g.dart';
 @SerializersFor(const [
   Airport,
   AirportsWrapper,
+  BoardingPass,
+  BoardingPassWrapper,
   NewsFeedJsonList,
   NewsFeedItem,
   RecognitionHistory,
