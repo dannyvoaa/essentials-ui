@@ -7,35 +7,33 @@ import 'package:aae/travel/component/reservation_detail/res_detail_component.dar
 class TripsNavigator extends StatelessWidget {
   static final _log = Logger('ReservationDetailView');
 
-  final GlobalKey<NavigatorState> nestedNavKey = GlobalKey<NavigatorState>();
+  TripsNavigator({this.nestedNavKey, this.refreshTopBar});
+
+  final GlobalKey<NavigatorState> nestedNavKey;
+  final Function(BuildContext context) refreshTopBar;
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => !await nestedNavKey.currentState.maybePop(),
-      child: Navigator(
-        key: nestedNavKey,
-        initialRoute: '/',
-        onGenerateRoute: (RouteSettings settings) {
-          WidgetBuilder builder;
-          ReservationDetailArguments args = settings.arguments;
-
-          switch (settings.name) {
-            case '/':
-              builder = (_) => TripsComponent(
-                loadReservationDetail: loadReservationDetail,
-              );
-              break;
-            case '/results':
-              builder = (_) => ReservationDetailComponent.from(args);
-              break;
-            default:
-              throw Exception('Invalid route: ${settings.name}');
-          }
-
-          return MaterialPageRoute(builder: builder, settings: settings);
-        },
-      ),
+    return Navigator(
+      key: nestedNavKey,
+      initialRoute: '/',
+      onGenerateRoute: (RouteSettings settings) {
+        WidgetBuilder builder;
+        ReservationDetailArguments args = settings.arguments;
+        switch (settings.name) {
+          case '/':
+            builder = (_) => TripsComponent(
+                  loadReservationDetail: loadReservationDetail,
+                );
+            break;
+          case '/results':
+            builder = (_) => ReservationDetailComponent.from(args);
+            break;
+          default:
+            throw Exception('Invalid route: ${settings.name}');
+        }
+        return MaterialPageRoute(builder: builder, settings: settings);
+      },
     );
   }
 
@@ -48,5 +46,6 @@ class TripsNavigator extends StatelessWidget {
         pnr: pnr,
       ),
     );
+    refreshTopBar(context);
   }
 }

@@ -6,41 +6,42 @@ import 'package:logging/logging.dart';
 import 'details/priority_list_component.dart';
 
 class PriorityListNavigator extends StatelessWidget {
+  PriorityListNavigator({this.nestedNavKey, this.refreshTopBar});
+
   static final _log = Logger('PriorityListView');
 
-  final GlobalKey<NavigatorState> nestedNavKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> nestedNavKey;
+  final Function(BuildContext context) refreshTopBar;
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => !await nestedNavKey.currentState.maybePop(),
-      child: Navigator(
-        key: nestedNavKey,
-        initialRoute: '/',
-        onGenerateRoute: (RouteSettings settings) {
-          WidgetBuilder builder;
-          switch (settings.name) {
-            case '/':
-              builder = (_) => Search(
-                    title: "Priority list",
-                    calendarLength: 5,
-                    searchType1: cityAirportSearch,
-                    searchType2: loadPriorityList,
-                  );
-              break;
-            case '/priorityListDetails':
-              builder = (_) => PriorityListComponent.from(settings.arguments);
-              break;
-            case '/searchResults':
-              builder = (_) => FlightSearchComponent.from(settings.arguments);
-              break;
-            default:
-              throw Exception('Invalid route: ${settings.name}');
-          }
-
-          return MaterialPageRoute(builder: builder, settings: settings);
-        },
-      ),
+    return Navigator(
+      key: nestedNavKey,
+      initialRoute: '/',
+      onGenerateRoute: (RouteSettings settings) {
+        WidgetBuilder builder;
+        switch (settings.name) {
+          case '/':
+            builder = (_) => Search(
+                  title: "Priority list",
+                  calendarLength: 5,
+                  searchType1: cityAirportSearch,
+                  searchType2: loadPriorityList,
+                );
+            break;
+          case '/priorityListDetails':
+            builder = (_) => PriorityListComponent.from(settings.arguments);
+            refreshTopBar(context);
+            break;
+          case '/searchResults':
+            builder = (_) => FlightSearchComponent.from(settings.arguments);
+            refreshTopBar(context);
+            break;
+          default:
+            throw Exception('Invalid route: ${settings.name}');
+        }
+        return MaterialPageRoute(builder: builder, settings: settings);
+      },
     );
   }
 
@@ -54,10 +55,13 @@ class PriorityListNavigator extends StatelessWidget {
           date: searchDate,
           searchType: loadPriorityList),
     );
+    refreshTopBar(context);
   }
 
-  void loadPriorityList(BuildContext context, String origin,  String flightNumber, String departureDate) {
-    _log.info("loadPriorityList(origin: '$origin', flightNumber: '$flightNumber', departureDate:'$departureDate')");
+  void loadPriorityList(BuildContext context, String origin,
+      String flightNumber, String departureDate) {
+    _log.info(
+        "loadPriorityList(origin: '$origin', flightNumber: '$flightNumber', departureDate:'$departureDate')");
 
     Navigator.of(context).pushNamed(
       '/priorityListDetails',
@@ -67,5 +71,6 @@ class PriorityListNavigator extends StatelessWidget {
         departureDate: DateTime.parse(departureDate),
       ),
     );
+    refreshTopBar(context);
   }
 }

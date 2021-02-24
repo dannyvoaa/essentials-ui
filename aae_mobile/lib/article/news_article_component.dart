@@ -142,7 +142,7 @@ class NewsArticleComponent extends StatelessWidget {
                       ),
 
                       elevation: 1,
-                      leading: new IconButton(
+                      leading: new IconButton(padding: EdgeInsets.only(left: 1),
                         icon: new Icon(Icons.arrow_back_ios, color: Colors.white),
                         onPressed: () => Navigator.of(context).pop(),
                       ),
