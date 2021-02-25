@@ -73,22 +73,8 @@ class TravelTopBarState extends State<TravelTopBar> {
   }
 
   _buildBackButton() {
-//    return InkWell(
-//      child: Container(
-//          padding: EdgeInsets.only(left: 15),
-//          decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-//          child: Align(
-//            alignment: Alignment.centerLeft,
-//            child: Icon(
-//              Icons.arrow_back_ios,
-//              color: AaeColors.white100,
-//            ),
-//          ),
-//        ),
-//    );
     return new IconButton(
         icon: new Container(
-//          padding: EdgeInsets.only(left: 8),
           child: Icon(
             Icons.arrow_back_ios,
             color: AaeColors.white100,
