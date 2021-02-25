@@ -8,7 +8,6 @@ import 'package:flutter/painting.dart';
 ///
 /// Naming order = name (title), size (50), color (Gray), weight (Med), line height (133)
 
-
 class AaeTextStyles {
   static const _americanSans = 'AmericanSans'; //400
   static const font = 'AmericanSans';
@@ -17,7 +16,6 @@ class AaeTextStyles {
   static const _americanSansMedium = 'AmericanSansMedium'; //600
   static const _americanSansBold = 'AmericanSans-Bold'; //700
   static const fontLight = 'AmericanSans';
-
 
   // 50px BASE title text --------------------------------v---------------------------------------50px--
   /// 50px base font
@@ -52,7 +50,6 @@ class AaeTextStyles {
     fontWeight: FontWeight.w600,
     height: 1.40,
   );
-
 
   // 32px BASE title text ----------------------------------v-------------------------------------32px--
   /// 32px base font
@@ -89,7 +86,6 @@ class AaeTextStyles {
     color: AaeColors.mediumGray,
   );
 
-
   // 28px BASE title text ------------------------------------v-----------------------------------28px--
   /// 28px base font
   static const TextStyle title28 = TextStyle(
@@ -104,8 +100,7 @@ class AaeTextStyles {
   static final title28Med143 = title28.copyWith(
       fontFamily: _americanSansMedium,
       fontWeight: FontWeight.w600,
-      height: 1.43
-  );
+      height: 1.43);
 
   // 26px BASE title text ------------------------------------v-----------------------------------28px--
   /// 26px base font
@@ -119,9 +114,9 @@ class AaeTextStyles {
 
   /// Used: number dates in travel date pickers (unselected date)
   static final title26GrayMed = title26.copyWith(
-      fontFamily: _americanSansMedium,
-      fontWeight: FontWeight.w600,
-      color: AaeColors.gray,
+    fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
+    color: AaeColors.gray,
   );
 
   /// Used: number dates in travel date pickers (selected date)
@@ -130,7 +125,6 @@ class AaeTextStyles {
     fontWeight: FontWeight.w600,
     color: AaeColors.darkGray,
   );
-
 
   // 24px BASE title text ------------------------------------v-----------------------------------24px--
   /// 24px base font
@@ -148,15 +142,11 @@ class AaeTextStyles {
   static final title24Med110 = title24.copyWith(
       fontFamily: _americanSansMedium,
       fontWeight: FontWeight.w600,
-      height: 1.10
-  );
+      height: 1.10);
 
   /// Replaces: pageHeadLine,
   static final title24Bold110 = title24.copyWith(
-      fontFamily: _americanSansBold,
-      fontWeight: FontWeight.w700,
-      height: 1.10
-  );
+      fontFamily: _americanSansBold, fontWeight: FontWeight.w700, height: 1.10);
 
   /// Replaces: textFieldModernHint height1.0,
   static final title24MediumGray = title24.copyWith(
@@ -203,6 +193,7 @@ class AaeTextStyles {
     fontFamily: _americanSansMedium,
     fontWeight: FontWeight.w600,
   );
+
   /// TODO: REPLACE WITH title24DarkBlue140
   static const articleH2 = TextStyle(
     fontSize: 24.0,
@@ -290,7 +281,6 @@ class AaeTextStyles {
     color: AaeColors.mediumGray,
   );
 
-
   // 20px BASE title text ----------------------------------v-------------------------------------20px--
   /// 20px base font
   ///
@@ -303,16 +293,22 @@ class AaeTextStyles {
     height: 1.00,
   );
 
+  static final title20MediumGrayMed = title20.copyWith(
+    fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
+    color: AaeColors.mediumGray,
+  );
+
   /// Replaces: b1
   static final title20Reg160 = title20.copyWith(
-      height: 1.60,
+    height: 1.60,
   );
 
   /// Replaces: h5
   static final title20Med120 = title20.copyWith(
-      fontFamily: _americanSansMedium,
-      fontWeight: FontWeight.w600,
-      height: 1.20,
+    fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
+    height: 1.20,
   );
 
   /// Replaces: tableCellValueHub
@@ -327,7 +323,6 @@ class AaeTextStyles {
     color: AaeColors.mediumGray,
     height: 1.40,
   );
-
 
   // 18px BASE title text ----------------------------------v-------------------------------------18px--
   /// 18px base font
@@ -416,8 +411,6 @@ class AaeTextStyles {
   static final subtitle18LightGray = subtitle18.copyWith(
     color: AaeColors.lightGray,
   );
-
-
 
   // 16px BASE title text --------------------------------v---------------------------------------16px--
   /// 16px base font
@@ -545,6 +538,11 @@ class AaeTextStyles {
     height: 1.43,
   );
 
+  static final body14RegLink = body14.copyWith(
+    height: 1.43,
+    color: AaeColors.blue,
+  );
+
   /// Replaces: eventDate
   static final body14Reg150 = body14.copyWith(
     height: 1.50,
@@ -628,7 +626,6 @@ class AaeTextStyles {
     color: AaeColors.mediumGray,
     letterSpacing: 10,
   );
-
 
   // 12px BASE title text -----------------------------------v------------------------------------12px--
   /// 12px base font
@@ -792,5 +789,4 @@ class AaeTextStyles {
     fontSize: 14.0,
     height: 1.42,
   );
-
 }

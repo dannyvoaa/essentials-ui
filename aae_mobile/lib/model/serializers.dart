@@ -3,6 +3,8 @@ import 'package:aae/model/airports_wrapper.dart';
 import 'package:aae/model/article_body.dart';
 import 'package:aae/model/biometric_auth.dart';
 import 'package:aae/model/gate_time_flight_info.dart';
+import 'package:aae/model/check_in_request.dart';
+import 'package:aae/model/check_in_passenger.dart';
 import 'package:aae/model/news_article.dart';
 import 'package:aae/model/docs.dart';
 import 'package:aae/model/event.dart';
@@ -39,6 +41,9 @@ import 'package:aae/model/trips.dart';
 
 import 'package:aae/model/nfdocs.dart';
 
+import 'check_in_basic_request.dart';
+import 'boarding_pass.dart';
+import 'boarding_pass_wrapper.dart';
 import 'flight_status.dart';
 import 'flight_search.dart';
 import 'package:aae/model/news_articledocs.dart';
@@ -48,6 +53,8 @@ part 'serializers.g.dart';
 @SerializersFor(const [
   Airport,
   AirportsWrapper,
+  BoardingPass,
+  BoardingPassWrapper,
   NewsFeedJsonList,
   NewsFeedItem,
   RecognitionHistory,
@@ -60,6 +67,9 @@ part 'serializers.g.dart';
   ReservationDetailPassenger,
   ReservationDetailSegment,
   ReservationDetailSeatAssignment,
+  CheckInRequest,
+  CheckInPassenger,
+  CheckInBasicRequest,
   FlightStatus,
   GateTimeFlightInfo,
   FlightSearch,

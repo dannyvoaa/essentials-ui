@@ -3,13 +3,16 @@ import 'package:aae/theme/typography.dart';
 import 'package:aae/travel/component/reservation_detail/res_detail_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:aae/travel/component/checkin/checkin_component.dart';
 
 class TripsPassengerPanel extends StatelessWidget {
 
   final ReservationDetailViewModel viewModel;
+  var travelerList = [1,2];
 
   TripsPassengerPanel({
     this.viewModel,
+    this.travelerList,
   });
 
   @override
@@ -51,7 +54,8 @@ class TripsPassengerPanel extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 _passengerList(context),
-                CheckInButton(),
+                CheckInNavButton(),
+//                CheckInComponent(pnr: viewModel.reservationDetail.recordLocator),
               ],
             ),
           ),
@@ -93,7 +97,7 @@ class Passenger extends StatefulWidget {
 
 class _PassengerState extends State<Passenger> {
 
-  bool isChecked = false;
+  bool isChecked = true;
 
   @override
   Widget build(BuildContext context){
@@ -114,23 +118,23 @@ class _PassengerState extends State<Passenger> {
                 Text(widget.status),
               ],
             ),
-            FlutterSwitch(
-              activeColor: AaeColors.blue,
-              inactiveColor: AaeColors.lightGray,
-              toggleColor: AaeColors.white100,
-              width: 40.0,
-              height: 22.0,
-              toggleSize: 20.0,
-              value: isChecked,
-              borderRadius: 30.0,
-              padding: 2.0,
-              showOnOff: false,
-              onToggle: (val) {
-                setState(() {
-                  isChecked = val;
-                });
-              },
-            ),
+//            FlutterSwitch(
+//              activeColor: AaeColors.blue,
+//              inactiveColor: AaeColors.lightGray,
+//              toggleColor: AaeColors.white100,
+//              width: 40.0,
+//              height: 22.0,
+//              toggleSize: 20.0,
+//              value: isChecked,
+//              borderRadius: 30.0,
+//              padding: 2.0,
+//              showOnOff: false,
+//              onToggle: (val) {
+//                setState(() {
+//                  isChecked = val;
+//                });
+//              },
+//            ),
           ],
         ),
       ),
@@ -138,8 +142,8 @@ class _PassengerState extends State<Passenger> {
   }
 }
 
-class CheckInButton extends StatelessWidget {
-  const CheckInButton({
+class CheckInNavButton extends StatelessWidget {
+  const CheckInNavButton({
     Key key,
   }) : super(key: key);
 
@@ -155,7 +159,10 @@ class CheckInButton extends StatelessWidget {
           color: AaeColors.blue,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.0),),
           onPressed: () {
-            print('Check in pressed...');
+            print('Check in button a res detail page pressed...');
+            Navigator.of(context).pushNamed(
+              '/checkin',
+            );
           },
           child: Text('Check in', style:AaeTextStyles.btn18),
         ),
@@ -163,3 +170,5 @@ class CheckInButton extends StatelessWidget {
     );
   }
 }
+
+
