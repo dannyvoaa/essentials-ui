@@ -86,6 +86,13 @@ class BottomNavigation extends StatelessWidget {
                 }
               }
             }
+            if (mysskeys.scaffoldKeyT.currentState != null) {
+              if (mysskeys.scaffoldKeyT.currentState.hasEndDrawer) {
+                if (mysskeys.scaffoldKeyT.currentState.isEndDrawerOpen) {
+                  mysskeys.scaffoldKeyT.currentState.openDrawer();
+                }
+              }
+            }
           } catch (e) {
             print(e.toString());
           }

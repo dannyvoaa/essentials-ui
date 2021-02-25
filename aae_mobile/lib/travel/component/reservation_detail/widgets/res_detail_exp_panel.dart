@@ -1,3 +1,5 @@
+import 'package:aae/model/reservation_detail_passenger.dart';
+import 'package:aae/model/reservation_detail_segment.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/typography.dart';
 import 'package:aae/travel/component/reservation_detail/res_detail_view_model.dart';
@@ -58,8 +60,14 @@ class RouteInfo extends StatelessWidget {
     this.viewModel,
   });
 
+
+
   @override
   Widget build(BuildContext context) {
+
+    var originAirportCode = viewModel.reservationDetail.segments[index].originAirportCode;
+    var destinationAirportCode = viewModel.reservationDetail.segments[index].destinationAirportCode;
+
     return Container(
       padding: EdgeInsets.only(top: 15, bottom: 15, left: 15, right: 10),
       child: ExpandableTheme(
@@ -83,27 +91,14 @@ class RouteInfo extends StatelessWidget {
               child: Column(
                 children: [
                   RouteDetail(
-                    viewModel.reservationDetail.segments[index].originCity +
-                        ' (' +
-                        viewModel.reservationDetail.segments[index]
-                            .originAirportCode +
-                        ')',
-                    duration(
-                        viewModel.reservationDetail.segments[index].duration),
-                    overnight(
-                        viewModel.reservationDetail.segments[index]
-                            .departureTimeScheduled,
-                        viewModel.reservationDetail.segments[index]
-                            .arrivalTimeScheduled),
-                    viewModel.reservationDetail.segments[index].cabin,
+                    (viewModel.getAirportName(originAirportCode) ?? viewModel.reservationDetail.segments[index].originCity) + ' (' + viewModel.reservationDetail.segments[index].originAirportCode + ')',
+                    duration(viewModel.reservationDetail.segments[index].duration),
+                    overnight(viewModel.reservationDetail.segments[index].departureTimeScheduled, viewModel.reservationDetail.segments[index].arrivalTimeScheduled),
+                    viewModel.reservationDetail.segments[index].cabin ,
                     viewModel.reservationDetail.segments[index].aircraftName,
                     wifi(viewModel.reservationDetail.segments[index].hasWifi),
                   ),
-                  RouteDetailEnd(
-                      viewModel.reservationDetail.segments[index]
-                          .destinationAirportCode,
-                      viewModel
-                          .reservationDetail.segments[index].destinationCity),
+                  RouteDetailEnd(airportCode: viewModel.reservationDetail.segments[index].destinationAirportCode, airportName: viewModel.getAirportName(destinationAirportCode) ?? viewModel.reservationDetail.segments[index].destinationCity),
                 ],
               ),
             ),
@@ -224,16 +219,9 @@ class RouteSummary extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          RouteSummaryColumn(getTime(departureTime),
-              viewModel.reservationDetail.segments[index].originAirportCode),
-          Icon(
-            Icons.arrow_forward,
-            color: AaeColors.gray,
-          ),
-          RouteSummaryColumn(
-              getTime(arrivalTime),
-              viewModel
-                  .reservationDetail.segments[index].destinationAirportCode),
+          RouteSummaryColumn(time: getTime(departureTime), location: viewModel.reservationDetail.segments[index].originAirportCode),
+          Icon(Icons.arrow_forward, color: AaeColors.gray,),
+          RouteSummaryColumn(time: getTime(arrivalTime), location: viewModel.reservationDetail.segments[index].destinationAirportCode),
         ],
       ),
     );
@@ -250,7 +238,7 @@ class RouteSummaryColumn extends StatelessWidget {
   final String time;
   final String location;
 
-  RouteSummaryColumn(this.time, this.location);
+  RouteSummaryColumn({this.time, this.location});
 
   @override
   Widget build(BuildContext context) {
@@ -277,9 +265,9 @@ class RouteSummaryColumn extends StatelessWidget {
 }
 
 class RouteDetailEnd extends StatelessWidget {
-  final String hub;
-  final String city;
-  const RouteDetailEnd(this.hub, this.city);
+  final String airportCode;
+  final String airportName;
+  const RouteDetailEnd({this.airportCode, this.airportName});
 
   @override
   Widget build(BuildContext context) {
@@ -316,9 +304,7 @@ class RouteDetailEnd extends StatelessWidget {
             ),
             Column(
               children: [
-                Container(
-                  child: cityHub(hub, city),
-                ),
+                Container(child: cityHub(airportCode, airportName),),
               ],
             ),
           ],
@@ -334,13 +320,13 @@ class RouteDetailEnd extends StatelessWidget {
 }
 
 class RouteDetail extends StatelessWidget {
-  final String hub;
+  final String airportCode;
   final String duration;
   final Widget overnight;
   final String cabin;
   final String equipment;
   final Widget wifi;
-  const RouteDetail(this.hub, this.duration, this.overnight, this.cabin,
+  const RouteDetail(this.airportCode, this.duration, this.overnight, this.cabin,
       this.equipment, this.wifi);
 
   @override
@@ -361,7 +347,7 @@ class RouteDetail extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(child: Text(hub, style: AaeTextStyles.body14)),
+              Container(child: Text(airportCode, style:AaeTextStyles.body14)),
               Padding(
                 padding: const EdgeInsets.only(
                   top: 12,
@@ -456,9 +442,10 @@ class LocatorInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String seat = viewModel
-        .reservationDetail.segments[index].seatAssignments[0].seatAssignment;
-
+    ReservationDetailPassenger passenger = viewModel.reservationDetail.passengers[0];
+    ReservationDetailSegment segment = viewModel.reservationDetail.segments[index];
+    String seat = segment.getSeat(passenger);
+    
     return Container(
       color: AaeColors.superUltralightGray,
       padding: EdgeInsets.only(
@@ -470,28 +457,13 @@ class LocatorInfo extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          LocatorColumn('LOCATOR', viewModel.reservationDetail.recordLocator,
-              CrossAxisAlignment.start),
-          LocatorColumn(
-              'GATE',
-              viewModel.reservationDetail.segments[index].originGate,
-              CrossAxisAlignment.center),
-          LocatorColumn(
-              'TERMINAL',
-              viewModel.reservationDetail.segments[index].originTerminal,
-              CrossAxisAlignment.center),
-          LocatorColumn('BAGGAGE', nonNull(seat), CrossAxisAlignment.end),
+          LocatorColumn('LOCATOR', viewModel.reservationDetail.recordLocator, CrossAxisAlignment.start),
+          LocatorColumn('GATE', viewModel.reservationDetail.segments[index].originGate, CrossAxisAlignment.center),
+          LocatorColumn('TERMINAL', viewModel.reservationDetail.segments[index].originTerminal, CrossAxisAlignment.center),
+          LocatorColumn('BAGGAGE', viewModel.reservationDetail.segments[index].baggageClaimArea, CrossAxisAlignment.center),
         ],
       ),
     );
-  }
-
-  String nonNull(String x) {
-    if (x == null) {
-      return '--';
-    } else {
-      return x;
-    }
   }
 }
 

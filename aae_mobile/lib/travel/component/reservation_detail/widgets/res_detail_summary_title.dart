@@ -48,6 +48,9 @@ class TripSummaryTitle extends StatelessWidget {
     );
   }
 
+
+//  flightStatus.originInfo.gate ?? "--",
+
   Widget _dateSummary(String departure, String arrival) {
     List months = [
       'jan',

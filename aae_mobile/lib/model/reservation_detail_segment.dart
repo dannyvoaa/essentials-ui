@@ -2,6 +2,7 @@ library reservation_detail_segment;
 
 import 'dart:convert';
 
+import 'package:aae/model/reservation_detail_passenger.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_collection/built_collection.dart';
@@ -112,6 +113,20 @@ abstract class ReservationDetailSegment implements Built<ReservationDetailSegmen
 
   @BuiltValueField(wireName: 'seatAssignments')
   BuiltList<ReservationDetailSeatAssignment> get seatAssignments;
+
+  String getSeat (ReservationDetailPassenger passenger) {
+    if(passenger == null){return null;}
+    for (ReservationDetailSeatAssignment currentSeat in seatAssignments) {
+      if (currentSeat.passengerId == passenger.passengerId){
+        return currentSeat.seatAssignment;
+      }
+    }
+    return null;
+  }
+
+//  String getPassengerSeat (ReservationDetailPassenger passenger) {
+//    return getSeat(passenger.passengerId);
+//  }
 
   String toJson() {
     return json

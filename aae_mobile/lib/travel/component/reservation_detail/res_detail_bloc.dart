@@ -1,3 +1,4 @@
+import 'package:aae/model/airport.dart';
 import 'package:aae/model/reservation_detail.dart';
 import 'package:aae/provided_service.dart';
 import 'package:aae/rx/bloc_with_rx.dart';
@@ -5,6 +6,7 @@ import 'package:aae/rx/rx_util.dart';
 import 'package:aae/rxdart/rx.dart';
 import 'package:aae/travel/component/reservation_detail/res_detail_view_model.dart';
 import 'package:aae/travel/repository/travel_repository.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:inject/inject.dart';
 import 'package:logging/logging.dart';
 
@@ -20,7 +22,7 @@ class ReservationDetailBloc {
   Observable<ReservationDetail> _dummyPriorityListObservable;
 
   Source<ReservationDetailViewModel> get viewModel =>
-      toSource(combineLatest(_travelRepository.reservationDetail, _createViewModel));
+      toSource(combineLatest2(_travelRepository.reservationDetail, _travelRepository.airports, _createViewModel));
 
   @provide
   ReservationDetailBloc(this._travelRepository);
@@ -29,9 +31,10 @@ class ReservationDetailBloc {
     _travelRepository.loadReservationDetail(pnr);
   }
 
-  ReservationDetailViewModel _createViewModel(ReservationDetail reservationDetail) {
+  ReservationDetailViewModel _createViewModel(ReservationDetail reservationDetail, BuiltList<Airport> airports) {
     return ReservationDetailViewModel(
         reservationDetail: reservationDetail,
+        airports: airports,
         loadReservationDetail: loadReservationDetail
     );
   }
