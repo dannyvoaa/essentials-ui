@@ -6,15 +6,18 @@ import 'package:aae/auth/sso_auth.dart';
 import 'package:aae/cache/cache_service.dart';
 import 'package:aae/common/repository/repository.dart';
 import 'package:aae/model/airport.dart';
+import 'package:aae/model/boarding_pass.dart';
 import 'package:aae/model/flight_search.dart';
 import 'package:aae/model/flight_status.dart';
 import 'package:aae/model/pnr.dart';
 import 'package:aae/model/priority_list.dart';
 import 'package:aae/model/reservation_detail.dart';
+import 'package:aae/model/check_in_request.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:aae/model/trips.dart';
 import 'package:aae/rx/rx_util.dart';
 import 'package:aae/rxdart/rx.dart';
+import 'package:aae/travel/component/checkin/checkin_component.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:flutter/services.dart';
 import 'package:inject/inject.dart';
@@ -36,9 +39,11 @@ class TravelRepository implements Repository {
   final _pnrs = createBehaviorSubject<BuiltList<Pnr>>();
   final _currentPriorityList = createBehaviorSubject<PriorityList>();
   final _reservationDetail = createBehaviorSubject<ReservationDetail>();
+  final _checkIn = createBehaviorSubject<CheckInRequest>();
   final _flightStatus = createBehaviorSubject<FlightStatus>();
   final _flightSearch = createBehaviorSubject<FlightSearch>();
   final _airports = createBehaviorSubject<BuiltList<Airport>>();
+  final _boardingPasses = createBehaviorSubject<BuiltList<BoardingPass>>();
 
   final CacheService _cache;
   static String tripsKey = 'trips';
@@ -50,14 +55,17 @@ class TravelRepository implements Repository {
   Observable<PriorityList> get currentPriorityList => _currentPriorityList;
 
   Observable<ReservationDetail> get reservationDetail => _reservationDetail;
-
+  Observable<CheckInRequest> get checkIn => _checkIn;
   Observable<FlightStatus> get flightStatus => _flightStatus;
 
   Observable<FlightSearch> get flightSearch => _flightSearch;
 
   Observable<BuiltList<Airport>> get airports => _airports;
 
+  Observable<BuiltList<BoardingPass>> get boardingPasses => _boardingPasses;
+
   BuiltList<Airport> cachedAirports;
+  String currentBoardingPassPnr;
 
   void set flightStatus(var value) {
     flightStatus = value;
@@ -98,6 +106,9 @@ class TravelRepository implements Repository {
     if (_ssoAuth.currentUser != null) {
       strEmployeeId = _ssoAuth.currentUser.id;
       strSmsession = _cache.readString("SMSESSION").value.toString();
+
+      _log.info("empId: $strEmployeeId, smsession: $strSmsession");
+
       if ((strSmsession != "") || (strSmsession != null)) {
         bExists = true;
       } else {
@@ -202,6 +213,35 @@ class TravelRepository implements Repository {
       _reservationDetail.sendNext(reservationDetail);
     } else {
       return null;
+    }
+  }
+
+  performCheckIn(CheckInArguments checkInArgs) async {
+//    _checkIn.sendNext(null);
+//    CheckInRequest checkInRequest = await _travelApiClient.pushCheckIn(checkInArgs, strEmployeeId, strSmsession);
+    _travelApiClient.pushCheckIn(checkInArgs, strEmployeeId, strSmsession);
+//    _checkIn.sendNext(checkInRequest);
+  }
+
+  loadBoardingPasses(String pnr, bool forceRefresh) async {
+    if (!existsEmployeeIdAndSMSession())
+      return;
+
+    // if we already have boarding passes for the given pnr
+    // and we are not forcing a refresh, no need to make a call.
+    if (currentBoardingPassPnr == pnr && !forceRefresh) {
+      return;
+    }
+
+    _boardingPasses.sendNext(null);
+    currentBoardingPassPnr = pnr;
+    try {
+      BuiltList<BoardingPass> passes = await _travelApiClient
+          .getBoardingPasses(strEmployeeId, strSmsession, pnr);
+      _boardingPasses.sendNext(passes);
+    } catch (e) {
+      currentBoardingPassPnr = null;
+      throw e;
     }
   }
 

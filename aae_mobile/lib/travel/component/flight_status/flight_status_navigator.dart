@@ -53,16 +53,18 @@ class FlightStatusNavigator extends StatelessWidget {
     );
   }
 
-  void cityAirportSearch(BuildContext context, String data1, String data2,
-      String searchDate) {
-    Navigator.of(context).pushNamed(
-      '/searchResults',
-      arguments: FlightSearchArguments(
-          destination: data1.toUpperCase(),
-          origin: data2.toUpperCase(),
-          date: searchDate,
-          searchType: flightNumberSearch),
-    );
+  void cityAirportSearch(
+      BuildContext context, String data1, String data2, String searchDate) {
+    Navigator.of(context)
+        .pushNamed(
+          '/searchResults',
+          arguments: FlightSearchArguments(
+              destination: data1.toUpperCase(),
+              origin: data2.toUpperCase(),
+              date: searchDate,
+              searchType: flightNumberSearch),
+        )
+        .then((value) => refreshTopBar(context));
     refreshTopBar(context);
   }
 
@@ -75,7 +77,7 @@ class FlightStatusNavigator extends StatelessWidget {
         flightNumber: data1,
         date: searchDate,
       ),
-    );
+    ).then((value) => refreshTopBar(context));
     refreshTopBar(context);
   }
 }

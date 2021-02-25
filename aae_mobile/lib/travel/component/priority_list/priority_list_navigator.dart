@@ -54,7 +54,7 @@ class PriorityListNavigator extends StatelessWidget {
           origin: data2.toUpperCase(),
           date: searchDate,
           searchType: loadPriorityList),
-    );
+    ).then((value) => refreshTopBar(context));
     refreshTopBar(context);
   }
 
@@ -70,7 +70,7 @@ class PriorityListNavigator extends StatelessWidget {
         flightNumber: int.parse(flightNumber),
         departureDate: DateTime.parse(departureDate),
       ),
-    );
+    ).then((value) => refreshTopBar(context));
     refreshTopBar(context);
   }
 }
