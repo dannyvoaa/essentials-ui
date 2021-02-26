@@ -236,26 +236,6 @@ class AaeTextStyles {
     fontSize: 14,
   );
 
-
-
-  // These already exists in the 16px section,
-  // it doesn't follow the naming conventions and
-  // it's in the wrong section of this file.
-  // Look at section for 16px text below
-  //
-  // /// Used for regular-sized body content
-  // static TextStyle body({
-  //   bool boolDefaultHeight = false,
-  // }) {
-  //   TextStyle textStyle = TextStyle(
-  //     color: AaeColors.darkGray,
-  //     fontFamily: _americanSans,
-  //     fontSize: 16,
-  //     height: boolDefaultHeight ? 1.00 : 1.33,
-  //     // backgroundColor: AaColors.lightGray,
-  //   );
-  // }
-
   /// Replaces: reservationHeading
   static final title22Bold = title22.copyWith(
     fontFamily: _americanSansBold,
@@ -393,6 +373,11 @@ class AaeTextStyles {
   /// Replaces: textFieldModern
   static final subtitle18DarkBlue = subtitle18.copyWith(
     color: AaeColors.darkBlue,
+  );
+
+  /// Used: Trip name in Upcoming Trip tiles
+  static final subtitle18Blue = subtitle18.copyWith(
+    color: AaeColors.blue,
   );
 
   /// Replaces: largeTextStyleSeatAssigned
@@ -692,6 +677,12 @@ class AaeTextStyles {
   static final caption12CadetGray = caption12.copyWith(
     color: AaeColors.cadetGray,
   );
+
+  /// Used: expanded flight cards text for duration, aircraft type, inflight amenities
+  static final caption12Gray = caption12.copyWith(
+    color: AaeColors.gray,
+  );
+
 
   /// Replaces: locatorInfoHeading
   ///
