@@ -34,12 +34,6 @@ class TripsCollection extends StatelessWidget {
                 header,
                 style: AaeTextStyles.subtitle15BlueBold,
                 textAlign: TextAlign.left,
-                // replaced the inline style below with AaeTextStyle above
-                // style: TextStyle(
-                //   fontSize: 15,
-                //   color: AaeColors.blue,
-                //   fontWeight: FontWeight.w700,
-                //   height: 2.6666666666666665,
                 ),
               ),
             ),

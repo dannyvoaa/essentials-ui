@@ -31,7 +31,7 @@ class AaeCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(color: AaeColors.white100, boxShadow: [
           BoxShadow(
-            color: Colors.black,
+            color: AaeColors.black,
           ),
         ]),
         height: 125.0,
