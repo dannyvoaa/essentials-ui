@@ -234,7 +234,7 @@ class _SearchFormState extends State<SearchForm> {
         height: AaeDimens.regularButtonHeight,
         minWidth: double.infinity,
         child: RaisedButton(
-          disabledColor: Color.fromRGBO(208, 218, 224, 1.0),
+          disabledColor: AaeColors.disabledBlue,
           disabledTextColor: AaeColors.white100,
           color: AaeColors.blue,
           textColor: AaeColors.white100,
