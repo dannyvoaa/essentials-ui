@@ -693,6 +693,7 @@ class AaeTextStyles {
     color: AaeColors.gray,
   );
 
+  /// Used: titles for flight info in the blue box on the boarding pass screen
   static final caption12HalfwayLightGrayMed = caption12.copyWith(
     fontFamily: _americanSansMedium,
     fontWeight: FontWeight.w600,
