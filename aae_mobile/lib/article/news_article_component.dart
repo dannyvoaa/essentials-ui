@@ -74,7 +74,7 @@ class NewsArticleComponent extends StatelessWidget {
               }
               return null;
             },
-            textStyle: AaeTextStyles.articleButtonText,
+            textStyle: AaeTextStyles.btn14,
           ),
         ),
       )
@@ -99,19 +99,19 @@ class NewsArticleComponent extends StatelessWidget {
           if (element.localName == 'h2'){
             return Text(
               element.innerHtml,
-              style: AaeTextStyles.articleH2,
+              style: AaeTextStyles.title24DarkBlue140,
             );
           }
           else if (element.localName == 'h3'){
             return Text(
               element.innerHtml,
-              style: AaeTextStyles.articleH3,
+              style: AaeTextStyles.title22DarkBlue140,
             );
           }
           else if (element.localName == 'h4'){
             return HtmlWidget(
               element.innerHtml,
-              textStyle: AaeTextStyles.articleH4,
+              textStyle: AaeTextStyles.title20MediumGray140,
             );
           }
           else if (element.className == 'page_button'){
@@ -211,7 +211,7 @@ class NewsArticleComponent extends StatelessWidget {
                               return {'display': 'none'};
                             }
                             else if (element.classes.contains('video')){
-                              return {'display': 'none'};
+                              return {'width': '100%'};
                             }
                             else if (element.classes.contains('page_button')){
                               return {'width': '100%', 'background-color': '$AaeColors.blue'};
@@ -360,24 +360,24 @@ class NewsArticleComponent extends StatelessWidget {
                             else if (element.localName == 'h2'){
                               return Text(
                                 element.innerHtml,
-                                style: AaeTextStyles.articleH2,
+                                style: AaeTextStyles.title24DarkBlue140,
                               );
                             }
                             else if (element.localName == 'h3'){
                               return Text(
                                 element.innerHtml,
-                                style: AaeTextStyles.articleH3,
+                                style: AaeTextStyles.title22DarkBlue140,
                               );
                             }
                             else if (element.localName == 'h4'){
                               return HtmlWidget(
                                 element.innerHtml,
-                                textStyle: AaeTextStyles.articleH4,
+                                textStyle: AaeTextStyles.title20MediumGray140,
                               );
                             }
                             return null;
                           },
-                          textStyle: AaeTextStyles.articleBody,
+                          textStyle: AaeTextStyles.body16Reg138,
                           webView: true,
                         ),
                       ),
