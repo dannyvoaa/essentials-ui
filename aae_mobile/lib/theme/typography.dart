@@ -194,48 +194,6 @@ class AaeTextStyles {
     fontWeight: FontWeight.w600,
   );
 
-  /// TODO: REPLACE WITH title24DarkBlue140
-  static const articleH2 = TextStyle(
-    fontSize: 24.0,
-    height: 1.40,
-    fontWeight: FontWeight.w400,
-    fontFamily: _americanSans,
-    color: AaeColors.darkBlue,
-  );
-
-  /// TODO: REPLACE WITH title22DarkBlue140
-  static const articleH3 = TextStyle(
-    fontSize: 22.0,
-    height: 1.40,
-    fontWeight: FontWeight.w400,
-    fontFamily: _americanSans,
-    color: AaeColors.darkBlue,
-  );
-
-  /// TODO: REPLACE WITH title20MediumGray140
-  static const articleH4 = TextStyle(
-    fontSize: 20.0,
-    height: 1.40,
-    fontWeight: FontWeight.w400,
-    fontFamily: _americanSans,
-    color: AaeColors.mediumGray,
-  );
-
-  /// TODO: REPLACE WITH body16Reg138
-  static const articleBody = TextStyle(
-    color: AaeColors.darkGray,
-    fontFamily: _americanSans,
-    height: 1.38,
-    fontSize: 16,
-  );
-
-  /// TODO: REPLACE WITH btn14
-  static const articleButtonText = TextStyle(
-    color: AaeColors.white100,
-    fontFamily: _americanSans,
-    fontSize: 14,
-  );
-
   /// Replaces: reservationHeading
   static final title22Bold = title22.copyWith(
     fontFamily: _americanSansBold,

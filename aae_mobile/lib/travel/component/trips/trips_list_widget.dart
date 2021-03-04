@@ -23,7 +23,7 @@ class TripsListWidget extends StatelessWidget {
 
   _buildTripsListWidget(BuildContext context) {
     return SizedBox(
-      height: 68.00 * viewModel.pnrs.length,
+      height: 74.00 * viewModel.pnrs.length,
       child: ListView.builder(
           physics: NeverScrollableScrollPhysics(),
           itemCount: viewModel.pnrs.length,
