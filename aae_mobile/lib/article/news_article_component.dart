@@ -38,9 +38,9 @@ class NewsArticleComponent extends StatelessWidget {
                 //NewsArticleViewModel viewModel = snapshot.value;
                 String strAuthor = snapshot.value.author;
                 String strArticleId = snapshot.value.articleID;
-                String strArticleBody = snapshot.value.articleBody;
+                String strbody16Reg138 = snapshot.value.articleBody;
                 return newsArticleScaffoldWidget(
-                    context, strAuthor, strArticleId, strArticleBody);
+                    context, strAuthor, strArticleId, strbody16Reg138);
               } else {
                 return _buildLoadingPageState();
               }
@@ -74,7 +74,7 @@ class NewsArticleComponent extends StatelessWidget {
               }
               return null;
             },
-            textStyle: AaeTextStyles.articleButtonText,
+            textStyle: AaeTextStyles.btn14,
           ),
         ),
       )
@@ -99,19 +99,19 @@ class NewsArticleComponent extends StatelessWidget {
           if (element.localName == 'h2'){
             return Text(
               element.innerHtml,
-              style: AaeTextStyles.articleH2,
+              style: AaeTextStyles.title24DarkBlue140,
             );
           }
           else if (element.localName == 'h3'){
             return Text(
               element.innerHtml,
-              style: AaeTextStyles.articleH3,
+              style: AaeTextStyles.title22DarkBlue140,
             );
           }
           else if (element.localName == 'h4'){
             return HtmlWidget(
               element.innerHtml,
-              textStyle: AaeTextStyles.articleH4,
+              textStyle: AaeTextStyles.title20MediumGray140,
             );
           }
           else if (element.className == 'page_button'){
@@ -124,7 +124,7 @@ class NewsArticleComponent extends StatelessWidget {
   }
 
   Widget newsArticleScaffoldWidget(BuildContext context, String strAuthor,
-      String strArticleId, String strArticleBody) {
+      String strArticleId, String strbody16Reg138) {
 
     var image = args['articleImage'];
 
@@ -197,9 +197,9 @@ class NewsArticleComponent extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 24.0, vertical: 16.0),
-//child: Text(strArticleBody),
+//child: Text(strbody16Reg138),
                         child: HtmlWidget(
-                          strArticleBody,
+                          strbody16Reg138,
                           customStylesBuilder: (element) {
                             if (element.classes.contains('ae-image')) {
                               return {'display': 'none'};
@@ -220,7 +220,7 @@ class NewsArticleComponent extends StatelessWidget {
                               return {'color': '#6E8999', 'font-size': '24px', 'font-family': AaeTextStyles.fontLight, 'font-weight': '$FontWeight.normal'};
                             }
 //                            else if (element.localName == 'h4'){
-//                              return {'color': '#6E8999', 'font-size': '24px', 'font-family': AaeTextStyles.articleH4, 'font-weight': '$FontWeight.normal'};
+//                              return {'color': '#6E8999', 'font-size': '24px', 'font-family': AaeTextStyles.title20MediumGray140, 'font-weight': '$FontWeight.normal'};
 //                            }
                             else if (element.className == 'two-col-one'){
                               return{'margin': '0px 0px 0px 0px'};
@@ -360,24 +360,24 @@ class NewsArticleComponent extends StatelessWidget {
                             else if (element.localName == 'h2'){
                               return Text(
                                 element.innerHtml,
-                                style: AaeTextStyles.articleH2,
+                                style: AaeTextStyles.title24DarkBlue140,
                               );
                             }
                             else if (element.localName == 'h3'){
                               return Text(
                                 element.innerHtml,
-                                style: AaeTextStyles.articleH3,
+                                style: AaeTextStyles.title22DarkBlue140,
                               );
                             }
                             else if (element.localName == 'h4'){
                               return HtmlWidget(
                                 element.innerHtml,
-                                textStyle: AaeTextStyles.articleH4,
+                                textStyle: AaeTextStyles.title20MediumGray140,
                               );
                             }
                             return null;
                           },
-                          textStyle: AaeTextStyles.articleBody,
+                          textStyle: AaeTextStyles.body16Reg138,
                           webView: true,
                         ),
                       ),
