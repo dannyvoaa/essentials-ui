@@ -211,7 +211,7 @@ class NewsArticleComponent extends StatelessWidget {
                               return {'display': 'none'};
                             }
                             else if (element.classes.contains('video')){
-                              return {'width': '100%'};
+                              return {'display': 'none'};
                             }
                             else if (element.classes.contains('page_button')){
                               return {'width': '100%', 'background-color': '$AaeColors.blue'};
