@@ -29,7 +29,7 @@ class TravelTopBar extends StatefulWidget implements PreferredSizeWidget {
   TravelTopBarState createState() => TravelTopBarState();
 
   @override
-  final preferredSize = Size.fromHeight(105);
+  final preferredSize = Size.fromHeight(90);
 }
 
 class TravelTopBarState extends State<TravelTopBar> {
@@ -49,9 +49,10 @@ class TravelTopBarState extends State<TravelTopBar> {
     return Container(
       child: GradientAppBar(
         automaticallyImplyLeading: false,
+        centerTitle: false,
         title: !_canPopTravelPage()
             ? Padding(
-                padding: EdgeInsets.only(top: 18),
+                padding: EdgeInsets.only(top: 4),
                 child: Text(
                   'Travel',
                   style: AaeTextStyles.title20White,
