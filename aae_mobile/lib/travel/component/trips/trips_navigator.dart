@@ -8,50 +8,51 @@ import 'package:aae/travel/component/checkin/checkin_component.dart';
 class TripsNavigator extends StatelessWidget {
   static final _log = Logger('ReservationDetailView');
 
-  final GlobalKey<NavigatorState> nestedNavKey = GlobalKey<NavigatorState>();
+  TripsNavigator({this.nestedNavKey, this.refreshTopBar});
+
+  final GlobalKey<NavigatorState> nestedNavKey;
+  final Function(BuildContext context) refreshTopBar;
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => !await nestedNavKey.currentState.maybePop(),
-      child: Navigator(
-        key: nestedNavKey,
-        initialRoute: '/',
-        onGenerateRoute: (RouteSettings settings) {
-          WidgetBuilder builder;
-          ReservationDetailArguments args = settings.arguments;
-
-          switch (settings.name) {
-            case '/':
-              builder = (_) => TripsComponent(
-                loadReservationDetail: loadReservationDetail,
-              );
-              break;
-            case '/results':
-              builder = (_) => ReservationDetailComponent.from(args);
-              break;
-            case '/checkin':
-              builder = (_) => CheckInComponent();
-              break;
-            default:
-              throw Exception('Invalid route: ${settings.name}');
-          }
-
-          return MaterialPageRoute(builder: builder, settings: settings);
-        },
-      ),
+    return Navigator(
+      key: nestedNavKey,
+      initialRoute: '/',
+      onGenerateRoute: (RouteSettings settings) {
+        WidgetBuilder builder;
+        ReservationDetailArguments args = settings.arguments;
+        switch (settings.name) {
+          case '/':
+            builder = (_) => TripsComponent(
+                  loadReservationDetail: loadReservationDetail,
+                );
+            break;
+          case '/results':
+            builder = (_) => ReservationDetailComponent.from(args);
+            break;
+          case '/checkin':
+            builder = (_) => CheckInComponent();
+            break;
+          default:
+            throw Exception('Invalid route: ${settings.name}');
+        }
+        return MaterialPageRoute(builder: builder, settings: settings);
+      },
     );
   }
 
   void loadReservationDetail(BuildContext context, String pnr) {
     _log.info("loadReservationDetail(pnr: '$pnr')");
 
-    Navigator.of(context).pushNamed(
-      '/results',
-      arguments: ReservationDetailArguments(
-        pnr: pnr,
-      ),
-    );
+    Navigator.of(context)
+        .pushNamed(
+          '/results',
+          arguments: ReservationDetailArguments(
+            pnr: pnr,
+          ),
+        )
+        .then((value) => refreshTopBar(context));
+    refreshTopBar(context);
   }
 
 //  void loadCheckIn(BuildContext context, String pnr){

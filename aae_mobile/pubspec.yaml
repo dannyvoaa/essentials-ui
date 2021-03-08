@@ -92,6 +92,7 @@ flutter:
     - assets/common/
     - assets/svg/
     - assets/static_records/RecognitionHistory.json
+    - assets/static_records/FlightSearch.json
     - assets/static_records/image.jpeg
     - assets/common/sign_in_background.png
     - assets/raw/imageserverbase64.cer

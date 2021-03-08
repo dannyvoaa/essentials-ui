@@ -1,61 +1,111 @@
+import 'package:aae/home/news_feed_page.dart';
 import 'package:aae/theme/colors.dart';
+import 'package:aae/theme/typography.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 /// A app bar for the news feed page.
-class TravelTopBar extends StatelessWidget implements PreferredSizeWidget {
+class TravelTopBar extends StatefulWidget implements PreferredSizeWidget {
+  TravelTopBar(
+      {this.tabs,
+      this.tabController,
+      this.tripsNestedNavKey,
+      this.priorityListNestedNavKey,
+      this.flightStatusNestedNavKey,
+      Key key})
+      : super(key: key);
+  final TabController tabController;
+  final List<BuildContext> navStack = [null, null, null];
+  final List<Tab> tabs;
 
-  final List<Tab> tabs = <Tab>[
-    Tab(
-      child: Text(
-        'Trips',
-        style: TextStyle(color: AaeColors.white100),
-      ),
-    ),
-    Tab(
-        child: Text(
-      'Priority list',
-      style: TextStyle(color: AaeColors.white100),
-    )),
-    Tab(
-      child: Text(
-        'Flight status',
-        style: TextStyle(color: AaeColors.white100),
-      ),
-    ),
-  ];
+  List<GlobalKey<NavigatorState>> travelNavKeys = [null, null, null];
 
-  // Definition for this partially taken from that of app_bar.dart
+  final GlobalKey<NavigatorState> tripsNestedNavKey;
+  final GlobalKey<NavigatorState> priorityListNestedNavKey;
+  final GlobalKey<NavigatorState> flightStatusNestedNavKey;
+
   @override
-  final preferredSize = Size.fromHeight(105);
+  TravelTopBarState createState() => TravelTopBarState();
+
+  @override
+  final preferredSize = Size.fromHeight(90);
+}
+
+class TravelTopBarState extends State<TravelTopBar> {
+  @override
+  void initState() {
+    widget.travelNavKeys[0] = widget.tripsNestedNavKey;
+    widget.travelNavKeys[1] = widget.priorityListNestedNavKey;
+    widget.travelNavKeys[2] = widget.flightStatusNestedNavKey;
+
+    widget.tabController.addListener(() {
+      if (mounted) setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Container(
-        child: GradientAppBar(
-          title: Align(
-              alignment: Alignment.centerLeft,
-              heightFactor: 3,
-              child: Text(
-                'Travel',
-                style: TextStyle(color: AaeColors.white100),
-              )),
-          gradient: AaeColors.appBarGradient,
-          bottom: PreferredSize(
-            preferredSize: preferredSize,
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: TabBar(
-                tabs: tabs,
-                isScrollable: true,
-                indicatorColor: AaeColors.orange,
-                indicatorSize: TabBarIndicatorSize.tab,
-              ),
+      child: GradientAppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: false,
+        title: !_canPopTravelPage()
+            ? Padding(
+                padding: EdgeInsets.only(top: 4),
+                child: Text(
+                  'Travel',
+                  style: AaeTextStyles.title20White,
+                ))
+            : Transform(
+                transform: Matrix4.translationValues(-11.5, 0.0, 0.0),
+                child: _buildBackButton()),
+        gradient: AaeColors.appBarGradient,
+        bottom: PreferredSize(
+          preferredSize: widget.preferredSize,
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: TabBar(
+              controller: widget.tabController,
+              tabs: widget.tabs,
+              isScrollable: true,
+              indicatorColor: AaeColors.orange,
+              indicatorSize: TabBarIndicatorSize.tab,
             ),
           ),
         ),
       ),
     );
+  }
+
+  _buildBackButton() {
+    return new IconButton(
+        icon: new Container(
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: AaeColors.white100,
+          ),
+        ),
+        onPressed: () => {
+              Navigator.of(widget.navStack[widget.tabController.index])
+                  .maybePop()
+                  .then((value) => refreshTopBar(null)),
+            });
+  }
+
+  void refreshTopBar(context) {
+    if (context != null) {
+      widget.navStack[widget.tabController.index] = context;
+    }
+    setState(() {});
+  }
+
+  _canPopTravelPage() {
+    if (widget.travelNavKeys[widget.tabController.index] != null &&
+        widget.travelNavKeys[widget.tabController.index].currentState != null) {
+      return widget.travelNavKeys[widget.tabController.index].currentState
+          .canPop();
+    } else
+      return false;
   }
 }
