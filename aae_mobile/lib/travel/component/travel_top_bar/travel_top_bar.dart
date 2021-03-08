@@ -48,12 +48,17 @@ class TravelTopBarState extends State<TravelTopBar> {
   Widget build(BuildContext context) {
     return Container(
       child: GradientAppBar(
-        leading: _canPopTravelPage() ? _buildBackButton() : null,
+        automaticallyImplyLeading: false,
         title: !_canPopTravelPage()
-            ? Text(
-                'Travel',
-              )
-            : null,
+            ? Padding(
+                padding: EdgeInsets.only(top: 18),
+                child: Text(
+                  'Travel',
+                  style: AaeTextStyles.title20White,
+                ))
+            : Transform(
+                transform: Matrix4.translationValues(-11.5, 0.0, 0.0),
+                child: _buildBackButton()),
         gradient: AaeColors.appBarGradient,
         bottom: PreferredSize(
           preferredSize: widget.preferredSize,
