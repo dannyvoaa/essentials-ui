@@ -68,7 +68,7 @@ class _TopBarTitleView extends StatelessWidget {
     return Text(
       "Good ${greeting()}, ${(viewModel.displayName).titleCase}",
       textAlign: TextAlign.left,
-      style: AaeTextStyles.body16WhiteMed125,
+      style: AaeTextStyles.title20White,
     );
   }
 }
