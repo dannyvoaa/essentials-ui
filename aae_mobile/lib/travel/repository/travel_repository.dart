@@ -128,7 +128,7 @@ class TravelRepository implements Repository {
         _saveToCache(tripsKey, trips.toJson());
         _loadFromTripsCache();
       } catch (e, s) {
-        _log.severe('Failed to fetch trips: ', e, s);
+        _log.severe('Failed to fetch trips: ', e);
         return null;
       }
     } else {

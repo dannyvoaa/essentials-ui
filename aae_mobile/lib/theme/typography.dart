@@ -352,6 +352,10 @@ class AaeTextStyles {
     height: 1.40,
   );
 
+  static final title20White = title20.copyWith(
+    color: AaeColors.white100,
+  );
+
   // 18px BASE title text ----------------------------------v-------------------------------------18px--
   /// 18px base font
   ///
