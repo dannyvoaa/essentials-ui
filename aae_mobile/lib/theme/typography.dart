@@ -333,7 +333,7 @@ class AaeTextStyles {
     color: AaeColors.darkBlue,
   );
 
-  /// Used: Trip name in Upcoming Trip tiles
+  /// Used: Trip name in Upcoming Trip tiles, text on white buttons
   static final subtitle18Blue = subtitle18.copyWith(
     color: AaeColors.blue,
   );
@@ -506,6 +506,16 @@ class AaeTextStyles {
   /// Used: when 4 cabin in Priority list
   static final body14MediumGray = body14.copyWith(
     color: AaeColors.mediumGray,
+  );
+
+  /// Used: unselected pill tab in Int'l check in
+  static final body14DarkBlue = body14.copyWith(
+    color: AaeColors.darkBlue,
+  );
+
+  /// Used: selected pill tab in Int'l check in
+  static final body14White = body14.copyWith(
+    color: AaeColors.white100,
   );
 
   /// Used: 15 minute boarding text on boarding pass screen
