@@ -27,7 +27,7 @@ class BottomNavigation extends StatelessWidget {
   static final Map<MainPage, String> tabText = {
     MainPage.home: 'Home',
     MainPage.events: 'Calendar',
-    MainPage.travel: 'Trips',
+    MainPage.travel: 'Travel',
 //    MainPage.notifications: 'Notifications',
   };
 
