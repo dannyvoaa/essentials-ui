@@ -304,6 +304,11 @@ class AaeTextStyles {
     height: 1.10,
   );
 
+  /// Replaces: newsCardHeadline
+  static final subtitle18Reg135 = subtitle18.copyWith(
+    height: 1.35,
+  );
+
   /// Replaces: tableHeaderFooter
   static final subtitle18Bold1165 = subtitle18.copyWith(
     fontFamily: _americanSansBold,
