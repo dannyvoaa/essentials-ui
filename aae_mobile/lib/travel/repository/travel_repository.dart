@@ -51,17 +51,12 @@ class TravelRepository implements Repository {
   String strSmsession;
 
   Observable<BuiltList<Pnr>> get pnrs => _pnrs;
-
   Observable<PriorityList> get currentPriorityList => _currentPriorityList;
-
   Observable<ReservationDetail> get reservationDetail => _reservationDetail;
   Observable<CheckInRequest> get checkIn => _checkIn;
   Observable<FlightStatus> get flightStatus => _flightStatus;
-
   Observable<FlightSearch> get flightSearch => _flightSearch;
-
   Observable<BuiltList<Airport>> get airports => _airports;
-
   Observable<BuiltList<BoardingPass>> get boardingPasses => _boardingPasses;
 
   BuiltList<Airport> cachedAirports;
@@ -217,10 +212,19 @@ class TravelRepository implements Repository {
   }
 
   performCheckIn(CheckInArguments checkInArgs) async {
-//    _checkIn.sendNext(null);
-//    CheckInRequest checkInRequest = await _travelApiClient.pushCheckIn(checkInArgs, strEmployeeId, strSmsession);
-    _travelApiClient.pushCheckIn(checkInArgs, strEmployeeId, strSmsession);
-//    _checkIn.sendNext(checkInRequest);
+    if (!existsEmployeeIdAndSMSession())
+      return;
+
+    _boardingPasses.sendNext(null);
+    currentBoardingPassPnr = checkInArgs.pnr;
+    try {
+      BuiltList<BoardingPass> passes = await _travelApiClient.pushCheckIn(checkInArgs, strEmployeeId, strSmsession);
+      _boardingPasses.sendNext(passes);
+    } catch (e) {
+      currentBoardingPassPnr = null;
+      throw e;
+    }
+
   }
 
   loadBoardingPasses(String pnr, bool forceRefresh) async {

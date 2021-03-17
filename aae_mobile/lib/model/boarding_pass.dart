@@ -21,6 +21,11 @@ implements Built<BoardingPass, BoardingPassBuilder> {
 
   @BuiltValueSerializer(serializeNulls: true)
   @nullable
+  @BuiltValueField(wireName: 'barcodeString')
+  String get barcodeString;
+
+  @BuiltValueSerializer(serializeNulls: true)
+  @nullable
   @BuiltValueField(wireName: 'arrivalTime')
   String get arrivalTime;
 

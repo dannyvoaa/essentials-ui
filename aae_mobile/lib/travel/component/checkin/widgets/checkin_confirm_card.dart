@@ -16,8 +16,9 @@ import 'checkin_commit_button.dart';
 
 class ConfirmCard extends StatelessWidget {
   final CheckInViewModel viewModel;
+  final Function onAgreeButtonClicked;
 
-  ConfirmCard({this.viewModel});
+  ConfirmCard({this.viewModel, this.onAgreeButtonClicked});
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +114,10 @@ class ConfirmCard extends StatelessWidget {
                               style: AaeTextStyles.body14RegLink,
                             ),
                             Padding(
-                              padding: EdgeInsets.only(bottom:10,left:3,),
+                              padding: EdgeInsets.only(
+                                bottom: 10,
+                                left: 3,
+                              ),
                               child: Icon(
                                 AmericanIconsv4_6.newPage,
                                 size: 12,
@@ -173,9 +177,14 @@ class ConfirmCard extends StatelessWidget {
                   child: Container(
                     child: CheckInButton(
                       onClicked: () {
-                        print('Check in button on haz mat popup pressed...');
+//                        print('Check in button on haz mat popup pressed...');
                         Navigator.of(context).pop();
+                        onAgreeButtonClicked();
                         viewModel.performCheckIn();
+//                        Navigator.popAndPushNamed(context, '/boardingpass');
+//                        Navigator.of(context).pushNamed(
+//                          '/boardingpass',
+//                        );
                       },
                     ),
                   ),

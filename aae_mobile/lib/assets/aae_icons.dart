@@ -38,5 +38,6 @@ class AmericanIconsv4_6 {
   static const IconData search = const IconData(0xe039, fontFamily: _kFontFam);
   static const IconData vacation = const IconData(0xe017, fontFamily: _kFontFam);
   static const IconData newPage = const IconData(0xe03f, fontFamily: _kFontFam);
+  static const IconData email = const IconData(0xe02d, fontFamily: _kFontFam);
 }
 

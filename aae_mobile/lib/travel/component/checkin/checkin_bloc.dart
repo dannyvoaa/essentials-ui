@@ -34,6 +34,7 @@ class CheckInBloc {
   }
 
   void onNewReservationData(ReservationDetail reservation){
+    if (reservation == null) return;
     pnr = reservation.recordLocator;
     travelerIdsForCheckIn.clear();
     for (ReservationDetailPassenger traveler in reservation.passengers){

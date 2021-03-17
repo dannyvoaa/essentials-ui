@@ -7,7 +7,6 @@ import 'package:flutter/painting.dart';
 /// Final classes = class name and size + color if different + weight if different + height if different
 ///
 /// Naming order = name (title), size (50), color (Gray), weight (Med), line height (133)
-
 class AaeTextStyles {
   static const _americanSans = 'AmericanSans'; //400
   static const font = 'AmericanSans';
@@ -236,54 +235,6 @@ class AaeTextStyles {
     fontSize: 14,
   );
 
-//  static const h2 = TextStyle(
-//    fontSize: 32.0,
-//    height: 1.25,
-//    fontWeight: _medium,
-//    fontFamily: _americanSans,
-//  );
-//
-//  static const h3 = TextStyle(
-//    fontSize: 28.0,
-//    height: 1.43,
-//    fontWeight: _medium,
-//    fontFamily: _americanSans,
-//  );
-//
-//  static const h4 = TextStyle(
-//    fontSize: 24.0,
-//    height: 1.1,
-//    fontWeight: _medium,
-//    fontFamily: _americanSans,
-//  );
-//
-//  static const h5 = TextStyle(
-//    fontSize: 20.0,
-//    height: 1.20,
-//    fontWeight: _medium,
-//    fontFamily: _americanSans,
-//  );
-//
-//  static const h6 = TextStyle(
-//    fontSize: 16.0,
-//    height: 1.25,
-//    fontWeight: _medium,
-//    fontFamily: _americanSans,
-//  );
-
-  /// Used for regular-sized body content
-  static TextStyle body({
-    bool boolDefaultHeight = false,
-  }) {
-    TextStyle textStyle = TextStyle(
-      color: AaeColors.darkGray,
-      fontFamily: _americanSans,
-      fontSize: 16,
-      height: boolDefaultHeight ? 1.00 : 1.33,
-      // backgroundColor: AaColors.lightGray,
-    );
-  }
-
   /// Replaces: reservationHeading
   static final title22Bold = title22.copyWith(
     fontFamily: _americanSansBold,
@@ -374,6 +325,13 @@ class AaeTextStyles {
     fontWeight: FontWeight.w600,
   );
 
+  /// Used: OS dialogue boxes (covid notice for example)
+  static final subtitle18MediumGrayMed = subtitle18.copyWith(
+    fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
+    color: AaeColors.mediumGray,
+  );
+
   /// Replaces: timeSummary
   static final subtitle18Bold = subtitle18.copyWith(
     fontFamily: _americanSansBold,
@@ -420,6 +378,11 @@ class AaeTextStyles {
     color: AaeColors.darkBlue,
   );
 
+  /// Used: Trip name in Upcoming Trip tiles
+  static final subtitle18Blue = subtitle18.copyWith(
+    color: AaeColors.blue,
+  );
+
   /// Replaces: largeTextStyleSeatAssigned
   ///
   /// Used: priority list
@@ -459,6 +422,11 @@ class AaeTextStyles {
     color: AaeColors.gray,
   );
 
+  /// Used: text in place of check in button when all travelers have been checked in
+  static final TextStyle body16Green = body16.copyWith(
+    color: AaeColors.green,
+  );
+
   /// Used: Article body text
   static final body16Reg138 = body16.copyWith(
     height: 1.38,
@@ -490,6 +458,13 @@ class AaeTextStyles {
     fontWeight: FontWeight.w700,
   );
 
+  /// Used: gate and time info on boarding pass screen
+  static final body16WhiteBold = body16.copyWith(
+    fontFamily: _americanSansBold,
+    fontWeight: FontWeight.w700,
+    color: AaeColors.white100,
+  );
+
   // 15px BASE title text ----------------------------------v-------------------------------------15px--
   /// 15px base font
   static const TextStyle subtitle15 = TextStyle(
@@ -504,6 +479,11 @@ class AaeTextStyles {
   static final subtitle15Med = subtitle15.copyWith(
     fontFamily: _americanSansMedium,
     fontWeight: FontWeight.w600,
+  );
+
+  /// Replaces:formHintText
+  static final subtitle15MediumGray = subtitle15.copyWith(
+    color: AaeColors.mediumGray,
   );
 
   /// Replaces:formHintText
@@ -562,10 +542,28 @@ class AaeTextStyles {
     color: AaeColors.gray,
   );
 
+  /// Used: link in hazmat screen
+  static final body14Blue143 = body14.copyWith(
+    color: AaeColors.blue,
+    height: 1.43,
+  );
+
   /// Used: when 4 cabin in Priority list
   static final body14MediumGray = body14.copyWith(
     color: AaeColors.mediumGray,
   );
+
+  /// Used: 15 minute boarding text on boarding pass screen
+  static final body14DarkOrange = body14.copyWith(
+    color: AaeColors.darkOrange,
+  );
+
+  /// Used: OS dialogue box emphasized text
+  static final body14Med = body14.copyWith(
+    fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
+  );
+
 
   // 13px BASE title text ------------------------------------v-----------------------------------13px--
   /// 13px base font
@@ -683,6 +681,12 @@ class AaeTextStyles {
     color: AaeColors.cadetGray,
   );
 
+  /// Used: expanded flight cards text for duration, aircraft type, inflight amenities
+  static final caption12Gray = caption12.copyWith(
+    color: AaeColors.gray,
+  );
+
+
   /// Replaces: locatorInfoHeading
   ///
   /// Used: flight status on cards
@@ -691,6 +695,13 @@ class AaeTextStyles {
     fontWeight: FontWeight.w600,
     color: AaeColors.gray,
   );
+
+  static final caption12HalfwayLightGrayMed = caption12.copyWith(
+    fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
+    color: AaeColors.halfwayLightGray,
+  );
+
 
   // 11px BASE title text -------------------------------------v----------------------------------11px--
   /// 11px base font

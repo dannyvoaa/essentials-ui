@@ -27,26 +27,20 @@ class TripsCollection extends StatelessWidget {
         child: Column(
       children: <Widget>[
         Container(
-            alignment: Alignment.topLeft,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Text(
-                header,
-                style: AaeTextStyles.subtitle15BlueBold,
-                textAlign: TextAlign.left,
-                // replaced the inline style below with AaeTextStyle above
-                // style: TextStyle(
-                //   fontSize: 15,
-                //   color: AaeColors.blue,
-                //   fontWeight: FontWeight.w700,
-                //   height: 2.6666666666666665,
-                ),
-              ),
+          alignment: Alignment.topLeft,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Text(
+              header,
+              style: AaeTextStyles.subtitle15BlueBold,
+              textAlign: TextAlign.left,
             ),
+          ),
+        ),
         TripsListWidget(
           viewModel: this.viewModel,
           loadReservationDetail: loadReservationDetail,
-        )
+        ),
       ],
     ));
   }

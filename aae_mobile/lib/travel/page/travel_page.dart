@@ -1,6 +1,7 @@
 import 'package:aae/common/widgets/drawer/aae_drawer.dart';
 import 'package:aae/home/news_feed_page.dart';
 import 'package:aae/navigation/paage_provider.dart';
+import 'package:aae/travel/component/boarding_pass/boarding_pass_view.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/travel/component/priority_list/priority_list_navigator.dart';
 import 'package:aae/travel/component/trips/trips_component.dart';

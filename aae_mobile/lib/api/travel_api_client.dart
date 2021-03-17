@@ -175,12 +175,15 @@ class TravelServiceApi {
     }
   }
 
-  void pushCheckIn(CheckInArguments checkInArguments, String employeeId, String smsession) async {
+  Future<BuiltList<BoardingPass>> pushCheckIn(CheckInArguments checkInArguments, String employeeId, String smsession) async {
     Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
     String constructedUrl = "$checkInEndpoint/${checkInArguments.pnr}";
 
     _log.info("initiating check in request: ${checkInArguments.pnr}");
     _log.info(constructedUrl);
+
+    // Test data for initial page build only...
+    var testData = "{\r\n    \"boardingPasses\": [{\r\n            \"arrivalTime\": \"2021-01-28T22:02\",\r\n            \"arrivalTimezone\": \"PST\",\r\n            \"barcodeString\": \"M1CONRAD JR\/JOHN      EYKYNVS DFWSANAA 2443 028J00000003 148>218       BAA              29             0                            d2FnQd7NgySsvhSc5z6MojpGL6GB3Jvl|AMh9P\/SQnfoRy0NZ4CduvR4QXC11xrzLhw==\",\r\n            \"boardingTime\": \"2021-01-28T20:10\",\r\n            \"boardingTimezone\": \"CST\",\r\n            \"checkinSequenceNumber\": 3,\r\n            \"departureTime\": \"2021-01-28T20:40\",\r\n            \"departureTimezone\": \"CST\",\r\n            \"estimatedArrivalTime\": \"2021-01-28T22:02\",\r\n            \"estimatedBoardingTime\": \"2021-01-28T20:10\",\r\n            \"estimatedDepartureTime\": \"2021-01-28T20:40\",\r\n            \"firstName\": \"JOHN\",\r\n            \"flightNumber\": \"2443\",\r\n            \"fromCityCode\": \"DFW\",\r\n            \"gateInfo\": \"C15\",\r\n            \"groupInfo\": \"1\",\r\n            \"isTsaPrecheck\": false,\r\n            \"lastName\": \"CONRAD JR\",\r\n            \"pnrCode\": \"YKYNVS\",\r\n            \"seatNumber\": null,\r\n            \"terminal\": \"C\",\r\n            \"toCityCode\": \"SAN\",\r\n            \"travelerId\": 1\r\n        }\r\n    ]\r\n}";
 
     var response;
     try {
@@ -203,6 +206,10 @@ class TravelServiceApi {
       _log.info("check in request successful");
       _log.info(response.body);
 //      return serializers.deserializeWith(CheckInBasicRequest.serializer, jsonDecode(response.body));
+
+      BoardingPassWrapper boardingPassWrapper = BoardingPassWrapper.fromJson(response.body);
+//      BoardingPassWrapper boardingPassWrapper = BoardingPassWrapper.fromJson(testData);
+      return boardingPassWrapper.boardingPasses;
 
     } else {
       throw Exception(

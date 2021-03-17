@@ -1,3 +1,5 @@
+import 'package:aae/theme/colors.dart';
+import 'package:aae/theme/typography.dart';
 import 'package:aae/travel/component/reservation_detail/res_detail_view_model.dart';
 import 'package:aae/travel/component/reservation_detail/widgets/res_detail_cancel_slider.dart';
 import 'package:aae/travel/component/reservation_detail/widgets/res_detail_divider.dart';

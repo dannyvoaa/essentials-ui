@@ -14,15 +14,16 @@ import 'package:logging/logging.dart';
 ///
 /// Exposes a [ReservationDetailViewModel] for that component to use.
 
-
 class ReservationDetailBloc {
   static final _log = Logger('ReservationDetailBloc');
   final TravelRepository _travelRepository;
 
   Observable<ReservationDetail> _dummyPriorityListObservable;
 
-  Source<ReservationDetailViewModel> get viewModel =>
-      toSource(combineLatest2(_travelRepository.reservationDetail, _travelRepository.airports, _createViewModel));
+  Source<ReservationDetailViewModel> get viewModel => toSource(combineLatest2(
+      _travelRepository.reservationDetail,
+      _travelRepository.airports,
+      _createViewModel));
 
   @provide
   ReservationDetailBloc(this._travelRepository);
@@ -31,12 +32,12 @@ class ReservationDetailBloc {
     _travelRepository.loadReservationDetail(pnr);
   }
 
-  ReservationDetailViewModel _createViewModel(ReservationDetail reservationDetail, BuiltList<Airport> airports) {
+  ReservationDetailViewModel _createViewModel(
+      ReservationDetail reservationDetail, BuiltList<Airport> airports) {
     return ReservationDetailViewModel(
         reservationDetail: reservationDetail,
         airports: airports,
-        loadReservationDetail: loadReservationDetail
-    );
+        loadReservationDetail: loadReservationDetail);
   }
 }
 

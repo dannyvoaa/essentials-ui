@@ -20,7 +20,7 @@ class ToolsList extends StatelessWidget {
         Container(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: const EdgeInsets.only(top: 30, bottom: 5),
+              padding: const EdgeInsets.only(top: 10, bottom: 5),
               child: Text(
                 header,
                 style: AaeTextStyles.subtitle15BlueBold,
@@ -39,13 +39,19 @@ class ToolsList extends StatelessWidget {
           buttonContent: ToolsButton(
               iconData: AmericanIconsv4_6.list,
               title: 'Priority list',
-              subtitle: 'See available and assigned seats for this flight.'),
+              subtitle: 'See available and assigned seats for this trip.'),
+        ),
+        TravelListTile(
+          buttonContent: ToolsButton(
+              iconData: AmericanIconsv4_6.email,
+              title: 'Email passes',
+              subtitle: 'Email passes to travelers.'),
         ),
         TravelListTile(
           buttonContent: ToolsButton(
               iconData: AmericanIconsv4_6.notifications,
               title: 'Create travel notifications',
-              subtitle: 'Create text or email notification for this flight.'),
+              subtitle: 'Create text or email notification for this trip.'),
         ),
       ],
     );
@@ -65,45 +71,51 @@ class ToolsButton extends StatelessWidget {
   }
 
   _buildToolsButton(BuildContext context) {
-    return Row(children: <Widget>[
-      Expanded(
-          flex: 1,
-          child: Align(
-              alignment: Alignment.topLeft,
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+              flex: 1,
+              child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Container(
+                      height: 50,
+                      width: 30,
+                      child: Icon(iconData, size: 30, color: AaeColors.blue)))),
+          Expanded(
+              flex: 6,
               child: Container(
-                  height: 30,
-                  width: 30,
-                  child: Icon(iconData, size: 30, color: AaeColors.blue)))),
-      Expanded(
-          flex: 6,
-          child: Container(
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0, bottom: 5.0),
-                  child: Text(
-                    '$title',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      fontFamily: 'AmericanSansMedium',
-                      fontSize: 16,
-                      color: AaeColors.darkGray,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 10.0,
+                        bottom: 5.0,
+                      ),
+                      child: Text(
+                        '$title',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontFamily: 'AmericanSansMedium',
+                          fontSize: 16,
+                          color: AaeColors.darkGray,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0),
-                  child: Text(
-                    '$subtitle',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: AaeColors.mediumGray,
-                    ),
-                  ),
-                )
-              ]))),
-    ]);
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10.0),
+                      child: Text(
+                        '$subtitle',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: AaeColors.mediumGray,
+                        ),
+                      ),
+                    )
+                  ]))),
+        ]);
   }
 }

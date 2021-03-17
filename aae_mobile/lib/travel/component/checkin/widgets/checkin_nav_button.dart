@@ -60,7 +60,11 @@ class CheckInNavButton extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.only(
             ),
-            child: ConfirmCard(viewModel: viewModel),
+            child: ConfirmCard(viewModel: viewModel, onAgreeButtonClicked: (){
+              Navigator.of(context).pushNamed(
+                '/boardingpass',
+              );
+            },),
           ),
         ),
         shape: RoundedRectangleBorder(
