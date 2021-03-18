@@ -10,6 +10,15 @@ import Firebase
   ) -> Bool {
     FirebaseApp.configure()
     GeneratedPluginRegistrant.register(with: self)
+    
+    Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+     // AnalyticsParameterItemID: "id",
+      AnalyticsParameterItemName: "AAECalscreenName"
+     // AnalyticsParameterContentType: "cont"
+      ])
+    
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+    
   }
+    
 }
