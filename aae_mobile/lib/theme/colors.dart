@@ -33,6 +33,7 @@ class AaeColors {
   static const darkBlue = Color.fromRGBO(0, 70, 127, 1); // #00467F
   static const detroitBlue = Color.fromRGBO(0, 97, 171, 1); // #0061AB
   static const blue = Color.fromRGBO(0, 120, 210, 1); // #0078D2
+  static const disabledBlue = Color.fromRGBO(0, 120, 210, 0.25); // #BFDEF5
   static const lightBlue = Color.fromRGBO(77, 180, 250, 1); // #4DB4FA
   static const teal = Color.fromRGBO(177, 225, 235, 1.0); // #B1E1EB
   static const highlightBlue = Color.fromRGBO(225, 240, 250, 1.0); // #E1F0FA

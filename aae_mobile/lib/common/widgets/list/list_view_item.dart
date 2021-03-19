@@ -118,29 +118,12 @@ class ListViewItem extends StatelessWidget {
         top: 6.0,
         bottom: 0.0,
       ),
-      child: Html(data: textUpdate, style: {
-        "html": Style(
-          color: AaeColors.darkGray,
-          fontSize: FontSize(18),
-          margin: EdgeInsets.only(
-            top: 6,
-            bottom: 2,
-            left: 0,
-            right: 0,
-          ),
-        ),
-        //card titles
-        "body": Style(
-          color: AaeColors.darkGray,
-          fontSize: FontSize(18),
-          margin: EdgeInsets.only(
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-          ),
-        ),
-      }),
+      child: Text(
+        textUpdate,
+        style: AaeTextStyles.subtitle18Reg135,
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 
@@ -148,63 +131,26 @@ class ListViewItem extends StatelessWidget {
       BuildContext context, String body, author, date) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(bottom: 4.0, top: 6.0),
-//          child: RichText(text: body),
-//          child: Text(summary),
-//          child: Html(
-//            data: body,
-//            defaultTextStyle: AaeTextStyles.smallSummary,
-//          ),
-          child: Html(
-            data: body,
-            style: {
-              "html": Style(
-//                backgroundColor: Colors.black12,
-                color: AaeColors.mediumGray,
-                fontSize: FontSize(14),
-                height: 30,
-                padding: EdgeInsets.all(0),
-//                margin: EdgeInsets.only(top:0, bottom:2, left:0, right:0,),
-              ),
-              "body": Style(
-//                backgroundColor: Colors.black12,
-                color: AaeColors.mediumGray,
-                fontSize: FontSize(14),
-//                height: 42,
-                padding: EdgeInsets.all(0),
-                margin: EdgeInsets.only(
-                  top: 0,
-                  bottom: 2,
-                  left: 0,
-                  right: 0,
-                ),
-                alignment: Alignment(0, 0),
-                textAlign: TextAlign.start,
-                after: '...',
-              ),
-              "h1, h2, h3, h4, h5": Style(
-                color: AaeColors.gray,
-                fontSize: FontSize(14),
-                fontWeight: FontWeight.w100,
-              ),
-              "a": Style(
-                color: AaeColors.gray,
-                textDecoration: TextDecoration.none,
-              ),
-            },
+          padding: const EdgeInsets.only(bottom: 8.0, top: 6.0),
+          child: Text(
+              body,
+              style: AaeTextStyles.body14Reg143,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top:8),
+          padding: EdgeInsets.only(top:8
+          ),
           child: Text(
             author,
 //            'September 22, 2020',
             style: TextStyle(
               color: AaeColors.mediumGray,
-              fontSize: 12,
+              fontSize: 13,
             ),
           ),
         ),

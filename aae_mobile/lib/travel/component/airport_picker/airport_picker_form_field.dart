@@ -37,7 +37,7 @@ class _AirportPickerFormFieldState extends State<AirportPickerFormField> {
         decoration: BoxDecoration(
           border: BorderDirectional(
             bottom: BorderSide(
-                color: Color.fromRGBO(208, 218, 224, 1.0),
+              color: AaeColors.halfwayLightGray,
             ),
           ),
         ),
