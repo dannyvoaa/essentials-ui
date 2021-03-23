@@ -33,10 +33,10 @@ class TravelListTile<T> extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(3.0),
-            color: const Color(0xffffffff),
+            color: AaeColors.white100,
             boxShadow: [
               BoxShadow(
-                color: const Color(0x29131313),
+                color: AaeColors.lightGray,
                 offset: Offset(0, 2),
                 blurRadius: 3,
               ),

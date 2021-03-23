@@ -31,7 +31,7 @@ class SettingsListBloc {
           selectedTopics: profile.topics,
           hubLocation: ['CLT','DCA','DFW','LAX','MIA','NYC','ORD','PHL','PHX','TUL'],
           selectedHubLocations: profile.hubLocation,
-          workgroup: ['Airport Customer Service', 'Cargo', 'Fleet Service', 'Flight', 'Flight Service', 'Leadership & Support Staff', 'Premium Guest Services', 'Reservations', 'Tech Ops'],
+          workgroup: ['Airport Customer Service', 'Cargo', 'Fleet Service', 'Flight', 'Flight Service', 'Leadership and Support Staff', 'Premium Guest Services', 'Reservations', 'Tech Ops'],
           selectedWorkgroups: profile.workgroup,
           onTopicTapped: _onTopicTapped,
           onHubLocationTapped: _onHubLocationTapped,

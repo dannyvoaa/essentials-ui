@@ -79,7 +79,7 @@ class TripSummaryTitle extends StatelessWidget {
     final text = monthText + ' ' + String.fromCharCode(0x2022) + ' ' + timeText;
     return Text(
       text,
-      style: AaeTextStyles.body14,
+      style: AaeTextStyles.subtitle15,
     );
   }
 }

@@ -8,7 +8,6 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
 class TripDetailExpandPanel extends StatelessWidget {
-
   final ReservationDetailViewModel viewModel;
   final int index;
 
@@ -16,9 +15,6 @@ class TripDetailExpandPanel extends StatelessWidget {
     this.index,
     this.viewModel,
   });
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +33,18 @@ class TripDetailExpandPanel extends StatelessWidget {
       ),
       child: Column(
         children: <Widget>[
-          DepartureStatus(index: index, viewModel: viewModel,),
-          RouteInfo(index: index, viewModel: viewModel,),
-          LocatorInfo(index: index, viewModel: viewModel,),
+          DepartureStatus(
+            index: index,
+            viewModel: viewModel,
+          ),
+          RouteInfo(
+            index: index,
+            viewModel: viewModel,
+          ),
+          LocatorInfo(
+            index: index,
+            viewModel: viewModel,
+          ),
         ],
       ),
     );
@@ -64,7 +69,7 @@ class RouteInfo extends StatelessWidget {
     var destinationAirportCode = viewModel.reservationDetail.segments[index].destinationAirportCode;
 
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.only(top: 15, bottom: 15, left: 15, right: 10),
       child: ExpandableTheme(
         data: ExpandableThemeData(
           iconColor: AaeColors.lightGray,
@@ -77,9 +82,12 @@ class RouteInfo extends StatelessWidget {
         ),
         child: Container(
           child: ExpandablePanel(
-            header: RouteSummary(index: index, viewModel: viewModel,),
+            header: RouteSummary(
+              index: index,
+              viewModel: viewModel,
+            ),
             expanded: Padding(
-              padding: const EdgeInsets.only(top:14),
+              padding: const EdgeInsets.only(top: 14),
               child: Column(
                 children: [
                   RouteDetail(
@@ -102,22 +110,32 @@ class RouteInfo extends StatelessWidget {
 
   _routeDetails(list) {
     return Padding(
-      padding: EdgeInsets.only(top:12,),
+      padding: EdgeInsets.only(
+        top: 12,
+      ),
       child: SizedBox(
         height: 58.00 * list.length,
         child: ListView.builder(
           itemCount: list.length,
           itemBuilder: (context, index) {
             return Container(
-            height: 80,
-            width: 80,
+              height: 80,
+              width: 80,
               child: RouteDetail(
-                  list.originCity + ' (' + viewModel.reservationDetail.segments[index].originAirportCode + ')',
-                  duration(viewModel.reservationDetail.segments[index].duration),
-                  overnight(viewModel.reservationDetail.segments[index].departureTimeScheduled, viewModel.reservationDetail.segments[index].arrivalTimeScheduled),
-                  viewModel.reservationDetail.segments[index].cabin ,
-                  viewModel.reservationDetail.segments[index].aircraftName,
-                  wifi(viewModel.reservationDetail.segments[index].hasWifi),
+                list.originCity +
+                    ' (' +
+                    viewModel
+                        .reservationDetail.segments[index].originAirportCode +
+                    ')',
+                duration(viewModel.reservationDetail.segments[index].duration),
+                overnight(
+                    viewModel.reservationDetail.segments[index]
+                        .departureTimeScheduled,
+                    viewModel.reservationDetail.segments[index]
+                        .arrivalTimeScheduled),
+                viewModel.reservationDetail.segments[index].cabin,
+                viewModel.reservationDetail.segments[index].aircraftName,
+                wifi(viewModel.reservationDetail.segments[index].hasWifi),
               ),
             );
           },
@@ -126,14 +144,14 @@ class RouteInfo extends StatelessWidget {
     );
   }
 
-  String duration(int minutes){
+  String duration(int minutes) {
     var hours = (minutes / 60).floor();
     var mins = minutes - (hours * 60);
     String duration = hours.toString() + 'hr ' + mins.toString() + 'min';
     return duration;
   }
 
-  Widget overnight(String departure, String arrival){
+  Widget overnight(String departure, String arrival) {
     DateTime startTime = DateTime.parse(departure);
     DateTime finishTime = DateTime.parse(arrival);
     int startDay = startTime.day;
@@ -144,19 +162,32 @@ class RouteInfo extends StatelessWidget {
     } else {
       return Row(
         children: [
-          Text('Overnight', style: AaeTextStyles.caption13MediumGray,),
-          Text(String.fromCharCode(0x2022), style: AaeTextStyles.caption13MediumGrayLS10,)
+          Text(
+            'Overnight',
+            style: AaeTextStyles.caption13MediumGray,
+          ),
+          Text(
+            String.fromCharCode(0x2022),
+            style: AaeTextStyles.caption13MediumGrayLS10,
+          )
         ],
       );
     }
   }
 
-  Widget wifi(bool hasWifi){
+  Widget wifi(bool hasWifi) {
     if (hasWifi = true) {
       return Row(
         children: [
-          Text(String.fromCharCode(0x2022), style: AaeTextStyles.caption13MediumGrayLS10,),
-          Icon(Icons.wifi, color:AaeColors.ultraLightGray, size: 12,),
+          Text(
+            String.fromCharCode(0x2022),
+            style: AaeTextStyles.caption13MediumGrayLS10,
+          ),
+          Icon(
+            Icons.wifi,
+            color: AaeColors.mediumGray,
+            size: 12,
+          ),
         ],
       );
     } else {
@@ -176,9 +207,10 @@ class RouteSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    final departureTime = viewModel.reservationDetail.segments[index].departureTimeScheduled;
-    final arrivalTime = viewModel.reservationDetail.segments[index].arrivalTimeScheduled;
+    final departureTime =
+        viewModel.reservationDetail.segments[index].departureTimeScheduled;
+    final arrivalTime =
+        viewModel.reservationDetail.segments[index].arrivalTimeScheduled;
 
     return Container(
       margin: EdgeInsets.only(
@@ -195,12 +227,11 @@ class RouteSummary extends StatelessWidget {
     );
   }
 
-  String getTime(String dateStr){
+  String getTime(String dateStr) {
     DateTime date = DateTime.parse(dateStr);
     String time = formatDate(date, [h, ':', nn, ' ', am]);
     return time;
   }
-
 }
 
 class RouteSummaryColumn extends StatelessWidget {
@@ -215,8 +246,19 @@ class RouteSummaryColumn extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(time, style:AaeTextStyles.subtitle18Med,),
-        Text(location, style: AaeTextStyles.body14),
+        Text(
+          time,
+          style: AaeTextStyles.subtitle18Med,
+        ),
+        Container(
+          padding: EdgeInsets.only(
+            top: 5,
+          ),
+          child: Text(
+            location,
+            style: AaeTextStyles.body14,
+          ),
+        ),
       ],
     );
   }
@@ -234,7 +276,9 @@ class RouteDetailEnd extends StatelessWidget {
         right: 20,
       ),
       child: Padding(
-        padding: const EdgeInsets.only(bottom:4,),
+        padding: const EdgeInsets.only(
+          bottom: 4,
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -246,7 +290,7 @@ class RouteDetailEnd extends StatelessWidget {
               padding: EdgeInsets.only(top: 0),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: AaeColors.ultraLightGray,
+                  color: AaeColors.lightGray,
                   width: 1,
                 ),
                 color: AaeColors.white100,
@@ -269,9 +313,9 @@ class RouteDetailEnd extends StatelessWidget {
     );
   }
 
-  Widget cityHub(hub, city){
+  Widget cityHub(hub, city) {
     final text = city + ' (' + hub + ')';
-    return Text(text, style:AaeTextStyles.body14);
+    return Text(text, style: AaeTextStyles.body14);
   }
 }
 
@@ -305,17 +349,35 @@ class RouteDetail extends StatelessWidget {
             children: [
               Container(child: Text(airportCode, style:AaeTextStyles.body14)),
               Padding(
-                padding: const EdgeInsets.only(top:12, bottom:12,),
+                padding: const EdgeInsets.only(
+                  top: 12,
+                  bottom: 12,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(duration, style: AaeTextStyles.caption13MediumGray,),
-                    Text(String.fromCharCode(0x2022), style: AaeTextStyles.caption13MediumGrayLS10,),
+                    Text(
+                      duration,
+                      style: AaeTextStyles.caption13MediumGray,
+                    ),
+                    Text(
+                      String.fromCharCode(0x2022),
+                      style: AaeTextStyles.caption13MediumGrayLS10,
+                    ),
                     overnight,
-                    Text(cabin, style: AaeTextStyles.caption13MediumGray,),
-                    Text(String.fromCharCode(0x2022), style: AaeTextStyles.caption13MediumGrayLS10,),
-                    Text(equipment, style: AaeTextStyles.caption13MediumGray,),
+                    Text(
+                      cabin,
+                      style: AaeTextStyles.caption13MediumGray,
+                    ),
+                    Text(
+                      String.fromCharCode(0x2022),
+                      style: AaeTextStyles.caption13MediumGrayLS10,
+                    ),
+                    Text(
+                      equipment,
+                      style: AaeTextStyles.caption13MediumGray,
+                    ),
                     wifi,
                   ],
                 ),
@@ -329,7 +391,6 @@ class RouteDetail extends StatelessWidget {
 }
 
 class CircleRoute extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -341,7 +402,7 @@ class CircleRoute extends StatelessWidget {
           padding: EdgeInsets.only(top: 20),
           decoration: BoxDecoration(
             border: Border.all(
-              color: AaeColors.ultraLightGray,
+              color: AaeColors.lightGray,
               width: 1,
             ),
             color: AaeColors.white100,
@@ -356,8 +417,10 @@ class CircleRoute extends StatelessWidget {
           child: OverflowBox(
             maxHeight: 50.0,
             child: Container(
-              padding: EdgeInsets.only(top:12,),
-              color: AaeColors.ultraLightGray,
+              padding: EdgeInsets.only(
+                top: 12,
+              ),
+              color: AaeColors.lightGray,
             ),
           ),
         ),
@@ -387,7 +450,12 @@ class LocatorInfo extends StatelessWidget {
     
     return Container(
       color: AaeColors.superUltralightGray,
-      padding: EdgeInsets.only(left:20, right:20, top:8, bottom:8,),
+      padding: EdgeInsets.only(
+        left: 16,
+        right: 16,
+        top: 8,
+        bottom: 8,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -419,7 +487,7 @@ class LocatorColumn extends StatelessWidget {
           style: AaeTextStyles.caption12GrayMed,
         ),
         Container(
-          padding: EdgeInsets.only(top:4),
+          padding: EdgeInsets.only(top: 6),
           child: Text(
             content,
             style: AaeTextStyles.subtitle15,
@@ -441,7 +509,10 @@ class DepartureStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final padding = EdgeInsets.only(left:0, right:20,);
+    final padding = EdgeInsets.only(
+      left: 0,
+      right: 20,
+    );
     return Container(
       padding: padding,
       child: Row(
@@ -450,25 +521,33 @@ class DepartureStatus extends StatelessWidget {
           Row(
             children: [
               Image(
-                image:
-                AssetImage('assets/common/american-airlines-eaagle-logo.png'),
-                height:30,
+                image: AssetImage(
+                    'assets/common/american-airlines-eaagle-logo.png'),
+                height: 30,
               ),
-              countDown(index, context,),
+              countDown(
+                index,
+                context,
+              ),
             ],
           ),
-          Text(viewModel.reservationDetail.segments.first.status, style: AaeTextStyles.caption12GreenMed,),
+          Text(
+            viewModel.reservationDetail.segments.first.status,
+            style: AaeTextStyles.caption12GreenMed,
+          ),
         ],
       ),
     );
   }
 
-  Widget countDown(index, BuildContext context){
+  Widget countDown(index, BuildContext context) {
+    final number =
+        viewModel.reservationDetail.segments[index].flightNumber.toString();
 
-    final number = viewModel.reservationDetail.segments[index].flightNumber.toString();
-
-    final scheduled = viewModel.reservationDetail.segments[index].departureTimeScheduled;
-    final actual = viewModel.reservationDetail.segments[index].departureTimeActual;
+    final scheduled =
+        viewModel.reservationDetail.segments[index].departureTimeScheduled;
+    final actual =
+        viewModel.reservationDetail.segments[index].departureTimeActual;
 
     var now = DateTime.now();
 
@@ -490,21 +569,19 @@ class DepartureStatus extends StatelessWidget {
     var hourText;
     var minuteText = remainingMinutes.toString() + ' min';
 
-    if (days > 0){
+    if (days > 0) {
       dayText = days.toString() + ' days ';
     } else {
       dayText = '';
     }
 
-    if (remainingHours > 0){
+    if (remainingHours > 0) {
       hourText = remainingHours.toString() + ' hrs ';
     } else {
       hourText = '';
     }
 
     final text = number + ' departs in ' + dayText + hourText + minuteText;
-    return Text(text, style:AaeTextStyles.caption12);
+    return Text(text, style: AaeTextStyles.caption12);
   }
 }
-
-

@@ -193,48 +193,6 @@ class AaeTextStyles {
     fontWeight: FontWeight.w600,
   );
 
-  /// TODO: REPLACE WITH title24DarkBlue140
-  static const articleH2 = TextStyle(
-    fontSize: 24.0,
-    height: 1.40,
-    fontWeight: FontWeight.w400,
-    fontFamily: _americanSans,
-    color: AaeColors.darkBlue,
-  );
-
-  /// TODO: REPLACE WITH title22DarkBlue140
-  static const articleH3 = TextStyle(
-    fontSize: 22.0,
-    height: 1.40,
-    fontWeight: FontWeight.w400,
-    fontFamily: _americanSans,
-    color: AaeColors.darkBlue,
-  );
-
-  /// TODO: REPLACE WITH title20MediumGray140
-  static const articleH4 = TextStyle(
-    fontSize: 20.0,
-    height: 1.40,
-    fontWeight: FontWeight.w400,
-    fontFamily: _americanSans,
-    color: AaeColors.mediumGray,
-  );
-
-  /// TODO: REPLACE WITH body16Reg138
-  static const articleBody = TextStyle(
-    color: AaeColors.darkGray,
-    fontFamily: _americanSans,
-    height: 1.38,
-    fontSize: 16,
-  );
-
-  /// TODO: REPLACE WITH btn14
-  static const articleButtonText = TextStyle(
-    color: AaeColors.white100,
-    fontFamily: _americanSans,
-    fontSize: 14,
-  );
-
   /// Replaces: reservationHeading
   static final title22Bold = title22.copyWith(
     fontFamily: _americanSansBold,
@@ -303,9 +261,11 @@ class AaeTextStyles {
     height: 1.40,
   );
 
+  /// Used: top header bar section titles (Travel)
   static final title20White = title20.copyWith(
     color: AaeColors.white100,
   );
+
 
   // 18px BASE title text ----------------------------------v-------------------------------------18px--
   /// 18px base font
@@ -343,6 +303,11 @@ class AaeTextStyles {
     height: 1.10,
   );
 
+  /// Replaces: newsCardHeadline
+  static final subtitle18Reg135 = subtitle18.copyWith(
+    height: 1.35,
+  );
+
   /// Replaces: tableHeaderFooter
   static final subtitle18Bold1165 = subtitle18.copyWith(
     fontFamily: _americanSansBold,
@@ -378,7 +343,7 @@ class AaeTextStyles {
     color: AaeColors.darkBlue,
   );
 
-  /// Used: Trip name in Upcoming Trip tiles
+  /// Used: Trip name in Upcoming Trip tiles, text on white buttons
   static final subtitle18Blue = subtitle18.copyWith(
     color: AaeColors.blue,
   );
@@ -553,6 +518,16 @@ class AaeTextStyles {
     color: AaeColors.mediumGray,
   );
 
+  /// Used: unselected pill tab in Int'l check in
+  static final body14DarkBlue = body14.copyWith(
+    color: AaeColors.darkBlue,
+  );
+
+  /// Used: selected pill tab in Int'l check in
+  static final body14White = body14.copyWith(
+    color: AaeColors.white100,
+  );
+
   /// Used: 15 minute boarding text on boarding pass screen
   static final body14DarkOrange = body14.copyWith(
     color: AaeColors.darkOrange,
@@ -696,6 +671,7 @@ class AaeTextStyles {
     color: AaeColors.gray,
   );
 
+  /// Used: titles for flight info in the blue box on the boarding pass screen
   static final caption12HalfwayLightGrayMed = caption12.copyWith(
     fontFamily: _americanSansMedium,
     fontWeight: FontWeight.w600,

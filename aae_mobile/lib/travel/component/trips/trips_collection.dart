@@ -55,7 +55,16 @@ class TripsCollection extends StatelessWidget {
                 width: 185,
                 height: 185,
                 decoration: BoxDecoration(
-                    shape: BoxShape.circle, color: AaeColors.white100),
+                  shape: BoxShape.circle,
+                  color: AaeColors.white100,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AaeColors.lightGray,
+                      offset: Offset(0, 2),
+                      blurRadius: 3,
+                    ),
+                  ],
+                ),
                 child: Padding(
                     padding: const EdgeInsets.only(bottom: 35),
                     child: Icon(AmericanIconsv4_6.vacation,
@@ -67,8 +76,8 @@ class TripsCollection extends StatelessWidget {
         Padding(
             padding: const EdgeInsets.only(bottom: 5),
             child: Text('All trips created in Travel Planner',
-                style: AaeTextStyles.body14Reg130)),
-        Text('will show up here.', style: AaeTextStyles.body14Reg130)
+                style: AaeTextStyles.body16)),
+        Text('will show up here.', style: AaeTextStyles.body16)
       ],
     ));
   }

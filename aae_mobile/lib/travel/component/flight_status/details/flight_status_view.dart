@@ -36,7 +36,7 @@ class FlightStatusView extends StatelessWidget {
           alignment: Alignment.topLeft,
           child: Text(
             'Flight status',
-            style: AaeTextStyles.subtitle15,
+            style: AaeTextStyles.subtitle15BlueBold,
             textAlign: TextAlign.left,
           ),
         ));

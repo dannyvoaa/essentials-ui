@@ -1,6 +1,8 @@
 import 'package:aae/model/pnr.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:aae/theme/typography.dart';
+import 'package:aae/assets/aae_icons.dart';
 
 class TripsButton extends StatelessWidget {
   TripsButton({this.pnr, this.context});
@@ -14,34 +16,43 @@ class TripsButton extends StatelessWidget {
   }
 
   _buildTripsButton(BuildContext context) {
-    return Row(children: <Widget>[
-      Expanded(
-          flex: 6,
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              '${pnr.description}',
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontSize: 18,
-                color: AaeColors.darkGray,
-              ),
-              textAlign: TextAlign.left,
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Expanded(
+          //trip name
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //record locator and pass type
+                Container(
+                  padding: const EdgeInsets.only(
+                    top: 10,
+                    bottom: 10,
+                  ),
+                  child: Text('${pnr.description}',
+                      overflow: TextOverflow.ellipsis,
+                      style: AaeTextStyles.subtitle18Blue),
+                ),
+                Text(
+                  '${pnr.recordLocator}  ' +
+                      String.fromCharCode(0x2022) +
+                      '  ${pnr.passType}',
+                  style: AaeTextStyles.subtitle15MediumGray,
+                ),
+              ],
             ),
-          )),
-      Expanded(
-        flex: 2,
-        child: Align(
-            alignment: Alignment.centerRight,
-            child: Text(
-              '${pnr.recordLocator}',
-              style: TextStyle(
-                fontSize: 15,
-                color: AaeColors.mediumGray,
-              ),
-              textAlign: TextAlign.right,
-            )),
-      ),
-    ]);
+          ),
+        ),
+        // arrow icon
+        Icon(
+          Icons.arrow_forward_ios,
+          color: AaeColors.lightGray,
+        ),
+      ],
+    );
   }
 }
+
