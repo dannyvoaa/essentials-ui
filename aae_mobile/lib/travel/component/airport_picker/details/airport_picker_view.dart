@@ -63,8 +63,8 @@ class AirportPickerView extends StatelessWidget {
     int index = viewModel.charIndexes[character];
 
     // maxScrollExtent value is inconsistent
-    // 51 and .000064 are hardcoded values that need to be adjusted if the amount of airports changes by a lot
-    double newPosition = index * (51 + (viewModel.filteredAirports.length*.00064));
+    // 51.285 is a hardcoded value that need to be adjusted if the amount of airports changes by a lot
+    double newPosition = index * 51.285;
 
     //_log.info("scrolling from ${scroller.position}. to $newPosition");
     _scroller.animateTo(newPosition,
