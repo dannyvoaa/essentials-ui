@@ -61,10 +61,13 @@ class AirportPickerView extends StatelessWidget {
       return;
 
     int index = viewModel.charIndexes[character];
-    double newPosition = index * 50.0;
+
+    // 1.53 is needed for the extra padding for the scroller position
+    double itemSize = ((_scroller.position.maxScrollExtent + (1.53 * viewModel.filteredAirports.length))/(viewModel.filteredAirports.length));
+    double newPosition = index * itemSize;
 
     //_log.info("scrolling from ${scroller.position}. to $newPosition");
-    _scroller.animateTo(index * 50.0,
+    _scroller.animateTo(newPosition,
       duration: Duration(milliseconds: 500),
       curve: Curves.fastOutSlowIn,
     );

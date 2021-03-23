@@ -14,6 +14,7 @@ import 'package:aae/model/reservation_detail.dart';
 import 'package:aae/model/check_in_passenger.dart';
 import 'package:aae/travel/component/checkin/checkin_component.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:logging/logging.dart';
@@ -96,7 +97,7 @@ class TravelServiceApi {
       return serializers.deserializeWith(PriorityList.serializer, jsonDecode(response.body));
     } else {
       throw Exception(
-          'failed to load the priority list.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
+          'failed to load the priority list.\n ${response.body} - ${response.statusCode} - ${response.headers["error-description"]}');
     }
   }
 
@@ -129,7 +130,7 @@ class TravelServiceApi {
 
     } else {
       throw Exception(
-          'failed to load the airports list.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
+          'failed to load the airports list.\n ${response.body} - ${response.statusCode} - ${response.headers["error-description"]}');
     }
   }
 
@@ -171,7 +172,7 @@ class TravelServiceApi {
       return flightSearch;
     } else {
       throw new Exception(
-          'Failed to load the flightSearch\n ${response.body} - ${response.statusCode}');
+          'Failed to load the flightSearch\n ${response.statusCode} - ${response.headers["error-description"]}');
     }
   }
 
@@ -213,7 +214,7 @@ class TravelServiceApi {
 
     } else {
       throw Exception(
-          'failed to push the check in request.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
+          'failed to push the check in request.\n ${response.body} - ${response.statusCode} - ${response.headers["error-description"]}');
     }
   }
 
@@ -242,7 +243,7 @@ class TravelServiceApi {
 
     } else {
       throw Exception(
-          'failed to load the reservation details.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
+          'failed to load the reservation details.\n ${response.body} - ${response.statusCode} - ${response.headers["error-description"]}');
     }
   }
 
@@ -273,7 +274,7 @@ class TravelServiceApi {
 
     } else {
       throw Exception(
-          'failed to load boarding passes.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
+          'failed to load boarding passes.\n ${response.body} - ${response.statusCode} - ${response.headers["error-description"]}');
     }
   }
 
