@@ -4,24 +4,33 @@ import 'package:aae/travel/component/airport_picker/details/widgets/airport_tile
 import 'package:aae/travel/component/airport_picker/details/widgets/alphabet_search_sidebar.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
 import 'airport_picker_view_model.dart';
 
 /// The view used for the [AirportPickerComponent].
-class AirportPickerView extends StatelessWidget {
+class AirportPickerView extends StatefulWidget {
   static final _log = Logger('AirportPickerView');
 
-  final AirportPickerViewModel viewModel;
-  final ScrollController _scroller = ScrollController();
-  final Function(Airport) onAirportSelected;
+  AirportPickerView(
+      {@required this.viewModel, @required this.onAirportSelected});
 
-  AirportPickerView({@required this.viewModel, this.onAirportSelected});
+  final Function(Airport) onAirportSelected;
+  final AirportPickerViewModel viewModel;
+
+  @override
+  _AirportPickerViewState createState() => _AirportPickerViewState();
+}
+
+class _AirportPickerViewState extends State<AirportPickerView> {
+//  final ScrollController _scroller = ScrollController();
+  final AutoScrollController _scroller = AutoScrollController();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         AirportPickerHeader(
-          onFilterChanged: viewModel.updateAirportFilter,
+          onFilterChanged: widget.viewModel.updateAirportFilter,
         ),
         Expanded(
           child: Row(
@@ -33,20 +42,27 @@ class AirportPickerView extends StatelessWidget {
                     bottom: MediaQuery.of(context).viewInsets.bottom,
                   ),
                   controller: _scroller,
-                  itemCount: viewModel.filteredAirports.length,
+                  itemCount: widget.viewModel.filteredAirports.length,
                   itemBuilder: (context, index) {
-                    return AirportTile(
-                        airport: viewModel.filteredAirports[index],
+                    return AutoScrollTag(
+                      key: ValueKey(index),
+                      controller: _scroller,
+                      index: index,
+                      child: AirportTile(
+                        airport: widget.viewModel.filteredAirports[index],
                         onClicked: () {
-                          if (onAirportSelected != null)
-                            onAirportSelected(viewModel.filteredAirports[index]);
+                          if (widget.onAirportSelected != null)
+                            widget.onAirportSelected(
+                                widget.viewModel.filteredAirports[index]);
                         },
+                      ),
+                      highlightColor: Colors.black.withOpacity(0.1),
                     );
                   },
                 ),
               ),
               AlphabetSearchSidebar(
-                viewModel: viewModel,
+                viewModel: widget.viewModel,
                 onScrollTo: _onScrollTo,
               )
             ],
@@ -56,20 +72,45 @@ class AirportPickerView extends StatelessWidget {
     );
   }
 
-  _onScrollTo(String character) {
-    if (viewModel == null || viewModel.charIndexes == null || !viewModel.charIndexes.containsKey(character))
-      return;
+  int counter = -1;
 
-    int index = viewModel.charIndexes[character];
+  Future _onScrollTo(String character) async {
+    int index = widget.viewModel.charIndexes[character];
+    setState(() {
+    });
 
-    // maxScrollExtent value is inconsistent
-    // 51.285 is a hardcoded value that need to be adjusted if the amount of airports changes by a lot
-    double newPosition = index * 51.285;
-
-    //_log.info("scrolling from ${scroller.position}. to $newPosition");
-    _scroller.animateTo(newPosition,
-      duration: Duration(milliseconds: 500),
-      curve: Curves.fastOutSlowIn,
-    );
+    _scroller.scrollToIndex(index,
+        duration: Duration(milliseconds: 1),
+        preferPosition: AutoScrollPosition.begin);
   }
+
+//  old scrollto logic that may be reused later on
+//  _onScrollTo(String character) {
+//    if (widget.viewModel == null ||
+//        widget.viewModel.charIndexes == null ||
+//        !widget.viewModel.charIndexes.containsKey(character)) return;
+//
+//    int index = widget.viewModel.charIndexes[character];
+//
+//    // maxScrollExtent value is inconsistent
+//    double itemSize = (_scroller.position.maxScrollExtent /
+//        widget.viewModel.filteredAirports.length);
+//    print(_scroller.position.maxScrollExtent);
+//    print(widget.viewModel.filteredAirports.length);
+//    print(itemSize);
+//    print(index);
+//
+//    double newPosition = index * itemSize;
+//
+//    //970 : 32 = 30.3125
+//    //2030 : 67 = 30.2985
+//    // 7395 / 244 = 30.3073
+//
+//    //_log.info("scrolling from ${scroller.position}. to $newPosition");
+//    _scroller.animateTo(
+//      newPosition,
+//      duration: Duration(milliseconds: 500),
+//      curve: Curves.fastOutSlowIn,
+//    );
+//  }
 }
