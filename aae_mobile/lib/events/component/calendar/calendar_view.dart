@@ -155,7 +155,7 @@ class CalendarView extends StatelessWidget {
               thisYear == viewModel.datePage.year
           ? AaeTextStyles.body16Gray
           : day == viewModel.selectedDate
-              ? TextStyle(color: AaeColors.white100)
+              ? AaeTextStyles.body16WhiteMed
               : AaeTextStyles.body16;
       return result;
     }
@@ -246,7 +246,7 @@ class CalendarView extends StatelessWidget {
                     Expanded(
                       child: Container(),
                     ),
-                    Text(stringDay, style: formatDay(stringDay)),
+                      Text(stringDay, style: formatDay(stringDay)),
                     Expanded(
                       child: viewModel.daysWithEvents
                               .contains(int?.tryParse(stringDay))
@@ -357,8 +357,8 @@ class CalendarView extends StatelessWidget {
               color: AaeColors.lightGray,
 //              color: AaeColors.lightGray,
               offset: Offset(0.2, 2),
-              blurRadius: 4,
-              spreadRadius: 2,
+              blurRadius: 2,
+              spreadRadius: 1.2,
             ),
           ],
         ),

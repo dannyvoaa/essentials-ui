@@ -262,9 +262,17 @@ class AaeTextStyles {
   );
 
   /// Used: top header bar section titles (Travel)
+  static final title20WhiteMed = title20.copyWith(
+    fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
+    color: AaeColors.white100,
+  );
+
+  /// Used: top header bar section titles (Travel)
   static final title20White = title20.copyWith(
     color: AaeColors.white100,
   );
+
 
 
   // 18px BASE title text ----------------------------------v-------------------------------------18px--
@@ -415,6 +423,13 @@ class AaeTextStyles {
     fontWeight: FontWeight.w600,
     color: AaeColors.white100,
     height: 1.25,
+  );
+
+  /// Used: selected dates in the calendar
+  static final body16WhiteMed = body16.copyWith(
+    fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
+    color: AaeColors.white100,
   );
 
   /// Replaces: headline
