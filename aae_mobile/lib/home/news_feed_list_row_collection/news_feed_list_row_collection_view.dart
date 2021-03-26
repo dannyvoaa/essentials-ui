@@ -29,7 +29,7 @@ _buildRow(NewsFeedListRowCollectionViewModel viewModel, index) {
           child: _buildRowHeader(viewModel, index),
         ),
         Container(
-          height: 310,
+          height: 330,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: viewModel.newsFeedItemIds.length,

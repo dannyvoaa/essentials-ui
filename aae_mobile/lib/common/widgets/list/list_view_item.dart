@@ -105,6 +105,7 @@ class ListViewItem extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 14.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: children,
         ),
       ),
@@ -115,7 +116,7 @@ class ListViewItem extends StatelessWidget {
     final String textUpdate = (text.replaceAll(new RegExp(r'\\'),''));
     return Padding(
       padding: const EdgeInsets.only(
-        top: 6.0,
+        top: 18.0,
         bottom: 0.0,
       ),
       child: Text(
@@ -129,32 +130,34 @@ class ListViewItem extends StatelessWidget {
 
   static Widget _buildShortBody(
       BuildContext context, String body, author, date) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(bottom: 8.0, top: 6.0),
-          child: Text(
-              body,
-              style: AaeTextStyles.body14Reg143,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(top:8
-          ),
-          child: Text(
-            author,
-//            'September 22, 2020',
-            style: TextStyle(
-              color: AaeColors.mediumGray,
-              fontSize: 13,
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0, top: 6.0),
+            child: Text(
+                body,
+                style: AaeTextStyles.body14Reg143,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
             ),
           ),
-        ),
-      ],
+          Padding(
+            padding: EdgeInsets.only(bottom:18
+            ),
+            child: Text(
+              author,
+//            'September 22, 2020',
+              style: TextStyle(
+                color: AaeColors.mediumGray,
+                fontSize: 13,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
