@@ -17,9 +17,10 @@ class TripsBloc {
   final TravelRepository _travelRepository;
 
   Source<TripsViewModel> get viewModel {
-    if (_travelRepository.cachedAirports == null) {
-      _travelRepository.loadAirports();
-    }
+    // retrieve airport and country information (only if not already cached locally).
+    _travelRepository.loadAirports();
+    _travelRepository.loadCountries();
+
     _travelRepository.fetchTrips();
 
     return toSource(combineLatest(_travelRepository.pnrs, _createViewModel));

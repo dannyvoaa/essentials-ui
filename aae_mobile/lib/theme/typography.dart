@@ -346,14 +346,13 @@ class AaeTextStyles {
     color: AaeColors.gray,
   );
 
+  static final subtitle18Blue = subtitle18.copyWith(
+    color: AaeColors.blue,
+  );
+
   /// Replaces: textFieldModern
   static final subtitle18DarkBlue = subtitle18.copyWith(
     color: AaeColors.darkBlue,
-  );
-
-  /// Used: Trip name in Upcoming Trip tiles, text on white buttons
-  static final subtitle18Blue = subtitle18.copyWith(
-    color: AaeColors.blue,
   );
 
   /// Replaces: largeTextStyleSeatAssigned

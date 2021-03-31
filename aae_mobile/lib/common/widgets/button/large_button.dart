@@ -4,27 +4,30 @@ import 'package:aae/theme/typography.dart';
 import 'package:flutter/material.dart';
 
 class LargeButton extends StatelessWidget {
-  // Setup any required variables
+  // configurable values
   final bool boolEnabled;
   final String stringTitle;
   final void Function() onTapAction;
 
-  // Initialize the widget
-  LargeButton(
-      {this.stringTitle = 'Button', this.onTapAction, this.boolEnabled = true});
+  // internally used variables
+  final Color colorBackground;
+  final Color colorHighlight;
+  final TextStyle styleText;
+
+  LargeButton.primary(
+      {this.stringTitle = 'Button', this.onTapAction, this.boolEnabled = true})
+      : colorBackground = AaeColors.blue,
+        colorHighlight = AaeColors.blue,
+        styleText = AaeTextStyles.subtitle18White;
+
+  LargeButton.secondary(
+      {this.stringTitle = 'Button', this.onTapAction, this.boolEnabled = true})
+      : colorBackground = Colors.white,
+        colorHighlight = AaeColors.blue,
+        styleText = AaeTextStyles.subtitle18Blue;
 
   @override
   Widget build(BuildContext context) {
-    // Setup any required variables
-    Color colorBackground;
-    Color colorHighlight;
-    TextStyle styleText;
-
-    // Use the Light Blue color theme
-    colorBackground = AaeColors.blue;
-    colorHighlight = AaeColors.blue;
-    styleText = AaeTextStyles.btn18;
-
     return FlatButton(
       child: Text(
         stringTitle,
@@ -35,6 +38,9 @@ class LargeButton extends StatelessWidget {
       highlightColor: colorHighlight,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AaeDimens.roundedCorner),
+        side: BorderSide(
+          color: AaeColors.blue,
+        )
       ),
       splashColor: Colors.transparent,
       onPressed: this.boolEnabled

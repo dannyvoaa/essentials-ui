@@ -7,6 +7,7 @@ import 'package:aae/rxdart/rx.dart';
 import 'package:aae/travel/component/checkin/checkin_component.dart';
 import 'package:aae/travel/component/checkin/checkin_view_model.dart';
 import 'package:aae/travel/repository/travel_repository.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:inject/inject.dart';
 import 'package:logging/logging.dart';
 
@@ -20,6 +21,7 @@ class CheckInBloc {
   final TravelRepository _travelRepository;
   String pnr;
   Set<int> travelerIdsForCheckIn = {};
+  ReservationDetail reservation;
 
   Observable<ReservationDetail> _dummyPriorityListObservable;
 
@@ -34,8 +36,14 @@ class CheckInBloc {
   }
 
   void onNewReservationData(ReservationDetail reservation){
-    if (reservation == null) return;
+    if (reservation == null) {
+      pnr = null;
+      this.reservation = null;
+      return;
+    }
+
     pnr = reservation.recordLocator;
+    this.reservation = reservation;
     travelerIdsForCheckIn.clear();
     for (ReservationDetailPassenger traveler in reservation.passengers){
       travelerIdsForCheckIn.add(traveler.nrsTravelerId);
@@ -43,12 +51,29 @@ class CheckInBloc {
   }
 
   void loadReservationDetail(String pnr) {
-    _travelRepository.loadReservationDetail(pnr);
+    _travelRepository.loadReservationDetail(pnr, false);
     _log.info(travelerIdsForCheckIn);
   }
 
   void performCheckIn(){
-    _travelRepository.performCheckIn(CheckInArguments(pnr: pnr, travelerIds: travelerIdsForCheckIn));
+    _travelRepository.performCheckIn(CheckInArguments(
+      pnr: pnr,
+      passengers: _buildSelectedPassengersList(),
+    ));
+  }
+
+  BuiltList<ReservationDetailPassenger> _buildSelectedPassengersList() {
+    if (reservation == null || reservation.passengers == null || travelerIdsForCheckIn == null)
+      return null;
+
+    ListBuilder<ReservationDetailPassenger> passengers = ListBuilder<ReservationDetailPassenger>();
+    for(ReservationDetailPassenger currPassenger in reservation.passengers) {
+      if (travelerIdsForCheckIn.contains(currPassenger.nrsTravelerId)) {
+        passengers.add(currPassenger);
+      }
+    }
+
+    return passengers.build();
   }
 
   void setTravelerForCheckIn(int travelerId){

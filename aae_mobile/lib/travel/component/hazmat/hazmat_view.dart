@@ -1,24 +1,18 @@
 import 'package:aae/assets/aae_icons.dart';
-import 'package:aae/common/widgets/drawer/aae_drawer.dart';
-import 'package:aae/navigation/app_scaffold.dart';
-import 'package:aae/theme/typography.dart';
-import 'package:aae/travel/component/trips/trips_collection.dart';
-import 'package:flutter/material.dart';
-import 'package:aae/travel/component/checkin/checkin_view_model.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_html/style.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:aae/theme/typography.dart';
+import 'package:aae/travel/component/checkin/checkin_view_model.dart';
+import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'checkin_commit_button.dart';
+import '../checkin/widgets/checkin_commit_button.dart';
 
-class ConfirmCard extends StatelessWidget {
+class HazmatView extends StatelessWidget {
   final CheckInViewModel viewModel;
   final Function onAgreeButtonClicked;
 
-  ConfirmCard({this.viewModel, this.onAgreeButtonClicked});
+  HazmatView({this.viewModel, this.onAgreeButtonClicked});
 
   @override
   Widget build(BuildContext context) {
@@ -114,10 +108,7 @@ class ConfirmCard extends StatelessWidget {
                               style: AaeTextStyles.body14RegLink,
                             ),
                             Padding(
-                              padding: EdgeInsets.only(
-                                bottom: 10,
-                                left: 3,
-                              ),
+                              padding: EdgeInsets.only(bottom:10,left:3,),
                               child: Icon(
                                 AmericanIconsv4_6.newPage,
                                 size: 12,
@@ -177,14 +168,12 @@ class ConfirmCard extends StatelessWidget {
                   child: Container(
                     child: CheckInButton(
                       onClicked: () {
-//                        print('Check in button on haz mat popup pressed...');
-                        Navigator.of(context).pop();
-                        onAgreeButtonClicked();
+                        print('Check in button on haz mat popup pressed...');
                         viewModel.performCheckIn();
-//                        Navigator.popAndPushNamed(context, '/boardingpass');
-//                        Navigator.of(context).pushNamed(
-//                          '/boardingpass',
-//                        );
+
+                        Navigator.of(context).pop();
+                        if (onAgreeButtonClicked != null)
+                          onAgreeButtonClicked();
                       },
                     ),
                   ),

@@ -1,15 +1,6 @@
-import 'package:aae/common/widgets/drawer/aae_drawer.dart';
-import 'package:aae/navigation/app_scaffold.dart';
-import 'package:aae/theme/typography.dart';
-import 'package:aae/travel/component/trips/trips_collection.dart';
-import 'package:flutter/material.dart';
-import 'package:aae/travel/component/checkin/checkin_view_model.dart';
-import 'package:aae/travel/component/checkin/widgets/checkin_confirm_card.dart';
 import 'package:aae/theme/colors.dart';
-import 'package:aae/theme/dimensions.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_html/style.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:aae/theme/typography.dart';
+import 'package:flutter/material.dart';
 
 class CheckInButton extends StatelessWidget {
   final Function onClicked;

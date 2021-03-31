@@ -3,6 +3,7 @@ library check_in_request;
 import 'dart:convert';
 
 import 'package:aae/model/check_in_passenger.dart';
+import 'package:aae/model/reservation_detail_passenger.dart';
 import 'package:aae/model/serializers.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
@@ -23,7 +24,7 @@ abstract class CheckInRequest implements Built<CheckInRequest, CheckInRequestBui
   String get employeeId;
 
   @BuiltValueField(wireName: 'passengers')
-  BuiltList<CheckInPassenger> get passengers;
+  BuiltList<ReservationDetailPassenger> get passengers;
 
   String toJson() {
     return json

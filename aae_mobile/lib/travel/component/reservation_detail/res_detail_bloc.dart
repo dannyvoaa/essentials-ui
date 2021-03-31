@@ -29,7 +29,7 @@ class ReservationDetailBloc {
   ReservationDetailBloc(this._travelRepository);
 
   void loadReservationDetail(String pnr) {
-    _travelRepository.loadReservationDetail(pnr);
+    _travelRepository.loadReservationDetail(pnr, true);
   }
 
   ReservationDetailViewModel _createViewModel(
