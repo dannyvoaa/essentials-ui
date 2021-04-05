@@ -52,10 +52,10 @@ class TravelTopBarState extends State<TravelTopBar> {
         centerTitle: false,
         title: !_canPopTravelPage()
             ? Padding(
-                padding: EdgeInsets.only(top: 4),
+                padding: EdgeInsets.only(top: 4,),
                 child: Text(
                   'Travel',
-                  style: AaeTextStyles.title20White,
+                  style: AaeTextStyles.title20WhiteMed,
                 ))
             : Transform(
                 transform: Matrix4.translationValues(-11.5, 0.0, 0.0),
@@ -71,6 +71,7 @@ class TravelTopBarState extends State<TravelTopBar> {
               isScrollable: true,
               indicatorColor: AaeColors.orange,
               indicatorSize: TabBarIndicatorSize.tab,
+              indicatorWeight: 5.0, //increased from 2
             ),
           ),
         ),

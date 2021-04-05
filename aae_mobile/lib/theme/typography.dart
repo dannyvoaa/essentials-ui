@@ -171,6 +171,11 @@ class AaeTextStyles {
     height: 1.40,
   );
 
+  /// Used: For forward/back arrows in the PL and BP headers
+  static final title24Gray = title24.copyWith(
+    color: AaeColors.gray,
+  );
+
   // 22px BASE title text ---------------------------------v--------------------------------------22px--
   /// 22px base font
   static const TextStyle title22 = TextStyle(
@@ -261,18 +266,17 @@ class AaeTextStyles {
     height: 1.40,
   );
 
+  /// Used: currently not used anywhere
+  static final title20White = title20.copyWith(
+    color: AaeColors.white100,
+  );
+
   /// Used: top header bar section titles (Travel)
   static final title20WhiteMed = title20.copyWith(
     fontFamily: _americanSansMedium,
     fontWeight: FontWeight.w600,
     color: AaeColors.white100,
   );
-
-  /// Used: top header bar section titles (Travel)
-  static final title20White = title20.copyWith(
-    color: AaeColors.white100,
-  );
-
 
 
   // 18px BASE title text ----------------------------------v-------------------------------------18px--

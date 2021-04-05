@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:aae/assets/aae_icons.dart';
 import 'package:aae/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:aae/theme/typography.dart';
 
 class AirportPickerHeader extends StatelessWidget {
   final _Debouncer _debouncer = _Debouncer();
@@ -22,17 +23,12 @@ class AirportPickerHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 8.0),
+                padding: const EdgeInsets.only(left: 8.0, bottom: 3.0,),
                 child: Text(
-                  "Select airport",
-                  style: TextStyle(
-                    fontSize: 21,
-                    color: const Color(0xff627a88),
-                    fontFamily: 'AmericanSans Medium',
-                    fontWeight: FontWeight.w500,
+                  "City/airport search",
+                  style: AaeTextStyles.title20MediumGrayMed,
                   )
                 ),
-              ),
               InkWell(
                 onTap: () {
                   Navigator.of(context).pop();
@@ -83,7 +79,6 @@ class AirportPickerHeader extends StatelessWidget {
                     ),
                   ),
                   border: InputBorder.none,
-                  hintText: 'City/airport search',
               ),
             ),
           )
