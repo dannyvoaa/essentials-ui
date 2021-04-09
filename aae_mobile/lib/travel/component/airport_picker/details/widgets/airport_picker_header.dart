@@ -30,9 +30,11 @@ class AirportPickerHeader extends StatelessWidget {
                   )
                 ),
               InkWell(
+
                 onTap: () {
                   Navigator.of(context).pop();
                 },
+
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Icon(
@@ -58,6 +60,7 @@ class AirportPickerHeader extends StatelessWidget {
               color: AaeColors.white100,
             ),
             child: TextField(
+              autofocus:true,
               onChanged: (filter) {
                 // this will ensure that the filter action is only performed
                 // after the user has stopped typing for 500ms
