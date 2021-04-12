@@ -30,7 +30,10 @@ class TripsNavigator extends StatelessWidget {
             break;
           case '/results':
             ReservationDetailArguments args = settings.arguments;
-            builder = (_) => ReservationDetailComponent.from(args);
+            builder = (_) => ReservationDetailComponent.from(
+                  args,
+                  loadBoardingPasses: loadBoardingPasses,
+                );
             break;
           case '/checkin':
             builder = (_) => CheckInComponent();
@@ -38,12 +41,13 @@ class TripsNavigator extends StatelessWidget {
           case '/internationalDetails':
             InternationalDetailsArgs args = settings.arguments;
             builder = (_) => InternationalDetailsComponent.from(
-              args,
-              onCompleted: onInternationalDetailsComplete,
-            );
+                  args,
+                  onCompleted: onInternationalDetailsComplete,
+                );
             break;
           case '/boardingpass':
-            builder = (_) => BoardingPassComponent();
+            BoardingPassArguments args = settings.arguments;
+            builder = (_) => BoardingPassComponent.from(args);
             break;
           default:
             throw Exception('Invalid route: ${settings.name}');
@@ -67,12 +71,31 @@ class TripsNavigator extends StatelessWidget {
     refreshTopBar(context);
   }
 
-  void onInternationalDetailsComplete(BuildContext context) {
-    HazmatComponent.showAsModalBottomSheet(
-      context,
-      onAgreeButtonClicked: () {
-        Navigator.of(context).pushNamed('/boardingpass');
-      }
-    );
+  void onInternationalDetailsComplete(BuildContext context, String pnr) {
+    HazmatComponent.showAsModalBottomSheet(context, onAgreeButtonClicked: () {
+      Navigator.of(context).pushNamed(
+        '/boardingpass',
+        arguments: BoardingPassArguments(
+          pnr: pnr,
+          forceRefresh: false,
+        ),
+      ).then((value) => refreshTopBar(context));
+      refreshTopBar(context);
+    });
+  }
+
+  void loadBoardingPasses(BuildContext context, String pnr, bool forceRefresh) {
+    _log.info("loadBoardingPasses(pnr: '$pnr')");
+
+    Navigator.of(context)
+        .pushNamed(
+          '/boardingpass',
+          arguments: BoardingPassArguments(
+            pnr: pnr,
+            forceRefresh: false,
+          ),
+        )
+        .then((value) => refreshTopBar(context));
+    refreshTopBar(context);
   }
 }

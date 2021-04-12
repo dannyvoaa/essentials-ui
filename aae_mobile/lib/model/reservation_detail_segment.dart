@@ -8,6 +8,7 @@ import 'package:built_value/built_value.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:aae/model/reservation_detail_seat_assignment.dart';
+import 'package:aae/model/reservation_detail_passenger_info.dart';
 
 part 'reservation_detail_segment.g.dart';
 
@@ -110,6 +111,9 @@ abstract class ReservationDetailSegment implements Built<ReservationDetailSegmen
 
   @BuiltValueField(wireName: 'status')
   String get status;
+
+  @BuiltValueField(wireName: 'passengerInfo')
+  BuiltList<ReservationDetailPassengerInfo> get passengerInfo;
 
   @BuiltValueField(wireName: 'seatAssignments')
   BuiltList<ReservationDetailSeatAssignment> get seatAssignments;

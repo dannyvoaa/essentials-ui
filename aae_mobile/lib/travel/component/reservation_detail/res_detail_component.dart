@@ -17,13 +17,16 @@ class ReservationDetailArguments{
 /// Ties together [ReservationDetailBloc] and [ReservationView].
 class ReservationDetailComponent extends StatelessWidget {
   final String pnr;
+  final Function(BuildContext, String, bool) loadBoardingPasses;
 
   ReservationDetailComponent({
     @required this.pnr,
+    this.loadBoardingPasses,
   });
 
-  ReservationDetailComponent.from(ReservationDetailArguments args):
-        this.pnr = args.pnr;
+  ReservationDetailComponent.from(ReservationDetailArguments args, {loadBoardingPasses}):
+        this.pnr = args.pnr,
+        this.loadBoardingPasses = loadBoardingPasses;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +41,7 @@ class ReservationDetailComponent extends StatelessWidget {
           source: bloc.viewModel,
           builder: (snapshot) {
             if (snapshot.present && snapshot.value != null && snapshot.value.reservationDetail != null) {
-              return ReservationView(viewModel: snapshot.value);
+              return ReservationView(viewModel: snapshot.value, loadBoardingPasses: loadBoardingPasses);
             } else {
               return Center(child: AaeLoadingSpinner());
             }

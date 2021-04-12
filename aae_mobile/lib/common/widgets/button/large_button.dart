@@ -34,13 +34,11 @@ class LargeButton extends StatelessWidget {
         style: styleText,
       ),
       color: colorBackground,
-      disabledColor: colorBackground.withOpacity(0.60),
+      // disabledColor: AaeColors.disabledBlue,
+      disabledColor: colorBackground.withOpacity(0.25),
       highlightColor: colorHighlight,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AaeDimens.roundedCorner),
-        side: BorderSide(
-          color: AaeColors.blue,
-        )
       ),
       splashColor: Colors.transparent,
       onPressed: this.boolEnabled

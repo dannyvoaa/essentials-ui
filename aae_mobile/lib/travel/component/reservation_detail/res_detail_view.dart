@@ -1,5 +1,4 @@
-import 'package:aae/theme/colors.dart';
-import 'package:aae/theme/typography.dart';
+import 'package:aae/common/widgets/button/large_button.dart';
 import 'package:aae/travel/component/reservation_detail/res_detail_view_model.dart';
 import 'package:aae/travel/component/reservation_detail/widgets/res_detail_cancel_slider.dart';
 import 'package:aae/travel/component/reservation_detail/widgets/res_detail_divider.dart';
@@ -11,10 +10,20 @@ import 'package:flutter/material.dart';
 
 class ReservationView extends StatelessWidget {
   final ReservationDetailViewModel viewModel;
+  final Function(BuildContext, String, bool) loadBoardingPasses;
 
   ReservationView({
     this.viewModel,
+    this.loadBoardingPasses,
   });
+
+  bool _boardingPassAvailable() {
+    var segments = viewModel.reservationDetail.segments;
+    if (segments.asList().any((element) => element.passengerInfo.asList().any((e) => e.checkedIn == true))) {
+      return true;
+    }
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +48,26 @@ class ReservationView extends StatelessWidget {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: viewModel.reservationDetail.segments.length,
-                  separatorBuilder: (BuildContext context, int index) =>
-                      StopDivider(index: index, viewModel: viewModel),
+                  separatorBuilder: (BuildContext context, int index) => StopDivider(index: index, viewModel: viewModel),
                   itemBuilder: (context, index) {
                     return TripDetailExpandPanel(
                       index: index,
                       viewModel: viewModel,
+                    );
+                  },
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: 20,
+                ),
+                width: double.infinity,
+                child: LargeButton.primary(
+                  boolEnabled: true,
+                  stringTitle: 'Check in',
+                  onTapAction: () {
+                    Navigator.of(context).pushNamed(
+                      '/checkin',
                     );
                   },
                 ),
@@ -55,7 +78,18 @@ class ReservationView extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(top:16),
+                padding: EdgeInsets.symmetric(
+                  vertical: 20,
+                ),
+                width: double.infinity,
+                child: LargeButton.primary(
+                  boolEnabled: _boardingPassAvailable(),
+                  stringTitle: 'Boarding pass',
+                  onTapAction: () => loadBoardingPasses(context, this.viewModel.reservationDetail.recordLocator, true),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(top: 16),
                 child: TripsCollection(viewModel: null, header: 'Tools'),
               ),
               Container(

@@ -27,6 +27,7 @@ import 'package:aae/model/reservation_detail.dart';
 import 'package:aae/model/reservation_detail_passenger.dart';
 import 'package:aae/model/reservation_detail_seat_assignment.dart';
 import 'package:aae/model/reservation_detail_segment.dart';
+import 'package:aae/model/reservation_detail_passenger_info.dart';
 import 'package:aae/model/stock_stats.dart';
 import 'package:aae/model/stockdocs.dart';
 import 'package:aae/model/topics.dart';
@@ -64,6 +65,7 @@ part 'serializers.g.dart';
   ReservationDetailPassenger,
   ReservationDetailSegment,
   ReservationDetailSeatAssignment,
+  ReservationDetailPassengerInfo,
   CheckInRequest,
   CheckInPassenger,
   FlightStatus,

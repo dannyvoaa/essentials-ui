@@ -300,7 +300,7 @@ class _CalendarViewState extends State<CalendarView> {
       alignment: Alignment.centerLeft,
       child: Text(
         stringSelectedDate,
-        style: AaeTextStyles.body14,
+        style: AaeTextStyles.body16,
       ),
       color: AaeColors.white100,
       margin: EdgeInsets.only(

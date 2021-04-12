@@ -23,7 +23,7 @@ class CheckInNavButton extends StatelessWidget {
           color: AaeColors.blue,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.0),),
           onPressed: () {
-            print('Check in button a res detail page pressed...');
+            print('Check in button on res detail page pressed...');
             InternationalDetailsComponent.routeTo(context,
               pnr: viewModel.reservationDetail.recordLocator,
             );

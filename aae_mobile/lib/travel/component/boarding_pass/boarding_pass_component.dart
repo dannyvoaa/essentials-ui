@@ -11,28 +11,32 @@ class BoardingPassArguments {
   final bool forceRefresh;
 
   BoardingPassArguments({
-    @required this.pnr,
-    @required this.forceRefresh,
+    this.pnr,
+    this.forceRefresh,
   });
 }
 
 /// Ties together [BoardingPassBloc] and [BoardingPassView].
 class BoardingPassComponent extends StatelessWidget {
-//  final String pnr;
-//
-//  BoardingPassComponent({
-//    @required this.pnr,
-//  });
+  final String pnr;
+  final bool forceRefresh;
 
-//  BoardingPassComponent.from(BoardingPassArguments args):
-//        this.pnr = args.pnr;
+  BoardingPassComponent({
+    @required this.pnr,
+    this.forceRefresh,
+  });
+
+  BoardingPassComponent.from(BoardingPassArguments args) : this.pnr = args.pnr, this.forceRefresh = args.forceRefresh;
 
   @override
   Widget build(BuildContext context) {
     return Component<BoardingPassBloc, BoardingPassBlocFactory>(
       bloc: (factory) => factory.boardingPassBloc(),
       builder: (context, bloc) {
-//        bloc.loadBoardingPasses(pnr: this.pnr, forceRefresh: false);
+        if (this.pnr != null){
+          bloc.loadBoardingPasses(pnr: this.pnr, forceRefresh: forceRefresh);
+        }
+
         return SourceBuilder.of<BoardingPassViewModel>(
           source: bloc.viewModel,
           builder: (snapshot) {

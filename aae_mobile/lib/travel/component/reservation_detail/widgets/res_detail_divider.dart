@@ -56,7 +56,7 @@ class StopDivider extends StatelessWidget {
       lineLength: double.infinity,
       lineThickness: 1.0,
       dashLength: 4.0,
-      dashColor: AaeColors.darkOrange,
+      dashColor: AaeColors.mediumGray,
       dashRadius: 0.0,
       dashGapLength: 4.0,
       dashGapColor: Colors.transparent,

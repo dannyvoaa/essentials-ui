@@ -21,7 +21,7 @@ class InternationalDetailsComponent extends StatelessWidget {
   final String pnr;
   final int travelerIndex;
 
-  final Function(BuildContext) onCompleted;
+  final Function(BuildContext, String) onCompleted;
 
   InternationalDetailsComponent({@required this.pnr, this.travelerIndex = 0, this.onCompleted});
 

@@ -16,7 +16,7 @@ import 'international_details_view_model.dart';
 class InternationalDetailsView extends StatefulWidget {
   final InternationalDetailsViewModel viewModel;
   final Map<String, Country> countries;
-  final Function(BuildContext) onCompleted;
+  final Function(BuildContext, String) onCompleted;
 
   InternationalDetailsView({this.viewModel, this.onCompleted}):
         this.countries = viewModel.countries;
@@ -89,7 +89,7 @@ class _InternationalDetailsViewState
       );
     } else {
       _log.info("international details review complete");
-      widget.onCompleted(context);
+      widget.onCompleted(context, widget.viewModel.recordLocator);
     }
   }
 
@@ -114,10 +114,8 @@ class _InternationalDetailsViewState
         currentMode = InternationalDetailsEditMode.readOnly;
         _initPassengerData();
       });
-
       return false;
     }
-
     return true;
   }
 
