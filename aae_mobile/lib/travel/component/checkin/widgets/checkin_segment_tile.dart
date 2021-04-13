@@ -58,33 +58,4 @@ class CheckInSegmentTile extends StatelessWidget {
       ),
     );
   }
-
-
-
-
-
-  buildCheckinRequest() {
-    List<CheckInPassenger> passengers;
-
-    for(ReservationDetailPassenger currPassenger in viewModel.reservationDetail.passengers) {
-      var passenger = CheckInPassenger((b) => b
-          ..nrsTravelerId = currPassenger.nrsTravelerId
-      );
-
-      //if (selected) {
-        passengers.add(passenger);
-      //}
-    }
-
-    CheckInRequest request = CheckInRequest((b) => b
-        ..pnr = viewModel.reservationDetail.recordLocator
-        ..passengers = BuiltList<CheckInPassenger>([
-          ...passengers
-        ]).toBuilder()
-    );
-
-
-  }
-
-
 }

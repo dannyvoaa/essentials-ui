@@ -1,10 +1,11 @@
+import 'package:aae/travel/component/boarding_pass/boarding_pass_component.dart';
+import 'package:aae/travel/component/checkin/checkin_component.dart';
+import 'package:aae/travel/component/hazmat/hazmat_component.dart';
+import 'package:aae/travel/component/international_details/international_details_component.dart';
+import 'package:aae/travel/component/reservation_detail/res_detail_component.dart';
+import 'package:aae/travel/component/trips/trips_component.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
-
-import 'package:aae/travel/component/trips/trips_component.dart';
-import 'package:aae/travel/component/reservation_detail/res_detail_component.dart';
-import 'package:aae/travel/component/checkin/checkin_component.dart';
-import 'package:aae/travel/component/boarding_pass/boarding_pass_component.dart';
 
 class TripsNavigator extends StatelessWidget {
   static final _log = Logger('ReservationDetailView');
@@ -21,7 +22,6 @@ class TripsNavigator extends StatelessWidget {
       initialRoute: '/',
       onGenerateRoute: (RouteSettings settings) {
         WidgetBuilder builder;
-        ReservationDetailArguments args = settings.arguments;
         switch (settings.name) {
           case '/':
             builder = (_) => TripsComponent(
@@ -29,13 +29,25 @@ class TripsNavigator extends StatelessWidget {
                 );
             break;
           case '/results':
-            builder = (_) => ReservationDetailComponent.from(args);
+            ReservationDetailArguments args = settings.arguments;
+            builder = (_) => ReservationDetailComponent.from(
+                  args,
+                  loadBoardingPasses: loadBoardingPasses,
+                );
             break;
           case '/checkin':
             builder = (_) => CheckInComponent();
             break;
+          case '/internationalDetails':
+            InternationalDetailsArgs args = settings.arguments;
+            builder = (_) => InternationalDetailsComponent.from(
+                  args,
+                  onCompleted: onInternationalDetailsComplete,
+                );
+            break;
           case '/boardingpass':
-            builder = (_) => BoardingPassComponent();
+            BoardingPassArguments args = settings.arguments;
+            builder = (_) => BoardingPassComponent.from(args);
             break;
           default:
             throw Exception('Invalid route: ${settings.name}');
@@ -59,5 +71,31 @@ class TripsNavigator extends StatelessWidget {
     refreshTopBar(context);
   }
 
+  void onInternationalDetailsComplete(BuildContext context, String pnr) {
+    HazmatComponent.showAsModalBottomSheet(context, onAgreeButtonClicked: () {
+      Navigator.of(context).pushNamed(
+        '/boardingpass',
+        arguments: BoardingPassArguments(
+          pnr: pnr,
+          forceRefresh: false,
+        ),
+      ).then((value) => refreshTopBar(context));
+      refreshTopBar(context);
+    });
+  }
 
+  void loadBoardingPasses(BuildContext context, String pnr, bool forceRefresh) {
+    _log.info("loadBoardingPasses(pnr: '$pnr')");
+
+    Navigator.of(context)
+        .pushNamed(
+          '/boardingpass',
+          arguments: BoardingPassArguments(
+            pnr: pnr,
+            forceRefresh: false,
+          ),
+        )
+        .then((value) => refreshTopBar(context));
+    refreshTopBar(context);
+  }
 }

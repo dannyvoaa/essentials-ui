@@ -13,6 +13,7 @@ import 'package:aae/navigation/routes.dart' as routes;
 import 'package:aae/provided_service.dart';
 import 'package:aae/service_provider.dart';
 import 'package:aae/sign_in/workflow/sign_in_workflow.dart';
+import 'package:aae/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
@@ -75,7 +76,10 @@ class Aae extends StatelessWidget {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'AmericanSans'),
+      theme: ThemeData(
+        fontFamily: 'AmericanSans',
+        primaryColor: AaeColors.blue,
+      ),
       title: 'American Essentials',
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,

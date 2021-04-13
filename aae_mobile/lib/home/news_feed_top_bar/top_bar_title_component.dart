@@ -39,6 +39,7 @@ class TopBarTitleComponent extends StatelessWidget {
 
 /// Top Bar Title that shows the current user's name.
 /// Shown in the news feed top bar
+/// Make sure any changes to the text are done for each section title header
 class _TopBarTitleView extends StatelessWidget {
   final TopBarTitleViewModel viewModel;
 
@@ -68,7 +69,7 @@ class _TopBarTitleView extends StatelessWidget {
     return Text(
       "Good ${greeting()}, ${(viewModel.displayName).titleCase}",
       textAlign: TextAlign.left,
-      style: AaeTextStyles.title20White,
+      style: AaeTextStyles.title20WhiteMed,
     );
   }
 }

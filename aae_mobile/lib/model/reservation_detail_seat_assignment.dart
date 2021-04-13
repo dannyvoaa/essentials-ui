@@ -14,12 +14,20 @@ abstract class ReservationDetailSeatAssignment implements Built<ReservationDetai
   factory ReservationDetailSeatAssignment([updates(ReservationDetailSeatAssignmentBuilder b)]) =
   _$ReservationDetailSeatAssignment;
 
-  @BuiltValueField(wireName: 'passengerId')
-  String get passengerId;
+  @BuiltValueField(wireName: 'checkedIn')
+    @nullable
+    bool get checkedIn;
 
-  @BuiltValueField(wireName: 'seatAssignment')
-  @nullable
-  String get seatAssignment;
+    @BuiltValueField(wireName: 'nrsTravelerId')
+    @nullable
+    int get nrsTravelerId;
+
+    @BuiltValueField(wireName: 'passengerId')
+    String get passengerId;
+
+    @BuiltValueField(wireName: 'seatAssignment')
+    @nullable
+    String get seatAssignment;
 
   String toJson() {
     return json

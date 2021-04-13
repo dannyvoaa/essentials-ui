@@ -35,7 +35,13 @@ class AaeTopNavBar extends StatelessWidget implements PreferredSizeWidget {
 //        ),
         child: GradientAppBar(
           centerTitle: false,
-//          title: TopBarTitleComponent(),
+          title: Padding(
+            padding: const EdgeInsets.only(top: 4),
+            child: Text(
+              'Calendar',
+              style: AaeTextStyles.title20WhiteMed,
+            ),
+          ),
           gradient: AaeColors.appBarGradient,
         ),
       ),

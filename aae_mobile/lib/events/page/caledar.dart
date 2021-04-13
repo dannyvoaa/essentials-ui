@@ -2,8 +2,6 @@ import 'package:aae/theme/colors.dart';
 import 'package:aae/theme/dimensions.dart';
 import 'package:aae/theme/typography.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
-
 
 
 
@@ -25,7 +23,7 @@ class Calendar extends StatefulWidget {
   @override
   _CalendarState createState() => _CalendarState();
   // Somewhere in your widgets...
-  FirebaseAnalytics().setCurrentScreen(AAECalscreenName: 'AAECalendar');
+
 }
 
 class _CalendarState extends State<Calendar> {

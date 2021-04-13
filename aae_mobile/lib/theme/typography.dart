@@ -171,6 +171,11 @@ class AaeTextStyles {
     height: 1.40,
   );
 
+  /// Used: For forward/back arrows in the PL and BP headers
+  static final title24Gray = title24.copyWith(
+    color: AaeColors.gray,
+  );
+
   // 22px BASE title text ---------------------------------v--------------------------------------22px--
   /// 22px base font
   static const TextStyle title22 = TextStyle(
@@ -261,8 +266,15 @@ class AaeTextStyles {
     height: 1.40,
   );
 
-  /// Used: top header bar section titles (Travel)
+  /// Used: currently not used anywhere
   static final title20White = title20.copyWith(
+    color: AaeColors.white100,
+  );
+
+  /// Used: top header bar section titles (Travel)
+  static final title20WhiteMed = title20.copyWith(
+    fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
     color: AaeColors.white100,
   );
 
@@ -338,14 +350,13 @@ class AaeTextStyles {
     color: AaeColors.gray,
   );
 
+  static final subtitle18Blue = subtitle18.copyWith(
+    color: AaeColors.blue,
+  );
+
   /// Replaces: textFieldModern
   static final subtitle18DarkBlue = subtitle18.copyWith(
     color: AaeColors.darkBlue,
-  );
-
-  /// Used: Trip name in Upcoming Trip tiles, text on white buttons
-  static final subtitle18Blue = subtitle18.copyWith(
-    color: AaeColors.blue,
   );
 
   /// Replaces: largeTextStyleSeatAssigned
@@ -415,6 +426,13 @@ class AaeTextStyles {
     fontWeight: FontWeight.w600,
     color: AaeColors.white100,
     height: 1.25,
+  );
+
+  /// Used: selected dates in the calendar
+  static final body16WhiteMed = body16.copyWith(
+    fontFamily: _americanSansMedium,
+    fontWeight: FontWeight.w600,
+    color: AaeColors.white100,
   );
 
   /// Replaces: headline

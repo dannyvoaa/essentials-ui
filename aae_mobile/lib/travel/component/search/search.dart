@@ -24,28 +24,15 @@ class Search extends StatelessWidget {
       scrollDirection: Axis.vertical,
       child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: <Widget>[_buildHeader(), _buildSearchBox(context)]),
+          children: <Widget>[_buildSearchBox(context)]),
       padding: const EdgeInsets.all(20.0),
     ));
-  }
-
-  _buildHeader() {
-    return Padding(
-        padding: const EdgeInsets.only(bottom: 10),
-        child: Container(
-          alignment: Alignment.topLeft,
-          child: Text(
-            this.title,
-            style: AaeTextStyles.subtitle15BlueBold,
-            textAlign: TextAlign.left,
-          ),
-        ));
   }
 
   _buildSearchBox(BuildContext context) {
     return Container(
         width: double.infinity,
-        //need to remove hardcoded height
+        //need to remove hardcoded height post MVP
         height: 380,
         child: DefaultTabController(
           length: 2,

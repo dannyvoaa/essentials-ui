@@ -72,7 +72,7 @@ class WelcomeView extends StatelessWidget {
       bool boolKeyboardVisible = false,
       bool boolCompactHeight = false}) {
     return Container(
-      child: LargeButton(
+      child: LargeButton.primary(
         onTapAction: viewModel.onPrimaryButtonPressed,
         stringTitle: 'Get Started',
       ),

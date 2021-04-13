@@ -38,8 +38,8 @@ class TripSummaryTitle extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: _dateSummary(
-                viewModel.reservationDetail.firstDepartureDateTime,
-                viewModel.reservationDetail.lastArrivalDateTime,
+                departure: viewModel.reservationDetail.firstDepartureDateTime,
+                recordLocator: viewModel.reservationDetail.recordLocator,
               ),
             ),
           ),
@@ -48,35 +48,10 @@ class TripSummaryTitle extends StatelessWidget {
     );
   }
 
-
-//  flightStatus.originInfo.gate ?? "--",
-
-  Widget _dateSummary(String departure, String arrival) {
-    List months = [
-      'jan',
-      'feb',
-      'mar',
-      'apr',
-      'may',
-      'jun',
-      'jul',
-      'aug',
-      'sep',
-      'oct',
-      'nov',
-      'dec'
-    ];
-    final dep = DateTime.parse(departure);
-    final arr = DateTime.parse(arrival);
-
-    // Format month and day text
-    final monthFormat = new DateFormat('MMM d');
-    final monthText = monthFormat.format(dep) + ' - ' + monthFormat.format(arr);
-    // Format departure time
-    final timeFormat = new DateFormat('h:mm a');
-    final timeText = 'Boards ' + timeFormat.format(dep);
-
-    final text = monthText + ' ' + String.fromCharCode(0x2022) + ' ' + timeText;
+  Widget _dateSummary({String departure, String recordLocator}) {
+    final monthFormat = new DateFormat('EEEE, MMM d, y');
+    final monthText = monthFormat.format(DateTime.parse(departure));
+    final text = monthText + ' ' + String.fromCharCode(0x2022) + ' ' + recordLocator;
     return Text(
       text,
       style: AaeTextStyles.subtitle15,
