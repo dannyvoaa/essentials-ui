@@ -1,0 +1,3548 @@
+{
+  "airports": [
+    {
+      "code": "ABE",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Allentown Bethlehem Easton Lehigh Valley Intl",
+      "stateProvinceCode": "PA",
+      "stateProvinceName": "PENNSYLVANIA"
+    },
+    {
+      "code": "ABI",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Abilene Regional Airport",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "ABQ",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Albuquerque International",
+      "stateProvinceCode": "NM",
+      "stateProvinceName": "NEW MEXICO"
+    },
+    {
+      "code": "ACA",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Acapulco Juan Alvarez International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "ACK",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Nantucket Memorial",
+      "stateProvinceCode": "MA",
+      "stateProvinceName": "MASSACHUSETTS"
+    },
+    {
+      "code": "ACT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Waco Metropolitan Area",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "ACV",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Eureka Arcata",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "AEX",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Alexandria Internation",
+      "stateProvinceCode": "LA",
+      "stateProvinceName": "LOUISIANA"
+    },
+    {
+      "code": "AGS",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Augusta Bush Field",
+      "stateProvinceCode": "GA",
+      "stateProvinceName": "GEORGIA"
+    },
+    {
+      "code": "AGU",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Aguascalientes",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "AKL",
+      "countryCode": "NZ",
+      "countryName": "NEW ZEALAND",
+      "displayName": "Auckland Jean Batten",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "ALB",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Albany International",
+      "stateProvinceCode": "NY",
+      "stateProvinceName": "NEW YORK"
+    },
+    {
+      "code": "ALO",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Waterloo",
+      "stateProvinceCode": "IA",
+      "stateProvinceName": "IOWA"
+    },
+    {
+      "code": "AMA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Amarillo International",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "AMS",
+      "countryCode": "NL",
+      "countryName": "NETHERLANDS",
+      "displayName": "Amsterdam Schiphol",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "ANC",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Anchorage International",
+      "stateProvinceCode": "AK",
+      "stateProvinceName": "ALASKA"
+    },
+    {
+      "code": "ANU",
+      "countryCode": "AG",
+      "countryName": "ANTIGUA AND BARBUDA",
+      "displayName": "Antigua VC Bird Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "ARA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "New Iberia Acadiana Regional",
+      "stateProvinceCode": "LA",
+      "stateProvinceName": "LOUISIANA"
+    },
+    {
+      "code": "ART",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Watertown",
+      "stateProvinceCode": "NY",
+      "stateProvinceName": "NEW YORK"
+    },
+    {
+      "code": "ASE",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Aspen",
+      "stateProvinceCode": "CO",
+      "stateProvinceName": "COLORADO"
+    },
+    {
+      "code": "ASU",
+      "countryCode": "PY",
+      "countryName": "PARAGUAY",
+      "displayName": "Asuncion Silvio Pettirossi",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "ATH",
+      "countryCode": "GR",
+      "countryName": "GREECE",
+      "displayName": "Athens Eleftherios Venizelos",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "ATL",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Atlanta Hartsfield Jackson",
+      "stateProvinceCode": "GA",
+      "stateProvinceName": "GEORGIA"
+    },
+    {
+      "code": "ATW",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Appleton International Airport",
+      "stateProvinceCode": "WI",
+      "stateProvinceName": "WISCONSIN"
+    },
+    {
+      "code": "AUA",
+      "countryCode": "AW",
+      "countryName": "ARUBA",
+      "displayName": "Aruba Reina Beatrix",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "AUS",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Austin Bergstrom Intl",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "AUW",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Wausau",
+      "stateProvinceCode": "WI",
+      "stateProvinceName": "WISCONSIN"
+    },
+    {
+      "code": "AVL",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Asheville Asheville Regional Hendersonville",
+      "stateProvinceCode": "NC",
+      "stateProvinceName": "NORTH CAROLINA"
+    },
+    {
+      "code": "AVP",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Scranton Wilkes Barre International",
+      "stateProvinceCode": "PA",
+      "stateProvinceName": "PENNSYLVANIA"
+    },
+    {
+      "code": "AXA",
+      "countryCode": "AI",
+      "countryName": "ANGUILLA",
+      "displayName": "Anguilla Wallblake",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "AZO",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Kalamazoo Battle Creek Intl",
+      "stateProvinceCode": "MI",
+      "stateProvinceName": "MICHIGAN"
+    },
+    {
+      "code": "AZS",
+      "countryCode": "DO",
+      "countryName": "DOMINICAN REPUBLIC",
+      "displayName": "Samana International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "BAQ",
+      "countryCode": "CO",
+      "countryName": "COLOMBIA",
+      "displayName": "Barranquilla E Cortissoz",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "BCN",
+      "countryCode": "ES",
+      "countryName": "SPAIN",
+      "displayName": "Barcelona",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "BDA",
+      "countryCode": "BM",
+      "countryName": "BERMUDA",
+      "displayName": "Bermuda Bermuda International Hamilton",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "BDL",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Hartford Springfield Windsor Locks Bradley International",
+      "stateProvinceCode": "CT",
+      "stateProvinceName": "CONNECTICUT"
+    },
+    {
+      "code": "BFL",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Bakersfield Meadows Field",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "BGI",
+      "countryCode": "BB",
+      "countryName": "BARBADOS",
+      "displayName": "Bridgetown Grantley Adams Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "BGM",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Binghamton Endicott Johnson City",
+      "stateProvinceCode": "NY",
+      "stateProvinceName": "NEW YORK"
+    },
+    {
+      "code": "BGR",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Bangor International",
+      "stateProvinceCode": "ME",
+      "stateProvinceName": "MAINE"
+    },
+    {
+      "code": "BHM",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Birmingham",
+      "stateProvinceCode": "AL",
+      "stateProvinceName": "ALABAMA"
+    },
+    {
+      "code": "BHX",
+      "countryCode": "GB",
+      "countryName": "UNITED KINGDOM",
+      "displayName": "Birmingham",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "BHZ",
+      "countryCode": "BR",
+      "countryName": "BRAZIL",
+      "displayName": "Belo Horizonte",
+      "stateProvinceCode": "MG",
+      "stateProvinceName": "MINAS GERAIS"
+    },
+    {
+      "code": "BIL",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Billings",
+      "stateProvinceCode": "MT",
+      "stateProvinceName": "MONTANA"
+    },
+    {
+      "code": "BIS",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Bismarck",
+      "stateProvinceCode": "ND",
+      "stateProvinceName": "NORTH DAKOTA"
+    },
+    {
+      "code": "BJS",
+      "countryCode": "CN",
+      "countryName": "CHINA",
+      "displayName": "Beijing",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "BJX",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Guanajuato Leon Del Bajio",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "BLQ",
+      "countryCode": "IT",
+      "countryName": "ITALY",
+      "displayName": "Bologna Guglielmo Marconi",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "BMI",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Bloomington Normal",
+      "stateProvinceCode": "IL",
+      "stateProvinceName": "ILLINOIS"
+    },
+    {
+      "code": "BNA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Nashville International",
+      "stateProvinceCode": "TN",
+      "stateProvinceName": "TENNESSEE"
+    },
+    {
+      "code": "BOG",
+      "countryCode": "CO",
+      "countryName": "COLOMBIA",
+      "displayName": "Bogota Eldorado",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "BOI",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Boise Air Term Gowen Fld",
+      "stateProvinceCode": "ID",
+      "stateProvinceName": "IDAHO"
+    },
+    {
+      "code": "BON",
+      "countryCode": "BQ",
+      "countryName": "BES ISLANDS",
+      "displayName": "Bonaire Flamingo International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "BOS",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Boston Logan International",
+      "stateProvinceCode": "MA",
+      "stateProvinceName": "MASSACHUSETTS"
+    },
+    {
+      "code": "BPT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Beaumont Jefferson County",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "BRO",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Brownsville South Padre Is Intl",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "BRU",
+      "countryCode": "BE",
+      "countryName": "BELGIUM",
+      "displayName": "Brussels National",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "BSB",
+      "countryCode": "BR",
+      "countryName": "BRAZIL",
+      "displayName": "Brasilia International",
+      "stateProvinceCode": "DF",
+      "stateProvinceName": "DISTRITO FEDERAL"
+    },
+    {
+      "code": "BTR",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Baton Rouge Ryan",
+      "stateProvinceCode": "LA",
+      "stateProvinceName": "LOUISIANA"
+    },
+    {
+      "code": "BTV",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Burlington International",
+      "stateProvinceCode": "VT",
+      "stateProvinceName": "VERMONT"
+    },
+    {
+      "code": "BUD",
+      "countryCode": "HU",
+      "countryName": "HUNGARY",
+      "displayName": "Budapest Ferihegy",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "BUE",
+      "countryCode": "AR",
+      "countryName": "ARGENTINA",
+      "displayName": "Buenos Aires",
+      "stateProvinceCode": "BA",
+      "stateProvinceName": "BUENOS AIRES PROVINCE"
+    },
+    {
+      "code": "BUF",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Buffalo Niagara Intl",
+      "stateProvinceCode": "NY",
+      "stateProvinceName": "NEW YORK"
+    },
+    {
+      "code": "BUR",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Hollywood Burbank Airport",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "BWI",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Baltimore Washington International Airport",
+      "stateProvinceCode": "MD",
+      "stateProvinceName": "MARYLAND"
+    },
+    {
+      "code": "BZE",
+      "countryCode": "BZ",
+      "countryName": "BELIZE",
+      "displayName": "Belize City Philip SWGoldson Int",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "BZN",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Bozeman Gallatin Field",
+      "stateProvinceCode": "MT",
+      "stateProvinceName": "MONTANA"
+    },
+    {
+      "code": "CAE",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Columbia Metropolitan Airport",
+      "stateProvinceCode": "SC",
+      "stateProvinceName": "SOUTH CAROLINA"
+    },
+    {
+      "code": "CAK",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Akron Canton Regional",
+      "stateProvinceCode": "OH",
+      "stateProvinceName": "OHIO"
+    },
+    {
+      "code": "CAP",
+      "countryCode": "HT",
+      "countryName": "HAITI",
+      "displayName": "Cap Haitien",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "CDG",
+      "countryCode": "FR",
+      "countryName": "FRANCE",
+      "displayName": "Paris Charles de Gaulle",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "CFG",
+      "countryCode": "CU",
+      "countryName": "CUBA",
+      "displayName": "Cienfuegos",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "CHA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Chattanooga Lovell Field",
+      "stateProvinceCode": "TN",
+      "stateProvinceName": "TENNESSEE"
+    },
+    {
+      "code": "CHI",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Chicago",
+      "stateProvinceCode": "IL",
+      "stateProvinceName": "ILLINOIS"
+    },
+    {
+      "code": "CHO",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Charlottesville Albemarle",
+      "stateProvinceCode": "VA",
+      "stateProvinceName": "VIRGINIA"
+    },
+    {
+      "code": "CHS",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Charleston International",
+      "stateProvinceCode": "SC",
+      "stateProvinceName": "SOUTH CAROLINA"
+    },
+    {
+      "code": "CID",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Cedar Rapids",
+      "stateProvinceCode": "IA",
+      "stateProvinceName": "IOWA"
+    },
+    {
+      "code": "CIW",
+      "countryCode": "VC",
+      "countryName": "ST VINCENT AND THE GRENADINES",
+      "displayName": "Canouan Island",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "CLE",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Cleveland Hopkins International",
+      "stateProvinceCode": "OH",
+      "stateProvinceName": "OHIO"
+    },
+    {
+      "code": "CLL",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "College Station Easterwood Field",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "CLO",
+      "countryCode": "CO",
+      "countryName": "COLOMBIA",
+      "displayName": "Cali Alfonso B Aragon",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "CLT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Charlotte Douglas International Airport",
+      "stateProvinceCode": "NC",
+      "stateProvinceName": "NORTH CAROLINA"
+    },
+    {
+      "code": "CMH",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "John Glenn Columbus Intl",
+      "stateProvinceCode": "OH",
+      "stateProvinceName": "OHIO"
+    },
+    {
+      "code": "CMI",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Champaign Willard University",
+      "stateProvinceCode": "IL",
+      "stateProvinceName": "ILLINOIS"
+    },
+    {
+      "code": "CMN",
+      "countryCode": "MA",
+      "countryName": "MOROCCO",
+      "displayName": "Casablanca Mohammed V Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "CMW",
+      "countryCode": "CU",
+      "countryName": "CUBA",
+      "displayName": "Camaguey Ign Agramonte Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "CNF",
+      "countryCode": "BR",
+      "countryName": "BRAZIL",
+      "displayName": "Belo Horizonte Tancredo Neves Intl",
+      "stateProvinceCode": "MG",
+      "stateProvinceName": "MINAS GERAIS"
+    },
+    {
+      "code": "COR",
+      "countryCode": "AR",
+      "countryName": "ARGENTINA",
+      "displayName": "Cordoba Pajas Blancas",
+      "stateProvinceCode": "CD",
+      "stateProvinceName": "CORDOBA"
+    },
+    {
+      "code": "COS",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Colorado Springs Municipal",
+      "stateProvinceCode": "CO",
+      "stateProvinceName": "COLORADO"
+    },
+    {
+      "code": "COU",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Columbia Regional",
+      "stateProvinceCode": "MO",
+      "stateProvinceName": "MISSOURI"
+    },
+    {
+      "code": "CRP",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Corpus Christi International",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "CRW",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Charleston Yeager",
+      "stateProvinceCode": "WV",
+      "stateProvinceName": "WEST VIRGINIA"
+    },
+    {
+      "code": "CSG",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Columbus Metropolitan",
+      "stateProvinceCode": "GA",
+      "stateProvinceName": "GEORGIA"
+    },
+    {
+      "code": "CSL",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "San Luis Obispo OSullivan AAF",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "CTG",
+      "countryCode": "CO",
+      "countryName": "COLOMBIA",
+      "displayName": "Cartagena Rafael Nunez",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "CUE",
+      "countryCode": "EC",
+      "countryName": "ECUADOR",
+      "displayName": "Cuenca",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "CUN",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Cancun",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "CUR",
+      "countryCode": "CW",
+      "countryName": "CURACAO",
+      "displayName": "Curacao Aeropuerto Hato",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "CUU",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Chihuahua Gen Fierro Villalobos",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "CVG",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Cincinnati Northern Kentucky Intl",
+      "stateProvinceCode": "OH",
+      "stateProvinceName": "OHIO"
+    },
+    {
+      "code": "CWA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Wausau Central Wisconsin",
+      "stateProvinceCode": "WI",
+      "stateProvinceName": "WISCONSIN"
+    },
+    {
+      "code": "CWB",
+      "countryCode": "BR",
+      "countryName": "BRAZIL",
+      "displayName": "Curitiba Afonso Pena",
+      "stateProvinceCode": "PR",
+      "stateProvinceName": "PARANA"
+    },
+    {
+      "code": "CYS",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Cheyenne",
+      "stateProvinceCode": "WY",
+      "stateProvinceName": "WYOMING"
+    },
+    {
+      "code": "CZM",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Cozumel",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "DAB",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Daytona Beach International",
+      "stateProvinceCode": "FL",
+      "stateProvinceName": "FLORIDA"
+    },
+    {
+      "code": "DAY",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Dayton James M Cox Intl",
+      "stateProvinceCode": "OH",
+      "stateProvinceName": "OHIO"
+    },
+    {
+      "code": "DBQ",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Dubuque Regional Airport",
+      "stateProvinceCode": "IA",
+      "stateProvinceName": "IOWA"
+    },
+    {
+      "code": "DBV",
+      "countryCode": "HR",
+      "countryName": "CROATIA",
+      "displayName": "Dubrovnik",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "DCA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Washington Ronald Reagan National",
+      "stateProvinceCode": "DC",
+      "stateProvinceName": "DISTRICT OF COLUMBIA"
+    },
+    {
+      "code": "DEL",
+      "countryCode": "IN",
+      "countryName": "INDIA",
+      "displayName": "Delhi Indira Gandhi Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "DEN",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Denver International",
+      "stateProvinceCode": "CO",
+      "stateProvinceName": "COLORADO"
+    },
+    {
+      "code": "DFW",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Dallas Fort Worth International",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "DGO",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Durango Genl Guadalupe Victoria Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "DLH",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Duluth International",
+      "stateProvinceCode": "MN",
+      "stateProvinceName": "MINNESOTA"
+    },
+    {
+      "code": "DME",
+      "countryCode": "RU",
+      "countryName": "RUSSIA",
+      "displayName": "Moscow Domodedovo",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "DOM",
+      "countryCode": "DM",
+      "countryName": "DOMINICA",
+      "displayName": "Dominica Melville Hall",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "DRO",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Durango La Plata",
+      "stateProvinceCode": "CO",
+      "stateProvinceName": "COLORADO"
+    },
+    {
+      "code": "DRT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Del Rio International",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "DSM",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Des Moines",
+      "stateProvinceCode": "IA",
+      "stateProvinceName": "IOWA"
+    },
+    {
+      "code": "DTT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Detroit",
+      "stateProvinceCode": "MI",
+      "stateProvinceName": "MICHIGAN"
+    },
+    {
+      "code": "DTW",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Detroit Metropolitan Wayne County Airport",
+      "stateProvinceCode": "MI",
+      "stateProvinceName": "MICHIGAN"
+    },
+    {
+      "code": "DUB",
+      "countryCode": "IE",
+      "countryName": "IRELAND",
+      "displayName": "Dublin",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "DUS",
+      "countryCode": "DE",
+      "countryName": "GERMANY",
+      "displayName": "Dusseldorf International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "DWC",
+      "countryCode": "AE",
+      "countryName": "UNITED ARAB EMIRATES",
+      "displayName": "Dubai",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "ECP",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Northwest Florida Beaches International Airport",
+      "stateProvinceCode": "FL",
+      "stateProvinceName": "FLORIDA"
+    },
+    {
+      "code": "EDI",
+      "countryCode": "GB",
+      "countryName": "UNITED KINGDOM",
+      "displayName": "Edinburgh",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "EGE",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Eagle Vail Eagle County",
+      "stateProvinceCode": "CO",
+      "stateProvinceName": "COLORADO"
+    },
+    {
+      "code": "EIS",
+      "countryCode": "VG",
+      "countryName": "VIRGIN ISLANDS, BRITISH",
+      "displayName": "Beef Island Airport",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "ELH",
+      "countryCode": "BS",
+      "countryName": "BAHAMAS",
+      "displayName": "North Eleuthera International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "ELM",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Elmira Corning Regional Airport",
+      "stateProvinceCode": "NY",
+      "stateProvinceName": "NEW YORK"
+    },
+    {
+      "code": "ELP",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "El Paso International",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "ERI",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Erie International",
+      "stateProvinceCode": "PA",
+      "stateProvinceName": "PENNSYLVANIA"
+    },
+    {
+      "code": "ERO",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "ERO",
+      "stateProvinceCode": "AK",
+      "stateProvinceName": "ALASKA"
+    },
+    {
+      "code": "EUG",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Eugene",
+      "stateProvinceCode": "OR",
+      "stateProvinceName": "OREGON"
+    },
+    {
+      "code": "EVV",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Evansville Dress Regional",
+      "stateProvinceCode": "IN",
+      "stateProvinceName": "INDIANA"
+    },
+    {
+      "code": "EWN",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Coastal Carolina Regional",
+      "stateProvinceCode": "NC",
+      "stateProvinceName": "NORTH CAROLINA"
+    },
+    {
+      "code": "EWR",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Newark Liberty Intl",
+      "stateProvinceCode": "NJ",
+      "stateProvinceName": "NEW JERSEY"
+    },
+    {
+      "code": "EYW",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Key West International",
+      "stateProvinceCode": "FL",
+      "stateProvinceName": "FLORIDA"
+    },
+    {
+      "code": "EZE",
+      "countryCode": "AR",
+      "countryName": "ARGENTINA",
+      "displayName": "Buenos Aires Ministro Pistarini",
+      "stateProvinceCode": "BA",
+      "stateProvinceName": "BUENOS AIRES PROVINCE"
+    },
+    {
+      "code": "FAR",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Fargo Hector Field",
+      "stateProvinceCode": "ND",
+      "stateProvinceName": "NORTH DAKOTA"
+    },
+    {
+      "code": "FAT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Fresno Airterminal",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "FAY",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Fayetteville",
+      "stateProvinceCode": "NC",
+      "stateProvinceName": "NORTH CAROLINA"
+    },
+    {
+      "code": "FCA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Glacier Park Kalispell Intl",
+      "stateProvinceCode": "MT",
+      "stateProvinceName": "MONTANA"
+    },
+    {
+      "code": "FCO",
+      "countryCode": "IT",
+      "countryName": "ITALY",
+      "displayName": "Rome Intercontinental Airport Leonardo da Vinci",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "FDF",
+      "countryCode": "MQ",
+      "countryName": "MARTINIQUE",
+      "displayName": "Fort De France Lamentin",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "FLG",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Flagstaff Pulliam Field",
+      "stateProvinceCode": "AZ",
+      "stateProvinceName": "ARIZONA"
+    },
+    {
+      "code": "FLL",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Fort Lauderdale International",
+      "stateProvinceCode": "FL",
+      "stateProvinceName": "FLORIDA"
+    },
+    {
+      "code": "FLO",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Florence",
+      "stateProvinceCode": "SC",
+      "stateProvinceName": "SOUTH CAROLINA"
+    },
+    {
+      "code": "FNT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Flint Bishop",
+      "stateProvinceCode": "MI",
+      "stateProvinceName": "MICHIGAN"
+    },
+    {
+      "code": "FPO",
+      "countryCode": "BS",
+      "countryName": "BAHAMAS",
+      "displayName": "Freeport Grand Bahama Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "FRA",
+      "countryCode": "DE",
+      "countryName": "GERMANY",
+      "displayName": "Frankfurt International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "FSD",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Sioux Falls RegionalJo Foss Fld",
+      "stateProvinceCode": "SD",
+      "stateProvinceName": "SOUTH DAKOTA"
+    },
+    {
+      "code": "FSM",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Fort Smith Regional Airport",
+      "stateProvinceCode": "AR",
+      "stateProvinceName": "ARKANSAS"
+    },
+    {
+      "code": "FWA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Fort Wayne International Airport",
+      "stateProvinceCode": "IN",
+      "stateProvinceName": "INDIANA"
+    },
+    {
+      "code": "FYV",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Fayetteville Municipal Drake Fld",
+      "stateProvinceCode": "AR",
+      "stateProvinceName": "ARKANSAS"
+    },
+    {
+      "code": "GCK",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Garden City Municipal Airport",
+      "stateProvinceCode": "KS",
+      "stateProvinceName": "KANSAS"
+    },
+    {
+      "code": "GCM",
+      "countryCode": "KY",
+      "countryName": "CAYMAN ISLANDS",
+      "displayName": "Grand Cayman Island Owen Roberts Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "GDL",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Guadalajara Miguel Hidalgo",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "GDV",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Glendive Dawson Community",
+      "stateProvinceCode": "MT",
+      "stateProvinceName": "MONTANA"
+    },
+    {
+      "code": "GEG",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Spokane International",
+      "stateProvinceCode": "WA",
+      "stateProvinceName": "WASHINGTON"
+    },
+    {
+      "code": "GEO",
+      "countryCode": "GY",
+      "countryName": "GUYANA",
+      "displayName": "Georgetown Cheddi Jagan Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "GGG",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Longview Gladewater Gregg County Kilgore",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "GGT",
+      "countryCode": "BS",
+      "countryName": "BAHAMAS",
+      "displayName": "George Town Exuma International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "GGW",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Glasgow International",
+      "stateProvinceCode": "MT",
+      "stateProvinceName": "MONTANA"
+    },
+    {
+      "code": "GHB",
+      "countryCode": "BS",
+      "countryName": "BAHAMAS",
+      "displayName": "Governors Harbour",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "GIG",
+      "countryCode": "BR",
+      "countryName": "BRAZIL",
+      "displayName": "Rio De Janeiro Internacional",
+      "stateProvinceCode": "RJ",
+      "stateProvinceName": "RIO DE JANEIRO"
+    },
+    {
+      "code": "GJT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Grand Junction Walker Field",
+      "stateProvinceCode": "CO",
+      "stateProvinceName": "COLORADO"
+    },
+    {
+      "code": "GLA",
+      "countryCode": "GB",
+      "countryName": "UNITED KINGDOM",
+      "displayName": "Glasgow International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "GND",
+      "countryCode": "GD",
+      "countryName": "GRENADA",
+      "displayName": "Maurice Bishop Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "GNV",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Gainesville Regional Airport",
+      "stateProvinceCode": "FL",
+      "stateProvinceName": "FLORIDA"
+    },
+    {
+      "code": "GPS",
+      "countryCode": "EC",
+      "countryName": "ECUADOR",
+      "displayName": "Galapagos Is Baltra",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "GPT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Gulfport Biloxi Regional",
+      "stateProvinceCode": "MS",
+      "stateProvinceName": "MISSISSIPPI"
+    },
+    {
+      "code": "GRB",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Green Bay Austin Straubel International Airport",
+      "stateProvinceCode": "WI",
+      "stateProvinceName": "WISCONSIN"
+    },
+    {
+      "code": "GRI",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Grand Island",
+      "stateProvinceCode": "NE",
+      "stateProvinceName": "NEBRASKA"
+    },
+    {
+      "code": "GRK",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Killeen Fort Hood Regional Airport",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "GRR",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Gerald R Ford International Airport",
+      "stateProvinceCode": "MI",
+      "stateProvinceName": "MICHIGAN"
+    },
+    {
+      "code": "GRU",
+      "countryCode": "BR",
+      "countryName": "BRAZIL",
+      "displayName": "Sao Paulo Guarulhos Intl",
+      "stateProvinceCode": "SP",
+      "stateProvinceName": "SAO PAULO"
+    },
+    {
+      "code": "GSO",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Greensboro High Point Piedmont Triad Intl",
+      "stateProvinceCode": "NC",
+      "stateProvinceName": "NORTH CAROLINA"
+    },
+    {
+      "code": "GSP",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Greer Greenville Spartanburg",
+      "stateProvinceCode": "SC",
+      "stateProvinceName": "SOUTH CAROLINA"
+    },
+    {
+      "code": "GUA",
+      "countryCode": "GT",
+      "countryName": "GUATEMALA",
+      "displayName": "Guatemala City La Aurora",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "GUC",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Gunnison Crested Butte Regional Airport",
+      "stateProvinceCode": "CO",
+      "stateProvinceName": "COLORADO"
+    },
+    {
+      "code": "GYE",
+      "countryCode": "EC",
+      "countryName": "ECUADOR",
+      "displayName": "Jose Joaquin de Olmedo International Airport",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "HAM",
+      "countryCode": "DE",
+      "countryName": "GERMANY",
+      "displayName": "Hamburg Fuhlsbuettel",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "HAV",
+      "countryCode": "CU",
+      "countryName": "CUBA",
+      "displayName": "Havana Jose Marti Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "HDN",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Hayden Yampa Valley Steamboat Springs",
+      "stateProvinceCode": "CO",
+      "stateProvinceName": "COLORADO"
+    },
+    {
+      "code": "HEL",
+      "countryCode": "FI",
+      "countryName": "FINLAND",
+      "displayName": "Helsinki Vantaa",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "HFD",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Hartford Brainard",
+      "stateProvinceCode": "CT",
+      "stateProvinceName": "CONNECTICUT"
+    },
+    {
+      "code": "HHH",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Hilton Head",
+      "stateProvinceCode": "SC",
+      "stateProvinceName": "SOUTH CAROLINA"
+    },
+    {
+      "code": "HKG",
+      "countryCode": "HK",
+      "countryName": "HONG KONG",
+      "displayName": "Hong Kong Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "HMO",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Hermosillo Gen Pesqueira Garcia",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "HND",
+      "countryCode": "JP",
+      "countryName": "JAPAN",
+      "displayName": "Tokyo Haneda",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "HNL",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Honolulu International Airport",
+      "stateProvinceCode": "HI",
+      "stateProvinceName": "HAWAII"
+    },
+    {
+      "code": "HOG",
+      "countryCode": "CU",
+      "countryName": "CUBA",
+      "displayName": "Holguin Frank Pais",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "HOU",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Houston Hobby",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "HPN",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Westchester County Apt",
+      "stateProvinceCode": "NY",
+      "stateProvinceName": "NEW YORK"
+    },
+    {
+      "code": "HRL",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Harlingen Valley International",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "HSV",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Huntsville Intl",
+      "stateProvinceCode": "AL",
+      "stateProvinceName": "ALABAMA"
+    },
+    {
+      "code": "HTS",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Huntington Ashland Milton Tri State",
+      "stateProvinceCode": "WV",
+      "stateProvinceName": "WEST VIRGINIA"
+    },
+    {
+      "code": "HUX",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Huatulco",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "HVN",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "New Haven",
+      "stateProvinceCode": "CT",
+      "stateProvinceName": "CONNECTICUT"
+    },
+    {
+      "code": "IAD",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Washington Dulles Intl",
+      "stateProvinceCode": "DC",
+      "stateProvinceName": "DISTRICT OF COLUMBIA"
+    },
+    {
+      "code": "IAH",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Houston George Bush Intercntl",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "ICN",
+      "countryCode": "KR",
+      "countryName": "SOUTH KOREA",
+      "displayName": "Seoul Incheon International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "ICT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Wichita Dwight D Eisenhower",
+      "stateProvinceCode": "KS",
+      "stateProvinceName": "KANSAS"
+    },
+    {
+      "code": "IFP",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Laughlin Bullhead Intl",
+      "stateProvinceCode": "AZ",
+      "stateProvinceName": "ARIZONA"
+    },
+    {
+      "code": "ILM",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Wilmington New Hanover County",
+      "stateProvinceCode": "NC",
+      "stateProvinceName": "NORTH CAROLINA"
+    },
+    {
+      "code": "IND",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Indianapolis International",
+      "stateProvinceCode": "IN",
+      "stateProvinceName": "INDIANA"
+    },
+    {
+      "code": "IPT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Williamsport Lycoming County",
+      "stateProvinceCode": "PA",
+      "stateProvinceName": "PENNSYLVANIA"
+    },
+    {
+      "code": "IQT",
+      "countryCode": "PE",
+      "countryName": "PERU",
+      "displayName": "Iquitos CF Secada",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "ISP",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Islip Long Island Macarthur",
+      "stateProvinceCode": "NY",
+      "stateProvinceName": "NEW YORK"
+    },
+    {
+      "code": "ITH",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Ithaca Tompkins County",
+      "stateProvinceCode": "NY",
+      "stateProvinceName": "NEW YORK"
+    },
+    {
+      "code": "JAC",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Jackson Hole Airport",
+      "stateProvinceCode": "WY",
+      "stateProvinceName": "WYOMING"
+    },
+    {
+      "code": "JAN",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Jackson Intl",
+      "stateProvinceCode": "MS",
+      "stateProvinceName": "MISSISSIPPI"
+    },
+    {
+      "code": "JAX",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Jacksonville International",
+      "stateProvinceCode": "FL",
+      "stateProvinceName": "FLORIDA"
+    },
+    {
+      "code": "JFK",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "New York John F Kennedy Intl",
+      "stateProvinceCode": "NY",
+      "stateProvinceName": "NEW YORK"
+    },
+    {
+      "code": "JLN",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Joplin",
+      "stateProvinceCode": "MO",
+      "stateProvinceName": "MISSOURI"
+    },
+    {
+      "code": "KEF",
+      "countryCode": "IS",
+      "countryName": "ICELAND",
+      "displayName": "Reykjavik Keflavik International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "KIN",
+      "countryCode": "JM",
+      "countryName": "JAMAICA",
+      "displayName": "Kingston Norman Manley",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "KOA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Kona Big Island Keahole",
+      "stateProvinceCode": "HI",
+      "stateProvinceName": "HAWAII"
+    },
+    {
+      "code": "KRK",
+      "countryCode": "PL",
+      "countryName": "POLAND",
+      "displayName": "Krakow John Paul II Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "LAN",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Lansing Capital City",
+      "stateProvinceCode": "MI",
+      "stateProvinceName": "MICHIGAN"
+    },
+    {
+      "code": "LAS",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Las Vegas McCarran Intl",
+      "stateProvinceCode": "NV",
+      "stateProvinceName": "NEVADA"
+    },
+    {
+      "code": "LAW",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Lawton Municipal",
+      "stateProvinceCode": "OK",
+      "stateProvinceName": "OKLAHOMA"
+    },
+    {
+      "code": "LAX",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Los Angeles International",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "LBB",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Lubbock Preston Smith International Airport",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "LCH",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Lake Charles Municipal",
+      "stateProvinceCode": "LA",
+      "stateProvinceName": "LOUISIANA"
+    },
+    {
+      "code": "LCY",
+      "countryCode": "GB",
+      "countryName": "UNITED KINGDOM",
+      "displayName": "London City Airport",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "LEX",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Lexington Blue Grass",
+      "stateProvinceCode": "KY",
+      "stateProvinceName": "KENTUCKY"
+    },
+    {
+      "code": "LFT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Lafayette Regional",
+      "stateProvinceCode": "LA",
+      "stateProvinceName": "LOUISIANA"
+    },
+    {
+      "code": "LGA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "New York LaGuardia",
+      "stateProvinceCode": "NY",
+      "stateProvinceName": "NEW YORK"
+    },
+    {
+      "code": "LGB",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Long Beach Municipal",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "LGW",
+      "countryCode": "GB",
+      "countryName": "UNITED KINGDOM",
+      "displayName": "London Gatwick",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "LHR",
+      "countryCode": "GB",
+      "countryName": "UNITED KINGDOM",
+      "displayName": "London Heathrow",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "LIH",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Kauai Island Lihue",
+      "stateProvinceCode": "HI",
+      "stateProvinceName": "HAWAII"
+    },
+    {
+      "code": "LIM",
+      "countryCode": "PE",
+      "countryName": "PERU",
+      "displayName": "Lima Jorge Chavez International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "LIR",
+      "countryCode": "CR",
+      "countryName": "COSTA RICA",
+      "displayName": "Daniel Oduber Quiros International Airport",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "LIS",
+      "countryCode": "PT",
+      "countryName": "PORTUGAL",
+      "displayName": "Lisbon Lisboa",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "LIT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Little Rock National Airport",
+      "stateProvinceCode": "AR",
+      "stateProvinceName": "ARKANSAS"
+    },
+    {
+      "code": "LON",
+      "countryCode": "GB",
+      "countryName": "UNITED KINGDOM",
+      "displayName": "London",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "LPB",
+      "countryCode": "BO",
+      "countryName": "BOLIVIA",
+      "displayName": "La Paz El Alto",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "LRD",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Laredo International",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "LRM",
+      "countryCode": "DO",
+      "countryName": "DOMINICAN REPUBLIC",
+      "displayName": "La Romana",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "LSE",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "La Crosse Municipal",
+      "stateProvinceCode": "WI",
+      "stateProvinceName": "WISCONSIN"
+    },
+    {
+      "code": "LYH",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Lynchburg Preston Glenn Field",
+      "stateProvinceCode": "VA",
+      "stateProvinceName": "VIRGINIA"
+    },
+    {
+      "code": "MAD",
+      "countryCode": "ES",
+      "countryName": "SPAIN",
+      "displayName": "Madrid Barajas",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "MAF",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Midland Odessa Regional",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "MAN",
+      "countryCode": "GB",
+      "countryName": "UNITED KINGDOM",
+      "displayName": "Manchester International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "MAO",
+      "countryCode": "BR",
+      "countryName": "BRAZIL",
+      "displayName": "Manaus Eduardo Gomes Intl",
+      "stateProvinceCode": "AM",
+      "stateProvinceName": "AMAZONAS"
+    },
+    {
+      "code": "MBJ",
+      "countryCode": "JM",
+      "countryName": "JAMAICA",
+      "displayName": "Montego Bay Sangster Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "MCI",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Kansas City International",
+      "stateProvinceCode": "MO",
+      "stateProvinceName": "MISSOURI"
+    },
+    {
+      "code": "MCO",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Orlando International",
+      "stateProvinceCode": "FL",
+      "stateProvinceName": "FLORIDA"
+    },
+    {
+      "code": "MDE",
+      "countryCode": "CO",
+      "countryName": "COLOMBIA",
+      "displayName": "Medellin Jose Marie Cordova",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "MDT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Harrisburg Intl",
+      "stateProvinceCode": "PA",
+      "stateProvinceName": "PENNSYLVANIA"
+    },
+    {
+      "code": "MEI",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Meridian Key Field",
+      "stateProvinceCode": "MS",
+      "stateProvinceName": "MISSISSIPPI"
+    },
+    {
+      "code": "MEM",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Memphis International",
+      "stateProvinceCode": "TN",
+      "stateProvinceName": "TENNESSEE"
+    },
+    {
+      "code": "MEX",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Mexico City Benito Juarez International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "MFE",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "McAllen Miller International McAllen",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "MFR",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Medford Jackson County",
+      "stateProvinceCode": "OR",
+      "stateProvinceName": "OREGON"
+    },
+    {
+      "code": "MGA",
+      "countryCode": "NI",
+      "countryName": "NICARAGUA",
+      "displayName": "Managua Augusto C Sandino",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "MGM",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Montgomery Dannelly Fld",
+      "stateProvinceCode": "AL",
+      "stateProvinceName": "ALABAMA"
+    },
+    {
+      "code": "MHH",
+      "countryCode": "BS",
+      "countryName": "BAHAMAS",
+      "displayName": "Marsh Harbour International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "MHK",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Manhattan Regional Airport",
+      "stateProvinceCode": "KS",
+      "stateProvinceName": "KANSAS"
+    },
+    {
+      "code": "MHT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Manchester Municipal",
+      "stateProvinceCode": "NH",
+      "stateProvinceName": "NEW HAMPSHIRE"
+    },
+    {
+      "code": "MIA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Miami International",
+      "stateProvinceCode": "FL",
+      "stateProvinceName": "FLORIDA"
+    },
+    {
+      "code": "MID",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Merida Rejon",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "MIL",
+      "countryCode": "IT",
+      "countryName": "ITALY",
+      "displayName": "Milan",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "MKE",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Milwaukee General Mitchell",
+      "stateProvinceCode": "WI",
+      "stateProvinceName": "WISCONSIN"
+    },
+    {
+      "code": "MLB",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Melbourne Intl",
+      "stateProvinceCode": "FL",
+      "stateProvinceName": "FLORIDA"
+    },
+    {
+      "code": "MLI",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Moline Quad City",
+      "stateProvinceCode": "IL",
+      "stateProvinceName": "ILLINOIS"
+    },
+    {
+      "code": "MLM",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Morelia",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "MLU",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Monroe Municipal",
+      "stateProvinceCode": "LA",
+      "stateProvinceName": "LOUISIANA"
+    },
+    {
+      "code": "MOB",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Mobile Municipal Arpt",
+      "stateProvinceCode": "AL",
+      "stateProvinceName": "ALABAMA"
+    },
+    {
+      "code": "MOW",
+      "countryCode": "RU",
+      "countryName": "RUSSIA",
+      "displayName": "Moscow",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "MQT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Marquette Sawyer International",
+      "stateProvinceCode": "MI",
+      "stateProvinceName": "MICHIGAN"
+    },
+    {
+      "code": "MRY",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Carmel Monterey Peninsula",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "MSN",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Madison Dane County Regional",
+      "stateProvinceCode": "WI",
+      "stateProvinceName": "WISCONSIN"
+    },
+    {
+      "code": "MSO",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Missoula Johnson Bell Field",
+      "stateProvinceCode": "MT",
+      "stateProvinceName": "MONTANA"
+    },
+    {
+      "code": "MSP",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Minneapolis St Paul International",
+      "stateProvinceCode": "MN",
+      "stateProvinceName": "MINNESOTA"
+    },
+    {
+      "code": "MSY",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "New Orleans Louis Armstrong Intl",
+      "stateProvinceCode": "LA",
+      "stateProvinceName": "LOUISIANA"
+    },
+    {
+      "code": "MTJ",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Montrose Telluride",
+      "stateProvinceCode": "CO",
+      "stateProvinceName": "COLORADO"
+    },
+    {
+      "code": "MTY",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Monterrey Gen Mariano Escobedo",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "MUC",
+      "countryCode": "DE",
+      "countryName": "GERMANY",
+      "displayName": "Munich Franz Josef Strauss",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "MVD",
+      "countryCode": "UY",
+      "countryName": "URUGUAY",
+      "displayName": "Montevideo Carrasco",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "MVY",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Marthas Vineyard",
+      "stateProvinceCode": "MA",
+      "stateProvinceName": "MASSACHUSETTS"
+    },
+    {
+      "code": "MXP",
+      "countryCode": "IT",
+      "countryName": "ITALY",
+      "displayName": "Milan Malpensa",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "MYR",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Myrtle Beach AFB",
+      "stateProvinceCode": "SC",
+      "stateProvinceName": "SOUTH CAROLINA"
+    },
+    {
+      "code": "MZT",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Mazatlan Gen Rafael Buelna",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "NAN",
+      "countryCode": "FJ",
+      "countryName": "FIJI",
+      "displayName": "Nadi International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "NAS",
+      "countryCode": "BS",
+      "countryName": "BAHAMAS",
+      "displayName": "Nassau Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "NBW",
+      "countryCode": "CU",
+      "countryName": "CUBA",
+      "displayName": "Guantanamo NAS",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "NRT",
+      "countryCode": "JP",
+      "countryName": "JAPAN",
+      "displayName": "Tokyo Narita",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "NYC",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "New York",
+      "stateProvinceCode": "NY",
+      "stateProvinceName": "NEW YORK"
+    },
+    {
+      "code": "OAJ",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Jacksonville Albert J Ellis",
+      "stateProvinceCode": "NC",
+      "stateProvinceName": "NORTH CAROLINA"
+    },
+    {
+      "code": "OAK",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Oakland Metropolitan Oak Intl",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "OAX",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Oaxaca Xoxocotlan International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "OGG",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Kahului Airport Kahului Maui",
+      "stateProvinceCode": "HI",
+      "stateProvinceName": "HAWAII"
+    },
+    {
+      "code": "OKC",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Oklahoma City Will Rogers World",
+      "stateProvinceCode": "OK",
+      "stateProvinceName": "OKLAHOMA"
+    },
+    {
+      "code": "OMA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Omaha Eppley Airfield",
+      "stateProvinceCode": "NE",
+      "stateProvinceName": "NEBRASKA"
+    },
+    {
+      "code": "ONT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Ontario International",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "ORD",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Chicago OHare International",
+      "stateProvinceCode": "IL",
+      "stateProvinceName": "ILLINOIS"
+    },
+    {
+      "code": "ORF",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Norfolk International",
+      "stateProvinceCode": "VA",
+      "stateProvinceName": "VIRGINIA"
+    },
+    {
+      "code": "ORH",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Worcester Regional",
+      "stateProvinceCode": "MA",
+      "stateProvinceName": "MASSACHUSETTS"
+    },
+    {
+      "code": "OWB",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Owensboro Daviess County",
+      "stateProvinceCode": "KY",
+      "stateProvinceName": "KENTUCKY"
+    },
+    {
+      "code": "PAP",
+      "countryCode": "HT",
+      "countryName": "HAITI",
+      "displayName": "Port Au Prince Mais Gate",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "PAR",
+      "countryCode": "FR",
+      "countryName": "FRANCE",
+      "displayName": "Paris",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "PBC",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Puebla Huejotsingo",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "PBI",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "West Palm Beach International",
+      "stateProvinceCode": "FL",
+      "stateProvinceName": "FLORIDA"
+    },
+    {
+      "code": "PDX",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Portland International",
+      "stateProvinceCode": "OR",
+      "stateProvinceName": "OREGON"
+    },
+    {
+      "code": "PEI",
+      "countryCode": "CO",
+      "countryName": "COLOMBIA",
+      "displayName": "Pereira Matecana Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "PEK",
+      "countryCode": "CN",
+      "countryName": "CHINA",
+      "displayName": "Beijing Capital Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "PGV",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Pitt Greenville",
+      "stateProvinceCode": "NC",
+      "stateProvinceName": "NORTH CAROLINA"
+    },
+    {
+      "code": "PHF",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Hampton Williamsburg Newport News Williamsb",
+      "stateProvinceCode": "VA",
+      "stateProvinceName": "VIRGINIA"
+    },
+    {
+      "code": "PHL",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Philadelphia International",
+      "stateProvinceCode": "PA",
+      "stateProvinceName": "PENNSYLVANIA"
+    },
+    {
+      "code": "PHX",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Phoenix Sky Harbor Intl",
+      "stateProvinceCode": "AZ",
+      "stateProvinceName": "ARIZONA"
+    },
+    {
+      "code": "PIA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Greater Peoria",
+      "stateProvinceCode": "IL",
+      "stateProvinceName": "ILLINOIS"
+    },
+    {
+      "code": "PIB",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Hattiesburg Laurel Reg",
+      "stateProvinceCode": "MS",
+      "stateProvinceName": "MISSISSIPPI"
+    },
+    {
+      "code": "PIT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Pittsburgh Intl Apt",
+      "stateProvinceCode": "PA",
+      "stateProvinceName": "PENNSYLVANIA"
+    },
+    {
+      "code": "PKX",
+      "countryCode": "CN",
+      "countryName": "CHINA",
+      "displayName": "Beijing Daxing Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "PLS",
+      "countryCode": "TC",
+      "countryName": "TURKS AND CAICOS ISLANDS",
+      "displayName": "Providenciales International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "PNS",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Pensacola Regional",
+      "stateProvinceCode": "FL",
+      "stateProvinceName": "FLORIDA"
+    },
+    {
+      "code": "POA",
+      "countryCode": "BR",
+      "countryName": "BRAZIL",
+      "displayName": "Porto Alegre Salgado Filho",
+      "stateProvinceCode": "RS",
+      "stateProvinceName": "RIO GRANDE DO SUL"
+    },
+    {
+      "code": "POP",
+      "countryCode": "DO",
+      "countryName": "DOMINICAN REPUBLIC",
+      "displayName": "Puerto Plata La Union",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "POS",
+      "countryCode": "TT",
+      "countryName": "TRINIDAD AND TOBAGO",
+      "displayName": "Port Of Spain Trinidad Piarco International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "PRG",
+      "countryCode": "CZ",
+      "countryName": "CZECH REPUBLIC",
+      "displayName": "Prague Ruzyne",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "PSP",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Palm Springs International Airport",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "PTP",
+      "countryCode": "GP",
+      "countryName": "GUADELOUPE",
+      "displayName": "Pointe a Pitre Le Raizet",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "PTY",
+      "countryCode": "PA",
+      "countryName": "PANAMA",
+      "displayName": "Panama City Tocumen International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "PUJ",
+      "countryCode": "DO",
+      "countryName": "DOMINICAN REPUBLIC",
+      "displayName": "Punta Cana",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "PVD",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Providence Theodore Francis",
+      "stateProvinceCode": "RI",
+      "stateProvinceName": "RHODE ISLAND"
+    },
+    {
+      "code": "PVG",
+      "countryCode": "CN",
+      "countryName": "CHINA",
+      "displayName": "Shanghai Pudong international Airport",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "PVR",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Puerto Vallarta Gustavo Diaz Ordaz",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "PWM",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Portland Intl Jetport",
+      "stateProvinceCode": "ME",
+      "stateProvinceName": "MAINE"
+    },
+    {
+      "code": "QRO",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Queretaro",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "RAP",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Rapid City Regional",
+      "stateProvinceCode": "SD",
+      "stateProvinceName": "SOUTH DAKOTA"
+    },
+    {
+      "code": "RDM",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Redmond Bend Roberts Field",
+      "stateProvinceCode": "OR",
+      "stateProvinceName": "OREGON"
+    },
+    {
+      "code": "RDU",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Raleigh Durham",
+      "stateProvinceCode": "NC",
+      "stateProvinceName": "NORTH CAROLINA"
+    },
+    {
+      "code": "REC",
+      "countryCode": "BR",
+      "countryName": "BRAZIL",
+      "displayName": "Recife Guararapes Intl",
+      "stateProvinceCode": "PE",
+      "stateProvinceName": "PERNAMBUCO"
+    },
+    {
+      "code": "RIC",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Richmond Intl Byrd Field",
+      "stateProvinceCode": "VA",
+      "stateProvinceName": "VIRGINIA"
+    },
+    {
+      "code": "RIO",
+      "countryCode": "BR",
+      "countryName": "BRAZIL",
+      "displayName": "Rio De Janeiro",
+      "stateProvinceCode": "RJ",
+      "stateProvinceName": "RIO DE JANEIRO"
+    },
+    {
+      "code": "RNO",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Reno Tahoe Intl",
+      "stateProvinceCode": "NV",
+      "stateProvinceName": "NEVADA"
+    },
+    {
+      "code": "ROA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Roanoke Municipal",
+      "stateProvinceCode": "VA",
+      "stateProvinceName": "VIRGINIA"
+    },
+    {
+      "code": "ROC",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Rochester Monroe County",
+      "stateProvinceCode": "NY",
+      "stateProvinceName": "NEW YORK"
+    },
+    {
+      "code": "ROM",
+      "countryCode": "IT",
+      "countryName": "ITALY",
+      "displayName": "Rome",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "ROW",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Roswell International Air Center",
+      "stateProvinceCode": "NM",
+      "stateProvinceName": "NEW MEXICO"
+    },
+    {
+      "code": "RST",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Rochester International Airport",
+      "stateProvinceCode": "MN",
+      "stateProvinceName": "MINNESOTA"
+    },
+    {
+      "code": "RSW",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Fort Myers Southwest Florida Reg",
+      "stateProvinceCode": "FL",
+      "stateProvinceName": "FLORIDA"
+    },
+    {
+      "code": "RTB",
+      "countryCode": "HN",
+      "countryName": "HONDURAS",
+      "displayName": "Roatan",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SAC",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Sacramento Executive",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "SAF",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Santa Fe",
+      "stateProvinceCode": "NM",
+      "stateProvinceName": "NEW MEXICO"
+    },
+    {
+      "code": "SAL",
+      "countryCode": "SV",
+      "countryName": "EL SALVADOR",
+      "displayName": "San Salvador Comalapa International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SAN",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "San Diego International",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "SAO",
+      "countryCode": "BR",
+      "countryName": "BRAZIL",
+      "displayName": "Sao Paulo",
+      "stateProvinceCode": "SP",
+      "stateProvinceName": "SAO PAULO"
+    },
+    {
+      "code": "SAP",
+      "countryCode": "HN",
+      "countryName": "HONDURAS",
+      "displayName": "San Pedro Sula Ramon Villeda Morales",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SAT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "San Antonio International",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "SAV",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Hilton Head Savannah",
+      "stateProvinceCode": "GA",
+      "stateProvinceName": "GEORGIA"
+    },
+    {
+      "code": "SBA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Santa Barbara Airport",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "SBN",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "South Bend Regional",
+      "stateProvinceCode": "IN",
+      "stateProvinceName": "INDIANA"
+    },
+    {
+      "code": "SBP",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "San Luis Obispo County Airport",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "SBY",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Salisbury Ocean City",
+      "stateProvinceCode": "MD",
+      "stateProvinceName": "MARYLAND"
+    },
+    {
+      "code": "SCE",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "State College University Park",
+      "stateProvinceCode": "PA",
+      "stateProvinceName": "PENNSYLVANIA"
+    },
+    {
+      "code": "SCL",
+      "countryCode": "CL",
+      "countryName": "CHILE",
+      "displayName": "Santiago Arturo Merino Benitez",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SCU",
+      "countryCode": "CU",
+      "countryName": "CUBA",
+      "displayName": "Santiago de Cuba Antonio Maceo Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SCY",
+      "countryCode": "EC",
+      "countryName": "ECUADOR",
+      "displayName": "San Cristobal Airport",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SDF",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Louisville Standiford Field",
+      "stateProvinceCode": "KY",
+      "stateProvinceName": "KENTUCKY"
+    },
+    {
+      "code": "SDQ",
+      "countryCode": "DO",
+      "countryName": "DOMINICAN REPUBLIC",
+      "displayName": "Santo Domingo Las Americas",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SEA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Seattle Tacoma Intl",
+      "stateProvinceCode": "WA",
+      "stateProvinceName": "WASHINGTON"
+    },
+    {
+      "code": "SFO",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "San Francisco International",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "SFY",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Springfield",
+      "stateProvinceCode": "MA",
+      "stateProvinceName": "MASSACHUSETTS"
+    },
+    {
+      "code": "SGF",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Springfield Branson National",
+      "stateProvinceCode": "MO",
+      "stateProvinceName": "MISSOURI"
+    },
+    {
+      "code": "SGU",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "St George Regional",
+      "stateProvinceCode": "UT",
+      "stateProvinceName": "UTAH"
+    },
+    {
+      "code": "SHV",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Shreveport Regional",
+      "stateProvinceCode": "LA",
+      "stateProvinceName": "LOUISIANA"
+    },
+    {
+      "code": "SJC",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "San Jose International",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "SJD",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Cabo San Lucas Los Cabos",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SJO",
+      "countryCode": "CR",
+      "countryName": "COSTA RICA",
+      "displayName": "San Jose Juan Santamaria Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SJT",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "San Angelo Mathis Fld",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "SJU",
+      "countryCode": "PR",
+      "countryName": "PUERTO RICO",
+      "displayName": "San Juan Luis Munoz Marin Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SKB",
+      "countryCode": "KN",
+      "countryName": "ST KITTS AND NEVIS",
+      "displayName": "St Kitts Robert L Bradshaw International",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SLC",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Salt Lake City International",
+      "stateProvinceCode": "UT",
+      "stateProvinceName": "UTAH"
+    },
+    {
+      "code": "SLP",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "San Luis Potosi",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SMF",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Sacramento International",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "SNA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Orange County John Wayne",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "SNN",
+      "countryCode": "IE",
+      "countryName": "IRELAND",
+      "displayName": "Shannon",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SNU",
+      "countryCode": "CU",
+      "countryName": "CUBA",
+      "displayName": "Santa Clara",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SPI",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Springfield Capital",
+      "stateProvinceCode": "IL",
+      "stateProvinceName": "ILLINOIS"
+    },
+    {
+      "code": "SPS",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Wichita Falls Sheppard AFB",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "SRQ",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Sarasota Bradenton",
+      "stateProvinceCode": "FL",
+      "stateProvinceName": "FLORIDA"
+    },
+    {
+      "code": "SSA",
+      "countryCode": "BR",
+      "countryName": "BRAZIL",
+      "displayName": "Salvador Airport Luis Eduardo Magalhaes",
+      "stateProvinceCode": "BA",
+      "stateProvinceName": "BAHIA"
+    },
+    {
+      "code": "STI",
+      "countryCode": "DO",
+      "countryName": "DOMINICAN REPUBLIC",
+      "displayName": "Cibao International Airport",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "STL",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Lambert St Louis Intl",
+      "stateProvinceCode": "MO",
+      "stateProvinceName": "MISSOURI"
+    },
+    {
+      "code": "STS",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Santa Rosa Sonoma County",
+      "stateProvinceCode": "CA",
+      "stateProvinceName": "CALIFORNIA"
+    },
+    {
+      "code": "STT",
+      "countryCode": "VI",
+      "countryName": "VIRGIN ISLANDS, U.S.",
+      "displayName": "St Thomas Island Cyril E King",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "STX",
+      "countryCode": "VI",
+      "countryName": "VIRGIN ISLANDS, U.S.",
+      "displayName": "Henry E Rohlsen International Airport",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SUX",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Sioux City Sioux Gateway",
+      "stateProvinceCode": "IA",
+      "stateProvinceName": "IOWA"
+    },
+    {
+      "code": "SVD",
+      "countryCode": "VC",
+      "countryName": "ST VINCENT AND THE GRENADINES",
+      "displayName": "St Vincent Argyle Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SWF",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Stewart Newburgh",
+      "stateProvinceCode": "NY",
+      "stateProvinceName": "NEW YORK"
+    },
+    {
+      "code": "SWO",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Stillwater Regional Airport",
+      "stateProvinceCode": "OK",
+      "stateProvinceName": "OKLAHOMA"
+    },
+    {
+      "code": "SXM",
+      "countryCode": "SX",
+      "countryName": "SINT MAARTEN",
+      "displayName": "St Maarten Princ Juliana",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "SYD",
+      "countryCode": "AU",
+      "countryName": "AUSTRALIA",
+      "displayName": "Sydney Kingsford Smith",
+      "stateProvinceCode": "NS",
+      "stateProvinceName": "NEW SOUTH WALES"
+    },
+    {
+      "code": "SYR",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Syracuse Hancock Intl",
+      "stateProvinceCode": "NY",
+      "stateProvinceName": "NEW YORK"
+    },
+    {
+      "code": "TAM",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Tampico Gen F Javier Mina",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "TCB",
+      "countryCode": "BS",
+      "countryName": "BAHAMAS",
+      "displayName": "Treasure Cay",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "TGU",
+      "countryCode": "HN",
+      "countryName": "HONDURAS",
+      "displayName": "Tegucigalpa Toncontin",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "TLH",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Tallahassee International",
+      "stateProvinceCode": "FL",
+      "stateProvinceName": "FLORIDA"
+    },
+    {
+      "code": "TLV",
+      "countryCode": "IL",
+      "countryName": "ISRAEL",
+      "displayName": "Tel Aviv Yafo Ben Gurion Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "TOL",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Toledo Express",
+      "stateProvinceCode": "OH",
+      "stateProvinceName": "OHIO"
+    },
+    {
+      "code": "TPA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Tampa International",
+      "stateProvinceCode": "FL",
+      "stateProvinceName": "FLORIDA"
+    },
+    {
+      "code": "TRC",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Torreon",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "TRI",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Bristol Johnson City Kingsport Tri Cities Regional",
+      "stateProvinceCode": "TN",
+      "stateProvinceName": "TENNESSEE"
+    },
+    {
+      "code": "TUL",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Tulsa International",
+      "stateProvinceCode": "OK",
+      "stateProvinceName": "OKLAHOMA"
+    },
+    {
+      "code": "TUS",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Tucson International",
+      "stateProvinceCode": "AZ",
+      "stateProvinceName": "ARIZONA"
+    },
+    {
+      "code": "TVC",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Traverse City",
+      "stateProvinceCode": "MI",
+      "stateProvinceName": "MICHIGAN"
+    },
+    {
+      "code": "TXK",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Texarkana Municipal",
+      "stateProvinceCode": "AR",
+      "stateProvinceName": "ARKANSAS"
+    },
+    {
+      "code": "TXL",
+      "countryCode": "DE",
+      "countryName": "GERMANY",
+      "displayName": "Berlin Tegel",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "TYO",
+      "countryCode": "JP",
+      "countryName": "JAPAN",
+      "displayName": "Tokyo",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "TYR",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Tyler Pounds Field",
+      "stateProvinceCode": "TX",
+      "stateProvinceName": "TEXAS"
+    },
+    {
+      "code": "TYS",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Knoxville Mc Ghee Tyson",
+      "stateProvinceCode": "TN",
+      "stateProvinceName": "TENNESSEE"
+    },
+    {
+      "code": "UIO",
+      "countryCode": "EC",
+      "countryName": "ECUADOR",
+      "displayName": "Quito Mariscal Sucre",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "UVF",
+      "countryCode": "LC",
+      "countryName": "ST LUCIA",
+      "displayName": "St Lucia Hewanorra",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "VCE",
+      "countryCode": "IT",
+      "countryName": "ITALY",
+      "displayName": "Venice Marco Polo",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "VER",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Veracruz Las Bajadas",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "VIJ",
+      "countryCode": "VG",
+      "countryName": "VIRGIN ISLANDS, BRITISH",
+      "displayName": "Virgin Gorda Airport",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "VPS",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Destin Fort Walton Beach",
+      "stateProvinceCode": "FL",
+      "stateProvinceName": "FLORIDA"
+    },
+    {
+      "code": "VRA",
+      "countryCode": "CU",
+      "countryName": "CUBA",
+      "displayName": "Varadero Juan Gualberto Gomez",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "VVI",
+      "countryCode": "BO",
+      "countryName": "BOLIVIA",
+      "displayName": "Santa Cruz Viru Viru Intl",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "WAS",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Washington",
+      "stateProvinceCode": "DC",
+      "stateProvinceName": "DISTRICT OF COLUMBIA"
+    },
+    {
+      "code": "XNA",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Fayetteville Northwest Arkansas Rgnl",
+      "stateProvinceCode": "AR",
+      "stateProvinceName": "ARKANSAS"
+    },
+    {
+      "code": "YEG",
+      "countryCode": "CA",
+      "countryName": "CANADA",
+      "displayName": "Edmonton International",
+      "stateProvinceCode": "AB",
+      "stateProvinceName": "ALBERTA"
+    },
+    {
+      "code": "YHZ",
+      "countryCode": "CA",
+      "countryName": "CANADA",
+      "displayName": "Halifax Stanfield Intl",
+      "stateProvinceCode": "NS",
+      "stateProvinceName": "NOVA SCOTIA"
+    },
+    {
+      "code": "YKF",
+      "countryCode": "CA",
+      "countryName": "CANADA",
+      "displayName": "Kitchener Waterloo International Airport",
+      "stateProvinceCode": "ON",
+      "stateProvinceName": "ONTARIO"
+    },
+    {
+      "code": "YMQ",
+      "countryCode": "CA",
+      "countryName": "CANADA",
+      "displayName": "Montreal",
+      "stateProvinceCode": "QC",
+      "stateProvinceName": "QUEBEC"
+    },
+    {
+      "code": "YOW",
+      "countryCode": "CA",
+      "countryName": "CANADA",
+      "displayName": "Ottawa International",
+      "stateProvinceCode": "ON",
+      "stateProvinceName": "ONTARIO"
+    },
+    {
+      "code": "YQB",
+      "countryCode": "CA",
+      "countryName": "CANADA",
+      "displayName": "Quebec",
+      "stateProvinceCode": "QC",
+      "stateProvinceName": "QUEBEC"
+    },
+    {
+      "code": "YTO",
+      "countryCode": "CA",
+      "countryName": "CANADA",
+      "displayName": "Toronto",
+      "stateProvinceCode": "ON",
+      "stateProvinceName": "ONTARIO"
+    },
+    {
+      "code": "YUL",
+      "countryCode": "CA",
+      "countryName": "CANADA",
+      "displayName": "Montreal Pierre Elliott Trudeau",
+      "stateProvinceCode": "QC",
+      "stateProvinceName": "QUEBEC"
+    },
+    {
+      "code": "YUM",
+      "countryCode": "US",
+      "countryName": "UNITED STATES",
+      "displayName": "Yuma International",
+      "stateProvinceCode": "AZ",
+      "stateProvinceName": "ARIZONA"
+    },
+    {
+      "code": "YVR",
+      "countryCode": "CA",
+      "countryName": "CANADA",
+      "displayName": "Vancouver Intl",
+      "stateProvinceCode": "BC",
+      "stateProvinceName": "BRITISH COLUMBIA"
+    },
+    {
+      "code": "YYC",
+      "countryCode": "CA",
+      "countryName": "CANADA",
+      "displayName": "Calgary International",
+      "stateProvinceCode": "AB",
+      "stateProvinceName": "ALBERTA"
+    },
+    {
+      "code": "YYZ",
+      "countryCode": "CA",
+      "countryName": "CANADA",
+      "displayName": "Toronto Pearson International",
+      "stateProvinceCode": "ON",
+      "stateProvinceName": "ONTARIO"
+    },
+    {
+      "code": "ZCL",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Zacatecas La Calera",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "ZIH",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Ixtapa Zihuatanejo Internacional",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "ZLO",
+      "countryCode": "MX",
+      "countryName": "MEXICO",
+      "displayName": "Manzanillo",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "ZRH",
+      "countryCode": "CH",
+      "countryName": "SWITZERLAND",
+      "displayName": "Zurich",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    },
+    {
+      "code": "ZSA",
+      "countryCode": "BS",
+      "countryName": "BAHAMAS",
+      "displayName": "San Salvador",
+      "stateProvinceCode": null,
+      "stateProvinceName": null
+    }
+  ]
+}

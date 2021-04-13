@@ -58,6 +58,7 @@ dependencies:
   firebase_core: ^0.5.2
   firebase_crashlytics: ^0.2.3
   scroll_to_index: any
+  indexed_list_view: any
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the Cupertino Icons class for iOS style icons.
@@ -96,6 +97,7 @@ flutter:
     - assets/svg/
     - assets/static_records/RecognitionHistory.json
     - assets/static_records/FlightSearch.json
+    - assets/static_records/Airports.json
     - assets/static_records/image.jpeg
     - assets/common/sign_in_background.png
     - assets/raw/imageserverbase64.cer

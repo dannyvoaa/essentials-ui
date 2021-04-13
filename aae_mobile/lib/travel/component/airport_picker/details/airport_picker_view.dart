@@ -2,9 +2,10 @@ import 'package:aae/model/airport.dart';
 import 'package:aae/travel/component/airport_picker/details/widgets/airport_picker_header.dart';
 import 'package:aae/travel/component/airport_picker/details/widgets/airport_tile.dart';
 import 'package:aae/travel/component/airport_picker/details/widgets/alphabet_search_sidebar.dart';
+import 'package:aae/travel/component/airport_picker/scroll_to_index_custom.dart';
 import 'package:flutter/material.dart';
+import 'package:indexed_list_view/indexed_list_view.dart';
 import 'package:logging/logging.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
 import 'airport_picker_view_model.dart';
 
 /// The view used for the [AirportPickerComponent].
@@ -24,6 +25,7 @@ class AirportPickerView extends StatefulWidget {
 class _AirportPickerViewState extends State<AirportPickerView> {
 //  final ScrollController _scroller = ScrollController();
   final AutoScrollController _scroller = AutoScrollController();
+  var controller = IndexedScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,27 +39,20 @@ class _AirportPickerViewState extends State<AirportPickerView> {
             children: [
               Expanded(
                 flex: 5,
-                child: ListView.builder(
+                child: IndexedListView.builder(
                   padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom,
                   ),
-                  controller: _scroller,
-                  itemCount: widget.viewModel.filteredAirports.length,
+                  controller: controller,
                   itemBuilder: (context, index) {
-                    return AutoScrollTag(
-                      key: ValueKey(index),
-                      controller: _scroller,
-                      index: index,
-                      child: AirportTile(
+                    return AirportTile(
                         airport: widget.viewModel.filteredAirports[index],
                         onClicked: () {
                           if (widget.onAirportSelected != null)
                             widget.onAirportSelected(
                                 widget.viewModel.filteredAirports[index]);
                         },
-                      ),
-                      highlightColor: Colors.black.withOpacity(0.1),
-                    );
+                      );
                   },
                 ),
               ),
@@ -76,13 +71,22 @@ class _AirportPickerViewState extends State<AirportPickerView> {
 
   Future _onScrollTo(String character) async {
     int index = widget.viewModel.charIndexes[character];
-    setState(() {
-    });
+    setState(() {});
+    print(index);
 
-    _scroller.scrollToIndex(index,
-        duration: Duration(milliseconds: 1),
-        preferPosition: AutoScrollPosition.begin);
+    controller.animateToIndex(index,
+        duration: Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
   }
+
+//  Future _onScrollTo(String character) async {
+//    int index = widget.viewModel.charIndexes[character];
+//    setState(() {
+//    });
+//
+//    _scroller.scrollToIndex(index,
+//        duration: Duration(milliseconds: 500),
+//        preferPosition: AutoScrollPosition.begin);
+//  }
 
 //  old scrollto logic that may be reused later on
 //  _onScrollTo(String character) {
