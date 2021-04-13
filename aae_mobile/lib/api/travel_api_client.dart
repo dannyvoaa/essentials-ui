@@ -32,6 +32,7 @@ class TravelServiceApi {
   static const countriesEndpoint = '$baseUrl/countries';
   static const reservationDetailEndpoint = '$baseUrl/reservation';
   static const checkInEndpoint = '$baseUrl/checkin';
+  static const deleteReservationEndpoint = '$baseUrl/deletereservation';
   static const boardingPassEndpoint = '$baseUrl/boardingpass';
 
   final dateFormatter = DateFormat("yyyy-MM-dd");
@@ -107,20 +108,23 @@ class TravelServiceApi {
 
     Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
 
-    var response;
-    try {
-      response = await httpClient.get(airportsEndpoint, headers: headers);
-    } catch (e) {
-      String msg = 'failed to load the airports list.\n' + e.toString();
-      _log.severe(msg);
-      throw Exception(msg);
-    }
+//    var response;
+//    try {
+//      response = await httpClient.get(airportsEndpoint, headers: headers);
+//    } catch (e) {
+//      String msg = 'failed to load the airports list.\n' + e.toString();
+//      _log.severe(msg);
+//      throw Exception(msg);
+//    }
 
-    if (response.statusCode == 200) {
+//    if (response.statusCode == 200) {
       _log.info("airports request successful");
       //_log.info(response.body.toString().substring(0,50));
+      String jsonObject =
+      await rootBundle.loadString('assets/static_records/Airports.json');
+
       AirportsWrapper wrapper = serializers.deserializeWith(
-          AirportsWrapper.serializer, jsonDecode(response.body));
+          AirportsWrapper.serializer, jsonDecode(jsonObject));
 
       if (wrapper != null && wrapper.airports != null)
         return wrapper.airports;
@@ -231,7 +235,7 @@ class TravelServiceApi {
 
       response = await httpClient.post(constructedUrl, headers: headers, body: checkinDetailsJson);
     } catch (e) {
-      String msg = 'failed to push the check in request.\n' + e.toString();
+      String msg = 'failed to push the check in request.\n' + e.toString() + 'end';
       _log.severe(msg);
       throw Exception(msg);
     }
@@ -307,6 +311,23 @@ class TravelServiceApi {
     } else {
       throw Exception(
           'failed to load boarding passes.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
+    }
+  }
+
+  Future<BuiltList<BoardingPass>> cancelReservation(String pnr, String employeeId, String smsession) async {
+    Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
+    String constructedUrl = "$deleteReservationEndpoint/$pnr";
+
+    _log.info("initiating cancel reservation request: $pnr");
+    _log.info(constructedUrl);
+
+    var response;
+    try {
+      response = await httpClient.post(constructedUrl, headers: headers);
+    } catch (e) {
+      String msg = 'failed to push the check in request.\n' + e.toString() + 'end';
+      _log.severe(msg);
+      throw Exception(msg);
     }
   }
 

@@ -297,6 +297,21 @@ class TravelRepository implements Repository {
     }
   }
 
+  cancelReservation (String pnr) async {
+    if (!existsEmployeeIdAndSMSession())
+      return;
+
+    _boardingPasses.sendNext(null);
+    try {
+      BuiltList<BoardingPass> passes = await _travelApiClient.cancelReservation(pnr, strEmployeeId, strSmsession);
+      _boardingPasses.sendNext(passes);
+    } catch (e) {
+      currentBoardingPassPnr = null;
+      throw e;
+    }
+
+  }
+
   Future<void> _saveToCache(String key, String data) =>
       _cache.writeString(key, data);
 

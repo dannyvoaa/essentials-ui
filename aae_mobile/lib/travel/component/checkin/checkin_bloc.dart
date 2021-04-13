@@ -76,6 +76,10 @@ class CheckInBloc {
     return passengers.build();
   }
 
+  void cancelReservation(){
+    _travelRepository.cancelReservation(pnr);
+  }
+
   void setTravelerForCheckIn(int travelerId){
     travelerIdsForCheckIn.add(travelerId);
     _log.info(travelerIdsForCheckIn);
@@ -91,6 +95,7 @@ class CheckInBloc {
         reservationDetail: reservationDetail,
         loadReservationDetail: loadReservationDetail,
         performCheckIn: performCheckIn,
+        cancelReservation: cancelReservation(),
         setTravelerForCheckIn: setTravelerForCheckIn,
         removeTravelerForCheckIn: removeTravelerForCheckIn,
     );

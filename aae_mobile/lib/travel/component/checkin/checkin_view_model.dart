@@ -25,12 +25,16 @@ abstract class CheckInViewModel
   @nullable
   void Function() get performCheckIn;
 
+  @nullable
+  void Function() get cancelReservation;
+
   CheckInViewModel._();
 
   factory CheckInViewModel({
     @required ReservationDetail reservationDetail,
     @required Function(String pnr) loadReservationDetail,
     @required Function() performCheckIn,
+    @required Function() cancelReservation,
     @required Function(int travelerId) setTravelerForCheckIn,
     @required Function(int travelerId) removeTravelerForCheckIn,
   }) = _$CheckInViewModel._;
