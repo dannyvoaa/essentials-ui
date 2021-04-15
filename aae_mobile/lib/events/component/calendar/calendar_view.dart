@@ -6,12 +6,23 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 /// A view that shows a calendar on the events page.
-class CalendarView extends StatelessWidget {
+class CalendarView extends StatefulWidget {
   final CalendarViewModel viewModel;
-
   final CalendarDayViewModel dayViewModel;
-
   CalendarView({this.viewModel, this.dayViewModel});
+
+  @override
+  _CalendarViewState createState() => _CalendarViewState();
+}
+
+class _CalendarViewState extends State<CalendarView> {
+  String stringMonthYear;
+
+  @override
+  void initState(){
+    widget.viewModel.onDaySelected(DateTime.now().day);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +39,8 @@ class CalendarView extends StatelessWidget {
     var now = DateTime.now();
     var today = now.weekday;
     var thisMonth = now.month;
-//    print(today);
-//    print('day');
-//    print(index);
 
-    var color = today == index && thisMonth == viewModel.datePage.month
+    var color = today == index && thisMonth == widget.viewModel.datePage.month
         ? AaeColors.lightBlue
         : AaeColors.cadetGray;
 
@@ -151,10 +159,10 @@ class CalendarView extends StatelessWidget {
       var thisYear = now.year;
 
       var result = day < today &&
-              thisMonth == viewModel.datePage.month &&
-              thisYear == viewModel.datePage.year
+              thisMonth == widget.viewModel.datePage.month &&
+              thisYear == widget.viewModel.datePage.year
           ? AaeTextStyles.body16Gray
-          : day == viewModel.selectedDate
+          : day == widget.viewModel.selectedDate
               ? AaeTextStyles.body16WhiteMed
               : AaeTextStyles.body16;
       return result;
@@ -168,10 +176,10 @@ class CalendarView extends StatelessWidget {
       var thisYear = now.year;
 
       var result = day < today &&
-              thisMonth == viewModel.datePage.month &&
-              thisYear == viewModel.datePage.year
+              thisMonth == widget.viewModel.datePage.month &&
+              thisYear == widget.viewModel.datePage.year
           ? false
-          : day == viewModel.selectedDate ? false : true;
+          : day == widget.viewModel.selectedDate ? false : true;
       return result;
     }
 
@@ -182,12 +190,12 @@ class CalendarView extends StatelessWidget {
       var thisMonth = now.month;
       var thisYear = now.year;
 
-      var result = viewModel.daysWithEvents.contains(int?.parse(x)) &&
-              thisMonth < viewModel.datePage.month &&
-              day != viewModel.selectedDate
+      var result = widget.viewModel.daysWithEvents.contains(int?.parse(x)) &&
+              thisMonth < widget.viewModel.datePage.month &&
+              day != widget.viewModel.selectedDate
           ? AaeColors.blue
-          : viewModel.daysWithEvents.contains(int?.parse(x)) &&
-                  day != viewModel.selectedDate &&
+          : widget.viewModel.daysWithEvents.contains(int?.parse(x)) &&
+                  day != widget.viewModel.selectedDate &&
                   day >= today
               ? AaeColors.blue
               : null;
@@ -203,19 +211,19 @@ class CalendarView extends StatelessWidget {
       var thisYear = now.year;
 
       var result =
-          day == viewModel.selectedDate && thisMonth != viewModel.datePage.month
+          day == widget.viewModel.selectedDate && thisMonth != widget.viewModel.datePage.month
               ? AaeColors.cadetGray
-              : day == viewModel.selectedDate &&
-                      today != viewModel.selectedDate &&
-                      thisMonth == viewModel.datePage.month
+              : day == widget.viewModel.selectedDate &&
+                      today != widget.viewModel.selectedDate &&
+                      thisMonth == widget.viewModel.datePage.month
                   ? AaeColors.cadetGray
-                  : day == viewModel.selectedDate &&
-                          today == viewModel.selectedDate &&
-                          thisMonth == viewModel.datePage.month &&
-                          thisYear == viewModel.datePage.year
+                  : day == widget.viewModel.selectedDate &&
+                          today == widget.viewModel.selectedDate &&
+                          thisMonth == widget.viewModel.datePage.month &&
+                          thisYear == widget.viewModel.datePage.year
                       ? AaeColors.lightBlue
-                      : day == viewModel.selectedDate &&
-                              thisYear != viewModel.datePage.year
+                      : day == widget.viewModel.selectedDate &&
+                              thisYear != widget.viewModel.datePage.year
                           ? AaeColors.cadetGray
                           : null;
 
@@ -227,12 +235,12 @@ class CalendarView extends StatelessWidget {
       crossAxisCount: 7,
       physics: NeverScrollableScrollPhysics(),
       children: List.generate(
-          viewModel.numOfDaysInCurrentMonth + viewModel.firstWeekdayInMonth,
+          widget.viewModel.numOfDaysInCurrentMonth + widget.viewModel.firstWeekdayInMonth,
           (index) {
         // Set the string value for the current day in the month
-        String stringDay = index < viewModel.firstWeekdayInMonth
+        String stringDay = index < widget.viewModel.firstWeekdayInMonth
             ? ''
-            : '${(index + 1) - viewModel.firstWeekdayInMonth}';
+            : '${(index + 1) - widget.viewModel.firstWeekdayInMonth}';
 
         return InkWell(
           highlightColor: Colors.transparent,
@@ -248,7 +256,7 @@ class CalendarView extends StatelessWidget {
                     ),
                       Text(stringDay, style: formatDay(stringDay)),
                     Expanded(
-                      child: viewModel.daysWithEvents
+                      child: widget.viewModel.daysWithEvents
                               .contains(int?.tryParse(stringDay))
                           ? Align(
                               alignment: Alignment.topCenter,
@@ -276,8 +284,8 @@ class CalendarView extends StatelessWidget {
           ),
           onTap: formatTap(stringDay)
               ? () {
-                  viewModel.onDaySelected(
-                      (index + 1) - viewModel.firstWeekdayInMonth);
+                  widget.viewModel.onDaySelected(
+                      (index + 1) - widget.viewModel.firstWeekdayInMonth);
                 }
               : null,
         );
@@ -289,16 +297,16 @@ class CalendarView extends StatelessWidget {
   Widget _buildNavigation(BuildContext context) {
     // Get the currently paged month
     DateTime dateBuilder = DateTime.parse(
-        '${viewModel.datePage.year}-${viewModel.datePage.month.toString().padLeft(2, '0')}-01T00:00:00Z');
+        '${widget.viewModel.datePage.year}-${widget.viewModel.datePage.month.toString().padLeft(2, '0')}-01T00:00:00Z');
 
     // Check to see if the year should be displayed
     // - The year is only displayed when the paged date's year is not the same as the current date's year
-    String stringMonthYear = dateBuilder.year == DateTime.now().year
+    stringMonthYear = dateBuilder.year == DateTime.now().year
         ? DateFormat.MMMM().format(dateBuilder)
         : DateFormat.yMMMM().format(dateBuilder);
 
     bool thisMonth() {
-      var selectedMonth = viewModel.datePage.month;
+      var selectedMonth = widget.viewModel.datePage.month;
       var now = DateTime.now();
       var thisMonth = now.month;
       var result = selectedMonth == thisMonth ? true : false;
@@ -310,42 +318,42 @@ class CalendarView extends StatelessWidget {
       var now = DateTime.now();
       var thisMonth = now.month;
       var thisYear = now.year;
-      var selectedMonth = viewModel.datePage.month;
-      var selectedYear = viewModel.datePage.year;
+      var selectedMonth = widget.viewModel.datePage.month;
+      var selectedYear = widget.viewModel.datePage.year;
       var today = now.day;
 
       var result =
-          thisMonth == viewModel.datePage.month && thisYear == selectedYear
+          thisMonth == widget.viewModel.datePage.month && thisYear == selectedYear
               ? false
-              : thisMonth > viewModel.datePage.month ? true : true;
+              : thisMonth > widget.viewModel.datePage.month ? true : true;
       return result;
     }
 
     void backMonth() {
       var now = DateTime.now();
       var thisMonth = now.month;
-      var displayedMonth = viewModel.datePage.month;
-      var selectedMonth = viewModel.datePage.month - 1;
+      var displayedMonth = widget.viewModel.datePage.month;
+      var selectedMonth = widget.viewModel.datePage.month - 1;
       int today = now.day;
       int index = today;
 
-      viewModel.onPreviousMonthPressed();
+      widget.viewModel.onPreviousMonthPressed();
 //      print("Testing............................................");
 //      print(selectedMonth);
 //      print(today);
 
       selectedMonth == thisMonth
-          ? viewModel.onDaySelected(today)
+          ? widget.viewModel.onDaySelected(today)
           : selectedMonth != thisMonth
-              ? viewModel.onDaySelected(1)
-              : viewModel.onDaySelected(1);
+              ? widget.viewModel.onDaySelected(1)
+              : widget.viewModel.onDaySelected(1);
 
 //      viewModel.onDaySelected((index + 1) - viewModel.firstWeekdayInMonth);
     }
 
     void forwardMonth() {
-      viewModel.onNextMonthPressed();
-      viewModel.onDaySelected(1);
+      widget.viewModel.onNextMonthPressed();
+      widget.viewModel.onDaySelected(1);
     }
 
     return Padding(
