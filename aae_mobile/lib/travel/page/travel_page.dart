@@ -10,6 +10,7 @@ import 'package:aae/travel/component/travel_top_bar/travel_top_bar.dart';
 import 'package:aae/travel/component/flight_status/flight_status_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:aae/travel/component/ui/travel_snack_bar.dart';
 
 class TravelPage extends StatefulWidget {
   final GlobalKey<NavigatorState> tripsNestedNavKey =
@@ -57,6 +58,8 @@ class _TravelPageState extends State<TravelPage>
 
   @override
   Widget build(BuildContext context) {
+    final TravelSnackBar travelSnackBar = new TravelSnackBar();
+
     SSKeys mykeys = new SSKeys();
     setState(() {});
     return Scaffold(

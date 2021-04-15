@@ -13,6 +13,7 @@ import 'package:aae/model/trips.dart';
 import 'package:aae/model/reservation_detail.dart';
 import 'package:aae/travel/component/checkin/checkin_component.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:logging/logging.dart';
@@ -22,7 +23,7 @@ class TravelServiceApi {
   final http.Client httpClient = http.Client();
 
   static const String baseUrl =
-      'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/travel-stage';
+      'https://us-south.functions.cloud.ibm.com/api/v1/web/AA-CorpTech-Essentials_dev/testtravel';
 
   static const travelReservationsEndpoint = '$baseUrl/reservations';
   static const priorityListEndpoint = '$baseUrl/prioritylist';
@@ -48,25 +49,24 @@ class TravelServiceApi {
     return headers;
   }
 
-
   static Trips _tripsToModel(String tripsJson) {
     _log.info(jsonDecode(tripsJson));
 
     Trips trips =
-    serializers.deserializeWith(Trips.serializer, jsonDecode(tripsJson));
+        serializers.deserializeWith(Trips.serializer, jsonDecode(tripsJson));
     return trips;
   }
 
   Future<Trips> getReservations(String employeeId, String smsession) async {
     Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
-    final response = await httpClient.get(travelReservationsEndpoint, headers: headers);
+    final response =
+        await httpClient.get(travelReservationsEndpoint, headers: headers);
     if (response.statusCode == 200) {
       _log.info("Reservation API request successful");
       //_log.info(response.body.toString().substring(0,50));
 
       /// Populates trips object with available PNRs
       Trips trips = _tripsToModel(response.body);
-
 
       return trips;
     } else {
@@ -80,7 +80,8 @@ class TravelServiceApi {
     _log.info("initiating priority list request: $origin $flightNum $date");
 
     Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
-    String constructedUrl = "$priorityListEndpoint/$origin/$flightNum/${dateFormatter.format(date)}";
+    String constructedUrl =
+        "$priorityListEndpoint/$origin/$flightNum/${dateFormatter.format(date)}";
     _log.info(constructedUrl);
 
     var response;
@@ -95,50 +96,53 @@ class TravelServiceApi {
     if (response.statusCode == 200) {
       _log.info("priority list request successful");
       _log.info(response.body);
-      return serializers.deserializeWith(PriorityList.serializer, jsonDecode(response.body));
+      return serializers.deserializeWith(
+          PriorityList.serializer, jsonDecode(response.body));
     } else {
       throw Exception(
-          'failed to load the priority list.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
+          'failed to load the priority list.\n ${response.body} - ${response.statusCode} - ${response.headers["error-code"]} - ${response.headers["error-description"]}');
     }
   }
 
-  Future<BuiltList<Airport>> getAirports(String employeeId, String smsession) async {
+  Future<BuiltList<Airport>> getAirports(
+      String employeeId, String smsession) async {
     _log.info("initiating airports request.");
     _log.info("url: $airportsEndpoint");
 
     Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
 
-//    var response;
-//    try {
-//      response = await httpClient.get(airportsEndpoint, headers: headers);
-//    } catch (e) {
-//      String msg = 'failed to load the airports list.\n' + e.toString();
-//      _log.severe(msg);
-//      throw Exception(msg);
-//    }
+    var response;
+    try {
+      response = await httpClient.get(airportsEndpoint, headers: headers);
+    } catch (e) {
+      String msg = 'failed to load the airports list.\n' + e.toString();
+      _log.severe(msg);
+      throw Exception(msg);
+    }
 
-//    if (response.statusCode == 200) {
+    if (response.statusCode == 200) {
       _log.info("airports request successful");
       //_log.info(response.body.toString().substring(0,50));
-      String jsonObject =
-      await rootBundle.loadString('assets/static_records/Airports.json');
+//      String jsonObject =
+//      await rootBundle.loadString('assets/static_records/Airports.json');
 
       AirportsWrapper wrapper = serializers.deserializeWith(
-          AirportsWrapper.serializer, jsonDecode(jsonObject));
+          AirportsWrapper.serializer, jsonDecode(response.body));
 
       if (wrapper != null && wrapper.airports != null)
         return wrapper.airports;
       else {
-        throw Exception("failed to load the airports list. received 200 response with no contents.");
+        throw Exception(
+            "failed to load the airports list. received 200 response with no contents.");
       }
-
     } else {
       throw Exception(
-          'failed to load the airports list.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
+          'failed to load the airports list.\n ${response.body} - ${response.statusCode} - ${response.headers["error-code"]} - ${response.headers["error-description"]}');
     }
   }
 
-  Future<BuiltList<Country>> getCountries(String employeeId, String smsession) async {
+  Future<BuiltList<Country>> getCountries(
+      String employeeId, String smsession) async {
     _log.info("initiating countries request.");
     _log.info("url: $countriesEndpoint");
 
@@ -160,18 +164,20 @@ class TravelServiceApi {
       if (wrapper != null && wrapper.countries != null)
         return wrapper.countries;
       else {
-        throw Exception("failed to load the airports list. received 200 response with no contents.");
+        throw Exception(
+            "failed to load the airports list. received 200 response with no contents.");
       }
-
     } else {
       throw Exception(
-          'failed to load the countries list.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
+          'failed to load the countries list.\n ${response.body} - ${response.statusCode} - ${response.headers["error-code"]} - ${response.headers["error-description"]}');
     }
   }
 
-  Future<FlightStatus> getFlightStatus(String employeeId, String smsession, String flightNumber, String origin, String date) async {
+  Future<FlightStatus> getFlightStatus(String employeeId, String smsession,
+      String flightNumber, String origin, String date) async {
     Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
-    String constructedUrl = "$travelFlightStatusEndpoint/$origin/$flightNumber/$date";
+    String constructedUrl =
+        "$travelFlightStatusEndpoint/$origin/$flightNumber/$date";
     final response = await httpClient.get(constructedUrl, headers: headers);
     if (response.statusCode == 200) {
       FlightStatus flightStatus;
@@ -188,8 +194,8 @@ class TravelServiceApi {
     }
   }
 
-  Future<FlightSearch> getFlightSearch(
-      String employeeId, String smsession, String origin, String destination, String date) async {
+  Future<FlightSearch> getFlightSearch(String employeeId, String smsession,
+      String origin, String destination, String date) async {
     Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
     String constructedUrl =
         "$travelFlightSearchEndpoint/$origin/$destination/$date";
@@ -202,16 +208,17 @@ class TravelServiceApi {
         flightSearch = serializers.deserializeWith(
             FlightSearch.serializer, jsonDecode(response.body));
       } catch (e, s) {
-        _log.severe("FAILED BECAUSE OF", e, s);
+        _log.severe("FAILED BECAUSE OF", e);
       }
       return flightSearch;
     } else {
       throw new Exception(
-          'Failed to load the flightSearch\n ${response.body} - ${response.statusCode}');
+          'Failed to load the flightSearch\n ${response.body} - ${response.statusCode} - ${response.headers["error-code"]} - ${response.headers["error-description"]}');
     }
   }
 
-  Future<BuiltList<BoardingPass>> pushCheckIn(CheckInArguments checkInArguments, String employeeId, String smsession) async {
+  Future<BuiltList<BoardingPass>> pushCheckIn(CheckInArguments checkInArguments,
+      String employeeId, String smsession) async {
     Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
     String constructedUrl = "$checkInEndpoint/${checkInArguments.pnr}";
 
@@ -223,19 +230,19 @@ class TravelServiceApi {
 
     var response;
     try {
-
       CheckInRequest request = CheckInRequest((b) => b
         ..pnr = checkInArguments.pnr
         ..employeeId = employeeId
-        ..passengers = checkInArguments.passengers.toBuilder()
-      );
+        ..passengers = checkInArguments.passengers.toBuilder());
 
       String checkinDetailsJson = request.toJson();
       _log.info(checkinDetailsJson);
 
-      response = await httpClient.post(constructedUrl, headers: headers, body: checkinDetailsJson);
+      response = await httpClient.post(constructedUrl,
+          headers: headers, body: checkinDetailsJson);
     } catch (e) {
-      String msg = 'failed to push the check in request.\n' + e.toString() + 'end';
+      String msg =
+          'failed to push the check in request.\n' + e.toString() + 'end';
       _log.severe(msg);
       throw Exception(msg);
     }
@@ -244,16 +251,17 @@ class TravelServiceApi {
       _log.info("check in request successful");
       _log.info(response.body);
 
-      BoardingPassWrapper boardingPassWrapper = BoardingPassWrapper.fromJson(response.body);
+      BoardingPassWrapper boardingPassWrapper =
+          BoardingPassWrapper.fromJson(response.body);
       return boardingPassWrapper.boardingPasses;
-
     } else {
       throw Exception(
-          'failed to push the check in request.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
+          'failed to push the check in request.\n ${response.body} - ${response.statusCode} - ${response.headers["error-code"]} - ${response.headers["error-description"]}');
     }
   }
 
-  Future<ReservationDetail> getReservationDetail(String employeeId, String smsession, String pnr) async {
+  Future<ReservationDetail> getReservationDetail(
+      String employeeId, String smsession, String pnr) async {
     _log.info("initiating reservation detail request: $pnr");
 
     Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
@@ -276,14 +284,14 @@ class TravelServiceApi {
       _log.info("reservation detail request successful");
       _log.info(response.body);
       return ReservationDetail.fromJson(response.body);
-
     } else {
       throw Exception(
-          'failed to load the reservation details.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
+          'failed to load the reservation details.\n ${response.body} - ${response.statusCode} - ${response.headers["error-code"]} - ${response.headers["error-description"]}');
     }
   }
 
-  Future<BuiltList<BoardingPass>> getBoardingPasses(String employeeId, String smsession, String pnr) async {
+  Future<BuiltList<BoardingPass>> getBoardingPasses(
+      String employeeId, String smsession, String pnr) async {
     _log.info("initiating boarding pass request: $pnr");
 
     Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
@@ -301,20 +309,20 @@ class TravelServiceApi {
     }
 
     if (response.statusCode == 200) {
-
       _log.info("boarding pass request successful");
       _log.info(response.body);
 
-      BoardingPassWrapper boardingPassWrapper = BoardingPassWrapper.fromJson(response.body);
+      BoardingPassWrapper boardingPassWrapper =
+          BoardingPassWrapper.fromJson(response.body);
       return boardingPassWrapper.boardingPasses;
-
     } else {
       throw Exception(
-          'failed to load boarding passes.\n ${response.body} - ${response.statusCode} - ${response.headers["error"]}');
+          'failed to load boarding passes.\n ${response.body} - ${response.statusCode} - ${response.headers["error-code"]} - ${response.headers["error-description"]}');
     }
   }
 
-  Future<BuiltList<BoardingPass>> cancelReservation(String pnr, String employeeId, String smsession) async {
+  Future<String> cancelReservation(
+      String pnr, String employeeId, String smsession) async {
     Map<String, String> headers = _getRequestHeaders(employeeId, smsession);
     String constructedUrl = "$deleteReservationEndpoint/$pnr";
 
@@ -325,10 +333,21 @@ class TravelServiceApi {
     try {
       response = await httpClient.post(constructedUrl, headers: headers);
     } catch (e) {
-      String msg = 'failed to push the check in request.\n' + e.toString() + 'end';
+      String msg = 'cancel reservation request failed.\n' + e.toString() + 'end';
       _log.severe(msg);
       throw Exception(msg);
     }
-  }
 
+    if (response.statusCode == 200) {
+      _log.info("cancel reservation request successful");
+      _log.info(response.body);
+
+      return 'SUCCESS';
+    } else {
+      _log.info(
+          'cancel reservation failed.\n ${response.body} - ${response.statusCode} - ${response.headers["error-code"]} - ${response.headers["error-description"]}');
+
+      return 'FAIL';
+    }
+  }
 }

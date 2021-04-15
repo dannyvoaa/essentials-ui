@@ -17,6 +17,9 @@ abstract class ReservationDetailViewModel
   @nullable
   BuiltList<Airport> get airports;
 
+  @nullable
+  String get cancelReservationStatus;
+
   void Function(String pnr) get loadReservationDetail;
 
   String getAirportName (String airportCode) {
@@ -36,6 +39,7 @@ abstract class ReservationDetailViewModel
   factory ReservationDetailViewModel({
     @required ReservationDetail reservationDetail,
     @required BuiltList<Airport> airports,
+    @required String cancelReservationStatus,
     @required Function(String pnr) loadReservationDetail,
   }) = _$ReservationDetailViewModel._;
 }

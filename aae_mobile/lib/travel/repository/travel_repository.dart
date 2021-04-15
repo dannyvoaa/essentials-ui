@@ -43,6 +43,7 @@ class TravelRepository implements Repository {
   final _flightSearch = createBehaviorSubject<FlightSearch>();
   final _airports = createBehaviorSubject<BuiltList<Airport>>();
   final _boardingPasses = createBehaviorSubject<BuiltList<BoardingPass>>();
+  final _cancelReservationStatus = createBehaviorSubject<String>();
 
   final CacheService _cache;
   static String tripsKey = 'trips';
@@ -56,6 +57,7 @@ class TravelRepository implements Repository {
   Observable<FlightSearch> get flightSearch => _flightSearch;
   Observable<BuiltList<Airport>> get airports => _airports;
   Observable<BuiltList<BoardingPass>> get boardingPasses => _boardingPasses;
+  Observable<String> get cancelReservationStatus => _cancelReservationStatus;
 
   BuiltList<Airport> cachedAirports;
   Map<String, Country> cachedCountries;
@@ -237,6 +239,7 @@ class TravelRepository implements Repository {
 
     _log.info("clearing reservationDetails");
     _reservationDetail.sendNext(null);
+    _cancelReservationStatus.sendNext(null);
     currentReservationDetailsPnr = pnr;
 
     try {
@@ -266,7 +269,6 @@ class TravelRepository implements Repository {
     currentBoardingPassPnr = checkInArgs.pnr;
 
     try {
-
       BuiltList<BoardingPass> passes = await _travelApiClient.pushCheckIn(checkInArgs, strEmployeeId, strSmsession);
       _boardingPasses.sendNext(passes);
     } catch (e) {
@@ -297,19 +299,19 @@ class TravelRepository implements Repository {
     }
   }
 
-  cancelReservation (String pnr) async {
-    if (!existsEmployeeIdAndSMSession())
-      return;
-
-    _boardingPasses.sendNext(null);
+  cancelReservation(String pnr) async {
+    String cancelReservationStatus = '';
+    _cancelReservationStatus.sendNext('LOADING');
     try {
-      BuiltList<BoardingPass> passes = await _travelApiClient.cancelReservation(pnr, strEmployeeId, strSmsession);
-      _boardingPasses.sendNext(passes);
+      cancelReservationStatus = await _travelApiClient.cancelReservation(
+          pnr, strEmployeeId, strSmsession);
+      if (cancelReservationStatus == 'SUCCESS') {
+        await fetchTrips();
+      }
+      _cancelReservationStatus.sendNext(cancelReservationStatus);
     } catch (e) {
-      currentBoardingPassPnr = null;
       throw e;
     }
-
   }
 
   Future<void> _saveToCache(String key, String data) =>

@@ -10,8 +10,16 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Airport.serializer)
       ..add(AirportsWrapper.serializer)
       ..add(ArticleBody.serializer)
+      ..add(BoardingPass.serializer)
+      ..add(BoardingPassWrapper.serializer)
+      ..add(CheckInPassenger.serializer)
+      ..add(CheckInRequest.serializer)
+      ..add(CountriesWrapper.serializer)
+      ..add(Country.serializer)
+      ..add(Destination.serializer)
       ..add(Docs.serializer)
       ..add(Dzerodocs.serializer)
+      ..add(EmergencyContact.serializer)
       ..add(Event.serializer)
       ..add(FlightAirport.serializer)
       ..add(FlightLeg.serializer)
@@ -26,6 +34,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(NewsFeedJsonList.serializer)
       ..add(Newsarticledocs.serializer)
       ..add(Nfdocs.serializer)
+      ..add(Passport.serializer)
       ..add(PerformanceStats.serializer)
       ..add(Pnr.serializer)
       ..add(PriorityList.serializer)
@@ -36,16 +45,25 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(RecognitionRegister.serializer)
       ..add(ReservationDetail.serializer)
       ..add(ReservationDetailPassenger.serializer)
+      ..add(ReservationDetailPassengerInfo.serializer)
       ..add(ReservationDetailSeatAssignment.serializer)
       ..add(ReservationDetailSegment.serializer)
       ..add(StockStats.serializer)
       ..add(Stockdocs.serializer)
       ..add(Topics.serializer)
       ..add(Trips.serializer)
+      ..add(UsResidencyCard.serializer)
+      ..add(Visa.serializer)
       ..add(Workgroup.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Airport)]),
           () => new ListBuilder<Airport>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(BoardingPass)]),
+          () => new ListBuilder<BoardingPass>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Country)]),
+          () => new ListBuilder<Country>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Event)]),
           () => new ListBuilder<Event>())
@@ -102,8 +120,16 @@ Serializers _$serializers = (new Serializers().toBuilder()
           () => new ListBuilder<ReservationDetailPassenger>())
       ..addBuilderFactory(
           const FullType(
+              BuiltList, const [const FullType(ReservationDetailPassenger)]),
+          () => new ListBuilder<ReservationDetailPassenger>())
+      ..addBuilderFactory(
+          const FullType(
               BuiltList, const [const FullType(ReservationDetailSegment)]),
           () => new ListBuilder<ReservationDetailSegment>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(ReservationDetailPassengerInfo)]),
+          () => new ListBuilder<ReservationDetailPassengerInfo>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ReservationDetailSeatAssignment)]),

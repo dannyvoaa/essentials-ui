@@ -17,33 +17,43 @@ abstract class PriorityList implements Built<PriorityList, PriorityListBuilder> 
   factory PriorityList([updates(PriorityListBuilder b)]) =
   _$PriorityList;
 
+  @nullable
   @BuiltValueField(wireName: 'originAirportCode')
   String get originAirportCode;
 
+  @nullable
   @BuiltValueField(wireName: 'destinationAirportCode')
   String get destinationAirportCode;
 
+  @nullable
   @BuiltValueField(wireName: 'flightNumber')
   int get flightNumber;
 
+  @nullable
   @BuiltValueField(wireName: 'departureTime')
   String get departureTime;
 
+  @nullable
   @BuiltValueField(wireName: 'departureGate')
   String get departureGate;
 
+  @nullable
   @BuiltValueField(wireName: 'cabins')
   BuiltList<PriorityListCabin> get cabins;
 
+  @nullable
   @BuiltValueField(wireName: 'confirmedRevenueOversales')
   BuiltList<PriorityListPassenger> get confirmedRevenueOversales;
 
+  @nullable
   @BuiltValueField(wireName: 'confirmedRevenueUpgrades')
   BuiltList<PriorityListPassenger> get confirmedRevenueUpgrades;
 
+  @nullable
   @BuiltValueField(wireName: 'revenueStandbys')
   BuiltList<PriorityListPassenger> get revenueStandbys;
 
+  @nullable
   @BuiltValueField(wireName: 'nonrevStandbys')
   BuiltList<PriorityListPassenger> get nonrevStandbys;
 

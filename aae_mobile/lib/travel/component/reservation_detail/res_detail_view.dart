@@ -11,10 +11,12 @@ import 'package:flutter/material.dart';
 class ReservationView extends StatelessWidget {
   final ReservationDetailViewModel viewModel;
   final Function(BuildContext, String, bool) loadBoardingPasses;
+  final Function(String) cancelReservation;
 
   ReservationView({
     this.viewModel,
     this.loadBoardingPasses,
+    this.cancelReservation
   });
 
   bool _boardingPassAvailable() {
@@ -93,7 +95,7 @@ class ReservationView extends StatelessWidget {
                 child: TripsCollection(viewModel: null, header: 'Tools'),
               ),
               Container(
-                child: CancelSlider(),
+                child: CancelSlider(viewModel: viewModel, onClicked: cancelReservation),
               ),
             ],
           ),

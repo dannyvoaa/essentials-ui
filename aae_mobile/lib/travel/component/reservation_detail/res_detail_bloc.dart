@@ -19,24 +19,35 @@ class ReservationDetailBloc {
   final TravelRepository _travelRepository;
 
   Observable<ReservationDetail> _dummyPriorityListObservable;
+  var _cancelResults = createBehaviorSubject<bool>(initial: null);
 
-  Source<ReservationDetailViewModel> get viewModel => toSource(combineLatest2(
+  Source<ReservationDetailViewModel> get viewModel => toSource(combineLatest3(
       _travelRepository.reservationDetail,
       _travelRepository.airports,
+      _travelRepository.cancelReservationStatus,
       _createViewModel));
 
   @provide
   ReservationDetailBloc(this._travelRepository);
 
   void loadReservationDetail(String pnr) {
-    _travelRepository.loadReservationDetail(pnr, true);
+    if (_travelRepository.reservationDetail != null) {
+      _travelRepository.loadReservationDetail(pnr, true);
+    }
+  }
+
+  cancelReservation(String pnr) {
+    _travelRepository.cancelReservation(pnr);
   }
 
   ReservationDetailViewModel _createViewModel(
-      ReservationDetail reservationDetail, BuiltList<Airport> airports) {
+      ReservationDetail reservationDetail,
+      BuiltList<Airport> airports,
+      String cancelReservationStatus) {
     return ReservationDetailViewModel(
         reservationDetail: reservationDetail,
         airports: airports,
+        cancelReservationStatus: cancelReservationStatus,
         loadReservationDetail: loadReservationDetail);
   }
 }

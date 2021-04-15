@@ -44,7 +44,7 @@ class FlightStatusComponent extends StatelessWidget {
             if (snapshot.present &&
                 snapshot.value != null &&
                 snapshot.value.flightStatus != null &&
-                snapshot.value.flightStatus.flightNumber != null) {
+                snapshot.value.flightStatus.destinationInfo != null) {
               return FlightStatusView(viewModel: snapshot.value);
             } else if (snapshot.present &&
                 snapshot.value != null &&
@@ -54,7 +54,7 @@ class FlightStatusComponent extends StatelessWidget {
               travelSnackBar.showSnackBar(
                   context,
                   'No results were found. Please try again.',
-                  AaeColors.darkRed,
+                  AaeColors.orange,
                   true);
               return _buildLoadingState(context);
             }

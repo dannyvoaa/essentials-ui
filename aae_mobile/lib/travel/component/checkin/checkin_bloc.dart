@@ -95,7 +95,7 @@ class CheckInBloc {
         reservationDetail: reservationDetail,
         loadReservationDetail: loadReservationDetail,
         performCheckIn: performCheckIn,
-        cancelReservation: cancelReservation(),
+        cancelReservation: cancelReservation,
         setTravelerForCheckIn: setTravelerForCheckIn,
         removeTravelerForCheckIn: removeTravelerForCheckIn,
     );

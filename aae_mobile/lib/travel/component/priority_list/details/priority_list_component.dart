@@ -52,7 +52,7 @@ class PriorityListComponent extends StatelessWidget {
             if (snapshot.present &&
                 snapshot.value != null &&
                 snapshot.value.priorityList != null &&
-                snapshot.value.priorityList.flightNumber != null) {
+                snapshot.value.priorityList.destinationAirportCode != null) {
               return PriorityListView(viewModel: snapshot.value);
             } else if (snapshot.present &&
                 snapshot.value != null &&
@@ -62,7 +62,7 @@ class PriorityListComponent extends StatelessWidget {
               travelSnackBar.showSnackBar(
                   context,
                   'No results were found. Please try again.',
-                  AaeColors.darkRed,
+                  AaeColors.orange,
                   true);
               return Center(child: AaeLoadingSpinner());
             }

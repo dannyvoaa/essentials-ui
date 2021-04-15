@@ -2,8 +2,15 @@ import 'package:aae/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:slider_button/slider_button.dart';
 
+import '../res_detail_view_model.dart';
+
 class CancelSlider extends StatelessWidget {
+  final Function(String) onClicked;
+  final ReservationDetailViewModel viewModel;
+
   const CancelSlider({
+    this.onClicked,
+    this.viewModel,
     Key key,
   }) : super(key: key);
 
@@ -13,12 +20,8 @@ class CancelSlider extends StatelessWidget {
       padding: const EdgeInsets.only(top: 12.0),
       child: SliderButton(
         action: () {
-          ///Do something here OnSlide
-          Navigator.pop(context);
-          print('slide button has been slid...');
+          this.onClicked(this.viewModel.reservationDetail.recordLocator);
         },
-
-        ///Put label over here
         label: Text(
           "Slide to cancel trip",
           style: TextStyle(
@@ -30,11 +33,11 @@ class CancelSlider extends StatelessWidget {
         ),
         icon: Center(
             child: Icon(
-              Icons.arrow_forward_ios,
-              color: AaeColors.mediumGray,
-              size: 26.0,
-              semanticLabel: 'Slide to cancel trip',
-            )),
+          Icons.arrow_forward_ios,
+          color: AaeColors.mediumGray,
+          size: 26.0,
+          semanticLabel: 'Slide to cancel trip',
+        )),
 
         ///Change All the color and size from here.
         width: 300,
