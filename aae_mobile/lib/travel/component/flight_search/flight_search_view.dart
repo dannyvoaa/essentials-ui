@@ -85,37 +85,30 @@ class FlightSearchView extends StatelessWidget {
       Function(BuildContext p1, String p2, String p3, String p4) searchType) {
     return Container(
       padding: const EdgeInsets.only(left: 20, right: 20),
-      child: Container(
-        height: _calculateListLength(viewModel),
-        child: ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            itemCount: viewModel.flightSearch.flightRoutes.length,
-            itemBuilder: (context, index) {
-              return _buildTravelListTile(context,
-                  viewModel.flightSearch.flightRoutes[index], searchType);
-            }),
-      ),
+      child: ListView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: viewModel.flightSearch.flightRoutes.length,
+          itemBuilder: (context, index) {
+            return _buildGroupedListTiles(context,
+                viewModel.flightSearch.flightRoutes[index], searchType);
+          }),
     );
-  }
-
-  _calculateListLength(FlightSearchViewModel viewModel) {
-    double containerLength = 0.00;
-    for (FlightRoute flightRoute in viewModel.flightSearch.flightRoutes) {
-      for (FlightSegment flightSegment in flightRoute.flightSegments) {
-        for (FlightLeg flightLeg in flightSegment.flightLegs) {
-          if (flightLeg != null) {
-            containerLength = containerLength + 52;
-          }
-        }
-      }
-      containerLength = containerLength + 19;
-    }
-    return containerLength;
   }
 }
 
-_buildTravelListTile(BuildContext context, FlightRoute flightRoute,
+_buildGroupedListTiles(BuildContext context, FlightRoute flightRoute,
     Function(BuildContext p1, String p2, String p3, String p4) searchType) {
+  List<Widget> list = new List<Widget>();
+
+  // logic to group segment tiles by routes
+  for (FlightSegment flightSegment in flightRoute.flightSegments) {
+    if (flightSegment.flightLegs.length == 0) {
+      return Container();
+    }
+    list.add(_buildSingleListTile(context, flightSegment, searchType));
+  }
+
   return Padding(
       padding: const EdgeInsets.only(
           top: 0,
@@ -123,7 +116,7 @@ _buildTravelListTile(BuildContext context, FlightRoute flightRoute,
           left: 3,
           right: 3),
       child: Container(
-        child: _buildListTile(context, flightRoute, searchType),
+        child: Column(children: list),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(3.0),
           color: const Color(0xffffffff),
@@ -138,62 +131,32 @@ _buildTravelListTile(BuildContext context, FlightRoute flightRoute,
       ));
 }
 
-_buildListTile(BuildContext context, FlightRoute flightRoute,
+_buildSingleListTile(BuildContext context, FlightSegment flightSegment,
     Function(BuildContext p1, String p2, String p3, String p4) searchType) {
-  List<Widget> list = new List<Widget>();
-
-  for (FlightSegment flightSegment in flightRoute.flightSegments) {
-    list.add(new Material(
-        child: new InkWell(
-            onTap: () {
-              searchType(
-                  context,
-                  flightSegment.flightLegs[0].origin.code,
-                  flightSegment.flightNumber,
-                  flightSegment.flightLegs[0].scheduledDepartureDateTime
-                      .substring(0, 10));
-            },
-            child: ListTile(
-              contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-              title: _buildFlightSearchButton(
+  return new Material(
+      child: new InkWell(
+          onTap: () {
+            searchType(
                 context,
-                flightSegment.flightNumber,
                 flightSegment.flightLegs[0].origin.code,
-                flightSegment.flightLegs[0].destination.code,
-                flightSegment.flightLegs[0].scheduledDepartureDateTime,
-                flightSegment.flightLegs[0].scheduledArrivalDateTime,
-              ),
-            ))));
-  }
-
-  return new Column(children: list);
+                flightSegment.flightNumber,
+                flightSegment.flightLegs[0].scheduledDepartureDateTime
+                    .substring(0, 10));
+          },
+          child: ListTile(
+            contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+            title: _buildListTileContent(
+              context,
+              flightSegment.flightNumber,
+              flightSegment.flightLegs[0].origin.code,
+              flightSegment.flightLegs[0].destination.code,
+              flightSegment.flightLegs[0].scheduledDepartureDateTime,
+              flightSegment.flightLegs[0].scheduledArrivalDateTime,
+            ),
+          )));
 }
 
-void search(
-    BuildContext context,
-    String data1,
-    String data2,
-    String searchDate,
-    Function(BuildContext context, String searchField1, String searchField2,
-            String searchDate)
-        searchType) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => FlightStatusComponent(
-          flightNumber: data1, origin: data2, date: searchDate),
-    ),
-  );
-}
-
-_convertStringToDate(String strDate) {
-  DateTime todayDate = DateTime.parse(strDate);
-  final df = new DateFormat('EEEEE, MMMM d, yyyy');
-  String date = df.format(todayDate);
-  return date;
-}
-
-_buildFlightSearchButton(
+_buildListTileContent(
     BuildContext context,
     String flightNumber,
     String searchField1,
@@ -220,8 +183,7 @@ _buildFlightSearchButton(
             Container(
                 //                color: AaeColors.green,
                 padding: EdgeInsets.only(top: 5, bottom: 3),
-                child: Text(flightNumber,
-                    style: AaeTextStyles.body14)),
+                child: Text(flightNumber, style: AaeTextStyles.body14)),
           ],
         ),
       ),
@@ -241,10 +203,16 @@ _buildFlightSearchButton(
           child: Container(
               padding: const EdgeInsets.all(0.0),
               width: 20.0, // you can adjust the width as you need
-              child: Icon(Icons.arrow_forward_ios,
-                  color: AaeColors.lightGray)),
+              child: Icon(Icons.arrow_forward_ios, color: AaeColors.lightGray)),
         ))
   ]));
+}
+
+_convertStringToDate(String strDate) {
+  DateTime todayDate = DateTime.parse(strDate);
+  final df = new DateFormat('EEEEE, MMMM d, yyyy');
+  String date = df.format(todayDate);
+  return date;
 }
 
 class FlightSearchCardBody extends StatelessWidget {
@@ -333,8 +301,7 @@ class FlightSearchCardBodyColumn extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 5, bottom: 0),
-                  child: Text(location,
-                      style: AaeTextStyles.body14),
+                  child: Text(location, style: AaeTextStyles.body14),
                 ),
               ],
             )

@@ -22,24 +22,22 @@ class TripsListWidget extends StatelessWidget {
   }
 
   _buildTripsListWidget(BuildContext context) {
-    return SizedBox(
-      height: 82.00 * viewModel.pnrs.length,
-      child: ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          itemCount: viewModel.pnrs.length,
-          itemBuilder: (context, index) {
-            return TravelListTile(
-              buttonContent: InkWell(
-                onTap: () {
-                  print('tapped...');
-                  loadReservationDetail(
-                      context, this.viewModel.pnrs[index].recordLocator);
-                },
-                child: TripsButton(
-                    pnr: this.viewModel.pnrs[index], context: context),
-              ),
-            );
-          }),
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: viewModel.pnrs.length,
+      itemBuilder: (context, index) {
+        return TravelListTile(
+          buttonContent: InkWell(
+            onTap: () {
+              loadReservationDetail(
+                  context, this.viewModel.pnrs[index].recordLocator);
+            },
+            child:
+                TripsButton(pnr: this.viewModel.pnrs[index], context: context),
+          ),
+        );
+      },
     );
   }
 
