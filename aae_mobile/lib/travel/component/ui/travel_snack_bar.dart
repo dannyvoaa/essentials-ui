@@ -76,6 +76,7 @@ class TravelSnackBarState extends State<TravelSnackBar>
                         alignment: Alignment.center,
                         child: Text(
                           widget.label,
+                          textAlign: TextAlign.center,
                           style: AaeTextStyles.btn18,
                         ),
                       ),
