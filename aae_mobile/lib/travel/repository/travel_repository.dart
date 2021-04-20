@@ -203,7 +203,7 @@ class TravelRepository implements Repository {
     }
   }
 
-  loadFlightSearch(origin, destination, date) async {
+  loadFlightSearch(destination, origin, date) async {
     if (existsEmployeeIdAndSMSession()) {
       FlightSearch flightSearch;
       try {

@@ -11,15 +11,15 @@ import 'flight_search_view_model.dart';
 class FlightSearchView extends StatelessWidget {
   final FlightSearchViewModel viewModel;
   final Function(BuildContext, String, String, String) searchType;
-  final String searchField1;
-  final String searchField2;
+  final String destination;
+  final String origin;
   final String searchDate;
 
   FlightSearchView(
       {@required this.viewModel,
       this.searchType,
-      this.searchField1,
-      this.searchField2,
+      this.destination,
+      this.origin,
       this.searchDate});
 
   @override
@@ -44,15 +44,9 @@ class FlightSearchView extends StatelessWidget {
   }
 
   _buildFlightSearchHeader(BuildContext context) {
-    FlightRoute flightRoute = viewModel.flightSearch.flightRoutes[0];
-    String origin = flightRoute.flightSegments[0].flightLegs[0].origin.code;
-    String destination = flightRoute
-        .flightSegments[flightRoute.flightSegments.length - 1]
-        .flightLegs[0]
-        .destination
-        .code;
-    String departureDate =
-        flightRoute.flightSegments[0].flightLegs[0].scheduledDepartureDateTime;
+    String originHeader = origin;
+    String destinationHeader = destination;
+    String departureDate = searchDate;
 
     return Column(children: <Widget>[
       Container(
@@ -62,7 +56,7 @@ class FlightSearchView extends StatelessWidget {
             padding:
                 const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 5),
             child: Text(
-              '$origin to $destination',
+              '$originHeader to $destinationHeader',
               style: AaeTextStyles.title32MediumGray,
               textAlign: TextAlign.left,
             )),

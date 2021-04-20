@@ -46,12 +46,12 @@ class PriorityListNavigator extends StatelessWidget {
   }
 
   void cityAirportSearch(
-      BuildContext context, String data1, String data2, String searchDate) {
+      BuildContext context, String origin, String destination, String searchDate) {
     Navigator.of(context).pushNamed(
       '/searchResults',
       arguments: FlightSearchArguments(
-          destination: data1.toUpperCase(),
-          origin: data2.toUpperCase(),
+          destination: destination.toUpperCase(),
+          origin: origin.toUpperCase(),
           date: searchDate,
           searchType: loadPriorityList),
     ).then((value) => refreshTopBar(context));

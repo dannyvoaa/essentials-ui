@@ -52,8 +52,8 @@ class FlightSearchComponent extends StatelessWidget {
                 snapshot.value.flightSearch.flightRoutes != null) {
               return FlightSearchView(
                   viewModel: snapshot.value,
-                  searchField1: this.destination,
-                  searchField2: this.origin,
+                  destination: this.destination,
+                  origin: this.origin,
                   searchDate: this.date,
                   searchType: searchType);
             } else if (snapshot.present &&

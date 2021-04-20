@@ -54,13 +54,13 @@ class FlightStatusNavigator extends StatelessWidget {
   }
 
   void cityAirportSearch(
-      BuildContext context, String data1, String data2, String searchDate) {
+      BuildContext context, String origin, String destination, String searchDate) {
     Navigator.of(context)
         .pushNamed(
           '/searchResults',
           arguments: FlightSearchArguments(
-              destination: data1.toUpperCase(),
-              origin: data2.toUpperCase(),
+              destination: destination.toUpperCase(),
+              origin: origin.toUpperCase(),
               date: searchDate,
               searchType: flightNumberSearch),
         )
@@ -69,12 +69,12 @@ class FlightStatusNavigator extends StatelessWidget {
   }
 
   void flightNumberSearch(
-      BuildContext context, String data1, String data2, String searchDate) {
+      BuildContext context, String flightNumber, String orgin, String searchDate) {
     Navigator.of(context).pushNamed(
       '/flightStatusDetails',
       arguments: FlightStatusArguments(
-        origin: data2,
-        flightNumber: data1,
+        origin: orgin,
+        flightNumber: flightNumber,
         date: searchDate,
       ),
     ).then((value) => refreshTopBar(context));
