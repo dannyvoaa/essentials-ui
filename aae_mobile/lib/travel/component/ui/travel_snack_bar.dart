@@ -41,8 +41,8 @@ class TravelSnackBarState extends State<TravelSnackBar>
   void initState() {
     super.initState();
 
-    controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 1000));
+    controller = AnimationController(
+        vsync: this, duration: Duration(milliseconds: 1000));
     position = Tween<Offset>(begin: Offset(0.0, -4.0), end: Offset.zero)
         .animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
     controller.forward();
@@ -74,11 +74,12 @@ class TravelSnackBarState extends State<TravelSnackBar>
                           borderRadius: BorderRadius.circular(3.0)),
                       child: Align(
                         alignment: Alignment.center,
-                        child: Text(
+                        child: Flexible(
+                            child: Text(
                           widget.label,
                           textAlign: TextAlign.center,
                           style: AaeTextStyles.btn18,
-                        ),
+                        )),
                       ),
                     ),
                   ),
