@@ -74,7 +74,7 @@ class TravelSnackBarState extends State<TravelSnackBar>
                           borderRadius: BorderRadius.circular(3.0)),
                       child: Align(
                         alignment: Alignment.center,
-                        child: Flexible(
+                        child: Container(
                             child: Text(
                           widget.label,
                           textAlign: TextAlign.center,
