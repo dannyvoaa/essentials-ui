@@ -7,7 +7,7 @@
 # Remove the # in front of the line to enable the option
 
  scheme("Runner")
- sdk("iphoneos9.0")
+ sdk("iphoneos14.4")
 clean(true)
 output_directory("./build")
-output_name("AmericanEssentials")
+output_name("americanEssentials.ipa")

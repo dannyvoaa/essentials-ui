@@ -15,26 +15,102 @@
 
 default_platform(:ios)
 
+ before_all do
+#   setup_travis
+#   cocoapods
+    build_number = number_of_commits(all: true)
+    increment_build_number(build_number: build_number)
+#   ensure_git_status_clean
+ end
+
 platform :ios do
   desc "Description of what the lane does"
 
-#beta lane is just to build app
- 	lane :beta do
+        #############################################
+        ### this is the new_machien shell script ####
+        #############################################
+        desc "Create private lane to run new machine script to get/copy all required dart files into inject folder"
+        lane :newMachine do
+  #                 Dir.chdir "../.." do
+                    sh ("flutter clean")
+                    sh ("flutter pub get")
+                    sh ("flutter packages pub run build_runner build --delete-conflicting-outputs")
+                    sh ("cp ../../.dart_tool/build/generated/aae/lib/inject/mobile_module.inject.dart ../../lib/inject/")
+        end
 
-	 increment_build_number(
-      		build_number: "1.0.0"
-                )		
+        desc "beta lane is to build app for Beta users group"
+ 	    lane :beta do
+ 	          cocoapods
 
-    increment_version_number(
-      		version_number: "1.0.0"
-    		)
+         #   update_project_team(
+         #       path: "Runner.xcodeproj",
+         #       teamid: "ZGE7Q5M697"
+         #               )
 
-	build_app(scheme: "Runner",
-            workspace: "Runner.xcworkspace",
-            include_bitcode: true)
-	end
+            update_code_signing_settings(
+                use_automatic_signing: false,
+                path: "Runner.xcodeproj",
+                team_id: "ZGE7Q5M697",
+                code_sign_identity: "Apple Development: Travel Hiremath (62WP57D8LA)",
+                bundle_identifier: "american-essentials.aae",
+             #  PROVISIONING_PROFILE_SPECIFIER: "American Essentials",
+             #  profile_name: "American Essentials",
+             #  profile_uuid: "4a433eec-c376-44d7-a814-286b61dfb20c",
+                profile_uuid: "6bd39b34-8c9f-4872-ae29-21304f181c41",
+             #  profile_name: "American_Essentials.mobileprovision"
+             #  profile_name: "American_Essentials_Travel_Hiremath-3.mobileprovision"
+             #   profile_name: "American Essentials Travel Hiremath"
+             )
 
-# created following releaase lane to have automatic sign and provisioning profile from xCode set up - Nag
+         #    update_project_code_signing(
+         #       path: "Runner.xcodeproj",
+         #  #     uuid: "6bd39b34-8c9f-4872-ae29-21304f181c41"
+         #      uuid: "041b7d0c-f561-4f08-80a6-03fd5523fe4a"
+         #       )
+
+         # install_provisioning_profile(path: "~/Library/MobileDevice/Provisioning\ Profiles/*.mobileprovision")
+
+            update_project_provisioning(
+                xcodeproj: "Runner.xcodeproj",
+                target_filter: "Runner",
+                build_configuration: "Debug",
+                profile: "./provfile/American_Essentials_Travel_Hiremath-3.mobileprovision",
+            #   profile: "/Users/631427/_work/essentials-ui/essentials-ui/aae_mobile/ios/provfile/build_pp.mobileprovision",
+            #   profile: "~/Library/MobileDevice/Provisioning\ Profiles/build_pp.mobileprovision",
+                code_signing_identity: "Apple Development: Travel Hiremath (62WP57D8LA)"
+                )
+
+                sh ("ls ~/Library/MobileDevice/Provisioning\\ Profiles")
+          #  sync_code_signing
+
+	        gym(
+	            scheme: "Runner",
+                workspace: "Runner.xcworkspace",
+                clean:true,
+                export_method: "development",
+          #     export_method: "enterprise",
+                xcargs: {
+                    useModernBuildSystem: "NO"
+                    },
+                export_xcargs: "-allowProvisioningUpdates",
+                output_directory: "build/",
+                output_name: "americanEssentials.ipa",
+                destination: "generic/platform=iOS",
+                include_bitcode: false,
+                codesigning_identity: "Apple Development: Travel Hiremath (62WP57D8LA)",
+                export_options: {
+                     signingStyle: "manual",
+                     provisioningProfiles: {
+                 #          "american-essentials.aae" => "build_pp.mobileprovision"
+                            "american-essentials.aae" => "6bd39b34-8c9f-4872-ae29-21304f181c41"
+                 #          "american-essentials.aae" => "American Essentials"
+                            }
+                    }
+
+                )
+	    end
+
+# created following release lane to have automatic sign and provisioning profile from xCode set up - Nag
  	lane :release do
  		increment_build_number(
       			build_number: "1.0.0"

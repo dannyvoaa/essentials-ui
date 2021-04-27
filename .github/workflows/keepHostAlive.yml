@@ -1,0 +1,12 @@
+name: Keep Host Alive
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - run: ping
+      - run: echo "hello there"
