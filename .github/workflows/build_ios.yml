@@ -3,6 +3,7 @@ name: Build iOS
 on:
   push:
     branches:
+      - features/delete-reservation-ios-build
       - features/gitHubActions-iosFastlane-POC
       - develop
       - development
