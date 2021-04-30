@@ -420,6 +420,10 @@ class AaeTextStyles {
     height: 1.25,
   );
 
+  static final body16White = body16.copyWith(
+    color: AaeColors.white100,
+  );
+
   /// Replaces: h6
   static final body16WhiteMed125 = body16.copyWith(
     fontFamily: _americanSansMedium,
